@@ -1751,15 +1751,15 @@
         <translation>Größen</translation>
     </message>
     <message>
-        <location filename="../../src/notation/view/widgets/editstyle.ui" line="107"/>
+        <location filename="../../src/notation/view/widgets/editstyle.ui" line="64"/>
         <source>Header, Footer</source>
         <translation>Kopf-, Fußzeile</translation>
     </message>
     <message>
-        <location filename="../../src/notation/view/widgets/editstyle.ui" line="112"/>
-        <location filename="../../src/notation/view/widgets/editstyle.ui" line="2851"/>
+        <location filename="../../src/notation/view/widgets/editstyle.ui" line="69"/>
+        <location filename="../../src/notation/view/widgets/editstyle.ui" line="2891"/>
         <source>Measure Numbers</source>
-        <translation>Taktnummerierung</translation>
+        <translation>Taktzahlen</translation>
     </message>
     <message>
         <location filename="../../src/notation/view/widgets/editstyle.ui" line="117"/>
