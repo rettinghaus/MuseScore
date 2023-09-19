@@ -1749,7 +1749,18 @@
         <translation>Größen</translation>
     </message>
     <message>
-        <location filename="../../src/notation/view/widgets/editstyle.ui" line="89"/>
+        <location filename="../../src/notation/view/widgets/editstyle.ui" line="64"/>
+        <source>Header, Footer</source>
+        <translation>Kopf-, Fußzeile</translation>
+    </message>
+    <message>
+        <location filename="../../src/notation/view/widgets/editstyle.ui" line="69"/>
+        <location filename="../../src/notation/view/widgets/editstyle.ui" line="2891"/>
+        <source>Measure Numbers</source>
+        <translation>Taktzahlen</translation>
+    </message>
+    <message>
+        <location filename="../../src/notation/view/widgets/editstyle.ui" line="117"/>
         <source>System</source>
         <extracomment>a music system, a line of music</extracomment>
         <translation>System</translation>
