@@ -605,6 +605,7 @@ bool MeiExporter::writeStaffGrpStart(const Staff* staff, std::vector<int>& ends,
             // If we have a part and reached the latest level, write the label and labelAbbr
             if (staffGrpPart && j == staff->bracketLevels()) {
                 this->writeLabel(m_currentNode, staffGrpPart);
+                this->writeInstrDef(m_currentNode, staffGrpPart);
             }
         }
     }
@@ -749,7 +750,7 @@ bool MeiExporter::writeInstrDef(pugi::xml_node node, const Part* part)
         if (midiProgram >= 0 && midiProgram < 128) {
             meiInstrDef.SetMidiInstrnum(midiProgram);
         }
-        meiInstrDef.SetMidiVolume(instrument->channel(0)->volume());
+        meiInstrDef.SetMidiVolume((instrument->channel(0)->volume() / 127.0) * 100);
         libmei::data_MIDIVALUE_PAN panvalue;
         panvalue.SetMidivalue(instrument->channel(0)->pan());
         meiInstrDef.SetMidiPan(panvalue);
