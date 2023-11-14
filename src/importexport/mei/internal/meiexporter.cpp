@@ -915,16 +915,20 @@ bool MeiExporter::writeLayer(track_idx_t track, const Staff* staff, const Measur
         return true;
     }
 
-    for (Segment* seg = measure->first(); seg; seg = seg->next()) {
-        if (seg->segmentType() == SegmentType::EndBarLine) {
-            this->addFermataToMap(track, seg, measure);
-        }
+    const Measure* mmR1 = measure->coveringMMRestOrThis();
+    if (measure != mmR1 && mmR1->mmRestFirst()) {
+        this->writeMultiRest(mmR1);
+    } else {
+        for (Segment* seg = measure->first(); seg; seg = seg->next()) {
+            if (seg->segmentType() == SegmentType::EndBarLine) {
+                this->addFermataToMap(track, seg, measure);
+            }
 
-        // Do not go any further than the measure tick (ignore EndBarLine, KeySigAnnounce, TimeSigAnnounce)
-        const EngravingItem* item = seg->element(track);
-        if (!item || item->generated()) {
-            continue;
-        }
+            // Do not go any further than the measure tick (ignore EndBarLine, KeySigAnnounce, TimeSigAnnounce)
+            const EngravingItem* item = seg->element(track);
+            if (!item || item->generated()) {
+                continue;
+            }
 
         if (item->isClef()) {
             this->writeClef(dynamic_cast<const Clef*>(item));
@@ -940,14 +944,6 @@ bool MeiExporter::writeLayer(track_idx_t track, const Staff* staff, const Measur
             if (m_keySig && (seg != m_keySig)) {
                 LOGD() << "MeiExporter::writeLayer unexpected KeySig segment";
             }
-            m_keySig = seg;
-        } else if (item->isTimeSig()) {
-            if (m_timeSig && (seg != m_timeSig)) {
-                LOGD() << "MeiExporter::writeLayer unexpected TimeSig segment";
-            }
-            m_timeSig = seg;
-        } else {
-            LOGD() << "MeiExporter::writeLayer unknown segment type " << item->typeName();
         }
     }
 
@@ -1307,6 +1303,25 @@ bool MeiExporter::writeNote(const Note* note, const Chord* chord, const Staff* s
     // non critical assert
     assert(isCurrentNode(meiNote));
     m_currentNode = m_currentNode.parent();
+
+    return true;
+}
+
+/**
+ * Write a multi-measure rest.
+ */
+
+bool MeiExporter::writeMultiRest(const Measure* mmRest)
+{
+    IF_ASSERT_FAILED(mmRest) {
+        return false;
+    }
+
+    pugi::xml_node multiRestNode = m_currentNode.append_child();
+    libmei::MultiRest meiMultiRest;
+    meiMultiRest.SetNum(mmRest->mmRestCount());
+    std::string xmlId = this->getXmlIdFor(mmRest, 'm');
+    meiMultiRest.Write(multiRestNode, xmlId);
 
     return true;
 }
