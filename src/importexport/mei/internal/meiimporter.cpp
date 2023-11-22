@@ -3076,8 +3076,10 @@ bool MeiImporter::buildScoreParts(pugi::xml_node scoreDefNode)
 
         pugi::xml_node instrDefNode = labelNode.parent().select_node("./instrDef").node();
         if (instrDefNode) {
-            part->instrument()->channel(0)->setProgram(instrDefNode.attribute("midi.instrnum").as_int());
-            part->instrument()->channel(0)->setPan(instrDefNode.attribute("midi.pan").as_int());
+            const int channel = instrDefNode.attribute("midi.channel").as_int();
+            const int program = instrDefNode.attribute("midi.instrnum").as_int();
+            part->setMidiChannel(channel);
+            part->setMidiProgram(program);
         }
 
         m_score->appendPart(part);

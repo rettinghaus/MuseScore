@@ -746,6 +746,10 @@ bool MeiExporter::writeInstrDef(pugi::xml_node node, const Part* part)
     if (instrument) {
         libmei::InstrDef meiInstrDef;
         pugi::xml_node instrDefNode = node.append_child();
+        const int midiChannel = instrument->channel(0)->channel();
+        if (midiChannel >= 0 && midiChannel < 16) {
+            meiInstrDef.SetMidiChannel(midiChannel);
+        }
         const int midiProgram = instrument->channel(0)->program();
         if (midiProgram >= 0 && midiProgram < 128) {
             meiInstrDef.SetMidiInstrnum(midiProgram);
