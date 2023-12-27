@@ -38,6 +38,7 @@
 namespace mu::engraving {
 class Articulation;
 class Beam;
+class Bend;
 class Chord;
 class ChordRest;
 class Clef;
@@ -122,6 +123,7 @@ private:
      * Methods for writing MEI control events (within <measure>)
      */
     bool writeArpeg(const engraving::Arpeggio* arpeggio, const std::string& startid);
+    bool writeBend(const engraving::Bend* bend, const std::string& startid);
     bool writeBreath(const engraving::Breath* breath, const std::string& startid);
     bool writeDir(const engraving::TextBase* dir, const std::string& startid);
     bool writeDir(const engraving::TextLineBase* dir, const std::string& startid);

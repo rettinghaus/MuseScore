@@ -29,6 +29,7 @@
 
 #include "engraving/dom/arpeggio.h"
 #include "engraving/dom/beam.h"
+#include "engraving/dom/bend.h"
 #include "engraving/dom/box.h"
 #include "engraving/dom/bracket.h"
 #include "engraving/dom/breath.h"
@@ -804,6 +805,8 @@ bool MeiExporter::writeMeasure(const Measure* measure, int& measureN, bool& isFi
     for (auto controlEvent : m_startingControlEventList) {
         if (controlEvent.first->isArpeggio()) {
             success = success && this->writeArpeg(dynamic_cast<const Arpeggio*>(controlEvent.first), controlEvent.second);
+        } else if (controlEvent.first->isBend() || controlEvent.first->isStretchedBend()) {
+            success = success && this->writeBend(dynamic_cast<const Bend*>(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isBreath()) {
             success = success && this->writeBreath(dynamic_cast<const Breath*>(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isExpression() || controlEvent.first->isPlayTechAnnotation() || controlEvent.first->isStaffText()) {
@@ -1529,6 +1532,24 @@ bool MeiExporter::writeArpeg(const Arpeggio* arpeggio, const std::string& starti
     if (arpeggio->span() > 1) {
         m_openControlEventMap[arpeggio] = arpegNode;
     }
+
+    return true;
+}
+
+/**
+ * Write a bend.
+ */
+
+bool MeiExporter::writeBend(const Bend* bend, const std::string& startid)
+{
+    IF_ASSERT_FAILED(bend) {
+        return false;
+    }
+
+    pugi::xml_node bendNode = m_currentNode.append_child();
+    libmei::Bend meiBend;
+    meiBend.SetStartid(startid);
+    meiBend.Write(bendNode, this->getXmlIdFor(bend, 'b'));
 
     return true;
 }
