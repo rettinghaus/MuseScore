@@ -61,6 +61,7 @@ class UIDRegister;
 enum layerElementCounter {
     ACCID_L = 0,
     BEAM_L,
+    BEND_L,
     HARM_L,
     GRACEGRP_L,
     SYL_L,
