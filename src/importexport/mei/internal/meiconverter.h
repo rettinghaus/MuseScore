@@ -27,6 +27,7 @@
 #include "engraving/dom/accidental.h"
 #include "engraving/dom/interval.h"
 #include "engraving/dom/timesig.h"
+#include "engraving/dom/tremolotwochord.h"
 #include "engraving/dom/tremolosinglechord.h"
 #include "engraving/dom/volta.h"
 
@@ -212,6 +213,9 @@ public:
 
     static void fermataFromMEI(engraving::Fermata* fermata, const libmei::Fermata& meiFermata, bool& warning);
     static libmei::Fermata fermataToMEI(const engraving::Fermata* fermata);
+
+    static void fTremFromMEI(engraving::TremoloTwoChord* tremolo, const libmei::FTrem& meiFTrem, bool& warning);
+    static libmei::FTrem fTremToMEI(const engraving::TremoloTwoChord* tremolo);
 
     static std::pair<bool, engraving::NoteType> gracegrpFromMEI(const libmei::graceGrpLog_ATTACH meiAttach,
                                                                 const libmei::data_GRACE meiGrace, bool& warning);
