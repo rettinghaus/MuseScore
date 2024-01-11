@@ -915,9 +915,10 @@ bool MeiExporter::writeLayer(track_idx_t track, const Staff* staff, const Measur
         return true;
     }
 
-    const Measure* mmR1 = measure->coveringMMRestOrThis();
-    if (measure != mmR1 && mmR1->mmRestFirst()) {
-        this->writeMultiRest(mmR1);
+    if (measure->mmRestFirst()) {
+        this->writeMultiRest(measure);
+    } else if (measure->coveringMMRestOrThis()) {
+        // skip these measures        
     } else {
         for (Segment* seg = measure->first(); seg; seg = seg->next()) {
             if (seg->segmentType() == SegmentType::EndBarLine) {
