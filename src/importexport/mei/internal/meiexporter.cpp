@@ -1549,7 +1549,7 @@ bool MeiExporter::writeBend(const Bend* bend, const std::string& startid)
     pugi::xml_node bendNode = m_currentNode.append_child();
     libmei::Bend meiBend;
     meiBend.SetStartid(startid);
-    meiBend.Write(bendNode, this->getXmlIdFor(bend, 'b'));
+    meiBend.Write(m_currentNode, this->getLayerXmlIdFor(BEND_L));
 
     return true;
 }

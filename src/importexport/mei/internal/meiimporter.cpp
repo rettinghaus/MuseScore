@@ -2184,6 +2184,8 @@ bool MeiImporter::readControlEvents(pugi::xml_node parentNode, Measure* measure)
         std::string elementName = std::string(xpathNode.node().name());
         if (elementName == "arpeg") {
             success = success && this->readArpeg(xpathNode.node(), measure);
+        } else if (elementName == "bend") {
+            success = success && this->readBend(xpathNode.node(), measure);
         } else if (elementName == "breath") {
             success = success && this->readBreath(xpathNode.node(), measure);
         } else if (elementName == "caesura") {
@@ -2257,6 +2259,31 @@ bool MeiImporter::readArpeg(pugi::xml_node arpegNode, Measure* measure)
         // Add the Arpeggio to the open arpeggio map, which will handle ties differently as appropriate
         m_openArpegMap[arpeggio] = arpegNode;
     }
+
+    return true;
+}
+
+/**
+ * Read a bend.
+ */
+
+bool MeiImporter::readBend(pugi::xml_node bendNode, Measure* measure)
+{
+    IF_ASSERT_FAILED(measure) {
+        return false;
+    }
+
+    bool warning;
+    libmei::Bend meiBend;
+    meiBend.Read(bendNode);
+
+    Bend* bend = static_cast<Bend*>(this->addAnnotation(meiBend, measure));
+    if (!bend) {
+        // Warning message given in MeiImporter::addAnnotation
+        return true;
+    }
+
+    //Convert::bendFromMEI(bend, meiBend, warning);
 
     return true;
 }
