@@ -494,6 +494,8 @@ Spanner* MeiImporter::addSpanner(const libmei::Element& meiElement, Measure* mea
         item = Factory::createPedal(chordRest->segment());
     } else if (meiElement.m_name == "slur") {
         item = Factory::createSlur(chordRest->segment());
+    } else if (meiElement.m_name == "trill") {
+        item = Factory::createTrill(chordRest->segment());
     } else {
         return nullptr;
     }
@@ -2835,6 +2837,16 @@ bool MeiImporter::readTrill(pugi::xml_node trillNode, Measure* measure)
     bool warning;
     libmei::Trill meiTrill;
     meiTrill.Read(trillNode);
+
+    if (meiTrill.HasEndid()) {
+        Trill* trill = static_cast<Trill*>(this->addSpanner(meiTrill, measure, trillNode));
+        if (!trill) {
+            // Warning message given in MeiExpoter::addSpanner
+            return true;
+        }
+
+        return true;
+    }
 
     Ornament* ornament = static_cast<Ornament*>(this->addToChordRest(meiTrill, measure));
     if (!ornament) {
