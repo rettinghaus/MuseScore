@@ -1640,8 +1640,20 @@ void Convert::fTremFromMEI(engraving::TremoloTwoChord* tremolo, const libmei::FT
 {   
     warning = false;
 
+    // @dur
+    libmei::data_DURATION dur = meiFTrem.GetDur();
+
     // @unitdur
     const libmei::data_DURATION unitdur = meiFTrem.GetUnitdur();
+
+    switch (unitdur) {
+    case (libmei::DURATION_8): tremolo->setTremoloType(engraving::TremoloType::C8); break;
+    case (libmei::DURATION_16): tremolo->setTremoloType(engraving::TremoloType::C8); break;
+    case (libmei::DURATION_32): tremolo->setTremoloType(engraving::TremoloType::C8); break;
+    case (libmei::DURATION_64): tremolo->setTremoloType(engraving::TremoloType::C8); break;
+    default:
+        tremolo->setTremoloType(engraving::TremoloType::INVALID_TREMOLO);
+    }
 }
 
 libmei::FTrem Convert::fTremToMEI(const engraving::TremoloTwoChord* tremolo)
