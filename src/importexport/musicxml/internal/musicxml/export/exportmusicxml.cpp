@@ -7370,7 +7370,7 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
                 mNumAttrs.push_back({ "font-family", style.styleSt(Sid::measureNumberFontFace) });
                 mNumAttrs.push_back({ "font-size", style.styleD(Sid::measureNumberFontSize) });
                 if (style.value(Sid::measureNumberColor) != engravingConfiguration()->defaultColor()) {
-                    mNumAttrs.push_back({ "color", style.styleSt(Sid::measureNumberColor).toString() });
+                    mNumAttrs.push_back({ "color", style.styleSt(Sid::measureNumberColor) });
                 }
                 if (style.styleB(Sid::measureNumberSystem)) {
                     m_xml.tag("measure-numbering", mNumAttrs, "system");
