@@ -7365,6 +7365,20 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
                 measureLayout(m->prev()->width());
             }
 
+            if (partNr == 0) {
+                XmlWriter::Attributes mNumAttrs;
+                mNumAttrs.push_back({ "font-family", style.styleSt(Sid::measureNumberFontFace) });
+                mNumAttrs.push_back({ "font-size", style.styleD(Sid::measureNumberFontSize) });
+                if (style.value(Sid::measureNumberColor) != engravingConfiguration()->defaultColor()) {
+                    mNumAttrs.push_back({ "color", style.styleSt(Sid::measureNumberColor).toString() });
+                }
+                if (style.styleB(Sid::measureNumberSystem)) {
+                    m_xml.tag("measure-numbering", mNumAttrs, "system");
+                } else if (!style.styleB(Sid::showMeasureNumber)) {
+                    m_xml.tag("measure-numbering", mNumAttrs, "none");
+                }
+            }
+
             m_xml.endElement();
         } else if (!newSystemOrPage.empty()) {
             m_xml.tagRaw(String(u"print%1").arg(newSystemOrPage));
