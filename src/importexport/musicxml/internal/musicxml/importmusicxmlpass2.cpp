@@ -5945,7 +5945,7 @@ void MusicXmlParserPass2::time(const String& partId, Measure* measure, const Fra
     String beats;
     String beatType;
     String timeSymbol = m_e.attribute("symbol");
-    bool printObject = m_e.asciiAttribute("print-object") != "no";
+    const bool printObject = m_e.asciiAttribute("print-object") != "no";
     const Color timeColor = Color::fromString(m_e.asciiAttribute("color").ascii());
 
     while (m_e.readNextStartElement()) {
@@ -6575,7 +6575,10 @@ Note* MusicXmlParserPass2::note(const String& partId,
     String noteheadFilled;
     int velocity = round(m_e.doubleAttribute("dynamics") * 0.9);
     bool graceSlash = false;
-    bool printObject = m_e.asciiAttribute("print-object") != "no";
+    const bool printDot = m_e.asciiAttribute("print-dot") != "no";
+    const bool printLeger = m_e.asciiAttribute("print-leger") != "no";
+    const bool printLyric = m_e.asciiAttribute("print-lyric") != "no";
+    const bool printObject = m_e.asciiAttribute("print-object") != "no";
     bool isSingleDrumset = false;
     BeamMode bm;
     std::map<int, String> beamTypes;
