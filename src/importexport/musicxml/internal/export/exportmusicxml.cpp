@@ -4477,9 +4477,23 @@ void ExportMusicXml::chord(Chord* chord, staff_idx_t staff, const std::vector<Ly
 
         noteTag += elementPosition(this, note);
 
-        int velo = note->userVelocity();
+        const int velo = note->userVelocity();
         if (velo != 0) {
             noteTag += String(u" dynamics=\"%1\"").arg(String::number(velo * 100.0 / 90.0, 2));
+        }
+
+        bool dotsVisible = true;
+        if (!note->dots().empty() && std::all_of(note->dots().begin(), note->dots().end(), [](NoteDot* dot) { return !dot->visible(); })) {
+            dotsVisible = false;
+        }
+        if (!note->visible() && !note->chord()->stem()->visible()) {
+            if (dotsVisible) {
+                noteTag += QString(" print-dot=\"yes\" print-object=\"no\"");
+            } else {
+                noteTag += QString(" print-object=\"no\"");
+            }
+        } else if (!dotsVisible) {
+            noteTag += QString(" print-dot=\"no\"");
         }
 
         m_xml.startElementRaw(noteTag);
