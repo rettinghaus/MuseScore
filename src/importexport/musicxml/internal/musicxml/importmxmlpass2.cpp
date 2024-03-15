@@ -2365,11 +2365,10 @@ void MusicXMLParserPass2::measure(const String& partId, const Fraction time)
 
     AsciiStringView numberA = m_e.asciiAttribute("number");
     if (!numberA.empty()) {
-        if (numberA.at(0).ascii() == 'X') {
-            isNumericMeasureNumber = false;
-        } else {
-            parsedMeasureNumber = numberA.toInt(&isNumericMeasureNumber);
-        }
+        parsedMeasureNumber = numberA.toInt(&isNumericMeasureNumber);
+    }
+    if (parsedMeasureNumber < 1) {
+        isNumericMeasureNumber = false;
     }
 
     //LOGD("measure %d start", parsedMeasureNumber);
