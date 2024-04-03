@@ -6150,6 +6150,7 @@ Note* MusicXMLParserPass2::note(const String& partId,
     const Color noteColor = Color::fromString(m_e.asciiAttribute("color").ascii());
     Color noteheadColor;
     Color stemColor;
+    std::vector<Color> dotsColor;
     bool noteheadParentheses = false;
     String noteheadFilled;
     int velocity = round(m_e.doubleAttribute("dynamics") * 0.9);
@@ -6216,9 +6217,13 @@ Note* MusicXMLParserPass2::note(const String& partId,
                 // error already reported in pass 1
                 staff = -1;
             }
+        } else if (m_e.name() == "dot") {
+            dotsColor.push_back(Color::fromString(m_e.asciiAttribute("color").ascii()));
+            m_e.skipCurrentElement();
         } else if (m_e.name() == "stem") {
             stemColor = Color::fromString(m_e.asciiAttribute("color").ascii());
             stem(stemDir, noStem);
+            stemColor = Color::fromString(m_e.asciiAttribute("color").ascii());
         } else if (m_e.name() == "tie") {
             tieType = m_e.attribute("type");
             m_e.skipCurrentElement();
@@ -6367,6 +6372,14 @@ Note* MusicXMLParserPass2::note(const String& partId,
             xmlSetDrumsetPitch(note, c, st, mnp.displayStep(), mnp.displayOctave(), headGroup, stemDir, instrument);
         } else {
             setPitch(note, instruments, instrumentId, mnp, octaveShift, instrument);
+            size_t idx = 0; 
+            for (NoteDot* dot : note->dots()) {
+                Color dotColor = dotsColor[idx];
+                if (dotColor.isValid()) {
+                    dot->setColor(dotColor);
+                }
+                ++idx;
+            }
         }
         c->add(note);
         cr = c;
@@ -6414,7 +6427,7 @@ Note* MusicXMLParserPass2::note(const String& partId,
             c->add(stem);
         }
         setNoteHead(note, noteheadColor, noteheadParentheses, noteheadFilled);
-        note->setVisible(hasHead && printObject); // TODO also set the stem to invisible
+        note->setVisible(hasHead && printObject);
         stem->setVisible(printObject);
 
         if (!grace) {
