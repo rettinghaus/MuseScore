@@ -7672,6 +7672,17 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part)
             }
 
             xml.tag("staff-lines", st->lines(Fraction(0, 1)));
+            if (st->isLinesInvisible(Fraction(0, 1)) || st->color() != engravingConfiguration()->defaultColor()) {
+                for (size_t ii = 0, line < st->lines(Fraction(0, 1)), ii++) {
+                    String ld = String(u"line-detail line=\"%1\"").arg(ii + 1);
+                    ld += color2xml(st);
+                    if (!st->visible()) {
+                        ld += u" print-object=\"no\"";
+                    }
+                    xml.tagRaw(ld);
+                }
+            }
+
             if (st->isTabStaff(Fraction(0, 1)) && instrument->stringData()) {
                 std::vector<instrString> l = instrument->stringData()->stringList();
                 for (size_t ii = 0; ii < l.size(); ii++) {
