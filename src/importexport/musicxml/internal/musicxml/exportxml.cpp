@@ -7673,13 +7673,13 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part)
             }
 
             xml.tag("staff-lines", st->lines(Fraction(0, 1)));
-            if (st->isLinesInvisible(Fraction(0, 1)) || st->color() != engravingConfiguration()->defaultColor()) {
+            if (st->isLinesInvisible(Fraction(0, 1))) {
                 for (size_t ii = 0; ii < st->lines(Fraction(0, 1)); ii++) {
                     String ld = String(u"line-detail line=\"%1\"").arg(ii + 1);
-                    ld += color2xml(st);
-                    if (!st->visible()) {
+                    if (st->isLinesInvisible(Fraction(0, 1))) {
                         ld += u" print-object=\"no\"";
                     }
+                    //ld += color2xml(st);
                     xml.tagRaw(ld);
                 }
             }
