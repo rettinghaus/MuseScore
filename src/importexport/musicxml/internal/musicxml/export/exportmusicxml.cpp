@@ -8224,6 +8224,24 @@ void ExportMusicXml::writeMeasure(const Measure* const m,
     if (isFirstActualMeasure) {
         writeStaffDetails(m_xml, part);
         writeInstrumentDetails(part->instrument(), m_score->style().styleB(Sid::concertPitch));
+        const MStyle& style = part->score()->style();
+        muse::ByteArray ba = style.styleSt(Sid::swingUnit).toAscii();
+        DurationType unit = TConv::fromXml(ba.constChar(), DurationType::V_INVALID);
+        if (unit != DurationType::V_ZERO) {
+            m_xml.startElement("sound");
+            m_xml.startElement("swing");
+            const int swingPercentage = style.styleI(Sid::swingRatio);
+            const int swingDivisor = std::gcd(style.styleI(Sid::swingRatio), 100);
+            m_xml.tag("first",  100 / swingDivisor);
+            m_xml.tag("second", swingPercentage / swingDivisor);
+            if (unit == DurationType::V_EIGHTH) {
+                m_xml.tag("swing-type", TConv::toXml(DurationType::V_EIGHTH));
+            } else {
+                m_xml.tag("swing-type", TConv::toXml(DurationType::V_16TH));
+            }
+            m_xml.endElement();
+            m_xml.endElement();
+        }
     }
 
     // output attribute at start of measure: measure-style
