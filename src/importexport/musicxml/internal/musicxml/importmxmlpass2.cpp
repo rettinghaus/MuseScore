@@ -3017,6 +3017,11 @@ void MusicXMLParserDirection::direction(const String& partId,
             preventNegativeTick(tick, m_offset, m_logger);
         } else if (m_e.name() == "sound") {
             sound();
+            while (m_e.readNextStartElement()) {
+                if (m_e.name() == "swing") {
+                    swing();
+                }
+            }
         } else if (m_e.name() == "staff") {
             String strStaff = m_e.readText();
             int staff = m_pass1.getMusicXmlPart(partId).staffNumberToIndex(strStaff.toInt());
@@ -3538,6 +3543,35 @@ void MusicXMLParserDirection::sound()
     m_dynaVelocity = m_e.attribute("dynamics");
 
     m_e.skipCurrentElement();
+}
+
+//---------------------------------------------------------
+//   swing
+//---------------------------------------------------------
+
+/**
+ Parse the /score-partwise/part/measure/direction/sound/swing node.
+ */
+
+void MusicXMLParserDirection::swing()
+{
+    while (m_e.readNextStartElement()) {
+        int swingNumerator = 1;
+        int swingDenominator = 1;
+        if (m_e.name() == "straight") {
+            
+        } else if (m_e.name() == "first") {
+            swingDenominator = m_e.readText().toInt();
+        } else if (m_e.name() == "second") {
+            swingNumerator = m_e.readText().toInt();
+        } else if (m_e.name() == "swing-type") {
+        } else if (m_e.name() == "swing-style") {
+            // unused
+            m_e.skipCurrentElement();
+        } else {
+            skipLogCurrElem();
+        }
+    }
 }
 
 //---------------------------------------------------------

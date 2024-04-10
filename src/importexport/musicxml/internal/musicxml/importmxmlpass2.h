@@ -440,6 +440,7 @@ private:
     void wedge(const String& type, const int number, std::vector<MusicXmlSpannerDesc>& starts, std::vector<MusicXmlSpannerDesc>& stops);
     String metronome(double& r);
     void sound();
+    void swing();
     void dynamics();
     void otherDirection();
     void handleRepeats(Measure* measure, const track_idx_t track, const Fraction tick, bool& measureHasCoda, SegnoStack& segnos,
