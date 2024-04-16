@@ -420,7 +420,7 @@ private:
     void keysigTimesig(const Measure* m, const Part* p);
     void chordAttributes(Chord* chord, Notations& notations, Technical& technical, TrillHash& trillStart, TrillHash& trillStop);
     void wavyLineStartStop(const ChordRest* cr, Notations& notations, Ornaments& ornaments, TrillHash& trillStart, TrillHash& trillStop);
-    void print(const Measure* const m, const int partNr, const int firstStaffOfPart, const int nrStavesInPart,
+    void print(const Measure* const m, const int partNr, const int firstStaffOfPart, const size_t nrStavesInPart,
                const MeasurePrintContext& mpc);
     void findAndExportClef(const Measure* const m, const int staves, const track_idx_t strack, const track_idx_t etrack);
     void exportDefaultClef(const Part* const part, const Measure* const m);
@@ -7084,7 +7084,7 @@ static bool hasPageBreak(const System* const system)
  */
 
 void ExportMusicXml::print(const Measure* const m, const int partNr, const int firstStaffOfPart,
-                           const int nrStavesInPart, const MeasurePrintContext& mpc)
+                           const size_t nrStavesInPart, const MeasurePrintContext& mpc)
 {
     const MeasureBase* const prevSysMB = lastMeasureBase(mpc.prevSystem);
 
@@ -7092,33 +7092,39 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
     const bool prevMeasSectionBreak = prevSysMB ? prevSysMB->sectionBreak() : false;
     const bool prevPageBreak = hasPageBreak(mpc.lastSystemPrevPage);
 
-    String newSystemOrPage;               // new-[system|page]="yes" or empty
+    XmlWriter::Attributes attributes;
+    const int pageNumber = m->system()->page()->no() + 1 + m->score()->pageNumberOffset();
+
     if (!mpc.scoreStart) {
         IMusicXmlConfiguration::MusicxmlExportBreaksType exportBreaksType = configuration()->musicxmlExportBreaksType();
-
         if (exportBreaksType == IMusicXmlConfiguration::MusicxmlExportBreaksType::All) {
             if (mpc.pageStart) {
-                newSystemOrPage = u" new-page=\"yes\"";
+                attributes.push_back({ "new-page", "yes" });
+                attributes.push_back({ "page-number", pageNumber });
             } else if (mpc.systemStart) {
-                newSystemOrPage = u" new-system=\"yes\"";
+                attributes.push_back({ "new-system", "yes" });
             }
         } else if (exportBreaksType == IMusicXmlConfiguration::MusicxmlExportBreaksType::Manual) {
             if (mpc.pageStart && prevPageBreak) {
-                newSystemOrPage = u" new-page=\"yes\"";
+                attributes.push_back({ "new-page", "yes" });
+                attributes.push_back({ "page-number", pageNumber });
             } else if (mpc.systemStart && (prevMeasLineBreak || prevMeasSectionBreak)) {
-                newSystemOrPage = u" new-system=\"yes\"";
+                attributes.push_back({ "new-system", "yes" });
             }
         }
     }
 
-    bool doBreak = mpc.scoreStart || (!newSystemOrPage.empty());
+    bool doBreak = mpc.scoreStart || !attributes.empty();
     bool doLayout = configuration()->musicxmlExportLayout();
 
     if (doBreak) {
+        if (mpc.scoreStart) {
+            attributes.push_back({ "page-number", pageNumber });
+        }
         if (doLayout) {
-            m_xml.startElementRaw(String(u"print%1").arg(newSystemOrPage));
+            m_xml.startElement("print", attributes);
             const MStyle& style = score()->style();
-            const double pageWidth  = getTenthsFromInches(style.styleD(Sid::pageWidth));
+            const double pageWidth = getTenthsFromInches(style.styleD(Sid::pageWidth));
             const double lm = getTenthsFromInches(style.styleD(Sid::pageOddLeftMargin));
             const double rm = getTenthsFromInches(style.styleD(Sid::pageWidth)
                                                   - style.styleD(Sid::pagePrintableWidth)
@@ -7166,20 +7172,31 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
             }
 
             // Staff layout elements.
-            for (int staffIdx = (firstStaffOfPart == 0) ? 1 : 0; staffIdx < nrStavesInPart; staffIdx++) {
+            for (size_t staffIdx = (firstStaffOfPart == 0) ? 1 : 0; staffIdx < nrStavesInPart; ++staffIdx) {
                 // calculate distance between this and previous staff using the bounding boxes
                 const int staffNr = firstStaffOfPart + staffIdx;
                 const RectF& prevBbox = system->staff(staffNr - 1)->bbox();
                 const double staffDist = system->staff(staffNr)->bbox().y() - prevBbox.y() - prevBbox.height();
 
-                m_xml.startElement("staff-layout", { { "number", staffIdx + 1 } });
-                m_xml.tag("staff-distance", String::number(getTenthsFromDots(staffDist), 2));
-                m_xml.endElement();
+                if (!muse::RealIsEqualOrLess(staffDist, 0.0)) {
+                    m_xml.startElement("staff-layout", { { "number", staffIdx + 1 } });
+                    m_xml.tag("staff-distance", String::number(getTenthsFromDots(staffDist), 2));
+                    m_xml.endElement();
+                } else {
+                    m_attr.doAttr(m_xml, true);
+                    XmlWriter::Attributes attributes;
+                    attributes.push_back({ "number", staffIdx + 1 });
+                    attributes.push_back({ "print-object", "no" });
+                    m_xml.startElement("staff-details", attributes);
+                    m_xml.tag("staff-lines", "5");
+                    m_xml.endElement();
+                    m_attr.doAttr(m_xml, false);
+                }
             }
 
             m_xml.endElement();
-        } else if (!newSystemOrPage.empty()) {
-            m_xml.tagRaw(String(u"print%1").arg(newSystemOrPage));
+        } else if (!attributes.empty()) {
+            m_xml.tag("print", attributes);
         }
     }
 }
@@ -8092,7 +8109,7 @@ void ExportMusicXml::writeMeasure(const Measure* const m,
 
     m_xml.startElementRaw(measureTag);
 
-    print(m, partIndex, staffCount, static_cast<int>(staves), mpc);
+    print(m, partIndex, staffCount, staves, mpc);
 
     m_attr.start();
 
