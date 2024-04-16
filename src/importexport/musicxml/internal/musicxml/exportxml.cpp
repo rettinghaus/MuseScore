@@ -7118,10 +7118,10 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
     bool doLayout = configuration()->musicxmlExportLayout();
 
     if (doBreak) {
-        if (mpc.scoreStart) {
-            attributes.push_back({ "page-number", pageNumber });
-        }
         if (doLayout) {
+            if (mpc.scoreStart) {
+                attributes.push_back({ "page-number", pageNumber });
+            }
             m_xml.startElement("print", attributes);
             const MStyle& style = score()->style();
             const double pageWidth = getTenthsFromInches(style.styleD(Sid::pageWidth));
