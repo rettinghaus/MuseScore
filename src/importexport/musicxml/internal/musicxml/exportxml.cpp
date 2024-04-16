@@ -7112,6 +7112,8 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
                 attributes.push_back({ "new-system", "yes" });
             }
         }
+    } else if (mpc.scoreStart && configuration()->musicxmlExportBreaksType()) {
+        attributes.push_back({ "page-number", pageNumber });
     }
 
     bool doBreak = mpc.scoreStart || !attributes.empty();
@@ -7119,9 +7121,6 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
 
     if (doBreak) {
         if (doLayout) {
-            if (mpc.scoreStart) {
-                attributes.push_back({ "page-number", pageNumber });
-            }
             m_xml.startElement("print", attributes);
             const MStyle& style = score()->style();
             const double pageWidth = getTenthsFromInches(style.styleD(Sid::pageWidth));
