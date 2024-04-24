@@ -1928,6 +1928,9 @@ void Convert::markerFromMEI(engraving::Marker* marker, const libmei::RepeatMark&
         }
     }
 
+    // @color
+    Convert::colorFromMEI(marker, meiRepeatMark);
+
     marker->setMarkerType(markerType);
 
     // @color
