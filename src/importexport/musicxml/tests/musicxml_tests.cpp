@@ -667,8 +667,8 @@ TEST_F(Musicxml_Tests, DISABLED_graceAfter4) {
 TEST_F(Musicxml_Tests, graceFermata) {
     mxmlIoTest("testGraceFermata");
 }
-TEST_F(Musicxml_Tests, harpPedals) {
-    mxmlMscxExportTestRef("testHarpPedals");
+TEST_F(Musicxml_Tests, guitarBends) {
+    mxmlMscxExportTestRef("testGuitarBends");
 }
 TEST_F(Musicxml_Tests, hairpinDynamics) {
     mxmlMscxExportTestRef("testHairpinDynamics");
@@ -696,6 +696,9 @@ TEST_F(Musicxml_Tests, harmony7) {
 }
 TEST_F(Musicxml_Tests, harmony8) {
     mxmlIoTest("testHarmony8");
+}
+TEST_F(Musicxml_Tests, harpPedals) {
+    mxmlMscxExportTestRef("testHarpPedals");
 }
 TEST_F(Musicxml_Tests, hello) {
     mxmlIoTest("testHello");
