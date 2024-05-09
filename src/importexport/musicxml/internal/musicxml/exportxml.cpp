@@ -7194,7 +7194,7 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
             }
 
             m_xml.endElement();
-        } else if (!attributes.empty()) {
+        } else {
             m_xml.tag("print", attributes);
         }
     }
