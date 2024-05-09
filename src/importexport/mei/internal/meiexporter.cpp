@@ -918,7 +918,7 @@ bool MeiExporter::writeLayer(track_idx_t track, const Staff* staff, const Measur
     if (measure->mmRestFirst()) {
         this->writeMultiRest(measure);
     } else if (measure->coveringMMRestOrThis()) {
-        // skip these measures        
+        // skip these measures
     } else {
         for (Segment* seg = measure->first(); seg; seg = seg->next()) {
             if (seg->segmentType() == SegmentType::EndBarLine) {
@@ -931,19 +931,20 @@ bool MeiExporter::writeLayer(track_idx_t track, const Staff* staff, const Measur
                 continue;
             }
 
-        if (item->isClef()) {
-            this->writeClef(dynamic_cast<const Clef*>(item));
-        } else if (item->isChord()) {
-            this->writeChord(dynamic_cast<const Chord*>(item), staff);
-        } else if (item->isRest()) {
-            this->writeRest(dynamic_cast<const Rest*>(item), staff);
-        } else if (item->isBarLine()) {
-            //
-        } else if (item->isBreath()) {
-            //
-        } else if (item->isKeySig()) {
-            if (m_keySig && (seg != m_keySig)) {
-                LOGD() << "MeiExporter::writeLayer unexpected KeySig segment";
+            if (item->isClef()) {
+                this->writeClef(dynamic_cast<const Clef*>(item));
+            } else if (item->isChord()) {
+                this->writeChord(dynamic_cast<const Chord*>(item), staff);
+            } else if (item->isRest()) {
+                this->writeRest(dynamic_cast<const Rest*>(item), staff);
+            } else if (item->isBarLine()) {
+                //
+            } else if (item->isBreath()) {
+                //
+            } else if (item->isKeySig()) {
+                if (m_keySig && (seg != m_keySig)) {
+                    LOGD() << "MeiExporter::writeLayer unexpected KeySig segment";
+                }
             }
         }
     }
