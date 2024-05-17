@@ -6372,7 +6372,7 @@ Note* MusicXMLParserPass2::note(const String& partId,
             xmlSetDrumsetPitch(note, c, st, mnp.displayStep(), mnp.displayOctave(), headGroup, stemDir, instrument);
         } else {
             setPitch(note, instruments, instrumentId, mnp, octaveShift, instrument);
-            size_t idx = 0; 
+            size_t idx = 0;
             for (NoteDot* dot : note->dots()) {
                 Color dotColor = dotsColor[idx];
                 if (dotColor.isValid()) {
