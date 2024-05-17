@@ -4483,7 +4483,7 @@ void ExportMusicXml::chord(Chord* chord, staff_idx_t staff, const std::vector<Ly
         }
 
         bool dotsVisible = true;
-        if (!note->dots().empty() && std::all_of(note->dots().begin(), note->dots().end(), [](NoteDot* dot) { return !dot->visible(); })) {
+        if (note->chord()->dots() && std::all_of(note->dots().begin(), note->dots().end(), [](NoteDot* dot) { return !dot->visible(); })) {
             dotsVisible = false;
         }
         if (!note->visible() && !note->chord()->stem()->visible()) {
