@@ -6155,6 +6155,7 @@ Note* MusicXMLParserPass2::note(const String& partId,
     String noteheadFilled;
     int velocity = round(m_e.doubleAttribute("dynamics") * 0.9);
     bool graceSlash = false;
+    bool printDot = m_e.asciiAttribute("print-dot") != "no";
     bool printObject = m_e.asciiAttribute("print-object") != "no";
     bool isSingleDrumset = false;
     BeamMode bm;
@@ -6377,6 +6378,7 @@ Note* MusicXMLParserPass2::note(const String& partId,
                 Color dotColor = dotsColor[idx];
                 if (dotColor.isValid()) {
                     dot->setColor(dotColor);
+                    dot->setVisible(printDot);
                 }
                 ++idx;
             }
