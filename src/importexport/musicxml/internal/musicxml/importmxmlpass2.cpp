@@ -6396,8 +6396,10 @@ Note* MusicXMLParserPass2::note(const String& partId,
 
         if (dotPosition == "above") {
             note->setUserDotPosition(DirectionV::UP);
+            note->setDotPosition(DirectionV::UP);
         } else if (dotPosition == "below") {
             note->setUserDotPosition(DirectionV::DOWN);
+            note->setDotPosition(DirectionV::DOWN);
         }
 
         if (mnp.unpitched() && !isSingleDrumset) {
