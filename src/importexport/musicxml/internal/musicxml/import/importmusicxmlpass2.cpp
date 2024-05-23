@@ -2504,7 +2504,7 @@ static void markUserAccidentals(const staff_idx_t firstStaff,
             Chord* chord = static_cast<Chord*>(e);
             for (Note* nt : chord->notes()) {
                 if (muse::contains(alterMap, nt)) {
-                    int alter = alterMap.at(nt);
+                    const int alter = alterMap.at(nt);
                     int ln  = absStep(nt->tpc(), nt->pitch());
                     bool error = false;
                     AccidentalVal currAccVal = currAcc.accidentalVal(ln, error);
@@ -2523,15 +2523,10 @@ static void markUserAccidentals(const staff_idx_t firstStaff,
                             && currAccVal == AccidentalVal::SHARP
                             && nt->accidental()->accidentalType() == AccidentalType::SHARP
                             && !muse::value(accTmp, ln, false))) {
-                        nt->accidental()->setRole(AccidentalRole::USER);
-                    } else if (Accidental::isMicrotonal(nt->accidental()->accidentalType())
-                               && nt->accidental()->accidentalType() < AccidentalType::END) {
-                        // microtonal accidental
-                        nt->accidental()->setRole(AccidentalRole::USER);
-                        accTmp.insert({ ln, false });
                     } else {
                         accTmp.insert({ ln, true });
                     }
+                    nt->accidental()->setRole(AccidentalRole::USER);
                 }
             }
         }
