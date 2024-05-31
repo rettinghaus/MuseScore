@@ -783,6 +783,46 @@ bool AttDurationRatio::HasNumbase() const
 }
 
 //----------------------------------------------------------------------------
+// AttEnclosingChars
+//----------------------------------------------------------------------------
+
+AttEnclosingChars::AttEnclosingChars() : Att()
+{
+    ResetEnclosingChars();
+}
+
+void AttEnclosingChars::ResetEnclosingChars()
+{
+    m_enclose = ENCLOSURE_NONE;
+}
+
+bool AttEnclosingChars::ReadEnclosingChars(pugi::xml_node element, bool removeAttr)
+{
+    bool hasAttribute = false;
+    if (element.attribute("enclose")) {
+        this->SetEnclose(StrToEnclosure(element.attribute("enclose").value()));
+        if (removeAttr) element.remove_attribute("enclose");
+        hasAttribute = true;
+    }
+    return hasAttribute;
+}
+
+bool AttEnclosingChars::WriteEnclosingChars(pugi::xml_node element)
+{
+    bool wroteAttribute = false;
+    if (this->HasEnclose()) {
+        element.append_attribute("enclose") = EnclosureToStr(this->GetEnclose()).c_str();
+        wroteAttribute = true;
+    }
+    return wroteAttribute;
+}
+
+bool AttEnclosingChars::HasEnclose() const
+{
+    return (m_enclose != ENCLOSURE_NONE);
+}
+
+//----------------------------------------------------------------------------
 // AttExtender
 //----------------------------------------------------------------------------
 
@@ -1623,7 +1663,7 @@ AttOctave::AttOctave() : Att()
 
 void AttOctave::ResetOctave()
 {
-    m_oct = -127;
+    m_oct = MEI_UNSET_OCT;
 }
 
 bool AttOctave::ReadOctave(pugi::xml_node element, bool removeAttr)
@@ -1649,7 +1689,7 @@ bool AttOctave::WriteOctave(pugi::xml_node element)
 
 bool AttOctave::HasOct() const
 {
-    return (m_oct != -127);
+    return (m_oct != MEI_UNSET_OCT);
 }
 
 //----------------------------------------------------------------------------
@@ -2065,6 +2105,61 @@ bool AttStaffIdent::WriteStaffIdent(pugi::xml_node element)
 bool AttStaffIdent::HasStaff() const
 {
     return (m_staff != std::vector<int>());
+}
+
+//----------------------------------------------------------------------------
+// AttStaffLocPitched
+//----------------------------------------------------------------------------
+
+AttStaffLocPitched::AttStaffLocPitched() : Att()
+{
+    ResetStaffLocPitched();
+}
+
+void AttStaffLocPitched::ResetStaffLocPitched()
+{
+    m_ploc = PITCHNAME_NONE;
+    m_oloc = MEI_UNSET_OCT;
+}
+
+bool AttStaffLocPitched::ReadStaffLocPitched(pugi::xml_node element, bool removeAttr)
+{
+    bool hasAttribute = false;
+    if (element.attribute("ploc")) {
+        this->SetPloc(StrToPitchname(element.attribute("ploc").value()));
+        if (removeAttr) element.remove_attribute("ploc");
+        hasAttribute = true;
+    }
+    if (element.attribute("oloc")) {
+        this->SetOloc(StrToOctave(element.attribute("oloc").value()));
+        if (removeAttr) element.remove_attribute("oloc");
+        hasAttribute = true;
+    }
+    return hasAttribute;
+}
+
+bool AttStaffLocPitched::WriteStaffLocPitched(pugi::xml_node element)
+{
+    bool wroteAttribute = false;
+    if (this->HasPloc()) {
+        element.append_attribute("ploc") = PitchnameToStr(this->GetPloc()).c_str();
+        wroteAttribute = true;
+    }
+    if (this->HasOloc()) {
+        element.append_attribute("oloc") = OctaveToStr(this->GetOloc()).c_str();
+        wroteAttribute = true;
+    }
+    return wroteAttribute;
+}
+
+bool AttStaffLocPitched::HasPloc() const
+{
+    return (m_ploc != PITCHNAME_NONE);
+}
+
+bool AttStaffLocPitched::HasOloc() const
+{
+    return (m_oloc != MEI_UNSET_OCT);
 }
 
 //----------------------------------------------------------------------------
