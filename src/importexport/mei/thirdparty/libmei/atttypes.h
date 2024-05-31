@@ -527,6 +527,18 @@ enum data_COMPASSDIRECTION_extended : int8_t {
 };
 
 /**
+ * MEI data.ENCLOSURE
+ */
+enum data_ENCLOSURE : int8_t {
+    ENCLOSURE_NONE = 0,
+    ENCLOSURE_paren,
+    ENCLOSURE_brack,
+    ENCLOSURE_box,
+    ENCLOSURE_none,
+    ENCLOSURE_MAX
+};
+
+/**
  * MEI data.EVENTREL
  */
 enum data_EVENTREL : int8_t {
@@ -1560,8 +1572,8 @@ enum harpPedalLog_G : int8_t {
  */
 enum meiVersion_MEIVERSION : int8_t {
     meiVersion_MEIVERSION_NONE = 0,
-    meiVersion_MEIVERSION_5_0,
-    meiVersion_MEIVERSION_5_0plusbasic,
+    meiVersion_MEIVERSION_5_1_dev,
+    meiVersion_MEIVERSION_5_1_devplusbasic,
     meiVersion_MEIVERSION_MAX
 };
 
