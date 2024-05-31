@@ -90,6 +90,9 @@ public:
     std::string CompassdirectionExtendedToStr(data_COMPASSDIRECTION_extended data) const;
     data_COMPASSDIRECTION_extended StrToCompassdirectionExtended(const std::string &value, bool logWarning = true) const;
 
+    std::string EnclosureToStr(data_ENCLOSURE data) const;
+    data_ENCLOSURE StrToEnclosure(const std::string &value, bool logWarning = true) const;
+
     std::string EventrelToStr(data_EVENTREL data) const;
     data_EVENTREL StrToEventrel(const std::string &value, bool logWarning = true) const;
 
