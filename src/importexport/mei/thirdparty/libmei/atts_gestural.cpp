@@ -113,7 +113,7 @@ AttNoteGes::AttNoteGes() : Att()
 
 void AttNoteGes::ResetNoteGes()
 {
-    m_octGes = -127;
+    m_octGes = MEI_UNSET_OCT;
     m_pnameGes = PITCHNAME_NONE;
 }
 
@@ -149,7 +149,7 @@ bool AttNoteGes::WriteNoteGes(pugi::xml_node element)
 
 bool AttNoteGes::HasOctGes() const
 {
-    return (m_octGes != -127);
+    return (m_octGes != MEI_UNSET_OCT);
 }
 
 bool AttNoteGes::HasPnameGes() const
