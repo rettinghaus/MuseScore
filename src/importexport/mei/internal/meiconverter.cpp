@@ -1288,6 +1288,9 @@ void Convert::dynamFromMEI(engraving::Dynamic* dynamic, const StringList& meiLin
         lines.push_back(line);
     }
     dynamic->setXmlText(lines.join(u"\n"));
+
+    // @color
+    Convert::colorFromMEI(dynamic, meiDynam);
 }
 
 libmei::Dynam Convert::dynamToMEI(const engraving::Dynamic* dynamic, StringList& meiLines)
@@ -1350,6 +1353,9 @@ libmei::Dynam Convert::dynamToMEI(const engraving::Dynamic* dynamic, StringList&
         */
     }
     meiLines = String(meiText).split(u"\n");
+
+    // @color
+    Convert::colorToMEI(dynamic, meiDynam);
 
     return meiDynam;
 }
@@ -1676,6 +1682,9 @@ void Convert::harmFromMEI(engraving::Harmony* harmony, const StringList& meiLine
         harmony->setPlacement(meiHarm.GetPlace() == libmei::STAFFREL_above ? engraving::PlacementV::ABOVE : engraving::PlacementV::BELOW);
         harmony->setPropertyFlags(engraving::Pid::PLACEMENT, engraving::PropertyFlags::UNSTYLED);
     }
+
+    // @color
+    Convert::colorFromMEI(harmony, meiHarm);
 }
 
 libmei::Harm Convert::harmToMEI(const engraving::Harmony* harmony, StringList& meiLines)
@@ -1703,6 +1712,9 @@ libmei::Harm Convert::harmToMEI(const engraving::Harmony* harmony, StringList& m
     if (harmony->propertyFlags(engraving::Pid::PLACEMENT) == engraving::PropertyFlags::UNSTYLED) {
         meiHarm.SetPlace(Convert::placeToMEI(harmony->placement()));
     }
+
+    // @color
+    Convert::colorToMEI(harmony, meiHarm);
 
     return meiHarm;
 }
@@ -1917,6 +1929,9 @@ void Convert::markerFromMEI(engraving::Marker* marker, const libmei::RepeatMark&
     }
 
     marker->setMarkerType(markerType);
+
+    // @color
+    Convert::colorFromMEI(marker, meiRepeatMark);
 }
 
 libmei::RepeatMark Convert::markerToMEI(const engraving::Marker* marker, String& text)
@@ -1965,6 +1980,9 @@ libmei::RepeatMark Convert::markerToMEI(const engraving::Marker* marker, String&
     default:
         text = marker->plainText();
     }
+
+    // @color
+    Convert::colorToMEI(marker, meiRepeatMark);
 
     return meiRepeatMark;
 }
@@ -2140,6 +2158,9 @@ Convert::OrnamStruct Convert::mordentFromMEI(engraving::Ornament* ornament, cons
 
     ornament->setSymId(symId);
 
+    // @color
+    Convert::colorFromMEI(ornament, meiMordent);
+
     // Other attributes
     return Convert::ornamFromMEI(ornament, meiMordent, warning);
 }
@@ -2210,6 +2231,9 @@ libmei::Mordent Convert::mordentToMEI(const engraving::Ornament* ornament)
         }
         meiMordent.SetGlyphAuth(SMUFL_AUTH);
     }
+
+    // @color
+    Convert::colorToMEI(ornament, meiMordent);
 
     return meiMordent;
 }
@@ -3162,6 +3186,9 @@ Convert::OrnamStruct Convert::trillFromMEI(engraving::Ornament* ornament, const 
     }
 
     ornament->setSymId(symId);
+
+    // @color
+    Convert::colorFromMEI(ornament, meiTrill);
 
     // Other attributes
     return Convert::ornamFromMEI(ornament, meiTrill, warning);
