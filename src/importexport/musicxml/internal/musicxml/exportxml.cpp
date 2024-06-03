@@ -8706,14 +8706,17 @@ void ExportMusicXml::harmony(Harmony const* const h, FretDiagram const* const fd
         case HarmonyType::ROMAN: {
             QRegularExpression romanRegex("[iv]+", QRegularExpression::CaseInsensitiveOption);
             QRegularExpressionMatch romanMatch = romanRegex.match(textName);
-            String rootText = romanMatch.capturedTexts()[0];
-            m_xml.startElement("numeral");
-            m_xml.tag("numeral-root", { { "text", rootText } }, "1");
-            m_xml.endElement();
-            // only check for major or minor
-            m_xml.tag("kind", rootText.at(0).isUpper() ? "major" : "minor");
+            if (romanMatch.capturedTexts().size()) {
+                String rootText = romanMatch.capturedTexts()[0];
+                m_xml.startElement("numeral");
+                m_xml.tag("numeral-root", { { "text", rootText } }, "1");
+                m_xml.endElement();
+                // only check for major or minor
+                m_xml.tag("kind", rootText.at(0).isUpper() ? "major" : "minor");
+                break;
+            }
         }
-        break;
+        // fallthrough
         case HarmonyType::STANDARD:
         default: {
             m_xml.startElement("root");
