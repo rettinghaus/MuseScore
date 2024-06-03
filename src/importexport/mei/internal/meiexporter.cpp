@@ -1341,6 +1341,12 @@ bool MeiExporter::writeRest(const Rest* rest, const Staff* staff)
         if (rest->dots()) {
             meiRest.SetDots(rest->dots());
         }
+        if (rest->offset().x()) {
+            meiRest->SetHo(rest->offset().x() * 2);
+        }
+        if (rest->offset().y()) {
+            meiRest->SetVo(rest->offset().y() * -2);
+        }
         Convert::colorToMEI(rest, meiRest);
         this->writeBeamTypeAtt(rest, meiRest);
         this->writeStaffIdenAtt(rest, staff, meiRest);
