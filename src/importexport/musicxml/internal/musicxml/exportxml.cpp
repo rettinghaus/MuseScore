@@ -8705,7 +8705,7 @@ void ExportMusicXml::harmony(Harmony const* const h, FretDiagram const* const fd
         break;
         case HarmonyType::ROMAN: {
             static const std::wregex roman(L"[iv]+");
-            if (textName.conatins(roman, CaseSensitivity::CaseInsensitive)) {
+            if (textName.contains(roman, CaseSensitivity::CaseInsensitive)) {
                 m_xml.startElement("numeral");
                 m_xml.tag("numeral-root", { { "text", textName } }, "1");
                 m_xml.endElement();
