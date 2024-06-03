@@ -8697,21 +8697,19 @@ void ExportMusicXml::harmony(Harmony const* const h, FretDiagram const* const fd
                 }
                 m_xml.tagRaw(s, h->xmlKind());
             } else {
-                m_xml.tag("kind", "none");
+                // default is major
+                m_xml.tag("kind", "major");
             }
         }
         break;
         case HarmonyType::ROMAN: {
-            QRegularExpression romanRegex("[iv]+", QRegularExpression::CaseInsensitiveOption);
-            QRegularExpressionMatch romanMatch = romanRegex.match(textName);
-            QStringList caps = romanMatch.capturedTexts();
-            if (caps.size()) {
-                String text = caps[0];
+            static const std::wregex roman(L"[iv]+");
+            if (textName.conatins(roman, CaseSensitivity::CaseInsensitive)) {
                 m_xml.startElement("numeral");
-                m_xml.tag("numeral-root", { { "text", text } }, "1");
+                m_xml.tag("numeral-root", { { "text", textName } }, "1");
                 m_xml.endElement();
                 // only check for major or minor
-                m_xml.tag("kind", text.at(0).isUpper() ? "major" : "minor");
+                m_xml.tag("kind", textName.at(0).isUpper() ? "major" : "minor");
                 break;
             }
         }
