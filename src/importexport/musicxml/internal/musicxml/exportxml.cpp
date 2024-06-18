@@ -7204,11 +7204,11 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
             for (int staffIdx = (firstStaffOfPart == 0) ? 1 : 0; staffIdx < nrStavesInPart; staffIdx++) {
                 // calculate distance between this and previous staff using the bounding boxes
                 const int staffNr = firstStaffOfPart + staffIdx;
-                if (!system->staff(staffNr - 1)->show()) {
-                    m_xml.comment(String(u"previous staff invisible"));
-                    continue;
+                staff_idx_t previousVisibleStaffNr = staffNr - 1;
+                while (previousVisibleStaffNr > 0 && !system->staff(previousVisibleStaffNr)->show()) {
+                    previousVisibleStaffNr--;
                 }
-                const RectF& prevBbox = system->staff(staffNr - 1)->bbox();
+                const RectF& prevBbox = system->staff(previousVisibleStaffNr)->bbox();
                 const double staffDist = system->staff(staffNr)->bbox().y() - prevBbox.y() - prevBbox.height();
 
                 if (staffDist > 0) {
@@ -8190,6 +8190,8 @@ void ExportMusicXml::writeMeasure(const Measure* const m,
     if (isFirstActualMeasure) {
         writeStaffDetails(m_xml, part);
         writeInstrumentDetails(part->instrument(), m_score->style().styleB(Sid::concertPitch));
+    } else if (mpc.systemStart && !part->show()) {
+        writeStaffDetails(m_xml, part);
     }
 
     // output attribute at start of measure: measure-style
