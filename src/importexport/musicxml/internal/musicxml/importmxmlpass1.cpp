@@ -2604,6 +2604,7 @@ void MusicXMLParserPass1::measure(const String& partId,
                     skipLogCurrElem();
                 }
             }
+            m_e.skipCurrentElement();        // skip but don't log
         } else if (m_e.name() == "sound") {
             m_e.skipCurrentElement();        // skip but don't log
         } else {
