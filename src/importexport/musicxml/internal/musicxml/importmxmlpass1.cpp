@@ -2597,6 +2597,13 @@ void MusicXMLParserPass1::measure(const String& partId,
             m_e.skipCurrentElement();        // skip but don't log
         } else if (m_e.name() == "print") {
             print(measureNr);
+            while (m_e.readNextStartElement()) {
+                if (m_e.name() == "measure-layout") {
+                    measureLayout(measureNr);
+                } else {
+                    skipLogCurrElem();
+                }
+            }
         } else if (m_e.name() == "sound") {
             m_e.skipCurrentElement();        // skip but don't log
         } else {
@@ -2696,8 +2703,23 @@ void MusicXMLParserPass1::print(const int measureNr)
     if (newSystem == u"yes") {
         m_systemStartMeasureNrs.insert(measureNr);
     }
+}
 
-    m_e.skipCurrentElement();          // skip but don't log
+//---------------------------------------------------------
+//   measureLayout
+//---------------------------------------------------------
+
+void MusicXMLParserPass1::measureLayout(const int measureNr)
+{
+    while (m_e.readNextStartElement()) {
+        if (m_e.name() == "measure-distance") {
+            Spatium val(m_e.readText().toDouble() / 10.0);
+            MeasureBase* gap = m_score->insertBox(ElementType::HBOX, m_score->measure(measureNr));
+            toHBox(gap)->setBoxWidth(val);
+        } else {
+            skipLogCurrElem();
+        }
+    }
 }
 
 //---------------------------------------------------------
