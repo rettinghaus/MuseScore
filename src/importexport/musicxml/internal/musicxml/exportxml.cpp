@@ -422,6 +422,7 @@ private:
     void wavyLineStartStop(const ChordRest* cr, Notations& notations, Ornaments& ornaments, TrillHash& trillStart, TrillHash& trillStop);
     void print(const Measure* const m, const int partNr, const int firstStaffOfPart, const int nrStavesInPart,
                const MeasurePrintContext& mpc);
+    void measureLayout(const double distance);
     void findAndExportClef(const Measure* const m, const int staves, const track_idx_t strack, const track_idx_t etrack);
     void exportDefaultClef(const Part* const part, const Measure* const m);
     void writeElement(EngravingItem* el, const Measure* m, staff_idx_t sstaff, bool useDrumset);
@@ -7203,19 +7204,45 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
             for (int staffIdx = (firstStaffOfPart == 0) ? 1 : 0; staffIdx < nrStavesInPart; staffIdx++) {
                 // calculate distance between this and previous staff using the bounding boxes
                 const int staffNr = firstStaffOfPart + staffIdx;
+                if (!system->staff(staffNr - 1)->show()) {
+                    m_xml.comment(String(u"previous staff invisible"));
+                    continue;
+                }
                 const RectF& prevBbox = system->staff(staffNr - 1)->bbox();
                 const double staffDist = system->staff(staffNr)->bbox().y() - prevBbox.y() - prevBbox.height();
 
-                m_xml.startElement("staff-layout", { { "number", staffIdx + 1 } });
-                m_xml.tag("staff-distance", String::number(getTenthsFromDots(staffDist), 2));
-                m_xml.endElement();
+                if (staffDist > 0) {
+                    m_xml.startElement("staff-layout", { { "number", staffIdx + 1 } });
+                    m_xml.tag("staff-distance", String::number(getTenthsFromDots(staffDist), 2));
+                    m_xml.endElement();
+                }
+            }
+
+            // Measure layout elements.
+            if (m->prev() && m->prev()->isHBox()) {
+                measureLayout(m->prev()->width());
             }
 
             m_xml.endElement();
         } else if (!newSystemOrPage.empty()) {
             m_xml.tagRaw(String(u"print%1").arg(newSystemOrPage));
         }
+    } else if (m->prev() && m->prev()->isHBox()) {
+        m_xml.startElement("print");
+        measureLayout(m->prev()->width());
+        m_xml.endElement();
     }
+}
+
+//---------------------------------------------------------
+//  measureLayout
+//---------------------------------------------------------
+
+void ExportMusicXml::measureLayout(const double distance)
+{
+    m_xml.startElement("measure-layout");
+    m_xml.tag("measure-distance", String::number(getTenthsFromDots(distance), 2));
+    m_xml.endElement();
 }
 
 //---------------------------------------------------------

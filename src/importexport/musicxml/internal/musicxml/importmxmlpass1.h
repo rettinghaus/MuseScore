@@ -144,6 +144,7 @@ public:
     void part();
     void measure(const String& partId, const Fraction cTime, Fraction& mdur, VoiceOverlapDetector& vod, const int measureNr);
     void print(const int measureNr);
+    void measureLayout(const int measureNr);
     void attributes(const String& partId, const Fraction cTime);
     void clef(const String& partId);
     void time(const Fraction cTime);
