@@ -2717,8 +2717,10 @@ void MusicXMLParserPass1::measureLayout(const int measureNr)
     while (m_e.readNextStartElement()) {
         if (m_e.name() == "measure-distance") {
             Spatium val(m_e.readText().toDouble() / 10.0);
-            MeasureBase* gap = m_score->insertBox(ElementType::HBOX, m_score->measure(measureNr));
-            toHBox(gap)->setBoxWidth(val);
+            if (m_score->measure(measureNr)) {
+                MeasureBase* gap = m_score->insertBox(ElementType::HBOX, m_score->measure(measureNr));
+                toHBox(gap)->setBoxWidth(val);
+            }
         } else {
             skipLogCurrElem();
         }
