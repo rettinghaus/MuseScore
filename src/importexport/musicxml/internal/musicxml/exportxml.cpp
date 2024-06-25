@@ -7211,7 +7211,7 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
                 const RectF& prevBbox = system->staff(previousVisibleStaffNr)->bbox();
                 const double staffDist = system->staff(staffNr)->bbox().y() - prevBbox.y() - prevBbox.height();
 
-                if (staffDist > 0) {
+                if (staffDist) {
                     m_xml.startElement("staff-layout", { { "number", staffIdx + 1 } });
                     m_xml.tag("staff-distance", String::number(getTenthsFromDots(staffDist), 2));
                     m_xml.endElement();
