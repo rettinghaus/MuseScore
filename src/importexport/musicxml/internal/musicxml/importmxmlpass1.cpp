@@ -2604,7 +2604,6 @@ void MusicXMLParserPass1::measure(const String& partId,
                     skipLogCurrElem();
                 }
             }
-            m_e.skipCurrentElement();        // skip but don't log
         } else if (m_e.name() == "sound") {
             m_e.skipCurrentElement();        // skip but don't log
         } else {
@@ -2712,6 +2711,8 @@ void MusicXMLParserPass1::print(const int measureNr)
 
 void MusicXMLParserPass1::measureLayout(const int measureNr)
 {
+    m_logger->logDebugTrace(u"MusicXMLParserPass1::measureLayout", &m_e);
+
     while (m_e.readNextStartElement()) {
         if (m_e.name() == "measure-distance") {
             Spatium val(m_e.readText().toDouble() / 10.0);
