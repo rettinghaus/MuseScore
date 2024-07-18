@@ -1742,7 +1742,7 @@ void Staff::Reset()
 }
 
 StaffDef::StaffDef() :
-    Element("staffDef"), AttLabelled(), AttNInteger(), AttTyped(), AttInstrumentIdent(), AttStringtabTuning(), AttTimeBase(), AttTuning(), AttStaffDefLog(), AttCleffingLog(), AttKeySigDefaultLog(), AttMeterSigDefaultLog(), AttTransposition()
+    Element("staffDef"), AttLabelled(), AttNInteger(), AttTyped(), AttInstrumentIdent(), AttStringtabTuning(), AttTimeBase(), AttTuning(), AttStaffDefLog(), AttCleffingLog(), AttKeySigDefaultLog(), AttMeterSigDefaultLog(), AttTransposition(), AttStaffDefVis(), AttScalable()
 {
 }
 
@@ -1764,6 +1764,8 @@ bool StaffDef::Read(pugi::xml_node element, bool removeAttr)
     hasAttribute = (ReadKeySigDefaultLog(element, removeAttr) || hasAttribute);
     hasAttribute = (ReadMeterSigDefaultLog(element, removeAttr) || hasAttribute);
     hasAttribute = (ReadTransposition(element, removeAttr) || hasAttribute);
+    hasAttribute = (ReadStaffDefVis(element, removeAttr) || hasAttribute);
+    hasAttribute = (ReadScalable(element, removeAttr) || hasAttribute);
     return hasAttribute;
 }
 
@@ -1784,6 +1786,8 @@ bool StaffDef::Write(pugi::xml_node element, const std::string &xmlId)
     hasAttribute = (WriteKeySigDefaultLog(element) || hasAttribute);
     hasAttribute = (WriteMeterSigDefaultLog(element) || hasAttribute);
     hasAttribute = (WriteTransposition(element) || hasAttribute);
+    hasAttribute = (WriteStaffDefVis(element) || hasAttribute);
+    hasAttribute = (WriteScalable(element) || hasAttribute);
     return hasAttribute;
 }
 
@@ -1801,6 +1805,8 @@ void StaffDef::Reset()
     ResetKeySigDefaultLog();
     ResetMeterSigDefaultLog();
     ResetTransposition();
+    ResetStaffDefVis();
+    ResetScalable();
 }
 
 StaffGrp::StaffGrp() :
