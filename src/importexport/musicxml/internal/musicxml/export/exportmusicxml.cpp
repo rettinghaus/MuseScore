@@ -8224,6 +8224,8 @@ void ExportMusicXml::writeMeasure(const Measure* const m,
     if (isFirstActualMeasure) {
         writeStaffDetails(m_xml, part);
         writeInstrumentDetails(part->instrument(), m_score->style().styleB(Sid::concertPitch));
+    } else if (mpc.systemStart && !part->show()) {
+        writeStaffDetails(m_xml, part);
     }
 
     // output attribute at start of measure: measure-style
