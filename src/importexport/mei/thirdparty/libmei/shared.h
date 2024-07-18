@@ -514,7 +514,7 @@ public:
 };
 
 /** Container for staff meta-information. **/
-class StaffDef : public Element, public AttLabelled, public AttNInteger, public AttTyped, public AttInstrumentIdent, public AttStringtabTuning, public AttTimeBase, public AttTuning, public AttStaffDefLog, public AttCleffingLog, public AttKeySigDefaultLog, public AttMeterSigDefaultLog, public AttTransposition {
+class StaffDef : public Element, public AttLabelled, public AttNInteger, public AttTyped, public AttInstrumentIdent, public AttStringtabTuning, public AttTimeBase, public AttTuning, public AttStaffDefLog, public AttCleffingLog, public AttKeySigDefaultLog, public AttMeterSigDefaultLog, public AttTransposition, public AttStaffDefVis, public AttScalable {
     public:
         StaffDef();
         virtual ~StaffDef();
