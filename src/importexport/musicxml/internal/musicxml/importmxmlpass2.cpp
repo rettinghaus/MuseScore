@@ -2633,7 +2633,7 @@ void MusicXMLParserPass2::measure(const String& partId, const Fraction time)
         } else if (m_e.name() == "barline") {
             barline(partId, measure, time + mTime);
         } else if (m_e.name() == "print") {
-            if (m_score->parts().begin() == m_pass1.getPart(partId)) {
+            if (m_score->parts()[0] == m_pass1.getPart(partId)) {
                 // only process for first part
                 while (m_e.readNextStartElement()) {
                     if (m_e.name() == "page-layout") {
