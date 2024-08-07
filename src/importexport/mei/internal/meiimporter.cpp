@@ -3259,6 +3259,9 @@ bool MeiImporter::buildScoreParts(pugi::xml_node scoreDefNode)
         part->instrument()->setTranspose(staffSt.interval);
 
         m_score->appendStaff(staff);
+        if (m_score->staff(staffIdx)) {
+            m_score->staff(staffIdx)->setProperty(Pid::MAG, staffSt.scale / 100);
+        }
     }
 
     int staffSpan = 0;

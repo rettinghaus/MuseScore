@@ -116,6 +116,8 @@ public:
 
     struct StaffStruct {
         int lines;
+        bool showLines;
+        double scale;
         engraving::Interval interval;
     };
 

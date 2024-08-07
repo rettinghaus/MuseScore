@@ -2773,6 +2773,10 @@ Convert::StaffStruct Convert::staffFromMEI(const libmei::StaffDef& meiStaffDef, 
     if (meiStaffDef.HasLines()) {
         staffSt.lines = meiStaffDef.GetLines();
     }
+    if (meiStaffDef.HasLinesVisible()) {
+        staffSt.showLines = meiStaffDef.GetLinesVisible() == libmei::BOOLEAN_true;
+    }
+    staffSt.scale = meiStaffDef.HasScale() ? meiStaffDef.GetScale() : 100;
 
     // Set it only if both are given
     if (meiStaffDef.HasTransDiat() && meiStaffDef.HasTransSemi()) {
@@ -2803,6 +2807,15 @@ libmei::StaffDef Convert::staffToMEI(const engraving::Staff* staff)
     const engraving::StaffType* staffType = staff->staffType(engraving::Fraction(0, 1));
     if (staffType) {
         meiStaffDef.SetLines(staffType->lines());
+    }
+    // @lines.visible
+    if (staff->isLinesInvisible(engraving::Fraction(0, 1))) {
+        meiStaffDef.SetLinesVisible(libmei::BOOLEAN_false);
+    }
+    // @scale
+    const double scale = staff->staffMag(engraving::Fraction(0, 1));
+    if (!muse::RealIsEqual(scale, 1.0)) {
+        meiStaffDef.SetScale(scale * 100);
     }
     return meiStaffDef;
 }
