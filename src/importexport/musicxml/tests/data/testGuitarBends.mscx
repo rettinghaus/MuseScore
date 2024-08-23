@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<museScore version="4.20">
+<museScore version="4.30">
+  <programVersion>4.3.2</programVersion>
+  <programRevision>22b46f2</programRevision>
+  <LastEID>0</LastEID>
   <Score>
     <Division>480</Division>
     <showInvisible>1</showInvisible>
     <showUnprintable>1</showUnprintable>
     <showFrames>1</showFrames>
     <showMargins>0</showMargins>
+    <open>1</open>
     <metaTag name="arranger"></metaTag>
     <metaTag name="audioComUrl"></metaTag>
     <metaTag name="composer">Klaus Rettinghaus</metaTag>
@@ -126,12 +130,15 @@
       <Measure>
         <voice>
           <TimeSig>
+            <eid>4294967321</eid>
             <sigN>4</sigN>
             <sigD>4</sigD>
             </TimeSig>
           <Chord>
+            <eid>8589934708</eid>
             <durationType>quarter</durationType>
             <Note>
+              <eid>12884901909</eid>
               <pitch>52</pitch>
               <tpc>18</tpc>
               <fret>2</fret>
@@ -141,6 +148,7 @@
                   <guitarBendType>0</guitarBendType>
                   <bendStartTimeFactor>0</bendStartTimeFactor>
                   <bendEndTimeFactor>1</bendEndTimeFactor>
+                  <eid>17179869316</eid>
                   <anchor>3</anchor>
                   </GuitarBend>
                 <next>
@@ -152,8 +160,10 @@
               </Note>
             </Chord>
           <Chord>
+            <eid>21474836596</eid>
             <durationType>quarter</durationType>
             <Note>
+              <eid>25769803797</eid>
               <pitch>53</pitch>
               <tpc>13</tpc>
               <fret>2</fret>
@@ -168,11 +178,13 @@
               </Note>
             </Chord>
           <Chord>
+            <eid>30064771188</eid>
             <BeamMode>no</BeamMode>
             <durationType>eighth</durationType>
             <appoggiatura/>
             <noStem>1</noStem>
             <Note>
+              <eid>34359738389</eid>
               <pitch>50</pitch>
               <tpc>16</tpc>
               <fret>0</fret>
@@ -182,6 +194,7 @@
                   <guitarBendType>1</guitarBendType>
                   <bendStartTimeFactor>0</bendStartTimeFactor>
                   <bendEndTimeFactor>1</bendEndTimeFactor>
+                  <eid>38654705796</eid>
                   <anchor>3</anchor>
                   </GuitarBend>
                 <next>
@@ -192,8 +205,10 @@
               </Note>
             </Chord>
           <Chord>
+            <eid>42949673076</eid>
             <durationType>half</durationType>
             <Note>
+              <eid>47244640277</eid>
               <pitch>52</pitch>
               <tpc>18</tpc>
               <fret>0</fret>
@@ -212,11 +227,13 @@
       <Measure>
         <voice>
           <Chord>
+            <eid>51539607668</eid>
             <BeamMode>no</BeamMode>
             <durationType>eighth</durationType>
             <appoggiatura/>
             <noStem>1</noStem>
             <Note>
+              <eid>55834574869</eid>
               <pitch>50</pitch>
               <tpc>16</tpc>
               <fret>0</fret>
@@ -226,6 +243,7 @@
                   <guitarBendType>2</guitarBendType>
                   <bendStartTimeFactor>0</bendStartTimeFactor>
                   <bendEndTimeFactor>0.25</bendEndTimeFactor>
+                  <eid>60129542276</eid>
                   <anchor>3</anchor>
                   </GuitarBend>
                 <next>
@@ -236,8 +254,10 @@
               </Note>
             </Chord>
           <Chord>
+            <eid>64424509556</eid>
             <durationType>half</durationType>
             <Note>
+              <eid>68719476757</eid>
               <pitch>52</pitch>
               <tpc>18</tpc>
               <fret>0</fret>
@@ -252,8 +272,10 @@
               </Note>
             </Chord>
           <Chord>
+            <eid>73014444148</eid>
             <durationType>half</durationType>
             <Note>
+              <eid>77309411349</eid>
               <pitch>52</pitch>
               <tpc>18</tpc>
               <fret>2</fret>
@@ -263,6 +285,7 @@
                   <guitarBendType>3</guitarBendType>
                   <bendStartTimeFactor>0</bendStartTimeFactor>
                   <bendEndTimeFactor>1</bendEndTimeFactor>
+                  <eid>81604378756</eid>
                   <anchor>3</anchor>
                   </GuitarBend>
                 <next>
