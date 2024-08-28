@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<museScore version="4.30">
-  <programVersion>4.3.2</programVersion>
-  <programRevision></programRevision>
-  <LastEID>0</LastEID>
+<museScore version="4.40">
+  <programVersion>4.4.0</programVersion>
+  <programRevision>0fcd11b</programRevision>
+  <LastEID>61</LastEID>
   <Score>
     <Division>480</Division>
     <showInvisible>1</showInvisible>
