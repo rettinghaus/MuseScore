@@ -917,38 +917,34 @@ bool MeiExporter::writeLayer(track_idx_t track, const Staff* staff, const Measur
         return true;
     }
 
-    if (measure->mmRestCount()) {
-        if (measure->mmRestFirst()) {
-            this->writeMultiRest(measure);
-        } else if (measure->coveringMMRestOrThis()) {
-            // skip these measures
+    for (Segment* seg = measure->first(); seg; seg = seg->next()) {
+        if (seg->segmentType() == SegmentType::EndBarLine) {
+            this->addFermataToMap(track, seg, measure);
         }
-    } else {
-        for (Segment* seg = measure->first(); seg; seg = seg->next()) {
-            if (seg->segmentType() == SegmentType::EndBarLine) {
-                this->addFermataToMap(track, seg, measure);
-            }
 
-            // Do not go any further than the measure tick (ignore EndBarLine, KeySigAnnounce, TimeSigAnnounce)
-            const EngravingItem* item = seg->element(track);
-            if (!item || item->generated()) {
-                continue;
-            }
+        // Do not go any further than the measure tick (ignore EndBarLine, KeySigAnnounce, TimeSigAnnounce)
+        const EngravingItem* item = seg->element(track);
+        if (!item || item->generated()) {
+            continue;
+        }
 
-            if (item->isClef()) {
-                this->writeClef(dynamic_cast<const Clef*>(item));
-            } else if (item->isChord()) {
-                this->writeChord(dynamic_cast<const Chord*>(item), staff);
-            } else if (item->isRest()) {
+        if (item->isClef()) {
+            this->writeClef(dynamic_cast<const Clef*>(item));
+        } else if (item->isChord()) {
+            this->writeChord(dynamic_cast<const Chord*>(item), staff);
+        } else if (item->isRest()) {
+            if (measure->mmRestCount() && measure->mmRestFirst()) {
+                this->writeMultiRest(dynamic_cast<const Rest*>(item), staff);
+            } else if (!measure->coveringMMRestOrThis()) {
                 this->writeRest(dynamic_cast<const Rest*>(item), staff);
-            } else if (item->isBarLine()) {
-                //
-            } else if (item->isBreath()) {
-                //
-            } else if (item->isKeySig()) {
-                if (m_keySig && (seg != m_keySig)) {
-                    LOGD() << "MeiExporter::writeLayer unexpected KeySig segment";
-                }
+            }
+        } else if (item->isBarLine()) {
+            //
+        } else if (item->isBreath()) {
+            //
+        } else if (item->isKeySig()) {
+            if (m_keySig && (seg != m_keySig)) {
+                LOGD() << "MeiExporter::writeLayer unexpected KeySig segment";
             }
         }
     }
@@ -1322,7 +1318,7 @@ bool MeiExporter::writeNote(const Note* note, const Chord* chord, const Staff* s
  * Write a multi-measure rest.
  */
 
-bool MeiExporter::writeMultiRest(const Measure* mmRest)
+bool MeiExporter::writeMultiRest(const Rest* mmRest, const Staff* staff)
 {
     IF_ASSERT_FAILED(mmRest) {
         return false;
@@ -1331,7 +1327,7 @@ bool MeiExporter::writeMultiRest(const Measure* mmRest)
     pugi::xml_node multiRestNode = m_currentNode.append_child();
     libmei::MultiRest meiMultiRest;
     Convert::colorToMEI(mmRest, meiMultiRest);
-    meiMultiRest.SetNum(mmRest->mmRestCount());
+    meiMultiRest.SetNum(mmRest->measure()->mmRestCount());
     std::string xmlId = this->getXmlIdFor(mmRest, 'm');
     meiMultiRest.Write(multiRestNode, xmlId);
 
