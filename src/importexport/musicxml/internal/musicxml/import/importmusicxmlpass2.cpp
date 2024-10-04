@@ -7425,7 +7425,7 @@ void MusicXmlParserPass2::harmony(const String& partId, Measure* measure, const 
                 if (m_e.name() == "numeral-root") {
                     String numeralRoot = m_e.readText();
                     String numeralRootText = m_e.attribute("text");
-                    if (!numeralRootText.isEmpty() && !numeralRootText.isDigit()) {
+                    if (!numeralRootText.toInt()) {
                         ha->setHarmonyType(HarmonyType::ROMAN);
                         functionText = numeralRootText;
                     } else {
