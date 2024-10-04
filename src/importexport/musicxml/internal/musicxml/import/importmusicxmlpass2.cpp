@@ -6914,8 +6914,8 @@ Note* MusicXmlParserPass2::note(const String& partId,
     // handle notations
     if (cr) {
         notations.addToScore(cr, note,
-                             noteStartTime.ticks(), m_slurs, m_glissandi, m_spanners, m_trills, m_ties, m_unstartedTieNotes, m_unendedTieNotes, arpMap,
-                             delayedArps);
+                             noteStartTime.ticks(), m_slurs, m_glissandi, m_spanners, m_trills, m_ties, m_unstartedTieNotes,
+                             m_unendedTieNotes, arpMap, delayedArps);
 
         // if no tie added yet, convert the "tie" into "tied" and add it.
         if (note && !note->tieFor() && !note->tieBack() && !tieType.empty()) {
@@ -7425,9 +7425,13 @@ void MusicXmlParserPass2::harmony(const String& partId, Measure* measure, const 
                 if (m_e.name() == "numeral-root") {
                     String numeralRoot = m_e.readText();
                     String numeralRootText = m_e.attribute("text");
-                    // TODO analyze text and import as roman numerals
-                    ha->setHarmonyType(HarmonyType::NASHVILLE);
-                    ha->setFunction(numeralRoot);
+                    if (!numeralRootText.isEmpty() && !numeralRootText.isDigit()) {
+                        ha->setHarmonyType(HarmonyType::ROMAN);
+                        functionText = numeralRootText;
+                    } else {
+                        ha->setHarmonyType(HarmonyType::NASHVILLE);
+                        ha->setFunction(numeralRoot);
+                    }
                 } else if (m_e.name() == "numeral-alter") {
                     const int alter = m_e.readText().toInt();
                     switch (alter) {
@@ -7533,7 +7537,7 @@ void MusicXmlParserPass2::harmony(const String& partId, Measure* measure, const 
     }
 
     const ChordDescription* d = nullptr;
-    if (ha->rootTpc() != Tpc::TPC_INVALID || !ha->hFunction().empty()) {
+    if (ha->rootTpc() != Tpc::TPC_INVALID || ha->harmonyType() == HarmonyType::NASHVILLE) {
         d = ha->fromXml(kind, kindText, symbols, parens, degreeList);
     }
     if (d) {
