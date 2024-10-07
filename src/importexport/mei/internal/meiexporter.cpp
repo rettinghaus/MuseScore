@@ -72,6 +72,7 @@
 #include "thirdparty/libmei/fingering.h"
 #include "thirdparty/libmei/harmony.h"
 #include "thirdparty/libmei/lyrics.h"
+#include "thirdparty/libmei/midi.h"
 #include "thirdparty/libmei/shared.h"
 
 using namespace mu::iex::mei;
@@ -607,6 +608,7 @@ bool MeiExporter::writeStaffGrpStart(const Staff* staff, std::vector<int>& ends,
             // If we have a part and reached the latest level, write the label and labelAbbr
             if (staffGrpPart && j == staff->bracketLevels()) {
                 this->writeLabel(m_currentNode, staffGrpPart);
+                this->writeInstrDef(m_currentNode, staffGrpPart);
             }
         }
     }
@@ -647,6 +649,7 @@ bool MeiExporter::writeStaffDef(const Staff* staff, const Measure* measure, cons
 
     if (isPart) {
         this->writeLabel(staffDefNode, part);
+        this->writeInstrDef(staffDefNode, part);
     }
 
     if (measure) {
@@ -727,6 +730,38 @@ bool MeiExporter::writeLabel(pugi::xml_node node, const Part* part)
         meiLabelAbbr.Write(labelAbbrNode);
         lines = instrument->abbreviatureAsPlainText().split(u"\n");
         this->writeLines(labelAbbrNode, lines);
+    }
+
+    return true;
+}
+
+/**
+ * Write instrument definition for MIDI information.
+ */
+
+bool MeiExporter::writeInstrDef(pugi::xml_node node, const Part* part)
+{
+    IF_ASSERT_FAILED(part) {
+        return false;
+    }
+
+    const Instrument* instrument = part->instrument();
+    if (instrument) {
+        libmei::InstrDef meiInstrDef;
+        pugi::xml_node instrDefNode = node.append_child();
+        const int midiChannel = instrument->channel(0)->channel();
+        if (midiChannel >= 0 && midiChannel < 16) {
+            meiInstrDef.SetMidiChannel(midiChannel);
+        }
+        const int midiProgram = instrument->channel(0)->program();
+        if (midiProgram >= 0 && midiProgram < 128) {
+            meiInstrDef.SetMidiInstrnum(midiProgram);
+        }
+        meiInstrDef.SetMidiVolume((instrument->channel(0)->volume() / 127.0) * 100);
+        libmei::data_MIDIVALUE_PAN panvalue;
+        panvalue.SetMidivalue(instrument->channel(0)->pan());
+        meiInstrDef.SetMidiPan(panvalue);
+        meiInstrDef.Write(instrDefNode);
     }
 
     return true;
