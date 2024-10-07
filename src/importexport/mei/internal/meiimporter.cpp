@@ -3128,6 +3128,14 @@ bool MeiImporter::buildScoreParts(pugi::xml_node scoreDefNode)
             part->setShortName(abbrLines.join(u"\n"));
         }
 
+        pugi::xml_node instrDefNode = labelNode.parent().select_node("./instrDef").node();
+        if (instrDefNode) {
+            const int channel = instrDefNode.attribute("midi.channel").as_int();
+            const int program = instrDefNode.attribute("midi.instrnum").as_int();
+            part->setMidiChannel(channel);
+            part->setMidiProgram(program);
+        }
+
         m_score->appendPart(part);
 
         // If the label is a child of a staffGrp, the part contains all the child staffDefs
