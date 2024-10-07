@@ -769,20 +769,24 @@ bool MeiExporter::writeInstrDef(pugi::xml_node node, const Part* part)
         return false;
     }
 
-    const int midiProgram = part->midiProgram();
-    // const int midiChannel = part->midiChannel();
-    // const int midiPort = part->midiPort();
-
-    if (midiProgram < 0) {
-        return false;
+    const Instrument* instrument = part->instrument();
+    if (instrument) {
+        libmei::InstrDef meiInstrDef;
+        pugi::xml_node instrDefNode = node.append_child();
+        const int midiChannel = instrument->channel(0)->channel();
+        if (midiChannel >= 0 && midiChannel < 16) {
+            meiInstrDef.SetMidiChannel(midiChannel);
+        }
+        const int midiProgram = instrument->channel(0)->program();
+        if (midiProgram >= 0 && midiProgram < 128) {
+            meiInstrDef.SetMidiInstrnum(midiProgram);
+        }
+        meiInstrDef.SetMidiVolume((instrument->channel(0)->volume() / 127.0) * 100);
+        libmei::data_MIDIVALUE_PAN panvalue;
+        panvalue.SetMidivalue(instrument->channel(0)->pan());
+        meiInstrDef.SetMidiPan(panvalue);
+        meiInstrDef.Write(instrDefNode);
     }
-
-    libmei::InstrDef meiInstrDef;
-    pugi::xml_node instrDefNode = node.append_child();
-    if (midiProgram >= 0 && midiProgram < 128) {
-        meiInstrDef.SetMidiInstrnum(midiProgram);
-    }
-    meiInstrDef.Write(instrDefNode);
 
     return true;
 }
