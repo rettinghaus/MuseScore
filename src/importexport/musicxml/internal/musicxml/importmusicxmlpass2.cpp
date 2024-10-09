@@ -6794,17 +6794,6 @@ Note* MusicXmlParserPass2::note(const String& partId,
             xmlSetDrumsetPitch(note, c, st, mnp.displayStep(), mnp.displayOctave(), headGroup, stemDir, instrument);
         } else {
             setPitch(note, instruments, instrumentId, mnp, octaveShift, instrument);
-            size_t idx = 0;
-            for (NoteDot* dot : note->dots()) {
-                Color dotColor = dotsColor[idx];
-                dot->setProperty(Pid::VISIBLE, printDot);
-                if (dotColor.isValid()) {
-                    dot->setProperty(Pid::COLOR, PropertyValue::fromValue(dotColor));
-                    //dot->setColor(dotColor);
-                }
-                //dot->setVisible(printDot);
-                ++idx;
-            }
         }
         c->add(note);
         cr = c;
@@ -6850,6 +6839,21 @@ Note* MusicXmlParserPass2::note(const String& partId,
                 stem->setColor(noteColor);
             }
             c->add(stem);
+        }
+        if (note->dots()) {
+            size_t idx = 0;
+            for (NoteDot* dot : note->dots()) {
+                Color dotColor = dotsColor[idx];
+                //dot->setProperty(Pid::VISIBLE, printDot);
+                if (dotColor.isValid()) {
+                    //dot->setProperty(Pid::COLOR, PropertyValue::fromValue(dotColor));
+                    dot->setColor(dotColor);
+                }
+                dot->setVisible(printDot);
+                ++idx;
+            }
+        } else {
+            m_logger->logDebugInfo(String(u"No dots yet!"), &m_e);
         }
         setNoteHead(note, noteheadColor, noteheadParentheses, noteheadFilled);
         note->setVisible(hasHead && printObject);
