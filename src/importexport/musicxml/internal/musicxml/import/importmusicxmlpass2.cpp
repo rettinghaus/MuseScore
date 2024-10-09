@@ -6812,10 +6812,12 @@ Note* MusicXmlParserPass2::note(const String& partId,
             size_t idx = 0;
             for (NoteDot* dot : note->dots()) {
                 Color dotColor = dotsColor[idx];
+                dot->setProperty(Pid::VISIBLE, printDot);
                 if (dotColor.isValid()) {
-                    dot->setColor(dotColor);
-                    dot->setVisible(printDot);
+                    dot->setProperty(Pid::COLOR, PropertyValue::fromValue(color));
+                    //dot->setColor(dotColor);
                 }
+                //dot->setVisible(printDot);
                 ++idx;
             }
         }
