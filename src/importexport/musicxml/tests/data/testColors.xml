@@ -181,13 +181,23 @@
           <step>D</step>
           <octave>5</octave>
           </pitch>
-        <duration>16</duration>
+        <duration>15</duration>
         <voice>1</voice>
-        <type>whole</type>
+        <type>half</type>
+        <dot color="#8EFA00"/>
+        <dot color="#9437FF"/>
+        <dot color="#945200"/>
+        <stem>down</stem>
         <notehead color="#9437FF">normal</notehead>
         <notations>
           <slur type="stop" number="1"/>
           </notations>
+        </note>
+      <note color="#FF2600">
+        <rest/>
+        <duration>1</duration>
+        <voice>1</voice>
+        <type>16th</type>
         </note>
       </measure>
     <measure number="4">
