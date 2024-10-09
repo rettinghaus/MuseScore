@@ -6911,10 +6911,12 @@ Note* MusicXmlParserPass2::note(const String& partId,
     Color noteheadColor;
     Color stemColor;
     Color beamColor;
+    std::vector<Color> dotsColor;
     bool noteheadParentheses = false;
     String noteheadFilled;
     int velocity = round(m_e.doubleAttribute("dynamics") * 0.9);
     bool graceSlash = false;
+    bool printDot = m_e.asciiAttribute("print-dot") != "no";
     bool printObject = m_e.asciiAttribute("print-object") != "no";
     bool printLyric = (printObject && m_e.asciiAttribute("print-lyric") != "no") || m_e.asciiAttribute("print-lyric") == "yes";
     bool isSingleDrumset = false;
@@ -7008,6 +7010,9 @@ Note* MusicXmlParserPass2::note(const String& partId,
                 // error already reported in pass 1
                 staff = -1;
             }
+        } else if (m_e.name() == "dot") {
+            dotsColor.push_back(Color::fromString(m_e.asciiAttribute("color").ascii()));
+            m_e.skipCurrentElement();
         } else if (m_e.name() == "stem") {
             stemColor = Color::fromString(m_e.asciiAttribute("color").ascii());
             stem(stemDir, noStem);
@@ -7163,6 +7168,15 @@ Note* MusicXmlParserPass2::note(const String& partId,
             xmlSetDrumsetPitch(note, c, st, mnp.displayStep(), mnp.displayOctave(), headGroup, stemDir, instrument);
         } else {
             setPitch(note, instruments, instrumentId, mnp, octaveShift, instrument);
+            size_t idx = 0;
+            for (NoteDot* dot : note->dots()) {
+                Color dotColor = dotsColor[idx];
+                if (dotColor.isValid()) {
+                    dot->setColor(dotColor);
+                    dot->setVisible(printDot);
+                }
+                ++idx;
+            }
         }
         c->add(note);
         cr = c;
