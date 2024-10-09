@@ -6799,7 +6799,7 @@ Note* MusicXmlParserPass2::note(const String& partId,
                 Color dotColor = dotsColor[idx];
                 dot->setProperty(Pid::VISIBLE, printDot);
                 if (dotColor.isValid()) {
-                    dot->setProperty(Pid::COLOR, PropertyValue::fromValue(color));
+                    dot->setProperty(Pid::COLOR, PropertyValue::fromValue(dotColor));
                     //dot->setColor(dotColor);
                 }
                 //dot->setVisible(printDot);
