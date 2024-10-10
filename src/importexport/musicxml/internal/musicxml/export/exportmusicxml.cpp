@@ -7189,7 +7189,7 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
                 attributes.push_back({ "new-system", "yes" });
             }
         }
-    } else if (exportBreaksType != IMusicXmlConfiguration::MusicXmlExportBreaksType::No) {
+    } else if (mpc.pageStart && exportBreaksType != IMusicXmlConfiguration::MusicXmlExportBreaksType::No) {
         attributes.push_back({ "page-number", pageNumber });
     }
 
