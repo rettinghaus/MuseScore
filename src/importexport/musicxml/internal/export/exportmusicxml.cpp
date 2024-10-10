@@ -4487,6 +4487,8 @@ void ExportMusicXml::chord(Chord* chord, staff_idx_t staff, const std::vector<Ly
             dotsVisible = false;
         }
         if (!note->visible() && !note->chord()->stem()->visible()) {
+            // TODO: take care of accidental
+            // note->accidental()->visible()
             if (dotsVisible) {
                 noteTag += QString(" print-dot=\"yes\" print-object=\"no\"");
             } else {
