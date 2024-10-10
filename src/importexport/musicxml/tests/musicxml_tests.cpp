@@ -547,6 +547,9 @@ TEST_F(MusicXml_Tests, divisionsDuration) {
 TEST_F(MusicXml_Tests, doletOttavas) {
     musicXmlImportTestRef("testDoletOttavas");
 }
+TEST_F(MusicXml_Tests, dots) {
+    musicXmlIoTest("testDots");
+}
 TEST_F(MusicXml_Tests, doubleClefError) {
     musicXmlIoTestRef("testDoubleClefError");
 }
