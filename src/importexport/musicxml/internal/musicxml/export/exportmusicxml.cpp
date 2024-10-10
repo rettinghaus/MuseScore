@@ -4335,7 +4335,7 @@ void ExportMusicXml::chord(Chord* chord, staff_idx_t staff, const std::vector<Ly
             } else {
                 noteTag += QString(" print-object=\"no\"");
             }
-        } else if (!dotsVisible) {
+        } else if (note->dotsHidden()) {
             noteTag += QString(" print-dot=\"no\"");
         }
 
