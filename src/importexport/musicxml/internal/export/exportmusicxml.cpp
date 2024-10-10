@@ -3989,10 +3989,9 @@ static void writeNotehead(XmlWriter& xml, const Note* const note)
     } else if ((note->headType() == NoteHeadType::HEAD_HALF) || (note->headType() == NoteHeadType::HEAD_WHOLE)) {
         noteheadTagname += u" filled=\"no\"";
     }
-    if (!note->visible()) {
-        // The notehead is invisible but other parts of the note might
-        // still be visible so don't export <note print-object="no">.
-        noteheadValue = "none";
+    if (!note->visible() && note->chord()->stem()->visible()) {
+        // The notehead is invisible but the stem isn't
+        xml.tagRaw(noteheadTagname, "none");
     } else if (note->headScheme() == NoteHeadScheme::HEAD_SHAPE_NOTE_4) {
         const int degree = tpc2degree(note->tpc(), note->staff()->key(note->tick()));
         switch (degree) {
@@ -4483,7 +4482,7 @@ void ExportMusicXml::chord(Chord* chord, staff_idx_t staff, const std::vector<Ly
         }
 
         bool dotsVisible = true;
-        if (note->chord()->dots() && std::all_of(note->dots().begin(), note->dots().end(), [](NoteDot* dot) { return !dot->visible(); })) {
+        if (note->dots().empty() || std::all_of(note->dots().begin(), note->dots().end(), [](NoteDot* dot) { return !dot->visible(); })) {
             dotsVisible = false;
         }
         if (!note->visible() && !note->chord()->stem()->visible()) {

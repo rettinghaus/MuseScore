@@ -48,7 +48,7 @@
           <line>2</line>
           </clef>
         </attributes>
-      <note>
+      <note print-object="no">
         <pitch>
           <step>B</step>
           <octave>4</octave>
@@ -57,7 +57,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>none</stem>
-        <notehead>none</notehead>
+        <notehead>normal</notehead>
         </note>
       <note>
         <rest/>
