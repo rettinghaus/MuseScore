@@ -6855,7 +6855,7 @@ Note* MusicXmlParserPass2::note(const String& partId,
             }
             c->add(stem);
         }
-        if (note->dots()) {
+        if (note->dots().size()) {
             size_t idx = 0;
             for (NoteDot* dot : note->dots()) {
                 Color dotColor = dotsColor[idx];
