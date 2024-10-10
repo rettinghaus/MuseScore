@@ -6881,8 +6881,10 @@ Note* MusicXmlParserPass2::note(const String& partId,
         }
 
         if (dotPosition == "above") {
+            note->setDotPosition(DirectionV::UP);
             note->setUserDotPosition(DirectionV::UP);
         } else if (dotPosition == "below") {
+            note->setDotPosition(DirectionV::DOWN);
             note->setUserDotPosition(DirectionV::DOWN);
         } else {
             note->setUserDotPosition(DirectionV::AUTO);
