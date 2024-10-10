@@ -6572,10 +6572,12 @@ Note* MusicXmlParserPass2::note(const String& partId,
     const Color noteColor = Color::fromString(m_e.asciiAttribute("color").ascii());
     Color noteheadColor;
     Color stemColor;
+    std::vector<Color> dotsColor;
     bool noteheadParentheses = false;
     String noteheadFilled;
     int velocity = round(m_e.doubleAttribute("dynamics") * 0.9);
     bool graceSlash = false;
+    bool printDot = m_e.asciiAttribute("print-dot") != "no";
     bool printObject = m_e.asciiAttribute("print-object") != "no";
     bool isSingleDrumset = false;
     BeamMode bm;
@@ -6643,6 +6645,9 @@ Note* MusicXmlParserPass2::note(const String& partId,
                 // error already reported in pass 1
                 staff = -1;
             }
+        } else if (m_e.name() == "dot") {
+            dotsColor.push_back(Color::fromString(m_e.asciiAttribute("color").ascii()));
+            m_e.skipCurrentElement();
         } else if (m_e.name() == "stem") {
             stemColor = Color::fromString(m_e.asciiAttribute("color").ascii());
             stem(stemDir, noStem);
@@ -6839,6 +6844,21 @@ Note* MusicXmlParserPass2::note(const String& partId,
                 stem->setColor(noteColor);
             }
             c->add(stem);
+        }
+        if (note->dots().size()) {
+            size_t idx = 0;
+            for (NoteDot* dot : note->dots()) {
+                m_logger->logDebugInfo(String(u"Found one dot, trying to colr it. "), &m_e);
+                Color dotColor = dotsColor[idx];
+                dot->setProperty(Pid::VISIBLE, printDot);
+                if (dotColor.isValid()) {
+                    dot->setProperty(Pid::COLOR, PropertyValue::fromValue(dotColor));
+                    //dot->setColor(dotColor);
+                }
+                //dot->setVisible(printDot);
+                ++idx;
+            }
+        } else {
         }
         setNoteHead(note, noteheadColor, noteheadParentheses, noteheadFilled);
         note->setVisible(hasHead && printObject);
