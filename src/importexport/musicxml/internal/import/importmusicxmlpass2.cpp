@@ -6904,6 +6904,7 @@ Note* MusicXmlParserPass2::note(const String& partId,
     DirectionV stemDir = DirectionV::AUTO;
     bool noStem = false;
     bool hasHead = true;
+    AsciiStringView dotPosition;
     NoteHeadGroup headGroup = NoteHeadGroup::HEAD_NORMAL;
     NoteHeadScheme headScheme = NoteHeadScheme::HEAD_AUTO;
     const Color noteColor = Color::fromString(m_e.asciiAttribute("color").ascii());
@@ -6946,6 +6947,10 @@ Note* MusicXmlParserPass2::note(const String& partId,
         } else if (m_e.name() == "cue") {
             cue = true;
             m_e.skipCurrentElement();  // skip but don't log
+        } else if (m_e.name() == "dot") {
+            // only one position for all dots
+            dotPosition = m_e.asciiAttribute("placement");
+            m_e.skipCurrentElement(); // skip but don't log
         } else if (m_e.name() == "grace") {
             grace = true;
             graceSlash = m_e.asciiAttribute("slash") == "yes";
@@ -7241,6 +7246,14 @@ Note* MusicXmlParserPass2::note(const String& partId,
 
         if (velocity > 0) {
             note->setUserVelocity(velocity);
+        }
+
+        if (dotPosition == "above") {
+            note->setUserDotPosition(DirectionV::UP);
+        } else if (dotPosition == "below") {
+            note->setUserDotPosition(DirectionV::DOWN);
+        } else {
+            note->setUserDotPosition(DirectionV::AUTO);
         }
 
         if (mnp.unpitched() && !isSingleDrumset) {
