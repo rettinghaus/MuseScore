@@ -7276,7 +7276,7 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
             }
 
             m_xml.endElement();
-        } else {
+        } else if (attributes) {
             m_xml.tag("print", attributes);
         }
     } else if (m->prev() && m->prev()->isHBox()) {
