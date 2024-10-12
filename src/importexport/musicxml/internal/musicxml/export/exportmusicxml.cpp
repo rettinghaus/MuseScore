@@ -7312,7 +7312,7 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
         }
     }
 
-    bool doBreak = mpc.scoreStart;
+    bool doBreak = mpc.scoreStart || !attributes.empty();
     bool doLayout = configuration()->exportLayout();
 
     if (doBreak) {
