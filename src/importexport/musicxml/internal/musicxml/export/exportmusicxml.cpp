@@ -7286,7 +7286,7 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
 
     IMusicXmlConfiguration::MusicXmlExportBreaksType exportBreaksType = configuration()->exportBreaksType();
     if (!mpc.scoreStart) {
-        const int pagesSkipped = m->system()->page()->no() - mpc.lastSystemPrevPage->page()->no() - 1;
+        const int pagesSkipped = mpc.lastSystemPrevPage ? m->system()->page()->no() - mpc.lastSystemPrevPage->page()->no() - 1 : 0;
         if (pagesSkipped) {
             attributes.push_back({ "blank-page", pagesSkipped });
         }
