@@ -7227,12 +7227,23 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
             for (int staffIdx = (firstStaffOfPart == 0) ? 1 : 0; staffIdx < nrStavesInPart; staffIdx++) {
                 // calculate distance between this and previous staff using the bounding boxes
                 const int staffNr = firstStaffOfPart + staffIdx;
-                const RectF& prevBbox = system->staff(staffNr - 1)->bbox();
+                staff_idx_t previousVisibleStaffNr = staffNr - 1;
+                while (previousVisibleStaffNr > 0 && !system->staff(previousVisibleStaffNr)->show()) {
+                    previousVisibleStaffNr--;
+                }
+                const RectF& prevBbox = system->staff(previousVisibleStaffNr)->bbox();
                 const double staffDist = system->staff(staffNr)->bbox().y() - prevBbox.y() - prevBbox.height();
 
-                m_xml.startElement("staff-layout", { { "number", staffIdx + 1 } });
-                m_xml.tag("staff-distance", String::number(getTenthsFromDots(staffDist), 2));
-                m_xml.endElement();
+                if (staffDist) {
+                    m_xml.startElement("staff-layout", { { "number", staffIdx + 1 } });
+                    m_xml.tag("staff-distance", String::number(getTenthsFromDots(staffDist), 2));
+                    m_xml.endElement();
+                }
+            }
+
+            // Measure layout elements.
+            if (m->prev() && m->prev()->isHBox()) {
+                measureLayout(m->prev()->width());
             }
 
             // Measure layout elements.
@@ -7716,6 +7727,17 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part)
             }
 
             xml.tag("staff-lines", st->lines(Fraction(0, 1)));
+            if (st->isLinesInvisible(Fraction(0, 1))) {
+                for (size_t ii = 0; ii < st->lines(Fraction(0, 1)); ii++) {
+                    String ld = String(u"line-detail line=\"%1\"").arg(ii + 1);
+                    if (st->isLinesInvisible(Fraction(0, 1))) {
+                        ld += u" print-object=\"no\"";
+                    }
+                    //ld += color2xml(st);
+                    xml.tagRaw(ld);
+                }
+            }
+
             if (st->isTabStaff(Fraction(0, 1)) && instrument->stringData()) {
                 std::vector<instrString> l = instrument->stringData()->stringList();
                 for (size_t ii = 0; ii < l.size(); ii++) {
@@ -8252,6 +8274,8 @@ void ExportMusicXml::writeMeasure(const Measure* const m,
     if (isFirstActualMeasure) {
         writeStaffDetails(m_xml, part);
         writeInstrumentDetails(part->instrument(), m_score->style().styleB(Sid::concertPitch));
+    } else if (mpc.systemStart && !part->show()) {
+        writeStaffDetails(m_xml, part);
     }
 
     // output attribute at start of measure: measure-style
