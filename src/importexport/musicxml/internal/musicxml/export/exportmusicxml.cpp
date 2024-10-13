@@ -7265,11 +7265,6 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
                 measureLayout(m->prev()->width());
             }
 
-            // Measure layout elements.
-            if (m->prev() && m->prev()->isHBox()) {
-                measureLayout(m->prev()->width());
-            }
-
             m_xml.endElement();
         } else if (!newSystemOrPage.empty()) {
             m_xml.tagRaw(String(u"print%1").arg(newSystemOrPage));
