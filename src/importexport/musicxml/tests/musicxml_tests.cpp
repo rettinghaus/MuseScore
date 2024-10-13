@@ -367,6 +367,10 @@ void MusicXml_Tests::musicXmlImportTestRef(const char* file)
     delete score;
 }
 
+TEST_F(MusicXml_Tests, numeral_test_file) {
+    musicXmlIoTest("numeral_test_file");
+}
+
 TEST_F(MusicXml_Tests, accidentals1) {
     musicXmlIoTest("testAccidentals1");
 }
