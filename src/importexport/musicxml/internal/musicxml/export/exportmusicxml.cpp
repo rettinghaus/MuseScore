@@ -7284,8 +7284,8 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
     XmlWriter::Attributes attributes;
     const int pageNumber = m->system()->page()->no() + 1 + m->score()->pageNumberOffset();
 
-    const int pagesSkipped = mpc.lastSystemPrevPage ? m->system()->page()->no() - mpc.lastSystemPrevPage->page()->no() - 1 : 0;
-    if (pagesSkipped || true) {
+    const int pagesSkipped = mpc.prevSystem ? m->system()->page()->no() - mpc.prevSystem->page()->no() - 1 : 0;
+    if (pagesSkipped) {
         attributes.push_back({ "blank-page", pagesSkipped });
     }
 
