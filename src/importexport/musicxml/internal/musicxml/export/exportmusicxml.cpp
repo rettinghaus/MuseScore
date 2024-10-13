@@ -8790,6 +8790,7 @@ void ExportMusicXml::harmony(Harmony const* const h, FretDiagram const* const fd
                 m_xml.endElement();
                 // simple check for major or minor
                 m_xml.tag("kind", matches.at(1).at(0).isUpper() ? "major" : "minor");
+                // infer inversion from ending digits
                 if (textName.endsWith(u"64")) {
                     m_xml.tag("inversion", 2);
                 } else if (textName.endsWith(u"6")) {
