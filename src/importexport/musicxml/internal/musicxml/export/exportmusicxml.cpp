@@ -7284,13 +7284,13 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
     XmlWriter::Attributes attributes;
     const int pageNumber = m->system()->page()->no() + 1 + m->score()->pageNumberOffset();
 
+    const int pagesSkipped = mpc.lastSystemPrevPage ? m->system()->page()->no() - mpc.lastSystemPrevPage->page()->no() - 1 : 0;
+    if (pagesSkipped || true) {
+        attributes.push_back({ "blank-page", pagesSkipped });
+    }
+
     IMusicXmlConfiguration::MusicXmlExportBreaksType exportBreaksType = configuration()->exportBreaksType();
     if (!mpc.scoreStart) {
-        const int pagesSkipped = mpc.lastSystemPrevPage ? m->system()->page()->no() - mpc.lastSystemPrevPage->page()->no() - 1 : 0;
-        if (pagesSkipped) {
-            attributes.push_back({ "blank-page", pagesSkipped });
-        }
-
         if (exportBreaksType == IMusicXmlConfiguration::MusicXmlExportBreaksType::All) {
             if (mpc.pageStart) {
                 attributes.push_back({ "new-page", "yes" });
@@ -7307,9 +7307,7 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
             }
         }
     } else if (exportBreaksType != IMusicXmlConfiguration::MusicXmlExportBreaksType::No) {
-        if (pageNumber > 1 || exportBreaksType != IMusicXmlConfiguration::MusicXmlExportBreaksType::Manual) {
-            attributes.push_back({ "page-number", pageNumber });
-        }
+        attributes.push_back({ "page-number", pageNumber });
     }
 
     bool doBreak = mpc.scoreStart || !attributes.empty();
