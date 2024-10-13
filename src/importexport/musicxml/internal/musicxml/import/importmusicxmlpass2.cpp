@@ -7425,7 +7425,7 @@ void MusicXmlParserPass2::harmony(const String& partId, Measure* measure, const 
                 if (m_e.name() == "numeral-root") {
                     String numeralRoot = m_e.readText();
                     String numeralRootText = m_e.attribute("text");
-                    LOGD("numeralRoot %s, text %s", numeralRoot, numeralRootText);
+                    LOGD("numeralRoot %s, text %s", muPrintable(numeralRoot), muPrintable(numeralRootText));
                     if (!numeralRootText.isEmpty() && !numeralRootText.at(0).isDigit()) {
                         ha->setHarmonyType(HarmonyType::ROMAN);
                         functionText = numeralRootText;
@@ -7541,7 +7541,7 @@ void MusicXmlParserPass2::harmony(const String& partId, Measure* measure, const 
     if (ha->rootTpc() != Tpc::TPC_INVALID || ha->harmonyType() == HarmonyType::NASHVILLE) {
         d = ha->fromXml(kind, kindText, symbols, parens, degreeList);
     }
-    LOGD("functionText %s, kindText %s", functionText, kindText);
+    LOGD("functionText %s, kindText %s", muPrintable(functionText), muPrintable(kindText));
     if (d) {
         ha->setId(d->id);
         ha->setTextName(d->names.front());
