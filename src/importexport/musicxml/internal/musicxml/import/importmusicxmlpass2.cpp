@@ -7423,9 +7423,10 @@ void MusicXmlParserPass2::harmony(const String& partId, Measure* measure, const 
             ha->setBaseTpc(Tpc::TPC_INVALID);
             while (m_e.readNextStartElement()) {
                 if (m_e.name() == "numeral-root") {
-                    String numeralRoot = m_e.readText();
-                    String numeralRootText = m_e.attribute("text");
+                    const String numeralRoot = m_e.readText();
+                    const String numeralRootText = m_e.attribute("text");
                     LOGD("numeralRoot %s, text %s", muPrintable(numeralRoot), muPrintable(numeralRootText));
+                    functionText = numeralRootText;
                     if (!numeralRootText.isEmpty() && !numeralRootText.at(0).isDigit()) {
                         ha->setHarmonyType(HarmonyType::ROMAN);
                         functionText = numeralRootText;
