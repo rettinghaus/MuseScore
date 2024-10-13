@@ -7284,9 +7284,9 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
     XmlWriter::Attributes attributes;
     const int pageNumber = m->system()->page()->no() + 1 + m->score()->pageNumberOffset();
 
-    const int pagesSkipped = mpc.prevSystem ? m->system()->page()->no() - mpc.prevSystem->page()->no() - 1 : 0;
+    const int pagesSkipped = mpc.prevSystem ? m->system()->page()->no() - mpc.prevSystem->page()->no() : 0;
     if (pagesSkipped) {
-        attributes.push_back({ "blank-page", pagesSkipped });
+        attributes.push_back({ "blank-page", pagesSkipped - 1 });
     }
 
     IMusicXmlConfiguration::MusicXmlExportBreaksType exportBreaksType = configuration()->exportBreaksType();
