@@ -7282,27 +7282,29 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
     const bool prevPageBreak = hasPageBreak(mpc.lastSystemPrevPage);
 
     XmlWriter::Attributes attributes;
-    const int pageNumber = m->system() ? m->system()->page()->no() + 1 + m->score()->pageNumberOffset() : 0;
 
     IMusicXmlConfiguration::MusicXmlExportBreaksType exportBreaksType = configuration()->exportBreaksType();
     if (!mpc.scoreStart) {
         if (exportBreaksType == IMusicXmlConfiguration::MusicXmlExportBreaksType::All) {
             if (mpc.pageStart) {
                 attributes.push_back({ "new-page", "yes" });
-                attributes.push_back({ "page-number", pageNumber });
             } else if (mpc.systemStart) {
                 attributes.push_back({ "new-system", "yes" });
             }
         } else if (exportBreaksType == IMusicXmlConfiguration::MusicXmlExportBreaksType::Manual) {
             if (mpc.pageStart && prevPageBreak) {
                 attributes.push_back({ "new-page", "yes" });
-                attributes.push_back({ "page-number", pageNumber });
             } else if (mpc.systemStart && (prevMeasLineBreak || prevMeasSectionBreak)) {
                 attributes.push_back({ "new-system", "yes" });
             }
         }
-    } else if (exportBreaksType != IMusicXmlConfiguration::MusicXmlExportBreaksType::No) {
-        attributes.push_back({ "page-number", pageNumber });
+    }
+
+    if (mpc.pageStart && m->system()) {
+        const int pageNumber = m->system()->page()->no() + 1 + m->score()->pageNumberOffset();
+        if (exportBreaksType != IMusicXmlConfiguration::MusicXmlExportBreaksType::No) {
+            attributes.push_back({ "page-number", pageNumber });
+        }
     }
 
     bool doBreak = mpc.scoreStart || !attributes.empty();
@@ -7389,7 +7391,7 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
             }
 
             m_xml.endElement();
-        } else if (!attributes.empty()) {
+        } else {
             m_xml.tag("print", attributes);
         }
     } else if (m->prev() && m->prev()->isHBox()) {
