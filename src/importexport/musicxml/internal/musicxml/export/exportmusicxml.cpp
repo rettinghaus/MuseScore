@@ -7151,7 +7151,7 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
     const bool prevPageBreak = hasPageBreak(mpc.lastSystemPrevPage);
 
     XmlWriter::Attributes attributes;
-    const int pageNumber = m->system()->page()->no() + 1 + m->score()->pageNumberOffset();
+    const int pageNumber = mpc.pageStart ? m->system()->page()->no() + 1 + m->score()->pageNumberOffset() : 0;
 
     IMusicXmlConfiguration::MusicXmlExportBreaksType exportBreaksType = configuration()->exportBreaksType();
     if (!mpc.scoreStart) {
@@ -7257,7 +7257,7 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
             }
 
             m_xml.endElement();
-        } else {
+        } else if (!attributes.empty()) {
             m_xml.tag("print", attributes);
         }
     } else if (m->prev() && m->prev()->isHBox()) {
