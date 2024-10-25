@@ -241,7 +241,7 @@ std::vector<HorizontalSpacing::SegmentPosition> HorizontalSpacing::spaceSegments
     std::vector<SegmentPosition> placedSegments;
     placedSegments.reserve(segList.size());
 
-    for (int i = 0; i < segList.size(); ++i) {
+    for (size_t i = 0; i < segList.size(); ++i) {
         Segment* curSeg = segList[i];
         if (ignoreSegmentForSpacing(curSeg)) {
             placedSegments.emplace_back(curSeg, ctx.xCur);
@@ -339,7 +339,7 @@ void HorizontalSpacing::spaceAgainstPreviousSegments(Segment* segment, std::vect
             if (prevCRSegmentsCount > 0) {
                 double spaceIncrease = (x - ctx.xCur) / prevCRSegmentsCount;
                 double xMovement = spaceIncrease;
-                for (int j = i + 1; j < prevSegPositions.size(); ++j) {
+                for (size_t j = i + 1; j < prevSegPositions.size(); ++j) {
                     SegmentPosition& segPos = prevSegPositions[j];
                     segPos.xPosInSystemCoords += xMovement;
                     if (segPos.segment->isChordRestType()) {
@@ -656,13 +656,13 @@ double HorizontalSpacing::computeMinMeasureWidth(Measure* m)
 
 void HorizontalSpacing::enforceMinimumMeasureWidths(const std::vector<Measure*> measureGroup)
 {
-    for (int i = 0; i < measureGroup.size(); ++i) {
+    for (size_t i = 0; i < measureGroup.size(); ++i) {
         Measure* measure = measureGroup[i];
         double minWidth = computeMinMeasureWidth(measure);
         double diff = minWidth - measure->width();
         if (diff > 0) {
             stretchMeasureToTargetWidth(measure, minWidth);
-            for (int j = i + 1; j < measureGroup.size(); ++j) {
+            for (size_t j = i + 1; j < measureGroup.size(); ++j) {
                 measureGroup[j]->mutldata()->moveX(diff);
             }
         }
