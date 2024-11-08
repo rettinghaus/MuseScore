@@ -2165,7 +2165,7 @@ void MeiExporter::fillControlEventMap(const std::string& xmlId, const ChordRest*
         if (arpeggio) {
             m_startingControlEventList.push_back(std::make_pair(arpeggio, "#" + xmlId));
             // The arpeggio is spanning to a lower staff
-            if (arpeggio->span() > 1) {
+            if (arpeggio->span()) {
                 // We need to retrieve the chord it is spanning to
                 track_idx_t bottomTrack = arpeggio->track() + (arpeggio->span() - 1);
                 const EngravingItem* element = chord->segment()->element(bottomTrack);
