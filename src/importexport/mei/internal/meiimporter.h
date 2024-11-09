@@ -190,6 +190,7 @@ private:
     engraving::ChordRest* findEnd(pugi::xml_node controlNode, const engraving::ChordRest* startChordRest);
     engraving::Note* findStartNote(const libmei::Element& meiElement);
     engraving::Note* findEndNote(pugi::xml_node controlNode);
+    engraving::Segment* findSegment(const libmei::Element& meiElement, engraving::Measure* measure);
     const std::vector<engraving::ChordRest*> findPlistChordRests(pugi::xml_node controlNode);
     void clearGraceNotes();
     bool hasLyricsToExtend(engraving::track_idx_t track, int no);
