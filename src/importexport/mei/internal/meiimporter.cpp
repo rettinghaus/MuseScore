@@ -22,6 +22,7 @@
 
 #include "meiimporter.h"
 
+#include "engraving/dom/anchors.h"
 #include "engraving/dom/arpeggio.h"
 #include "engraving/dom/articulation.h"
 #include "engraving/dom/barline.h"
@@ -506,8 +507,8 @@ EngravingItem* MeiImporter::addAnnotation(const libmei::Element& meiElement, Mea
 
 Spanner* MeiImporter::addSpanner(const libmei::Element& meiElement, Measure* measure, pugi::xml_node node)
 {
-    ChordRest* chordRest = this->findStart(meiElement, measure);
-    if (!chordRest) {
+    Segment* segment = this->findSegment(meiElement, measure);
+    if (!segment) {
         return nullptr;
     }
 
@@ -516,31 +517,30 @@ Spanner* MeiImporter::addSpanner(const libmei::Element& meiElement, Measure* mea
     if (meiElement.m_name == "dir") {
         ElementType elementType = Convert::elementTypeForDirWithExt(meiElement);
         switch (elementType) {
-        case (ElementType::HAIRPIN): item = Factory::createHairpin(
-                chordRest->segment());
+        case (ElementType::HAIRPIN): item = Factory::createHairpin(segment);
             break;
         default:
-            item = Factory::createTextLine(chordRest->segment());
+            item = Factory::createTextLine(segment);
         }
     } else if (meiElement.m_name == "hairpin") {
-        item = Factory::createHairpin(chordRest->segment());
+        item = Factory::createHairpin(segment);
     } else if (meiElement.m_name == "octave") {
-        item = Factory::createOttava(chordRest->segment());
+        item = Factory::createOttava(segment);
     } else if (meiElement.m_name == "pedal") {
-        item = Factory::createPedal(chordRest->segment());
+        item = Factory::createPedal(segment);
     } else if (meiElement.m_name == "slur") {
-        item = Factory::createSlur(chordRest->segment());
+        item = Factory::createSlur(segment);
     } else if (meiElement.m_name == "trill") {
-        item = Factory::createTrill(chordRest->segment());
+        item = Factory::createTrill(segment);
     } else {
         return nullptr;
     }
     this->readXmlId(item, meiElement.m_xmlId);
 
-    item->setTick(chordRest->tick());
-    item->setStartElement(chordRest);
-    item->setTrack(chordRest->track());
-    item->setTrack2(chordRest->track());
+    item->setTick(segment->tick());
+    //item->setStartElement(chordRest);
+    item->setTrack(segment->track());
+    item->setTrack2(segment->track());
 
     m_score->addElement(item);
 
@@ -638,9 +638,9 @@ ChordRest* MeiImporter::findStart(const libmei::Element& meiElement, Measure* me
         // If no @tstamp (invalid), put it on 1.0;
         double tstampValue = timestampLogAtt->HasTstamp() ? timestampLogAtt->GetTstamp() : 1.0;
         Fraction tstampFraction = Convert::tstampToFraction(tstampValue, measure->timesig());
-        int staffIdx = (staffIdentAtt->HasStaff() && staffIdentAtt->GetStaff().size() > 0) ? this->getStaffIndex(
+        const int staffIdx = (staffIdentAtt->HasStaff() && staffIdentAtt->GetStaff().size() > 0) ? this->getStaffIndex(
             staffIdentAtt->GetStaff().at(0)) : 0;
-        int layer = (layerIdentAtt->HasLayer()) ? this->getVoiceIndex(staffIdx, layerIdentAtt->GetLayer()) : 0;
+        const int layer = (layerIdentAtt->HasLayer()) ? this->getVoiceIndex(staffIdx, layerIdentAtt->GetLayer()) : 0;
 
         chordRest = measure->findChordRest(measure->tick() + tstampFraction, staffIdx * VOICES + layer);
         if (!chordRest) {
@@ -650,6 +650,33 @@ ChordRest* MeiImporter::findStart(const libmei::Element& meiElement, Measure* me
     }
 
     return chordRest;
+}
+
+Segment* MeiImporter::findSegment(const libmei::Element& meiElement, Measure* measure)
+{
+    ChordRest* chordRest = findStart(meiElement, measure);
+    if (!chordRest) {
+        const libmei::AttTimestampLog* timestampLogAtt = dynamic_cast<const libmei::AttTimestampLog*>(&meiElement);
+        const libmei::AttStaffIdent* staffIdentAtt = dynamic_cast<const libmei::AttStaffIdent*>(&meiElement);
+        const libmei::AttLayerIdent* layerIdentAtt = dynamic_cast<const libmei::AttLayerIdent*>(&meiElement);
+
+        IF_ASSERT_FAILED(timestampLogAtt && staffIdentAtt && layerIdentAtt) {
+            return nullptr;
+        }
+
+        double tstampValue = timestampLogAtt->HasTstamp() ? timestampLogAtt->GetTstamp() : 1.0;
+        Fraction tstampFraction = Convert::tstampToFraction(tstampValue, measure->timesig());
+        const int staffIdx = (staffIdentAtt->HasStaff() && staffIdentAtt->GetStaff().size() > 0) ? this->getStaffIndex(
+            staffIdentAtt->GetStaff().at(0)) : 0;
+        const int layer = (layerIdentAtt->HasLayer()) ? this->getVoiceIndex(staffIdx, layerIdentAtt->GetLayer()) : 0;
+
+        TimeTickAnchor* anchor = EditTimeTickAnchors::createTimeTickAnchor(measure, tstampFraction, staffIdx);
+        // Convert::logs.push_back(String("Could not find element corresponding to @tstamp '%1'").arg(timestampLogAtt->GetTstamp()));
+        EditTimeTickAnchors::updateLayout(measure);
+        return anchor->segment();
+    }
+
+    return chordRest->segment();
 }
 
 /**
