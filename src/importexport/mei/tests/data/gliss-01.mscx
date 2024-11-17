@@ -1,113 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<museScore version="4.20">
-  <programVersion>4.2.1</programVersion>
-  <programRevision>d757433</programRevision>
-  <LastEID>0</LastEID>
+<museScore version="4.50">
   <Score>
     <Division>480</Division>
+    <Style>
+      <spatium>1.74978</spatium>
+      </Style>
     <showInvisible>1</showInvisible>
     <showUnprintable>1</showUnprintable>
     <showFrames>1</showFrames>
     <showMargins>0</showMargins>
-    <open>1</open>
     <metaTag name="arranger"></metaTag>
     <metaTag name="audioComUrl"></metaTag>
-    <metaTag name="composer">Composer</metaTag>
+    <metaTag name="composer">Klaus Rettinghaus</metaTag>
     <metaTag name="copyright"></metaTag>
-    <metaTag name="creationDate">2020-04-21</metaTag>
     <metaTag name="lyricist"></metaTag>
+    <metaTag name="meiHead">&lt;meiHead&gt;&lt;fileDesc&gt;&lt;titleStmt&gt;&lt;title type=&quot;main&quot;&gt;Glissando test&lt;/title&gt;&lt;respStmt&gt;&lt;persName role=&quot;composer&quot;&gt;Klaus Rettinghaus&lt;/persName&gt;&lt;/respStmt&gt;&lt;/titleStmt&gt;&lt;pubStmt&gt;&lt;date isodate=&quot;2024-11-16T17:10:13&quot;/&gt;&lt;/pubStmt&gt;&lt;/fileDesc&gt;&lt;/meiHead&gt;</metaTag>
     <metaTag name="movementNumber"></metaTag>
     <metaTag name="movementTitle"></metaTag>
-    <metaTag name="mscVersion">4.20</metaTag>
-    <metaTag name="platform">Apple Macintosh</metaTag>
-    <metaTag name="poet"></metaTag>
     <metaTag name="source"></metaTag>
-    <metaTag name="sourceRevisionId"></metaTag>
     <metaTag name="translator"></metaTag>
-    <metaTag name="workNumber"></metaTag>
-    <metaTag name="workTitle">Title</metaTag>
+    <metaTag name="workTitle">Glissando test</metaTag>
     <Part id="1">
       <Staff id="1">
         <StaffType group="pitched">
           <name>stdNormal</name>
           </StaffType>
         </Staff>
-      <trackName>Piano</trackName>
+      <trackName></trackName>
       <Instrument id="piano">
-        <longName>Piano</longName>
-        <shortName>Pno.</shortName>
-        <trackName>Piano</trackName>
+        <trackName></trackName>
         <minPitchP>21</minPitchP>
         <maxPitchP>108</maxPitchP>
         <minPitchA>21</minPitchA>
         <maxPitchA>108</maxPitchA>
         <instrumentId>keyboard.piano</instrumentId>
-        <clef staff="2">F</clef>
-        <Articulation>
-          <velocity>100</velocity>
-          <gateTime>95</gateTime>
-          </Articulation>
-        <Articulation name="staccatissimo">
-          <velocity>100</velocity>
-          <gateTime>33</gateTime>
-          </Articulation>
-        <Articulation name="staccato">
-          <velocity>100</velocity>
-          <gateTime>50</gateTime>
-          </Articulation>
-        <Articulation name="portato">
-          <velocity>100</velocity>
-          <gateTime>67</gateTime>
-          </Articulation>
-        <Articulation name="tenuto">
-          <velocity>100</velocity>
-          <gateTime>100</gateTime>
-          </Articulation>
-        <Articulation name="marcato">
-          <velocity>120</velocity>
-          <gateTime>67</gateTime>
-          </Articulation>
-        <Articulation name="sforzato">
-          <velocity>150</velocity>
-          <gateTime>100</gateTime>
-          </Articulation>
-        <Articulation name="sforzatoStaccato">
-          <velocity>150</velocity>
-          <gateTime>50</gateTime>
-          </Articulation>
-        <Articulation name="marcatoStaccato">
-          <velocity>120</velocity>
-          <gateTime>50</gateTime>
-          </Articulation>
-        <Articulation name="marcatoTenuto">
-          <velocity>120</velocity>
-          <gateTime>100</gateTime>
-          </Articulation>
         <Channel>
-          <program value="0"/>
-          <synti>Fluid</synti>
           </Channel>
         </Instrument>
       </Part>
     <Staff id="1">
+      <VBox>
+        <height>10</height>
+        <Text>
+          <style>title</style>
+          <text>Glissando test</text>
+          </Text>
+        <Text>
+          <style>composer</style>
+          <text>Klaus Rettinghaus</text>
+          </Text>
+        </VBox>
       <Measure>
         <voice>
+          <Clef>
+            <concertClefType>G</concertClefType>
+            <transposingClefType>G</transposingClefType>
+            <isHeader>1</isHeader>
+            </Clef>
           <TimeSig>
-            <eid>4294967320</eid>
             <sigN>4</sigN>
             <sigD>4</sigD>
             </TimeSig>
           <Chord>
-            <eid>8589934707</eid>
             <durationType>quarter</durationType>
             <Note>
-              <eid>12884901908</eid>
               <pitch>55</pitch>
               <tpc>15</tpc>
               <Spanner type="Glissando">
                 <Glissando>
                   <text>gliss.</text>
-                  <eid>17179869294</eid>
                   <offset x="-1.81659" y="1.41014"/>
                   <color r="128" g="255" b="128" a="255"/>
                   <diagonal>1</diagonal>
@@ -117,7 +78,6 @@
                     <subtype>0</subtype>
                     <offset x="0" y="1.41014"/>
                     <off2 x="0" y="0"/>
-                    <eid>21474836559</eid>
                     <offset x="0" y="1.41014"/>
                     <color r="128" g="255" b="128" a="255"/>
                     </Segment>
@@ -131,16 +91,13 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>25769803891</eid>
             <durationType>quarter</durationType>
             <Note>
-              <eid>30064771092</eid>
               <pitch>81</pitch>
               <tpc>17</tpc>
               <Spanner type="Glissando">
                 <Glissando>
                   <text>gliss.</text>
-                  <eid>34359738478</eid>
                   <offset x="-1.81659" y="1.41014"/>
                   <color r="128" g="0" b="255" a="255"/>
                   <diagonal>1</diagonal>
@@ -150,7 +107,6 @@
                     <subtype>0</subtype>
                     <offset x="0" y="1.41014"/>
                     <off2 x="0" y="0"/>
-                    <eid>38654705743</eid>
                     <offset x="0" y="1.41014"/>
                     <color r="128" g="0" b="255" a="255"/>
                     </Segment>
@@ -171,20 +127,16 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>42949673075</eid>
             <durationType>quarter</durationType>
             <Note>
-              <eid>47244640276</eid>
               <Accidental>
                 <subtype>accidentalSharp</subtype>
-                <eid>51539607569</eid>
                 </Accidental>
               <pitch>68</pitch>
               <tpc>22</tpc>
               <Spanner type="Glissando">
                 <Glissando>
                   <text>gliss.</text>
-                  <eid>55834574958</eid>
                   <offset x="-1.81659" y="1.41014"/>
                   <diagonal>1</diagonal>
                   <anchor>3</anchor>
@@ -193,7 +145,6 @@
                     <offset x="0" y="0"/>
                     <off2 x="0" y="0"/>
                     <minDistance>2.77556e-17</minDistance>
-                    <eid>60129542223</eid>
                     </Segment>
                   </Glissando>
                 <next>
@@ -212,13 +163,10 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>64424509555</eid>
             <durationType>quarter</durationType>
             <Note>
-              <eid>68719476756</eid>
               <Accidental>
                 <subtype>accidentalFlat</subtype>
-                <eid>73014444049</eid>
                 </Accidental>
               <pitch>73</pitch>
               <tpc>9</tpc>
@@ -236,16 +184,13 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>77309411443</eid>
             <durationType>quarter</durationType>
             <Note>
-              <eid>81604378644</eid>
               <pitch>69</pitch>
               <tpc>17</tpc>
               <Spanner type="Glissando">
                 <Glissando>
                   <subtype>1</subtype>
-                  <eid>85899346030</eid>
                   <diagonal>1</diagonal>
                   <anchor>3</anchor>
                   </Glissando>
@@ -258,13 +203,10 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>90194313331</eid>
             <durationType>quarter</durationType>
             <Note>
-              <eid>94489280532</eid>
               <Accidental>
                 <subtype>accidentalFlat</subtype>
-                <eid>98784247825</eid>
                 </Accidental>
               <pitch>54</pitch>
               <tpc>8</tpc>
@@ -272,7 +214,6 @@
                 <Glissando>
                   <text>gliss.</text>
                   <subtype>1</subtype>
-                  <eid>103079215214</eid>
                   <diagonal>1</diagonal>
                   <anchor>3</anchor>
                   </Glissando>
@@ -292,20 +233,16 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>107374182515</eid>
             <durationType>quarter</durationType>
             <Note>
-              <eid>111669149716</eid>
               <Accidental>
                 <subtype>accidentalSharp</subtype>
-                <eid>115964117009</eid>
                 </Accidental>
               <pitch>68</pitch>
               <tpc>22</tpc>
               <Spanner type="Glissando">
                 <Glissando>
                   <subtype>1</subtype>
-                  <eid>120259084398</eid>
                   <color r="0" g="255" b="0" a="255"/>
                   <diagonal>1</diagonal>
                   <color r="0" g="255" b="0" a="255"/>
@@ -327,10 +264,8 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>124554051699</eid>
             <durationType>quarter</durationType>
             <Note>
-              <eid>128849018900</eid>
               <pitch>62</pitch>
               <tpc>16</tpc>
               <Spanner type="Glissando">
@@ -347,16 +282,13 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>133143986291</eid>
             <durationType>quarter</durationType>
             <Note>
-              <eid>137438953492</eid>
               <pitch>67</pitch>
               <tpc>15</tpc>
               <Spanner type="Glissando">
                 <Glissando>
                   <text>gliss.</text>
-                  <eid>141733920878</eid>
                   <color r="0" g="0" b="255" a="255"/>
                   <diagonal>1</diagonal>
                   <color r="0" g="0" b="255" a="255"/>
@@ -371,22 +303,18 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>146028888179</eid>
             <durationType>quarter</durationType>
             <Note>
-              <eid>150323855380</eid>
               <pitch>41</pitch>
               <tpc>13</tpc>
               <Spanner type="Glissando">
                 <Glissando>
-                  <eid>154618822766</eid>
                   <diagonal>1</diagonal>
                   <anchor>3</anchor>
                   <Segment>
                     <subtype>0</subtype>
                     <offset x="0" y="0"/>
                     <off2 x="-0.232903" y="-0.265438"/>
-                    <eid>158913790031</eid>
                     </Segment>
                   </Glissando>
                 <next>
@@ -398,10 +326,8 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>163208757363</eid>
             <durationType>quarter</durationType>
             <Note>
-              <eid>167503724564</eid>
               <pitch>71</pitch>
               <tpc>19</tpc>
               <Spanner type="Glissando">
@@ -414,13 +340,10 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>171798691955</eid>
             <durationType>quarter</durationType>
             <Note>
-              <eid>176093659156</eid>
               <Accidental>
                 <subtype>accidentalFlat</subtype>
-                <eid>180388626449</eid>
                 </Accidental>
               <pitch>70</pitch>
               <tpc>12</tpc>
@@ -438,17 +361,14 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>184683593843</eid>
             <dots>1</dots>
             <durationType>quarter</durationType>
             <Note>
-              <eid>188978561044</eid>
               <pitch>67</pitch>
               <tpc>15</tpc>
               <Spanner type="Glissando">
                 <Glissando>
                   <text>gliss.</text>
-                  <eid>193273528430</eid>
                   <diagonal>1</diagonal>
                   <anchor>3</anchor>
                   </Glissando>
@@ -461,10 +381,8 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>197568495731</eid>
             <durationType>eighth</durationType>
             <Note>
-              <eid>201863462932</eid>
               <pitch>69</pitch>
               <tpc>17</tpc>
               <Spanner type="Glissando">
@@ -477,17 +395,14 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>206158430323</eid>
             <dots>1</dots>
             <durationType>quarter</durationType>
             <Note>
-              <eid>210453397524</eid>
               <pitch>65</pitch>
               <tpc>13</tpc>
               <Spanner type="Glissando">
                 <Glissando>
                   <text>gliss.</text>
-                  <eid>214748364910</eid>
                   <diagonal>1</diagonal>
                   <anchor>3</anchor>
                   </Glissando>
@@ -500,13 +415,10 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>219043332211</eid>
             <durationType>eighth</durationType>
             <Note>
-              <eid>223338299412</eid>
               <Accidental>
                 <subtype>accidentalSharp</subtype>
-                <eid>227633266705</eid>
                 </Accidental>
               <pitch>73</pitch>
               <tpc>21</tpc>
@@ -524,17 +436,14 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>231928234099</eid>
             <dots>1</dots>
             <durationType>quarter</durationType>
             <Note>
-              <eid>236223201300</eid>
               <pitch>67</pitch>
               <tpc>15</tpc>
               <Spanner type="Glissando">
                 <Glissando>
                   <text>gliss.</text>
-                  <eid>240518168686</eid>
                   <diagonal>1</diagonal>
                   <anchor>3</anchor>
                   </Glissando>
@@ -547,13 +456,10 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>244813135987</eid>
             <durationType>eighth</durationType>
             <Note>
-              <eid>249108103188</eid>
               <Accidental>
                 <subtype>accidentalDoubleFlat</subtype>
-                <eid>253403070481</eid>
                 </Accidental>
               <pitch>72</pitch>
               <tpc>2</tpc>
@@ -567,17 +473,14 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>257698037875</eid>
             <dots>1</dots>
             <durationType>quarter</durationType>
             <Note>
-              <eid>261993005076</eid>
               <pitch>67</pitch>
               <tpc>15</tpc>
               <Spanner type="Glissando">
                 <Glissando>
                   <text>gliss.</text>
-                  <eid>266287972462</eid>
                   <diagonal>1</diagonal>
                   <anchor>3</anchor>
                   </Glissando>
@@ -590,13 +493,10 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>270582939763</eid>
             <durationType>eighth</durationType>
             <Note>
-              <eid>274877906964</eid>
               <Accidental>
                 <subtype>accidentalFlat</subtype>
-                <eid>279172874257</eid>
                 </Accidental>
               <pitch>73</pitch>
               <tpc>9</tpc>
@@ -604,7 +504,6 @@
                 <Glissando>
                   <text>gliss.</text>
                   <subtype>1</subtype>
-                  <eid>283467841646</eid>
                   <diagonal>1</diagonal>
                   <anchor>3</anchor>
                   </Glissando>
@@ -629,10 +528,8 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>287762808947</eid>
             <durationType>quarter</durationType>
             <Note>
-              <eid>292057776148</eid>
               <pitch>67</pitch>
               <tpc>15</tpc>
               <Spanner type="Glissando">
@@ -646,23 +543,19 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>296352743539</eid>
             <durationType>quarter</durationType>
             <Note>
-              <eid>300647710740</eid>
               <pitch>60</pitch>
               <tpc>14</tpc>
               <Spanner type="Glissando">
                 <Glissando>
                   <text>gliss.</text>
-                  <eid>304942678126</eid>
                   <diagonal>1</diagonal>
                   <anchor>3</anchor>
                   <Segment>
                     <subtype>0</subtype>
                     <offset x="0" y="0"/>
                     <off2 x="-0.191141" y="0.122795"/>
-                    <eid>309237645391</eid>
                     </Segment>
                   </Glissando>
                 <next>
@@ -673,20 +566,17 @@
                 </Spanner>
               </Note>
             <Note>
-              <eid>313532612628</eid>
               <pitch>64</pitch>
               <tpc>18</tpc>
               <Spanner type="Glissando">
                 <Glissando>
                   <text>gliss.</text>
-                  <eid>317827580014</eid>
                   <diagonal>1</diagonal>
                   <anchor>3</anchor>
                   <Segment>
                     <subtype>0</subtype>
                     <offset x="0" y="0"/>
                     <off2 x="0.551082" y="-0.295674"/>
-                    <eid>322122547279</eid>
                     </Segment>
                   </Glissando>
                 <next>
@@ -697,13 +587,11 @@
                 </Spanner>
               </Note>
             <Note>
-              <eid>326417514516</eid>
               <pitch>71</pitch>
               <tpc>19</tpc>
               <Spanner type="Glissando">
                 <Glissando>
                   <text>gliss.</text>
-                  <eid>330712481902</eid>
                   <diagonal>1</diagonal>
                   <anchor>3</anchor>
                   </Glissando>
@@ -716,22 +604,18 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>335007449203</eid>
             <durationType>quarter</durationType>
             <Note>
-              <eid>339302416404</eid>
               <pitch>67</pitch>
               <tpc>15</tpc>
               <Spanner type="Glissando">
                 <Glissando>
-                  <eid>343597383790</eid>
                   <diagonal>1</diagonal>
                   <anchor>3</anchor>
                   <Segment>
                     <subtype>0</subtype>
                     <offset x="0" y="0"/>
                     <off2 x="-0.13777" y="0.0515809"/>
-                    <eid>347892351055</eid>
                     </Segment>
                   </Glissando>
                 <next>
@@ -749,19 +633,16 @@
                 </Spanner>
               </Note>
             <Note>
-              <eid>352187318292</eid>
               <pitch>69</pitch>
               <tpc>17</tpc>
               <Spanner type="Glissando">
                 <Glissando>
-                  <eid>356482285678</eid>
                   <diagonal>1</diagonal>
                   <anchor>3</anchor>
                   <Segment>
                     <subtype>0</subtype>
                     <offset x="0" y="0"/>
                     <off2 x="-0.13777" y="-0.0149749"/>
-                    <eid>360777252943</eid>
                     </Segment>
                   </Glissando>
                 <next>
@@ -779,12 +660,10 @@
                 </Spanner>
               </Note>
             <Note>
-              <eid>365072220180</eid>
               <pitch>77</pitch>
               <tpc>13</tpc>
               <Spanner type="Glissando">
                 <Glissando>
-                  <eid>369367187566</eid>
                   <diagonal>1</diagonal>
                   <anchor>3</anchor>
                   </Glissando>
@@ -804,10 +683,8 @@
               </Note>
             </Chord>
           <Chord>
-            <eid>373662154867</eid>
             <durationType>quarter</durationType>
             <Note>
-              <eid>377957122068</eid>
               <pitch>67</pitch>
               <tpc>15</tpc>
               <Spanner type="Glissando">
@@ -819,7 +696,6 @@
                 </Spanner>
               </Note>
             <Note>
-              <eid>382252089364</eid>
               <pitch>74</pitch>
               <tpc>16</tpc>
               <Spanner type="Glissando">
@@ -831,7 +707,6 @@
                 </Spanner>
               </Note>
             <Note>
-              <eid>386547056660</eid>
               <pitch>84</pitch>
               <tpc>14</tpc>
               <Spanner type="Glissando">
