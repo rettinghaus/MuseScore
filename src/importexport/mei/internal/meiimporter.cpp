@@ -489,8 +489,6 @@ Spanner* MeiImporter::addSpanner(const libmei::Element& meiElement, Measure* mea
         default:
             item = Factory::createTextLine(chordRest->segment());
         }
-    } else if (meiElement.m_name == "gliss") {
-        item = Factory::createGlissando(chordRest->segment());
     } else if (meiElement.m_name == "hairpin") {
         item = Factory::createHairpin(chordRest->segment());
     } else if (meiElement.m_name == "octave") {
@@ -2558,10 +2556,11 @@ bool MeiImporter::readGliss(pugi::xml_node glissNode, Measure* measure)
         return true;
     }
 
-    Glissando* gliss = new Glissando(m_score->dummy());
+    Glissando* gliss = Factory::createGlissando(startNote);
     m_uids->reg(gliss, meiGliss.m_xmlId);
     gliss->setAnchor(Spanner::Anchor::NOTE);
     gliss->setStartElement(startNote);
+    gliss->setTick(startNote->chord()->tick());
     gliss->setTrack(startNote->track());
     gliss->setParent(startNote);
 
