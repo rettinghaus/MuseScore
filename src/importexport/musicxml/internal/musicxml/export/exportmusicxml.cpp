@@ -4378,12 +4378,12 @@ void ExportMusicXml::chord(Chord* chord, staff_idx_t staff, const std::vector<Ly
             arpeggiate(chord->spanArpeggio(), note == nl.front(), note == nl.back(), m_xml, notations, m_measArpeggios, /*spanArp=*/ true);
         }
         for (Spanner* spanner : note->spannerFor()) {
-            if (spanner->type() == ElementType::GLISSANDO && ExportMusicXml::canWrite(spanner)) {
+            if (spanner->isGlissando() && ExportMusicXml::canWrite(spanner)) {
                 m_gh.doGlissandoStart(static_cast<Glissando*>(spanner), notations, m_xml);
             }
         }
         for (Spanner* spanner : note->spannerBack()) {
-            if (spanner->type() == ElementType::GLISSANDO && ExportMusicXml::canWrite(spanner)) {
+            if (spanner->isGlissando() && ExportMusicXml::canWrite(spanner)) {
                 m_gh.doGlissandoStop(static_cast<Glissando*>(spanner), notations, m_xml);
             }
         }
