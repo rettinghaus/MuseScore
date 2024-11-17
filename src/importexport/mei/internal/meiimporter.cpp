@@ -489,6 +489,8 @@ Spanner* MeiImporter::addSpanner(const libmei::Element& meiElement, Measure* mea
         default:
             item = Factory::createTextLine(chordRest->segment());
         }
+    } else if (meiElement.m_name == "gliss") {
+        item = Factory::createGlissando(chordRest->segment());
     } else if (meiElement.m_name == "hairpin") {
         item = Factory::createHairpin(chordRest->segment());
     } else if (meiElement.m_name == "octave") {
@@ -2199,6 +2201,8 @@ bool MeiImporter::readControlEvents(pugi::xml_node parentNode, Measure* measure)
             success = success && this->readFermata(xpathNode.node(), measure);
         } else if (elementName == "fing") {
             success = success && this->readFing(xpathNode.node(), measure);
+        } else if (elementName == "gliss") {
+            success = success && this->readGliss(xpathNode.node(), measure);
         } else if (elementName == "hairpin") {
             success = success && this->readHairpin(xpathNode.node(), measure);
         } else if (elementName == "harm") {
@@ -2531,6 +2535,43 @@ bool MeiImporter::readFing(pugi::xml_node fingNode, Measure* measure)
 }
 
 /**
+ * Read a gliss.
+ */
+
+bool MeiImporter::readGliss(pugi::xml_node glissNode, Measure* measure)
+{
+    IF_ASSERT_FAILED(measure) {
+        return false;
+    }
+
+    bool warning;
+    libmei::Gliss meiGliss;
+    meiGliss.Read(glissNode);
+
+    // We do not use addSpanner here because Tie object are added directly to the start and end Note objects
+    Note* startNote = this->findStartNote(meiGliss);
+    if (!startNote) {
+        // Here we could detect if it's a tied chord (for files not exported from MuseScore)
+        // We would need a dedicated list and tie each note once the second chord has been found.
+        return true;
+    }
+
+    Glissando* gliss = new Glissando(m_score->dummy());
+    m_uids->reg(gliss, meiGliss.m_xmlId);
+    gliss->setAnchor(Spanner::Anchor::NOTE);
+    gliss->setStartElement(startNote);
+    gliss->setTrack(startNote->track());
+    gliss->setParent(startNote);
+
+    // Still add the glissando to the open Spanner map, which will handle glissandos differently as appropriate
+    m_openSpannerMap[gliss] = glissNode;
+
+    Convert::glissFromMEI(gliss, meiGliss, warning);
+
+    return true;
+}
+
+/**
  * Read a hairpin.
  */
 
@@ -2857,7 +2898,7 @@ bool MeiImporter::readTie(pugi::xml_node tieNode, Measure* measure)
     tie->setStartNote(startNote);
     tie->setTrack(startNote->track());
 
-    // Still add the Tie to the open Spanner map, which will handle ties differently as appropriate
+    // Still add the tie to the open Spanner map, which will handle ties differently as appropriate
     m_openSpannerMap[tie] = tieNode;
 
     Convert::tieFromMEI(tie, meiTie, warning);
@@ -3277,6 +3318,16 @@ void MeiImporter::addSpannerEnds()
             Tie* tie = toTie(spannerMapEntry.first);
             endNote->setTieBack(tie);
             tie->setEndNote(endNote);
+        } else if (spannerMapEntry.first->isGlissando()) {
+            Note* endNote = this->findEndNote(spannerMapEntry.second);
+            if (!endNote) {
+                continue;
+            }
+            Glissando* gliss = toGlissando(spannerMapEntry.first);
+            gliss->setEndElement(endNote);
+            gliss->setTick2(endNote->chord()->tick());
+            gliss->setTrack2(endNote->track());
+
             // All other Spanners
         } else if (spannerMapEntry.first->startCR()) {
             ChordRest* chordRest = this->findEnd(spannerMapEntry.second, spannerMapEntry.first->startCR());
