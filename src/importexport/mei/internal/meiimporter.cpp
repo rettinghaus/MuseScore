@@ -497,6 +497,8 @@ Spanner* MeiImporter::addSpanner(const libmei::Element& meiElement, Measure* mea
         item = Factory::createPedal(chordRest->segment());
     } else if (meiElement.m_name == "slur") {
         item = Factory::createSlur(chordRest->segment());
+    } else if (meiElement.m_name == "trill") {
+        item = Factory::createTrill(chordRest->segment());
     } else {
         return nullptr;
     }
@@ -2879,6 +2881,16 @@ bool MeiImporter::readTrill(pugi::xml_node trillNode, Measure* measure)
     libmei::Trill meiTrill;
     meiTrill.Read(trillNode);
 
+    if (meiTrill.HasEndid()) {
+        Trill* trill = static_cast<Trill*>(this->addSpanner(meiTrill, measure, trillNode));
+        if (!trill) {
+            // Warning message given in MeiExpoter::addSpanner
+            return true;
+        }
+
+        return true;
+    }
+
     Ornament* ornament = static_cast<Ornament*>(this->addToChordRest(meiTrill, measure));
     if (!ornament) {
         // Warning message given in MeiImporter::addToChordRest
@@ -3286,14 +3298,18 @@ void MeiImporter::addSpannerEnds()
             spannerMapEntry.first->setTick2(chordRest->tick());
             spannerMapEntry.first->setEndElement(chordRest);
             spannerMapEntry.first->setTrack2(chordRest->track());
-            if (spannerMapEntry.first->isOttava()) {
+            if (spannerMapEntry.first->isOttava() || spannerMapEntry.first->isTrill()) {
                 // Set the tick2 to include the duration of the ChordRest
                 spannerMapEntry.first->setTick2(chordRest->tick() + chordRest->ticks());
-                // Special handling of ottava
+                // Special handling of ottavas and trills
                 if (spannerMapEntry.first->isOttava()) {
                     Ottava* ottava = toOttava(spannerMapEntry.first);
                     // Make the staff fill the pitch offsets accordingly since we use Note::ppitch in export
                     ottava->staff()->updateOttava();
+                } else if  (spannerMapEntry.first->isOttava()) {
+                    Trill* trill = toTrill(spannerMapEntry.first);
+                    // Make the staff fill the pitch offsets accordingly since we use Note::ppitch in export
+                    trill->staff()->updateOttava();
                 }
             }
         }
