@@ -2559,10 +2559,12 @@ bool MeiImporter::readGliss(pugi::xml_node glissNode, Measure* measure)
     Glissando* gliss = Factory::createGlissando(startNote);
     m_uids->reg(gliss, meiGliss.m_xmlId);
     gliss->setAnchor(Spanner::Anchor::NOTE);
-    gliss->setStartElement(startNote);
     gliss->setTick(startNote->chord()->tick());
+    gliss->setStartElement(startNote);
     gliss->setTrack(startNote->track());
     gliss->setParent(startNote);
+
+    m_score->addElement(gliss);
 
     // Still add the glissando to the open Spanner map, which will handle glissandos differently as appropriate
     m_openSpannerMap[gliss] = glissNode;
@@ -3336,8 +3338,8 @@ void MeiImporter::addSpannerEnds()
                 continue;
             }
             Glissando* gliss = toGlissando(spannerMapEntry.first);
-            gliss->setEndElement(endNote);
             gliss->setTick2(endNote->chord()->tick());
+            gliss->setEndElement(endNote);
             gliss->setTrack2(endNote->track());
 
             // All other Spanners
