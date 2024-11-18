@@ -10,7 +10,6 @@
     <showFrames>1</showFrames>
     <showMargins>0</showMargins>
     <metaTag name="arranger"></metaTag>
-    <metaTag name="audioComUrl"></metaTag>
     <metaTag name="composer">Klaus Rettinghaus</metaTag>
     <metaTag name="copyright"></metaTag>
     <metaTag name="lyricist"></metaTag>
@@ -19,6 +18,7 @@
     <metaTag name="movementTitle"></metaTag>
     <metaTag name="source"></metaTag>
     <metaTag name="translator"></metaTag>
+    <metaTag name="workNumber"></metaTag>
     <metaTag name="workTitle">Glissando test</metaTag>
     <Part id="1">
       <Staff id="1">
@@ -28,11 +28,9 @@
         </Staff>
       <trackName></trackName>
       <Instrument id="piano">
+        <longName>Piano</longName>
+        <shortName>Pno.</shortName>
         <trackName></trackName>
-        <minPitchP>21</minPitchP>
-        <maxPitchP>108</maxPitchP>
-        <minPitchA>21</minPitchA>
-        <maxPitchA>108</maxPitchA>
         <instrumentId>keyboard.piano</instrumentId>
         <Channel>
           </Channel>
