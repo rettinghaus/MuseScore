@@ -2561,6 +2561,7 @@ bool MeiImporter::readGliss(pugi::xml_node glissNode, Measure* measure)
     gliss->setStartElement(startNote);
     gliss->setTrack(startNote->track());
     gliss->setParent(startNote);
+    gliss->setText(glissNode.text());
 
     m_score->addElement(gliss);
 
