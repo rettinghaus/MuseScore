@@ -2880,6 +2880,7 @@ bool MeiImporter::readTrill(pugi::xml_node trillNode, Measure* measure)
     bool warning;
     libmei::Trill meiTrill;
     meiTrill.Read(trillNode);
+    Ornament* ornament = nullptr;
 
     if (meiTrill.HasEndid()) {
         Trill* trill = static_cast<Trill*>(this->addSpanner(meiTrill, measure, trillNode));
@@ -2888,15 +2889,14 @@ bool MeiImporter::readTrill(pugi::xml_node trillNode, Measure* measure)
             return true;
         }
 
-        Convert::OrnamStruct ornamSt = Convert::trillFromMEI(trill->ornament(), meiTrill, warning);
-        this->setOrnamentAccid(trill->ornament(), ornamSt);
+        ornament = trill->ornament();
 
         // @color
         Convert::colorlineFromMEI(trill, meiTrill);
-        return true;
+    } else {
+        ornament = static_cast<Ornament*>(this->addToChordRest(meiTrill, measure));
     }
 
-    Ornament* ornament = static_cast<Ornament*>(this->addToChordRest(meiTrill, measure));
     if (!ornament) {
         // Warning message given in MeiImporter::addToChordRest
         return true;
