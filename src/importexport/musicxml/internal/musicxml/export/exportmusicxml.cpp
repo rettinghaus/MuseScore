@@ -6922,6 +6922,13 @@ void ExportMusicXml::keysigTimesig(const Measure* m, const Part* p)
                 }
             }
         }
+        for (staff_idx_t i = 1; i < nstaves; i++) {
+            // return here if it's a key change because of an instrument change
+            if (keysigs.at(i)->forInstrumentChange()) {
+                LOGD("keysigs for instrument change");
+                return;
+            }
+        }
 
         // write the keysigs
         //LOGD(" singleKey %d", singleKey);
@@ -7399,7 +7406,7 @@ void ExportMusicXml::findAndExportClef(const Measure* const m, const int staves,
             sstaff /= VOICES;
 
             Clef* cle = static_cast<Clef*>(seg->element(st));
-            if (cle) {
+            if (cle && !cle->forInstrumentChange()) {
                 clefDebug("exportxml: clef at start measure ti=%d ct=%d gen=%d", tick, int(cle->clefType()), cle->generated());
                 // output only clef changes, not generated clefs at line beginning
                 // exception: at tick=0, export clef anyway
@@ -7486,8 +7493,8 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
     size_t staffCount = 0;                               // count sum of # staves in parts
     const auto& parts = score->parts();
     int partGroupEnd[MAX_PART_GROUPS];                // staff where part group ends (bracketSpan is in staves, not parts)
-    for (int i = 0; i < MAX_PART_GROUPS; i++) {
-        partGroupEnd[i] = -1;
+    for (int &i : partGroupEnd) {
+        i = -1;
     }
     for (size_t idx = 0; idx < parts.size(); ++idx) {
         const Part* part = parts.at(idx);
@@ -7801,6 +7808,10 @@ void ExportMusicXml::writeInstrumentChange(const InstrumentChange* instrChange)
     }
     m_xml.endElement();
 
+    for (KeySig* keySig : instrChange->keySigs()) {
+        staff_idx_t st = m_score->staffIdx(part);
+        keysig(keySig, part->staff(st)->clef(instrChange->tick()), m_score->staffIdx(part), keySig->visible());
+    }
     writeInstrumentDetails(instr, m_score->style().styleB(Sid::concertPitch));
 
     m_xml.startElement("sound");
