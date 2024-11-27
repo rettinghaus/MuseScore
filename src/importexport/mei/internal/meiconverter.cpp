@@ -1615,7 +1615,7 @@ libmei::Gliss Convert::glissToMEI(const engraving::Glissando* gliss)
     // @lform
     switch (gliss->glissandoType()) {
     case engraving::GlissandoType::STRAIGHT:
-        meiGliss.SetLform(libmei::LINEFORM_solid);
+        meiGliss.SetLform(Convert::lineToMEI(gliss->lineStyle()));
         break;
     case engraving::GlissandoType::WAVY:
         meiGliss.SetLform(libmei::LINEFORM_wavy);
