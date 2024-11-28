@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <museScore version="4.20">
-  <programVersion>4.2.0</programVersion>
-  <programRevision>eb8d33c</programRevision>
-  <LastEID>154</LastEID>
   <Score>
     <Division>480</Division>
+    <Style>
+      <spatium>1.74978</spatium>
+      </Style>
     <showInvisible>1</showInvisible>
     <showUnprintable>1</showUnprintable>
     <showFrames>1</showFrames>
@@ -24,51 +24,6 @@
     <metaTag name="translator"></metaTag>
     <metaTag name="workNumber"></metaTag>
     <metaTag name="workTitle">The Art of Trill</metaTag>
-    <Order id="orchestral">
-      <name>Orchestral</name>
-      <instrument id="oboe">
-        <family id="oboes">Oboen</family>
-        </instrument>
-      <section id="woodwind" brackets="true" barLineSpan="true" thinBrackets="true">
-        <family>flutes</family>
-        <family>oboes</family>
-        <family>clarinets</family>
-        <family>saxophones</family>
-        <family>bassoons</family>
-        <unsorted group="woodwinds"/>
-        </section>
-      <section id="brass" brackets="true" barLineSpan="true" thinBrackets="true">
-        <family>horns</family>
-        <family>trumpets</family>
-        <family>cornets</family>
-        <family>flugelhorns</family>
-        <family>trombones</family>
-        <family>tubas</family>
-        </section>
-      <section id="timpani" brackets="true" barLineSpan="true" thinBrackets="true">
-        <family>timpani</family>
-        </section>
-      <section id="percussion" brackets="true" barLineSpan="true" thinBrackets="true">
-        <family>keyboard-percussion</family>
-        <family>drums</family>
-        <family>unpitched-metal-percussion</family>
-        <family>unpitched-wooden-percussion</family>
-        <family>other-percussion</family>
-        </section>
-      <family>keyboards</family>
-      <family>harps</family>
-      <family>organs</family>
-      <family>synths</family>
-      <soloists/>
-      <section id="voices" brackets="true" barLineSpan="false" thinBrackets="true">
-        <family>voices</family>
-        <family>voice-groups</family>
-        </section>
-      <section id="strings" brackets="true" barLineSpan="true" thinBrackets="true">
-        <family>orchestral-strings</family>
-        </section>
-      <unsorted/>
-      </Order>
     <Part id="1">
       <Staff id="1">
         <StaffType group="pitched">
@@ -95,9 +50,7 @@
       <VBox>
         <height>5.78748</height>
         <boxAutoSize>0</boxAutoSize>
-        <eid>4294967418</eid>
         <Text>
-          <eid>8589934598</eid>
           <style>title</style>
           <text>The Art of Trill</text>
           </Text>
@@ -105,21 +58,17 @@
       <Measure>
         <voice>
           <KeySig>
-            <eid>17179869206</eid>
             <concertKey>0</concertKey>
             </KeySig>
           <TimeSig>
-            <eid>21474836504</eid>
             <sigN>2</sigN>
             <sigD>4</sigD>
             </TimeSig>
           <Spanner type="Trill">
             <Trill>
               <subtype>trill</subtype>
-              <eid>25769803873</eid>
               <Ornament>
                 <subtype>ornamentTrill</subtype>
-                <eid>30064771104</eid>
                 </Ornament>
               </Trill>
             <next>
@@ -129,13 +78,10 @@
               </next>
             </Spanner>
           <Chord>
-            <eid>34359738483</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>38654705684</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>42949672990</eid>
                   </Tie>
                 <next>
                   <location>
@@ -152,43 +98,10 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>47244640371</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>51539607572</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>55834574878</eid>
-                  </Tie>
-                <next>
-                  <location>
-                    <measures>1</measures>
-                    </location>
-                  </next>
-                </Spanner>
-              <Spanner type="Tie">
-                <prev>
-                  <location>
-                    <measures>-1</measures>
-                    </location>
-                  </prev>
-                </Spanner>
-              <pitch>72</pitch>
-              <tpc>14</tpc>
-              </Note>
-            </Chord>
-          </voice>
-        </Measure>
-      <Measure>
-        <voice>
-          <Chord>
-            <eid>60129542259</eid>
-            <durationType>half</durationType>
-            <Note>
-              <eid>64424509460</eid>
-              <Spanner type="Tie">
-                <Tie>
-                  <eid>68719476766</eid>
                   </Tie>
                 <next>
                   <location>
@@ -212,10 +125,35 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>73014444147</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>77309411348</eid>
+              <Spanner type="Tie">
+                <Tie>
+                  </Tie>
+                <next>
+                  <location>
+                    <measures>1</measures>
+                    </location>
+                  </next>
+                </Spanner>
+              <Spanner type="Tie">
+                <prev>
+                  <location>
+                    <measures>-1</measures>
+                    </location>
+                  </prev>
+                </Spanner>
+              <pitch>72</pitch>
+              <tpc>14</tpc>
+              </Note>
+            </Chord>
+          </voice>
+        </Measure>
+      <Measure>
+        <voice>
+          <Chord>
+            <durationType>half</durationType>
+            <Note>
               <Spanner type="Tie">
                 <prev>
                   <location>
@@ -241,16 +179,13 @@
           <Spanner type="Trill">
             <Trill>
               <subtype>trill</subtype>
-              <eid>81604378721</eid>
               <Ornament>
                 <Accidental>
                   <subtype>accidentalSharp</subtype>
-                  <eid>85899345937</eid>
                   <placement>above</placement>
                   </Accidental>
                 <intervalAbove>second,augmented</intervalAbove>
                 <subtype>ornamentTrill</subtype>
-                <eid>90194313248</eid>
                 </Ornament>
               </Trill>
             <next>
@@ -260,13 +195,10 @@
               </next>
             </Spanner>
           <Chord>
-            <eid>94489280627</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>98784247828</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>103079215134</eid>
                   </Tie>
                 <next>
                   <location>
@@ -283,43 +215,10 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>107374182515</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>111669149716</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>115964117022</eid>
-                  </Tie>
-                <next>
-                  <location>
-                    <measures>1</measures>
-                    </location>
-                  </next>
-                </Spanner>
-              <Spanner type="Tie">
-                <prev>
-                  <location>
-                    <measures>-1</measures>
-                    </location>
-                  </prev>
-                </Spanner>
-              <pitch>72</pitch>
-              <tpc>14</tpc>
-              </Note>
-            </Chord>
-          </voice>
-        </Measure>
-      <Measure>
-        <voice>
-          <Chord>
-            <eid>120259084403</eid>
-            <durationType>half</durationType>
-            <Note>
-              <eid>124554051604</eid>
-              <Spanner type="Tie">
-                <Tie>
-                  <eid>128849018910</eid>
                   </Tie>
                 <next>
                   <location>
@@ -343,10 +242,35 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>133143986291</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>137438953492</eid>
+              <Spanner type="Tie">
+                <Tie>
+                  </Tie>
+                <next>
+                  <location>
+                    <measures>1</measures>
+                    </location>
+                  </next>
+                </Spanner>
+              <Spanner type="Tie">
+                <prev>
+                  <location>
+                    <measures>-1</measures>
+                    </location>
+                  </prev>
+                </Spanner>
+              <pitch>72</pitch>
+              <tpc>14</tpc>
+              </Note>
+            </Chord>
+          </voice>
+        </Measure>
+      <Measure>
+        <voice>
+          <Chord>
+            <durationType>half</durationType>
+            <Note>
               <Spanner type="Tie">
                 <prev>
                   <location>
@@ -372,13 +296,11 @@
           <Spanner type="Trill">
             <Trill>
               <subtype>trill</subtype>
-              <eid>141733920865</eid>
               <color r="255" g="38" b="0" a="255"/>
               <color r="255" g="38" b="0" a="255"/>
               <Ornament>
                 <intervalAbove>second,major</intervalAbove>
                 <subtype>ornamentTrill</subtype>
-                <eid>146028888096</eid>
                 </Ornament>
               </Trill>
             <next>
@@ -388,13 +310,10 @@
               </next>
             </Spanner>
           <Chord>
-            <eid>150323855475</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>154618822676</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>158913789982</eid>
                   </Tie>
                 <next>
                   <location>
@@ -411,43 +330,10 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>163208757363</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>167503724564</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>171798691870</eid>
-                  </Tie>
-                <next>
-                  <location>
-                    <measures>1</measures>
-                    </location>
-                  </next>
-                </Spanner>
-              <Spanner type="Tie">
-                <prev>
-                  <location>
-                    <measures>-1</measures>
-                    </location>
-                  </prev>
-                </Spanner>
-              <pitch>72</pitch>
-              <tpc>14</tpc>
-              </Note>
-            </Chord>
-          </voice>
-        </Measure>
-      <Measure>
-        <voice>
-          <Chord>
-            <eid>176093659251</eid>
-            <durationType>half</durationType>
-            <Note>
-              <eid>180388626452</eid>
-              <Spanner type="Tie">
-                <Tie>
-                  <eid>184683593758</eid>
                   </Tie>
                 <next>
                   <location>
@@ -471,10 +357,35 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>188978561139</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>193273528340</eid>
+              <Spanner type="Tie">
+                <Tie>
+                  </Tie>
+                <next>
+                  <location>
+                    <measures>1</measures>
+                    </location>
+                  </next>
+                </Spanner>
+              <Spanner type="Tie">
+                <prev>
+                  <location>
+                    <measures>-1</measures>
+                    </location>
+                  </prev>
+                </Spanner>
+              <pitch>72</pitch>
+              <tpc>14</tpc>
+              </Note>
+            </Chord>
+          </voice>
+        </Measure>
+      <Measure>
+        <voice>
+          <Chord>
+            <durationType>half</durationType>
+            <Note>
               <Spanner type="Tie">
                 <prev>
                   <location>
@@ -500,16 +411,13 @@
           <Spanner type="Trill">
             <Trill>
               <subtype>trill</subtype>
-              <eid>197568495713</eid>
               <Ornament>
                 <Accidental>
                   <subtype>accidentalFlat</subtype>
-                  <eid>201863462929</eid>
                   <placement>above</placement>
                   </Accidental>
                 <intervalAbove>second,minor</intervalAbove>
                 <subtype>ornamentTrill</subtype>
-                <eid>206158430240</eid>
                 </Ornament>
               </Trill>
             <next>
@@ -519,13 +427,10 @@
               </next>
             </Spanner>
           <Chord>
-            <eid>210453397619</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>214748364820</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>219043332126</eid>
                   </Tie>
                 <next>
                   <location>
@@ -542,43 +447,10 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>223338299507</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>227633266708</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>231928234014</eid>
-                  </Tie>
-                <next>
-                  <location>
-                    <measures>1</measures>
-                    </location>
-                  </next>
-                </Spanner>
-              <Spanner type="Tie">
-                <prev>
-                  <location>
-                    <measures>-1</measures>
-                    </location>
-                  </prev>
-                </Spanner>
-              <pitch>72</pitch>
-              <tpc>14</tpc>
-              </Note>
-            </Chord>
-          </voice>
-        </Measure>
-      <Measure>
-        <voice>
-          <Chord>
-            <eid>236223201395</eid>
-            <durationType>half</durationType>
-            <Note>
-              <eid>240518168596</eid>
-              <Spanner type="Tie">
-                <Tie>
-                  <eid>244813135902</eid>
                   </Tie>
                 <next>
                   <location>
@@ -602,10 +474,35 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>249108103283</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>253403070484</eid>
+              <Spanner type="Tie">
+                <Tie>
+                  </Tie>
+                <next>
+                  <location>
+                    <measures>1</measures>
+                    </location>
+                  </next>
+                </Spanner>
+              <Spanner type="Tie">
+                <prev>
+                  <location>
+                    <measures>-1</measures>
+                    </location>
+                  </prev>
+                </Spanner>
+              <pitch>72</pitch>
+              <tpc>14</tpc>
+              </Note>
+            </Chord>
+          </voice>
+        </Measure>
+      <Measure>
+        <voice>
+          <Chord>
+            <durationType>half</durationType>
+            <Note>
               <Spanner type="Tie">
                 <prev>
                   <location>
@@ -631,16 +528,13 @@
           <Spanner type="Trill">
             <Trill>
               <subtype>trill</subtype>
-              <eid>257698037857</eid>
               <Ornament>
                 <Accidental>
                   <subtype>accidentalDoubleFlat</subtype>
-                  <eid>261993005073</eid>
                   <placement>above</placement>
                   </Accidental>
                 <intervalAbove>second,diminished</intervalAbove>
                 <subtype>ornamentTrill</subtype>
-                <eid>266287972384</eid>
                 </Ornament>
               </Trill>
             <next>
@@ -650,13 +544,10 @@
               </next>
             </Spanner>
           <Chord>
-            <eid>270582939763</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>274877906964</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>279172874270</eid>
                   </Tie>
                 <next>
                   <location>
@@ -673,43 +564,10 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>283467841651</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>287762808852</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>292057776158</eid>
-                  </Tie>
-                <next>
-                  <location>
-                    <measures>1</measures>
-                    </location>
-                  </next>
-                </Spanner>
-              <Spanner type="Tie">
-                <prev>
-                  <location>
-                    <measures>-1</measures>
-                    </location>
-                  </prev>
-                </Spanner>
-              <pitch>72</pitch>
-              <tpc>14</tpc>
-              </Note>
-            </Chord>
-          </voice>
-        </Measure>
-      <Measure>
-        <voice>
-          <Chord>
-            <eid>296352743539</eid>
-            <durationType>half</durationType>
-            <Note>
-              <eid>300647710740</eid>
-              <Spanner type="Tie">
-                <Tie>
-                  <eid>304942678046</eid>
                   </Tie>
                 <next>
                   <location>
@@ -733,10 +591,35 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>309237645427</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>313532612628</eid>
+              <Spanner type="Tie">
+                <Tie>
+                  </Tie>
+                <next>
+                  <location>
+                    <measures>1</measures>
+                    </location>
+                  </next>
+                </Spanner>
+              <Spanner type="Tie">
+                <prev>
+                  <location>
+                    <measures>-1</measures>
+                    </location>
+                  </prev>
+                </Spanner>
+              <pitch>72</pitch>
+              <tpc>14</tpc>
+              </Note>
+            </Chord>
+          </voice>
+        </Measure>
+      <Measure>
+        <voice>
+          <Chord>
+            <durationType>half</durationType>
+            <Note>
               <Spanner type="Tie">
                 <prev>
                   <location>
@@ -762,10 +645,8 @@
           <Spanner type="Trill">
             <Trill>
               <subtype>trill</subtype>
-              <eid>317827580001</eid>
               <Ornament>
                 <subtype>ornamentTrill</subtype>
-                <eid>322122547232</eid>
                 </Ornament>
               </Trill>
             <next>
@@ -775,13 +656,10 @@
               </next>
             </Spanner>
           <Chord>
-            <eid>326417514611</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>330712481812</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>335007449118</eid>
                   </Tie>
                 <next>
                   <location>
@@ -798,10 +676,8 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>339302416499</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>343597383700</eid>
               <Spanner type="Tie">
                 <prev>
                   <location>
@@ -827,20 +703,15 @@
           <Spanner type="Trill">
             <Trill>
               <subtype>trill</subtype>
-              <eid>347892351073</eid>
               <Ornament>
                 <Chord>
-                  <eid>352187318387</eid>
                   <small>1</small>
                   <Note>
-                    <eid>356482285588</eid>
                     <Symbol>
                       <name>noteheadParenthesisLeft</name>
-                      <eid>360777252869</eid>
                       </Symbol>
                     <Symbol>
                       <name>noteheadParenthesisRight</name>
-                      <eid>365072220165</eid>
                       </Symbol>
                     <pitch>76</pitch>
                     <tpc>18</tpc>
@@ -849,7 +720,6 @@
                   </Chord>
                 <intervalAbove>third,auto</intervalAbove>
                 <subtype>ornamentTrill</subtype>
-                <eid>369367187488</eid>
                 </Ornament>
               </Trill>
             <next>
@@ -859,13 +729,10 @@
               </next>
             </Spanner>
           <Chord>
-            <eid>373662154867</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>377957122068</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>382252089374</eid>
                   </Tie>
                 <next>
                   <location>
@@ -882,10 +749,8 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>386547056755</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>390842023956</eid>
               <Spanner type="Tie">
                 <prev>
                   <location>
@@ -911,20 +776,15 @@
           <Spanner type="Trill">
             <Trill>
               <subtype>trill</subtype>
-              <eid>395136991329</eid>
               <Ornament>
                 <Chord>
-                  <eid>399431958643</eid>
                   <small>1</small>
                   <Note>
-                    <eid>403726925844</eid>
                     <Symbol>
                       <name>noteheadParenthesisLeft</name>
-                      <eid>408021893125</eid>
                       </Symbol>
                     <Symbol>
                       <name>noteheadParenthesisRight</name>
-                      <eid>412316860421</eid>
                       </Symbol>
                     <pitch>77</pitch>
                     <tpc>13</tpc>
@@ -933,7 +793,6 @@
                   </Chord>
                 <intervalAbove>fourth,auto</intervalAbove>
                 <subtype>ornamentTrill</subtype>
-                <eid>416611827744</eid>
                 </Ornament>
               </Trill>
             <next>
@@ -943,13 +802,10 @@
               </next>
             </Spanner>
           <Chord>
-            <eid>420906795123</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>425201762324</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>429496729630</eid>
                   </Tie>
                 <next>
                   <location>
@@ -966,10 +822,8 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>433791697011</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>438086664212</eid>
               <Spanner type="Tie">
                 <prev>
                   <location>
@@ -995,20 +849,15 @@
           <Spanner type="Trill">
             <Trill>
               <subtype>trill</subtype>
-              <eid>442381631585</eid>
               <Ornament>
                 <Chord>
-                  <eid>446676598899</eid>
                   <small>1</small>
                   <Note>
-                    <eid>450971566100</eid>
                     <Symbol>
                       <name>noteheadParenthesisLeft</name>
-                      <eid>455266533381</eid>
                       </Symbol>
                     <Symbol>
                       <name>noteheadParenthesisRight</name>
-                      <eid>459561500677</eid>
                       </Symbol>
                     <pitch>79</pitch>
                     <tpc>15</tpc>
@@ -1017,7 +866,6 @@
                   </Chord>
                 <intervalAbove>fifth,auto</intervalAbove>
                 <subtype>ornamentTrill</subtype>
-                <eid>463856468000</eid>
                 </Ornament>
               </Trill>
             <next>
@@ -1027,13 +875,10 @@
               </next>
             </Spanner>
           <Chord>
-            <eid>468151435379</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>472446402580</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>476741369886</eid>
                   </Tie>
                 <next>
                   <location>
@@ -1050,10 +895,8 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>481036337267</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>485331304468</eid>
               <Spanner type="Tie">
                 <prev>
                   <location>
@@ -1079,20 +922,15 @@
           <Spanner type="Trill">
             <Trill>
               <subtype>trill</subtype>
-              <eid>489626271841</eid>
               <Ornament>
                 <Chord>
-                  <eid>493921239155</eid>
                   <small>1</small>
                   <Note>
-                    <eid>498216206356</eid>
                     <Symbol>
                       <name>noteheadParenthesisLeft</name>
-                      <eid>502511173637</eid>
                       </Symbol>
                     <Symbol>
                       <name>noteheadParenthesisRight</name>
-                      <eid>506806140933</eid>
                       </Symbol>
                     <pitch>81</pitch>
                     <tpc>17</tpc>
@@ -1101,7 +939,6 @@
                   </Chord>
                 <intervalAbove>sixth,auto</intervalAbove>
                 <subtype>ornamentTrill</subtype>
-                <eid>511101108256</eid>
                 </Ornament>
               </Trill>
             <next>
@@ -1111,13 +948,10 @@
               </next>
             </Spanner>
           <Chord>
-            <eid>515396075635</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>519691042836</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>523986010142</eid>
                   </Tie>
                 <next>
                   <location>
@@ -1134,10 +968,8 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>528280977523</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>532575944724</eid>
               <Spanner type="Tie">
                 <prev>
                   <location>
@@ -1163,20 +995,15 @@
           <Spanner type="Trill">
             <Trill>
               <subtype>trill</subtype>
-              <eid>536870912097</eid>
               <Ornament>
                 <Chord>
-                  <eid>541165879411</eid>
                   <small>1</small>
                   <Note>
-                    <eid>545460846612</eid>
                     <Symbol>
                       <name>noteheadParenthesisLeft</name>
-                      <eid>549755813893</eid>
                       </Symbol>
                     <Symbol>
                       <name>noteheadParenthesisRight</name>
-                      <eid>554050781189</eid>
                       </Symbol>
                     <pitch>83</pitch>
                     <tpc>19</tpc>
@@ -1185,7 +1012,6 @@
                   </Chord>
                 <intervalAbove>seventh,auto</intervalAbove>
                 <subtype>ornamentTrill</subtype>
-                <eid>558345748512</eid>
                 </Ornament>
               </Trill>
             <next>
@@ -1195,13 +1021,10 @@
               </next>
             </Spanner>
           <Chord>
-            <eid>562640715891</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>566935683092</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>571230650398</eid>
                   </Tie>
                 <next>
                   <location>
@@ -1218,10 +1041,8 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>575525617779</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>579820584980</eid>
               <Spanner type="Tie">
                 <prev>
                   <location>
@@ -1247,20 +1068,15 @@
           <Spanner type="Trill">
             <Trill>
               <subtype>trill</subtype>
-              <eid>584115552353</eid>
               <Ornament>
                 <Chord>
-                  <eid>588410519667</eid>
                   <small>1</small>
                   <Note>
-                    <eid>592705486868</eid>
                     <Symbol>
                       <name>noteheadParenthesisLeft</name>
-                      <eid>597000454149</eid>
                       </Symbol>
                     <Symbol>
                       <name>noteheadParenthesisRight</name>
-                      <eid>601295421445</eid>
                       </Symbol>
                     <pitch>84</pitch>
                     <tpc>14</tpc>
@@ -1269,7 +1085,6 @@
                   </Chord>
                 <intervalAbove>octave,auto</intervalAbove>
                 <subtype>ornamentTrill</subtype>
-                <eid>605590388768</eid>
                 </Ornament>
               </Trill>
             <next>
@@ -1279,13 +1094,10 @@
               </next>
             </Spanner>
           <Chord>
-            <eid>609885356147</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>614180323348</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>618475290654</eid>
                   </Tie>
                 <next>
                   <location>
@@ -1302,10 +1114,8 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>622770258035</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>627065225236</eid>
               <Spanner type="Tie">
                 <prev>
                   <location>
@@ -1331,17 +1141,14 @@
           <Spanner type="Trill">
             <Trill>
               <subtype>trill</subtype>
-              <eid>631360192609</eid>
               <Ornament>
                 <Accidental>
                   <subtype>accidentalNatural</subtype>
-                  <eid>635655159825</eid>
                   <color r="115" g="250" b="121" a="255"/>
                   <placement>above</placement>
                   </Accidental>
                 <ornamentShowAccidental>2</ornamentShowAccidental>
                 <subtype>ornamentTrill</subtype>
-                <eid>639950127136</eid>
                 </Ornament>
               </Trill>
             <next>
@@ -1352,13 +1159,10 @@
               </next>
             </Spanner>
           <Chord>
-            <eid>644245094515</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>648540061716</eid>
               <Spanner type="Tie">
                 <Tie>
-                  <eid>652835029022</eid>
                   </Tie>
                 <next>
                   <location>
@@ -1375,10 +1179,8 @@
       <Measure>
         <voice>
           <Chord>
-            <eid>657129996403</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>661424963604</eid>
               <Spanner type="Tie">
                 <prev>
                   <location>
