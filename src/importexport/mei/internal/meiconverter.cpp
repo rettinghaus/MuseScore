@@ -1581,6 +1581,9 @@ void Convert::fingFromMEI(engraving::Fingering* fing, const StringList& meiLines
         fing->setPlacement(meiFing.GetPlace() == libmei::STAFFREL_above ? engraving::PlacementV::ABOVE : engraving::PlacementV::BELOW);
         fing->setPropertyFlags(engraving::Pid::PLACEMENT, engraving::PropertyFlags::UNSTYLED);
     }
+
+    // @color
+    Convert::colorFromMEI(fing, meiFing);
 }
 
 libmei::Fing Convert::fingToMEI(const engraving::Fingering* fing, StringList& meiLines)
@@ -1595,6 +1598,9 @@ libmei::Fing Convert::fingToMEI(const engraving::Fingering* fing, StringList& me
     if (fing->propertyFlags(engraving::Pid::PLACEMENT) == engraving::PropertyFlags::UNSTYLED) {
         meiFing.SetPlace(Convert::placeToMEI(fing->placement()));
     }
+
+    // @color
+    Convert::colorToMEI(fing, meiFing);
 
     return meiFing;
 }
