@@ -269,7 +269,7 @@ public:
 };
 
 /**
- * Multiple measures of rest compressed into a single symbol, frequently found in
+ * Multiple full measure rests compressed into a single bar, frequently found in
  * performer parts.
  **/
 class MultiRest : public Element, public AttLabelled, public AttTyped, public AttLayerIdent, public AttStaffIdent, public AttNumbered, public AttMultiRestVis, public AttColor, public AttExtSymAuth, public AttExtSymNames, public AttNumberPlacement, public AttStaffLocPitched, public AttTypography, public AttWidth {
