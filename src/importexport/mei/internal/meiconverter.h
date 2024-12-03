@@ -272,7 +272,7 @@ public:
     static PitchStruct pitchFromMEI(const libmei::Note& meiNote, const libmei::Accid& meiAccid, const engraving::Interval& interval,
                                     bool& warning);
     static std::pair<libmei::Note, libmei::Accid> pitchToMEI(const engraving::Note* note, const engraving::Accidental* accid,
-                                                             const engraving::Interval& interval);
+                                                             const engraving::Interval& interval, const bool unpitched);
 
     static engraving::PlacementV placeFromMEI(const libmei::data_STAFFREL meiPlace, bool& warning);
     static libmei::data_STAFFREL placeToMEI(engraving::PlacementV place);
