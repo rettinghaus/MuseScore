@@ -1318,7 +1318,8 @@ bool MeiExporter::writeNote(const Note* note, const Chord* chord, const Staff* s
     }
 
     Interval interval = staff->part()->instrument()->transpose();
-    auto [meiNote, meiAccid] = Convert::pitchToMEI(note, note->accidental(), interval);
+    const bool unpitched = staff->part()->instrument()->useDrumset();
+    auto [meiNote, meiAccid] = Convert::pitchToMEI(note, note->accidental(), interval, unpitched);
     m_currentNode = m_currentNode.append_child();
     if (!isChord) {
         meiNote.SetDur(Convert::durToMEI(chord->durationType().type()));

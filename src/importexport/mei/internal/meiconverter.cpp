@@ -2603,7 +2603,7 @@ Convert::PitchStruct Convert::pitchFromMEI(const libmei::Note& meiNote, const li
 }
 
 std::pair<libmei::Note, libmei::Accid> Convert::pitchToMEI(const engraving::Note* note, const engraving::Accidental* accid,
-                                                           const engraving::Interval& interval)
+                                                           const engraving::Interval& interval, const bool unpitched)
 {
     libmei::Note meiNote;
     libmei::Accid meiAccid;
