@@ -527,6 +527,22 @@ enum data_COMPASSDIRECTION_extended : int8_t {
 };
 
 /**
+ * MEI data.COURSETUNING
+ */
+enum data_COURSETUNING : int8_t {
+    COURSETUNING_NONE = 0,
+    COURSETUNING_guitar_standard,
+    COURSETUNING_guitar_drop_D,
+    COURSETUNING_guitar_open_D,
+    COURSETUNING_guitar_open_G,
+    COURSETUNING_guitar_open_A,
+    COURSETUNING_lute_renaissance_6,
+    COURSETUNING_lute_baroque_d_major,
+    COURSETUNING_lute_baroque_d_minor,
+    COURSETUNING_MAX
+};
+
+/**
  * MEI data.ENCLOSURE
  */
 enum data_ENCLOSURE : int8_t {
