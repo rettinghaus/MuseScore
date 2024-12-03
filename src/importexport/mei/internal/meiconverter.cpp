@@ -2612,6 +2612,13 @@ std::pair<libmei::Note, libmei::Accid> Convert::pitchToMEI(const engraving::Note
         return { meiNote, meiAccid };
     }
 
+    if (unpitched) {
+        const int pitch = note->pitch();
+        meiNote.SetLoc(pitch - 64);
+        meiNote.SetPnum(pitch);
+        return { meiNote, meiAccid };
+    }
+
     Convert::PitchStruct pitch;
     pitch.pitch = note->pitch();
     pitch.tpc2 = note->tpc2();
