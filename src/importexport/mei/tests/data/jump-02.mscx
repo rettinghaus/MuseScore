@@ -33,6 +33,9 @@
         <trackName></trackName>
         <instrumentId>wind.flutes.flute</instrumentId>
         <Channel>
+          <program value="72"/>
+          <midiPort>0</midiPort>
+          <midiChannel>2</midiChannel>
           </Channel>
         </Instrument>
       </Part>

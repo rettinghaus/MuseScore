@@ -24,6 +24,7 @@
                   </pgHead>
                   <staffGrp>
                      <staffDef n="1" lines="5" meter.count="4" meter.unit="4">
+                        <instrDef midi.channel="0" midi.instrnum="52" midi.pan="64" midi.volume="78.74%" />
                         <clef shape="G" line="2" glyph.auth="smufl" glyph.name="gClef8vbParens" />
                      </staffDef>
                   </staffGrp>

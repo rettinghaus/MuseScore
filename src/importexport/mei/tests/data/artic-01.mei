@@ -34,6 +34,7 @@
                      <staffDef n="1" lines="5" meter.count="4" meter.unit="4">
                         <label>Violin</label>
                         <labelAbbr>Vln.</labelAbbr>
+                        <instrDef midi.channel="0" midi.instrnum="40" midi.pan="64" midi.volume="78.74%" />
                         <clef shape="G" line="2" />
                      </staffDef>
                   </staffGrp>

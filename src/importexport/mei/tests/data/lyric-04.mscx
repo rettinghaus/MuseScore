@@ -28,10 +28,11 @@
           </StaffType>
         </Staff>
       <trackName></trackName>
-      <Instrument id="piano">
+      <Instrument id="tenor">
         <trackName></trackName>
-        <instrumentId>keyboard.piano</instrumentId>
+        <instrumentId>voice.tenor</instrumentId>
         <Channel>
+          <program value="52"/>
           </Channel>
         </Instrument>
       </Part>
