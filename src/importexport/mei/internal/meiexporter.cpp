@@ -769,24 +769,32 @@ bool MeiExporter::writeInstrDef(pugi::xml_node node, const Part* part)
         return false;
     }
 
-    const Instrument* instrument = part->instrument();
-    if (instrument) {
-        libmei::InstrDef meiInstrDef;
-        pugi::xml_node instrDefNode = node.append_child();
-        const int midiChannel = instrument->channel(0)->channel();
-        if (midiChannel >= 0 && midiChannel < 16) {
-            meiInstrDef.SetMidiChannel(midiChannel);
-        }
-        const int midiProgram = instrument->channel(0)->program();
-        if (midiProgram >= 0 && midiProgram < 128) {
-            meiInstrDef.SetMidiInstrnum(midiProgram);
-        }
-        meiInstrDef.SetMidiVolume((instrument->channel(0)->volume() / 127.0) * 100);
-        libmei::data_MIDIVALUE_PAN panvalue;
-        panvalue.SetMidivalue(instrument->channel(0)->pan());
-        meiInstrDef.SetMidiPan(panvalue);
-        meiInstrDef.Write(instrDefNode);
+    const InstrChannel* channel = part->instrument()->channel(0);
+    const int midiChannel = channel->channel();
+    const int midiPort = part->midiPort();
+    const int midiProgram = channel->program();
+
+    if (midiProgram < 0) {
+        return false;
     }
+
+    libmei::InstrDef meiInstrDef;
+    pugi::xml_node instrDefNode = node.append_child();
+    if (midiProgram >= 0 && midiProgram < 128) {
+        meiInstrDef.SetMidiInstrnum(midiProgram);
+    }
+    // MEI only supports MIDI 1.0 values
+    if (midiPort >= 0 && midiPort < 16) {
+        //meiInstrDef.SetMidiPort(midiPort);
+    }
+    if (midiChannel >= 0 && midiChannel < 16) {
+        meiInstrDef.SetMidiChannel(midiChannel);
+    }
+    meiInstrDef.SetMidiVolume((channel->volume() / 127.0) * 100);
+    libmei::data_MIDIVALUE_PAN panvalue;
+    panvalue.SetMidivalue(channel->pan());
+    meiInstrDef.SetMidiPan(panvalue);
+    meiInstrDef.Write(instrDefNode);
 
     return true;
 }
