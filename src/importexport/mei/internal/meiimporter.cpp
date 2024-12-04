@@ -2759,7 +2759,10 @@ bool MeiImporter::readInstrDef(pugi::xml_node instrDefNode, Part* part)
     libmei::InstrDef meiInstrDef;
     meiInstrDef.Read(instrDefNode);
 
+    const int port = -1;
+
     part->setMidiProgram(meiInstrDef.GetMidiInstrnum());
+    part->setMidiChannel(meiInstrDef.GetMidiChannel(), port);
 
     return true;
 }
