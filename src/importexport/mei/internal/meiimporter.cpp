@@ -2586,6 +2586,27 @@ bool MeiImporter::readHarm(pugi::xml_node harmNode, Measure* measure)
 }
 
 /**
+ * Read a instrDef (instrument definition).
+ */
+
+bool MeiImporter::readInstrDef(pugi::xml_node instrDefNode, Part* part)
+{
+    IF_ASSERT_FAILED(part) {
+        return false;
+    }
+
+    libmei::InstrDef meiInstrDef;
+    meiInstrDef.Read(instrDefNode);
+
+    const int port = -1;
+
+    part->setMidiProgram(meiInstrDef.GetMidiInstrnum());
+    part->setMidiChannel(meiInstrDef.GetMidiChannel(), port);
+
+    return true;
+}
+
+/**
  * Read a lv.
  */
 
@@ -3129,12 +3150,7 @@ bool MeiImporter::buildScoreParts(pugi::xml_node scoreDefNode)
         }
 
         pugi::xml_node instrDefNode = labelNode.parent().select_node("./instrDef").node();
-        if (instrDefNode) {
-            const int channel = instrDefNode.attribute("midi.channel").as_int();
-            const int program = instrDefNode.attribute("midi.instrnum").as_int();
-            part->setMidiChannel(channel);
-            part->setMidiProgram(program);
-        }
+        readInstrDef(instrDefNode, part);
 
         m_score->appendPart(part);
 
