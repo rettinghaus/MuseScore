@@ -44,6 +44,7 @@ class ChordRest;
 class Clef;
 class EngravingItem;
 class Fingering;
+class InstrChannel;
 class Lyrics;
 class Measure;
 class Note;
