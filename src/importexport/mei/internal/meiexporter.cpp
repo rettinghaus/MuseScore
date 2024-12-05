@@ -785,7 +785,9 @@ bool MeiExporter::writeInstrDef(pugi::xml_node node, const Part* part)
     }
     // MEI only supports MIDI 1.0 values
     if (midiPort >= 0 && midiPort < 16) {
-        //meiInstrDef.SetMidiPort(midiPort);
+        libmei::data_MIDIVALUE_NAME portvalue;
+        portvalue.SetMidivalue(midiPort);
+        meiInstrDef.SetMidiPort(portvalue);
     }
     if (midiChannel >= 0 && midiChannel < 16) {
         meiInstrDef.SetMidiChannel(midiChannel);
