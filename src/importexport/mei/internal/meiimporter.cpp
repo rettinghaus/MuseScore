@@ -2890,6 +2890,10 @@ bool MeiImporter::readTrill(pugi::xml_node trillNode, Measure* measure)
         }
 
         ornament = trill->ornament();
+        if (!ornament) {
+            ornament = Factory::createOrnament(toChordRest(trill->parentItem(true)));
+            t->setOrnament(ornament);
+        }
 
         // @color
         Convert::colorlineFromMEI(trill, meiTrill);
