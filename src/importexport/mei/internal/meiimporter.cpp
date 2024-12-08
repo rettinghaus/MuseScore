@@ -2892,14 +2892,11 @@ bool MeiImporter::readTrill(pugi::xml_node trillNode, Measure* measure)
 
     if (meiTrill.HasEndid()) {
         Trill* trill = static_cast<Trill*>(this->addSpanner(meiTrill, measure, trillNode));
-        if (!trill) {
-            // Warning message given in MeiImporter::addSpanner
-            return true;
+        if (trill) {
+            trill->setOrnament(ornament);
+            // @color
+            Convert::colorlineFromMEI(trill, meiTrill);
         }
-        trill->setOrnament(ornament);
-
-        // @color
-        Convert::colorlineFromMEI(trill, meiTrill);
     }
 
     Convert::OrnamStruct ornamSt = Convert::trillFromMEI(ornament, meiTrill, warning);
