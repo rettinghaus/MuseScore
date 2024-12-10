@@ -880,7 +880,7 @@ void SlurHandler::doSlurs(const ChordRest* chordRest, Notations& notations, XmlW
         // search for slur(s) starting or stopping at this chord
         for (const auto& it : chordRest->score()->spanner()) {
             auto sp = it.second;
-            if (sp->generated() || sp->type() != ElementType::SLUR || !ExportMusicXml::canWrite(sp)) {
+            if (sp->generated() || !sp->isSlur() || !ExportMusicXml::canWrite(sp)) {
                 continue;
             }
             if (chordRest == sp->startElement() || chordRest == sp->endElement()) {
@@ -1241,7 +1241,7 @@ void ExportMusicXml::calcDivisions()
         track_idx_t etrack = strack + staves * VOICES;
 
         for (MeasureBase* mb = m_score->measures()->first(); mb; mb = mb->next()) {
-            if (mb->type() != ElementType::MEASURE) {
+            if (mb->isMeasure()) {
                 continue;
             }
             Measure* m = (Measure*)mb;
@@ -1249,7 +1249,7 @@ void ExportMusicXml::calcDivisions()
             for (track_idx_t st = strack; st < etrack; ++st) {
                 for (Segment* seg = m->first(); seg; seg = seg->next()) {
                     for (const EngravingItem* e : seg->annotations()) {
-                        if (e->track() == st && e->type() == ElementType::FIGURED_BASS) {
+                        if (e->track() == st && e->isFiguredBass()) {
                             const FiguredBass* fb = toFiguredBass(e);
 #ifdef DEBUG_TICK
                             LOGD("figuredbass tick %d duration %d", fb->tick().ticks(), fb->ticks().ticks());
@@ -1264,7 +1264,7 @@ void ExportMusicXml::calcDivisions()
                     }
 
                     // must ignore start repeat to prevent spurious backup/forward
-                    if (el->type() == ElementType::BAR_LINE && toBarLine(el)->barLineType() == BarLineType::START_REPEAT) {
+                    if (el->isBarLine() && toBarLine(el)->barLineType() == BarLineType::START_REPEAT) {
                         continue;
                     }
 
@@ -6633,7 +6633,7 @@ static void figuredBass(XmlWriter& xml, track_idx_t strack, track_idx_t etrack, 
             }
 
             if (track == wtrack) {
-                if (e->type() == ElementType::FIGURED_BASS) {
+                if (e->isFiguredBass()) {
                     const FiguredBass* fb = dynamic_cast<const FiguredBass*>(e);
                     if (fb->items().empty()) {
                         continue;
@@ -6656,7 +6656,7 @@ static void figuredBass(XmlWriter& xml, track_idx_t strack, track_idx_t etrack, 
                     // Check for changing figures under a single note (each figure stored in a separate segment)
                     for (Segment* segNext = seg->next(); segNext && segNext->element(track) == NULL; segNext = segNext->next()) {
                         for (EngravingItem* annot : segNext->annotations()) {
-                            if (annot->type() == ElementType::FIGURED_BASS && annot->track() == track) {
+                            if (annot->isFiguredBass() && annot->track() == track) {
                                 fb = dynamic_cast<const FiguredBass*>(annot);
                                 writeMusicXml(fb, xml, true, 0, 0, true, divisions);
                             }
@@ -6864,7 +6864,7 @@ void ExportMusicXml::keysigTimesig(const Measure* m, const Part* p)
             if (!el) {
                 continue;
             }
-            if (el->type() == ElementType::KEYSIG) {
+            if (el->isKeySig()) {
                 //LOGD(" found keysig %p track %d", el, el->track());
                 staff_idx_t st = (t - strack) / VOICES;
                 if (!el->generated()) {
@@ -6926,7 +6926,7 @@ void ExportMusicXml::keysigTimesig(const Measure* m, const Part* p)
             break;
         }
         EngravingItem* el = seg->element(strack);
-        if (el && el->type() == ElementType::TIMESIG) {
+        if (el && el->isTimeSig()) {
             tsig = (TimeSig*)el;
         }
     }
@@ -7418,7 +7418,7 @@ static void findPitchesUsed(const Part* part, pitchSet& set)
 
     // loop over all chords in the part
     for (const MeasureBase* mb = part->score()->measures()->first(); mb; mb = mb->next()) {
-        if (mb->type() != ElementType::MEASURE) {
+        if (mb->isMeasure()) {
             continue;
         }
         const Measure* m = static_cast<const Measure*>(mb);
@@ -7428,7 +7428,7 @@ static void findPitchesUsed(const Part* part, pitchSet& set)
                 if (!el) {
                     continue;
                 }
-                if (el->type() == ElementType::CHORD) {
+                if (el->isChord()) {
                     // add grace and non-grace note pitches to the result set
                     const Chord* c = static_cast<const Chord*>(el);
                     if (c) {
