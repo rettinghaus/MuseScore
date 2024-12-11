@@ -3360,7 +3360,7 @@ void MeiImporter::addSpannerEnds()
                 continue;
             }
             Glissando* gliss = toGlissando(spannerMapEntry.first);
-            gliss->setTick2(endNote->chord()->tick());
+            gliss->setTick2(endNote->chord()->tick() + endNote->chord()->ticks());
             gliss->setEndElement(endNote);
             gliss->setTrack2(endNote->track());
 
