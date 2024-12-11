@@ -1246,7 +1246,7 @@ void Convert::dynamFromMEI(engraving::Dynamic* dynamic, const StringList& meiLin
     warning = false;
 
     // @place
-    dynamic->setProperty(directionFromMEI(meiDynam.GetPlace()));
+    dynamic->setProperty(Pid::DIRECTION, directionFromMEI(meiDynam.GetPlace()));
 
     // @label
     if (meiDynam.HasLabel()) {
@@ -1625,7 +1625,7 @@ void Convert::hairpinFromMEI(engraving::Hairpin* hairpin, const libmei::Hairpin&
     warning = false;
 
     // @place
-    hairpin->setProperty(directionFromMEI(meiHairpin.GetPlace()));
+    hairpin->setProperty(Pid::DIRECTION, directionFromMEI(meiHairpin.GetPlace()));
 
     // @form
     if (meiHairpin.GetForm() == libmei::hairpinLog_FORM_cres) {
