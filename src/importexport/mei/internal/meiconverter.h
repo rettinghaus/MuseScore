@@ -227,6 +227,8 @@ public:
     static void harmFromMEI(engraving::Harmony* harmony, const muse::StringList& meiLines, const libmei::Harm& meiHarm, bool& warning);
     static libmei::Harm harmToMEI(const engraving::Harmony* harmony, muse::StringList& meiLines);
 
+    static libmei::HarpPedal harpPedalToMEI(const engraving::HarpPedalDiagram* harpPedalDiagram);
+
     static void layerIdentFromMEI(engraving::EngravingItem* item, const libmei::Element& meiElement);
     static void layerIdentToMEI(const engraving::EngravingItem* item, libmei::Element& meiElement);
 

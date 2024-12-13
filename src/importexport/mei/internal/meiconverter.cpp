@@ -39,6 +39,7 @@
 #include "engraving/dom/fingering.h"
 #include "engraving/dom/hairpin.h"
 #include "engraving/dom/harmony.h"
+#include "engraving/dom/harppedaldiagram.h"
 #include "engraving/dom/jump.h"
 #include "engraving/dom/laissezvib.h"
 #include "engraving/dom/lyrics.h"
@@ -1741,6 +1742,24 @@ libmei::Harm Convert::harmToMEI(const engraving::Harmony* harmony, StringList& m
     }
 
     return meiHarm;
+}
+
+libmei::HarpPedal Convert::harpPedalToMEI(const engraving::HarpPedalDiagram* harpPedalDiagram)
+{
+    libmei::HarpPedal meiHarpPedal;
+
+    // @place
+    if (harpPedalDiagram->getProperty(engraving::Pid::DIRECTION) != harpPedalDiagram->propertyDefault(engraving::Pid::DIRECTION)) {
+        meiHarpPedal.SetPlace(Convert::directionToMEI(harpPedalDiagram->direction()));
+    }
+
+    // @color
+    Convert::colorToMEI(harpPedalDiagram, meiHarpPedal);
+
+    // @staff
+    Convert::staffIdentToMEI(harpPedalDiagram, meiHarpPedal);
+
+    return meiHarpPedal;
 }
 
 void Convert::lvFromMEI(engraving::LaissezVib* lv, const libmei::Lv& meiLv, bool& warning)

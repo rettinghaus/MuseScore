@@ -40,6 +40,7 @@
 #include "engraving/dom/fingering.h"
 #include "engraving/dom/hairpin.h"
 #include "engraving/dom/harmony.h"
+#include "engraving/dom/harppedaldiagram.h"
 #include "engraving/dom/jump.h"
 #include "engraving/dom/keysig.h"
 #include "engraving/dom/laissezvib.h"
@@ -824,6 +825,8 @@ bool MeiExporter::writeMeasure(const Measure* measure, int& measureN, bool& isFi
             success = success && this->writeHairpin(dynamic_cast<const Hairpin*>(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isHarmony()) {
             success = success && this->writeHarm(dynamic_cast<const Harmony*>(controlEvent.first), controlEvent.second);
+        } else if (controlEvent.first->isHarpPedalDiagram()) {
+            success = success && this->writeHarpPedal(dynamic_cast<const HarpPedalDiagram*>(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isOrnament()) {
             success = success && this->writeOrnament(dynamic_cast<const Ornament*>(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isOttava()) {
@@ -1795,6 +1798,24 @@ bool MeiExporter::writeHarm(const Harmony* harmony, const std::string& startid)
     meiHarm.Write(harmNode, this->getXmlIdFor(harmony, 'h'));
 
     this->writeLines(harmNode, meiLines);
+
+    return true;
+}
+
+/**
+ * Write a harpPedal.
+ */
+
+bool MeiExporter::writeHarpPedal(const HarpPedalDiagram* harpPedalDiagram, const std::string& startid)
+{
+    IF_ASSERT_FAILED(harpPedalDiagram) {
+        return false;
+    }
+
+    pugi::xml_node harpPedalNode = m_currentNode.append_child();
+    libmei::HarpPedal meiHarpPedal = Convert::harpPedalToMEI(harpPedalDiagram);
+    meiHarpPedal.SetStartid(startid);
+    meiHarpPedal.Write(harpPedalNode, this->getXmlIdFor(harpPedalDiagram, 'h'));
 
     return true;
 }
