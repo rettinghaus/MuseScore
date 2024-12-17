@@ -804,6 +804,8 @@ PalettePtr PaletteCreator::newOrnamentsPalette(bool defaultPalette)
         SymId::ornamentTurn,
         SymId::ornamentTurnInverted,
         SymId::ornamentTurnSlash,
+        SymId::ornamentTurnUp,
+        SymId::ornamentTurnUpS,
         SymId::ornamentTrill,
         SymId::ornamentShortTrill,
         SymId::ornamentMordent,
