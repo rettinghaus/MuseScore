@@ -477,7 +477,7 @@ private:
 static std::string fractionToStdString(const Fraction& f)
 {
     if (!f.isValid()) {
-        return "<invalid>";
+        return u"<invalid>";
     }
     String res { f.toString() };
     res += String(u" (%1)").arg(String::number(f.ticks()));
@@ -3217,7 +3217,7 @@ static String symIdToOrnam(const SymId sid)
         return u"mordent";
         break;
     case SymId::ornamentShortTrill:
-        // return "short-trill";
+        // return u"short-trill";
         return u"inverted-mordent";
         break;
     case SymId::ornamentTremblement:
@@ -3323,7 +3323,7 @@ static String symIdToTechn(const SymId sid)
         return u"smear";
         break;
     case SymId::brassMuteOpen:
-        // return "open-string";
+        // return u"open-string";
         return u"open";
         break;
     case SymId::brassMuteHalfClosed:
@@ -3337,6 +3337,42 @@ static String symIdToTechn(const SymId sid)
         break;
     case SymId::guitarGolpe:
         return u"golpe";
+        break;
+    case SymId::handbellsBelltree: 
+        return u"belltree";
+        break;
+    case SymId::handbellsDamp3: 
+        return u"damp";
+        break;
+    case SymId::handbellsEcho1: 
+        return u"echo";
+        break;
+    case SymId::handbellsGyro: 
+        return u"gyro";
+        break;
+    case SymId::handbellsHandMartellato: 
+        return u"hand martellato";
+        break;
+    case SymId::handbellsMalletLft: 
+        return u"mallet lift";
+        break;
+    case SymId::handbellsMalletBellOnTable: 
+        return u"mallet table";
+        break;
+    case SymId::handbellsMartellato: 
+        return u"martellato";
+        break;
+    case SymId::handbellsMartellatoLift: 
+        return u"martellato lift";
+        break;
+    case SymId::handbellsMutedMartellato: 
+        return u"muted martellato";
+        break;
+    case SymId::handbellsPluckLift: 
+        return u"pluck lift";
+        break;
+    case SymId::handbellsSwing: 
+        return u"swing";
         break;
     default:
         ;           // nothing
@@ -3578,6 +3614,14 @@ void ExportMusicXml::chordAttributes(Chord* chord, Notations& notations, Technic
                 m_xml.startElementRaw(mxmlTechn);
                 m_xml.tag("natural");
                 m_xml.endElement();
+            } else if (mxmlTechn.startsWith(u"handbells")) {
+                String handbell = u"handbell";
+                handbell += color2xml(a);
+                handbell += ExportMusicXml::positioningAttributes(a);
+                if (!placement.empty()) {
+                    handbell += String(u" placement=\"%1\"").arg(placement);
+                }
+                m_xml.tagRaw(handbell, symIdToTechn(sid));
             } else if (mxmlTechn.startsWith(u"harmon")) {
                 m_xml.startElementRaw(mxmlTechn);
                 XmlWriter::Attributes location = {};
