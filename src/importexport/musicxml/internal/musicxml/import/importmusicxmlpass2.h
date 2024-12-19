@@ -355,6 +355,7 @@ private:
     void addNotation(const Notation& notation, engraving::ChordRest* const cr, engraving::Note* const note);
     void addTechnical(const Notation& notation, engraving::Note* note);
     void arpeggio();
+    void handbell();
     void harmonic();
     void harmonMute();
     void articulations();

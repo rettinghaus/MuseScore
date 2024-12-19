@@ -3338,6 +3338,42 @@ static String symIdToTechn(const SymId sid)
     case SymId::guitarGolpe:
         return u"golpe";
         break;
+    case SymId::handbellsBelltree: 
+        return { "belltree" };
+        break;,
+    case SymId::handbellsDamp3: 
+        return { "damp" };
+        break;,
+    case SymId::handbellsEcho1: 
+        return { "echo" };
+        break;,
+    case SymId::handbellsGyro: 
+        return { "gyro" };
+        break;,
+    case SymId::handbellsHandMartellato: 
+        return { "hand martellato" };
+        break;,
+    case SymId::handbellsMalletLft: 
+        return { "mallet lift" };
+        break;,
+    case SymId::handbellsMalletBellOnTable: 
+        return { "mallet table" };
+        break;,
+    case SymId::handbellsMartellato: 
+        return { "martellato" };
+        break;,
+    case SymId::handbellsMartellatoLift: 
+        return { "martellato lift" };
+        break;,
+    case SymId::handbellsMutedMartellato: 
+        return { "muted martellato" };
+        break;,
+    case SymId::handbellsPluckLift: 
+        return { "pluck lift" };
+        break;,
+    case SymId::handbellsSwing: 
+        return { "swing" };
+        break;
     default:
         ;           // nothing
         break;
@@ -3578,6 +3614,17 @@ void ExportMusicXml::chordAttributes(Chord* chord, Notations& notations, Technic
                 m_xml.startElementRaw(mxmlTechn);
                 m_xml.tag("natural");
                 m_xml.endElement();
+            } else if (mxmlTechn.startsWith(u"handbells")) {
+                String handbell = u"handbell";
+                handbell += color2xml(a);
+                handbell += ExportMusicXml::positioningAttributes(a);
+                if (!placement.empty()) {
+                    handbell += String(u" placement=\"%1\"").arg(placement);
+                }
+                m_xml.startElementRaw(handbell);
+                m_xml.tagRaw(symIdToTechn(sid));
+                m_xml.endElement();
+            }
             } else if (mxmlTechn.startsWith(u"harmon")) {
                 m_xml.startElementRaw(mxmlTechn);
                 XmlWriter::Attributes location = {};
