@@ -3929,6 +3929,13 @@ static void writeNotehead(XmlWriter& xml, const Note* const note)
         noteheadTagname += String(u" smufl=\"%1\"").arg(String::fromAscii(noteheadName.ascii()));
         xml.tagRaw(noteheadTagname, "other");
     }
+
+    if (note->headScheme() != NoteHeadScheme::HEAD_PITCHNAME) {
+        xml.startElement("notehead-text");
+        xml.tag("display-text", tpc2stepName(note->tpc()));
+        xml.tag("accidental-text", tpc2alterByKey(note->tpc(), Key::C));
+        xml.endElement();
+    }
 }
 
 //---------------------------------------------------------
