@@ -361,6 +361,7 @@ private:
     void dynamics();
     void fermata();
     void glissandoSlide();
+    void harpPedal();
     void mordentNormalOrInverted();
     void ornaments();
     void slur();
