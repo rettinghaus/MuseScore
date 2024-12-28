@@ -439,6 +439,9 @@ libmei::Artic Convert::articToMEI(const engraving::Articulation* articulation)
         break;
 
     default:
+        AsciiStringView glyphName = engraving::SymNames::nameForSymId(articulation->symId());
+        meiArtic.SetGlyphName(glyphName.ascii());
+        meiArtic.SetGlyphAuth(SMUFL_AUTH);
         break;
     }
 
