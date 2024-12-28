@@ -4553,9 +4553,12 @@ void ExportMusicXml::chord(Chord* chord, staff_idx_t staff, const std::vector<Ly
         // no stem for whole notes and beyond
         if (chord->noStem() || chord->measure()->stemless(chord->staffIdx()) || (chord->stem() && !chord->stem()->visible())) {
             m_xml.tag("stem", "none");
-        } else if (const Stem* stem = note->chord()->stem()) {
+        } else if (note->chord()->stemDirection() != engraving::DirectionV::AUTO || configuration()->exportLayout()) {
             String stemTag = u"stem";
-            stemTag += color2xml(stem);
+            const Stem* stem = note->chord()->stem();
+            if (stem) {
+                stemTag += color2xml(stem);
+            }
             m_xml.tagRaw(stemTag, note->chord()->up() ? "up" : "down");
         }
 
