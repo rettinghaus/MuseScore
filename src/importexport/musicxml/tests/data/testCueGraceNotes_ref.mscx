@@ -170,8 +170,6 @@
               </Note>
             </Chord>
           <Beam>
-            <eid>N_N</eid>
-            <StemDirection>up</StemDirection>
             <l1>10</l1>
             <l2>8</l2>
             </Beam>
@@ -202,7 +200,6 @@
             <eid>S_S</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <eid>T_T</eid>
               <pitch>71</pitch>
@@ -211,8 +208,6 @@
               </Note>
             </Chord>
           <Beam>
-            <eid>U_U</eid>
-            <StemDirection>down</StemDirection>
             <l1>42</l1>
             <l2>42</l2>
             </Beam>
@@ -298,8 +293,6 @@
         <eid>h_h</eid>
         <voice>
           <Beam>
-            <eid>i_i</eid>
-            <StemDirection>down</StemDirection>
             <l1>32</l1>
             <l2>30</l2>
             </Beam>
@@ -354,8 +347,6 @@
               </Note>
             </Chord>
           <Beam>
-            <eid>r_r</eid>
-            <StemDirection>down</StemDirection>
             <l1>38</l1>
             <l2>32</l2>
             </Beam>
@@ -416,7 +407,6 @@
             <BeamMode>no</BeamMode>
             <small>1</small>
             <durationType>eighth</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <eid>2_2</eid>
               <pitch>65</pitch>
@@ -465,7 +455,6 @@
             <eid>+_+</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <eid>/_/</eid>
               <pitch>67</pitch>
@@ -485,7 +474,6 @@
             <eid>CB_CB</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <eid>DB_DB</eid>
               <pitch>71</pitch>
@@ -496,7 +484,6 @@
             <eid>EB_EB</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <eid>FB_FB</eid>
               <pitch>69</pitch>
@@ -512,7 +499,6 @@
             <eid>HB_HB</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <eid>IB_IB</eid>
               <pitch>64</pitch>
@@ -548,7 +534,6 @@
             <eid>NB_NB</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <eid>OB_OB</eid>
               <pitch>60</pitch>
@@ -573,7 +558,6 @@
             <eid>SB_SB</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <eid>TB_TB</eid>
               <Accidental>
@@ -608,7 +592,6 @@
             <eid>YB_YB</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <eid>ZB_ZB</eid>
               <pitch>65</pitch>
@@ -619,7 +602,6 @@
             <eid>aB_aB</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <eid>bB_bB</eid>
               <pitch>69</pitch>
@@ -639,7 +621,6 @@
             <eid>eB_eB</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <eid>fB_fB</eid>
               <pitch>72</pitch>
@@ -654,7 +635,6 @@
             <eid>hB_hB</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <eid>iB_iB</eid>
               <pitch>65</pitch>
@@ -670,7 +650,6 @@
             <eid>kB_kB</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <eid>lB_lB</eid>
               <pitch>62</pitch>
@@ -690,7 +669,6 @@
             <eid>oB_oB</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <eid>pB_pB</eid>
               <pitch>65</pitch>
@@ -708,7 +686,6 @@
             <eid>rB_rB</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <eid>sB_sB</eid>
               <pitch>71</pitch>
@@ -726,7 +703,6 @@
             <eid>uB_uB</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <eid>vB_vB</eid>
               <pitch>71</pitch>
@@ -744,7 +720,6 @@
             <eid>xB_xB</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <eid>yB_yB</eid>
               <pitch>74</pitch>
@@ -761,7 +736,6 @@
             <eid>0B_0B</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <eid>1B_1B</eid>
               <pitch>72</pitch>
@@ -800,7 +774,6 @@
             <eid>6B_6B</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <eid>7B_7B</eid>
               <pitch>69</pitch>
@@ -812,7 +785,6 @@
             <eid>8B_8B</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <eid>9B_9B</eid>
               <Accidental>
@@ -829,7 +801,6 @@
             <eid>/B_/B</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <eid>AC_AC</eid>
               <pitch>65</pitch>
@@ -852,7 +823,6 @@
             <eid>DC_DC</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <eid>EC_EC</eid>
               <pitch>60</pitch>
@@ -864,7 +834,6 @@
             <eid>FC_FC</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <eid>GC_GC</eid>
               <pitch>59</pitch>
@@ -876,7 +845,6 @@
             <eid>HC_HC</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <eid>IC_IC</eid>
               <pitch>71</pitch>
@@ -924,7 +892,6 @@
             <eid>PC_PC</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <eid>QC_QC</eid>
               <pitch>67</pitch>
@@ -936,7 +903,6 @@
             <eid>RC_RC</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <eid>SC_SC</eid>
               <pitch>76</pitch>
@@ -948,7 +914,6 @@
             <eid>TC_TC</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <eid>UC_UC</eid>
               <pitch>76</pitch>
@@ -966,7 +931,6 @@
             <eid>WC_WC</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <eid>XC_XC</eid>
               <pitch>72</pitch>
@@ -1006,7 +970,6 @@
             <eid>cC_cC</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <eid>dC_dC</eid>
               <pitch>64</pitch>
@@ -1018,7 +981,6 @@
             <eid>eC_eC</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <eid>fC_fC</eid>
               <pitch>71</pitch>
@@ -1030,7 +992,6 @@
             <eid>gC_gC</eid>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <eid>hC_hC</eid>
               <pitch>72</pitch>

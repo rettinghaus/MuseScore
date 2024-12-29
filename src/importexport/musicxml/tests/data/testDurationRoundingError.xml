@@ -68,7 +68,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">begin</beam>
         <notations>
           <tuplet type="start" bracket="no"/>
@@ -86,7 +85,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">continue</beam>
         </note>
       <note>
@@ -101,7 +99,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">end</beam>
         <notations>
           <tuplet type="stop"/>
@@ -119,7 +116,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">begin</beam>
         <notations>
           <tuplet type="start" bracket="no"/>
@@ -137,7 +133,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">continue</beam>
         </note>
       <note>
@@ -152,7 +147,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">end</beam>
         <notations>
           <tuplet type="stop"/>
@@ -169,7 +163,6 @@
         <duration>512</duration>
         <voice>2</voice>
         <type>half</type>
-        <stem>down</stem>
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>

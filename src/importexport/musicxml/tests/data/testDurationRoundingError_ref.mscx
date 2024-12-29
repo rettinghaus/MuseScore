@@ -143,8 +143,6 @@
               </Number>
             </Tuplet>
           <Beam>
-            <eid>K_K</eid>
-            <StemDirection>up</StemDirection>
             <l1>-10</l1>
             <l2>-10</l2>
             </Beam>
@@ -189,8 +187,6 @@
               </Number>
             </Tuplet>
           <Beam>
-            <eid>S_S</eid>
-            <StemDirection>up</StemDirection>
             <l1>-10</l1>
             <l2>-10</l2>
             </Beam>
@@ -233,7 +229,6 @@
           <Chord>
             <eid>a_a</eid>
             <durationType>half</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <eid>b_b</eid>
               <pitch>57</pitch>

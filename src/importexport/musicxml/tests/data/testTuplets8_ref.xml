@@ -61,7 +61,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>down</stem>
         <notations>
           <tuplet type="start" number="1" bracket="yes" placement="above"/>
           </notations>
@@ -78,7 +77,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>down</stem>
         </note>
       <note>
         <pitch>
@@ -92,7 +90,6 @@
           <actual-notes>15</actual-notes>
           <normal-notes>8</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -120,7 +117,6 @@
           <actual-notes>15</actual-notes>
           <normal-notes>8</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -136,7 +132,6 @@
           <actual-notes>15</actual-notes>
           <normal-notes>8</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -152,7 +147,6 @@
           <actual-notes>15</actual-notes>
           <normal-notes>8</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -168,7 +162,6 @@
           <actual-notes>15</actual-notes>
           <normal-notes>8</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         <notations>
@@ -190,7 +183,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>down</stem>
         <notations>
           <tuplet type="start" number="1" bracket="yes" placement="above"/>
           </notations>
@@ -207,7 +199,6 @@
           <actual-notes>15</actual-notes>
           <normal-notes>8</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -235,7 +226,6 @@
           <actual-notes>15</actual-notes>
           <normal-notes>8</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -251,7 +241,6 @@
           <actual-notes>15</actual-notes>
           <normal-notes>8</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -267,7 +256,6 @@
           <actual-notes>15</actual-notes>
           <normal-notes>8</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -283,7 +271,6 @@
           <actual-notes>15</actual-notes>
           <normal-notes>8</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         <notations>
@@ -302,7 +289,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <notations>
           <tuplet type="stop" number="1"/>
           </notations>
@@ -321,7 +307,6 @@
           <actual-notes>15</actual-notes>
           <normal-notes>8</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -359,7 +344,6 @@
           <actual-notes>15</actual-notes>
           <normal-notes>8</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -375,7 +359,6 @@
           <actual-notes>15</actual-notes>
           <normal-notes>8</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -391,7 +374,6 @@
           <actual-notes>15</actual-notes>
           <normal-notes>8</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         </note>
@@ -407,7 +389,6 @@
           <actual-notes>15</actual-notes>
           <normal-notes>8</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         <notations>
@@ -426,7 +407,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -440,7 +420,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <notations>
           <tuplet type="stop" number="1"/>
           </notations>

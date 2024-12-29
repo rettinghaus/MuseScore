@@ -57,7 +57,6 @@
         <duration>4</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>Two</text>
@@ -76,7 +75,6 @@
         <duration>4</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         <lyric number="2">
           <syllabic>single</syllabic>
           <text>Two</text>
@@ -93,7 +91,6 @@
         <duration>4</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>Two</text>
@@ -108,7 +105,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <lyric number="2">
           <syllabic>single</syllabic>
           <text>One</text>
@@ -130,7 +126,6 @@
         <duration>4</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>Three</text>
@@ -145,7 +140,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <beam number="1">begin</beam>
         </note>
       <note>
@@ -156,7 +150,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <beam number="1">end</beam>
         </note>
       <note>
@@ -175,7 +168,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>Two</text>
@@ -190,7 +182,6 @@
         <duration>4</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         </note>
       <note>
         <rest/>
@@ -208,7 +199,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>Four</text>
@@ -223,7 +213,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -233,7 +222,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -243,7 +231,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       </measure>
     <measure number="6">
@@ -255,7 +242,6 @@
         <duration>4</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>Two</text>
@@ -274,7 +260,6 @@
         <duration>4</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         <lyric number="2">
           <syllabic>single</syllabic>
           <text>Two</text>
@@ -291,7 +276,6 @@
         <duration>4</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>Two</text>
@@ -306,7 +290,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <lyric number="2">
           <syllabic>single</syllabic>
           <text>One</text>

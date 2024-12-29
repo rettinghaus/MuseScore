@@ -56,7 +56,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <grace slash="yes"/>
@@ -66,7 +65,6 @@
           </pitch>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -76,7 +74,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <grace/>
@@ -88,7 +85,6 @@
         <voice>1</voice>
         <type>eighth</type>
         <accidental>sharp</accidental>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -98,7 +94,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <grace/>
@@ -108,7 +103,6 @@
           </pitch>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -118,7 +112,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         </note>
       <note>
         <grace/>
@@ -130,7 +123,6 @@
         <voice>1</voice>
         <type>16th</type>
         <accidental>flat</accidental>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -140,7 +132,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <grace/>
@@ -151,7 +142,6 @@
         <voice>1</voice>
         <type>32nd</type>
         <accidental>natural</accidental>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -161,7 +151,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
