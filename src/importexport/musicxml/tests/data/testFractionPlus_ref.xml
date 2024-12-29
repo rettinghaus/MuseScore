@@ -55,7 +55,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -65,7 +64,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       </measure>
     </part>
