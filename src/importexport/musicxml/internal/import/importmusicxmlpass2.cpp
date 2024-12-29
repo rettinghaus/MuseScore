@@ -7196,6 +7196,7 @@ Note* MusicXmlParserPass2::note(const String& partId,
             // (the DOM parser does that, but seems to have no effect on the autotester)
             if (!chord || gcl.empty()) {
                 c = createGraceChord(m_score, msTrack + msVoice, duration, graceSlash, isSmall || cue);
+                c->setStemDirection(sd);
                 // TODO FIX
                 // the setStaffMove() below results in identical behaviour as 2.0:
                 // grace note will be at the wrong staff with the wrong pitch,
