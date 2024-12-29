@@ -346,7 +346,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -356,7 +355,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -366,7 +364,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         </note>
       <note>
         <pitch>
@@ -376,7 +373,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
@@ -408,7 +404,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -418,7 +413,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -428,7 +422,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -438,7 +431,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
@@ -469,7 +461,6 @@
         <instrument id="P3-I80"/>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <notehead>x</notehead>
         <beam number="1">begin</beam>
         </note>
@@ -482,7 +473,6 @@
         <instrument id="P3-I80"/>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <notehead>x</notehead>
         <beam number="1">end</beam>
         </note>
@@ -495,7 +485,6 @@
         <instrument id="P3-I80"/>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <notehead>x</notehead>
         <beam number="1">begin</beam>
         </note>
@@ -508,7 +497,6 @@
         <instrument id="P3-I80"/>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <notehead>x</notehead>
         <beam number="1">end</beam>
         </note>
@@ -521,7 +509,6 @@
         <instrument id="P3-I80"/>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <notehead>x</notehead>
         <beam number="1">begin</beam>
         </note>
@@ -534,7 +521,6 @@
         <instrument id="P3-I80"/>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <notehead>x</notehead>
         <beam number="1">end</beam>
         </note>
@@ -547,7 +533,6 @@
         <instrument id="P3-I80"/>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <notehead>x</notehead>
         <beam number="1">begin</beam>
         </note>
@@ -560,7 +545,6 @@
         <instrument id="P3-I80"/>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <notehead>x</notehead>
         <beam number="1">end</beam>
         </note>
@@ -576,7 +560,6 @@
         <instrument id="P3-I66"/>
         <voice>2</voice>
         <type>quarter</type>
-        <stem>down</stem>
         </note>
       <note>
         <unpitched>
@@ -587,7 +570,6 @@
         <instrument id="P3-I70"/>
         <voice>2</voice>
         <type>quarter</type>
-        <stem>down</stem>
         </note>
       <note>
         <unpitched>
@@ -598,7 +580,6 @@
         <instrument id="P3-I66"/>
         <voice>2</voice>
         <type>quarter</type>
-        <stem>down</stem>
         </note>
       <note>
         <unpitched>
@@ -609,7 +590,6 @@
         <instrument id="P3-I63"/>
         <voice>2</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notehead>x</notehead>
         </note>
       <barline location="right">

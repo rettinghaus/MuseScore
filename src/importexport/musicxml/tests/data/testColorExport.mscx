@@ -8,7 +8,6 @@
     <showUnprintable>1</showUnprintable>
     <showFrames>1</showFrames>
     <showMargins>0</showMargins>
-    <open>1</open>
     <metaTag name="arranger"></metaTag>
     <metaTag name="composer"></metaTag>
     <metaTag name="copyright"></metaTag>
@@ -161,7 +160,6 @@
                   </location>
                 </next>
               </Spanner>
-            <StemDirection>up</StemDirection>
             <Note>
               <color r="255" g="85" b="0" a="255"/>
               <pitch>69</pitch>
@@ -170,7 +168,6 @@
             </Chord>
           <Chord>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <color r="0" g="85" b="255" a="255"/>
               <Accidental>
@@ -190,7 +187,6 @@
                   </location>
                 </prev>
               </Spanner>
-            <StemDirection>down</StemDirection>
             <Note>
               <Spanner type="Tie">
                 <Tie>
@@ -212,7 +208,6 @@
             </Fermata>
           <Chord>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <Spanner type="Tie">
                 <prev>
@@ -264,7 +259,6 @@
             </Spanner>
           <Chord>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <pitch>69</pitch>
               <tpc>17</tpc>
@@ -285,7 +279,6 @@
             </Chord>
           <Chord>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <pitch>79</pitch>
               <tpc>15</tpc>
@@ -300,7 +293,6 @@
             </Chord>
           <Chord>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <pitch>69</pitch>
               <tpc>17</tpc>
@@ -327,7 +319,6 @@
               <color r="255" g="85" b="255" a="255"/>
               <text>LYRICS</text>
               </Lyrics>
-            <StemDirection>down</StemDirection>
             <Note>
               <pitch>79</pitch>
               <tpc>15</tpc>
@@ -381,7 +372,6 @@
               <anchor>0</anchor>
               <color r="255" g="85" b="0" a="255"/>
               </Articulation>
-            <StemDirection>up</StemDirection>
             <Note>
               <Accidental>
                 <subtype>accidentalFlat</subtype>
@@ -396,8 +386,7 @@
             <Ornament>
               <subtype>ornamentTurn</subtype>
               <color r="0" g="249" b="0" a="255"/>
-              </Ornament>
-            <StemDirection>up</StemDirection>
+              </Articulation>
             <Note>
               <pitch>68</pitch>
               <tpc>10</tpc>
@@ -443,7 +432,6 @@
               <eid>206158430227</eid>
               <color r="255" g="64" b="255" a="255"/>
               </Stem>
-            <StemDirection>down</StemDirection>
             <Note>
               <pitch>67</pitch>
               <tpc>15</tpc>
@@ -470,7 +458,6 @@
             </Rest>
           <Chord>
             <durationType>quarter</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <pitch>73</pitch>
               <tpc>21</tpc>
@@ -564,7 +551,6 @@
           <Chord>
             <durationType>half</durationType>
             <durationType>eighth</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <pitch>72</pitch>
               <tpc>14</tpc>

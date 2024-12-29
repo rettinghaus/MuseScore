@@ -55,7 +55,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <fermata type="upright"/>
           </notations>
@@ -68,7 +67,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations print-object="no">
           <fermata type="upright"/>
           </notations>
@@ -81,7 +79,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <articulations>
             <staccato/>
@@ -96,7 +93,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations print-object="no">
           <articulations>
             <staccato/>
@@ -118,7 +114,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -128,7 +123,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -138,7 +132,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -148,7 +141,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       </measure>
     <measure number="3">
@@ -169,7 +161,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -179,7 +170,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <sound tempo="90"/>
       <note>
@@ -190,7 +180,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -200,7 +189,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       </measure>
     <measure number="4">
@@ -212,7 +200,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <ornaments>
             <inverted-turn/>
@@ -227,7 +214,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <ornaments>
             <turn/>
@@ -242,7 +228,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -252,7 +237,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notehead>none</notehead>
         </note>
       </measure>
@@ -279,7 +263,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -289,7 +272,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -299,7 +281,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <direction placement="below">
         <direction-type>
@@ -322,7 +303,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       </measure>
     <measure number="6">
@@ -334,7 +314,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -344,7 +323,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -354,7 +332,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -364,7 +341,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       </measure>
     <measure number="7">
@@ -381,7 +357,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <slur type="start" number="1"/>
           </notations>
@@ -394,7 +369,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -404,7 +378,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -414,7 +387,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <slur type="stop" number="1"/>
           </notations>
@@ -434,7 +406,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations print-object="no">
           <slur type="start" number="1"/>
           </notations>
@@ -447,7 +418,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -457,7 +427,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -467,7 +436,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations print-object="no">
           <slur type="stop" number="1"/>
           </notations>
@@ -487,7 +455,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -497,7 +464,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -507,7 +473,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -517,7 +482,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <direction placement="above">
         <direction-type>
@@ -534,7 +498,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -544,7 +507,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -554,7 +516,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -564,7 +525,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       </measure>
     <measure number="11">
@@ -577,7 +537,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <glissando line-type="wavy" number="1" type="start">gliss.</glissando>
           </notations>
@@ -590,7 +549,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <glissando line-type="wavy" number="1" type="stop"/>
           </notations>
@@ -603,7 +561,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations print-object="no">
           <glissando line-type="wavy" number="1" type="start">gliss.</glissando>
           </notations>
@@ -616,7 +573,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations print-object="no">
           <glissando line-type="wavy" number="1" type="stop"/>
           </notations>
@@ -631,7 +587,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <arpeggiate number="1"/>
           </notations>
@@ -645,7 +600,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <arpeggiate number="1"/>
           </notations>
@@ -659,7 +613,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <arpeggiate number="1"/>
           </notations>
@@ -672,7 +625,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations print-object="no">
           <arpeggiate number="1"/>
           </notations>
@@ -686,7 +638,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations print-object="no">
           <arpeggiate number="1"/>
           </notations>
@@ -700,7 +651,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations print-object="no">
           <arpeggiate number="1"/>
           </notations>
@@ -720,7 +670,6 @@
         <tie type="start"/>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <tied type="start"/>
           <technical>
@@ -739,7 +688,6 @@
         <tie type="stop"/>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <tied type="stop"/>
           </notations>
@@ -765,7 +713,6 @@
         <tie type="start"/>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations print-object="no">
           <tied type="start"/>
           <technical>
@@ -784,7 +731,6 @@
         <tie type="stop"/>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations print-object="no">
           <tied type="stop"/>
           </notations>
@@ -810,7 +756,6 @@
         <tie type="start"/>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations print-object="no">
           <tied type="start"/>
           </notations>
@@ -831,7 +776,6 @@
         <tie type="stop"/>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations print-object="no">
           <tied type="stop"/>
           </notations>

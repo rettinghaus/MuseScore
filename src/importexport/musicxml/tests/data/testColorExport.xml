@@ -77,7 +77,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notehead color="#FF5500">normal</notehead>
         <notations>
           <slur type="start" color="#7A81FF" number="1"/>
@@ -92,7 +91,6 @@
         <voice>1</voice>
         <type>quarter</type>
         <accidental color="#008F00">natural</accidental>
-        <stem>down</stem>
         <notehead color="#0055FF">normal</notehead>
         </note>
       <note>
@@ -104,7 +102,6 @@
         <tie type="start"/>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notations>
           <tied type="start" color="#FF00FF"/>
           <slur type="stop" number="1"/>
@@ -119,7 +116,6 @@
         <tie type="stop"/>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notations>
           <tied type="stop"/>
           <fermata type="upright" color="#55FF00"/>
@@ -156,7 +152,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <slide line-type="solid" number="1" type="start" color="#AAAAFF"/>
           </notations>
@@ -169,7 +164,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notations>
           <slide line-type="solid" number="1" type="stop"/>
           </notations>
@@ -182,7 +176,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <glissando line-type="wavy" number="1" type="start" color="#FFAA00">gliss.</glissando>
           </notations>
@@ -195,7 +188,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notations>
           <glissando line-type="wavy" number="1" type="stop"/>
           </notations>
@@ -235,7 +227,6 @@
         <voice>1</voice>
         <type>quarter</type>
         <accidental color="#929000">flat</accidental>
-        <stem>up</stem>
         <notations>
           <articulations>
             <strong-accent type="up" color="#FF5500"/>
@@ -252,7 +243,6 @@
         <duration>4</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         <notations>
           <ornaments>
             <turn color="#00F900"/>
@@ -287,7 +277,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem color="#FF40FF">down</stem>
         <notations>
           <arpeggiate direction="up" number="1" color="#73FDFF"/>
           </notations>
@@ -301,7 +290,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem color="#FF40FF">down</stem>
         <notations>
           <arpeggiate direction="up" number="1" color="#73FDFF"/>
           </notations>
@@ -316,7 +304,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem color="#FF40FF">down</stem>
         <notations>
           <arpeggiate direction="up" number="1" color="#73FDFF"/>
           </notations>
@@ -330,7 +317,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem color="#FF40FF">down</stem>
         <notations>
           <arpeggiate direction="up" number="1" color="#73FDFF"/>
           </notations>
@@ -350,7 +336,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notations>
           <ornaments>
             <tremolo type="single" color="#FFD479">3</tremolo>
@@ -407,7 +392,6 @@
         <dot color="#00F900"/>
         <dot color="#00FDFF"/>
         <accidental>natural</accidental>
-        <stem>down</stem>
         </note>
       <note>
         <pitch>
@@ -417,7 +401,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         </note>
       <direction placement="below">
         <direction-type>

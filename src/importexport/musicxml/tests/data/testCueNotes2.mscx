@@ -192,7 +192,6 @@
             <Lyrics>
               <text>tiedcue</text>
               </Lyrics>
-            <StemDirection>up</StemDirection>
             <Note>
               <Spanner type="Tie">
                 <Tie>
@@ -229,7 +228,6 @@
             <Lyrics>
               <text>cue</text>
               </Lyrics>
-            <StemDirection>up</StemDirection>
             <Note>
               <pitch>74</pitch>
               <tpc>16</tpc>
@@ -240,7 +238,6 @@
           <Chord>
             <small>1</small>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <pitch>76</pitch>
               <tpc>18</tpc>
@@ -254,7 +251,6 @@
             </Chord>
           <Chord>
             <durationType>quarter</durationType>
-            <StemDirection>up</StemDirection>
             <Note>
               <pitch>77</pitch>
               <tpc>13</tpc>
@@ -268,7 +264,6 @@
       <Measure>
         <voice>
           <Beam>
-            <StemDirection>up</StemDirection>
             </Beam>
           <Chord>
             <durationType>eighth</durationType>

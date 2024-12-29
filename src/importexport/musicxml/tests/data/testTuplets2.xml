@@ -67,7 +67,6 @@
         <duration>3</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -81,7 +80,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -95,7 +93,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -109,7 +106,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">begin</beam>
         </note>
       <note>
@@ -124,7 +120,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">continue</beam>
         </note>
       <note>
@@ -139,7 +134,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">end</beam>
         </note>
       <note>
@@ -150,7 +144,6 @@
         <duration>3</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       </measure>
     <measure number="2">
@@ -172,7 +165,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">begin</beam>
         </note>
       <note>
@@ -187,7 +179,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">end</beam>
         </note>
       <note>
@@ -198,7 +189,6 @@
         <duration>3</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -208,7 +198,6 @@
         <duration>3</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       </measure>
     <measure number="3">
@@ -224,7 +213,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <notations>
           <tuplet type="start" bracket="yes"/>
           </notations>
@@ -240,7 +228,6 @@
         <duration>6</duration>
         <voice>2</voice>
         <type>half</type>
-        <stem>down</stem>
         </note>
       <backup>
         <duration>2</duration>
@@ -257,7 +244,6 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <notations>
           <tuplet type="stop"/>
           </notations>
@@ -270,7 +256,6 @@
         <duration>3</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <backup>
         <duration>3</duration>
@@ -283,7 +268,6 @@
         <duration>3</duration>
         <voice>2</voice>
         <type>quarter</type>
-        <stem>down</stem>
         </note>
       </measure>
     <measure number="4">
@@ -300,7 +284,6 @@
           <normal-notes>2</normal-notes>
           <normal-type>quarter</normal-type>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">begin</beam>
         <notations>
           <tuplet type="start" bracket="yes"/>
@@ -319,7 +302,6 @@
           <normal-notes>2</normal-notes>
           <normal-type>quarter</normal-type>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">end</beam>
         </note>
       <note>
@@ -335,7 +317,6 @@
           <normal-notes>2</normal-notes>
           <normal-type>quarter</normal-type>
           </time-modification>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -350,7 +331,6 @@
           <normal-notes>2</normal-notes>
           <normal-type>quarter</normal-type>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">begin</beam>
         </note>
       <note>
@@ -366,7 +346,6 @@
           <normal-notes>2</normal-notes>
           <normal-type>quarter</normal-type>
           </time-modification>
-        <stem>up</stem>
         <beam number="1">end</beam>
         <notations>
           <tuplet type="stop"/>
@@ -380,7 +359,6 @@
         <duration>3</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>

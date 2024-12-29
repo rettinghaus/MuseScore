@@ -56,7 +56,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         </note>
       <note>
         <chord/>
@@ -67,7 +66,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         </note>
       <note>
         <grace/>
@@ -77,7 +75,6 @@
           </pitch>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         </note>
       <note>
         <grace/>
@@ -88,7 +85,6 @@
           </pitch>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -98,7 +94,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         </note>
       <note>
         <chord/>
@@ -109,7 +104,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         </note>
       <backup>
         <duration>4</duration>
@@ -122,7 +116,6 @@
           </pitch>
         <voice>2</voice>
         <type>eighth</type>
-        <stem>down</stem>
         </note>
       <note>
         <grace slash="yes"/>
@@ -133,7 +126,6 @@
           </pitch>
         <voice>2</voice>
         <type>eighth</type>
-        <stem>down</stem>
         </note>
       <note>
         <pitch>
@@ -143,7 +135,6 @@
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
-        <stem>down</stem>
         </note>
       <note>
         <chord/>
@@ -154,7 +145,6 @@
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
-        <stem>down</stem>
         </note>
       <note>
         <pitch>
@@ -164,7 +154,6 @@
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
-        <stem>down</stem>
         </note>
       <note>
         <chord/>
@@ -175,7 +164,6 @@
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
-        <stem>down</stem>
         </note>
       </measure>
     <measure number="2">
@@ -187,7 +175,6 @@
           </pitch>
         <voice>1</voice>
         <type>16th</type>
-        <stem>up</stem>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         </note>
@@ -199,7 +186,6 @@
           </pitch>
         <voice>1</voice>
         <type>16th</type>
-        <stem>up</stem>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
@@ -211,7 +197,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         </note>
       <note>
         <grace/>
@@ -223,7 +208,6 @@
         <voice>1</voice>
         <type>32nd</type>
         <accidental>sharp</accidental>
-        <stem>up</stem>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
@@ -238,7 +222,6 @@
         <voice>1</voice>
         <type>32nd</type>
         <accidental>sharp</accidental>
-        <stem>up</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -253,7 +236,6 @@
         <voice>1</voice>
         <type>32nd</type>
         <accidental>sharp</accidental>
-        <stem>up</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">continue</beam>
@@ -268,7 +250,6 @@
         <voice>1</voice>
         <type>32nd</type>
         <accidental>sharp</accidental>
-        <stem>up</stem>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         <beam number="3">end</beam>
@@ -281,7 +262,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         </note>
       <backup>
         <duration>4</duration>
@@ -305,7 +285,6 @@
           </pitch>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -315,7 +294,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>lyric1</text>
@@ -329,7 +307,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>lyric2</text>
@@ -343,7 +320,6 @@
           </pitch>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         </note>
       </measure>
     </part>

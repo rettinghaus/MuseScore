@@ -90,7 +90,6 @@
         <duration>32</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         <notations>
           <ornaments>
             <tremolo type="single">3</tremolo>
@@ -105,7 +104,6 @@
         <duration>16</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notations>
           <ornaments>
             <tremolo type="single">3</tremolo>
@@ -120,7 +118,6 @@
         <duration>8</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         <beam number="1">begin</beam>
         <notations>
           <ornaments>
@@ -136,7 +133,6 @@
         <duration>4</duration>
         <voice>1</voice>
         <type>16th</type>
-        <stem>down</stem>
         <beam number="1">continue</beam>
         <beam number="2">begin</beam>
         <notations>
@@ -153,7 +149,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <stem>down</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
         <beam number="3">begin</beam>
@@ -166,7 +161,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>64th</type>
-        <stem>down</stem>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         <beam number="3">end</beam>
@@ -188,7 +182,6 @@
         <duration>16</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <ornaments>
             <tremolo type="single">1</tremolo>
@@ -203,7 +196,6 @@
         <duration>16</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <notations>
           <ornaments>
             <tremolo type="single">2</tremolo>
@@ -218,7 +210,6 @@
         <duration>16</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notations>
           <ornaments>
             <tremolo type="single">1</tremolo>
@@ -233,7 +224,6 @@
         <duration>16</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notations>
           <ornaments>
             <tremolo type="single">2</tremolo>
@@ -255,7 +245,6 @@
           <actual-notes>2</actual-notes>
           <normal-notes>1</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <notations>
           <ornaments>
             <tremolo type="start">1</tremolo>
@@ -274,7 +263,6 @@
           <actual-notes>2</actual-notes>
           <normal-notes>1</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <notations>
           <ornaments>
             <tremolo type="stop">1</tremolo>
@@ -293,7 +281,6 @@
           <actual-notes>2</actual-notes>
           <normal-notes>1</normal-notes>
           </time-modification>
-        <stem>down</stem>
         <notations>
           <ornaments>
             <tremolo type="start">2</tremolo>
@@ -312,7 +299,6 @@
           <actual-notes>2</actual-notes>
           <normal-notes>1</normal-notes>
           </time-modification>
-        <stem>down</stem>
         <notations>
           <ornaments>
             <tremolo type="stop">2</tremolo>
@@ -333,7 +319,6 @@
           <actual-notes>2</actual-notes>
           <normal-notes>1</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <notations>
           <ornaments>
             <tremolo type="start">3</tremolo>
@@ -352,7 +337,6 @@
           <actual-notes>2</actual-notes>
           <normal-notes>1</normal-notes>
           </time-modification>
-        <stem>up</stem>
         <notations>
           <ornaments>
             <tremolo type="stop">3</tremolo>
@@ -371,7 +355,6 @@
           <actual-notes>2</actual-notes>
           <normal-notes>1</normal-notes>
           </time-modification>
-        <stem>down</stem>
         <notations>
           <ornaments>
             <tremolo type="start">4</tremolo>
@@ -390,7 +373,6 @@
           <actual-notes>2</actual-notes>
           <normal-notes>1</normal-notes>
           </time-modification>
-        <stem>down</stem>
         <notations>
           <ornaments>
             <tremolo type="stop">4</tremolo>

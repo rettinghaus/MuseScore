@@ -55,7 +55,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         <beam number="1">begin</beam>
         </note>
       <note>
@@ -67,7 +66,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         </note>
       <note>
         <pitch>
@@ -77,7 +75,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         <beam number="1">end</beam>
         </note>
       <note>
@@ -88,7 +85,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         </note>
       <note>
         <pitch>
@@ -98,7 +94,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         </note>
       <note>
         <chord/>
@@ -109,7 +104,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         </note>
       <note>
         <pitch>
@@ -119,7 +113,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         </note>
       <note>
         <chord/>
@@ -130,7 +123,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         </note>
       <note>
         <chord/>
@@ -141,7 +133,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         </note>
       <note>
         <pitch>
@@ -151,7 +142,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         </note>
       <note>
         <chord/>
@@ -162,7 +152,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         </note>
       <note>
         <pitch>
@@ -172,7 +161,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         <beam number="1">begin</beam>
         </note>
       <note>
@@ -184,7 +172,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         </note>
       <note>
         <pitch>
@@ -194,7 +181,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         <beam number="1">end</beam>
         </note>
       <barline location="right">

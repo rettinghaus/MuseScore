@@ -57,7 +57,6 @@
           </pitch>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <notations>
           <slur type="start" number="1"/>
           </notations>
@@ -70,7 +69,6 @@
         <duration>4</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         <notations>
           <slur type="stop" number="1"/>
           </notations>
@@ -87,7 +85,6 @@
           </pitch>
         <voice>1</voice>
         <type size="grace-cue">eighth</type>
-        <stem>up</stem>
         <notations>
           <slur type="start" number="1"/>
           </notations>
@@ -100,7 +97,6 @@
         <duration>4</duration>
         <voice>1</voice>
         <type>half</type>
-        <stem>up</stem>
         <notations>
           <slur type="stop" number="1"/>
           </notations>
@@ -120,7 +116,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <beam number="1">begin</beam>
         <notations>
           <tied type="start"/>
@@ -139,7 +134,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <beam number="1">end</beam>
         <notations>
           <tied type="stop"/>
@@ -154,7 +148,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>cue</text>
@@ -169,7 +162,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <cue/>
@@ -181,7 +173,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <cue/>
@@ -192,7 +183,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>up</stem>
         </note>
       </measure>
     <measure number="3">
@@ -205,7 +195,6 @@
         <tie type="start"/>
         <voice>1</voice>
         <type size="cue">eighth</type>
-        <stem>up</stem>
         <beam number="1">begin</beam>
         <notations>
           <tied type="start"/>
@@ -224,7 +213,6 @@
         <tie type="stop"/>
         <voice>1</voice>
         <type size="cue">eighth</type>
-        <stem>up</stem>
         <beam number="1">end</beam>
         <notations>
           <tied type="stop"/>
@@ -238,7 +226,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type size="cue">quarter</type>
-        <stem>up</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>small</text>
@@ -253,7 +240,6 @@
         <duration>2</duration>
         <voice>1</voice>
         <type size="cue">quarter</type>
-        <stem>up</stem>
         </note>
       <note>
         <rest/>
