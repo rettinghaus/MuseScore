@@ -130,7 +130,6 @@
               </Number>
             </Tuplet>
           <Beam>
-            <StemDirection>up</StemDirection>
             <l1>-10</l1>
             <l2>-10</l2>
             </Beam>
@@ -168,7 +167,6 @@
               </Number>
             </Tuplet>
           <Beam>
-            <StemDirection>up</StemDirection>
             <l1>-10</l1>
             <l2>-10</l2>
             </Beam>
@@ -203,7 +201,6 @@
         <voice>
           <Chord>
             <durationType>half</durationType>
-            <StemDirection>down</StemDirection>
             <Note>
               <pitch>57</pitch>
               <tpc>17</tpc>

@@ -56,7 +56,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notations>
           <ornaments>
             <trill-mark/>
@@ -73,7 +72,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notations>
           <ornaments>
             <other-ornament smufl="ornamentBottomLeftConcaveStroke"/>
@@ -90,7 +88,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notations>
           <ornaments>
             <other-ornament smufl="ornamentLeftVerticalStroke"/>
@@ -107,7 +104,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notations>
           <ornaments>
             <wavy-line type="start" number="1"/>
@@ -125,7 +121,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notations>
           <ornaments>
             <trill-mark/>
@@ -143,7 +138,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notations>
           <ornaments>
             <other-ornament smufl="ornamentBottomLeftConcaveStroke"/>
@@ -161,7 +155,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notations>
           <ornaments>
             <other-ornament smufl="ornamentLeftVerticalStroke"/>
@@ -179,7 +172,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <stem>down</stem>
         <notations>
           <ornaments>
             <wavy-line type="start" number="1"/>

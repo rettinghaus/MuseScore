@@ -61,7 +61,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>C4</text>
@@ -154,7 +153,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>C5</text>
@@ -175,7 +173,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>C5</text>
@@ -271,7 +268,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>C6</text>
@@ -401,7 +397,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>C2</text>
@@ -497,7 +492,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>C3</text>
@@ -518,7 +512,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>up</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>C3</text>
@@ -611,7 +604,6 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <stem>down</stem>
         <lyric number="1">
           <syllabic>single</syllabic>
           <text>C4</text>
