@@ -5182,6 +5182,11 @@ void ExportMusicXml::rehearsal(RehearsalMark const* const rmk, staff_idx_t staff
 void ExportMusicXml::harpPedals(HarpPedalDiagram const* const hpd, staff_idx_t staff)
 {
     if (hpd->textStyleType() != TextStyleType::HARP_PEDAL_DIAGRAM) {
+        directionTag(m_xml, m_attr, hpd);
+        m_xml.startElement("direction-type");
+        this->textLine(item_cast<const TextLineBase*>(hpd), staff, Fraction(-1, 1));
+        m_xml.endElement();
+        m_xml.endElement();
         return;
     }
 
