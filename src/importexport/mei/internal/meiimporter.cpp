@@ -2592,11 +2592,9 @@ bool MeiImporter::readGliss(pugi::xml_node glissNode, Measure* measure)
     libmei::Gliss meiGliss;
     meiGliss.Read(glissNode);
 
-    // We do not use addSpanner here because Tie object are added directly to the start and end Note objects
+    // We do not use addSpanner here because Gliss objects are added directly to the start and end Note objects
     Note* startNote = this->findStartNote(meiGliss);
     if (!startNote) {
-        // Here we could detect if it's a tied chord (for files not exported from MuseScore)
-        // We would need a dedicated list and tie each note once the second chord has been found.
         return true;
     }
 
@@ -3401,14 +3399,17 @@ void MeiImporter::addSpannerEnds()
             endNote->setTieBack(tie);
             tie->setEndNote(endNote);
         } else if (spannerMapEntry.first->isGlissando()) {
+            LOGD("MeiImporter::Gliss in map");
             Note* endNote = this->findEndNote(spannerMapEntry.second);
             if (!endNote) {
                 continue;
             }
+            LOGD("MeiImporter::Gliss endnote found");
             Glissando* gliss = toGlissando(spannerMapEntry.first);
             gliss->setTick2(endNote->chord()->tick());
             gliss->setEndElement(endNote);
             gliss->setTrack2(endNote->track());
+            LOGD("MeiImporter::Gliss all set");
 
             // All other Spanners
         } else if (spannerMapEntry.first->startCR()) {

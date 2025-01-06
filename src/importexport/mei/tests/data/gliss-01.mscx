@@ -70,7 +70,6 @@
                   <offset x="-1.81659" y="1.41014"/>
                   <color r="128" g="255" b="128" a="255"/>
                   <diagonal>1</diagonal>
-                  <color r="128" g="255" b="128" a="255"/>
                   <anchor>3</anchor>
                   <Segment>
                     <subtype>0</subtype>
@@ -99,7 +98,6 @@
                   <offset x="-1.81659" y="1.41014"/>
                   <color r="128" g="0" b="255" a="255"/>
                   <diagonal>1</diagonal>
-                  <color r="128" g="0" b="255" a="255"/>
                   <anchor>3</anchor>
                   <Segment>
                     <subtype>0</subtype>
@@ -243,7 +241,6 @@
                   <subtype>1</subtype>
                   <color r="0" g="255" b="0" a="255"/>
                   <diagonal>1</diagonal>
-                  <color r="0" g="255" b="0" a="255"/>
                   <anchor>3</anchor>
                   </Glissando>
                 <next>
@@ -289,7 +286,6 @@
                   <text>gliss.</text>
                   <color r="0" g="0" b="255" a="255"/>
                   <diagonal>1</diagonal>
-                  <color r="0" g="0" b="255" a="255"/>
                   <anchor>3</anchor>
                   </Glissando>
                 <next>
