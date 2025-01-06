@@ -20,6 +20,14 @@
          <mdiv>
             <score>
                <scoreDef>
+                  <pgHead>
+                     <rend halign="center" valign="top">
+                        <rend type="title" fontsize="x-large">Glissando test</rend>
+                     </rend>
+                     <rend halign="right" valign="bottom">
+                        <rend type="composer">Klaus Rettinghaus</rend>
+                     </rend>
+                  </pgHead>
                   <staffGrp>
                      <staffDef n="1" lines="5" meter.count="4" meter.unit="4">
                         <label>Piano</label>
@@ -42,9 +50,9 @@
                            </note>
                         </layer>
                      </staff>
-                     <gliss xml:id="g1rm3kke" startid="#n12l70h9" color="#80FF80" lform="solid" endid="#nsdv8xn" />
-                     <gliss xml:id="g1rc68vo" startid="#nsdv8xn" color="#8000FF" lform="solid" endid="#n1hrtq3g" />
-                     <gliss xml:id="gacuj1y" startid="#n1hrtq3g" lform="solid" endid="#ndd9dr5" />
+                     <gliss xml:id="g1rm3kke" startid="#n12l70h9" color="#80FF80" lform="solid" endid="#nsdv8xn">gliss.</gliss>
+                     <gliss xml:id="g1rc68vo" startid="#nsdv8xn" color="#8000FF" lform="solid" endid="#n1hrtq3g">gliss.</gliss>
+                     <gliss xml:id="gacuj1y" startid="#n1hrtq3g" lform="solid" endid="#ndd9dr5">gliss.</gliss>
                   </measure>
                   <measure xml:id="mmnmswk" n="2">
                      <staff xml:id="m2s1" n="1">

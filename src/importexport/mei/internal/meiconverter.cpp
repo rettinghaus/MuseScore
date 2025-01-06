@@ -1606,9 +1606,13 @@ void Convert::glissFromMEI(engraving::Glissando* gliss, const libmei::Gliss& mei
     warning = false;
 
     // @lform
+    bool lineWarning;
     switch (meiGliss.GetLform()) {
+    case libmei::LINEFORM_dotted:
+    case libmei::LINEFORM_dashed:
     case libmei::LINEFORM_solid:
         gliss->setGlissandoType(engraving::GlissandoType::STRAIGHT);
+        gliss->setLineStyle(Convert::lineFromMEI(meiGliss.GetLform(), lineWarning));
         break;
     case libmei::LINEFORM_wavy:
     default:

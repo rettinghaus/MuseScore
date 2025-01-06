@@ -2606,6 +2606,7 @@ bool MeiImporter::readGliss(pugi::xml_node glissNode, Measure* measure)
     gliss->setTrack(startNote->track());
     gliss->setParent(startNote);
     gliss->setText(String(glissNode.text().as_string()));
+    LOGD() << "gliss text " << glissNode.text();
 
     m_score->addElement(gliss);
 
@@ -3399,17 +3400,14 @@ void MeiImporter::addSpannerEnds()
             endNote->setTieBack(tie);
             tie->setEndNote(endNote);
         } else if (spannerMapEntry.first->isGlissando()) {
-            LOGD("MeiImporter::Gliss in map");
             Note* endNote = this->findEndNote(spannerMapEntry.second);
             if (!endNote) {
                 continue;
             }
-            LOGD("MeiImporter::Gliss endnote found");
             Glissando* gliss = toGlissando(spannerMapEntry.first);
             gliss->setTick2(endNote->chord()->tick());
             gliss->setEndElement(endNote);
             gliss->setTrack2(endNote->track());
-            LOGD("MeiImporter::Gliss all set");
 
             // All other Spanners
         } else if (spannerMapEntry.first->startCR()) {
