@@ -7892,9 +7892,22 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part)
     const Instrument* instrument = part->instrument();
     size_t staves = part->nstaves();
 
+    // part symbol
+    for (size_t i = 0; i < staves; i++) {
+        Staff* st = part->staff(i);
+        for (size_t j = 0; j < st->bracketLevels() + 1; j++) {
+            if (!(st->bracketSpan(j) == staves && st->bracketType(j) == BracketType::BRACE)) {
+                const BracketItem* bi = st->brackets().at(j);
+                XmlWriter::Attributes attributes;
+                attributes.push_back({ "top-staff", i + 1 });
+                attributes.push_back({ "bottom-staff", st->bracketSpan(j) });
+                addColorAttr(bi, attributes);
+                xml.tag("part-symbol", attributes);
+            }
+        }
+    }
+
     // staff details
-    // TODO: decide how to handle linked regular / TAB staff
-    //       currently exported as a two staff part ...
     for (size_t i = 0; i < staves; i++) {
         Staff* st = part->staff(i);
         const double mag = st->staffMag(Fraction(0, 1));
