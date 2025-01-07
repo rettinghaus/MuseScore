@@ -4840,33 +4840,36 @@ static void directionETag(XmlWriter& xml, staff_idx_t staff, int offs = 0)
 //   partGroupStart
 //---------------------------------------------------------
 
-static void partGroupStart(XmlWriter& xml, int number, const BracketItem* const bracket, const bool barlineSpan, const bool groupTime)
+static void partGroupStart(XmlWriter& xml, int number, const BracketItem* const bracket, const bool barlineSpan, const bool groupTime, const bool symbol)
 {
     xml.startElement("part-group", { { "type", "start" }, { "number", number } });
-    String br;
-    switch (bracket->bracketType()) {
-    case BracketType::NO_BRACKET:
-        br = u"none";
-        break;
-    case BracketType::NORMAL:
-        br = u"bracket";
-        break;
-    case BracketType::BRACE:
-        br = u"brace";
-        break;
-    case BracketType::LINE:
-        br = u"line";
-        break;
-    case BracketType::SQUARE:
-        br = u"square";
-        break;
-    default:
-        LOGD("bracket subtype %d not understood", int(bracket->bracketType()));
-    }
-    if (!br.empty()) {
-        String tag = u"group-symbol";
-        tag += color2xml(bracket);
-        xml.tagRaw(tag, br);
+    if (symbol) {
+        // only 
+        String br;
+        switch (bracket->bracketType()) {
+        case BracketType::NO_BRACKET:
+            br = u"none";
+            break;
+        case BracketType::NORMAL:
+            br = u"bracket";
+            break;
+        case BracketType::BRACE:
+            br = u"brace";
+            break;
+        case BracketType::LINE:
+            br = u"line";
+            break;
+        case BracketType::SQUARE:
+            br = u"square";
+            break;
+        default:
+            LOGD("bracket subtype %d not understood", int(bracket->bracketType()));
+        }
+        if (!br.empty()) {
+            String tag = u"group-symbol";
+            tag += color2xml(bracket);
+            xml.tagRaw(tag, br);
+        }
     }
     if (barlineSpan) {
         xml.tag("group-barline", "yes");
@@ -7742,7 +7745,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
                         if (i == 0) {
                             // OK, found bracket in first staff of part
                             // filter out implicit brackets
-                            if (!(st->bracketSpan(j) == part->nstaves()
+                            if (!(st->bracketSpan(j) <= part->nstaves()
                                   && st->bracketType(j) == BracketType::BRACE)) {
                                 // filter out brackets starting in the last part
                                 // as they cannot span multiple parts
@@ -7751,7 +7754,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
                                     int number = findPartGroupNumber(partGroupEnd);
                                     if (number < MAX_PART_GROUPS) {
                                         const BracketItem* bi = st->brackets().at(j);
-                                        partGroupStart(xml, number + 1, bi, st->barLineSpan(), groupTime);
+                                        partGroupStart(xml, number + 1, bi, st->barLineSpan(), groupTime, bi->bracketSpan() > part->nstaves());
                                         partGroupEnd[number] = static_cast<int>(staffCount + st->bracketSpan(j));
                                     }
                                 }
@@ -7769,7 +7772,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
             int number = findPartGroupNumber(partGroupEnd);
             if (number < MAX_PART_GROUPS) {
                 const BracketItem* bi = Factory::createBracketItem(score->dummy());
-                partGroupStart(xml, number + 1, bi, false, groupTime);
+                partGroupStart(xml, number + 1, bi, false, groupTime, false);
                 delete bi;
                 partGroupEnd[number] = static_cast<int>(idx + part->nstaves());
             }
