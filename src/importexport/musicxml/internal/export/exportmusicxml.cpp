@@ -7975,6 +7975,21 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vecto
     const Instrument* instrument = part->instrument();
     const size_t staves = part->nstaves();
 
+    // part symbol
+    for (size_t i = 0; i < staves; i++) {
+        Staff* st = part->staff(i);
+        for (size_t j = 0; j < st->bracketLevels() + 1; j++) {
+            if (!(st->bracketSpan(j) == staves && st->bracketType(j) == BracketType::BRACE)) {
+                const BracketItem* bi = st->brackets().at(j);
+                XmlWriter::Attributes attributes;
+                attributes.push_back({ "top-staff", i + 1 });
+                attributes.push_back({ "bottom-staff", st->bracketSpan(j) });
+                addColorAttr(bi, attributes);
+                xml.tag("part-symbol", attributes);
+            }
+        }
+    }
+
     // staff details
     for (size_t i = 0; i < staves; i++) {
         Staff* st = part->staff(i);
