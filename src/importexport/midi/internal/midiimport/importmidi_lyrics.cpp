@@ -28,6 +28,7 @@
 
 #include "engraving/dom/factory.h"
 #include "engraving/dom/box.h"
+#include "engraving/dom/chordrest.h"
 #include "engraving/dom/engravingitem.h"
 #include "engraving/dom/measurebase.h"
 #include "engraving/dom/masterscore.h"
@@ -235,6 +236,12 @@ void addLyricsToScore(
                    "MidiLyrics::addLyricsToScore", "Lyric time not found");
 
         QString text = MidiCharset::convertToCharset(it->second);
+        Measure* m = score->tick2measure(quantizedTime.fraction());
+        ChordRest* cr = m->findChordRest(quantizedTime.fraction(), staffAddTo->idx());
+        if (cr && !cr->lyrics().empty()){
+            continue;
+        }
+
         if (originalTime != ReducedFraction(0, 1) || !isTitlePrefix(text)) {     // not title
             score->addLyrics(quantizedTime.fraction(), staffAddTo->idx(), removeSlashes(text).toHtmlEscaped());
         }
