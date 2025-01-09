@@ -2866,6 +2866,9 @@ static void writeAccidental(XmlWriter& xml, const String& tagName, const Acciden
                     attrs.emplace_back(std::make_pair("placement", "below"));
                 }
             }
+            if (acc->isSmall()) {
+                attrs.emplace_back(std::make_pair("size", "cue"));
+            }
             addColorAttr(acc, attrs);
             xml.tag(AsciiStringView(tag.toStdString()), attrs, s);
         }
