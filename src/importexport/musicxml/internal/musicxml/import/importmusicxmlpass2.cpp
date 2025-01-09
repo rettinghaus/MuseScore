@@ -6662,6 +6662,7 @@ Note* MusicXmlParserPass2::note(const String& partId,
     Color noteheadColor;
     Color stemColor;
     bool noteheadParentheses = false;
+    bool smallAccid = false;
     String noteheadFilled;
     int velocity = round(m_e.doubleAttribute("dynamics") * 0.9);
     bool graceSlash = false;
@@ -6683,6 +6684,9 @@ Note* MusicXmlParserPass2::note(const String& partId,
             // element handled
         } else if (mnd.readProperties(m_e)) {
             // element handled
+        } else if (m_e.name() == "accidental") {
+            smallAccid = m_e.asciiAttribute("size") == "cue" || m_e.asciiAttribute("size") == "grace-cue";
+            m_e.skipCurrentElement();  // skip but don't log
         } else if (m_e.name() == "beam") {
             beam(beamTypes);
         } else if (m_e.name() == "chord") {
@@ -7002,6 +7006,7 @@ Note* MusicXmlParserPass2::note(const String& partId,
 
         if (acc) {
             acc->setVisible(printObject);
+            acc->setSmall(smallAccid);
             note->add(acc);
             // save alter value for user accidental
             if (acc->accidentalType() != AccidentalType::NONE) {
