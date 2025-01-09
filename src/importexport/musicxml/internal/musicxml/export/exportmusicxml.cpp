@@ -732,7 +732,7 @@ static String color2xml(const EngravingItem* el)
 static void addColorAttr(const EngravingItem* el, XmlWriter::Attributes& attrs)
 {
     if (el->color() != engravingConfiguration()->defaultColor()) {
-        attrs.push_back({ "color", String::fromStdString(el->color().toString()) });
+        attrs.emplace_back(std::make_pair("color", String::fromStdString(el->color().toString())));
     }
 }
 
@@ -2182,7 +2182,7 @@ void ExportMusicXml::timesig(TimeSig* tsig)
         attrs = { { "symbol", "cut" } };
     }
     if (!tsig->visible()) {
-        attrs.push_back({ "print-object", "no" });
+        attrs.emplace_back(std::make_pair("print-object", "no"));
     }
 
     addColorAttr(tsig, attrs);
@@ -2417,10 +2417,10 @@ void ExportMusicXml::keysig(const KeySig* ks, ClefType ct, staff_idx_t staff, bo
 
     XmlWriter::Attributes attrs;
     if (staff) {
-        attrs.push_back({ "number", staff });
+        attrs.emplace_back(std::make_pair("number", staff));
     }
     if (!visible) {
-        attrs.push_back({ "print-object", "no" });
+        attrs.emplace_back(std::make_pair("print-object", "no"));
     }
     addColorAttr(ks, attrs);
 
@@ -2785,7 +2785,7 @@ static void tupletStop(const Tuplet* const t, const int number, Notations& notat
     notations.tag(xml, t);
     XmlWriter::Attributes tupletAttrs = { { "type", "stop" } };
     if (!isSimpleTuplet(t)) {
-        tupletAttrs.push_back({ "number", number });
+        tupletAttrs.emplace_back(std::make_pair("number", number));
     }
     xml.tag("tuplet", tupletAttrs);
 }
@@ -5088,7 +5088,7 @@ void ExportMusicXml::tempoText(TempoText const* const text, staff_idx_t staff)
     XmlWriter::Attributes tempoAttrs;
     tempoAttrs = { { "placement", (text->placement() == PlacementV::BELOW) ? "below" : "above" } };
     if (text->systemFlag()) {
-        tempoAttrs.push_back({ "system", text->isLinked() ? "also-top" : "only-top" });
+        tempoAttrs.emplace_back(std::make_pair("system", text->isLinked() ? "also-top" : "only-top"));
     }
 
     m_xml.startElement("direction", tempoAttrs);
@@ -5314,7 +5314,7 @@ void ExportMusicXml::harpPedals(HarpPedalDiagram const* const hpd, staff_idx_t s
     m_xml.startElement("direction-type");
     XmlWriter::Attributes harpPedalAttrs;
     if (!hpd->isStyled(Pid::PLACEMENT)) {
-        harpPedalAttrs.push_back({ "placement", (hpd->placement() == PlacementV::BELOW) ? "below" : "above" });
+        harpPedalAttrs.emplace_back(std::make_pair("placement", (hpd->placement() == PlacementV::BELOW) ? "below" : "above"));
     }
     addColorAttr(hpd, harpPedalAttrs);
     m_xml.startElement("harp-pedals", harpPedalAttrs);
@@ -6457,7 +6457,7 @@ static void measureRepeat(XmlWriter& xml, Attributes& attr, const Measure* const
         staff_idx_t staffIdx = scoreRelStaff + i;
         XmlWriter::Attributes styleAttrs;
         if (part->nstaves() > 1) {
-            styleAttrs.push_back({ "number", i + 1 });
+            styleAttrs.emplace_back(std::make_pair("number", i + 1));
         }
         if (m->isMeasureRepeatGroup(staffIdx)
             && (!m->prevMeasure() || !m->prevMeasure()->isMeasureRepeatGroup(staffIdx)
@@ -7677,7 +7677,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
         if (partName.empty()) {
             partName = part->partName();
             if (!partName.empty()) {
-                attributes.push_back({ "print-object", "no" });
+                attributes.emplace_back(std::make_pair("print-object", "no"));
             }
         }
         xml.tag("part-name", attributes, MScoreTextToMusicXml::toPlainText(partName).replace(u"♭", u"b").replace(u"♯", u"#"));
@@ -7862,10 +7862,10 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part)
         if (st->lines(Fraction(0, 1)) != 5 || st->isTabStaff(Fraction(0, 1)) || !muse::RealIsEqual(mag, 1.0) || !st->show()) {
             XmlWriter::Attributes attributes;
             if (staves > 1) {
-                attributes.push_back({ "number", i + 1 });
+                attributes.emplace_back(std::make_pair("number", i + 1));
             }
             if (!st->show()) {
-                attributes.push_back({ "print-object", "no" });
+                attributes.emplace_back(std::make_pair("print-object", "no"));
             }
             xml.startElement("staff-details", attributes);
 
@@ -8802,11 +8802,11 @@ void ExportMusicXml::harmony(Harmony const* const h, FretDiagram const* const fd
     int rootTpc = h->rootTpc();
     XmlWriter::Attributes harmonyAttrs;
     if (!h->isStyled(Pid::PLACEMENT)) {
-        harmonyAttrs.push_back({ "placement", (h->placement() == PlacementV::BELOW) ? "below" : "above" });
+        harmonyAttrs.emplace_back(std::make_pair("placement", (h->placement() == PlacementV::BELOW) ? "below" : "above"));
     }
-    harmonyAttrs.push_back({ "print-frame", h->hasFrame() ? "yes" : "no" });     // .append(relative));
+    harmonyAttrs.emplace_back(std::make_pair("print-frame", h->hasFrame() ? "yes" : "no"));     // .append(relative));
     if (!h->visible()) {
-        harmonyAttrs.push_back({ "print-object", "no" });
+        harmonyAttrs.emplace_back(std::make_pair("print-object", "no"));
     }
     addColorAttr(h, harmonyAttrs);
     m_xml.startElement("harmony", harmonyAttrs);
