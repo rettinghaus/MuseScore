@@ -27,6 +27,7 @@
 
 namespace mu::engraving {
 enum class AccidentalType : unsigned char;
+enum class BracketType : signed char;
 class Articulation;
 class Chord;
 class Fraction;
@@ -53,6 +54,7 @@ extern muse::String accidentalType2SmuflMusicXmlString(const engraving::Accident
 extern engraving::AccidentalType musicXmlString2accidentalType(const muse::String mxmlName, const muse::String smufl);
 extern muse::String musicXmlAccidentalTextToChar(const muse::String mxmlName);
 extern engraving::SymId musicXmlString2accSymId(const muse::String mxmlName, const muse::String smufl = {});
+extern muse::String bracketType2MusicXmlString(const engraving::BracketType type);
 extern engraving::AccidentalType microtonalGuess(double val);
 extern bool isLaissezVibrer(const engraving::SymId id);
 extern muse::String errorStringWithLocation(int line, int col, const muse::String& error);
