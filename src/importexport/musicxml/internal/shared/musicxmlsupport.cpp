@@ -601,6 +601,35 @@ String musicXmlAccidentalTextToChar(const String mxmlName)
 }
 
 //---------------------------------------------------------
+//   bracketType2MusicXmlString
+//---------------------------------------------------------
+
+String bracketType2MusicXmlString(const BracketType type)
+{
+    String s;
+    switch (type) {
+    case BracketType::NO_BRACKET:
+        s =u"none";
+        break;
+    case BracketType::NORMAL:
+        s =u"bracket";
+        break;
+    case BracketType::BRACE:
+        s =u"brace";
+        break;
+    case BracketType::LINE:
+        s =u"line";
+        break;
+    case BracketType::SQUARE:
+        s =u"square";
+        break;
+    default:
+        LOGD("bracket subtype %d not understood", int(type));
+    }
+    return s;
+}
+
+//---------------------------------------------------------
 //   isAppr
 //---------------------------------------------------------
 
