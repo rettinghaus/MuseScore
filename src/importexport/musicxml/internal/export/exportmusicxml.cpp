@@ -4845,26 +4845,7 @@ static void partGroupStart(XmlWriter& xml, int number, const BracketItem* const 
     xml.startElement("part-group", { { "type", "start" }, { "number", number } });
     if (symbol) {
         // only 
-        String br;
-        switch (bracket->bracketType()) {
-        case BracketType::NO_BRACKET:
-            br = u"none";
-            break;
-        case BracketType::NORMAL:
-            br = u"bracket";
-            break;
-        case BracketType::BRACE:
-            br = u"brace";
-            break;
-        case BracketType::LINE:
-            br = u"line";
-            break;
-        case BracketType::SQUARE:
-            br = u"square";
-            break;
-        default:
-            LOGD("bracket subtype %d not understood", int(bracket->bracketType()));
-        }
+        String br = bracketType2MusicXmlString(bracket->bracketType());
         if (!br.empty()) {
             String tag = u"group-symbol";
             tag += color2xml(bracket);
@@ -7981,14 +7962,13 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vecto
     // part symbol
     for (size_t i = 0; i < staves; i++) {
         Staff* st = part->staff(i);
-        for (size_t j = 0; j < st->bracketLevels() + 1; j++) {
-            if (!(st->bracketSpan(j) == staves && st->bracketType(j) == BracketType::BRACE)) {
-                const BracketItem* bi = st->brackets().at(j);
+        for (auto bi : st->brackets()) {
+            if (bi->bracketSpan() && bi->bracketSpan() < staves) {
                 XmlWriter::Attributes attributes;
                 attributes.push_back({ "top-staff", i + 1 });
-                attributes.push_back({ "bottom-staff", st->bracketSpan(j) });
+                attributes.push_back({ "bottom-staff", bi->bracketSpan() });
                 addColorAttr(bi, attributes);
-                xml.tag("part-symbol", attributes);
+                xml.tag("part-symbol", attributes, bracketType2MusicXmlString(bi->bracketType()));
             }
         }
     }
