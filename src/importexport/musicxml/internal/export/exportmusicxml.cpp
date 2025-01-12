@@ -7724,9 +7724,9 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
                         bracketFound = true;
                         if (i == 0) {
                             // OK, found bracket in first staff of part
-                            // filter out implicit brackets
-                            if (!(st->bracketSpan(j) <= part->nstaves()
-                                  && st->bracketType(j) == BracketType::BRACE)) {
+                            // filter out special or implicit brackets
+                            if ((st->bracketSpan(j) < part->nstaves())
+                                 || !(st->bracketSpan(j) == part->nstaves() && st->bracketType(j) == BracketType::BRACE)) {
                                 // filter out brackets starting in the last part
                                 // as they cannot span multiple parts
                                 if (idx < parts.size() - 1) {
@@ -7961,7 +7961,8 @@ static void writePartSymbol(XmlWriter& xml, const Part* part)
     for (size_t i = 0; i < staves; i++) {
         Staff* st = part->staff(i);
         for (auto bi : st->brackets()) {
-            if (bi->bracketSpan() && bi->bracketSpan() - i < staves) {
+            if ((bi->bracketSpan() && bi->bracketSpan() - i < staves)
+                 || ((bi->bracketSpan() == staves) && bi->bracketType() != BracketType::BRACE)) {
                 XmlWriter::Attributes attributes;
                 attributes.emplace_back({std::make_pair("top-staff", i + 1));
                 attributes.emplace_back({std::make_pair("bottom-staff", bi->bracketSpan() + i));
