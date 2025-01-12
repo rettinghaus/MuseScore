@@ -4843,13 +4843,11 @@ static void directionETag(XmlWriter& xml, staff_idx_t staff, int offs = 0)
 static void partGroupStart(XmlWriter& xml, int number, const BracketItem* const bracket, const bool barlineSpan, const bool groupTime, const bool symbol)
 {
     xml.startElement("part-group", { { "type", "start" }, { "number", number } });
-    if (symbol) {
-        String br = bracketType2MusicXmlString(bracket->bracketType());
-        if (!br.empty()) {
-            String tag = u"group-symbol";
-            tag += color2xml(bracket);
-            xml.tagRaw(tag, br);
-        }
+    String br = bracketType2MusicXmlString(bracket->bracketType());
+    if (!br.empty()) {
+        String tag = u"group-symbol";
+        tag += color2xml(bracket);
+        xml.tagRaw(tag, br);
     }
     if (barlineSpan) {
         xml.tag("group-barline", "yes");
