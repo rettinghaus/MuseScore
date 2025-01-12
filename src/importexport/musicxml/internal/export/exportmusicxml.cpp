@@ -7962,8 +7962,8 @@ static void writePartSymbol(XmlWriter& xml, const Part* part)
             if ((bi->bracketSpan() && bi->bracketSpan() - i < staves)
                  || ((bi->bracketSpan() == staves) && bi->bracketType() != BracketType::BRACE)) {
                 XmlWriter::Attributes attributes;
-                attributes.emplace_back({std::make_pair("top-staff", i + 1));
-                attributes.emplace_back({std::make_pair("bottom-staff", bi->bracketSpan() + i));
+                attributes.emplace_back(std::make_pair("top-staff", i + 1));
+                attributes.emplace_back(std::make_pair("bottom-staff", bi->bracketSpan() + i));
                 addColorAttr(bi, attributes);
                 xml.tag("part-symbol", attributes, bracketType2MusicXmlString(bi->bracketType()));
             }
