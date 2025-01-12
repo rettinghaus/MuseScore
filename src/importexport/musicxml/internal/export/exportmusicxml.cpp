@@ -4844,7 +4844,6 @@ static void partGroupStart(XmlWriter& xml, int number, const BracketItem* const 
 {
     xml.startElement("part-group", { { "type", "start" }, { "number", number } });
     if (symbol) {
-        // only 
         String br = bracketType2MusicXmlString(bracket->bracketType());
         if (!br.empty()) {
             String tag = u"group-symbol";
@@ -7732,7 +7731,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
                                 // as they cannot span multiple parts
                                 if (idx < parts.size() - 1) {
                                     // add others
-                                    int number = findPartGroupNumber(partGroupEnd);
+                                    const int number = findPartGroupNumber(partGroupEnd);
                                     if (number < MAX_PART_GROUPS) {
                                         const BracketItem* bi = st->brackets().at(j);
                                         partGroupStart(xml, number + 1, bi, st->barLineSpan(), groupTime, bi->bracketSpan() > part->nstaves());
@@ -7947,31 +7946,44 @@ static void clampMusicXmlOctave(int& octave)
 }
 
 //---------------------------------------------------------
-//  writeStaffDetails
+//  writePartSymbol
 //---------------------------------------------------------
 
 /**
- Write the staff details for \a part to \a xml.
+ Write the part symbol for \a part to xml.
  */
 
-static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vector<size_t> hiddenStaves)
+static void writePartSymbol(XmlWriter& xml, const Part* part)
 {
-    const Instrument* instrument = part->instrument();
-    const size_t staves = part->nstaves();
+    size_t staves = part->nstaves();
 
     // part symbol
     for (size_t i = 0; i < staves; i++) {
         Staff* st = part->staff(i);
         for (auto bi : st->brackets()) {
-            if (bi->bracketSpan() && bi->bracketSpan() < staves) {
+            if (bi->bracketSpan() && bi->bracketSpan() - i < staves) {
                 XmlWriter::Attributes attributes;
-                attributes.push_back({ "top-staff", i + 1 });
-                attributes.push_back({ "bottom-staff", bi->bracketSpan() });
+                attributes.emplace_back({std::make_pair("top-staff", i + 1));
+                attributes.emplace_back({std::make_pair("bottom-staff", bi->bracketSpan() + i));
                 addColorAttr(bi, attributes);
                 xml.tag("part-symbol", attributes, bracketType2MusicXmlString(bi->bracketType()));
             }
         }
     }
+}
+
+//---------------------------------------------------------
+//  writeStaffDetails
+//---------------------------------------------------------
+
+/**
+ Write the staff details for \a part to xml.
+ */
+
+static void writeStaffDetails(XmlWriter& xml, const Part* part)
+{
+    const Instrument* instrument = part->instrument();
+    size_t staves = part->nstaves();
 
     // staff details
     for (size_t i = 0; i < staves; i++) {
@@ -8565,6 +8577,7 @@ void ExportMusicXml::writeMeasure(const Measure* const m,
     if (isFirstActualMeasure) {
         if (staves > 1) {
             m_xml.tag("staves", static_cast<int>(staves));
+            writePartSymbol(m_xml, part);
         }
 
         if (m_instrMap.size() > 1) {
