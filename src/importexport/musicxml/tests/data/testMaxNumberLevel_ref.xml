@@ -40,6 +40,7 @@
           <beat-type>4</beat-type>
           </time>
         <staves>16</staves>
+        <part-symbol>bracket</part-symbol>
         <clef number="1">
           <sign>G</sign>
           <line>2</line>
