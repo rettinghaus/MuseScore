@@ -4840,7 +4840,7 @@ static void directionETag(XmlWriter& xml, staff_idx_t staff, int offs = 0)
 //   partGroupStart
 //---------------------------------------------------------
 
-static void partGroupStart(XmlWriter& xml, int number, const BracketItem* const bracket, const bool barlineSpan, const bool groupTime, const bool symbol)
+static void partGroupStart(XmlWriter& xml, int number, const BracketItem* const bracket, const bool barlineSpan, const bool groupTime)
 {
     xml.startElement("part-group", { { "type", "start" }, { "number", number } });
     String br = bracketType2MusicXmlString(bracket->bracketType());
@@ -7732,7 +7732,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
                                     const int number = findPartGroupNumber(partGroupEnd);
                                     if (number < MAX_PART_GROUPS) {
                                         const BracketItem* bi = st->brackets().at(j);
-                                        partGroupStart(xml, number + 1, bi, st->barLineSpan(), groupTime, bi->bracketSpan() > part->nstaves());
+                                        partGroupStart(xml, number + 1, bi, st->barLineSpan(), groupTime);
                                         partGroupEnd[number] = static_cast<int>(staffCount + st->bracketSpan(j));
                                     }
                                 }
@@ -7750,7 +7750,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
             int number = findPartGroupNumber(partGroupEnd);
             if (number < MAX_PART_GROUPS) {
                 const BracketItem* bi = Factory::createBracketItem(score->dummy());
-                partGroupStart(xml, number + 1, bi, false, groupTime, false);
+                partGroupStart(xml, number + 1, bi, false, groupTime);
                 delete bi;
                 partGroupEnd[number] = static_cast<int>(idx + part->nstaves());
             }
@@ -7956,18 +7956,29 @@ static void writePartSymbol(XmlWriter& xml, const Part* part)
     size_t staves = part->nstaves();
 
     // part symbol
+    bool bracketFound = false;
     for (size_t i = 0; i < staves; i++) {
         Staff* st = part->staff(i);
-        for (auto bi : st->brackets()) {
-            if ((bi->bracketSpan() && bi->bracketSpan() - i < staves)
-                 || ((bi->bracketSpan() == staves) && bi->bracketType() != BracketType::BRACE)) {
-                XmlWriter::Attributes attributes;
-                attributes.emplace_back(std::make_pair("top-staff", i + 1));
-                attributes.emplace_back(std::make_pair("bottom-staff", bi->bracketSpan() + i));
-                addColorAttr(bi, attributes);
-                xml.tag("part-symbol", attributes, bracketType2MusicXmlString(bi->bracketType()));
-            }
+        if (!st->brackets().size()) {
+            continue;
         }
+        const BracketItem* bi = st->brackets().back();
+        XmlWriter::Attributes attributes;
+        addColorAttr(bi, attributes);
+        bracketFound = true;
+        if ((bi->bracketSpan() == staves) && (bi->bracketType() != BracketType::BRACE)) {
+            xml.tag("part-symbol", attributes, bracketType2MusicXmlString(bi->bracketType()));
+            break;
+        } else if ((bi->bracketSpan() && bi->bracketSpan() - i < staves)) {
+            attributes.emplace_back(std::make_pair("top-staff", i + 1));
+            attributes.emplace_back(std::make_pair("bottom-staff", bi->bracketSpan() + i));
+            xml.tag("part-symbol", attributes, bracketType2MusicXmlString(bi->bracketType()));
+            // MusicXML only allows one part-symbol, so break here too
+            break;
+        }
+    }
+    if (!bracketFound) {
+        xml.tag("part-symbol", "none");
     }
 }
 
