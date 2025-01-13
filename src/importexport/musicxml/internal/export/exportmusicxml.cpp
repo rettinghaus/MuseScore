@@ -7956,16 +7956,16 @@ static void writePartSymbol(XmlWriter& xml, const Part* part)
     size_t staves = part->nstaves();
 
     // part symbol
-    bool bracketFound = false;
+    BracketItem* bi = nullptr;
     for (size_t i = 0; i < staves; i++) {
         Staff* st = part->staff(i);
         if (!st->brackets().size()) {
             continue;
         }
-        const BracketItem* bi = st->brackets().back();
+        // just pick the first here
+        bi = st->brackets().front();
         XmlWriter::Attributes attributes;
         addColorAttr(bi, attributes);
-        bracketFound = true;
         if ((bi->bracketSpan() == staves) && (bi->bracketType() != BracketType::BRACE)) {
             xml.tag("part-symbol", attributes, bracketType2MusicXmlString(bi->bracketType()));
             break;
@@ -7977,7 +7977,7 @@ static void writePartSymbol(XmlWriter& xml, const Part* part)
             break;
         }
     }
-    if (!bracketFound) {
+    if (!bi) {
         xml.tag("part-symbol", "none");
     }
 }
