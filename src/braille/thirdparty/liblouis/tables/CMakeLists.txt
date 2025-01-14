@@ -5,6 +5,10 @@ install(FILES
     # delete the names otherwise the tables might get added again by mistake.
     afr-za-g1.ctb
     afr-za-g2.ctb
+    akk-borger.utb
+    akk.utb
+    ancient-languages-borger.utb
+    ancient-languages-us.utb
     ar-ar-comp8.utb
     ar-ar-g1-core.uti
     ar-ar-g1.utb
@@ -18,6 +22,7 @@ install(FILES
     ba.utb
     be-in-g1.utb
     bel-comp.utb
+    bel-detailed.utb
     bel.utb
     bengali.cti
     bg.ctb
@@ -46,11 +51,13 @@ install(FILES
     cop-eg-comp8.utb
     corrections.cti
     countries.cti
+    critical-apparatus.uti
     cs-chardefs.cti
     cs-comp8.utb
     cs-g1.ctb
     cs.tbl
     cs-translation.cti
+    cuneiform-transliterated.utb
     cy-cy-g1.utb
     cy-cy-g2.ctb
     cy.tbl
@@ -65,7 +72,6 @@ install(FILES
     da-dk-g16-lit_1993.ctb
     da-dk-g18_1993.ctb
     da-dk-g18.ctb
-    da-dk-g2_1993.dic
     da-dk-g26_1993.ctb
     da-dk-g26.ctb
     da-dk-g26l_1993.ctb
@@ -149,6 +155,7 @@ install(FILES
     fa-ir-comp8.ctb
     fa-ir-g1.utb
     fi-fi-8dot.ctb
+    fil-g2.ctb
     fi.utb
     fr-bfu-comp68.cti
     fr-bfu-comp6.utb
@@ -164,13 +171,18 @@ install(FILES
     grc-international-common.uti
     grc-international-composed.uti
     grc-international-decomposed.uti
+    grc-international-en-composed.utb
     grc-international-en.utb
+    grc-international-es.utb
     gr-pl-comp8.uti
     gu-in-g1.utb
     gujarati.cti
     gurumuki.cti
     gu.tbl
     haw-us-g1.ctb
+    hbo.utb
+    he-common-consonants.uti
+    he-common-vowels-ihbc.uti
     he-IL-comp8.utb
     he-IL.utb
     hi-in-g1.utb
@@ -220,6 +232,7 @@ install(FILES
     it-it-comp8.utb
     it.tbl
     iu-ca-g1.ctb
+    ja-kantenji-ucs2.utb
     ja-kantenji.utb
     ka-in-g1.utb
     kannada.cti
@@ -251,6 +264,7 @@ install(FILES
     lg-ug-g1.utb
     litdigits6DotsPlusDot6.uti
     litdigits6Dots.uti
+    lo-g1.utb
     loweredDigits6Dots.uti
     loweredDigits8Dots.uti
     lt-6dot.tbl
@@ -259,6 +273,7 @@ install(FILES
     lt.tbl
     Lv-Lv-g1.utb
     lv.tbl
+    Makefile.in
     malayalam.cti
     mao-nz-g1.ctb
     marburg_single_cell_defs.cti
@@ -286,9 +301,12 @@ install(FILES
     ne.tbl
     nl-BE.dis
     nl-chardefs.uti
+    nl-chardefs.uti.in
     nl-comp8.utb
     nl-NL-g0.utb
-    nl.tbl
+    nl-NL-g0.utb.in
+    nl-print.dis
+    nl-unicode.dis
     no-no-8dot-fallback-6dot-g0.utb
     no-no-8dot.utb
     no-no-braillo-047-01.dis
@@ -322,6 +340,7 @@ install(FILES
     pt.tbl
     pu-in-g1.utb
     ro.ctb
+    ro-g0.utb
     ro.tbl
     ru-brf.dis
     ru-compbrl.ctb
@@ -350,9 +369,11 @@ install(FILES
     sot-za-g1.ctb
     sot-za-g2.ctb
     spaces.uti
-    sr-chardefs.cti
+    sr-common.cti
+    sr-Cyrl.ctb
+    sr-cyrletters.cti
     sr-g1.ctb
-    sr.tbl
+    sr-latletters.cti
     sv-1989.ctb
     sv-1996.ctb
     sv-g0.utb
@@ -364,6 +385,7 @@ install(FILES
     sw-ke-g1-5.ctb
     sw-ke-g1.utb
     sw-ke-g2.ctb
+    syc.utb
     ta.ctb
     tamil.cti
     ta-ta-g1.ctb
@@ -372,6 +394,9 @@ install(FILES
     telugu.cti
     te.tbl
     text_nabcc.dis
+    th-comp8-backward.utb
+    th-g0.utb
+    th-g1.utb
     tr.ctb
     tr-g1.ctb
     tr-g2.ctb
@@ -380,8 +405,10 @@ install(FILES
     tsn-za-g1.ctb
     tsn-za-g2.ctb
     tt.utb
+    uga.utb
     ukchardefs.cti
     uk-comp.utb
+    uk-detailed.utb
     ukmaths_single_cell_defs.cti
     ukmaths_unicode_defs.cti
     uk.utb
@@ -395,8 +422,8 @@ install(FILES
     uz-g1.utb
     ve-za-g1.utb
     ve-za-g2.ctb
+    vi-cb8.utb
     vi-charsdef.uti
-    vi.ctb
     vi-lettersdef.uti
     vi-puncsdef.uti
     vi-saigon-g1.ctb
@@ -407,13 +434,13 @@ install(FILES
     wordcx.dis
     xh-za-g1.utb
     xh-za-g2.ctb
+    yi.utb
     zh-chn.ctb
     zh_CHN.tbl
     zhcn-cbs.ctb
     zhcn-g1.ctb
     zhcn-g2.ctb
     zh-hk.ctb
-    zh_HK.tbl
     zh-tw.ctb
     zu-za-g1.utb
     zu-za-g2.ctb

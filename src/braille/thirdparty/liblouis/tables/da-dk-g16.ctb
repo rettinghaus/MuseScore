@@ -1,6 +1,6 @@
 # Liblouis: Danish table for 6 dots grade 1 forward and backward translation 2022
 #
-#  Copyright (C) 2014, 2016-2022, Bue Vester-Andersen <bue@vester-andersen.dk>
+#  Copyright (C) 2014, 2016-2024, Bue Vester-Andersen <bue@vester-andersen.dk>
 #
 #  This file is part of liblouis.
 #
@@ -211,6 +211,12 @@ endnum - 36
 midnum ^ 45-346
 midnum \x00d7 45-35
 
+# Remove space between § and numbers.
+noback begnum § 346
+begnum §\s 346
+begnum §§\s 346-346
+always §§ 346-346
+
 # Punctuation
 prepunc " 2356
 postpunc " 2356
@@ -270,12 +276,12 @@ noback pass2 @56-5 @5 # no letsign before letters with accent
 noback pass2 @56-6-5 @6-5 # no letsign before cap letters with accent
 noback pass2 @56-6 @6-56 # Ensure correct order
 
- ### Pass 2 - backward
+### Pass 2 - backward
 
 ### Pass 3 - forward translation
 
 # Ensure there is only one letsign
- noback pass3 @56-56 @56
+noback pass3 @56-56 @56
 
 # Ensure there is only one emphasis sign
 noback pass3 @46-46 @46

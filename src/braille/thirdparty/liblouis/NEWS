@@ -1,5 +1,573 @@
 liblouis NEWS -- history of user-visible changes.  	-*- org -*-
 
+* Noteworthy changes in release 3.32.0 (2024-12-02)
+A lot of intense work by Matt, Paul, Leonard, Eric, Sarah and Bert
+went into this release. There are new tables for Biblical Language and
+Ancient Near Eastern Studies. We have improvements for UEB, Spanish,
+Turkish and Hungarian. There are also a couple of new features, for
+example the handling of the language metadata has been extended to
+handle language ranges.
+
+I'd like to thank all the very dedicated contributors for helping to
+push liblouis forward.
+
+For a detailed list of all the changes refer to [[https://github.com/liblouis/liblouis/milestone/42?closed=1][the list of closed
+issues]].
+
+** New features
+- ~lou_translate~ now has an option to specify a display table. This
+  is especially useful when using a query. Before it would just
+  default to a Unicode display table, thanks to Christian Egli.
+- Meta data for ~language~ and ~region~ can now be specified using a
+  [[https://datatracker.ietf.org/doc/html/rfc4647#section-2.2][IETF Extended Language Range]]. This is particularly useful for
+  accessing tables related to a specific region, for instance. Thanks
+  to Bert Frees.
+
+** Bug fixes
+- Fix a memory problem in the ~getTable~ function. Thanks to the
+  oss-fuzz project for reporting and to Christian Egli for fixing it.
+- Fix a build problem on Windows related to ~strncasecmp~ which was
+  reported at the last minute by Leonard de Ruijter and fixed by
+  Christian Egli.
+
+** Braille table improvements
+- Updates to Spanish grade 1 thanks to José Manuel Delicado:
+  - Removed lowered digits. This allows certain punctuation to be written again.
+  - Included ~digits6Dots.uti~. This prevents the numsign from disappearing.
+  - The symbols =.= and =,= are used as numeric mode chars.
+  - Added the ~noback~ operator to the apostrophe symbol, since it's
+    not very used and conflicts with the =.=.
+- Extensive fixes to the UEB computer code thanks to James Bowden.
+- Improvements to Turkish grade 2 thanks to Oğuz Uğur and Attila
+  Hammer.
+- Hungarian improvements (added more exceptions) thanks to Attila
+  Hammer.
+- There is now an include table for symbols referencing the critical
+  apparatus in critical texts thanks to Matt Yeater.
+
+** Other changes
+- Migrate to ~realloc-posix~ from gnulib, as ~realloc-gnu~ that we
+  used before is now deprecated. Thanks to Christian Egli.
+- Improvements to the manual thanks to Huan Wu.
+- Thanks to Rob Beezer we now have instructions on how to install
+  Python bindings in a virtual environment.
+
+** Deprecation notice
+- None
+
+** Backwards incompatible changes
+- If liblouis has been compiled for 16-bit Unicode it will now error
+  if a table contains characters outside of that range. Previously it
+  would issue a warning and ignore the problem. Thanks to Christian
+  Egli.
+
+** Invisible changes
+- None
+
+** New, renamed or removed tables
+*** New
+- ~critical-apparatus.uti~
+- ~he-common-consonants.uti~
+- ~he-common-vowels-ihbc.uti~
+
+*** Renamed
+- None
+
+*** Removed
+- None
+
+* Noteworthy changes in release 3.31.0 (2024-09-02)
+This release adds support for new braille tables, such as Thai
+contracted and Greek International US, and updates existing braille
+tables such as the Finnish table which has been updated to the latest
+braille standard. Benehalo has uncovered a number of security problems
+in the liblouis code and has thankfully also provided fixes for them
+by hardening the code.
+
+I'd like to thank all the very dedicated contributors for helping to
+push liblouis forward.
+
+For a detailed list of all the changes refer to [[https://github.com/liblouis/liblouis/milestone/41?closed=1][the list of closed
+issues]].
+
+** New features
+- None
+** Bug fixes
+- Benehalo discovered quite a number of security problems and kindly
+  enough also just fixed them by adding some check guards and making
+  the code more robust.
+** Braille table improvements
+- Hungarian improvements (added more exceptions) thanks to Attila
+  Hammer.
+- The usage of ~match~ opcodes with empty pre- and post patterns, e.g.
+  ~match - disk - 145-24-16~ in some tables has been replaced with
+  plain old ~always~ opcodes, as their implementation is much faster.
+- A change to the Spanish back-translation that went into the last
+  release was reverted as it caused more problems than it solved.
+- The Dutch display table has been improved thanks to Bert Frees.
+- The Finnish table has been updated to reflect the latest Finnish
+  braille standard from 2021 (Pistekirjoituksen perusteet, 2021)
+  thanks to Sami Maatta from Celia.
+- Added a new Thai contracted braille table according to the
+  guidelines of "Thai Braille Use Manual" of the National Braille
+  Promotion and Development Fund. Thanks to Chatupol Nootatong.
+- Add a table for Greek International US braille. This table is based
+  on the composed Greek characters, unlike the existing English
+  table which is based on the decomposed system. Thanks to Sarah Blake
+  LaRose and Leonard de Ruijter.
+
+** Other changes
+- None
+** Deprecation notice
+- None
+** Backwards incompatible changes
+- None
+** Invisible changes
+- None
+** New, renamed or removed tables
+*** New
+- ~th-g1.utb~
+- ~grc-international-en-composed.utb~
+
+*** Renamed
+None
+
+*** Removed
+None
+
+* Noteworthy changes in release 3.30.0 (2024-06-03)
+We are very excited to present this release, as a lot of enthusiasm
+and energy have gone into it. A host of of new contributors have
+improved liblouis and added support for new languages. We now have
+support for many ancient languages, like Akkadian, Ugaritic, Biblical
+Hebrew and Syriac. This release also supports Yiddish. And the Dutch
+tables got a very innovative upgrade.
+
+I'd like to thank all the very dedicated contributors for helping to
+bring liblouis forward.
+
+For a detailed list of all the changes refer to [[https://github.com/liblouis/liblouis/milestone/40?closed=1][the list of closed
+issues]].
+
+** New features
+- There is a new uncontracted braille table for Yiddish, created by
+  Abby Howell and Matthew Shifrin, a teacher and student of Yiddish at
+  the Boston Worker's Circle.
+- A group of incredibly dedicated people has been working on support
+  for ancient languages, namely Matt Yeater and Paul Geoghegan with
+  the help of Sarah Blake LaRose, Eric Harvey, Leonard de Ruijter and
+  Abby Howell. The languages that are supported so far are:
+  - Biblical Hebrew
+  - Akkadian according to Borger system
+  - Akkadian braille according to U.S. system
+  - Syriac
+  - Ugaritic
+  - A table to provide support for the languages represented in the
+    Cuneiform / Akkadian Writing systems
+** Bug fixes
+- Fix a bug in the Python bindings that occurs on bigendian
+  architectures, thanks to Daniel Garcia.
+- Fix a memory problem when handling parameters in ~lou_translate~,
+  thanks to benehalo.
+** Braille table improvements
+- Minor improvements to the Danish tables thanks to Bue Vester-Andersen:
+  - Fixed a missing contraction for "gjorde".
+- Improvements to Hungarian (added more exceptions) thanks to Attila
+  Hammer.
+- Corrections to the Malay Table thanks to lbk2907.
+- Major improvements to Serbian backtranslation thanks to Aleksandar
+  Sredojevic:
+  - Backtranslation now works to both Cyrillic and Latin script.
+- Fix the metadata for the Cantonese (Hong Kong) table thanks to André
+  Polykanine.
+- Improvements to backtranslation of Spanish grade 2 thanks to Iván
+  Argote Pérez with the help of Abby Howell.
+- Major upgrade to the Dutch tables thanks to Bert Frees. These tables
+  use virtual dots in an innovative way to help sighted readers better
+  understand the generated braille. They also use a new technique
+  using ~m4~ macros to simplify writing tables that use many
+  repetitive opcodes.
+** Other changes
+- The metadata now has support for ~unicode-range~, i.e. whether the
+  characters used in a table all fall inside the ~0-U+FFFF~ Unicode
+  range (~ucs2~), or whether some characters are in the >
+  ~U+10000-U+10FFFF~ range (~ucs4~), thanks to Bert Frees.
+** Deprecation notice
+- None
+** Backwards incompatible changes
+- None
+** Invisible changes
+- None
+** New, renamed or removed tables
+*** New
+- ~sr-Cyrl.ctb~
+- ~yi.utb~
+- ~hbo.utb~
+- ~akk.utb~
+- ~akk-borger.utb~
+- ~syc.utb~
+- ~uga.utb~
+- ~cuneiform-transliterated.utb~
+
+*** Renamed
+None
+
+*** Removed
+None
+
+* Noteworthy changes in release 3.29.0 (2024-03-04)
+A lot of hard work by Andrey, Anthony, Attila, Bert, Bue and James
+went into this release. We have many improvements for UEB, better
+support for Belarusian and Ukrainian literary braille, a major upgrade
+for Turkish and miscellaneous enhancements for Kannada, Danish, Dutch,
+Esperanto and Malay. There is also a brand new table for classical
+Greek for Spanish braille readers.
+
+I'd like to thank everybody for helping to bring liblouis forward.
+
+For a detailed list of all the changes refer to [[https://github.com/liblouis/liblouis/milestone/39?closed=1][the list of closed
+issues]].
+
+** New features
+- There is a new uncontracted braille for Lao thanks to Aikeo
+  Koomanivong, disability service center in Lao PDR DSC.
+- There is a new uncontracted braille table to read classical Greek
+  characters according to the technical document B12-1 by the Spanish
+  Braille Commission, thanks to Iván Novegil.
+** Bug fixes
+- None
+** Braille table improvements
+- Fixed issues with Kannada table ~kannada.cti~ thanks to Jake Kyle.
+- Improvements to the Belarusian and Ukrainian literary braille tables
+  thanks to Andrey Yakuboy:
+  - Added support for back translation to the Belarusian and Ukrainian
+    literary Braille tables (~bel.utb~ and ~uk.utb~ respectively).
+  - Changed the dot patterns for parentheses in the Ukrainian braille table
+    from 126-345 to 2356.
+  - Added new tables for Belarusian and Ukrainian braille with indication of
+    capital letters (~bel-detailed.utb~ and ~uk-detailed.utb~ respectively).
+- Minor improvements to the Danish tables thanks to Bue Vester-Andersen:
+  - Fixed definition of dollar sign ($)
+  - Fixed rules for applying section sign (§)
+  - Fixed contraction of some words
+- Updates to UEB Contracted thanks to Anthony Tibbs:
+  - Final letter groupsigns will not be used immediately following
+    capital indicators (e.g. when the first letter of the groupsign is
+    capitalized, or the groupsign follows a capitalized passage) per
+    UEB Rule 10.8.2
+- Updates to UEB thanks to James Bowden:
+  - Back translating braille dot 3 now results in the ordinary
+    apostrophe U+0027 rather than U+2019
+  - Dot 5, used for "spaced digits" is only applied if a no-break
+    space U+00a0 is used in the input. It fixes an issue with British
+    postcodes which should be treated as two separate items. It also
+    means that if someone wants spaced digits, numbers have to be
+    joined together with no-break spaces deliberately.
+- Do not collapse Unicode braille in Dutch, thanks to Davy Kager.
+- Improvements to Hungarian (added more exceptions) thanks to Attila
+  Hammer.
+- Added support for back-translation to the Esperanto table, thanks
+  to Bue Vester-Andersen.
+- Major upgrade to the Turkish tables thanks to Oğuz UĞUR with lots of
+  help from Attila Hammer.
+  - add support for accented characters
+  - add punctuation symbols from the Turkish Braille Writing Guideline
+  - fix some contractions
+- Corrections to the Malay Table thanks to lbk2907.
+** Other changes
+- Duplicate emphasis classes are no longer warnings thanks to
+  Christian Egli. There are cases where emphasis redefinition is
+  legitimate. They are simply logged now.
+** Deprecation notice
+- None
+** Backwards incompatible changes
+- None
+** Invisible changes
+- None
+** New, renamed or removed tables
+*** New
+- bel-detailed.utb
+- uk-detailed.utb
+- lo-g1.utb
+
+*** Renamed
+None
+
+*** Removed
+None
+
+* Noteworthy changes in release 3.28.0 (2023-12-04)
+This release manages to bring as many new features, table improvements
+and bug fixes as we haven't seen in a long time. There are a number of
+major bug fixes that Bert worked on that fix bugs and inconsistencies.
+On the table side there is a new table for Filipino contracted
+braille, James has tirelessly been working on UEB improvements and (as
+usual) Attila worked on the Hungarian tables.
+
+I'd like to thank everybody for helping to bring liblouis forward.
+
+For a detailed list of all the changes refer to [[https://github.com/liblouis/liblouis/milestone/38?closed=1][the list of closed
+issues]].
+
+** New features
+- ~lou_translate~ has a new option to specify the table to use with a
+  query. See the updated documentation on how to make use of this new
+  feature.
+** Bug fixes
+- Fix a bug when matching context rules that begin with uppercase
+  letters. Thanks to Anthony Tibbs for the [[https://github.com/liblouis/liblouis/issues/1461][very detailed bug report]]
+  and thanks to Bert for the actual fix.
+- Fix a memory corruption error in the code for the swap opcodes.
+  Thanks to the OSS-fuzz project for reporting and to Christian Egli
+  for fixing it.
+- Change how emphasis phrases are determined. Also allow non-whole
+  words at the start and end of a phrase. This fixes a problem in the
+  UEB handling. Thanks to Ken Perry from APH for reporting and to Bert
+  Frees for fixing it.
+- Character definition and base rules are now always considered in the
+  order in which they are defined in the table. In other words the
+  topmost rule always wins. This fixes a number of problems and
+  inconsistencies. Thanks to Bert Frees for the fix.
+  - Fix the problem of inconsistent precedence of character definition
+    rules reported by Rimas Kudelis.
+  - Fix a problem with ~compbrlAtCursor~ and ~compbrlLeftCursor~ that
+    was reported by Daniel Mayr
+** Braille table improvements
+- Improvements to UEB
+  - fixes to many words starting with letters "BE-".
+  - Fix back translation of dots 26 - when standing alone; should be
+    the word enough.
+  - Fix assignment for the right double arrow and added left, up, and
+    down double arrows.
+  - Fix typos in a couple of rules.
+  - Fix words beginning "CONS-" and "DISHD-" when written uppercase,
+    all above thanks to James Bowden.
+  - Ensure letter indicators are added to letters A-J following
+    numbers in a capitalized passage, thanks to Anthony Tibbs.
+- Improvements to Hungarian (added more exceptions) thanks to Attila
+  Hammer.
+- New table for Filipino contracted braille, thanks to Allan Mesoga
+  and Dang Hoai Phúc.
+** Other changes
+- The ~manywarnigs~ module from gnulib is no longer used. It caused
+  massive slowdowns when compiling with gcc.
+- Add the name of the concerned table when logging warnings thanks to
+  Bert Frees for the patch and to Attila Hammer for the PR.
+** Deprecation notice
+- None
+** Backwards incompatible changes
+- The order of how character definition and base rules are considered
+  has changed. All included tables were adapted, but if you maintain
+  your own tables you might want to look [[https://github.com/liblouis/liblouis/pull/1481][at the change]] to see what you
+  need to do.
+** Invisible changes
+** New, renamed or removed tables
+*** New
+- fil-g2.ctb
+
+*** Renamed
+None
+
+*** Removed
+None
+
+* Noteworthy changes in release 3.27.0 (2023-09-12)
+This release contains support for two more languages, namely Thai and
+Romanian uncontracted braille. There is also the usual assortment of
+incremental improvements to Bengali, Danish, Hungarian, Swedish, Urdu
+and US English. To top it off, some great new contributors did some
+code cleanups and bug fixes.
+
+I'd like to thank everybody for helping to bring liblouis forward.
+
+For a detailed list of all the changes refer to [[https://github.com/liblouis/liblouis/milestone/37?closed=1][the list of closed
+issues]].
+
+** New features
+- Added support for Thai braille thanks to Chatupol Nootatong, Dr.
+  Wiraman Niyomphol and Itsawat Banlawanich from Thai braille fund and
+  Foundation for the Blind in Thailand.
+- Added a new Romanian 6 dot table, thanks to BAUM Engineering.
+** Braille table improvements
+- Update to Urdu, removing old rule where dots 256 was used for Urdu
+  letters TEH ALEF. Thanks to Jake Kyle.
+- Added the dari character to Bengali thanks to Attila Hammer.
+- Improvements to Hungarian (added more exceptions) thanks to Attila
+  Hammer.
+- Improvements to Hungarian to support users if typing physical
+  braille display, thanks to Attila Hammer.
+- Fixed the translation of Unicode ellipses in US English grade 1 and
+  2 tables thanks to Anthony Tibbs.
+- Added some more symbols to the Nemeth character definitions thanks
+  to Norbert Markus and Attila Hammer.
+- Fixed a bug in Danish when back-translating a word contraction
+  followed by "!", thanks to Bue Vester-Andersen.
+- Improved handling of numbers and fixed a couple of whole-word
+  contraction errors in Swedish braille thanks to Insyn Scandinavia
+  AB.
+- Added the possibility to retain the virtual dots on Dutch braille,
+  so that it should be possible to distinguish between identical dot
+  patterns that originate from different input. Thanks to Bert Frees.
+** Other changes
+- Removed some code smell thanks to Aaron Cannon.
+- Duplicate emphasis class definitions now cause a warning, thanks to
+  Attila Hammer.
+** Deprecation notice
+- None
+** Backwards incompatible changes
+- The line continuation feature was removed, as it was no longer
+  needed and caused problems (e.g. [[https://github.com/liblouis/liblouis/issues/239][issue 239]]). The tables that
+  depended on it were updated. Thanks to Aaron Cannon.
+- Invalid attribute names now cause a table compilation error instead
+  of just a warning. Thanks to Attila Hammer.
+** New, renamed or removed tables
+*** New
+None
+
+*** Renamed
+None
+
+*** Removed
+None
+
+* Noteworthy changes in release 3.26.0 (2023-06-05)
+This release contains one new feature, namely the possibility to mark
+a test as an expected failure just for back- or forward translation.
+On top of that we have updates for Danish, Hungarian, Norwegian and
+Nemeth Braille plus the usual assortment of code cleanups and bug
+fixes.
+
+I'd like to thank everybody for helping to bring liblouis forward.
+
+For a detailed list of all the changes refer to [[https://github.com/liblouis/liblouis/milestone/36?closed=1][the list of closed
+issues]].
+
+** New features
+- The YAML syntax to define tests has been improved so that expected
+  failures can now contain a direction attribute. In other words you
+  can now specify whether you expect a test to fail for both
+  directions or just for forward or backward translation. For more
+  details consult the updated documentation on how to write YAML
+  tests. Thanks to Christian Egli.
+** Bug fixes
+- Fix an out-of-bound write in ~brl_checks.c~ thanks to Bert Frees for
+  the fix and to Han Zheng for the report.
+- Clear the display table cache on ~lou_free~ thanks to Bert Frees for
+  the fix and to David Korczynski for the report.
+** Braille table improvements
+- Improvements to Hungarian (added more exceptions) thanks to Attila
+  Hammer.
+- Changed the Danish grade 2 tables in accordance with updates from
+  the Danish Braille committee, thanks to thanks to Bue
+  Vester-Andersen.
+- Added support for more symbols in the Nemeth braille tables thanks to
+  Norbert Markus.
+- Improvements to Norwegian braille thanks to Lars Bjørndal
+  - Put ~noback~ before acute sign to enable input at sign (email
+    addresses).
+  - Added more ~noback~ prefixes.
+  - Corrected leftwards arrow and added definition for left right arrow.
+  - Changed bullet point from 2356 to 36-36. According to the
+    Norwegian braille standard, this is the preferred unordered list
+    item prefix.
+** Other changes
+- Clarify the ~README~ for Python thanks to Rob Beezer.
+- Properly remove support for Python2 in the Python bindings again
+  thanks to Rob Beezer.
+** Deprecation notice
+- None
+** Backwards incompatible changes
+- None
+** Invisible changes
+- None
+** New, renamed or removed tables
+*** New
+- None
+
+*** Renamed
+- None
+
+*** Removed
+- None
+
+* Noteworthy changes in release 3.25.0 (2023-03-06)
+We dedicate this release to the memory of John Boyer, the original
+author of liblouis. Sadly he passed away recently. We owe him a
+tremendous amount of gratitude. Without him liblouis would not exist.
+
+A lot of work has gone into this release. We have quite a few security
+related fixes. Then there are updates to Dutch, Norwegian, Slovenian
+and Vietnamese. Attila, who never seems to get tired, updated the
+Hungarian tables and did some general cleanups in the tables.
+
+Also due to some mishap our domain expired and we could not re-acquire
+it. So we had to change our domain to ~liblouis.io~.
+
+I'd like to thank everybody for helping to bring liblouis forward.
+
+For a detailed list of all the changes refer to [[https://github.com/liblouis/liblouis/milestone/35?closed=1][the list of closed
+issues]].
+
+** New features
+** Bug fixes
+- Fixed several buffer overflow errors in ~lou_setDataPath~,
+  ~lou_logFile~ and ~resolveSubtable~ thanks to Marsman1996.
+** Braille table improvements
+- Fix a deprecation warning in Bulgarian 6 dots thanks to Attila
+  Hammer.
+- Fix two broken space replacement rules for ZERO WIDTH SPACE and WORD
+  JOINER thanks to Attila Hammer and Norbert Markus.
+- Fixes to Hungarian Braille exceptions and hyphenation thanks to
+  Attila Hammer. This results in a much improved back-translation of
+  capitalized words.
+- Support for both 8 and 6 dot math symbols in Hungarian thanks to
+  Norbert Markus.
+- Update Dutch 8-dot computer braille table to the 2022 standard
+  thanks to Leonard de Ruijter and the Dutch Braille Authority.
+- There are updates to the Norwegian braille standard. Most notably
+  URLs and email addresses are no longer surrounded by braille
+  patterns unless present in the original document. Thanks to Lars
+  Bjørndal.
+- Add some missing character definitions to Slovenian computer
+  braille, thanks to Jožef Gregorc.
+- Corrections and additions to Vietnamese thanks to Dang Hoai
+  Phúc. Includes a new computer braille table.
+** Other changes
+- Change the domain name from liblouis.org to liblouis.io thanks to
+  Christian Egli.
+- Simplify the Danish test to contain fewer files thanks to Bue
+  Vester-Andersen and Bert Frees.
+- Add the tests and the examples of the Python bindings to the
+  distribution tarball. Thanks to Rob Beezer for spotting this
+  oversight.
+** Deprecation notice
+- The ~lou_setDataPath~ and ~lou_getDataPath~ functions have been
+  deprecated. Please migrate to one of the other ways to set the table
+  search path:
+  - The recommended and most straightforward way to set the search
+    path is to set the ~LOUIS_TABLEPATH~ environment variable.
+  - You can also set a custom table resolver function through
+    ~lou_registerTableResolver~.
+  - If you use the metadata based query API and haven't set the
+    ~LOUIS_TABLEPATH~ environment variable, you can use the
+    ~lou_indexTables~ function to tell Liblouis which files (not
+    directories) to search.
+  - Finally, there is the fallback solution of using absolute file
+    paths.
+** Backwards incompatible changes
+- None
+** Invisible changes
+- None
+** New, renamed or removed tables
+*** New
+- vi-cb8.utb (replaces vi.ctb)
+
+*** Renamed
+None
+
+*** Removed
+- vi.ctb (replaced by vi-cb8.utb)
+
 * Noteworthy changes in release 3.24.0 (2022-12-05)
 This release contains major updates to Hungarian, UEB, and Chinese
 bopomofo braille. Danish has been completely reworked and there is now

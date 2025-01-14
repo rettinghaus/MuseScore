@@ -159,9 +159,7 @@ problematic especially for Windows. Thanks to Docker we can set up the
 environment for you, we can easily distribute it as an image, which
 can be run by anybody and will behave exactly the same for everybody.
 
-Docker images of liblouis are being built automatically each time
-something changes in the code (see https://registry.hub.docker.com/repos/liblouis).
-In order to use them, first get Docker at
+In order to use Docker images of liblouis, first get Docker at
 http://docs.docker.com/introduction/get-docker. Download the latest
 liblouis image with:
 
@@ -439,7 +437,7 @@ Make sure you add the proper YAML front matter. Again see below for
 instructions on how to update the web site.
 
 ** Web site maintenance
-The liblouis web site at liblouis.org is maintained with the help of
+The liblouis web site at liblouis.io is maintained with the help of
 [[https://pages.github.com/][github pages]]. To edit the site just check out the repo at
 https://github.com/liblouis/liblouis.github.io. You'll need to know a
 few things about [[http://jekyllrb.com/][Jekyll]] and markdown, the markup that is used to edit

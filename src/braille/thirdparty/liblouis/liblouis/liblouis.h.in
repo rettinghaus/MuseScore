@@ -41,7 +41,7 @@ typedef @WIDECHAR_TYPE@ widechar;
 // clang-format on
 typedef unsigned short formtype;
 
-#if 0 // #ifdef _MSC_VER // disable because MuseScore is not using liblouis as a DLL
+#ifdef _MSC_VER
 #ifdef _EXPORTING
 #define LIBLOUIS_API __declspec(dllexport)
 #else
@@ -283,13 +283,23 @@ lou_getEmphClasses(const char *tableList);
 /**
  * Set the path used for searching for tables and liblouisutdml files.
  *
- * Overrides the installation path. */
+ * Overrides the installation path. Returns NULL if `path` is NULL or
+ * if the length of `path` is equal or longer than `MAXSTRING`.
+ *
+ * @deprecated Please migrate to one of the other ways to set the
+ * table search path. See the NEWS file for details.
+ */
+
 LIBLOUIS_API
 char *EXPORT_CALL
 lou_setDataPath(const char *path);
 
 /**
- * Get the path set in the previous function. */
+ * Get the path set in the previous function.
+ *
+ * @deprecated Please migrate to one of the other ways to get the
+ * table search path. See the NEWS file for details.
+ */
 LIBLOUIS_API
 char *EXPORT_CALL
 lou_getDataPath(void);

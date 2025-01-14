@@ -9,25 +9,26 @@ MAIN AUTHOR
 
 CODE CONTRIBUTORS
 
-A team of three developers has taken over maintenance work since John
+A team of two developers has taken over maintenance work since John
 Boyer did a step back in 2014:
+
+Current maintainers:
 
   Christian Egli <christian.egli@sbs.ch> from SBS <www.sbs.ch>
   - maintains the build and version control systems and does releases
     on a regular basis
   - has done code contributions
-  - is one of the project maintainers
+
+  Bert Frees <bertfrees@gmail.com> for DocArch <www.docarch.be> and SBS <www.sbs.ch>
+  - has done code contributions
+  - has done table contributions as well
+
+Former maintainers:
 
   Mesar Hameed <mesar.hameed@gmail.com>
   - has done code contributions
   - has done a lot of table maintenance
   - was the main developer of the test harness
-  - is one of the project maintainers
-
-  Bert Frees <bertfrees@gmail.com> for DocArch <www.docarch.be> and SBS <www.sbs.ch>
-  - has done code contributions
-  - has done table contributions as well
-  - is one of the project maintainers
 
 Considerable coding was done by:
 
@@ -78,7 +79,7 @@ Other contributors:
   Brailcom o.p.s. <technik@brailcom.cz>
   Christian Comaschi <christian_comaschi@libero.it>
   Coscell Kao <coscell@mail.batol.net>
-  James Bowden
+  James Bowden <james.bowden@rnib.org.uk>
   John Boyer <director@chpi.org>
   Jos Lemmens <jlemmens@inter.nl.net>
   Mario Lang <mlang@delysid.org>
@@ -94,10 +95,14 @@ Other contributors:
 TABLE AND TEST CONTRIBUTORS
 
   Aaron Cannon <cannona@fireantproductions.com>
+  Abby Howell <abby.g.howell@gmail.com>
   Abdolamir Banisaeid <saedjan@gmail.com>
   Adi Kushnir <adikushnir@gmail.com>
+  Aikeo Koomanivong <aikeo@dsclao.org> from Disability service center in Lao PDR DSC <www.dsclao.org/en>
+  Aleksandar Sredojevic <ferrumite666@gmail.com>
   Alex Ho
   Ali-Riza Ciftcioglu <Aliminator83@gmail.com>
+  Allan R. Mesoga <allan.mesoga@deped.gov.ph>
   Ammar Usama <ammar.usama@nlb.no>
   André-Abush Clause <dev@andreabc.net>
   Andrey Yakuboy <braille@yakuboy.ru>
@@ -114,6 +119,7 @@ TABLE AND TEST CONTRIBUTORS
   Carles Sadurní Anguita <www.transcriptor.net>
   Carlos Ferreira <cferreira9886@gmail.com>
   Caterina Avoledo <catery81@yahoo.it>
+  Chatupol Nootatong <jpt@tab.or.th>
   Chennai Shankar <brailleacl@gmail.com> from Braille Section Team, Anna Centenary Library
   Christian Waldvogel <christian.waldvogel@sbszh.ch> from SBS <www.sbs.ch>
   Christo de Klerk <cjdk@mweb.co.za>
@@ -147,6 +153,7 @@ TABLE AND TEST CONTRIBUTORS
   Igor B. Poretsky <poretsky@mlbox.ru>
   Ikrami Ahmad <ikrami.ahmad@gmail.com>
   International league of Blind Esperantists (LIBE) <libe.narzan.com>
+  Itsawat Banlawanich <peet.itsawat@gmail.com>
   Jake Kyle from Compass Braille <jake@compassbraille.org>
   James Datray from Freedom Scientific
   James Bowden <james.bowden@rnib.org.uk> from Royal National Institute of Blind People (RNIB)
@@ -163,6 +170,7 @@ TABLE AND TEST CONTRIBUTORS
   KM Yuen
   Kaifang Bao baokaifang@gmail.com from RejoinTech
   Karol Pecyna <HarpoDeveloper@gmail.com> from Harpo <http://int.harpo.com.pl>
+  Kirsi Ylänne <kirsi.ylanne@celia.fi>
   Ekaterina Anisimova <musicate@yandex.ru>
   Kensaku Y. <kanjibrailles@gmail.com>
   Keny Yuen
@@ -182,6 +190,8 @@ TABLE AND TEST CONTRIBUTORS
   Mariam Mikiashvili
   Martin Kieti
   Mateja Jenčič
+  Matityahu Yeater- Yeshurun <yeatersink@gmail.com>
+  Matthew Shifrin <matshifrin@aol.com>
   Michel Such <michel.such@free.fr>
   Mike Sivill <mike.sivill@viewplustechnologies.com> from ViewPlus Technologies, Inc.
   Mohammed R. Ramadan <mramadan@nattiq.com>
@@ -190,9 +200,12 @@ TABLE AND TEST CONTRIBUTORS
   Neil Soiffer <NeilS@dessci.com>
   Nicolas Pitre <nico@cam.org>
   Nicolai Svendsen <chojiro1990@gmail.com>
+  Norbert Márkus 
+  Oğuz Uğur <oguzugur2834@gmail.com>
   Oleh Shpai <shpak1704@gmail.com>
   Patrick Zajda
   Paul Rambags <paulrambags@dedicon.nl>
+  Paul Geoghegan <contact@envisionly.tech>
   Paul Wood <paulw.torchtrust@gmail.com>
   Peter Engström <peter.engstrom@indexbraille.com> from Index Braille
   Peter Vágner <pvdeejay@gmail.com>
@@ -204,6 +217,7 @@ TABLE AND TEST CONTRIBUTORS
   Rui Fontes <rui.fontes@tiflotecnia.com>
   Rumiana Kamenska <rkamenska@gmail.com>
   Rustam Churagulov <tcdl@yandex.ru>
+  Sami Määttä <sami.maatta@celia.fi>
   Samuel Thibault <samuel.thibault@ens-lyon.org>
   Sao Mai Center for the Blind <www.saomaicenter.org/en>
   Sébastien Sablé <sable@users.sourceforge.net>
@@ -219,6 +233,7 @@ TABLE AND TEST CONTRIBUTORS
   Transkript <http://www.transkript.be>
   Tsengel Maidar tsengel@digitalsunngo.org
   Uğur Gürbüz <ugur.gurbuz@brailleteknik.com>
+  Wiraman Niyomphol <wiraman.n@gmail.com>
   Yuemei Sun from ViewPlus Technologies, Inc.
   Zlatko Sobočan <zlatko.sobocan@tifloglobus.hr>
   Zvonimir Stanecic <zvonimirek222@yandex.com>

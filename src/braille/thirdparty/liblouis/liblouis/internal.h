@@ -110,7 +110,7 @@ typedef enum {
 	CTC_SeqAfter = 0x8000,
 	/* The following 8 are reserved for %0 to %7 (in no particular order) */
 	/* Be careful with changing these values (and also CTC_EndOfInput) because in
-	   pattern_compile_expression they are stored in a unsigned int after cutting of the
+	   pattern_compile_expression they are stored in a unsigned int after cutting off the
 	   16 least significant bits. */
 	CTC_UserDefined1 = 0x10000,
 	CTC_UserDefined2 = 0x20000,
@@ -124,7 +124,7 @@ typedef enum {
 	CTC_EmpMatch = 0x2000000,	 // only used in TranslationTableRule->before and
 								 // TranslationTableRule->after
 	CTC_MidEndNumericMode = 0x4000000,
-	/* At least 37 more bits available in a unsigned long long (at least 64 bits). Used
+	/* At least 37 more bits available in an unsigned long long (at least 64 bits). Used
 	   for custom attributes 9 to 45. These need to be the last values of the enum. */
 	CTC_UserDefined9 = 0x8000000,
 	CTC_UserDefined10 = 0x10000000,
@@ -219,6 +219,8 @@ typedef struct {
 	widechar value;
 	TranslationTableOffset basechar;
 	TranslationTableOffset linked;
+	int ruleIndex; /** sequence number of rule within table */
+	int finalized;
 } TranslationTableCharacter;
 
 typedef enum { /* Op codes */
@@ -359,9 +361,10 @@ typedef enum { /* Op codes */
 typedef struct {
 	const char *sourceFile;
 	int sourceLine;
-	TranslationTableOffset charsnext;			/** next chars entry */
-	TranslationTableOffset dotsnext;			/** next dots entry */
-	TranslationTableCharacterAttributes after;	/** character types which must follow */
+	int index;								   /** sequence number of rule within table */
+	TranslationTableOffset charsnext;		   /** next chars entry */
+	TranslationTableOffset dotsnext;		   /** next dots entry */
+	TranslationTableCharacterAttributes after; /** character types which must follow */
 	TranslationTableCharacterAttributes before; /** character types which must precede */
 	TranslationTableOffset patterns;			/** before and after patterns */
 	TranslationTableOpcode opcode; /** rule for testing validity of replacement */
@@ -439,6 +442,7 @@ typedef struct { /* translation table */
 								   faster) */
 	int usesAttributeOrClass;	   /* 1 = attribute, 2 = class */
 	char *sourceFiles[MAX_SOURCE_FILES + 1];
+	int ruleCounter;
 
 	/* needed for translation or other api functions */
 	int finalized;
@@ -482,7 +486,7 @@ typedef struct { /* translation table */
 	TranslationTableOffset dots[HASHNUM];		/** Dot definitions */
 	TranslationTableOffset forPassRules[MAXPASS + 1];
 	TranslationTableOffset backPassRules[MAXPASS + 1];
-	TranslationTableOffset forRules[HASHNUM];  /** chains of forward rules */
+	TranslationTableOffset forRules[HASHNUM];  /** Chains of forward rules */
 	TranslationTableOffset backRules[HASHNUM]; /** Chains of backward rules */
 	TranslationTableData ruleArea[1]; /** Space for storing all rules and values */
 } TranslationTableHeader;
@@ -563,14 +567,14 @@ char **EXPORT_CALL
 _lou_defaultTableResolver(const char *tableList, const char *base);
 
 /**
- * muse::Return single-cell dot pattern corresponding to a character.
+ * Return single-cell dot pattern corresponding to a character.
  * TODO: move to commonTranslationFunctions.c
  */
 widechar EXPORT_CALL
 _lou_getDotsForChar(widechar c, const DisplayTableHeader *table);
 
 /**
- * muse::Return character corresponding to a single-cell dot pattern.
+ * Return character corresponding to a single-cell dot pattern.
  * TODO: move to commonTranslationFunctions.c
  */
 widechar EXPORT_CALL
@@ -619,7 +623,7 @@ unsigned long int EXPORT_CALL
 _lou_charHash(widechar c);
 
 /**
- * muse::Return a string in the same format as the characters operand in opcodes
+ * Return a string in the same format as the characters operand in opcodes
  */
 const char *EXPORT_CALL
 _lou_showString(widechar const *chars, int length, int forceHex);
@@ -634,20 +638,20 @@ const char *EXPORT_CALL
 _lou_unknownDots(widechar dots);
 
 /**
- * muse::Return a character string in the format of the dots operand
+ * Return a character string in the format of the dots operand
  */
 const char *EXPORT_CALL
 _lou_showDots(widechar const *dots, int length);
 
 /**
- * muse::Return a character string where the attributes are indicated
+ * Return a character string where the attributes are indicated
  * by the attribute letters used in multipass opcodes
  */
 char *EXPORT_CALL
 _lou_showAttributes(TranslationTableCharacterAttributes a);
 
 /**
- * muse::Return number of the opcode
+ * Return number of the opcode
  *
  * @param toFind the opcodes
  */
@@ -655,7 +659,7 @@ TranslationTableOpcode EXPORT_CALL
 _lou_findOpcodeNumber(const char *tofind);
 
 /**
- * muse::Return the name of the opcode associated with an opcode number
+ * Return the name of the opcode associated with an opcode number
  *
  * @param opcode an opcode
  */
@@ -750,13 +754,13 @@ _lou_logMessage(logLevels level, const char *format, ...);
 extern int translation_direction;
 
 /**
- * muse::Return 1 if given translation mode is valid. muse::Return 0 otherwise.
+ * Return 1 if given translation mode is valid. Return 0 otherwise.
  */
 int EXPORT_CALL
 _lou_isValidMode(int mode);
 
 /**
- * muse::Return the default braille representation for a character.
+ * Return the default braille representation for a character.
  */
 widechar EXPORT_CALL
 _lou_charToFallbackDots(widechar c);

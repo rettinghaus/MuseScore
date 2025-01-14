@@ -19,13 +19,13 @@
 # License along with liblouis. If not, see
 # <http://www.gnu.org/licenses/>.
 
-#-index-name: Hebrew, Israel
+#-index-name: Hebrew, modern
 #-display-name: Israeli braille
 
 #+language: he
 #+language: ar
 #+language: en
-#+region:mul-IL
+#+region: *-IL
 #+type: literary
 #+dots: 6
 #+contraction: no
@@ -50,8 +50,8 @@
 # the result of their decision.
 
 # Refer to World Braille Usage (3rd edition), page 74
-# <http://liblouis.org/braille-specs/world-braille-usage-third-edition.pdf>
-# and <http://liblouis.org/braille-specs/hebrew>.
+# <http://liblouis.io/braille-specs/world-braille-usage-third-edition.pdf>
+# and <http://liblouis.io/braille-specs/hebrew>.
 
 # Braille indicators
 numsign 3456  number sign, just a dots operand
@@ -110,8 +110,8 @@ word 'twas =
 
 # Additional fixes for hebrew letters with dagesh
 # if the dagesh dot is typed as a separate element.
-word כּ 13 # Hebrew letter PE with dagesh as a separate dot.
-word פּ 1234 # Hebrew letter KAF with dagesh as a separate dot.
+word כּ 13 # Hebrew letter KAF with dagesh as a separate dot.
+word פּ 1234 # Hebrew letter PE with dagesh as a separate dot.
 word בּ 12 # Hebrew letter BET with dagesh as a separate dot.
 word שׂ 156 # Hebrew letter SHIN with SIN as a separate dot.
 
