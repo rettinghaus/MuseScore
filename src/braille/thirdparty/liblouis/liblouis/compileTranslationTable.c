@@ -29,8 +29,6 @@
  * @brief Read and compile translation tables
  */
 
-#include <config.h>
-
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
