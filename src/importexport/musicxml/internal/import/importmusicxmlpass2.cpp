@@ -3067,9 +3067,14 @@ void MusicXmlParserPass2::measureLayout(Measure* measure)
 
 void MusicXmlParserPass2::attributes(const String& partId, Measure* measure, const Fraction& tick)
 {
+    bool hasExplicitSymbol = false;
+
     while (m_e.readNextStartElement()) {
         if (m_e.name() == "clef") {
             clef(partId, measure, tick);
+        } else if (m_e.name() == "part-symbol") {
+            partSymbol(partId);
+            hasExplicitSymbol = true;
         } else if (m_e.name() == "divisions") {
             divisions();
         } else if (m_e.name() == "key") {
@@ -3084,6 +3089,21 @@ void MusicXmlParserPass2::attributes(const String& partId, Measure* measure, con
             m_e.skipCurrentElement();        // skip but don't log
         } else {
             skipLogCurrElem();
+        }
+    }
+
+    if (!hasExplicitSymbol) {
+        // set implicit bracket for part
+        Part* part = m_pass1.getPart(partId);
+        IF_ASSERT_FAILED(part) {
+            return;
+        }
+        const size_t nstaves = part->nstaves();
+        if (nstaves > 1) {
+            const size_t column = part->staff(0)->bracketLevels() + 1;
+            part->staff(0)->setBracketType(column, BracketType::BRACE);
+            part->staff(0)->setBracketSpan(column, nstaves);
+            part->staff(0)->setBarLineSpan(nstaves);
         }
     }
 }
@@ -5964,6 +5984,59 @@ static void flushAlteredTone(KeySigEvent& kse, String& step, String& alt, String
     step.clear();
     alt.clear();
     acc.clear();
+}
+
+//---------------------------------------------------------
+//   partSymbol
+//---------------------------------------------------------
+
+/**
+ Set bracket for a part
+ */
+
+void MusicXmlParserPass2::partSymbol(const String& partId)
+{
+    const int topStaff = m_e.attribute("top-staff").toInt();
+    const int bottomStaff = m_e.attribute("bottom-staff").toInt();
+    const Color symbolColor = Color::fromString(m_e.asciiAttribute("color").ascii());
+    const String s = m_e.readText();
+
+    Part* part = m_pass1.getPart(partId);
+    IF_ASSERT_FAILED(part) {
+        return;
+    }
+    size_t nstaves = part->nstaves();
+
+    // implicit default bracket is a brace
+    BracketType bracketType = BracketType::BRACE;
+    if (s == u"none") {
+        bracketType = BracketType::NO_BRACKET;
+    } else if (s == u"brace") {
+        bracketType = BracketType::BRACE;
+    } else if (s == u"bracket") {
+        bracketType = BracketType::NORMAL;
+    } else if (s == u"line") {
+        bracketType = BracketType::LINE;
+    } else if (s == u"square") {
+        bracketType = BracketType::SQUARE;
+    } else {
+        LOGD("part-symbol=%s not supported", muPrintable(s));
+        return;
+    }
+
+    const size_t relevantStaff = topStaff ? topStaff - 1 : 0;
+    const size_t span = bottomStaff ? bottomStaff - relevantStaff : nstaves - relevantStaff;
+
+    const size_t column = part->staff(relevantStaff)->bracketLevels() + 1;
+    part->staff(relevantStaff)->setBracketType(column, bracketType);
+    part->staff(relevantStaff)->setBracketSpan(column, span);
+    if (bracketType != BracketType::NO_BRACKET) {
+        part->staff(relevantStaff)->setBarLineSpan(span);
+    }
+    if (symbolColor.isValid()) {
+        BracketItem* bi = part->staff(relevantStaff)->brackets().at(column);
+        bi->setColor(symbolColor);
+    }
 }
 
 //---------------------------------------------------------
