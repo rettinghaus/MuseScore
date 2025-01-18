@@ -1057,6 +1057,9 @@ TEST_F(MusicXml_Tests, partNames) {
 TEST_F(MusicXml_Tests, partNames2) {
     musicXmlIoTest("testPartNames2");
 }
+TEST_F(MusicXml_Tests, partSymbol) {
+    musicXmlImportTestRef("testPartSymbol");
+}
 TEST_F(MusicXml_Tests, pedalChanges) {
     musicXmlIoTest("testPedalChanges");
 }
