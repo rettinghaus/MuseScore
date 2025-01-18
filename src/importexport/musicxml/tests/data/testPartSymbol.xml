@@ -2,13 +2,13 @@
 <!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
 <score-partwise version="4.0">
   <work>
-    <work-title>Untitled score</work-title>
+    <work-title>Part symbol test</work-title>
     </work>
   <identification>
-    <creator type="composer">Composer / arranger</creator>
+    <creator type="composer">Klaus Rettinghaus</creator>
     <encoding>
-      <software>MuseScore 4.5.0</software>
-      <encoding-date>2025-01-17</encoding-date>
+      <software>MuseScore 0.7.0</software>
+      <encoding-date>2007-09-10</encoding-date>
       <supports element="accidental" type="yes"/>
       <supports element="beam" type="yes"/>
       <supports element="print" attribute="new-page" type="no"/>
@@ -75,7 +75,6 @@
           <line>5</line>
           </clef>
         <staff-details number="2">
-          <staff-type>alternate</staff-type>
           <staff-lines>6</staff-lines>
           <staff-tuning line="1">
             <tuning-step>E</tuning-step>
