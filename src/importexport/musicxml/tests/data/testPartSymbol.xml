@@ -22,7 +22,6 @@
       <part-abbreviation>El. Guit.</part-abbreviation>
       <score-instrument id="P1-I1">
         <instrument-name>Electric Guitar</instrument-name>
-        <instrument-sound>pluck.guitar.electric</instrument-sound>
         </score-instrument>
       <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
@@ -37,7 +36,6 @@
       <part-abbreviation>Org.</part-abbreviation>
       <score-instrument id="P2-I1">
         <instrument-name>Organ</instrument-name>
-        <instrument-sound>keyboard.organ</instrument-sound>
         </score-instrument>
       <midi-device id="P2-I1" port="1"></midi-device>
       <midi-instrument id="P2-I1">
