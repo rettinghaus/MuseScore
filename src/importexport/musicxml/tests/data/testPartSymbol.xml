@@ -17,9 +17,6 @@
       </encoding>
     </identification>
   <part-list>
-    <part-group type="start" number="1">
-      <group-symbol>none</group-symbol>
-      </part-group>
     <score-part id="P1">
       <part-name>Electric Guitar</part-name>
       <part-abbreviation>El. Guit.</part-abbreviation>
@@ -35,7 +32,6 @@
         <pan>0</pan>
         </midi-instrument>
       </score-part>
-    <part-group type="stop" number="1"/>
     <score-part id="P2">
       <part-name>Organ</part-name>
       <part-abbreviation>Org.</part-abbreviation>
