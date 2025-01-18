@@ -7745,16 +7745,6 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
                 }
             }
         }
-        // handle bracket none
-        if (!bracketFound && part->nstaves() > 1) {
-            int number = findPartGroupNumber(partGroupEnd);
-            if (number < MAX_PART_GROUPS) {
-                const BracketItem* bi = Factory::createBracketItem(score->dummy());
-                partGroupStart(xml, number + 1, bi, false, groupTime);
-                delete bi;
-                partGroupEnd[number] = static_cast<int>(idx + part->nstaves());
-            }
-        }
 
         xml.startElementRaw(String(u"score-part id=\"P%1\"").arg(idx + 1));
         initInstrMap(instrMap, part->instruments(), score);
