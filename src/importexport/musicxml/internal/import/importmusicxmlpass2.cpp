@@ -3067,14 +3067,11 @@ void MusicXmlParserPass2::measureLayout(Measure* measure)
 
 void MusicXmlParserPass2::attributes(const String& partId, Measure* measure, const Fraction& tick)
 {
-    bool hasExplicitSymbol = false;
-
     while (m_e.readNextStartElement()) {
         if (m_e.name() == "clef") {
             clef(partId, measure, tick);
         } else if (m_e.name() == "part-symbol") {
             partSymbol(partId);
-            hasExplicitSymbol = true;
         } else if (m_e.name() == "divisions") {
             divisions();
         } else if (m_e.name() == "key") {
@@ -3092,19 +3089,18 @@ void MusicXmlParserPass2::attributes(const String& partId, Measure* measure, con
         }
     }
 
-    if (!hasExplicitSymbol) {
-        // set implicit bracket for part
-        Part* part = m_pass1.getPart(partId);
-        IF_ASSERT_FAILED(part) {
-            return;
-        }
-        const size_t nstaves = part->nstaves();
-        if (nstaves > 1) {
-            const size_t column = part->staff(0)->bracketLevels() + 1;
-            part->staff(0)->setBracketType(column, BracketType::BRACE);
-            part->staff(0)->setBracketSpan(column, nstaves);
-            part->staff(0)->setBarLineSpan(nstaves);
-        }
+    // set implicit bracket for part
+    Part* part = m_pass1.getPart(partId);
+    IF_ASSERT_FAILED(part) {
+        return;
+    }
+    const size_t nstaves = part->nstaves();
+    Staff* topStaff = part->staff(0);
+    if (nstaves > 1 && !topStaff->brackets().size()) {
+        const size_t column = topStaff->bracketLevels() + 1;
+        topStaff->setBracketType(column, BracketType::BRACE);
+        topStaff->setBracketSpan(column, nstaves);
+        topStaff->setBarLineSpan(nstaves - 1);
     }
 }
 
@@ -6031,7 +6027,7 @@ void MusicXmlParserPass2::partSymbol(const String& partId)
     part->staff(relevantStaff)->setBracketType(column, bracketType);
     part->staff(relevantStaff)->setBracketSpan(column, span);
     if (bracketType != BracketType::NO_BRACKET) {
-        part->staff(relevantStaff)->setBarLineSpan(span);
+        part->staff(relevantStaff)->setBarLineSpan(span - 1);
     }
     if (symbolColor.isValid()) {
         BracketItem* bi = part->staff(relevantStaff)->brackets().at(column);
