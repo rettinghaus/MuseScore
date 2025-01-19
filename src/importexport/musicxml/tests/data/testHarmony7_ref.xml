@@ -13,9 +13,6 @@
       </encoding>
     </identification>
   <part-list>
-    <part-group type="start" number="1">
-      <group-symbol>none</group-symbol>
-      </part-group>
     <score-part id="P1">
       <part-name print-object="no">Guitare acoustique</part-name>
       <part-abbreviation print-object="no">Guit.</part-abbreviation>
@@ -30,7 +27,6 @@
         <pan>0</pan>
         </midi-instrument>
       </score-part>
-    <part-group type="stop" number="1"/>
     </part-list>
   <part id="P1">
     <measure number="1">

@@ -2250,7 +2250,7 @@ static void partGroupStart(MusicXmlPartGroupMap& pgs, int n, int p, const String
 
     BracketType bracketType = BracketType::NO_BRACKET;
     if (s.empty()) {
-        // ignore (handle as NO_BRACKET)
+        return;
     } else if (s == u"none") {
         // already set to NO_BRACKET
     } else if (s == u"brace") {
