@@ -159,6 +159,7 @@ Gtr.</part-abbreviation>
           <beat-type>4</beat-type>
           </time>
         <staves>2</staves>
+        <part-symbol>none</part-symbol>
         <clef number="1">
           <sign>G</sign>
           <line>2</line>
@@ -227,6 +228,7 @@ Gtr.</part-abbreviation>
           <beat-type>4</beat-type>
           </time>
         <staves>2</staves>
+        <part-symbol>none</part-symbol>
         <clef number="1">
           <sign>G</sign>
           <line>2</line>
@@ -287,7 +289,6 @@ Gtr.</part-abbreviation>
     <measure number="1">
       <attributes>
         <divisions>1</divisions>
-        <part-symbol>none</part-symbol>
         <key>
           <fifths>0</fifths>
           </key>
@@ -296,6 +297,7 @@ Gtr.</part-abbreviation>
           <beat-type>4</beat-type>
           </time>
         <staves>2</staves>
+        <part-symbol>none</part-symbol>
         <clef number="1">
           <sign>G</sign>
           <line>2</line>
@@ -364,6 +366,7 @@ Gtr.</part-abbreviation>
           <beat-type>4</beat-type>
           </time>
         <staves>2</staves>
+        <part-symbol>none</part-symbol>
         <clef number="1">
           <sign>G</sign>
           <line>2</line>
