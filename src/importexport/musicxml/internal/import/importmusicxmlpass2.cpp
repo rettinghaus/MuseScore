@@ -6006,7 +6006,7 @@ void MusicXmlParserPass2::partSymbol(const String& partId)
     // implicit default bracket is a brace
     BracketType bracketType = BracketType::BRACE;
     if (s == u"none") {
-        return;
+        bracketType = BracketType::NO_BRACKET;
     } else if (s == u"brace") {
         bracketType = BracketType::BRACE;
     } else if (s == u"bracket") {

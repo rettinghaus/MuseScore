@@ -7727,7 +7727,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
                                  || (st->bracketSpan(j) == part->nstaves() && st->bracketType(j) == BracketType::BRACE))) {
                                 // filter out single brackets starting in the last part
                                 // as they cannot span multiple parts
-                                if (idx < parts.size() - 1 || st->bracketLevels() > 1) {
+                                if (idx < parts.size() - 1 || j < st->bracketLevels()) {
                                     // add others
                                     const int number = findPartGroupNumber(partGroupEnd);
                                     if (number < MAX_PART_GROUPS) {
@@ -7967,7 +7967,7 @@ static void writePartSymbol(XmlWriter& xml, const Part* part)
             break;
         }
     }
-    if (!bi || bi->bracketType() == BracketType::NO_BRACKET) {
+    if (!bi) {
         xml.tag("part-symbol", "none");
     }
 }
