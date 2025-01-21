@@ -13,6 +13,10 @@
       </encoding>
     </identification>
   <part-list>
+    <part-group type="start" number="1">
+      <group-symbol>bracket</group-symbol>
+      <group-barline>yes</group-barline>
+      </part-group>
     <score-part id="P1">
       <part-name>Violins</part-name>
       <part-abbreviation>Vlns.</part-abbreviation>
@@ -27,6 +31,7 @@
         <pan>0</pan>
         </midi-instrument>
       </score-part>
+    <part-group type="stop" number="1"/>
     </part-list>
   <part id="P1">
     <measure number="1">
@@ -40,7 +45,7 @@
           <beat-type>4</beat-type>
           </time>
         <staves>16</staves>
-        <part-symbol>bracket</part-symbol>
+        <part-symbol>square</part-symbol>
         <clef number="1">
           <sign>G</sign>
           <line>2</line>
