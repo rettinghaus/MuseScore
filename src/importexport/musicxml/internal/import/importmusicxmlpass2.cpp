@@ -6026,7 +6026,9 @@ void MusicXmlParserPass2::partSymbol(const String& partId)
     const size_t column = part->staff(relevantStaff)->bracketLevels() + 1;
     part->staff(relevantStaff)->setBracketType(column, bracketType);
     part->staff(relevantStaff)->setBracketSpan(column, span);
-    part->staff(relevantStaff)->setBarLineSpan(span - 1);
+    if (bracketType != BracketType::NO_BRACKET){
+        part->staff(relevantStaff)->setBarLineSpan(span - 1);
+    }
     if (symbolColor.isValid()) {
         BracketItem* bi = part->staff(relevantStaff)->brackets().at(column);
         bi->setColor(symbolColor);
