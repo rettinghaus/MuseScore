@@ -466,6 +466,7 @@ private:
     int m_tenths = 0;
     bool m_tboxesAboveWritten = false;
     bool m_tboxesBelowWritten = false;
+    std::vector<size_t> m_hiddenStaves;
     TrillHash m_trillStart;
     TrillHash m_trillStop;
     MusicXmlInstrumentMap m_instrMap;
@@ -7427,6 +7428,8 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
                     m_xml.startElement("staff-layout", { { "number", staffIdx + 1 } });
                     m_xml.tag("staff-distance", String::number(getTenthsFromDots(staffDist), 2));
                     m_xml.endElement();
+                } else {
+                    m_hiddenStaves.push_back(staffIdx);
                 }
             }
 
@@ -7903,7 +7906,7 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part)
             }
             if (!st->show()) {
                 attributes.push_back({ "print-object", "no" });
-                if (st->cutout()) {
+                if (st->cutaway()) {
                     attributes.push_back({ "print-spacing", "yes" });
                 }
             }
@@ -8451,15 +8454,14 @@ void ExportMusicXml::writeMeasure(const Measure* const m,
         writeStaffDetails(m_xml, part);
         writeInstrumentDetails(part->instrument(), m_score->style().styleB(Sid::concertPitch));
     } else {
-        for (size_t i = 0; i < staves; i++) {
-            if (!staff->show()) {
-                if (staff->cutaway()) {
-                    m_xml.tag("staff-details", { { "number", i + 1 }, { "print-object", "no" }, {"print-spacing", "yes"} });
-                } else {
-                    m_xml.tag("staff-details", { { "number", i + 1 }, { "print-object", "no" } });
-                }
+        for (size_t staffIdx : m_hiddenStaves) {
+            if (part->staff(staffIdx)->cutaway()) {
+                m_xml.tag("staff-details", { { "number", staffIdx + 1 }, { "print-object", "no" }, {"print-spacing", "yes"} });
+            } else {
+                m_xml.tag("staff-details", { { "number", staffIdx + 1 }, { "print-object", "no" } });
             }
         }
+        m_hiddenStaves.clear();
     }
 
     // output attribute at start of measure: measure-style
