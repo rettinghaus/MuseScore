@@ -7429,8 +7429,6 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
                     m_xml.startElement("staff-layout", { { "number", staffIdx + 1 } });
                     m_xml.tag("staff-distance", String::number(getTenthsFromDots(staffDist), 2));
                     m_xml.endElement();
-                } else {
-                    m_xml.tag("staff-details", { { "number", staffIdx + 1 }, { "print-object", "no" } });
                 }
             }
 
@@ -7911,6 +7909,9 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part)
             }
             if (!st->show()) {
                 attributes.push_back({ "print-object", "no" });
+                if (st->cutout()) {
+                    attributes.push_back({ "print-spacing", "yes" });
+                }
             }
             xml.startElement("staff-details", attributes);
 
@@ -8476,6 +8477,16 @@ void ExportMusicXml::writeMeasure(const Measure* const m,
     if (isFirstActualMeasure) {
         writeStaffDetails(m_xml, part);
         writeInstrumentDetails(part->instrument(), m_score->style().styleB(Sid::concertPitch));
+    } else {
+        for (size_t i = 0; i < staves; i++) {
+            if (!staff->show()) {
+                if (staff->cutaway()) {
+                    m_xml.tag("staff-details", { { "number", i + 1 }, { "print-object", "no" }, {"print-spacing", "yes"} });
+                } else {
+                    m_xml.tag("staff-details", { { "number", i + 1 }, { "print-object", "no" } });
+                }
+            }
+        }
     }
 
     // output attribute at start of measure: measure-style
