@@ -7894,8 +7894,6 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part)
     size_t staves = part->nstaves();
 
     // staff details
-    // TODO: decide how to handle linked regular / TAB staff
-    //       currently exported as a two staff part ...
     for (size_t i = 0; i < staves; i++) {
         Staff* st = part->staff(i);
         const double mag = st->staffMag(Fraction(0, 1));
@@ -8455,11 +8453,13 @@ void ExportMusicXml::writeMeasure(const Measure* const m,
         writeInstrumentDetails(part->instrument(), m_score->style().styleB(Sid::concertPitch));
     } else {
         for (size_t staffIdx : m_hiddenStaves) {
+            m_attr.doAttr(m_xml, true);
             if (part->staff(staffIdx)->cutaway()) {
                 m_xml.tag("staff-details", { { "number", staffIdx + 1 }, { "print-object", "no" }, {"print-spacing", "yes"} });
             } else {
                 m_xml.tag("staff-details", { { "number", staffIdx + 1 }, { "print-object", "no" } });
             }
+            m_attr.doAttr(m_xml, false);
         }
         m_hiddenStaves.clear();
     }
