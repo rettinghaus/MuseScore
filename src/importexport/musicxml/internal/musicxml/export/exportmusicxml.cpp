@@ -7888,7 +7888,7 @@ static void clampMusicXmlOctave(int& octave)
  Write the staff details for \a part to \a xml.
  */
 
-static void writeStaffDetails(XmlWriter& xml, const Part* part)
+static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vector<size_t>& hiddenStaves)
 {
     const Instrument* instrument = part->instrument();
     size_t staves = part->nstaves();
@@ -7904,10 +7904,17 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part)
             }
             if (!st->show()) {
                 attributes.push_back({ "print-object", "no" });
-                if (st->cutaway()) {
-                    attributes.push_back({ "print-spacing", "yes" });
+            } else {
+                for (size_t staffIdx : hiddenStaves) {
+                    if (i == staffIdx) {
+                        attributes.push_back({ "print-object", "no" });
+                        if (st->cutaway()) {
+                            attributes.push_back({ "print-spacing", "yes" });
+                        }
+                    }
                 }
-            }
+            } 
+
             xml.startElement("staff-details", attributes);
 
             if (i > 0 && st->links() && st->links()->contains(part->staff(i - 1))) {
@@ -8449,7 +8456,7 @@ void ExportMusicXml::writeMeasure(const Measure* const m,
 
     // output attributes with the first actual measure (pickup or regular) only
     if (isFirstActualMeasure) {
-        writeStaffDetails(m_xml, part);
+        writeStaffDetails(m_xml, part, m_hiddenStaves);
         writeInstrumentDetails(part->instrument(), m_score->style().styleB(Sid::concertPitch));
     } else {
         for (size_t staffIdx : m_hiddenStaves) {
@@ -8461,8 +8468,8 @@ void ExportMusicXml::writeMeasure(const Measure* const m,
             }
             m_attr.doAttr(m_xml, false);
         }
-        m_hiddenStaves.clear();
     }
+    m_hiddenStaves.clear();
 
     // output attribute at start of measure: measure-style
     measureStyle(m_xml, m_attr, m, partIndex);
