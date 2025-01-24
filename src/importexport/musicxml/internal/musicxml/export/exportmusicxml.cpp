@@ -8467,9 +8467,9 @@ void ExportMusicXml::writeMeasure(const Measure* const m,
             m_attr.doAttr(m_xml, true);
             XmlWriter::Attributes attributes;
             if (staves > 1) {
-                attributes.emplace_back(std::make_pair("number", i + 1));
+                attributes.emplace_back(std::make_pair("number", staffIdx + 1));
             }
-            attrs.emplace_back(std::make_pair("print-object", "no"));
+            attributes.emplace_back(std::make_pair("print-object", "no"));
             if (part->staff(staffIdx)->cutaway()) {
                 attributes.emplace_back(std::make_pair("print-spacing", "yes"));
             }
