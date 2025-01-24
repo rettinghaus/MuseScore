@@ -7421,6 +7421,10 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
                 if (prevStaffNr == muse::nidx) {
                     continue;
                 }
+                if (!system->staff(staffNr)->show()) {
+                    m_hiddenStaves.push_back(staffIdx);
+                    continue;
+                }
                 const RectF& prevBbox = system->staff(prevStaffNr)->bbox();
                 const double staffDist = system->staff(staffNr)->bbox().y() - prevBbox.y() - prevBbox.height();
 
