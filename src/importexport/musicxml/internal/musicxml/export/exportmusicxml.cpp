@@ -7888,7 +7888,7 @@ static void clampMusicXmlOctave(int& octave)
  Write the staff details for \a part to \a xml.
  */
 
-static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vector<size_t>& hiddenStaves)
+static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vector<size_t> hiddenStaves)
 {
     const Instrument* instrument = part->instrument();
     size_t staves = part->nstaves();
@@ -8461,11 +8461,15 @@ void ExportMusicXml::writeMeasure(const Measure* const m,
     } else {
         for (size_t staffIdx : m_hiddenStaves) {
             m_attr.doAttr(m_xml, true);
-            if (part->staff(staffIdx)->cutaway()) {
-                m_xml.tag("staff-details", { { "number", staffIdx + 1 }, { "print-object", "no" }, {"print-spacing", "yes"} });
-            } else {
-                m_xml.tag("staff-details", { { "number", staffIdx + 1 }, { "print-object", "no" } });
+            XmlWriter::Attributes attributes;
+            if (staves > 1) {
+                attributes.emplace_back(std::make_pair("number", i + 1));
             }
+            attrs.emplace_back(std::make_pair("print-object", "no"));
+            if (part->staff(staffIdx)->cutaway()) {
+                attributes.emplace_back(std::make_pair("print-spacing", "yes"));
+            }
+            m_xml.tag("staff-details", attributes);
             m_attr.doAttr(m_xml, false);
         }
     }
