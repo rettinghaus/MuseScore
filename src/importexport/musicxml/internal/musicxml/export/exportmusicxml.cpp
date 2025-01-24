@@ -7901,23 +7901,23 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vecto
     for (size_t i = 0; i < staves; i++) {
         Staff* st = part->staff(i);
         const double mag = st->staffMag(Fraction(0, 1));
-        if (st->lines(Fraction(0, 1)) != 5 || st->isTabStaff(Fraction(0, 1)) || !muse::RealIsEqual(mag, 1.0) || !st->show()) {
-            XmlWriter::Attributes attributes;
-            if (staves > 1) {
-                attributes.push_back({ "number", i + 1 });
-            }
-            if (!st->show()) {
-                attributes.push_back({ "print-object", "no" });
-            } else {
-                for (size_t staffIdx : hiddenStaves) {
-                    if (i == staffIdx) {
-                        attributes.push_back({ "print-object", "no" });
-                        if (st->cutaway()) {
-                            attributes.push_back({ "print-spacing", "yes" });
-                        }
+        XmlWriter::Attributes attributes;
+        if (staves > 1) {
+            attributes.emplace_back(std::make_pair("number", i + 1));
+        }
+        if (!st->show()) {
+            attributes.push_back({ "print-object", "no" });
+        } else {
+            for (size_t staffIdx : hiddenStaves) {
+                if (i == staffIdx) {
+                    attributes.emplace_back(std::make_pair("print-object", "no"));
+                    if (st->cutaway()) {
+                        attributes.emplace_back(std::make_pair("print-spacing", "yes"));
                     }
                 }
-            } 
+            }
+        } 
+        if (st->lines(Fraction(0, 1)) != 5 || st->isTabStaff(Fraction(0, 1)) || !muse::RealIsEqual(mag, 1.0) || !attributes.empty()) {
 
             xml.startElement("staff-details", attributes);
 
