@@ -7895,29 +7895,33 @@ static void clampMusicXmlOctave(int& octave)
 static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vector<size_t> hiddenStaves)
 {
     const Instrument* instrument = part->instrument();
-    size_t staves = part->nstaves();
+    const size_t staves = part->nstaves();
 
     // staff details
     for (size_t i = 0; i < staves; i++) {
         Staff* st = part->staff(i);
         const double mag = st->staffMag(Fraction(0, 1));
-        XmlWriter::Attributes attributes;
-        if (staves > 1) {
-            attributes.emplace_back(std::make_pair("number", i + 1));
-        }
+        bool hidden = false;
         if (!st->show()) {
-            attributes.push_back({ "print-object", "no" });
+            hidden = true;
         } else {
             for (size_t staffIdx : hiddenStaves) {
                 if (i == staffIdx) {
-                    attributes.emplace_back(std::make_pair("print-object", "no"));
-                    if (st->cutaway()) {
-                        attributes.emplace_back(std::make_pair("print-spacing", "yes"));
-                    }
+                    hidden = true;
                 }
             }
         } 
-        if (st->lines(Fraction(0, 1)) != 5 || st->isTabStaff(Fraction(0, 1)) || !muse::RealIsEqual(mag, 1.0) || !attributes.empty()) {
+        if (st->lines(Fraction(0, 1)) != 5 || st->isTabStaff(Fraction(0, 1)) || !muse::RealIsEqual(mag, 1.0) || hidden) {
+            XmlWriter::Attributes attributes;
+            if (staves > 1) {
+                attributes.emplace_back(std::make_pair("number", i + 1));
+            }
+            if (hidden) {
+                attributes.emplace_back(std::make_pair("print-object", "no"));
+                if (st->cutaway()) {
+                    attributes.emplace_back(std::make_pair("print-spacing", "yes"));
+                }
+            }
 
             xml.startElement("staff-details", attributes);
 
