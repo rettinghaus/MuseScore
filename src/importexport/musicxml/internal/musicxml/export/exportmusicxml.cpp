@@ -921,6 +921,13 @@ void SlurHandler::doSlurStart(const Slur* s, Notations& notations, XmlWriter& xm
     tagName += slurTieLineStyle(s);
     tagName += ExportMusicXml::positioningAttributes(s, true);
 
+    const SlurSegment* front = s->frontSegment();
+    if (front) {
+        const PointF bezier = front->ups(Grip::BEZIER1).off;
+        tagName += String(u" bezier-x=\"%1\"").arg(bezier.x());
+        tagName += String(u" bezier-y=\"%1\"").arg(bezier.y());
+    }
+
     if (i >= 0) {
         // remove from list and print start
         m_slur[i] = 0;
@@ -977,6 +984,14 @@ void SlurHandler::doSlurStop(const Slur* s, Notations& notations, XmlWriter& xml
         notations.tag(xml, s);
         String tagName = String(u"slur type=\"stop\" number=\"%1\"").arg(i + 1);
         tagName += ExportMusicXml::positioningAttributes(s, false);
+
+        const SlurSegment* back = s->backSegment();
+        if (back) {
+            const PointF bezier = back->ups(Grip::BEZIER2).off;
+            tagName += String(u" bezier-x=\"%1\"").arg(bezier.x());
+            tagName += String(u" bezier-y=\"%1\"").arg(bezier.y());
+        }
+
         xml.tagRaw(tagName);
     }
 }
