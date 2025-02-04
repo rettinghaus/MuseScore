@@ -922,10 +922,11 @@ void SlurHandler::doSlurStart(const Slur* s, Notations& notations, XmlWriter& xm
     tagName += ExportMusicXml::positioningAttributes(s, true);
 
     const SlurSegment* front = s->frontSegment();
+    const int spatium = s->spatium();
     if (front) {
-        const PointF bezier = front->ups(Grip::BEZIER1).off;
-        tagName += String(u" bezier-x=\"%1\"").arg(bezier.x());
-        tagName += String(u" bezier-y=\"%1\"").arg(bezier.y());
+        const PointF bezier = front->ups(Grip::BEZIER1).pos();
+        tagName += String(u" bezier-x=\"%1\"").arg(10 * bezier.x() / spatium);
+        tagName += String(u" bezier-y=\"%1\"").arg(10 * bezier.y() / spatium);
     }
 
     if (i >= 0) {
@@ -986,10 +987,11 @@ void SlurHandler::doSlurStop(const Slur* s, Notations& notations, XmlWriter& xml
         tagName += ExportMusicXml::positioningAttributes(s, false);
 
         const SlurSegment* back = s->backSegment();
+        const int spatium = s->spatium();
         if (back) {
-            const PointF bezier = back->ups(Grip::BEZIER2).off;
-            tagName += String(u" bezier-x=\"%1\"").arg(bezier.x());
-            tagName += String(u" bezier-y=\"%1\"").arg(bezier.y());
+            const PointF bezier = back->ups(Grip::BEZIER2).pos();
+            tagName += String(u" bezier-x=\"%1\"").arg(10 * bezier.x() / spatium);
+            tagName += String(u" bezier-y=\"%1\"").arg(10 * bezier.y() / spatium);
         }
 
         xml.tagRaw(tagName);
