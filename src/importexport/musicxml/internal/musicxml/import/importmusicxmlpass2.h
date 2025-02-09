@@ -635,6 +635,7 @@ private:
     double m_tpoSound = 0.0;                   // tempo according to sound
     bool m_visible = true;
     bool m_systemDirection = false;
+    std::pair<int, int> m_swing;
     std::vector<engraving::EngravingItem*> m_elems;
     engraving::Fraction m_offset;
     engraving::track_idx_t m_track = muse::nidx;

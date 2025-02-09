@@ -3487,6 +3487,11 @@ void MusicXmlParserDirection::direction(const String& partId,
                     t = Factory::createStaffText(m_score->dummy()->segment());
                 }
                 t->setXmlText(m_wordsText + m_metroText);
+                if (!m_swing.y = 100) {
+                    t->setSwing(true);
+                    t->setSwingParameters(m_swing.x, m_swing.y);
+                    m_swing.y = 100;
+                }
             } else {
                 t = Factory::createRehearsalMark(m_score->dummy()->segment());
                 if (!m_rehearsalText.contains(u"<b>")) {
@@ -4008,16 +4013,27 @@ void MusicXmlParserDirection::play()
 
 void MusicXMLParserDirection::swing()
 {
+    int swingNumerator = 1;
+    int swingDenominator = 1;
+    int swingUnit = 0;
     while (m_e.readNextStartElement()) {
-        int swingNumerator = 1;
-        int swingDenominator = 1;
         if (m_e.name() == "straight") {
-            
+            // unused
+            swingDenominator = 2;
+            m_e.skipCurrentElement();
         } else if (m_e.name() == "first") {
             swingDenominator = m_e.readText().toInt();
         } else if (m_e.name() == "second") {
             swingNumerator = m_e.readText().toInt();
         } else if (m_e.name() == "swing-type") {
+            const String swingType = m_e.readText();
+            if (swingType == u"eighth") {
+                swingUnit = Constants::DIVISION / 2;
+            } else if (swingType == u"16th") {
+                swingUnit = Constants::DIVISION / 4;
+            } else {
+                swingUnit = 0;
+            }
         } else if (m_e.name() == "swing-style") {
             // unused
             m_e.skipCurrentElement();
@@ -4025,6 +4041,8 @@ void MusicXMLParserDirection::swing()
             skipLogCurrElem();
         }
     }
+    m_swing.x = swingUnit;
+    m_swing.y = (swingNumerator * 100) / swingDenominator;
 }
 
 //---------------------------------------------------------
