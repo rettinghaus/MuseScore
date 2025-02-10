@@ -2840,12 +2840,6 @@ void TWrite::write(const StaffType* item, XmlWriter& xml, WriteContext& ctx)
     if (!item->genTimesig()) {
         xml.tag("timesig", item->genTimesig());
     }
-    if (item->invisible()) {
-        xml.tag("invisible", item->invisible());
-    }
-    if (item->color() != ctx.configuration()->defaultColor()) {
-        xml.tagProperty(Pid::COLOR, item->color());
-    }
     if (item->group() == StaffGroup::STANDARD) {
         xml.tag("noteheadScheme", TConv::toXml(item->noteHeadScheme()), TConv::toXml(NoteHeadScheme::HEAD_NORMAL));
     }

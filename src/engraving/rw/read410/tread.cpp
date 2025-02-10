@@ -4165,10 +4165,6 @@ void TRead::read(StaffType* t, XmlReader& e, ReadContext&)
             t->setGenKeysig(e.readInt());
         } else if (tag == "ledgerlines") {
             t->setShowLedgerLines(e.readInt());
-        } else if (tag == "invisible") {
-            t->setInvisible(e.readInt());
-        } else if (tag == "color") {
-            t->setColor(e.readColor());
         } else if (tag == "durations") {
             t->setGenDurations(e.readBool());
         } else if (tag == "durationFontName") {
