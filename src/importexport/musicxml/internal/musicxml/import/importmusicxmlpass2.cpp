@@ -3353,11 +3353,6 @@ void MusicXmlParserDirection::direction(const String& partId,
             preventNegativeTick(tick, m_offset, m_logger);
         } else if (m_e.name() == "sound") {
             sound();
-            while (m_e.readNextStartElement()) {
-                if (m_e.name() == "swing") {
-                    swing();
-                }
-            }
         } else if (m_e.name() == "staff") {
             String strStaff = m_e.readText();
             int staff = m_pass1.getMusicXmlPart(partId).staffNumberToIndex(strStaff.toInt());
@@ -3490,11 +3485,6 @@ void MusicXmlParserDirection::direction(const String& partId,
                     t = Factory::createStaffText(m_score->dummy()->segment());
                 }
                 t->setXmlText(m_wordsText + m_metroText);
-                if (!m_swing.y = 100) {
-                    t->setSwing(true);
-                    t->setSwingParameters(m_swing.x, m_swing.y);
-                    m_swing.y = 100;
-                }
             } else {
                 t = Factory::createRehearsalMark(m_score->dummy()->segment());
                 if (!m_rehearsalText.contains(u"<b>")) {
@@ -3524,6 +3514,12 @@ void MusicXmlParserDirection::direction(const String& partId,
             }
 
             t->setVisible(m_visible);
+            
+            if (m_swing.second != 0) {
+                toStaffTextBase(t)->setSwing(true);
+                toStaffTextBase(t)->setSwingParameters(m_swing.first, m_swing.second);
+                m_swing.second = 0;
+            }
 
             String wordsPlacement = m_placement;
             // Case-based defaults
@@ -3977,6 +3973,8 @@ void MusicXmlParserDirection::sound()
     while (m_e.readNextStartElement()) {
         if (m_e.name() == "play") {
             play();
+        } else if (m_e.name() == "swing") {
+            swing();
         } else {
             skipLogCurrElem();
         }
@@ -4014,7 +4012,7 @@ void MusicXmlParserDirection::play()
  Parse the /score-partwise/part/measure/direction/sound/swing node.
  */
 
-void MusicXMLParserDirection::swing()
+void MusicXmlParserDirection::swing()
 {
     int swingNumerator = 1;
     int swingDenominator = 1;
@@ -4022,7 +4020,6 @@ void MusicXMLParserDirection::swing()
     while (m_e.readNextStartElement()) {
         if (m_e.name() == "straight") {
             // unused
-            swingDenominator = 2;
             m_e.skipCurrentElement();
         } else if (m_e.name() == "first") {
             swingDenominator = m_e.readText().toInt();
@@ -4034,8 +4031,6 @@ void MusicXMLParserDirection::swing()
                 swingUnit = Constants::DIVISION / 2;
             } else if (swingType == u"16th") {
                 swingUnit = Constants::DIVISION / 4;
-            } else {
-                swingUnit = 0;
             }
         } else if (m_e.name() == "swing-style") {
             // unused
@@ -4044,8 +4039,8 @@ void MusicXMLParserDirection::swing()
             skipLogCurrElem();
         }
     }
-    m_swing.x = swingUnit;
-    m_swing.y = (swingNumerator * 100) / swingDenominator;
+    m_swing.first = swingUnit;
+    m_swing.second = (swingNumerator * 100) / swingDenominator;
 }
 
 //---------------------------------------------------------
