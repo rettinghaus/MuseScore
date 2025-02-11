@@ -3517,7 +3517,7 @@ void MusicXmlParserDirection::direction(const String& partId,
             
             if (m_swing.second != 0) {
                 toStaffTextBase(t)->setSwing(true);
-                toStaffTextBase(t)->setSwingParameters(m_swing.first, m_swing.second);
+                toStaffTextBase(t)->setSwingParameters(m_swing.first, m_swing.first ? m_swing.second : 0);
                 m_swing.second = 0;
             }
 
