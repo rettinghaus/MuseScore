@@ -1299,9 +1299,9 @@ static void addTapToChord(const Notation& notation, ChordRest* cr)
 static void addMordentToChord(const Notation& notation, ChordRest* cr)
 {
     const String name = notation.name();
-    const String attrLong = notation.attribute(u"long");
-    const String attrAppr = notation.attribute(u"approach");
-    const String attrDep = notation.attribute(u"departure");
+    const String attrLong = notation.attribute("long");
+    const String attrAppr = notation.attribute("approach");
+    const String attrDep = notation.attribute("departure");
     SymId articSym = SymId::noSym;   // legal but impossible ArticulationType value here indicating "not found"
     if (name == "inverted-mordent") {
         if ((attrLong.empty() || attrLong == "no") && attrAppr.empty() && attrDep.empty()) {
@@ -1389,7 +1389,7 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
 static void addOtherOrnamentToChord(const Notation& notation, ChordRest* cr)
 {
     const String name = notation.name();
-    const String symname = notation.attribute(u"smufl");
+    const String symname = notation.attribute("smufl");
     SymId sym = SymId::noSym;   // legal but impossible ArticulationType value here indicating "not found"
     sym = SymNames::symIdByName(symname);
 
@@ -8203,9 +8203,9 @@ void MusicXmlParserNotations::slur()
     // any grace note containing a slur stop means
     // last note of a grace after set has been found
     // -> remember slur stop
-    if (notation.attribute(u"type") == u"stop") {
+    if (notation.attribute("type") == u"stop") {
         m_slurStop = true;
-    } else if (notation.attribute(u"type") == u"start") {
+    } else if (notation.attribute("type") == u"start") {
         m_slurStart = true;
     }
 
@@ -8219,11 +8219,11 @@ void MusicXmlParserNotations::slur()
 static void addSlur(const Notation& notation, SlurStack& slurs, ChordRest* cr, Note* note, const Fraction& tick,
                     MusicXmlLogger* logger, const XmlStreamReader* const xmlreader)
 {
-    int slurNo = notation.attribute(u"number").toInt();
+    int slurNo = notation.attribute("number").toInt();
     if (slurNo > 0) {
         slurNo--;
     }
-    const String slurType = notation.attribute(u"type");
+    const String slurType = notation.attribute("type");
 
     const track_idx_t track = cr->track();
     Score* score = cr->score();
@@ -8271,7 +8271,7 @@ static void addSlur(const Notation& notation, SlurStack& slurs, ChordRest* cr, N
             if (cr->isGrace()) {
                 newSlur->setAnchor(Spanner::Anchor::CHORD);
             }
-            const String lineType = notation.attribute(u"line-type");
+            const String lineType = notation.attribute("line-type");
             if (lineType == u"dashed") {
                 newSlur->setStyleType(SlurStyleType::Dashed);
             } else if (lineType == u"dotted") {
@@ -8284,8 +8284,8 @@ static void addSlur(const Notation& notation, SlurStack& slurs, ChordRest* cr, N
             newSlur->setTick(tick);
             newSlur->setStartElement(cr);
             if (configuration()->importLayout()) {
-                const String orientation = notation.attribute(u"orientation");
-                const String placement = notation.attribute(u"placement");
+                const String orientation = notation.attribute("orientation");
+                const String placement = notation.attribute("placement");
                 if (orientation == u"over" || placement == u"above") {
                     newSlur->setSlurDirection(DirectionV::UP);
                 } else if (orientation == u"under" || placement == u"below") {
@@ -8354,12 +8354,12 @@ void MusicXmlParserNotations::tied()
     Notation notation = Notation::notationWithAttributes(String::fromAscii(m_e.name().ascii()), m_e.attributes(), u"notations");
     notation.setVisible(m_visible);
     // Make sure "stops" get processed before "starts"
-    if (notation.attribute(u"type") == u"stop") {
+    if (notation.attribute("type") == u"stop") {
         m_notations.insert(m_notations.begin(), notation);
     } else {
         m_notations.push_back(notation);
     }
-    String tiedType = notation.attribute(u"type");
+    String tiedType = notation.attribute("type");
     if (tiedType != u"start" && tiedType != u"stop" && tiedType != u"let-ring") {
         m_logger->logError(String(u"unknown tied type %1").arg(tiedType), &m_e);
     }
@@ -8743,12 +8743,12 @@ void MusicXmlParserNotations::hole()
 
 void MusicXmlParserNotations::addTechnical(const Notation& notation, Note* note)
 {
-    const String placement = notation.attribute(u"placement");
-    const String fontWeight = notation.attribute(u"font-weight");
-    const double fontSize = notation.attribute(u"font-size").toDouble();
-    const String fontStyle = notation.attribute(u"font-style");
-    const String fontFamily = notation.attribute(u"font-family");
-    const Color color = Color::fromString(notation.attribute(u"color"));
+    const String placement = notation.attribute("placement");
+    const String fontWeight = notation.attribute("font-weight");
+    const double fontSize = notation.attribute("font-size").toDouble();
+    const String fontStyle = notation.attribute("font-style");
+    const String fontFamily = notation.attribute("font-family");
+    const Color color = Color::fromString(notation.attribute("color"));
     if (notation.name() == u"fingering") {
         // TODO: distinguish between keyboards (style TextStyleName::FINGERING)
         // and (plucked) strings (style TextStyleName::LH_GUITAR_FINGERING)
@@ -8841,7 +8841,7 @@ static void addGlissandoSlide(const Notation& notation, Note* note,
                               Glissando* glissandi[MAX_NUMBER_LEVEL][2], MusicXmlSpannerMap& spanners,
                               MusicXmlLogger* logger, const XmlStreamReader* const xmlreader)
 {
-    int glissandoNumber = notation.attribute(u"number").toInt();
+    int glissandoNumber = notation.attribute("number").toInt();
     if (glissandoNumber > 0) {
         glissandoNumber--;
     }
@@ -8992,10 +8992,10 @@ static void addTie(const Notation& notation, Note* note, const track_idx_t track
         return;
     }
 
-    const String type = notation.attribute(u"type");
-    const String orientation = notation.attribute(u"orientation");
-    const String placement = notation.attribute(u"placement");
-    const String lineType = notation.attribute(u"line-type");
+    const String type = notation.attribute("type");
+    const String orientation = notation.attribute("orientation");
+    const String placement = notation.attribute("placement");
+    const String lineType = notation.attribute("line-type");
 
     TieLocation loc = TieLocation(note->pitch(), note->track());
 
@@ -9194,9 +9194,9 @@ void Notation::addAttribute(const String& name, const String& value)
 //   attribute
 //---------------------------------------------------------
 
-String Notation::attribute(const String& name) const
+String Notation::attribute(const char* name) const
 {
-    const auto it = m_attributes.find(name);
+    const auto it = m_attributes.find(String(name));
     return (it != m_attributes.end()) ? it->second : String();
 }
 
