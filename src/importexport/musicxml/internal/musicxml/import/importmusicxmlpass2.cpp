@@ -5010,7 +5010,7 @@ void MusicXmlParserDirection::bracket(const String& type, const int number,
             } else if (lineType != "wavy") {
                 m_logger->logError(String(u"unsupported line-type: %1").arg(String::fromAscii(lineType.ascii())), &m_e);
             }
-            const Color color = Color::fromString(m_e.asciiAttribute("color").ascii());
+            const Color color = Color::fromString(m_e.attribute("color"));
             if (color.isValid()) {
                 textLine->setLineColor(color);
             }
@@ -5135,7 +5135,7 @@ void MusicXmlParserDirection::octaveShift(const String& type, const int number,
                 }
             }
 
-            const Color color = Color::fromString(m_e.asciiAttribute("color").ascii());
+            const Color color = Color::fromString(m_e.attribute("color"));
             if (color.isValid()) {
                 o->setLineColor(color);
             }
@@ -5164,7 +5164,7 @@ void MusicXmlParserDirection::pedal(const String& type, const int /* number */,
     const int number { 0 };
     AsciiStringView line = m_e.asciiAttribute("line");
     String sign = m_e.attribute("sign");
-    const Color color = Color::fromString(m_e.asciiAttribute("color").ascii());
+    const Color color = Color::fromString(m_e.attribute("color"));
 
     // We have found that many exporters omit "sign" even when one is originally present,
     // therefore we will default to "yes", even though this is technically against the spec.
@@ -5306,7 +5306,7 @@ void MusicXmlParserDirection::wedge(const String& type, const int number,
         if (niente == "yes") {
             h->setHairpinCircledTip(true);
         }
-        const Color color = Color::fromString(m_e.asciiAttribute("color").ascii());
+        const Color color = Color::fromString(m_e.attribute("color"));
         if (color.isValid()) {
             h->setLineColor(color);
         }
@@ -5587,16 +5587,16 @@ void MusicXmlParserPass2::barline(const String& partId, Measure* measure, const 
 
     while (m_e.readNextStartElement()) {
         if (m_e.name() == "bar-style") {
-            barlineColor = Color::fromString(m_e.asciiAttribute("color").ascii());
+            barlineColor = Color::fromString(m_e.attribute("color"));
             barStyle = m_e.readText();
         } else if (m_e.name() == "ending") {
             endingNumber = m_e.attribute("number");
             endingType   = m_e.attribute("type");
-            endingColor = Color::fromString(m_e.asciiAttribute("color").ascii());
+            endingColor = Color::fromString(m_e.attribute("color"));
             printEnding = m_e.asciiAttribute("print-object") != "no";
             endingText = m_e.readText();
         } else if (m_e.name() == "fermata") {
-            const Color fermataColor = Color::fromString(m_e.asciiAttribute("color").ascii());
+            const Color fermataColor = Color::fromString(m_e.attribute("color"));
             const String fermataType = m_e.attribute("type");
             Segment* const segment = measure->getSegment(SegmentType::EndBarLine, locTick);
             const track_idx_t track = m_pass1.trackForPart(partId);
@@ -5881,7 +5881,7 @@ void MusicXmlParserPass2::key(const String& partId, Measure* measure, const Frac
         }
     }
     const bool printObject = m_e.asciiAttribute("print-object") != "no";
-    const Color keyColor = Color::fromString(m_e.asciiAttribute("color").ascii());
+    const Color keyColor = Color::fromString(m_e.attribute("color"));
 
     // for custom keys, a single altered tone is described by
     // key-step (required),  key-alter (required) and key-accidental (optional)
@@ -5982,7 +5982,7 @@ void MusicXmlParserPass2::clef(const String& partId, Measure* measure, const Fra
     const String strClefno = m_e.attribute("number");
     const bool afterBarline = m_e.asciiAttribute("after-barline") == "yes";
     const bool printObject = m_e.asciiAttribute("print-object") != "no";
-    const Color clefColor = Color::fromString(m_e.asciiAttribute("color").ascii());
+    const Color clefColor = Color::fromString(m_e.attribute("color"));
 
     while (m_e.readNextStartElement()) {
         if (m_e.name() == "sign") {
@@ -6183,7 +6183,7 @@ void MusicXmlParserPass2::time(const String& partId, Measure* measure, const Fra
     String beatType;
     String timeSymbol = m_e.attribute("symbol");
     bool printObject = m_e.asciiAttribute("print-object") != "no";
-    const Color timeColor = Color::fromString(m_e.asciiAttribute("color").ascii());
+    const Color timeColor = Color::fromString(m_e.attribute("color"));
 
     while (m_e.readNextStartElement()) {
         if (m_e.name() == "beats") {
@@ -6802,7 +6802,7 @@ Note* MusicXmlParserPass2::note(const String& partId,
     bool hasHead = true;
     NoteHeadGroup headGroup = NoteHeadGroup::HEAD_NORMAL;
     NoteHeadScheme headScheme = NoteHeadScheme::HEAD_AUTO;
-    const Color noteColor = Color::fromString(m_e.asciiAttribute("color").ascii());
+    const Color noteColor = Color::fromString(m_e.attribute("color"));
     Color noteheadColor;
     Color stemColor;
     Color beamColor;
@@ -6856,7 +6856,7 @@ Note* MusicXmlParserPass2::note(const String& partId,
             notations.parse();
             addError(notations.errors());
         } else if (m_e.name() == "notehead") {
-            noteheadColor = Color::fromString(m_e.asciiAttribute("color").ascii());
+            noteheadColor = Color::fromString(m_e.attribute("color"));
             noteheadParentheses = m_e.asciiAttribute("parentheses") == "yes";
             noteheadFilled = m_e.attribute("filled");
             String noteheadValue = m_e.readText();
@@ -6899,7 +6899,7 @@ Note* MusicXmlParserPass2::note(const String& partId,
                 staff = -1;
             }
         } else if (m_e.name() == "stem") {
-            stemColor = Color::fromString(m_e.asciiAttribute("color").ascii());
+            stemColor = Color::fromString(m_e.attribute("color"));
             stem(stemDir, noStem);
         } else if (m_e.name() == "tie") {
             tieType = m_e.attribute("type");
@@ -7399,7 +7399,7 @@ FiguredBassItem* MusicXmlParserPass2::figure(const int idx, const bool paren, Fi
             }
             m_e.skipCurrentElement();
         } else if (m_e.name() == "figure-number") {
-            const Color color = Color::fromString(m_e.asciiAttribute("color").ascii());
+            const Color color = Color::fromString(m_e.attribute("color"));
             String val = m_e.readText();
             int iVal = val.toInt();
             // MusicXML spec states figure-number is a number
@@ -7464,7 +7464,7 @@ FiguredBass* MusicXmlParserPass2::figuredBass()
     const bool parentheses = m_e.asciiAttribute("parentheses") == "yes";
     const bool printObject = m_e.asciiAttribute("print-object") != "no";
     const String placement = m_e.attribute("placement");
-    const Color color = Color::fromString(m_e.asciiAttribute("color").ascii());
+    const Color color = Color::fromString(m_e.attribute("color"));
 
     fb->setVisible(printObject);
     if (color.isValid()) {
@@ -7973,7 +7973,7 @@ void MusicXmlParserLyric::parse()
 {
     bool hasExtend = false;
     const String lyricNumber = m_e.attribute("number");
-    const Color lyricColor = Color::fromString(m_e.asciiAttribute("color").ascii());
+    const Color lyricColor = Color::fromString(m_e.attribute("color"));
     const bool printLyric = m_e.asciiAttribute("print-object") != "no";
     m_placement = m_e.attribute("placement");
     double relX = m_e.doubleAttribute("relative-x") * 0.1 * DPMM;
