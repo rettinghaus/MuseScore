@@ -1178,9 +1178,9 @@ static void setElementPropertyFlags(EngravingObject* element, const Pid property
 static void addArticulationToChord(const Notation& notation, ChordRest* cr)
 {
     const SymId articSym = notation.symId();
-    const String dir = notation.attribute(u"type");
-    const String place = notation.attribute(u"placement");
-    const Color color = Color::fromString(notation.attribute(u"color"));
+    const String dir = notation.attribute("type");
+    const String place = notation.attribute("placement");
+    const Color color = Color::fromString(notation.attribute("color"));
     Articulation* na = Factory::createArticulation(cr);
     na->setSymId(articSym);
     if (color.isValid()) {
@@ -1256,9 +1256,9 @@ static void addFermataToChord(const Notation& notation, ChordRest* cr)
 static void addMordentToChord(const Notation& notation, ChordRest* cr)
 {
     const String name = notation.name();
-    const String attrLong = notation.attribute(u"long");
-    const String attrAppr = notation.attribute(u"approach");
-    const String attrDep = notation.attribute(u"departure");
+    const String attrLong = notation.attribute("long");
+    const String attrAppr = notation.attribute("approach");
+    const String attrDep = notation.attribute("departure");
     SymId articSym = SymId::noSym;   // legal but impossible ArticulationType value here indicating "not found"
     if (name == "inverted-mordent") {
         if ((attrLong.empty() || attrLong == "no") && attrAppr.empty() && attrDep.empty()) {
@@ -1286,8 +1286,8 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
         }
     }
     if (articSym != SymId::noSym) {
-        const Color color = Color::fromString(notation.attribute(u"color"));
-        const String place = notation.attribute(u"placement");
+        const Color color = Color::fromString(notation.attribute("color"));
+        const String place = notation.attribute("placement");
         Ornament* mordent = Factory::createOrnament(cr);
         mordent->setSymId(articSym);
         if (place == u"above") {
@@ -1350,12 +1350,12 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
 static void addOtherOrnamentToChord(const Notation& notation, ChordRest* cr)
 {
     const String name = notation.name();
-    const String symname = notation.attribute(u"smufl");
+    const String symname = notation.attribute("smufl");
     SymId sym = SymId::noSym;   // legal but impossible ArticulationType value here indicating "not found"
     sym = SymNames::symIdByName(symname);
 
     if (sym != SymId::noSym) {
-        const Color color = Color::fromString(notation.attribute(u"color"));
+        const Color color = Color::fromString(notation.attribute("color"));
         Ornament* ornam = Factory::createOrnament(cr);
         ornam->setSymId(sym);
         if (color.isValid()) {
@@ -8108,9 +8108,9 @@ void MusicXmlParserNotations::slur()
     // any grace note containing a slur stop means
     // last note of a grace after set has been found
     // -> remember slur stop
-    if (notation.attribute(u"type") == u"stop") {
+    if (notation.attribute("type") == u"stop") {
         m_slurStop = true;
-    } else if (notation.attribute(u"type") == u"start") {
+    } else if (notation.attribute("type") == u"start") {
         m_slurStart = true;
     }
 
@@ -8124,11 +8124,11 @@ void MusicXmlParserNotations::slur()
 static void addSlur(const Notation& notation, SlurStack& slurs, ChordRest* cr, const int tick,
                     MusicXmlLogger* logger, const XmlStreamReader* const xmlreader)
 {
-    int slurNo = notation.attribute(u"number").toInt();
+    int slurNo = notation.attribute("number").toInt();
     if (slurNo > 0) {
         slurNo--;
     }
-    const String slurType = notation.attribute(u"type");
+    const String slurType = notation.attribute("type");
 
     const track_idx_t track = cr->track();
     Score* score = cr->score();
@@ -8155,7 +8155,7 @@ static void addSlur(const Notation& notation, SlurStack& slurs, ChordRest* cr, c
             if (cr->isGrace()) {
                 newSlur->setAnchor(Spanner::Anchor::CHORD);
             }
-            const String lineType = notation.attribute(u"line-type");
+            const String lineType = notation.attribute("line-type");
             if (lineType == u"dashed") {
                 newSlur->setStyleType(SlurStyleType::Dashed);
             } else if (lineType == u"dotted") {
@@ -8163,15 +8163,15 @@ static void addSlur(const Notation& notation, SlurStack& slurs, ChordRest* cr, c
             } else if (lineType == u"solid" || lineType.empty()) {
                 newSlur->setStyleType(SlurStyleType::Solid);
             }
-            const Color color = Color::fromString(notation.attribute(u"color"));
+            const Color color = Color::fromString(notation.attribute("color"));
             if (color.isValid()) {
                 newSlur->setColor(color);
             }
             newSlur->setTick(Fraction::fromTicks(tick));
             newSlur->setStartElement(cr);
             if (configuration()->importLayout()) {
-                const String orientation = notation.attribute(u"orientation");
-                const String placement = notation.attribute(u"placement");
+                const String orientation = notation.attribute("orientation");
+                const String placement = notation.attribute("placement");
                 if (orientation == u"over" || placement == u"above") {
                     newSlur->setSlurDirection(DirectionV::UP);
                 } else if (orientation == u"under" || placement == u"below") {
@@ -8229,12 +8229,12 @@ void MusicXmlParserNotations::tied()
 {
     Notation notation = Notation::notationWithAttributes(String::fromAscii(m_e.name().ascii()), m_e.attributes(), u"notations");
     // Make sure "stops" get processed before "starts"
-    if (notation.attribute(u"type") == u"stop") {
+    if (notation.attribute("type") == u"stop") {
         m_notations.insert(m_notations.begin(), notation);
     } else {
         m_notations.push_back(notation);
     }
-    String tiedType = notation.attribute(u"type");
+    String tiedType = notation.attribute("type");
     if (tiedType != u"start" && tiedType != u"stop" && tiedType != u"let-ring") {
         m_logger->logError(String(u"unknown tied type %1").arg(tiedType), &m_e);
     }
@@ -8594,12 +8594,12 @@ void MusicXmlParserNotations::hole()
 
 void MusicXmlParserNotations::addTechnical(const Notation& notation, Note* note)
 {
-    const String placement = notation.attribute(u"placement");
-    const String fontWeight = notation.attribute(u"font-weight");
-    const double fontSize = notation.attribute(u"font-size").toDouble();
-    const String fontStyle = notation.attribute(u"font-style");
-    const String fontFamily = notation.attribute(u"font-family");
-    const Color color = Color::fromString(notation.attribute(u"color"));
+    const String placement = notation.attribute("placement");
+    const String fontWeight = notation.attribute("font-weight");
+    const double fontSize = notation.attribute("font-size").toDouble();
+    const String fontStyle = notation.attribute("font-style");
+    const String fontFamily = notation.attribute("font-family");
+    const Color color = Color::fromString(notation.attribute("color"));
     if (notation.name() == u"fingering") {
         // TODO: distinguish between keyboards (style TextStyleName::FINGERING)
         // and (plucked) strings (style TextStyleName::LH_GUITAR_FINGERING)
@@ -8685,7 +8685,7 @@ static void addGlissandoSlide(const Notation& notation, Note* note,
                               Glissando* glissandi[MAX_NUMBER_LEVEL][2], MusicXmlSpannerMap& spanners,
                               MusicXmlLogger* logger, const XmlStreamReader* const xmlreader)
 {
-    int glissandoNumber = notation.attribute(u"number").toInt();
+    int glissandoNumber = notation.attribute("number").toInt();
     if (glissandoNumber > 0) {
         glissandoNumber--;
     }
@@ -8698,7 +8698,7 @@ static void addGlissandoSlide(const Notation& notation, Note* note,
     const track_idx_t track = note->track();
 
     if (glissandoType == u"start") {
-        const Color glissandoColor = Color::fromString(notation.attribute(u"color"));
+        const Color glissandoColor = Color::fromString(notation.attribute("color"));
         const String glissandoText = notation.text();
         if (gliss) {
             logger->logError(String(u"overlapping glissando/slide number %1").arg(glissandoNumber + 1), xmlreader);
@@ -8840,10 +8840,10 @@ static void addTie(const Notation& notation, Note* note, const track_idx_t track
         return;
     }
 
-    const String type = notation.attribute(u"type");
-    const String orientation = notation.attribute(u"orientation");
-    const String placement = notation.attribute(u"placement");
-    const String lineType = notation.attribute(u"line-type");
+    const String type = notation.attribute("type");
+    const String orientation = notation.attribute("orientation");
+    const String placement = notation.attribute("placement");
+    const String lineType = notation.attribute("line-type");
 
     TieLocation loc = TieLocation(note->pitch(), note->track());
 
@@ -8861,7 +8861,7 @@ static void addTie(const Notation& notation, Note* note, const track_idx_t track
         currTie->setStartNote(note);
         currTie->setTrack(track);
 
-        const Color color = Color::fromString(notation.attribute(u"color"));
+        const Color color = Color::fromString(notation.attribute("color"));
         if (color.isValid()) {
             currTie->setColor(color);
         }
@@ -8971,8 +8971,8 @@ static void addWavyLine(ChordRest* cr, const Fraction& tick,
 static void addBreath(const Notation& notation, ChordRest* cr)
 {
     const SymId breath = notation.symId();
-    const Color color = Color::fromString(notation.attribute(u"color"));
-    const String placement = notation.attribute(u"placement");
+    const Color color = Color::fromString(notation.attribute("color"));
+    const String placement = notation.attribute("placement");
 
     Segment* const seg = cr->measure()->getSegment(SegmentType::Breath, cr->tick() + cr->ticks());
     Breath* const b = Factory::createBreath(seg);
@@ -8995,7 +8995,7 @@ static void addChordLine(const Notation& notation, Note* note,
                          MusicXmlLogger* logger, const XmlStreamReader* const xmlreader)
 {
     const String chordLineType = notation.subType();
-    const Color color = Color::fromString(notation.attribute(u"color"));
+    const Color color = Color::fromString(notation.attribute("color"));
     if (!chordLineType.empty()) {
         if (note) {
             ChordLine* const chordline = Factory::createChordLine(note->chord());
@@ -9049,9 +9049,9 @@ void Notation::addAttribute(const String& name, const String& value)
 //   attribute
 //---------------------------------------------------------
 
-String Notation::attribute(const String& name) const
+String Notation::attribute(const char* name) const
 {
-    const auto it = m_attributes.find(name);
+    const auto it = m_attributes.find(String(name));
     return (it != m_attributes.end()) ? it->second : String();
 }
 
