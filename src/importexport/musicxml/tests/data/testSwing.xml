@@ -59,7 +59,7 @@
             <per-minute>120</per-minute>
             </metronome>
           </direction-type>
-        <sound tempo="120"/>
+        <sound tempo="96"/>
         </direction>
       <note>
         <pitch>

@@ -3976,6 +3976,8 @@ void MusicXmlParserDirection::sound()
             skipLogCurrElem();
         }
     }
+
+    LOGD("tempo: %f, swing: %d", m_tpoSound, m_swing.second);
 }
 
 //---------------------------------------------------------
@@ -4011,8 +4013,8 @@ void MusicXmlParserDirection::play()
 
 void MusicXmlParserDirection::swing()
 {
-    int swingNumerator = 60;
-    int swingDenominator = 10;
+    int swingNumerator = 1;
+    int swingDenominator = 1;
     int swingUnit = 0;
     while (m_e.readNextStartElement()) {
         if (m_e.name() == "straight") {
