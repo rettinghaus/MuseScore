@@ -1348,6 +1348,8 @@ bool MeiExporter::writeNote(const Note* note, const Chord* chord, const Staff* s
         m_endingControlEventMap[note->tieBack()] = "#" + xmlId;
     }
 
+    SpannerMap& smap = m_score->spannerMap();
+    auto spanners = smap.findOverlapping(note->tick().ticks(), note->tick().ticks());
     for (auto interval : spanners) {
         Spanner* spanner = interval.value;
         if (spanner && (spanner->isGlissando())) {
@@ -2258,7 +2260,7 @@ void MeiExporter::fillControlEventMap(const std::string& xmlId, const ChordRest*
             m_startingControlEventList.push_back(std::make_pair(element, "#" + xmlId));
         }
     }
-    // Breath a handled differently
+    // Breath is handled differently
     const Breath* breath = chordRest->hasBreathMark();
     if (breath) {
         m_startingControlEventList.push_back(std::make_pair(breath, "#" + xmlId));
