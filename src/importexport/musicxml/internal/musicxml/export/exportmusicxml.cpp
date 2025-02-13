@@ -2866,7 +2866,7 @@ static void writeAccidental(XmlWriter& xml, const String& tagName, const Acciden
                     attrs.emplace_back(std::make_pair("placement", "below"));
                 }
             }
-            if (acc->note()->isSmall()) {
+            if (isSmallNote(acc->note()) && !isCueNote(acc->note())) {
                 attrs.emplace_back(std::make_pair("size", "cue"));
             }
             addColorAttr(acc, attrs);
