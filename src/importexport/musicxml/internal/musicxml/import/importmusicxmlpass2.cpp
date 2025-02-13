@@ -4011,12 +4011,12 @@ void MusicXmlParserDirection::play()
 
 void MusicXmlParserDirection::swing()
 {
-    int swingNumerator = 1;
-    int swingDenominator = 1;
+    int swingNumerator = 60;
+    int swingDenominator = 10;
     int swingUnit = 0;
     while (m_e.readNextStartElement()) {
         if (m_e.name() == "straight") {
-            // unused
+            swingUnit = 0;
             m_e.skipCurrentElement();
         } else if (m_e.name() == "first") {
             swingDenominator = m_e.readText().toInt();
