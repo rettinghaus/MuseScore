@@ -1348,10 +1348,19 @@ bool MeiExporter::writeNote(const Note* note, const Chord* chord, const Staff* s
         m_endingControlEventMap[note->tieBack()] = "#" + xmlId;
     }
 
+    for (Spanner* spanner : note->spannerFor()) {
+        if (spanner->isGlissando()) {
+            m_startingControlEventList.push_back(std::make_pair(static_cast<Glissando*>(spanner), "#" + xmlId));
+        }
+    }
+    for (Spanner* spanner : note->spannerBack()) {
+        if (spanner->isGlissando()) {
+            m_endingControlEventMap[static_cast<Glissando*>(spanner)] = "#" + xmlId;
+        }
+    }
+
     for (const EngravingItem* element : note->el()) {
         if (element->isFingering()) {
-            m_startingControlEventList.push_back(std::make_pair(element, "#" + xmlId));
-        } else if (element->isGlissando()) {
             m_startingControlEventList.push_back(std::make_pair(element, "#" + xmlId));
         }
     }
