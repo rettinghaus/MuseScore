@@ -6023,10 +6023,13 @@ void MusicXmlParserPass2::partSymbol(const String& partId)
     const size_t relevantStaff = topStaff ? topStaff - 1 : 0;
     const size_t span = bottomStaff ? bottomStaff - relevantStaff : nstaves - relevantStaff;
 
-    const size_t column = part->staff(relevantStaff)->bracketLevels() + 1;
+    size_t column = part->staff(relevantStaff)->bracketLevels() + 1;
+    if (part->staff->bracketType(column) != BracketType::NO_BRACKET) {
+        column += 1; 
+    }
     part->staff(relevantStaff)->setBracketType(column, bracketType);
     part->staff(relevantStaff)->setBracketSpan(column, span);
-    if (bracketType != BracketType::NO_BRACKET){
+    if (bracketType != BracketType::NO_BRACKET) {
         part->staff(relevantStaff)->setBarLineSpan(span - 1);
     }
     if (symbolColor.isValid()) {
