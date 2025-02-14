@@ -6402,11 +6402,12 @@ static Chord* createGraceChord(Score* score, const int track,
 static void handleDisplayStep(ChordRest* cr, int step, int octave, const Fraction& tick, double spatium)
 {
     if (0 <= step && step <= 6 && 0 <= octave && octave <= 9) {
+        cr->ryoffset() = 0;
         //LOGD("rest step=%d oct=%d", step, octave);
         ClefType clef = cr->staff()->clef(tick);
-        int po = ClefInfo::pitchOffset(clef);
+        const int po = ClefInfo::pitchOffset(clef);
         //LOGD(" clef=%hhd po=%d step=%d", clef, po, step);
-        int dp = 7 * (octave + 2) + step;
+        const int dp = 7 * (octave + 2) + step;
         //LOGD(" dp=%d po-dp=%d", dp, po-dp);
         cr->ryoffset() = (po - dp + 3) * spatium / 2;
     }
