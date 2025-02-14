@@ -1348,16 +1348,14 @@ bool MeiExporter::writeNote(const Note* note, const Chord* chord, const Staff* s
         m_endingControlEventMap[note->tieBack()] = "#" + xmlId;
     }
 
-    SpannerMap& smap = m_score->spannerMap();
-    auto spanners = smap.findOverlapping(note->tick().ticks(), note->tick().ticks());
-    for (auto interval : spanners) {
-        Spanner* spanner = interval.value;
-        if (spanner && (spanner->isGlissando())) {
-            if (spanner->startElement() == note) {
-                m_startingControlEventList.push_back(std::make_pair(spanner, "#" + xmlId));
-            } else if (spanner->endElement() == note) {
-                m_endingControlEventMap[spanner] = "#" + xmlId;
-            }
+    for (Spanner* spanner : note->spannerFor()) {
+        if (spanner->isGlissando()) {
+            m_startingControlEventList.push_back(std::make_pair(spanner, "#" + xmlId));
+        }
+    }
+    for (Spanner* spanner : note->spannerBack()) {
+        if (spanner->isGlissando()) {
+            m_endingControlEventMap[spanner] = "#" + xmlId;
         }
     }
 
