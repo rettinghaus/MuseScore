@@ -6024,7 +6024,7 @@ void MusicXmlParserPass2::partSymbol(const String& partId)
     const size_t span = bottomStaff ? bottomStaff - relevantStaff : nstaves - relevantStaff;
 
     size_t column = part->staff(relevantStaff)->bracketLevels() + 1;
-    if (part->staff->bracketType(column) != BracketType::NO_BRACKET) {
+    if (part->staff(relevantStaff)->bracketType(column) != BracketType::NO_BRACKET) {
         column += 1; 
     }
     part->staff(relevantStaff)->setBracketType(column, bracketType);
