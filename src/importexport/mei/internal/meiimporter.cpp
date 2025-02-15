@@ -3408,6 +3408,8 @@ void MeiImporter::addSpannerEnds()
             gliss->setTick2(endNote->chord()->tick());
             gliss->setEndElement(endNote);
             gliss->setTrack2(endNote->track());
+            gliss->setParent(endNote);
+            endNote->score()->undoAddElement(e);
 
             // All other Spanners
         } else if (spannerMapEntry.first->startCR()) {
