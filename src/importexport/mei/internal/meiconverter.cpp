@@ -2240,7 +2240,7 @@ libmei::Measure Convert::measureToMEI(const engraving::Measure* measure, int& me
     libmei::Measure meiMeasure;
 
     // @metcon
-    if (measure->ticks() != measure->timesig()) {
+    if (measure->ticks() != measure->timesig() && !measure->isMMRest()) {
         meiMeasure.SetMetcon(libmei::BOOLEAN_false);
     }
     // @n

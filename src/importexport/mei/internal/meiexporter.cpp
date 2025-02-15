@@ -53,6 +53,7 @@
 #include "engraving/dom/masterscore.h"
 #include "engraving/dom/measure.h"
 #include "engraving/dom/measurerepeat.h"
+#include "engraving/dom/mmrest.h"
 #include "engraving/dom/note.h"
 #include "engraving/dom/ornament.h"
 #include "engraving/dom/ottava.h"
@@ -999,7 +1000,13 @@ bool MeiExporter::writeLayer(track_idx_t track, const Staff* staff, const Measur
         } else if (item->isChord()) {
             this->writeChord(toChord(item), staff);
         } else if (item->isRest()) {
-            this->writeRest(toRest(item), staff);
+            if (measure->isMMRest()) {
+                if (measure == measure->mmRestFirst()) {
+                    this->writeMultiRest(dynamic_cast<const Rest*>(item), staff);
+                }
+            } else {
+                this->writeRest(dynamic_cast<const Rest*>(item), staff);
+            }
         } else if (item->isBarLine()) {
             //
         } else if (item->isBreath()) {
@@ -1395,6 +1402,28 @@ bool MeiExporter::writeNote(const Note* note, const Chord* chord, const Staff* s
     // non critical assert
     assert(isCurrentNode(meiNote));
     m_currentNode = m_currentNode.parent();
+
+    return true;
+}
+
+/**
+ * Write a multi-measure rest.
+ */
+
+bool MeiExporter::writeMultiRest(const Rest* mmRest, const Staff* staff)
+{
+    IF_ASSERT_FAILED(mmRest) {
+        return false;
+    }
+
+    pugi::xml_node multiRestNode = m_currentNode.append_child();
+    libmei::MultiRest meiMultiRest;
+    Convert::colorToMEI(mmRest, meiMultiRest);
+    meiMultiRest.SetNum(mmRest->measure()->mmRestCount());
+    meiMultiRest.SetNumVisible(toMMRest(mmRest)->showNumber() ? libmei::BOOLEAN_true : libmei::BOOLEAN_false);
+    meiMultiRest.SetBlock(toMMRest(mmRest)->isOldStyle() ? libmei::BOOLEAN_false : libmei::BOOLEAN_true);
+    std::string xmlId = this->getXmlIdFor(mmRest, 'm');
+    meiMultiRest.Write(multiRestNode, xmlId);
 
     return true;
 }
