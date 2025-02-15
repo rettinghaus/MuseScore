@@ -1657,6 +1657,8 @@ bool MeiImporter::readElements(pugi::xml_node parentNode, Measure* measure, int 
             success = success && this->readGraceGrp(xpathNode.node(), measure, track, ticks);
         } else if (elementName == "mRest" && !m_readingGraceNotes) {
             success = success && this->readMRest(xpathNode.node(), measure, track, ticks);
+        } else if (elementName == "multiRest" && !m_readingGraceNotes) {
+            success = success && this->readMultiRest(xpathNode.node(), measure, track, ticks);
         } else if (elementName == "note") {
             success = success && this->readNote(xpathNode.node(), measure, track, ticks);
         } else if (elementName == "mRpt") {
@@ -1942,6 +1944,31 @@ bool MeiImporter::readMRpt(pugi::xml_node mRptNode, Measure* measure, int track,
     measureRepeat->setNumMeasures(1);
     measure->setMeasureRepeatCount(1, track2staff(track));
     segment->add(measureRepeat);
+
+    return true;
+}
+
+/**
+ * Read a mRest.
+ */
+
+bool MeiImporter::readMultiRest(pugi::xml_node multiRestNode, Measure* measure, int track, Fraction& ticks)
+{
+    IF_ASSERT_FAILED(measure) {
+        return false;
+    }
+
+    libmei::MultiRest meiMultiRest;
+    meiMultiRest.Read(multiRestNode);
+
+    m_score->style().set(Sid::createMultiMeasureRests, true);
+    //measure->setBreakMultiMeasureRest(true);
+
+    measure->setMMRest(measure);
+    measure->setMMRestCount(meiMultiRest.GetNum());
+
+    // now read this as normal rest
+    this->readMRest(multiRestNode, measure, track, ticks);
 
     return true;
 }
