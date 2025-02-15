@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<museScore version="4.50">
+  <programVersion>4.5.0</programVersion>
+  <programRevision>d83317e</programRevision>
+  <Score>
+    <eid>SL0IpKvR02K_ZkqlXY5sLvD</eid>
+    <Division>480</Division>
+    <showInvisible>1</showInvisible>
+    <showUnprintable>1</showUnprintable>
+    <showFrames>1</showFrames>
+    <showMargins>0</showMargins>
+    <open>1</open>
+    <metaTag name="arranger"></metaTag>
+    <metaTag name="composer">Leon Vinken</metaTag>
+    <metaTag name="copyright"></metaTag>
+    <metaTag name="creationDate">2025-02-14</metaTag>
+    <metaTag name="lyricist"></metaTag>
+    <metaTag name="movementNumber"></metaTag>
+    <metaTag name="movementTitle"></metaTag>
+    <metaTag name="originalFormat">xml</metaTag>
+    <metaTag name="platform">Apple Macintosh</metaTag>
+    <metaTag name="source"></metaTag>
+    <metaTag name="translator"></metaTag>
+    <metaTag name="workNumber">MuseScore testfile</metaTag>
+    <metaTag name="workTitle">Multi-Measure Rests 1</metaTag>
+    <Part id="1">
+      <Staff id="1">
+        <StaffType group="pitched">
+          <name>stdNormal</name>
+          </StaffType>
+        <hideWhenEmpty>3</hideWhenEmpty>
+        </Staff>
+      <trackName>Staff 1</trackName>
+      <Instrument id="grand-piano">
+        <longName>Staff 1</longName>
+        <trackName>Staff 1</trackName>
+        <minPitchP>21</minPitchP>
+        <maxPitchP>108</maxPitchP>
+        <minPitchA>21</minPitchA>
+        <maxPitchA>108</maxPitchA>
+        <instrumentId>keyboard.piano.grand</instrumentId>
+        <clef staff="2">F</clef>
+        <singleNoteDynamics>0</singleNoteDynamics>
+        <Articulation>
+          <velocity>100</velocity>
+          <gateTime>95</gateTime>
+          </Articulation>
+        <Articulation name="staccatissimo">
+          <velocity>100</velocity>
+          <gateTime>33</gateTime>
+          </Articulation>
+        <Articulation name="staccato">
+          <velocity>100</velocity>
+          <gateTime>50</gateTime>
+          </Articulation>
+        <Articulation name="portato">
+          <velocity>100</velocity>
+          <gateTime>67</gateTime>
+          </Articulation>
+        <Articulation name="tenuto">
+          <velocity>100</velocity>
+          <gateTime>100</gateTime>
+          </Articulation>
+        <Articulation name="marcato">
+          <velocity>120</velocity>
+          <gateTime>67</gateTime>
+          </Articulation>
+        <Articulation name="sforzato">
+          <velocity>150</velocity>
+          <gateTime>100</gateTime>
+          </Articulation>
+        <Articulation name="sforzatoStaccato">
+          <velocity>150</velocity>
+          <gateTime>50</gateTime>
+          </Articulation>
+        <Articulation name="marcatoStaccato">
+          <velocity>120</velocity>
+          <gateTime>50</gateTime>
+          </Articulation>
+        <Articulation name="marcatoTenuto">
+          <velocity>120</velocity>
+          <gateTime>100</gateTime>
+          </Articulation>
+        <Channel>
+          <program value="0"/>
+          <controller ctrl="7" value="0"/>
+          <controller ctrl="10" value="63"/>
+          <synti>Fluid</synti>
+          </Channel>
+        </Instrument>
+      </Part>
+    <Staff id="1">
+      <VBox>
+        <height>10</height>
+        <eid>/79elrzze4F_MIZKknYpmVF</eid>
+        <Text>
+          <eid>8LHN7i7KjdD_iGx/766cDGL</eid>
+          <style>title</style>
+          <text>Multi-Measure Rests 1</text>
+          </Text>
+        <Text>
+          <eid>4THJGy4rPtE_KVkbxcuN3eH</eid>
+          <style>subtitle</style>
+          <text>MuseScore testfile</text>
+          </Text>
+        <Text>
+          <eid>rQN9BVPKvAH_juNirBrvUXM</eid>
+          <style>composer</style>
+          <text>Leon Vinken</text>
+          </Text>
+        </VBox>
+      <Measure>
+        <eid>B1fEbAC/n7G_KJPQEi1103L</eid>
+        <breakMultiMeasureRest>1</breakMultiMeasureRest>
+        <voice>
+          <Clef>
+            <concertClefType>G</concertClefType>
+            <transposingClefType>G</transposingClefType>
+            <isHeader>1</isHeader>
+            <eid>ihx+jbmaVMF_6LQb39M/GlM</eid>
+            </Clef>
+          <KeySig>
+            <eid>UiQoLocJbUE_v5ir/2W4f8G</eid>
+            <linkedMain/>
+            <concertKey>-7</concertKey>
+            </KeySig>
+          <TimeSig>
+            <subtype>1</subtype>
+            <eid>HFUN0RMktFJ_OLhaUa1uRIL</eid>
+            <linkedMain/>
+            <sigN>4</sigN>
+            <sigD>4</sigD>
+            </TimeSig>
+          <Rest>
+            <eid>RNqRI7bwmjF_1ZggMNf5TlN</eid>
+            <durationType>measure</durationType>
+            <duration>1/1</duration>
+            </Rest>
+          </voice>
+        </Measure>
+      <Measure len="12/4">
+        <multiMeasureRest>3</multiMeasureRest>
+        <eid>Yqz/e3ufFJC_QClu0RPUvmJ</eid>
+        <voice>
+          <TimeSig>
+            <subtype>1</subtype>
+            <eid>rei94rn2loH_sK1g8SaAdKF</eid>
+            <linked>
+              <indexDiff>-1</indexDiff>
+              </linked>
+            <sigN>4</sigN>
+            <sigD>4</sigD>
+            </TimeSig>
+          <Rest>
+            <eid>dmJ+2J4jDmL_xcVpclA34FN</eid>
+            <placement>above</placement>
+            <durationType>measure</durationType>
+            <duration>12/4</duration>
+            </Rest>
+          </voice>
+        </Measure>
+      <Measure>
+        <eid>z4wyUFFeDGL_4iFf7NvSqfP</eid>
+        <voice>
+          <Rest>
+            <eid>vW+ZwK0TCBL_aInxHmaTG7M</eid>
+            <durationType>measure</durationType>
+            <duration>1/1</duration>
+            </Rest>
+          </voice>
+        </Measure>
+      <Measure>
+        <eid>QF/99UKDOvF_u0UNCF7hxEG</eid>
+        <voice>
+          <Rest>
+            <eid>2iwTcddJI7C_6MpLonVc9GN</eid>
+            <durationType>measure</durationType>
+            <duration>1/1</duration>
+            </Rest>
+          </voice>
+        </Measure>
+      <Measure>
+        <eid>eukxd75V+9N_8VePvupuNcD</eid>
+        <breakMultiMeasureRest>1</breakMultiMeasureRest>
+        <voice>
+          <Rest>
+            <eid>kMPQm8AzM3M_h728cQzwHII</eid>
+            <durationType>measure</durationType>
+            <duration>1/1</duration>
+            </Rest>
+          </voice>
+        </Measure>
+      <Measure>
+        <multiMeasureRest>1</multiMeasureRest>
+        <eid>gaeq84GV7IJ_wW9R6TJ0/TP</eid>
+        <voice>
+          <Rest>
+            <eid>DRAy/tfrVtJ_SGMVNF/SPtM</eid>
+            <placement>above</placement>
+            <durationType>measure</durationType>
+            <duration>4/4</duration>
+            </Rest>
+          </voice>
+        </Measure>
+      <Measure>
+        <eid>jSzn4Si+twO_JEiaJvFRecJ</eid>
+        <breakMultiMeasureRest>1</breakMultiMeasureRest>
+        <voice>
+          <Rest>
+            <eid>Jy4UqhCdokL_slnN7/fOp/I</eid>
+            <durationType>measure</durationType>
+            <duration>1/1</duration>
+            </Rest>
+          </voice>
+        </Measure>
+      <Measure len="8/4">
+        <multiMeasureRest>2</multiMeasureRest>
+        <eid>Jq+sMGQnnsN_7jq7tSjHYjI</eid>
+        <voice>
+          <Rest>
+            <eid>rDbI1F2atPD_7H7ZPns8ALL</eid>
+            <placement>above</placement>
+            <durationType>measure</durationType>
+            <duration>8/4</duration>
+            </Rest>
+          <BarLine>
+            <subtype>end</subtype>
+            <eid>BpKhMhmmnRE_dcvRrHTRWHB</eid>
+            <linkedMain/>
+            </BarLine>
+          </voice>
+        </Measure>
+      <Measure>
+        <eid>k7pni/AhChG_dSwgyltGBKF</eid>
+        <voice>
+          <Rest>
+            <eid>XvU2zRaHBDJ_Geu5vpIM1EC</eid>
+            <durationType>measure</durationType>
+            <duration>1/1</duration>
+            </Rest>
+          <BarLine>
+            <subtype>end</subtype>
+            <eid>MQNF0ele2tM_Eg1o8wTCBFJ</eid>
+            <linked>
+              <indexDiff>-1</indexDiff>
+              </linked>
+            </BarLine>
+          </voice>
+        </Measure>
+      </Staff>
+    </Score>
+  </museScore>
