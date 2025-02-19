@@ -122,6 +122,7 @@
 #include "engraving/dom/trill.h"
 #include "engraving/dom/tuplet.h"
 #include "engraving/dom/utils.h"
+#include "engraving/dom/vibrato.h"
 #include "engraving/dom/volta.h"
 #include "engraving/dom/whammybar.h"
 #include "engraving/editing/undo.h"
@@ -427,6 +428,7 @@ private:
     void calcDivisions();
     void keysigTimesig(const Measure* m, const Part* p);
     void chordAttributes(Chord* chord, Notations& notations, Technical& technical, TrillHash& trillStart, TrillHash& trillStop);
+    void vibrato(const ChordRest* cr, Notations& notations, Ornaments& ornaments);
     void wavyLineStartStop(const ChordRest* cr, Notations& notations, Ornaments& ornaments, TrillHash& trillStart, TrillHash& trillStop);
     void print(const Measure* const m, const int partNr, const int firstStaffOfPart, const size_t nrStavesInPart,
                const MeasurePrintContext& mpc);
@@ -3098,6 +3100,21 @@ void ExportMusicXml::wavyLineStartStop(const ChordRest* cr, Notations& notations
             }
         }
     }
+}
+
+//---------------------------------------------------------
+//   vibrato
+//---------------------------------------------------------
+
+void ExportMusicXml::vibrato(const ChordRest* cr, Notations& notations, Ornaments& ornaments)
+{
+    notations.tag(xml);
+    ornaments.tag(xml);
+    XmlWriter::Attributes attrs;
+    if (type != u"stop") {
+        addColorAttr(tr, attrs);
+    }
+    xml.tag("wavy-line", attrs);
 }
 
 //---------------------------------------------------------
@@ -6944,6 +6961,7 @@ static void spannerStart(ExportMusicXml* exp, track_idx_t strack, track_idx_t et
                     exp->textLine(toPickScrape(e), sstaff, seg->tick());
                     break;
                 case ElementType::TRILL:
+                case ElementType::VIBRATO:
                     // ignore (written as <note><notations><ornaments><wavy-line>)
                     break;
                 case ElementType::SLUR:
@@ -7019,6 +7037,7 @@ static void spannerStop(ExportMusicXml* exp, track_idx_t strack, track_idx_t etr
                 exp->textLine(toPickScrape(e), sstaff, Fraction(-1, 1));
                 break;
             case ElementType::TRILL:
+            case ElementType::VIBRATO:
                 // ignore (written as <note><notations><ornaments><wavy-line>
                 break;
             case ElementType::SLUR:
