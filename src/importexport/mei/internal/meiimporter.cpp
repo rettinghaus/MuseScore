@@ -514,8 +514,6 @@ Spanner* MeiImporter::addSpanner(const libmei::Element& meiElement, Measure* mea
         default:
             item = Factory::createTextLine(chordRest->segment());
         }
-    } else if (meiElement.m_name == "gliss") {
-        item = Factory::createGlissando(chordRest->segment());
     } else if (meiElement.m_name == "hairpin") {
         item = Factory::createHairpin(chordRest->segment());
     } else if (meiElement.m_name == "octave") {
@@ -2594,7 +2592,7 @@ bool MeiImporter::readGliss(pugi::xml_node glissNode, Measure* measure)
     libmei::Gliss meiGliss;
     meiGliss.Read(glissNode);
 
-    // We do not use addSpanner here because Tie object are added directly to the start and end Note objects
+    // We do not use addSpanner here because Gliss objects are added directly to the start and end Note objects
     Note* startNote = this->findStartNote(meiGliss);
     if (!startNote) {
         // Here we could detect if it's a tied chord (for files not exported from MuseScore)
@@ -2602,12 +2600,17 @@ bool MeiImporter::readGliss(pugi::xml_node glissNode, Measure* measure)
         return true;
     }
 
-    Glissando* gliss = new Glissando(m_score->dummy());
+    Glissando* gliss = Factory::createGlissando(startNote);
     m_uids->reg(gliss, meiGliss.m_xmlId);
     gliss->setAnchor(Spanner::Anchor::NOTE);
+    gliss->setTick(startNote->chord()->tick());
     gliss->setStartElement(startNote);
     gliss->setTrack(startNote->track());
     gliss->setParent(startNote);
+    gliss->setText(String(glissNode.text().as_string()));
+    LOGD() << "gliss text " << glissNode.text();
+
+    m_score->addElement(gliss);
 
     // Still add the glissando to the open Spanner map, which will handle glissandos differently as appropriate
     m_openSpannerMap[gliss] = glissNode;
@@ -3404,9 +3407,10 @@ void MeiImporter::addSpannerEnds()
                 continue;
             }
             Glissando* gliss = toGlissando(spannerMapEntry.first);
-            gliss->setEndElement(endNote);
             gliss->setTick2(endNote->chord()->tick());
+            gliss->setEndElement(endNote);
             gliss->setTrack2(endNote->track());
+            gliss->setParent(endNote);
 
             // All other Spanners
         } else if (spannerMapEntry.first->startCR()) {
