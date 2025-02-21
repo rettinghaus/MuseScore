@@ -3409,8 +3409,9 @@ void MeiImporter::addSpannerEnds()
             if (!endNote) {
                 continue;
             }
+            LOGD() << "Found a note for a gliss end";
             Glissando* gliss = toGlissando(spannerMapEntry.first);
-            gliss->setTick2(endNote->chord()->tick() + endNote->chord()->ticks());
+            gliss->setTick2(endNote->chord()->tick());
             gliss->setEndElement(endNote);
             gliss->setTrack2(endNote->track());
             //gliss->setParent(endNote);
