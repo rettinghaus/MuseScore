@@ -7909,9 +7909,6 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part)
             }
             if (!st->show()) {
                 attributes.push_back({ "print-object", "no" });
-                if (st->cutout()) {
-                    attributes.push_back({ "print-spacing", "yes" });
-                }
             }
             xml.startElement("staff-details", attributes);
 
@@ -8479,12 +8476,8 @@ void ExportMusicXml::writeMeasure(const Measure* const m,
         writeInstrumentDetails(part->instrument(), m_score->style().styleB(Sid::concertPitch));
     } else {
         for (size_t i = 0; i < staves; i++) {
-            if (!staff->show()) {
-                if (staff->cutaway()) {
-                    m_xml.tag("staff-details", { { "number", i + 1 }, { "print-object", "no" }, {"print-spacing", "yes"} });
-                } else {
-                    m_xml.tag("staff-details", { { "number", i + 1 }, { "print-object", "no" } });
-                }
+            if (!part->staff[0]->show()) {
+                m_xml.tag("staff-details", { { "number", i + 1 }, { "print-object", "no" } });
             }
         }
     }
