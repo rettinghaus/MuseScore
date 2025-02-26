@@ -3987,6 +3987,10 @@ void MusicXmlParserDirection::directionType(std::vector<MusicXmlSpannerDesc>& st
         } else if (m_e.name() == "segno") {
             m_wordsText += u"<sym>segno</sym>";
             m_e.skipCurrentElement();
+        } else if (m_e.name() == "string-mute") {
+            // SymId id = type == u"on" ? SymId::stringsMuteOn : SymId::stringsMuteOff;
+            m_wordsText += type == u"on" ? u"<sym>stringsMuteOn</sym>" : u"<sym>stringsMuteOff</sym>";
+            m_e.skipCurrentElement();
         } else if (m_e.name() == "symbol") {
             const String smufl = m_e.readText();
             if (!smufl.empty()) {
