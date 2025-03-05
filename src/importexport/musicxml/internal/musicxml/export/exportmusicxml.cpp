@@ -6524,6 +6524,17 @@ static void annotations(ExportMusicXml* exp, track_idx_t strack, track_idx_t etr
             wtrack = findTrackForAnnotations(e->track(), seg);
         }
 
+        const ChordRest* cr = e->parent();
+        if (cr && e->hasVoiceAssignmentProperties()) {
+            voice_idx_t voice = (sstaff - 1) * VOICES + cr->voice() + 1;
+            if (sstaff == 0) {
+                voice += VOICES;
+            }
+            if (voice != wtrack) {
+                return;
+            } 
+        }
+
         if (track == wtrack) {
             if (commonAnnotations(exp, e, sstaff)) {
                 // already handled
