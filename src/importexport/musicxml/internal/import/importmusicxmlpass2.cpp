@@ -4069,6 +4069,8 @@ void MusicXmlParserDirection::directionType(std::vector<MusicXmlSpannerDesc>& st
             if (!smufl.empty()) {
                 m_wordsText += u"<sym>" + smufl + u"</sym>";
             }
+        } else if (m_e.name() == "accordion-registration") {
+            accordionRegistration();
         } else if (m_e.name() == "string-mute") {
             if (type == u"on") {
                 m_wordsText += u"<sym>stringsMuteOn</sym>";
@@ -4208,6 +4210,31 @@ void MusicXmlParserDirection::dynamics()
 }
 
 //---------------------------------------------------------
+//   accordionRegistration
+//---------------------------------------------------------
+
+/**
+ Parse the /score-partwise/part/measure/direction/direction-type/accordion-registration node.
+ */
+
+void MusicXmlParserDirection::accordionRegistration()
+{
+    const Color color = Color::fromString(m_e.attribute("color"));
+
+    while (m_e.readNextStartElement()) {
+        if (m_e.name() == "accordion-high") {
+            m_e.skipCurrentElement();
+        } else if (m_e.name() == "accordion-middle") {
+            m_e.skipCurrentElement(); 
+        } else if (m_e.name() == "accordion-low") {
+            m_e.skipCurrentElement(); 
+        } else {
+            m_e.skipCurrentElement();
+        }
+    }
+}
+
+//---------------------------------------------------------
 //   harpPedal
 //---------------------------------------------------------
 
@@ -4238,6 +4265,10 @@ void MusicXmlParserDirection::harpPedal()
     }
     m_elems.push_back(hpd);
 }
+
+//---------------------------------------------------------
+//   otherDirection
+//---------------------------------------------------------
 
 void MusicXmlParserDirection::otherDirection()
 {
