@@ -7712,33 +7712,18 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
     partGroupEnd.fill(-1);
     for (size_t idx = 0; idx < parts.size(); ++idx) {
         const Part* part = parts.at(idx);
-        bool bracketFound = false;
         // handle brackets
-        for (size_t i = 0; i < part->nstaves(); i++) {
-            Staff* st = part->staff(i);
-            if (st) {
-                for (size_t j = 0; j < st->bracketLevels() + 1; j++) {
-                    if (st->bracketType(j) != BracketType::NO_BRACKET) {
-                        bracketFound = true;
-                        if (i == 0) {
-                            // OK, found bracket in first staff of part
-                            // filter out part-symbols
-                            if (st->bracketSpan(j) > part->nstaves()) {
-                                // filter out single brackets starting in the last part
-                                // as they cannot span multiple parts
-                                if (idx < parts.size() - 1 || j < st->bracketLevels()) {
-                                    // add others
-                                    const int number = findPartGroupNumber(partGroupEnd);
-                                    if (number < MAX_PART_GROUPS) {
-                                        const BracketItem* bi = st->brackets().at(j);
-                                        partGroupStart(xml, number + 1, bi, st->barLineSpan(), groupTime);
-                                        partGroupEnd[number] = static_cast<int>(staffCount + st->bracketSpan(j));
-                                    }
-                                }
-                            }
-                        } else {
-                            // bracket in other staff not supported in MusicXML
-                            LOGD("bracket starting in staff %zu not supported", i + 1);
+        Staff* st = part->staff(0);
+        if (st) {
+            for (size_t j = 0; j < st->bracketLevels() + 1; ++j) {
+                if (st->bracketType(j) != BracketType::NO_BRACKET) {
+                    // filter out part-symbols
+                    if (st->bracketSpan(j) > part->nstaves() || j < st->bracketLevels()) {
+                        const int number = findPartGroupNumber(partGroupEnd);
+                        if (number < MAX_PART_GROUPS) {
+                            const BracketItem* bi = st->brackets().at(j);
+                            partGroupStart(xml, number + 1, bi, st->barLineSpan());
+                            partGroupEnd[number] = static_cast<int>(staffCount + st->bracketSpan(j));
                         }
                     }
                 }
