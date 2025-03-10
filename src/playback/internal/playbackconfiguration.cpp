@@ -62,7 +62,7 @@ static const Settings::Key MUTE_HIDDEN_INSTRUMENTS(moduleName, "playback/mixer/m
 static const Settings::Key DEFAULT_SOUND_PROFILE_FOR_NEW_PROJECTS(moduleName, "playback/profiles/defaultProfileName");
 static const SoundProfileName BASIC_PROFILE_NAME(u"MuseScore Basic");
 static const SoundProfileName MUSESOUNDS_PROFILE_NAME(u"MuseSounds");
-static const SoundProfileName COMPAT_MUSESOUNDS_PROFILE_NAME(u"Muse Sounds");
+static const SoundProfileName COMPAT_MUSESOUNDS_PROFILE_NAME(u"MuseSounds");
 
 static Settings::Key mixerSectionVisibleKey(MixerSectionType sectionType)
 {
