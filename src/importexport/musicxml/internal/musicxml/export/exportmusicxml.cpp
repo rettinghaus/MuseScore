@@ -3679,24 +3679,19 @@ void ExportMusicXml::chordAttributes(Chord* chord, Notations& notations, Technic
                 }
                 m_xml.tag("hole-closed", location, holeClosedValue);
                 m_xml.endElement();
-            } else {
+            } else if (!mxmlTechn.empty()) {
                 m_xml.tagRaw(mxmlTechn);
+            } else {
+                String otherArtic = u"other-articulation";
+                otherArtic += color2xml(a);
+                otherArtic += ExportMusicXml::positioningAttributes(a);
+                if (!placement.empty()) {
+                    otherArtic += String(u" placement=\"%1\"").arg(placement);
+                }
+                notations.tag(m_xml, a);
+                articulations.tag(m_xml);
+                m_xml.tag("other-articulation", { { "smufl", sid->symName() } });
             }
-        }
-    }
-
-    // check if all articulations were handled
-    for (const Articulation* a : na) {
-        if (!ExportMusicXml::canWrite(a)) {
-            continue;
-        }
-
-        SymId sid = a->symId();
-        if (symIdToArtic(sid).empty()
-            && symIdToOrnam(sid) == ""
-            && symIdToTechn(sid) == ""
-            && !isLaissezVibrer(sid)) {
-            LOGD("unknown chord attribute %d %s", static_cast<int>(sid), muPrintable(a->translatedTypeUserName()));
         }
     }
 }
