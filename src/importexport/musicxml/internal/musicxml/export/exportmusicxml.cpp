@@ -7554,10 +7554,11 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
         // handle brackets
         Staff* st = part->staff(0);
         if (st) {
+            size_t levels = st->bracketLevels();
             for (size_t j = 0; j < st->bracketLevels() + 1; ++j) {
                 if (st->bracketType(j) != BracketType::NO_BRACKET) {
                     // filter out part-symbols
-                    if (st->bracketSpan(j) > part->nstaves() || j < st->bracketLevels()) {
+                    if (st->bracketSpan(j) > part->nstaves() || j < levels) {
                         const int number = findPartGroupNumber(partGroupEnd);
                         if (number < MAX_PART_GROUPS) {
                             const BracketItem* bi = st->brackets().at(j);
@@ -7565,6 +7566,8 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
                             partGroupEnd[number] = static_cast<int>(staffCount + st->bracketSpan(j));
                         }
                     }
+                } else {
+                    levels -= 1;
                 }
             }
         }
