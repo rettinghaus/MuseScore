@@ -428,7 +428,7 @@ private:
     void calcDivisions();
     void keysigTimesig(const Measure* m, const Part* p);
     void chordAttributes(Chord* chord, Notations& notations, Technical& technical, TrillHash& trillStart, TrillHash& trillStop);
-    void vibrato(const ChordRest* cr, Notations& notations, Ornaments& ornaments);
+    void vibrato(const Chord* chord, Notations& notations, Ornaments& ornaments);
     void wavyLineStartStop(const ChordRest* cr, Notations& notations, Ornaments& ornaments, TrillHash& trillStart, TrillHash& trillStop);
     void print(const Measure* const m, const int partNr, const int firstStaffOfPart, const size_t nrStavesInPart,
                const MeasurePrintContext& mpc);
@@ -3106,25 +3106,28 @@ void ExportMusicXml::wavyLineStartStop(const ChordRest* cr, Notations& notations
 //   vibrato
 //---------------------------------------------------------
 
-void ExportMusicXml::vibrato(const ChordRest* cr, Notations& notations, Ornaments& ornaments)
+void ExportMusicXml::vibrato(const Chord* chord, Notations& notations, Ornaments& ornaments)
 {
     String type;
-    for (Spanner* spanner : cr->spannerFor()) {
+    Vibrato* vib;
+    for (Spanner* spanner : chord->startingSpanners()) {
         if (spanner->type() == ElementType::VIBRATO && ExportMusicXml::canWrite(spanner)) {
             type = u"start";
+            vib = toVibrato(spanner);
         }
     }
-    for (Spanner* spanner : cr->spannerBack()) {
+    for (Spanner* spanner : chord->endingSpanners()) {
         if (spanner->type() == ElementType::VIBRATO && ExportMusicXml::canWrite(spanner)) {
             type = u"stop";
+            vib = toVibrato(spanner);
         }
     }
-    if (!type.empty()) {
-        notations.tag(m_xml, e);
+    if (vib) {
+        notations.tag(m_xml, vib);
         ornaments.tag(m_xml);
         XmlWriter::Attributes attrs = { { "type", type } };
-        addColorAttr(e, attrs);
-        xml.tag("wavy-line", attrs);
+        addColorAttr(vib, attrs);
+        m_xml.tag("wavy-line", attrs);
     }
 }
 
