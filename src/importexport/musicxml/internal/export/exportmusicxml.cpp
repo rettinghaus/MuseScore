@@ -3032,14 +3032,19 @@ void ExportMusicXml::wavyLineStartStop(const ChordRest* cr, Notations& notations
 
 void ExportMusicXml::vibrato(const ChordRest* cr, Notations& notations, Ornaments& ornaments)
 {
-    notations.tag(m_xml);
-    ornaments.tag(m_xml);
-    XmlWriter::Attributes attrs;
-    String type = "start";
-    if (type != u"stop") {
-        addColorAttr(tr, attrs);
+    for (const EngravingItem* e : cra) {
+        if (!e->isVibrato() || !ExportMusicXml::canWrite(e)) {
+            continue;
+        }
+        notations.tag(xml, e);
+        ornaments.tag(m_xml);
+        XmlWriter::Attributes attrs;
+        String type = u"start";
+        if (type != u"stop") {
+            addColorAttr(e, attrs);
+        }
+        xml.tag("wavy-line", attrs);
     }
-    xml.tag("wavy-line", attrs);
 }
 
 //---------------------------------------------------------
@@ -3549,9 +3554,10 @@ void ExportMusicXml::chordAttributes(Chord* chord, Notations& notations, TrillHa
             writeAccidental(m_xml, u"accidental-mark", accidental);
         }
     }
-    tremoloSingleStartStop(chord, notations, m_xml);
-    wavyLineStartStop(chord, notations, trillStart, trillStop);
-    notations.closeContainer(m_xml); // end ornaments tag
+    tremoloSingleStartStop(chord, notations, ornaments, m_xml);
+    wavyLineStartStop(chord, notations, ornaments, trillStart, trillStop);
+    vibrato(chord, notations, ornaments);
+    ornaments.etag(m_xml);
 
     // and finally the attributes whose elements are children of <technical>
     for (const Articulation* a : na) {
