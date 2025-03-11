@@ -1249,7 +1249,7 @@ static void addFermataToChord(const Notation& notation, ChordRest* cr)
 //---------------------------------------------------------
 
 /**
- Add Mordent to Chord.
+ Add mordent to chord.
  */
 
 static void addMordentToChord(const Notation& notation, ChordRest* cr)
@@ -1311,7 +1311,7 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
 //---------------------------------------------------------
 
 /**
- Add Turn to Chord.
+ Add turn to chord.
  */
 
 static void addTurnToChord(const Notation& notation, ChordRest* cr)
@@ -1343,7 +1343,7 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
 //---------------------------------------------------------
 
 /**
- Add Other Ornament to Chord.
+ Add other ornament to chord.
  */
 
 static void addOtherOrnamentToChord(const Notation& notation, ChordRest* cr)
@@ -1364,6 +1364,26 @@ static void addOtherOrnamentToChord(const Notation& notation, ChordRest* cr)
     } else {
         LOGD("unknown ornament: name '%s': '%s'.", muPrintable(name), muPrintable(symname));
     }
+}
+
+//---------------------------------------------------------
+//   addOtherNotationToChord
+//---------------------------------------------------------
+
+/**
+ Add other notation to chord.
+ */
+
+static void addOtherNotationToChord(const Notation& notation, ChordRest* cr)
+{
+    const String name = notation.name();
+    const Color color = Color::fromString(notation.attribute(u"color"));
+    Symbol* symbol = Factory::createSymbol(cr);
+    symbol->setSym(SymNames::symIdByName(name));
+    if (color.isValid()) {
+        symbol->setColor(color);
+    }
+    cr->add(symbol);
 }
 
 //---------------------------------------------------------
@@ -9160,6 +9180,8 @@ void MusicXmlParserNotations::addNotation(const Notation& notation, ChordRest* c
         if (note && notation.name() == u"chord-line") {
             addChordLine(notation, note, m_logger, &m_e);
         }
+    } else if (notation.name() == u"other-notation") {
+        addOtherNotationToChord(notation, cr);
     } else {
         // LOGD("addNotation: notation has been skipped: %s %s", muPrintable(notation.name()), muPrintable(notation.parent()));
     }
@@ -9316,6 +9338,10 @@ void MusicXmlParserNotations::otherNotation()
 {
     const String type = m_e.attribute("type");
     const String smufl = m_e.attribute("smufl");
+
+    if (type != u"single") {
+        m_logger->logError(String(u"other-notation of type %1 cannot be imported").arg(type), &m_e);
+    }
 
     if (!smufl.empty()) {
         SymId id = SymNames::symIdByName(smufl, SymId::noSym);
