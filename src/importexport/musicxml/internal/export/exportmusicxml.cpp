@@ -3108,17 +3108,22 @@ void ExportMusicXml::wavyLineStartStop(const ChordRest* cr, Notations& notations
 
 void ExportMusicXml::vibrato(const ChordRest* cr, Notations& notations, Ornaments& ornaments)
 {
-    for (const EngravingItem* e : cra) {
-        if (!e->isVibrato() || !ExportMusicXml::canWrite(e)) {
-            continue;
+    String type;
+    for (Spanner* spanner : cr->spannerFor()) {
+        if (spanner->type() == ElementType::VIBRATO && ExportMusicXml::canWrite(spanner)) {
+            type = u"start";
         }
-        notations.tag(xml, e);
+    }
+    for (Spanner* spanner : cr->spannerBack()) {
+        if (spanner->type() == ElementType::VIBRATO && ExportMusicXml::canWrite(spanner)) {
+            type = u"stop";
+        }
+    }
+    if (!type.empty()) {
+        notations.tag(m_xml, e);
         ornaments.tag(m_xml);
-        XmlWriter::Attributes attrs;
-        String type = u"start";
-        if (type != u"stop") {
-            addColorAttr(e, attrs);
-        }
+        XmlWriter::Attributes attrs = { { "type", type } };
+        addColorAttr(e, attrs);
         xml.tag("wavy-line", attrs);
     }
 }
