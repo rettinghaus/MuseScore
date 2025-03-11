@@ -3108,9 +3108,10 @@ void ExportMusicXml::wavyLineStartStop(const ChordRest* cr, Notations& notations
 
 void ExportMusicXml::vibrato(const ChordRest* cr, Notations& notations, Ornaments& ornaments)
 {
-    notations.tag(xml);
-    ornaments.tag(xml);
+    notations.tag(m_xml);
+    ornaments.tag(m_xml);
     XmlWriter::Attributes attrs;
+    String type = "start";
     if (type != u"stop") {
         addColorAttr(tr, attrs);
     }
