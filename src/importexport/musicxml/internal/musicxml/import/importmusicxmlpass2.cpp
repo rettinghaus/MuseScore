@@ -6451,11 +6451,8 @@ static void addFiguredBassElements(FiguredBassList& fbl, const Fraction noteStar
 //   addTremolo
 //---------------------------------------------------------
 
-static void addTremolo(ChordRest* cr,
-                       const int tremoloNr, const String& tremoloType, const String& tremoloSmufl,
-                       Chord*& tremStart,
-                       MusicXmlLogger* logger, const XmlStreamReader* const xmlreader,
-                       Fraction& timeMod)
+static void addTremolo(ChordRest* cr, const int tremoloNr, const String& tremoloType, const String& smufl, const Color& color,
+                       Chord*& tremStart, MusicXmlLogger* logger, const XmlStreamReader* const xmlreader, Fraction& timeMod)
 {
     if (!cr->isChord()) {
         return;
@@ -6479,6 +6476,9 @@ static void addTremolo(ChordRest* cr,
                 if (type != TremoloType::INVALID_TREMOLO) {
                     TremoloSingleChord* tremolo = Factory::createTremoloSingleChord(mu::engraving::toChord(cr));
                     tremolo->setTremoloType(type);
+                    if (color.isValid()) {
+                        tremolo->setColor(color);
+                    }
                     cr->add(tremolo);
                 }
             } else if (tremoloType == u"start") {
@@ -6507,6 +6507,9 @@ static void addTremolo(ChordRest* cr,
                     if (type != TremoloType::INVALID_TREMOLO) {
                         TremoloTwoChord* tremolo = Factory::createTremoloTwoChord(mu::engraving::toChord(cr));
                         tremolo->setTremoloType(type);
+                        if (color.isValid()) {
+                            tremolo->setColor(color);
+                        }
                         tremolo->setChords(tremStart, static_cast<Chord*>(cr));
                         // fixup chord duration and type
                         const Fraction tremDur = cr->ticks() * Fraction(1, 2);
@@ -6529,12 +6532,15 @@ static void addTremolo(ChordRest* cr,
         } else {
             logger->logError(String(u"unknown tremolo type %1").arg(tremoloNr), xmlreader);
         }
-    } else if (tremoloNr == 0 && (tremoloType == u"unmeasured" || tremoloType.empty() || tremoloSmufl == u"buzzRoll")) {
+    } else if (tremoloNr == 0 && (tremoloType == u"unmeasured" || tremoloType.empty() || smufl == u"buzzRoll")) {
         // Out of all the SMuFL unmeasured tremolos, we only support 'buzzRoll'
         TremoloSingleChord* tremolo = Factory::createTremoloSingleChord(mu::engraving::toChord(cr));
         tremolo->setTremoloType(TremoloType::BUZZ_ROLL);
+        if (color.isValid()) {
+            tremolo->setColor(color);
+        }
         cr->add(tremolo);
-    } else if (!tremoloSmufl.empty() && tremoloSmufl != u"buzzRoll") {
+    } else if (!smufl.empty() && smufl != u"buzzRoll") {
         logger->logError(String(u"MusicXml::import: only buzzRoll glyph is supported for unmeasured tremolos"), xmlreader);
     }
 }
@@ -7108,7 +7114,8 @@ Note* MusicXmlParserPass2::note(const String& partId,
 
     // handle tremolo before handling tuplet (two note tremolos modify timeMod)
     if (cr && notations.hasTremolo()) {
-        addTremolo(cr, notations.tremoloNr(), notations.tremoloType(), notations.tremoloSmufl(), m_tremStart, m_logger, &m_e, timeMod);
+        addTremolo(cr, notations.tremoloNr(), notations.tremoloType(), notations.tremoloSmufl(), notations.tremoloColor(),
+                   m_tremStart, m_logger, &m_e, timeMod);
     }
 
     // handle tuplet state for the current chord or rest
@@ -8294,6 +8301,7 @@ void MusicXmlParserNotations::ornaments()
             m_tremoloType = m_e.attribute("type");
             m_tremoloNr = m_e.readInt();
             m_tremoloSmufl = m_e.attribute("smufl");
+            m_tremoloColor = Color::fromString(m_e.attribute("color"));
         } else if (m_e.name() == "inverted-mordent"
                    || m_e.name() == "mordent") {
             mordentNormalOrInverted();
@@ -8381,6 +8389,7 @@ void MusicXmlParserNotations::otherTechnical()
         m_hasTremolo = true;
         m_tremoloNr = 0;
         m_tremoloType = u"unmeasured";
+        m_tremoloColor = Color::fromString(m_e.attribute("color"));
     }
 }
 
