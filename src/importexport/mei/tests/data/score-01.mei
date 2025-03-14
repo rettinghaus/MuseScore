@@ -52,7 +52,7 @@
                            <labelAbbr>A. Tbn.</labelAbbr>
                            <clef shape="C" line="3" />
                         </staffDef>
-                        <staffDef n="5" lines="5" meter.count="4" meter.unit="4">
+                        <staffDef n="5" lines="5" meter.count="4" meter.unit="4" scale="40%">
                            <label>Trombone</label>
                            <labelAbbr>Tbn.</labelAbbr>
                            <clef shape="F" line="4" />
