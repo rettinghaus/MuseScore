@@ -138,6 +138,7 @@
         <Marker>
           <eid>X_X</eid>
           <style>repeat_left</style>
+          <color r="218" g="13" b="160" a="255"/>
           <text><sym>segno</sym></text>
           <label>segno</label>
           <markerType>segno</markerType>
@@ -173,6 +174,7 @@
         <Marker>
           <eid>e_e</eid>
           <style>repeat_right</style>
+          <color r="218" g="13" b="160" a="255"/>
           <text>To Coda</text>
           <label>coda</label>
           <markerType>coda</markerType>
@@ -244,6 +246,7 @@
         <Marker>
           <eid>s_s</eid>
           <style>repeat_left</style>
+          <color r="218" g="13" b="160" a="255"/>
           <text><sym>coda</sym></text>
           <label>codab</label>
           <markerType>codab</markerType>

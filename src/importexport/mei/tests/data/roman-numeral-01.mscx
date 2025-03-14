@@ -440,6 +440,8 @@
               <name>I.bVI+6</name>
               </harmonyInfo>
             <eid>UB_UB</eid>
+            <name>I.bVI+6</name>
+            <color r="218" g="13" b="160" a="255"/>
             </Harmony>
           <Beam>
             <eid>VB_VB</eid>
@@ -492,10 +494,8 @@
             </Chord>
           <Harmony>
             <harmonyType>1</harmonyType>
-            <harmonyInfo>
-              <name>v%43(-3)</name>
-              </harmonyInfo>
-            <eid>fB_fB</eid>
+            <name>v%43(-3)</name>
+            <color r="218" g="13" b="160" a="255"/>
             </Harmony>
           <Chord>
             <eid>gB_gB</eid>
@@ -528,10 +528,8 @@
             </Chord>
           <Harmony>
             <harmonyType>1</harmonyType>
-            <harmonyInfo>
-              <name>V7/V</name>
-              </harmonyInfo>
-            <eid>mB_mB</eid>
+            <name>V7/V</name>
+            <color r="218" g="13" b="160" a="255"/>
             </Harmony>
           <Beam>
             <eid>nB_nB</eid>
@@ -579,10 +577,8 @@
             </Chord>
           <Harmony>
             <harmonyType>1</harmonyType>
-            <harmonyInfo>
-              <name>bI+6(+4)</name>
-              </harmonyInfo>
-            <eid>wB_wB</eid>
+            <name>bI+6(+4)</name>
+            <color r="218" g="13" b="160" a="255"/>
             </Harmony>
           <Chord>
             <eid>xB_xB</eid>
@@ -1000,10 +996,8 @@
         <voice>
           <Harmony>
             <harmonyType>1</harmonyType>
-            <harmonyInfo>
-              <name>E.I7{</name>
-              </harmonyInfo>
-            <eid>FD_FD</eid>
+            <name>E.I7{</name>
+            <color r="218" g="13" b="160" a="255"/>
             </Harmony>
           <Beam>
             <eid>GD_GD</eid>
@@ -1026,10 +1020,8 @@
             </Chord>
           <Harmony>
             <harmonyType>1</harmonyType>
-            <harmonyInfo>
-              <name>bVII7(b9)</name>
-              </harmonyInfo>
-            <eid>KD_KD</eid>
+            <name>bVII7(b9)</name>
+            <color r="218" g="13" b="160" a="255"/>
             </Harmony>
           <Chord>
             <eid>LD_LD</eid>
@@ -1057,10 +1049,8 @@
             </Chord>
           <Harmony>
             <harmonyType>1</harmonyType>
-            <harmonyInfo>
-              <name>V7(-5)/bIII</name>
-              </harmonyInfo>
-            <eid>QD_QD</eid>
+            <name>V7(-5)/bIII</name>
+            <color r="218" g="13" b="160" a="255"/>
             </Harmony>
           <Beam>
             <eid>RD_RD</eid>
@@ -1083,10 +1073,8 @@
             </Chord>
           <Harmony>
             <harmonyType>1</harmonyType>
-            <harmonyInfo>
-              <name>VI7(b5b4)</name>
-              </harmonyInfo>
-            <eid>VD_VD</eid>
+            <name>VI7(b5b4)</name>
+            <color r="218" g="13" b="160" a="255"/>
             </Harmony>
           <Chord>
             <eid>WD_WD</eid>
@@ -1473,10 +1461,8 @@
         <voice>
           <Harmony>
             <harmonyType>1</harmonyType>
-            <harmonyInfo>
-              <name>N7(+6)</name>
-              </harmonyInfo>
-            <eid>iE_iE</eid>
+            <name>N7(+6)</name>
+            <color r="218" g="13" b="160" a="255"/>
             </Harmony>
           <Beam>
             <eid>jE_jE</eid>
@@ -1509,10 +1495,8 @@
             </Chord>
           <Harmony>
             <harmonyType>1</harmonyType>
-            <harmonyInfo>
-              <name>I7(+#6#4)</name>
-              </harmonyInfo>
-            <eid>pE_pE</eid>
+            <name>I7(+#6#4)</name>
+            <color r="218" g="13" b="160" a="255"/>
             </Harmony>
           <Chord>
             <eid>qE_qE</eid>
@@ -1550,10 +1534,8 @@
             </Chord>
           <Harmony>
             <harmonyType>1</harmonyType>
-            <harmonyInfo>
-              <name>V7(v##6)/III</name>
-              </harmonyInfo>
-            <eid>xE_xE</eid>
+            <name>V7(v##6)/III</name>
+            <color r="218" g="13" b="160" a="255"/>
             </Harmony>
           <Beam>
             <eid>yE_yE</eid>
@@ -1586,10 +1568,8 @@
             </Chord>
           <Harmony>
             <harmonyType>1</harmonyType>
-            <harmonyInfo>
-              <name>bII7(+#6##3##1)/V/V/V</name>
-              </harmonyInfo>
-            <eid>4E_4E</eid>
+            <name>bII7(+#6##3##1)/V/V/V</name>
+            <color r="218" g="13" b="160" a="255"/>
             </Harmony>
           <Chord>
             <eid>5E_5E</eid>
@@ -1631,10 +1611,8 @@
         <voice>
           <Harmony>
             <harmonyType>1</harmonyType>
-            <harmonyInfo>
-              <name>V7/V/V</name>
-              </harmonyInfo>
-            <eid>AF_AF</eid>
+            <name>V7/V/V</name>
+            <color r="218" g="13" b="160" a="255"/>
             </Harmony>
           <Beam>
             <eid>BF_BF</eid>
@@ -1677,10 +1655,8 @@
             </Chord>
           <Harmony>
             <harmonyType>1</harmonyType>
-            <harmonyInfo>
-              <name>Fr(+#5)</name>
-              </harmonyInfo>
-            <eid>JF_JF</eid>
+            <name>Fr(+#5)</name>
+            <color r="218" g="13" b="160" a="255"/>
             </Harmony>
           <Chord>
             <eid>KF_KF</eid>
@@ -1713,13 +1689,8 @@
             </Chord>
           <Harmony>
             <harmonyType>1</harmonyType>
-            <harmonyInfo>
-              <name>V7</name>
-              </harmonyInfo>
-            <harmonyInfo>
-              <name>HC}</name>
-              </harmonyInfo>
-            <eid>QF_QF</eid>
+            <name>V7|HC}</name>
+            <color r="218" g="13" b="160" a="255"/>
             </Harmony>
           <Chord>
             <eid>RF_RF</eid>
