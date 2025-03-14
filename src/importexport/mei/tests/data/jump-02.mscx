@@ -73,6 +73,7 @@
       <Measure>
         <Marker>
           <style>repeat_left</style>
+          <color r="218" g="13" b="160" a="255"/>
           <text><sym>segno</sym></text>
           <label>segno</label>
           </Marker>
@@ -86,6 +87,7 @@
       <Measure>
         <Marker>
           <style>repeat_left</style>
+          <color r="218" g="13" b="160" a="255"/>
           <text><sym>coda</sym></text>
           <label>codab</label>
           </Marker>
@@ -99,6 +101,7 @@
       <Measure>
         <Marker>
           <style>repeat_right</style>
+          <color r="218" g="13" b="160" a="255"/>
           <text>Fine</text>
           <label>fine</label>
           </Marker>
@@ -120,6 +123,7 @@
       <Measure>
         <Marker>
           <style>repeat_right</style>
+          <color r="218" g="13" b="160" a="255"/>
           <text>To Coda</text>
           <label>coda</label>
           </Marker>
@@ -141,6 +145,7 @@
       <Measure>
         <Jump>
           <style>repeat_right</style>
+          <color r="218" g="13" b="160" a="255"/>
           <text>D.C.</text>
           <jumpTo>start</jumpTo>
           <playUntil>end</playUntil>
@@ -164,6 +169,7 @@
       <Measure>
         <Jump>
           <style>repeat_right</style>
+          <color r="218" g="13" b="160" a="255"/>
           <text>D.C. al Fine</text>
           <jumpTo>start</jumpTo>
           <playUntil>fine</playUntil>
@@ -218,6 +224,7 @@
       <Measure>
         <Jump>
           <style>repeat_right</style>
+          <color r="218" g="13" b="160" a="255"/>
           <text>D.S. al Coda</text>
           <jumpTo>segno</jumpTo>
           <playUntil>coda</playUntil>
@@ -264,6 +271,7 @@
       <Measure>
         <Jump>
           <style>repeat_right</style>
+          <color r="218" g="13" b="160" a="255"/>
           <text>D.S.</text>
           <jumpTo>segno</jumpTo>
           <playUntil>end</playUntil>
@@ -330,6 +338,7 @@
         <Jump>
           <style>repeat_right</style>
           <text>D.C. al Doppia Coda</text>
+          <color r="218" g="13" b="160" a="255"/>
           <jumpTo>start</jumpTo>
           <playUntil>varcoda</playUntil>
           <continueAt>codab</continueAt>
@@ -360,6 +369,7 @@
       <Measure>
         <Jump>
           <style>repeat_right</style>
+          <color r="218" g="13" b="160" a="255"/>
           <text>D.S. al Doppia Coda</text>
           <jumpTo>segno</jumpTo>
           <playUntil>varcoda</playUntil>
@@ -391,6 +401,7 @@
       <Measure>
         <Jump>
           <style>repeat_right</style>
+          <color r="218" g="13" b="160" a="255"/>
           <text>Dal Doppio Segno</text>
           <jumpTo>varsegno</jumpTo>
           <playUntil>end</playUntil>
@@ -422,6 +433,7 @@
       <Measure>
         <Jump>
           <style>repeat_right</style>
+          <color r="218" g="13" b="160" a="255"/>
           <text>D.D.S. al Coda</text>
           <jumpTo>varsegno</jumpTo>
           <playUntil>coda</playUntil>
@@ -445,6 +457,7 @@
       <Measure>
         <Jump>
           <style>repeat_right</style>
+          <color r="218" g="13" b="160" a="255"/>
           <text>D.D.S. al Doppia Coda</text>
           <jumpTo>varsegno</jumpTo>
           <playUntil>varcoda</playUntil>
@@ -468,6 +481,7 @@
       <Measure>
         <Jump>
           <style>repeat_right</style>
+          <color r="218" g="13" b="160" a="255"/>
           <text>D.D.S. al Fine</text>
           <jumpTo>varsegno</jumpTo>
           <playUntil>fine</playUntil>

@@ -131,10 +131,10 @@
                            </beam>
                         </layer>
                      </staff>
-                     <harm xml:id="h11isqcg" type="mscore-roman" startid="#cfp4mbz">E.I7{</harm>
-                     <harm xml:id="hqd5b29" type="mscore-roman" startid="#coo81qj">bVII7(b9)</harm>
-                     <harm xml:id="h1ouzwgk" type="mscore-roman" startid="#c1ume9sq">V7(-5)/bIII</harm>
-                     <harm xml:id="h1c6oiqa" type="mscore-roman" startid="#c18zaam0">VI7(b5b4)</harm>
+                     <harm xml:id="h11isqcg" type="mscore-roman" startid="#cfp4mbz" color="#DA0DA0">E.I7{</harm>
+                     <harm xml:id="hqd5b29" type="mscore-roman" startid="#coo81qj" color="#DA0DA0">bVII7(b9)</harm>
+                     <harm xml:id="h1ouzwgk" type="mscore-roman" startid="#c1ume9sq" color="#DA0DA0">V7(-5)/bIII</harm>
+                     <harm xml:id="h1c6oiqa" type="mscore-roman" startid="#c18zaam0" color="#DA0DA0">VI7(b5b4)</harm>
                   </measure>
                   <measure xml:id="m1msh5yn" n="2">
                      <staff xml:id="m2s1" n="1">
@@ -410,10 +410,10 @@
                            </beam>
                         </layer>
                      </staff>
-                     <harm xml:id="h1874to2" type="mscore-roman" startid="#c1xrr9sz">I.bVI+6</harm>
-                     <harm xml:id="h1v3iy05" type="mscore-roman" startid="#cpqgpn9">v%43(-3)</harm>
-                     <harm xml:id="hwsyu0q" type="mscore-roman" startid="#coj5usf">V7/V</harm>
-                     <harm xml:id="h154c0h8" type="mscore-roman" startid="#c18vo3yk">bI+6(+4)</harm>
+                     <harm xml:id="h1874to2" type="mscore-roman" startid="#c1xrr9sz" color="#DA0DA0">I.bVI+6</harm>
+                     <harm xml:id="h1v3iy05" type="mscore-roman" startid="#cpqgpn9" color="#DA0DA0">v%43(-3)</harm>
+                     <harm xml:id="hwsyu0q" type="mscore-roman" startid="#coj5usf" color="#DA0DA0">V7/V</harm>
+                     <harm xml:id="h154c0h8" type="mscore-roman" startid="#c18vo3yk" color="#DA0DA0">bI+6(+4)</harm>
                   </measure>
                   <measure xml:id="mx37hco" n="5">
                      <staff xml:id="m5s1" n="1">
