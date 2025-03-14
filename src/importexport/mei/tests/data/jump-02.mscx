@@ -407,6 +407,7 @@
           <style>repeat_right</style>
           <eid>HB_HB</eid>
           <text>D.C. al Doppia Coda</text>
+          <color r="218" g="13" b="160" a="255"/>
           <jumpTo>start</jumpTo>
           <playUntil>varcoda</playUntil>
           <continueAt>codab</continueAt>
