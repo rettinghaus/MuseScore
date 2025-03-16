@@ -3176,13 +3176,21 @@ void TDraw::draw(const TremoloSingleChord* item, Painter* painter, const PaintOp
 {
     TRACE_DRAW_ITEM;
 
-    if (item->isBuzzRoll()) {
-        painter->setPen(item->curColor(opt));
-        item->drawSymbol(SymId::buzzRoll, painter);
-    } else {
-        painter->setBrush(Brush(item->curColor(opt)));
-        painter->setNoPen();
-        painter->drawPath(item->path());
+    painter->setPen(item->curColor(opt));
+    switch (item->tremoloType()) {
+    case TremoloType::R8:          item->drawSymbol(SymId::tremolo1, painter);
+        break;
+    case TremoloType::R16:         item->drawSymbol(SymId::tremolo2, painter);
+        break;
+    case TremoloType::R32:         item->drawSymbol(SymId::tremolo3, painter);
+        break;
+    case TremoloType::R64:         item->drawSymbol(SymId::tremolo4, painter);
+        break;
+    case TremoloType::BUZZ_ROLL:   item->drawSymbol(SymId::buzzRoll, painter);
+        break;
+    default:
+        NOT_IMPLEMENTED << item->typeName();
+        UNREACHABLE;
     }
 }
 
