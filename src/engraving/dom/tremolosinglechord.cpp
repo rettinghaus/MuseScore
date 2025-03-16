@@ -188,11 +188,19 @@ PainterPath TremoloSingleChord::basePath(double /*stretch*/) const
 
 void TremoloSingleChord::computeShape()
 {
-    if (isBuzzRoll()) {
-        setbbox(symBbox(SymId::buzzRoll));
-    } else {
-        m_path = basePath();
-        setbbox(m_path.boundingRect());
+    switch (tremoloType()) {
+    case TremoloType::R8: setbbox(symBbox(SymId::tremolo1));
+        break;
+    case TremoloType::R16: setbbox(symBbox(SymId::tremolo2));
+        break;
+    case TremoloType::R32: setbbox(symBbox(SymId::tremolo3));
+        break;
+    case TremoloType::R64: setbbox(symBbox(SymId::tremolo4));
+        break;
+    case TremoloType::BUZZ_ROLL: setbbox(symBbox(SymId::buzzRoll));
+        break;
+    default:
+        break;
     }
 }
 
