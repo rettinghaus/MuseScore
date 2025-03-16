@@ -2361,13 +2361,21 @@ void SingleDraw::draw(const TremoloSingleChord* item, Painter* painter, const Pa
 
     const TremoloSingleChord::LayoutData* ldata = item->ldata();
 
-    if (item->isBuzzRoll()) {
-        painter->setPen(item->curColor(opt));
-        item->drawSymbol(SymId::buzzRoll, painter);
-    } else {
-        painter->setBrush(Brush(item->curColor(opt)));
-        painter->setNoPen();
-        painter->drawPath(item->path());
+    painter->setPen(item->curColor());
+    switch (item->tremoloType()) {
+    case TremoloType::R8:          item->drawSymbol(SymId::tremolo1, painter);
+        break;
+    case TremoloType::R16:         item->drawSymbol(SymId::tremolo2, painter);
+        break;
+    case TremoloType::R32:         item->drawSymbol(SymId::tremolo3, painter);
+        break;
+    case TremoloType::R64:         item->drawSymbol(SymId::tremolo4, painter);
+        break;
+    case TremoloType::BUZZ_ROLL:   item->drawSymbol(SymId::buzzRoll, painter);
+        break;
+    default:
+        NOT_IMPLEMENTED << item->typeName();
+        UNREACHABLE;
     }
 
     // vertical line (stem)
@@ -2376,11 +2384,7 @@ void SingleDraw::draw(const TremoloSingleChord* item, Painter* painter, const Pa
         Pen pen(item->curColor(opt), item->absoluteFromSpatium(item->style().styleS(Sid::stemWidth)));
         painter->setPen(pen);
         const double sp = item->spatium();
-        if (item->isBuzzRoll()) {
-            painter->drawLine(LineF(x, -sp, x, ldata->bbox().bottom() + sp));
-        } else {
-            painter->drawLine(LineF(x, -sp * .5, x, item->path().boundingRect().height() + sp));
-        }
+        painter->drawLine(LineF(x, -sp, x, ldata->bbox().bottom() + sp));
     }
 }
 
