@@ -1980,6 +1980,9 @@ bool MeiImporter::readNote(pugi::xml_node noteNode, Measure* measure, int track,
 
     Note* note = Factory::createNote(chord);
     Convert::colorFromMEI(note, meiNote);
+    if (meiNote.HasVel()) {
+        note->setUserVelocity(meiNote.GetVel());
+    }
     this->readXmlId(note, meiNote.m_xmlId);
 
     // If there is a reference to the note in the MEI, add it the maps (e.g., for ties)

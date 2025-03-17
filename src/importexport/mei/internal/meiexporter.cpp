@@ -1334,6 +1334,7 @@ bool MeiExporter::writeNote(const Note* note, const Chord* chord, const Staff* s
         this->writeArtics(chord);
         this->writeVerses(chord);
     }
+    meiNote.SetVel(note->userVelocity());
     Convert::colorToMEI(note, meiNote);
     std::string xmlId = this->getXmlIdFor(note, 'n');
     meiNote.Write(m_currentNode, xmlId);
