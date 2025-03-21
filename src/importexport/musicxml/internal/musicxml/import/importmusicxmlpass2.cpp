@@ -3630,10 +3630,10 @@ void MusicXmlParserDirection::direction(const String& partId,
             } else if (dynaValue < 0) {
                 dynaValue = 0;
             }
-            dyn->setVelocity(dynaValue);
+            dynamic->setVelocity(dynaValue);
         }
 
-        dyn->setVisible(m_visible);
+        dynamic->setVisible(m_visible);
 
         String dynamicsPlacement = placement();
         // Case-based defaults
@@ -3647,7 +3647,7 @@ void MusicXmlParserDirection::direction(const String& partId,
         // Add element to score later, after collecting all the others and sorting by default-y
         // This allows default-y to be at least respected by the order of elements
         MusicXmlDelayedDirectionElement* delayedDirection = new MusicXmlDelayedDirectionElement(
-            hasTotalY() ? totalY() : 100, dyn, m_track, dynamicsPlacement, measure, tick + m_offset);
+            hasTotalY() ? totalY() : 100, dynamic, m_track, dynamicsPlacement, measure, tick + m_offset);
         delayedDirections.push_back(delayedDirection);
     }
 
