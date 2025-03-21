@@ -3606,7 +3606,7 @@ void MusicXmlParserDirection::direction(const String& partId,
     // do dynamics
     // LVIFIX: check import/export of <other-dynamics>unknown_text</...>
     for (StringList::iterator it = m_dynamicsList.begin(); it != m_dynamicsList.end(); ++it) {
-        Dynamic* dyn = Factory::createDynamic(m_score->dummy()->segment());
+        Dynamic* dynamic = Factory::createDynamic(m_score->dummy()->segment());
         dynamic->setDynamicType(*it);
         if (m_dynamicsColor.isValid()) {
             dynamic->setColor(m_dynamicsColor);
@@ -9153,7 +9153,7 @@ void MusicXmlParserNotations::addToScore(ChordRest* const cr, Note* const note, 
         if (m_dynamicsColor.isValid()) {
             dynamic->setColor(m_dynamicsColor);
         }
-        m_pass2.addElemOffset(dynamic, cr->track(), m_dynamicsPlacement, cr->measure(), Fraction::fromTicks(tick), m_pass2);
+        m_pass2.addElemOffset(dynamic, cr->track(), m_dynamicsPlacement, cr->measure(), Fraction::fromTicks(tick));
     }
 }
 

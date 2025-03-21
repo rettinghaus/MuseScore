@@ -377,7 +377,7 @@ private:
     MusicXmlLogger* m_logger = nullptr;                              // the error logger
     muse::String m_errors;                    // errors to present to the user
     MusicXmlTupletDesc m_tupletDesc;
-    muse::draw::Color m_dynamicsColor;
+    engraving::Color m_dynamicsColor;
     muse::String m_dynamicsPlacement;
     engraving::StringList m_dynamicsList;
     std::vector<Notation> m_notations;
@@ -389,7 +389,7 @@ private:
     int m_wavyLineNo = 0;
     muse::String m_arpeggioType;
     int m_arpeggioNo = 0;
-    muse::draw::Color m_arpeggioColor;
+    engraving::Color m_arpeggioColor;
     bool m_slurStop = false;
     bool m_slurStart = false;
     bool m_wavyLineStop = false;
@@ -614,7 +614,7 @@ private:
     engraving::Color m_color;
     engraving::Hairpin* m_inferredHairpinStart = nullptr;
     engraving::GradualTempoChange* m_inferredTempoLineStart = nullptr;
-    muse::draw::Color m_dynamicsColor;
+    engraving::Color m_dynamicsColor;
     muse::String m_dynamicsPlacement;
     muse::StringList m_dynamicsList;
     muse::String m_fontFamily;
