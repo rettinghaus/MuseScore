@@ -3612,6 +3612,15 @@ void MusicXmlParserDirection::direction(const String& partId,
             dynamic->setColor(m_dynamicsColor);
         }
 
+        if (m_enclosure == "circle") {
+            dynamic->setFrameType(FrameType::CIRCLE);
+        } else if (m_enclosure == "none") {
+            dynamic->setFrameType(FrameType::NO_FRAME);
+        } else if (m_enclosure == "rectangle") {
+            dynamic->setFrameType(FrameType::SQUARE);
+            dynamic->setFrameRound(0);
+        }
+
         if (isDynamicRange) {
             if (it == m_dynamicsList.begin()) {
                 firstDyn = dynamic;
@@ -4038,6 +4047,7 @@ void MusicXmlParserDirection::play()
 void MusicXmlParserDirection::dynamics()
 {
     m_dynamicsColor = Color::fromString(m_e.attribute("color"));
+    m_enclosure = m_e.attribute("enclosure");
     m_dynamicsPlacement = m_e.attribute("placement");
 
     while (m_e.readNextStartElement()) {
