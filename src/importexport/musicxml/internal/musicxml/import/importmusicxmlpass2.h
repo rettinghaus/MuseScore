@@ -615,7 +615,6 @@ private:
     engraving::Hairpin* m_inferredHairpinStart = nullptr;
     engraving::GradualTempoChange* m_inferredTempoLineStart = nullptr;
     engraving::Color m_dynamicsColor;
-    muse::String m_dynamicsPlacement;
     muse::StringList m_dynamicsList;
     muse::String m_fontFamily;
     muse::String m_enclosure;
