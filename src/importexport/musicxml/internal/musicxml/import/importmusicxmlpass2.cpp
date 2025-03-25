@@ -1293,6 +1293,8 @@ static void addTapToChord(const Notation& notation, ChordRest* cr)
 static void addMordentToChord(const Notation& notation, ChordRest* cr)
 {
     const String name = notation.name();
+    const String accidAbove = notation.attribute(u"above");
+    const String accidBelow = notation.attribute(u"below");
     const String attrLong = notation.attribute(u"long");
     const String attrAppr = notation.attribute(u"approach");
     const String attrDep = notation.attribute(u"departure");
@@ -1334,6 +1336,18 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
             mordent->setAnchor(ArticulationAnchor::AUTO);
         }
         colorItem(mordent, Color::fromString(notation.attribute(u"color")));
+        if (!accidAbove.empty()) {
+            Accidental* accidental = Factory::createAccidental(mordent);
+            accidental->setAccidentalType(musicXmlString2accidentalType(accidAbove, String()));
+            accidental->setParent(mordent);
+            mordent->setAccidentalAbove(accidental);
+        }
+        if (!accidBelow.empty()) {
+            Accidental* accidental = Factory::createAccidental(mordent);
+            accidental->setAccidentalType(musicXmlString2accidentalType(accidBelow, String()));
+            accidental->setParent(mordent);
+            mordent->setAccidentalBelow(accidental);
+        }
         cr->add(mordent);
     } else {
         LOGD("unknown ornament: name '%s' long '%s' approach '%s' departure '%s'",
@@ -1351,7 +1365,9 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
 
 static void addTurnToChord(const Notation& notation, ChordRest* cr)
 {
-    SymId turnSym = notation.symId();
+    const SymId turnSym = notation.symId();
+    const String accidAbove = notation.attribute(u"above");
+    const String accidBelow = notation.attribute(u"below");
     const String place = notation.attribute(u"placement");
     if (notation.attribute(u"slash") == "yes") {
         // TODO: currently this is the only available SMuFL turn with a slash
@@ -1367,6 +1383,18 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
         turn->setAnchor(ArticulationAnchor::AUTO);
     }
     colorItem(turn, Color::fromString(notation.attribute(u"color")));
+    if (!accidAbove.empty()) {
+        Accidental* accidental = Factory::createAccidental(turn);
+        accidental->setAccidentalType(musicXmlString2accidentalType(accidAbove, String()));
+        accidental->setParent(turn);
+        turn->setAccidentalAbove(accidental);
+    }
+    if (!accidBelow.empty()) {
+        Accidental* accidental = Factory::createAccidental(turn);
+        accidental->setAccidentalType(musicXmlString2accidentalType(accidBelow, String()));
+        accidental->setParent(turn);
+        turn->setAccidentalBelow(accidental);
+    }
     cr->add(turn);
 }
 
@@ -8428,6 +8456,11 @@ void MusicXmlParserNotations::ornaments()
                                                                  m_e.attributes(), u"ornaments");
             m_notations.push_back(notation);
             m_e.skipCurrentElement();  // skip but don't log
+        } else if (m_e.name() == "accidental-mark") {
+            Notation lastNotation = m_notations.back();
+            if (lastNotation.parent() == u"ornaments" && !m_e.attribute("placement").empty()) {
+                lastNotation.addAttribute(m_e.attribute("placement"), m_e.readText());
+            }
         } else {
             skipLogCurrElem();
         }
