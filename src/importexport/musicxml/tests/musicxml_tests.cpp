@@ -1048,6 +1048,9 @@ TEST_F(MusicXml_Tests, numerals) {
 TEST_F(MusicXml_Tests, ornaments) {
     musicXmlIoTest("testOrnaments");
 }
+TEST_F(MusicXml_Tests, ornamentAccids) {
+    musicXmlIoTest("testOrnamentAccids");
+}
 TEST_F(MusicXml_Tests, overlappingSpanners) {
     musicXmlIoTest("testOverlappingSpanners");
 }
