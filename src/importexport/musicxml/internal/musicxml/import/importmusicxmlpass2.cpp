@@ -1293,8 +1293,6 @@ static void addTapToChord(const Notation& notation, ChordRest* cr)
 static void addMordentToChord(const Notation& notation, ChordRest* cr)
 {
     const String name = notation.name();
-    const String accidAbove = notation.attribute(u"above");
-    const String accidBelow = notation.attribute(u"below");
     const String attrLong = notation.attribute(u"long");
     const String attrAppr = notation.attribute(u"approach");
     const String attrDep = notation.attribute(u"departure");
@@ -1336,13 +1334,17 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
             mordent->setAnchor(ArticulationAnchor::AUTO);
         }
         colorItem(mordent, Color::fromString(notation.attribute(u"color")));
+        const String accidAbove = notation.attribute(u"above");
         if (!accidAbove.empty()) {
+            LOGD("upper accid is %s", muPrintable(accidAbove));
             Accidental* accidental = Factory::createAccidental(mordent);
             accidental->setAccidentalType(musicXmlString2accidentalType(accidAbove, String()));
             accidental->setParent(mordent);
             mordent->setAccidentalAbove(accidental);
         }
+        const String accidBelow = notation.attribute(u"below");
         if (!accidBelow.empty()) {
+            LOGD("lower accid is %s", muPrintable(accidBelow));
             Accidental* accidental = Factory::createAccidental(mordent);
             accidental->setAccidentalType(musicXmlString2accidentalType(accidBelow, String()));
             accidental->setParent(mordent);
@@ -1384,12 +1386,14 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
     }
     colorItem(turn, Color::fromString(notation.attribute(u"color")));
     if (!accidAbove.empty()) {
+        LOGD("upper accid is %s", muPrintable(accidAbove));
         Accidental* accidental = Factory::createAccidental(turn);
         accidental->setAccidentalType(musicXmlString2accidentalType(accidAbove, String()));
         accidental->setParent(turn);
         turn->setAccidentalAbove(accidental);
     }
     if (!accidBelow.empty()) {
+        LOGD("lower accid is %s", muPrintable(accidBelow));
         Accidental* accidental = Factory::createAccidental(turn);
         accidental->setAccidentalType(musicXmlString2accidentalType(accidBelow, String()));
         accidental->setParent(turn);
