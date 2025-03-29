@@ -1611,33 +1611,41 @@ static void textAsCreditWords(const ExportMusicXml* const expMxml, XmlWriter& xm
     double tx = w / 2;
     double ty = h - expMxml->getTenthsFromDots(text->pagePos().y());
 
-    Align al = text->align();
     String just;
     String val;
 
-    if (al == AlignH::RIGHT) {
-        just = u"right";
-        tx   = w - rm;
-    } else if (al == AlignH::HCENTER) {
-        just = u"center";
-        // tx already set correctly
-    } else {
+    switch (text->align().horizontal) {
+    case AlignH::LEFT:
         just = u"left";
         tx   = lm;
+        break;
+    case AlignH::HCENTER:
+        just = u"center";
+        // tx already set correctly
+        break;
+    case AlignH::RIGHT:
+        just = u"right";
+        tx   = w - rm;
+        break;
     }
 
-    if (al == AlignV::BOTTOM) {
-        val = u"bottom";
-        ty -= ph;
-    } else if (al == AlignV::VCENTER) {
-        val = u"middle";
-        ty -= ph / 2;
-    } else if (al == AlignV::BASELINE) {
-        val = u"baseline";
-        ty -= ph / 2;
-    } else {
+    switch (text->align().vertical) {
+    case AlignV::TOP:
         val = u"top";
         // ty already set correctly
+        break;
+    case AlignV::VCENTER:
+        val = u"middle";
+        ty -= ph / 2;
+        break;
+    case AlignV::BOTTOM:
+        val = u"bottom";
+        ty -= ph;
+        break;
+    case AlignV::BASELINE:
+        val = u"baseline";
+        ty -= ph / 2;
+        break;
     }
 
     const String creditType = tidToCreditType(text->textStyleType());
