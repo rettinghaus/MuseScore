@@ -8634,8 +8634,10 @@ void MusicXmlParserNotations::ornaments()
             if (lastNotation.parent() == u"ornaments" && !m_e.attribute("placement").empty()) {
                 LOGD("last ornament was %s", muPrintable(lastNotation.name()));
                 const String attr = m_e.attribute("placement");
+                LOGD("attribute is %s", muPrintable(attr));
                 lastNotation.addAttribute(attr, m_e.readText());
                 m_notations.back() = lastNotation;
+                LOGD("set attribute value %s", muPrintable(m_notations.back().attribute(attr)));
             } else {
                 m_e.skipCurrentElement();  // skip but don't log
             }
