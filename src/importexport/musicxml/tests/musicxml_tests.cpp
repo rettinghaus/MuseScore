@@ -821,6 +821,12 @@ TEST_F(MusicXml_Tests, invisibleElements) {
 TEST_F(MusicXml_Tests, invisibleNote) {
     musicXmlMscxExportTestRef("testInvisibleNote");
 }
+TEST_F(MusicXml_Tests, justifyRehearsal) {
+    musicXmlIoTest("testJustifyRehearsal");
+}
+TEST_F(MusicXml_Tests, justifyRehearsalLayout) {
+    musicXmlIoTest("testJustifyRehearsal", true);
+}
 TEST_F(MusicXml_Tests, keysig1) {
     musicXmlIoTest("testKeysig1");
 }
