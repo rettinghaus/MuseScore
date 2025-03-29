@@ -3528,6 +3528,7 @@ void MusicXmlParserDirection::direction(const String& partId,
                     t->setPropertyFlags(Pid::PLACEMENT, PropertyFlags::UNSTYLED);
                     t->resetProperty(Pid::OFFSET);
                 }
+                t->setAlign(AlignH::LEFT);
             }
         }
 
