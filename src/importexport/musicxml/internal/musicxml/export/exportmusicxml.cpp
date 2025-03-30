@@ -5250,10 +5250,10 @@ void ExportMusicXml::rehearsal(RehearsalMark const* const rmk, staff_idx_t staff
             // default in MusicXML
             break;
         case AlignH::HCENTER:
-            attr += u"justify=\"center\"";
+            attr += u" justify=\"center\"";
             break;
         case AlignH::RIGHT:
-            attr += u"justify=\"left\"";
+            attr += u" justify=\"left\"";
             break;
         }
     }
