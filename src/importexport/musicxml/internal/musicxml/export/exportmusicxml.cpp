@@ -7657,7 +7657,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
                                   || (score->style().styleV(Sid::firstSystemInstNameVisibility).value<InstrumentLabelVisibility>()
                                       == InstrumentLabelVisibility::HIDE);
         if (hidePartName) {
-            attributes.emmplace_back({ "print-object", "no" });
+            attributes.push_back({ "print-object", "no" });
         }
         xml.tag("part-name", attributes, MScoreTextToMusicXml::toPlainText(partName).replace(u"♭", u"b").replace(u"♯", u"#"));
         if (partName.contains(acc)) {
