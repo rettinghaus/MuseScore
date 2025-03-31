@@ -6630,6 +6630,8 @@ static bool commonAnnotations(ExportMusicXml* exp, const EngravingItem* e, staff
         exp->words(toTextBase(e), sstaff);
     } else if (e->isDynamic()) {
         exp->dynamic(toDynamic(e), sstaff);
+    } else if (e->isHairpin()) {
+        exp->hairpin(toHairpin(e), sstaff, e->tick());
     } else if (e->isHarpPedalDiagram()) {
         exp->harpPedals(toHarpPedalDiagram(e), sstaff);
     } else if (e->isRehearsalMark()) {
