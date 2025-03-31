@@ -5608,6 +5608,10 @@ void ExportMusicXml::hairpin(Hairpin const* const hp, staff_idx_t staff, const F
     if (!isStart) {
         writeHairpinText(m_xml, hp, isStart);
     }
+    const int offset = calculateTimeDeltaInDivisions(hp->tick(), tick(), m_div);
+    if (offset) {
+        m_xml.tag("offset", offset);
+    }
     directionETag(m_xml, staff);
 }
 
