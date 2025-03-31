@@ -5603,6 +5603,11 @@ void ExportMusicXml::hairpin(Hairpin const* const hp, staff_idx_t staff, const F
     if (!isStart) {
         writeHairpinText(m_xml, hp, isStart);
     }
+    const int offset = calculateTimeDeltaInDivisions(hp->tick(), tickToWrite, m_div);
+    if (offset) {
+        m_xml.tag("offset", offset);
+    }
+    directionETag(m_xml, staff);
     directionETag(m_xml, staff, calculateTimeDeltaInDivisions(isStart ? hp->tick() : hp->tick2(), m_tick, m_div));
 }
 
@@ -6630,6 +6635,8 @@ static bool commonAnnotations(ExportMusicXml* exp, const EngravingItem* e, staff
         exp->words(toTextBase(e), sstaff);
     } else if (e->isDynamic()) {
         exp->dynamic(toDynamic(e), sstaff);
+    } else if (e->isHairpin()) {
+        exp->hairpin(toHairpin(e), sstaff, e->tick());
     } else if (e->isHarpPedalDiagram()) {
         exp->harpPedals(toHarpPedalDiagram(e), sstaff);
     } else if (e->isRehearsalMark()) {
