@@ -2,24 +2,19 @@
 <!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
 <score-partwise version="4.0">
   <work>
-    <work-title>Untitled score</work-title>
+    <work-title>Ornaments with accidentals</work-title>
     </work>
   <identification>
-    <creator type="composer">Composer / arranger</creator>
+    <creator type="composer">Klaus Rettinghaus</creator>
     <encoding>
-      <software>MuseScore Studio 4.6.0</software>
-      <encoding-date>2025-03-25</encoding-date>
+      <software>MuseScore 0.7.0</software>
+      <encoding-date>2007-09-10</encoding-date>
       <supports element="accidental" type="yes"/>
       <supports element="beam" type="yes"/>
       <supports element="print" attribute="new-page" type="no"/>
       <supports element="print" attribute="new-system" type="no"/>
       <supports element="stem" type="yes"/>
       </encoding>
-    <miscellaneous>
-      <miscellaneous-field name="creationDate">2025-03-25</miscellaneous-field>
-      <miscellaneous-field name="platform">Apple Macintosh</miscellaneous-field>
-      <miscellaneous-field name="subtitle">Subtitle</miscellaneous-field>
-      </miscellaneous>
     </identification>
   <part-list>
     <score-part id="P1">
@@ -27,7 +22,6 @@
       <part-abbreviation>Fl.</part-abbreviation>
       <score-instrument id="P1-I1">
         <instrument-name>Flute</instrument-name>
-        <instrument-sound>wind.flutes.flute</instrument-sound>
         </score-instrument>
       <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
