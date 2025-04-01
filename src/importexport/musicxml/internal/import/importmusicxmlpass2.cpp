@@ -1359,9 +1359,10 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
         }
         mordent->setVisible(notation.visible());
         colorItem(mordent, Color::fromString(notation.attribute(u"color")));
+        cr->add(mordent);
+
         const String accidAbove = notation.attribute(u"above");
         if (!accidAbove.empty()) {
-            LOGD("upper accid is %s", muPrintable(accidAbove));
             Accidental* accidental = Factory::createAccidental(mordent);
             accidental->setAccidentalType(musicXmlString2accidentalType(accidAbove, String()));
             accidental->setParent(mordent);
@@ -1369,13 +1370,11 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
         }
         const String accidBelow = notation.attribute(u"below");
         if (!accidBelow.empty()) {
-            LOGD("lower accid is %s", muPrintable(accidBelow));
             Accidental* accidental = Factory::createAccidental(mordent);
             accidental->setAccidentalType(musicXmlString2accidentalType(accidBelow, String()));
             accidental->setParent(mordent);
             mordent->setAccidentalBelow(accidental);
         }
-        cr->add(mordent);
     } else {
         LOGD("unknown ornament: name '%s' long '%s' approach '%s' departure '%s'",
              muPrintable(name), muPrintable(attrLong), muPrintable(attrAppr), muPrintable(attrDep));        // TODO
@@ -1411,21 +1410,20 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
     }
     turn->setVisible(notation.visible());
     colorItem(turn, Color::fromString(notation.attribute(u"color")));
+    cr->add(turn);
+
     if (!accidAbove.empty()) {
-        LOGD("upper accid is %s", muPrintable(accidAbove));
         Accidental* accidental = Factory::createAccidental(turn);
         accidental->setAccidentalType(musicXmlString2accidentalType(accidAbove, String()));
         accidental->setParent(turn);
         turn->setAccidentalAbove(accidental);
     }
     if (!accidBelow.empty()) {
-        LOGD("lower accid is %s", muPrintable(accidBelow));
         Accidental* accidental = Factory::createAccidental(turn);
         accidental->setAccidentalType(musicXmlString2accidentalType(accidBelow, String()));
         accidental->setParent(turn);
         turn->setAccidentalBelow(accidental);
     }
-    cr->add(turn);
 }
 
 //---------------------------------------------------------
@@ -8632,12 +8630,9 @@ void MusicXmlParserNotations::ornaments()
         } else if (m_e.name() == "accidental-mark") {
             Notation lastNotation = m_notations.back();
             if (lastNotation.parent() == u"ornaments" && !m_e.attribute("placement").empty()) {
-                LOGD("last ornament was %s", muPrintable(lastNotation.name()));
                 const String attr = m_e.attribute("placement");
-                LOGD("attribute is %s", muPrintable(attr));
                 lastNotation.addAttribute(attr, m_e.readText());
                 m_notations.back() = lastNotation;
-                LOGD("set attribute value %s", muPrintable(m_notations.back().attribute(attr)));
             } else {
                 m_e.skipCurrentElement();  // skip but don't log
             }
