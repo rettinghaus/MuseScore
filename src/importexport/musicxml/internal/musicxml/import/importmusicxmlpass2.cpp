@@ -1366,7 +1366,7 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
 
 static void addTurnToChord(const Notation& notation, ChordRest* cr)
 {
-    const SymId turnSym = notation.symId();
+    SymId turnSym = notation.symId();
     const String accidAbove = notation.attribute(u"above");
     const String accidBelow = notation.attribute(u"below");
     const Color color = Color::fromString(notation.attribute(u"color"));
