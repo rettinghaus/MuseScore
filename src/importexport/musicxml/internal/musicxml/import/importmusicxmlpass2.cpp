@@ -1332,8 +1332,6 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
 static void addTurnToChord(const Notation& notation, ChordRest* cr)
 {
     SymId turnSym = notation.symId();
-    const String accidAbove = notation.attribute(u"above");
-    const String accidBelow = notation.attribute(u"below");
     const Color color = Color::fromString(notation.attribute(u"color"));
     const String place = notation.attribute(u"placement");
     if (notation.attribute(u"slash") == "yes") {
@@ -1354,12 +1352,14 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
     }
     cr->add(turn);
 
+    const String accidAbove = notation.attribute(u"above");
     if (!accidAbove.empty()) {
         Accidental* accidental = Factory::createAccidental(turn);
         accidental->setAccidentalType(musicXmlString2accidentalType(accidAbove, String()));
         accidental->setParent(turn);
         turn->setAccidentalAbove(accidental);
     }
+    const String accidBelow = notation.attribute(u"below");
     if (!accidBelow.empty()) {
         Accidental* accidental = Factory::createAccidental(turn);
         accidental->setAccidentalType(musicXmlString2accidentalType(accidBelow, String()));
