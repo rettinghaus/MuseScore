@@ -56,7 +56,7 @@ extern muse::String accSymId2MusicXmlString(const engraving::SymId id);
 extern muse::String accSymId2SmuflMusicXmlString(const engraving::SymId id);
 extern muse::String accidentalType2MusicXmlString(const engraving::AccidentalType type);
 extern muse::String accidentalType2SmuflMusicXmlString(const engraving::AccidentalType type);
-extern engraving::AccidentalType musicXmlString2accidentalType(const muse::String mxmlName, const muse::String smufl);
+extern engraving::AccidentalType musicXmlString2accidentalType(const muse::String mxmlName, const muse::String smufl = {});
 extern muse::String musicXmlAccidentalTextToChar(const muse::String mxmlName);
 extern engraving::SymId musicXmlString2accSymId(const muse::String mxmlName, const muse::String smufl = {});
 extern engraving::AccidentalType microtonalGuess(double val);
