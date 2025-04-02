@@ -109,13 +109,6 @@ public:
     PropertyValue propertyDefault(Pid id) const override;
     bool setProperty(Pid propertyId, const PropertyValue& v) override;
 
-    TieSegment* frontSegment() { return toTieSegment(Spanner::frontSegment()); }
-    const TieSegment* frontSegment() const { return toTieSegment(Spanner::frontSegment()); }
-    TieSegment* backSegment() { return toTieSegment(Spanner::backSegment()); }
-    const TieSegment* backSegment() const { return toTieSegment(Spanner::backSegment()); }
-    TieSegment* segmentAt(int n) { return toTieSegment(Spanner::segmentAt(n)); }
-    const TieSegment* segmentAt(int n) const { return toTieSegment(Spanner::segmentAt(n)); }
-
     SlurTieSegment* newSlurTieSegment(System* parent) override { return new TieSegment(parent); }
 
     double scalingFactor() const override;
