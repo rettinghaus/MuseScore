@@ -106,13 +106,6 @@ public:
     PropertyValue propertyDefault(Pid propertyId) const override;
     bool setProperty(Pid propertyId, const PropertyValue& v) override;
 
-    SlurSegment* frontSegment() { return toSlurSegment(Spanner::frontSegment()); }
-    const SlurSegment* frontSegment() const { return toSlurSegment(Spanner::frontSegment()); }
-    SlurSegment* backSegment() { return toSlurSegment(Spanner::backSegment()); }
-    const SlurSegment* backSegment() const { return toSlurSegment(Spanner::backSegment()); }
-    SlurSegment* segmentAt(int n) { return toSlurSegment(Spanner::segmentAt(n)); }
-    const SlurSegment* segmentAt(int n) const { return toSlurSegment(Spanner::segmentAt(n)); }
-
     bool isCrossStaff();
     const StemFloated& stemFloated() const { return m_stemFloated; }
     StemFloated& stemFloated() { return m_stemFloated; }

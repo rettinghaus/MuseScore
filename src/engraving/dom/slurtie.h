@@ -184,6 +184,13 @@ public:
     bool setProperty(Pid propertyId, const PropertyValue&) override;
     PropertyValue propertyDefault(Pid id) const override;
 
+    SlurTieSegment* frontSegment() { return toSlurTieSegment(Spanner::frontSegment()); }
+    const SlurTieSegment* frontSegment() const { return toSlurTieSegment(Spanner::frontSegment()); }
+    SlurTieSegment* backSegment() { return toSlurTieSegment(Spanner::backSegment()); }
+    const SlurTieSegment* backSegment() const { return toSlurTieSegment(Spanner::backSegment()); }
+    SlurTieSegment* segmentAt(int n) { return toSlurTieSegment(Spanner::segmentAt(n)); }
+    const SlurTieSegment* segmentAt(int n) const { return toSlurTieSegment(Spanner::segmentAt(n)); }
+
     void fixupSegments(unsigned nsegs);
 
     virtual double scalingFactor() const = 0;
