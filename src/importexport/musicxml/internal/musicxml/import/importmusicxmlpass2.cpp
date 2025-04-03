@@ -8886,23 +8886,26 @@ static void addWavyLine(ChordRest* cr, const Fraction& tick,
             if (trill) {
                 logger->logError(String(u"overlapping wavy-line number %1").arg(wavyLineNo + 1), xmlreader);
             } else {
-                const std::vector<Articulation*> art = cr->articulations();
+                std::vector<Articulation*> art;
+                if (cr->isChord()) {
+                    art = toChord(cr)->articulations();
+                }
                 // choose a wavy line without trill glyph for default
-                TrillType trillType = PRALLPRALL_LINE;
-                for (const Articulation* a : art) {
+                TrillType trillType = TrillType::PRALLPRALL_LINE;
+                for (Articulation* a : art) {
                     if (a->isOrnament()) {
-                        switch (a - symId()) {
+                        switch (a->symId()) {
                         case SymId::ornamentTrill:
                             trillType = TrillType::TRILL_LINE;
-                            ornament->parentItem()->remove(ornament);
+                            a->parentItem()->remove(a);
                             break;
                         case SymId::ornamentBottomLeftConcaveStroke:
                             trillType = TrillType::UPPRALL_LINE;
-                            ornament->parentItem()->remove(ornament);
+                            a->parentItem()->remove(a);
                             break;
                         case SymId::ornamentLeftVerticalStroke:
                             trillType = TrillType::DOWNPRALL_LINE;
-                            ornament->parentItem()->remove(ornament);
+                            a->parentItem()->remove(a);
                             break;
                         default:
                             break;
@@ -8917,7 +8920,7 @@ static void addWavyLine(ChordRest* cr, const Fraction& tick,
                 trill->setOrnament(Factory::createOrnament(cr));
                 trill->ornament()->setAnchor(ArticulationAnchor::AUTO);
 
-                trill->setTrillType(TrillType);
+                trill->setTrillType(trillType);
 
                 if (wavyLineType == u"start") {
                     spanners[trill] = std::pair<int, int>(tick.ticks(), -1);
