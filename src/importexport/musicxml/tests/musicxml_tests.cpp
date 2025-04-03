@@ -1258,7 +1258,7 @@ TEST_F(MusicXml_Tests, tremolo) {
     musicXmlIoTest("testTremolo");
 }
 TEST_F(MusicXml_Tests, trills) {
-    musicXmlMscxExportTestRef("testTrills");
+    musicXmlIoTest("testTrills");
 }
 TEST_F(MusicXml_Tests, tuplets1) {
     musicXmlIoTestRef("testTuplets1");
