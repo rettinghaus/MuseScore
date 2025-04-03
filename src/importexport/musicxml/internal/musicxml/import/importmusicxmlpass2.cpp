@@ -1307,63 +1307,40 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
 }
 
 //---------------------------------------------------------
-//   addTurnToChord
+//   addOrnamentToChord
 //---------------------------------------------------------
 
 /**
- Add Turn to Chord.
+ Add an ornament to a chord.
  */
 
-static void addTurnToChord(const Notation& notation, ChordRest* cr)
+static void addOrnamentToChord(const Notation& notation, ChordRest* cr)
 {
-    SymId turnSym = notation.symId();
+    SymId ornamSym = notation.symId();
     const Color color = Color::fromString(notation.attribute(u"color"));
+    const String name = notation.name();
     const String place = notation.attribute(u"placement");
+    const String symname = notation.attribute(u"smufl");
+    if (!symname.empty()) {
+        ornamSym = SymNames::symIdByName(symname);
+    }
     if (notation.attribute(u"slash") == "yes") {
         // TODO: currently this is the only available SMuFL turn with a slash
-        turnSym = SymId::ornamentTurnSlash;
+        ornamSym = SymId::ornamentTurnSlash;
     }
-    Ornament* turn = Factory::createOrnament(cr);
-    turn->setSymId(turnSym);
+    Ornament* ornament = Factory::createOrnament(cr);
+    ornament->setSymId(ornamSym);
     if (place == u"above") {
-        turn->setAnchor(ArticulationAnchor::TOP);
+        ornament->setAnchor(ArticulationAnchor::TOP);
     } else if (place == u"below") {
-        turn->setAnchor(ArticulationAnchor::BOTTOM);
+        ornament->setAnchor(ArticulationAnchor::BOTTOM);
     } else {
-        turn->setAnchor(ArticulationAnchor::AUTO);
+        ornament->setAnchor(ArticulationAnchor::AUTO);
     }
     if (color.isValid()) {
-        turn->setColor(color);
+        ornament->setColor(color);
     }
-    cr->add(turn);
-}
-
-//---------------------------------------------------------
-//   addOtherOrnamentToChord
-//---------------------------------------------------------
-
-/**
- Add Other Ornament to Chord.
- */
-
-static void addOtherOrnamentToChord(const Notation& notation, ChordRest* cr)
-{
-    const String name = notation.name();
-    const String symname = notation.attribute(u"smufl");
-    SymId sym = SymId::noSym;   // legal but impossible ArticulationType value here indicating "not found"
-    sym = SymNames::symIdByName(symname);
-
-    if (sym != SymId::noSym) {
-        const Color color = Color::fromString(notation.attribute(u"color"));
-        Ornament* ornam = Factory::createOrnament(cr);
-        ornam->setSymId(sym);
-        if (color.isValid()) {
-            ornam->setColor(color);
-        }
-        cr->add(ornam);
-    } else {
-        LOGD("unknown ornament: name '%s': '%s'.", muPrintable(name), muPrintable(symname));
-    }
+    cr->add(ornament);
 }
 
 //---------------------------------------------------------
@@ -9165,7 +9142,7 @@ void MusicXmlParserNotations::addNotation(const Notation& notation, ChordRest* c
             const InferredTempoLineStack& lines = m_pass2.getInferredTempoLine();
             terminateInferredLine(std::vector<TextLineBase*>(lines.begin(), lines.end()), cr->tick(), cr->track());
         } else if (notation.parent() == u"ornaments") {
-            addTurnToChord(notation, cr);
+            addOrnamentToChord(notation, cr);
         } else {
             addArticulationToChord(notation, cr);
         }
@@ -9173,7 +9150,7 @@ void MusicXmlParserNotations::addNotation(const Notation& notation, ChordRest* c
         if (notation.name() == u"mordent" || notation.name() == u"inverted-mordent") {
             addMordentToChord(notation, cr);
         } else if (notation.name() == u"other-ornament") {
-            addOtherOrnamentToChord(notation, cr);
+            addOrnamentToChord(notation, cr);
         }
     } else if (notation.parent() == u"articulations") {
         if (note && notation.name() == u"chord-line") {
