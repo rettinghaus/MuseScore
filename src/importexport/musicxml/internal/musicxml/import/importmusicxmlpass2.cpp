@@ -1390,6 +1390,7 @@ static bool convertArticulationToSymId(const String& mxmlName, SymId& id)
         { u"inverted-turn",          SymId::ornamentTurnInverted },
         { u"vertical-turn",          SymId::ornamentTurnUp },
         { u"inverted-vertical-turn", SymId::ornamentTurnUpS },
+        { u"trill",                  SymId::ornamentTrill },
         { u"turn",                   SymId::ornamentTurn },
         { u"shake",                  SymId::ornamentTremblementCouperin },
         { u"schleifer",              SymId::ornamentPrecompSlide },
@@ -3551,7 +3552,8 @@ void MusicXmlParserDirection::direction(const String& partId,
             if (m_swing.second != 0) {
                 toStaffTextBase(t)->setSwing(true);
                 toStaffTextBase(t)->setSwingParameters(m_swing.first,
-                                                       m_swing.first ? m_swing.second : toStaffTextBase(t)->style().styleI(Sid::swingRatio));
+                                                       m_swing.first ? m_swing.second
+                                                       : toStaffTextBase(t)->style().styleI(Sid::swingRatio));
                 m_swing.second = 0;
             }
 
@@ -8321,17 +8323,12 @@ void MusicXmlParserNotations::articulations()
 
 void MusicXmlParserNotations::ornaments()
 {
-    bool trillMark = false;
-    // <trill-mark placement="above"/>
     while (m_e.readNextStartElement()) {
         SymId id { SymId::noSym };
         if (convertArticulationToSymId(String::fromAscii(m_e.name().ascii()), id)) {
             Notation notation = Notation::notationWithAttributes(String::fromAscii(m_e.name().ascii()),
                                                                  m_e.attributes(), u"ornaments", id);
             m_notations.push_back(notation);
-            m_e.skipCurrentElement();  // skip but don't log
-        } else if (m_e.name() == "trill-mark") {
-            trillMark = true;
             m_e.skipCurrentElement();  // skip but don't log
         } else if (m_e.name() == "wavy-line") {
             bool wavyLineTypeWasStart = (m_wavyLineType == "start");
@@ -8367,13 +8364,6 @@ void MusicXmlParserNotations::ornaments()
         } else {
             skipLogCurrElem();
         }
-    }
-
-    // note that mscore wavy line already implicitly includes a trillsym
-    // so don't add an additional one
-    if (trillMark && m_wavyLineType != "start" && m_wavyLineType != "startstop") {
-        Notation ornament = Notation::notationWithAttributes(u"trill-mark", m_e.attributes(), u"ornaments", SymId::ornamentTrill);
-        m_notations.push_back(ornament);
     }
 }
 
@@ -8896,12 +8886,38 @@ static void addWavyLine(ChordRest* cr, const Fraction& tick,
             if (trill) {
                 logger->logError(String(u"overlapping wavy-line number %1").arg(wavyLineNo + 1), xmlreader);
             } else {
+                const std::vector<Articulation*> art = cr->articulations();
+                // choose a wavy line without trill glyph for default
+                TrillType trillType = PRALLPRALL_LINE;
+                for (const Articulation* a : art) {
+                    if (a->isOrnament()) {
+                        switch (a - symId()) {
+                        case SymId::ornamentTrill:
+                            trillType = TrillType::TRILL_LINE;
+                            ornament->parentItem()->remove(ornament);
+                            break;
+                        case SymId::ornamentBottomLeftConcaveStroke:
+                            trillType = TrillType::UPPRALL_LINE;
+                            ornament->parentItem()->remove(ornament);
+                            break;
+                        case SymId::ornamentLeftVerticalStroke:
+                            trillType = TrillType::DOWNPRALL_LINE;
+                            ornament->parentItem()->remove(ornament);
+                            break;
+                        default:
+                            break;
+                        }
+                    }
+                }
+
                 trill = Factory::createTrill(cr->score()->dummy());
                 trill->setTrack(track);
                 trill->setTrack2(track);
 
                 trill->setOrnament(Factory::createOrnament(cr));
                 trill->ornament()->setAnchor(ArticulationAnchor::AUTO);
+
+                trill->setTrillType(TrillType);
 
                 if (wavyLineType == u"start") {
                     spanners[trill] = std::pair<int, int>(tick.ticks(), -1);
@@ -9183,7 +9199,6 @@ void MusicXmlParserNotations::addToScore(ChordRest* const cr, Note* const note, 
                                          DelayedArpMap& delayedArps)
 {
     addArpeggio(cr, m_arpeggioType, m_arpeggioNo, m_arpeggioColor, arpMap, delayedArps);
-    addWavyLine(cr, Fraction::fromTicks(tick), m_wavyLineNo, m_wavyLineType, spanners, trills, m_logger, &m_e);
 
     for (const Notation& notation : m_notations) {
         if (notation.symId() != SymId::noSym) {
@@ -9200,6 +9215,8 @@ void MusicXmlParserNotations::addToScore(ChordRest* const cr, Note* const note, 
             addNotation(notation, cr, note);
         }
     }
+
+    addWavyLine(cr, Fraction::fromTicks(tick), m_wavyLineNo, m_wavyLineType, spanners, trills, m_logger, &m_e);
 
     // more than one dynamic ???
     // LVIFIX: check import/export of <other-dynamics>unknown_text</...>
