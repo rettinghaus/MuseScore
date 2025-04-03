@@ -1422,7 +1422,7 @@ static bool convertArticulationToSymId(const String& mxmlName, SymId& id)
         { u"inverted-turn",          SymId::ornamentTurnInverted },
         { u"vertical-turn",          SymId::ornamentTurnUp },
         { u"inverted-vertical-turn", SymId::ornamentTurnUpS },
-        { u"trill",                  SymId::ornamentTrill },
+        { u"trill-mark",             SymId::ornamentTrill },
         { u"turn",                   SymId::ornamentTurn },
         { u"shake",                  SymId::ornamentTremblementCouperin },
         { u"schleifer",              SymId::ornamentPrecompSlide },
