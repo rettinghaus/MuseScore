@@ -1329,6 +1329,12 @@ static void addOrnamentToChord(const Notation& notation, ChordRest* cr)
         // TODO: currently this is the only available SMuFL turn with a slash
         ornamSym = SymId::ornamentTurnSlash;
     }
+    if (cr->isRest()) {
+        // we cannot add an ornament to a rest, so assume it's a spanner start
+        Trill* trill = Factory::createTrill(cr);
+        cr->add(trill);
+        return;
+    }
     Ornament* ornament = Factory::createOrnament(cr);
     ornament->setSymId(ornamSym);
     if (place == u"above") {
