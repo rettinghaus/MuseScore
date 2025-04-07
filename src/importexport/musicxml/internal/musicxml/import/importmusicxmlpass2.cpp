@@ -9237,6 +9237,7 @@ void MusicXmlParserNotations::addNotation(const Notation& notation, ChordRest* c
             const InferredTempoLineStack& lines = m_pass2.getInferredTempoLine();
             terminateInferredLine(std::vector<TextLineBase*>(lines.begin(), lines.end()), cr->tick(), cr->track());
         } else if (notation.parent() == u"ornaments") {
+            LOGD("trying to add %s", muPrintable(notation.name()));
             addOrnamentToChord(notation, cr);
         } else {
             addArticulationToChord(notation, cr);
