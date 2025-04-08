@@ -8394,6 +8394,24 @@ void MusicXmlParserNotations::ornaments()
             m_e.skipCurrentElement();  // skip but don't log
         } else if (m_e.name() == "wavy-line") {
             bool wavyLineTypeWasStart = (m_wavyLineType == "start");
+            if (wavyLineTypeWasStart && m_notations.back().name() == u"ornaments") {
+                switch (m_notations.back().symId()) {
+                case SymId::ornamentTrill:
+                    m_wavyTrill = TrillType::TRILL_LINE;
+                    m_notations.pop_back();
+                    break;
+                case SymId::ornamentBottomLeftConcaveStroke:
+                    m_wavyTrill = TrillType::UPPRALL_LINE;
+                    m_notations.pop_back();
+                    break;
+                case SymId::ornamentLeftVerticalStroke:
+                    m_wavyTrill = TrillType::DOWNPRALL_LINE;
+                    m_notations.pop_back();
+                    break;
+                default:
+                    break;
+                }
+            }
             m_wavyLineType = m_e.attribute("type");
             m_wavyLineNo   = m_e.intAttribute("number");
             if (m_wavyLineNo > 0) {
@@ -8935,7 +8953,7 @@ static void addTie(const Notation& notation, Note* note, const track_idx_t track
 //---------------------------------------------------------
 
 static void addWavyLine(ChordRest* cr, const Fraction& tick,
-                        const int wavyLineNo, const String& wavyLineType,
+                        const int wavyLineNo, const String& wavyLineType, const TrillType trillType,
                         MusicXmlSpannerMap& spanners, TrillStack& trills,
                         MusicXmlLogger* logger, const XmlStreamReader* const xmlreader)
 {
@@ -8947,33 +8965,6 @@ static void addWavyLine(ChordRest* cr, const Fraction& tick,
             if (trill) {
                 logger->logError(String(u"overlapping wavy-line number %1").arg(wavyLineNo + 1), xmlreader);
             } else {
-                std::vector<Articulation*> art;
-                if (cr->isChord()) {
-                    art = toChord(cr)->articulations();
-                }
-                // choose a wavy line without trill glyph for default
-                TrillType trillType = TrillType::PRALLPRALL_LINE;
-                for (Articulation* a : art) {
-                    if (a->isOrnament()) {
-                        switch (a->symId()) {
-                        case SymId::ornamentTrill:
-                            trillType = TrillType::TRILL_LINE;
-                            a->parentItem()->remove(a);
-                            break;
-                        case SymId::ornamentBottomLeftConcaveStroke:
-                            trillType = TrillType::UPPRALL_LINE;
-                            a->parentItem()->remove(a);
-                            break;
-                        case SymId::ornamentLeftVerticalStroke:
-                            trillType = TrillType::DOWNPRALL_LINE;
-                            a->parentItem()->remove(a);
-                            break;
-                        default:
-                            break;
-                        }
-                    }
-                }
-
                 trill = Factory::createTrill(cr->score()->dummy());
                 trill->setTrack(track);
                 trill->setTrack2(track);
@@ -9264,6 +9255,7 @@ void MusicXmlParserNotations::addToScore(ChordRest* const cr, Note* const note, 
                                          DelayedArpMap& delayedArps)
 {
     addArpeggio(cr, m_arpeggioType, m_arpeggioNo, m_arpeggioColor, arpMap, delayedArps);
+    addWavyLine(cr, Fraction::fromTicks(tick), m_wavyLineNo, m_wavyLineType, m_wavyTrill, spanners, trills, m_logger, &m_e);
 
     for (const Notation& notation : m_notations) {
         if (notation.symId() != SymId::noSym) {
@@ -9280,8 +9272,6 @@ void MusicXmlParserNotations::addToScore(ChordRest* const cr, Note* const note, 
             addNotation(notation, cr, note);
         }
     }
-
-    addWavyLine(cr, Fraction::fromTicks(tick), m_wavyLineNo, m_wavyLineType, spanners, trills, m_logger, &m_e);
 
     // more than one dynamic ???
     // LVIFIX: check import/export of <other-dynamics>unknown_text</...>
