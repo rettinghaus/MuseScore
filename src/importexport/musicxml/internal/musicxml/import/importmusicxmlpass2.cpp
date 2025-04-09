@@ -8984,10 +8984,10 @@ static void addWavyLine(ChordRest* cr, const Fraction& tick,
                 trill->setTrack(track);
                 trill->setTrack2(track);
 
+                trill->setTrillType(trillType);
+
                 trill->setOrnament(Factory::createOrnament(cr));
                 trill->ornament()->setAnchor(ArticulationAnchor::AUTO);
-
-                trill->setTrillType(trillType);
 
                 if (wavyLineType == u"start") {
                     spanners[trill] = std::pair<int, int>(tick.ticks(), -1);
@@ -9234,7 +9234,6 @@ void MusicXmlParserNotations::addNotation(const Notation& notation, ChordRest* c
             const InferredTempoLineStack& lines = m_pass2.getInferredTempoLine();
             terminateInferredLine(std::vector<TextLineBase*>(lines.begin(), lines.end()), cr->tick(), cr->track());
         } else if (notation.parent() == u"ornaments") {
-            LOGD("trying to add %s", muPrintable(notation.name()));
             addOrnamentToChord(notation, cr);
         } else {
             addArticulationToChord(notation, cr);
