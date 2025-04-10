@@ -8985,7 +8985,7 @@ static void addWavyLine(ChordRest* cr, const Fraction& tick,
                 trill->setTrack2(track);
 
                 if (trillType != TrillType::TRILL_LINE) {
-                    trill->setTrillType(trillType);
+                    // trill->setTrillType(trillType);
                 }
 
                 trill->setOrnament(Factory::createOrnament(cr));
