@@ -2869,6 +2869,31 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
             }
         } else if (m_e.name() == "sound") {
             tempoString = m_e.attribute("tempo");
+            while (m_e.readNextStartElement()) {
+                if (m_e.name() == "play") {
+                    const String pizz = m_e.attribute("pizzicato");
+                    if (pizz == u"yes") {
+                        m_play = u"pizzicato";
+                    } else if (pizz == u"no") {
+                        m_play = u"natural";
+                    }
+                    while (m_e.readNextStartElement()) {
+                        if (m_e.name() == "mute") {
+                            const String muted = m_e.readText();
+                            m_play = (muted == u"off") ? u"open" : u"mute";
+                        } else if (m_e.name() == "other-play") {
+                            m_play = m_e.attribute("type");
+                            m_e.skipCurrentElement();
+                        } else {
+                            skipLogCurrElem();
+                        }
+                    }
+                } else if (m_e.name() == "swing") {
+                    m_e.skipCurrentElement();
+                } else {
+                    skipLogCurrElem();
+                }
+            }
             m_e.skipCurrentElement();
         } else if (m_e.name() == "barline") {
             barline(partId, measure, time + mTime);
