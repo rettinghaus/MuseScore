@@ -2897,7 +2897,7 @@ static void writeAccidental(XmlWriter& xml, const String& tagName, const Acciden
 //   writeDisplayName
 //---------------------------------------------------------
 
-static void writeDisplayName(XmlWriter& xml, const String& partName)
+static void writeDisplayName(XmlWriter& xml, const String& partName, bool visible = true)
 {
     // TODO: add text style attributes
     String displayText;
@@ -7627,23 +7627,23 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
                 attributes.emplace_back(std::make_pair("print-object", "no"));
             }
         }
-        const bool hidePartName = (score->style().styleB(Sid::hideInstrumentNameIfOneInstrument) && part->nstaves() <= 1)
-                                  || (score->style().styleV(Sid::firstSystemInstNameVisibility).value<InstrumentLabelVisibility>()
-                                      == InstrumentLabelVisibility::HIDE);
-        if (hidePartName) {
+        const bool hiddenInstrName = (score->style().styleB(Sid::hideInstrumentNameIfOneInstrument) && part->nstaves() <= 1);
+        const bool hidePartName = hiddenInstrName || (score->style().styleV(Sid::firstSystemInstNameVisibility).value<InstrumentLabelVisibility>()
+                                                      == InstrumentLabelVisibility::HIDE);
+        if (hiddenInstrName) {
             attributes.push_back({ "print-object", "no" });
         }
         xml.tag("part-name", attributes, MScoreTextToMusicXml::toPlainText(partName).replace(u"♭", u"b").replace(u"♯", u"#"));
         if (partName.contains(acc)) {
             xml.startElement("part-name-display");
-            writeDisplayName(xml, partName);
+            writeDisplayName(xml, partName, hiddenInstrName);
             xml.endElement();
         }
         if (!part->shortName().isEmpty()) {
             xml.tag("part-abbreviation", MScoreTextToMusicXml::toPlainText(part->shortName()).replace(u"♭", u"b").replace(u"♯", u"#"));
             if (part->shortName().contains(acc)) {
                 xml.startElement("part-abbreviation-display");
-                writeDisplayName(xml, part->shortName());
+                writeDisplayName(xml, part->shortName(), hiddenInstrName);
                 xml.endElement();
             }
         }
