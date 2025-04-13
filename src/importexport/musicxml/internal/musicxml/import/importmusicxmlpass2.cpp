@@ -2815,6 +2815,15 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
             }
         } else if (m_e.name() == "sound") {
             tempoString = m_e.attribute("tempo");
+            while (m_e.readNextStartElement()) {
+                if (m_e.name() == "play") {
+                    MusicXmlParserDirection::play();
+                } else if (m_e.name() == "swing") {
+                    MusicXmlParserDirection::swing();
+                } else {
+                    skipLogCurrElem();
+                }
+            }
             m_e.skipCurrentElement();
         } else if (m_e.name() == "barline") {
             barline(partId, measure, time + mTime);
