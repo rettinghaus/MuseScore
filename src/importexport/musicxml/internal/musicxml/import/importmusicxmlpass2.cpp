@@ -2808,6 +2808,15 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
                     addElemOffset(t, m_pass1.trackForPart(partId), u"above", measure, tick);
                 }
             }
+            while (m_e.readNextStartElement()) {
+                if (m_e.name() == "play") {
+                    MusicXmlParserDirection::play();
+                } else if (m_e.name() == "swing") {
+                    MusicXmlParserDirection::swing();
+                } else {
+                    skipLogCurrElem();
+                }
+            }
             m_e.skipCurrentElement();
         } else if (m_e.name() == "barline") {
             barline(partId, measure, time + mTime);
@@ -3551,7 +3560,8 @@ void MusicXmlParserDirection::direction(const String& partId,
             if (m_swing.second != 0) {
                 toStaffTextBase(t)->setSwing(true);
                 toStaffTextBase(t)->setSwingParameters(m_swing.first,
-                                                       m_swing.first ? m_swing.second : toStaffTextBase(t)->style().styleI(Sid::swingRatio));
+                                                       m_swing.first ? m_swing.second
+                                                       : toStaffTextBase(t)->style().styleI(Sid::swingRatio));
                 m_swing.second = 0;
             }
 
