@@ -2195,6 +2195,9 @@ void MusicXmlParserPass2::part()
         String instrId = m_pass1.getInstrList(id).instrument(Fraction(0, 1));
         part->setPartName(muse::value(instruments, instrId).name);
     }
+    if (m_pass1.nparts() == 1 && mxmlPart.getPrintName() && mxmlPart.getPrintAbbr()) {
+        m_score->style().set(Sid::hideInstrumentNameIfOneInstrument, false);
+    }
 
 #ifdef DEBUG_VOICE_MAPPER
     VoiceList voicelist = _pass1.getVoiceList(id);
@@ -3551,7 +3554,8 @@ void MusicXmlParserDirection::direction(const String& partId,
             if (m_swing.second != 0) {
                 toStaffTextBase(t)->setSwing(true);
                 toStaffTextBase(t)->setSwingParameters(m_swing.first,
-                                                       m_swing.first ? m_swing.second : toStaffTextBase(t)->style().styleI(Sid::swingRatio));
+                                                       m_swing.first ? m_swing.second
+                                                       : toStaffTextBase(t)->style().styleI(Sid::swingRatio));
                 m_swing.second = 0;
             }
 
