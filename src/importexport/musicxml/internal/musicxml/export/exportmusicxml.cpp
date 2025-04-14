@@ -7619,7 +7619,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
         static const std::wregex acc(L"[♭♯]");
         XmlWriter::Attributes attributes;
         // by default export the parts long name as part-name
-        bool hiddenInstrName = (score->style().styleB(Sid::hideInstrumentNameIfOneInstrument) && score->nstaves() <= 1);
+        bool hiddenInstrName = (score->style().styleB(Sid::hideInstrumentNameIfOneInstrument) && score->parts().size() == 1);
         String partName = part->longName();
         // use the track name if no part long name
         if (partName.empty()) {
@@ -7629,7 +7629,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
             }
         }
         // const bool hidePartName = hiddenInstrName || (score->style().styleV(Sid::firstSystemInstNameVisibility).value<InstrumentLabelVisibility>() == InstrumentLabelVisibility::HIDE);
-        if (hiddenInstrName) {
+        if (!score->showInstrumentNames()) {
             attributes.push_back({ "print-object", "no" });
         }
         xml.tag("part-name", attributes, MScoreTextToMusicXml::toPlainText(partName).replace(u"♭", u"b").replace(u"♯", u"#"));
