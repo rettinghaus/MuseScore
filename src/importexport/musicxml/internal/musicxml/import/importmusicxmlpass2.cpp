@@ -2179,12 +2179,12 @@ void MusicXmlParserPass2::part()
     setPartInstruments(m_logger, &m_e, part, id, m_score, m_pass1.getInstrList(id), m_pass1.getIntervals(id), instruments, partName);
     partName = replacePartNameAccidentals(partName);
     part->setPartName(partName);
-    if (mxmlPart.getPrintName() && !isLikelyIncorrectPartName(partName)) {
+    if (!isLikelyIncorrectPartName(partName)) {
         part->setLongNameAll(partName);
     } else {
         m_pass1.getPart(id)->setLongNameAll(u"");
     }
-    if (mxmlPart.getPrintAbbr()) {
+    if (!mxmlPart.getAbbr().empty()) {
         part->setPlainShortNameAll(mxmlPart.getAbbr());
     } else {
         m_pass1.getPart(id)->setPlainShortNameAll(u"");
