@@ -7793,7 +7793,7 @@ static void writePartSymbol(XmlWriter& xml, const Part* part)
  Write the staff details for \a part to xml.
  */
 
-static void writeStaffDetails(XmlWriter& xml, const Part* part)
+static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vector<size_t> hiddenStaves)
 {
     const Instrument* instrument = part->instrument();
     size_t staves = part->nstaves();
