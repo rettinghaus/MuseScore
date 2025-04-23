@@ -7781,6 +7781,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
         XmlWriter::Attributes longInstrumentAttributes;
         XmlWriter::Attributes shortInstrumentAttributes;
         // by default export the parts long name as part-name
+        bool hiddenInstrName = (score->style().styleB(Sid::hideInstrumentNameIfOneInstrument) && parts.size() == 1);
         String partName = part->longName();
         // use the track name if no part long name
         if (partName.empty()) {
