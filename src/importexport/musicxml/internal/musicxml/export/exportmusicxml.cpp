@@ -7562,6 +7562,9 @@ static void findPitchesUsed(const Part* part, pitchSet& set)
 
 static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrMap)
 {
+    const Color longInstrumentColor = score->style().styleV(Sid::longInstrumentColor).value<Color>();
+    const Color shortInstrumentColor = score->style().styleV(Sid::shortInstrumentColor).value<Color>();
+
     xml.startElement("part-list");
     size_t staffCount = 0;                               // count sum of # staves in parts
     const auto& parts = score->parts();
@@ -7634,8 +7637,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
             longInstrumentAttributes.push_back({ "print-object", "no" });
             shortInstrumentAttributes.push_back({ "print-object", "no" });
         }
-        if (score->style().styleV(Sid::longInstrumentColor) != engravingConfiguration()->defaultColor()) {
-            const Color longInstrumentColor = score->style().styleV(Sid::longInstrumentColor).value<Color>();
+        if (longInstrumentColor != engravingConfiguration()->defaultColor()) {
             longInstrumentAttributes.push_back({ "color", String::fromStdString(longInstrumentColor.toString()) });
         }
         xml.tag("part-name", longInstrumentAttributes,
@@ -7646,8 +7648,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
             xml.endElement();
         }
         if (!part->shortName().isEmpty()) {
-            if (score->style().styleV(Sid::shortInstrumentColor) != engravingConfiguration()->defaultColor()) {
-                const Color shortInstrumentColor = score->style().styleV(Sid::shortInstrumentColor).value<Color>();
+            if (shortInstrumentColor != engravingConfiguration()->defaultColor()) {
                 shortInstrumentAttributes.push_back({ "color", String::fromStdString(shortInstrumentColor.toString()) });
             }
             xml.tag("part-abbreviation", shortInstrumentAttributes,
