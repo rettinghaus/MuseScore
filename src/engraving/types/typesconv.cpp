@@ -27,7 +27,7 @@
 
 #include "symnames.h"
 
-#include "tremolobartypes.h"
+#include "tremolobar.h"
 
 #include "log.h"
 
