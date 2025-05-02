@@ -3111,13 +3111,13 @@ void ExportMusicXml::vibrato(const Chord* chord, Notations& notations, Ornaments
     String type;
     Vibrato* vib;
     for (Spanner* spanner : chord->startingSpanners()) {
-        if (spanner->type() == ElementType::VIBRATO && ExportMusicXml::canWrite(spanner)) {
+        if (spanner->type() == ElementType::VIBRATO) {
             type = u"start";
             vib = toVibrato(spanner);
         }
     }
     for (Spanner* spanner : chord->endingSpanners()) {
-        if (spanner->type() == ElementType::VIBRATO && ExportMusicXml::canWrite(spanner)) {
+        if (spanner->type() == ElementType::VIBRATO) {
             type = u"stop";
             vib = toVibrato(spanner);
         }
