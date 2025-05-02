@@ -25,6 +25,8 @@
 #include "types/string.h"
 #include "types.h"
 
+#include "engraving/dom/tremolobar.h"
+
 namespace mu::engraving {
 class TConv
 {
