@@ -171,6 +171,8 @@ public:
     static AsciiStringView toXml(TremoloType v);
     static TremoloType fromXml(const AsciiStringView& str, TremoloType def);
 
+    static const TranslatableString& userName(TremoloBarType v);
+
     static const TranslatableString& userName(BracketType v);
     static String translatedUserName(BracketType v);
     static AsciiStringView toXml(BracketType v);

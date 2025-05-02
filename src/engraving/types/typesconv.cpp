@@ -27,8 +27,6 @@
 
 #include "symnames.h"
 
-#include "tremolobar.h"
-
 #include "log.h"
 
 using namespace mu;
@@ -1992,7 +1990,7 @@ TremoloType TConv::fromXml(const AsciiStringView& tag, TremoloType def)
     return findTypeByXmlTag<TremoloType>(TREMOLO_TYPES, tag, def);
 }
 
-static const std::array<Item<TremoloType>, 7> TREMOLOBAR_TYPES = { {
+static const std::array<Item<TremoloBarType>, 7> TREMOLOBAR_TYPES = { {
     { TremoloBarTypes::TYPE_DIP, qsTrc("inspector", "Dip") },
     { TremoloBarTypes::TYPE_DIVE, qsTrc("inspector", "Dive") },
     { TremoloBarTypes::TYPE_RELEASE_UP, qsTrc("inspector", "Release (Up)") },
@@ -2001,6 +1999,11 @@ static const std::array<Item<TremoloType>, 7> TREMOLOBAR_TYPES = { {
     { TremoloBarTypes::TYPE_RELEASE_DOWN, qsTrc("inspector", "Release (Down)") },
     { TremoloBarTypes::TYPE_CUSTOM, qsTrc("inspector", "Custom") }
 } };
+
+const muse::TranslatableString& TConv::userName(TremoloBarType v)
+{
+    return findUserNameByType<TremoloBarType>(TREMOLOBAR_TYPES, v);
+}
 
 static const std::vector<Item<BracketType> > BRACKET_TYPES = {
     { BracketType::NORMAL,     "Normal",    muse::TranslatableString("engraving/brackettype", "Normal") },
