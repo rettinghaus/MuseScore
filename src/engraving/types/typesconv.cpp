@@ -27,6 +27,8 @@
 
 #include "symnames.h"
 
+#include "tremolobartypes.h"
+
 #include "log.h"
 
 using namespace mu;
