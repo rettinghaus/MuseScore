@@ -1990,6 +1990,16 @@ TremoloType TConv::fromXml(const AsciiStringView& tag, TremoloType def)
     return findTypeByXmlTag<TremoloType>(TREMOLO_TYPES, tag, def);
 }
 
+static const std::array<Item<TremoloType>, 7> TREMOLOBAR_TYPES = { {
+    { TremoloBarTypes::TYPE_DIP, qsTrc("inspector", "Dip") },
+    { TremoloBarTypes::TYPE_DIVE, qsTrc("inspector", "Dive") },
+    { TremoloBarTypes::TYPE_RELEASE_UP, qsTrc("inspector", "Release (Up)") },
+    { TremoloBarTypes::TYPE_INVERTED_DIP, qsTrc("inspector", "Inverted dip") },
+    { TremoloBarTypes::TYPE_RETURN, qsTrc("inspector", "Return") },
+    { TremoloBarTypes::TYPE_RELEASE_DOWN, qsTrc("inspector", "Release (Down)") },
+    { TremoloBarTypes::TYPE_CUSTOM, qsTrc("inspector", "Custom") }
+} };
+
 static const std::vector<Item<BracketType> > BRACKET_TYPES = {
     { BracketType::NORMAL,     "Normal",    muse::TranslatableString("engraving/brackettype", "Normal") },
     { BracketType::BRACE,      "Brace",     muse::TranslatableString("engraving/brackettype", "Brace") },
