@@ -1990,19 +1990,24 @@ TremoloType TConv::fromXml(const AsciiStringView& tag, TremoloType def)
     return findTypeByXmlTag<TremoloType>(TREMOLO_TYPES, tag, def);
 }
 
-static const std::array<Item<TremoloBarType>, 7> TREMOLOBAR_TYPES = { {
-    { TremoloBarType::DIP, qsTrc("inspector", "Dip") },
-    { TremoloBarType::DIVE, qsTrc("inspector", "Dive") },
-    { TremoloBarType::RELEASE_UP, qsTrc("inspector", "Release (Up)") },
-    { TremoloBarType::INVERTED_DIP, qsTrc("inspector", "Inverted dip") },
-    { TremoloBarType::RETURN, qsTrc("inspector", "Return") },
-    { TremoloBarType::RELEASE_DOWN, qsTrc("inspector", "Release (Down)") },
-    { TremoloBarType::CUSTOM, qsTrc("inspector", "Custom") }
+static const std::vector<Item<TremoloBarType> > TREMOLOBAR_TYPES = { {
+    { TremoloBarType::DIP, "Dip" },
+    { TremoloBarType::DIVE, "Dive" },
+    { TremoloBarType::RELEASE_UP, "Release (Up)" },
+    { TremoloBarType::INVERTED_DIP, "Inverted dip" },
+    { TremoloBarType::RETURN, "Return" },
+    { TremoloBarType::RELEASE_DOWN, "Release (Down)" },
+    { TremoloBarType::CUSTOM, "Custom" }
 } };
 
-const muse::TranslatableString& TConv::userName(TremoloBarType v)
+AsciiStringView TConv::toXml(TremoloBarType v)
 {
-    return findUserNameByType<TremoloBarType>(TREMOLOBAR_TYPES, v);
+    return findXmlTagByType<TremoloBarType>(TREMOLOBAR_TYPES, v);
+}
+
+TremoloBarType TConv::fromXml(const AsciiStringView& tag, TremoloBarType def)
+{
+    return findTypeByXmlTag<TremoloBarType>(TREMOLOBAR_TYPES, tag, def);
 }
 
 static const std::vector<Item<BracketType> > BRACKET_TYPES = {
