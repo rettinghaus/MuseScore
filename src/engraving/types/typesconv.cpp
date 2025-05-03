@@ -1991,13 +1991,13 @@ TremoloType TConv::fromXml(const AsciiStringView& tag, TremoloType def)
 }
 
 static const std::vector<Item<TremoloBarType> > TREMOLOBAR_TYPES = { {
-    { TremoloBarType::DIP, "Dip" },
-    { TremoloBarType::DIVE, "Dive" },
-    { TremoloBarType::RELEASE_UP, "Release (Up)" },
-    { TremoloBarType::INVERTED_DIP, "Inverted dip" },
-    { TremoloBarType::RETURN, "Return" },
-    { TremoloBarType::RELEASE_DOWN, "Release (Down)" },
-    { TremoloBarType::CUSTOM, "Custom" }
+    { TremoloBarType::DIP, "dip" },
+    { TremoloBarType::DIVE, "dive" },
+    { TremoloBarType::RELEASE_UP, "release (up)" },
+    { TremoloBarType::INVERTED_DIP, "inverted dip" },
+    { TremoloBarType::RETURN, "return" },
+    { TremoloBarType::RELEASE_DOWN, "release (down)" },
+    { TremoloBarType::CUSTOM, "custom" }
 } };
 
 AsciiStringView TConv::toXml(TremoloBarType v)
