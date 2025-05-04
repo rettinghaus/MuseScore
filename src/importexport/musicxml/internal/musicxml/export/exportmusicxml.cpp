@@ -3992,7 +3992,7 @@ static void writeGuitarBend(XmlWriter& xml, Notations& notations, Technical& tec
             addColorAttr(bend, bendAttrs);
             xml.startElement("bend", bendAttrs);
             xml.tag("bend-alter", String::number(max_pitch / PitchValue::PITCH_FOR_SEMITONE, 2));
-            xml.tag("with-bar", TConv::toXml(static_cast<TremoloBarType>(bend->getProperty(Pid::TREMOLOBAR_TYPE))));
+            xml.tag("with-bar", TConv::toXml(parseTremoloBarTypeFromCurve(bend->points())));
             xml.endElement();
         }
     }
