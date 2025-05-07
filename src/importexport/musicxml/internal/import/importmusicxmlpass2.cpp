@@ -3097,6 +3097,7 @@ void MusicXmlParserPass2::attributes(const String& partId, Measure* measure, con
     const size_t nstaves = part->nstaves();
     Staff* topStaff = part->staff(0);
     if (nstaves > 1 && !topStaff->brackets().size()) {
+        // this is not correct, but for now we do not add an extra brace if there is already one bracket
         const size_t column = topStaff->bracketLevels() + 1;
         topStaff->setBracketType(column, BracketType::BRACE);
         topStaff->setBracketSpan(column, nstaves);
@@ -6025,7 +6026,7 @@ void MusicXmlParserPass2::partSymbol(const String& partId)
 
     size_t column = part->staff(relevantStaff)->bracketLevels() + 1;
     if (part->staff(relevantStaff)->bracketType(column) != BracketType::NO_BRACKET) {
-        column += 1; 
+        column += 1;
     }
     part->staff(relevantStaff)->setBracketType(column, bracketType);
     part->staff(relevantStaff)->setBracketSpan(column, span);
