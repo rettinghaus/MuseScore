@@ -1356,6 +1356,7 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
     const String accidAbove = notation.attribute(u"above");
     if (!accidAbove.empty()) {
         Accidental* accidental = Factory::createAccidental(turn);
+        accidental->setTrack(turn->track());
         accidental->setAccidentalType(musicXmlString2accidentalType(accidAbove));
         accidental->setParent(turn);
         turn->setAccidentalAbove(accidental);
@@ -1363,6 +1364,7 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
     const String accidBelow = notation.attribute(u"below");
     if (!accidBelow.empty()) {
         Accidental* accidental = Factory::createAccidental(turn);
+        accidental->setTrack(turn->track());
         accidental->setAccidentalType(musicXmlString2accidentalType(accidBelow));
         accidental->setParent(turn);
         turn->setAccidentalBelow(accidental);
