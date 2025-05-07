@@ -2608,6 +2608,7 @@ bool MeiImporter::readGliss(pugi::xml_node glissNode, Measure* measure)
         // We would need a dedicated list and tie each note once the second chord has been found.
         return true;
     }
+    LOGD() << "MeiImporter::readGliss found starting note";
 
     Glissando* gliss = Factory::createGlissando(startNote);
     m_uids->reg(gliss, meiGliss.m_xmlId);
@@ -2618,7 +2619,11 @@ bool MeiImporter::readGliss(pugi::xml_node glissNode, Measure* measure)
     gliss->setTrack2(startNote->track());
     gliss->setParent(startNote);
     gliss->setText(String(glissNode.text().as_string()));
+    LOGD() << "MeiImporter::readGliss set text " << glissNode.text().as_string();
+
     gliss->setGlissandoType(engraving::GlissandoType::WAVY);
+
+    LOGD() << "MeiImporter::readGliss created glissando";
 
     // Still add the glissando to the open Spanner map, which will handle glissandos differently as appropriate
     m_openSpannerMap[gliss] = glissNode;
@@ -3445,8 +3450,8 @@ void MeiImporter::addSpannerEnds()
             }
             LOGD() << "Found a note for a gliss end";
             Glissando* gliss = toGlissando(spannerMapEntry.first);
-            gliss->setTick2(endNote->chord()->tick());
             gliss->setEndElement(endNote);
+            gliss->setTick2(endNote->chord()->tick());
             gliss->setTrack2(endNote->track());
 
             // All other Spanners
