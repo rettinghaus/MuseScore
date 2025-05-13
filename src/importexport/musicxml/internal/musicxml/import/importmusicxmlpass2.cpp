@@ -2707,6 +2707,7 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
     DelayedArpMap delayedArps;
     HarmonyMap delayedHarmony;
     bool measureHasCoda = false;
+    double tpoSound = 0.0;
 
     // collect candidates for courtesy accidentals to work out at measure end
     std::map<Note*, int> alterMap;
@@ -2716,6 +2717,7 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
             attributes(partId, measure, time + mTime);
         } else if (m_e.name() == "direction") {
             MusicXmlParserDirection dir(m_e, m_score, m_pass1, *this, m_logger);
+            dir.setBpm(tpoSound);
             dir.direction(partId, measure, time + mTime, m_spanners, delayedDirections, inferredFingerings, delayedHarmony, measureHasCoda,
                           m_segnos);
         } else if (m_e.name() == "figured-bass") {
@@ -2758,8 +2760,6 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
             if (missingCurr.isValid()) {
                 mTime += missingCurr;
             }
-            // in any case a sound element hasn't been handled correctly, we reset it here
-            m_tpoSound = 0.0;
             //LOGD("added note %p chord %p gac %d", n, n ? n->chord() : 0, gac);
         } else if (m_e.name() == "forward") {
             Fraction dura;
@@ -2810,7 +2810,7 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
                     addElemOffset(t, m_pass1.trackForPart(partId), u"above", measure, tick);
                 }
             } else {
-                m_tpoSound = tempo;
+                tpoSound = tempo.toDouble() / 60;
             }
             m_e.skipCurrentElement();
         } else if (m_e.name() == "barline") {
