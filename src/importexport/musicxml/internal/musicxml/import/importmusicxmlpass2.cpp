@@ -2758,6 +2758,8 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
             if (missingCurr.isValid()) {
                 mTime += missingCurr;
             }
+            // in any case a sound element hasn't been handled correctly, we reset it here
+            m_tpoSound = 0.0;
             //LOGD("added note %p chord %p gac %d", n, n ? n->chord() : 0, gac);
         } else if (m_e.name() == "forward") {
             Fraction dura;
@@ -2788,7 +2790,7 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
         } else if (m_e.name() == "sound") {
             String tempo = m_e.attribute("tempo");
 
-            if (!tempo.empty()) {
+            if (!tempo.empty() && m_pass1.exporterSoftware() != MusicXmlExporterSoftware::DORICO) {
                 // sound tempo="..."
                 // create an invisible default TempoText
                 // to prevent duplicates, only if none is present yet
@@ -2807,6 +2809,8 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
 
                     addElemOffset(t, m_pass1.trackForPart(partId), u"above", measure, tick);
                 }
+            } else {
+                m_tpoSound = tempo;
             }
             m_e.skipCurrentElement();
         } else if (m_e.name() == "barline") {
