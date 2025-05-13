@@ -3538,6 +3538,7 @@ void MusicXmlParserDirection::direction(const String& partId,
                 }
             }
         }
+        m_tpoSound = 0.0;
 
         if (t) {
             if (m_enclosure == "circle") {
