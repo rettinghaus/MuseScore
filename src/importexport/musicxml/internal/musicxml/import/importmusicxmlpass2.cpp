@@ -2720,6 +2720,7 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
             dir.setBpm(tpoSound);
             dir.direction(partId, measure, time + mTime, m_spanners, delayedDirections, inferredFingerings, delayedHarmony, measureHasCoda,
                           m_segnos);
+            tpoSound = 0.0;
         } else if (m_e.name() == "figured-bass") {
             FiguredBass* fb = figuredBass();
             if (fb) {
@@ -3502,7 +3503,6 @@ void MusicXmlParserDirection::direction(const String& partId,
                     ((TempoText*)t)->setFollowText(true);
                 }
                 m_score->setTempo(tick, m_tpoSound);
-                m_tpoSound = 0.0;
                 tempoTextAdded = true;
             }
         } else {
