@@ -3503,6 +3503,7 @@ void MusicXmlParserDirection::direction(const String& partId,
                     ((TempoText*)t)->setFollowText(true);
                 }
                 m_score->setTempo(tick, m_tpoSound);
+                m_tpoSound = 0.0;
                 tempoTextAdded = true;
             }
         } else {
@@ -3538,7 +3539,6 @@ void MusicXmlParserDirection::direction(const String& partId,
                 }
             }
         }
-        m_tpoSound = 0.0;
 
         if (t) {
             if (m_enclosure == "circle") {
