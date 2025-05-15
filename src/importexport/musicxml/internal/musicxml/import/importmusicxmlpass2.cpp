@@ -2707,7 +2707,7 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
     DelayedArpMap delayedArps;
     HarmonyMap delayedHarmony;
     bool measureHasCoda = false;
-    double tpoSound = 0.0;  // helper for Dorico imports
+    double tempo = 0.0;  // helper for Dorico imports
 
     // collect candidates for courtesy accidentals to work out at measure end
     std::map<Note*, int> alterMap;
@@ -2717,10 +2717,10 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
             attributes(partId, measure, time + mTime);
         } else if (m_e.name() == "direction") {
             MusicXmlParserDirection dir(m_e, m_score, m_pass1, *this, m_logger);
-            dir.setBpm(tpoSound);
+            dir.setBpm(tempo);
             dir.direction(partId, measure, time + mTime, m_spanners, delayedDirections, inferredFingerings, delayedHarmony, measureHasCoda,
                           m_segnos);
-            tpoSound = 0.0;
+            tempo = 0.0;
         } else if (m_e.name() == "figured-bass") {
             FiguredBass* fb = figuredBass();
             if (fb) {
@@ -2729,6 +2729,28 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
         } else if (m_e.name() == "harmony") {
             harmony(partId, measure, time + mTime, delayedHarmony);
         } else if (m_e.name() == "note") {
+            if (tempo) {
+                // sound tempo="..."
+                // create an invisible default TempoText
+                // to prevent duplicates, only if none is present yet
+                Fraction tick = time + mTime;
+
+                if (canAddTempoText(m_score->tempomap(), tick.ticks())) {
+                    double tpo = tempo / 60;
+                    TempoText* t = Factory::createTempoText(m_score->dummy()->segment());
+                    t->setXmlText(String(u"%1 = %2").arg(TempoText::duration2tempoTextString(TDuration(DurationType::V_QUARTER)),
+                                                         String(tempo)));
+                    t->setVisible(false);
+                    t->setTempo(tpo);
+                    t->setFollowText(true);
+
+                    m_score->setTempo(tick, tpo);
+
+                    addElemOffset(t, m_pass1.trackForPart(partId), u"above", measure, tick);
+                }
+                tempo = 0.0;
+            }
+
             // Correct delayed ottava tick
             if (m_delayedOttava && m_delayedOttava->tick2() < time + mTime) {
                 handleSpannerStop(m_delayedOttava, m_delayedOttava->track2(), time + mTime, m_spanners);
@@ -2791,33 +2813,7 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
                 }
             }
         } else if (m_e.name() == "sound") {
-            String tempo = m_e.attribute("tempo");
-
-            if (!tempo.empty()) {
-                if (m_pass1.exporterSoftware() != MusicXmlExporterSoftware::DORICO) {
-                    // sound tempo="..."
-                    // create an invisible default TempoText
-                    // to prevent duplicates, only if none is present yet
-                    Fraction tick = time + mTime;
-
-                    if (canAddTempoText(m_score->tempomap(), tick.ticks())) {
-                        double tpo = tempo.toDouble() / 60;
-                        TempoText* t = Factory::createTempoText(m_score->dummy()->segment());
-                        t->setXmlText(String(u"%1 = %2").arg(TempoText::duration2tempoTextString(TDuration(DurationType::V_QUARTER)),
-                                                             tempo));
-                        t->setVisible(false);
-                        t->setTempo(tpo);
-                        t->setFollowText(true);
-
-                        m_score->setTempo(tick, tpo);
-
-                        addElemOffset(t, m_pass1.trackForPart(partId), u"above", measure, tick);
-                    }
-                } else {
-                    tpoSound = tempo.toDouble();
-                }
-            }
-            m_e.skipCurrentElement();
+            tempo = m_e.attribute("tempo").toDouble();
         } else if (m_e.name() == "barline") {
             barline(partId, measure, time + mTime);
         } else if (m_e.name() == "print") {
