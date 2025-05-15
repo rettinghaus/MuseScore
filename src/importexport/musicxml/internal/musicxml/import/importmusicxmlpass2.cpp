@@ -2783,8 +2783,6 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
             if (missingCurr.isValid()) {
                 mTime += missingCurr;
             }
-            // directions should be before a note, so we clear the tempo here again
-            tpoSound = 0.0;
             //LOGD("added note %p chord %p gac %d", n, n ? n->chord() : 0, gac);
         } else if (m_e.name() == "forward") {
             Fraction dura;
