@@ -2707,7 +2707,7 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
     DelayedArpMap delayedArps;
     HarmonyMap delayedHarmony;
     bool measureHasCoda = false;
-    double tpoSound = 0.0;
+    double tpoSound = 0.0;  // helper for Dorico imports
 
     // collect candidates for courtesy accidentals to work out at measure end
     std::map<Note*, int> alterMap;
@@ -2761,6 +2761,8 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
             if (missingCurr.isValid()) {
                 mTime += missingCurr;
             }
+            // directions should be before a note, so we clear the tempo here again
+            tpoSound = 0.0;
             //LOGD("added note %p chord %p gac %d", n, n ? n->chord() : 0, gac);
         } else if (m_e.name() == "forward") {
             Fraction dura;
