@@ -3989,7 +3989,7 @@ static void writeNotehead(XmlWriter& xml, const Note* const note)
     } else if ((note->headType() == NoteHeadType::HEAD_HALF) || (note->headType() == NoteHeadType::HEAD_WHOLE)) {
         noteheadTagname += u" filled=\"no\"";
     }
-    if (!note->visible() && note->chord()->stem()->visible()) {
+    if (!note->visible() && (note->chord()->stem() && note->chord()->stem()->visible())) {
         // The notehead is invisible but the stem isn't
         xml.tagRaw(noteheadTagname, "none");
     } else if (note->headScheme() == NoteHeadScheme::HEAD_SHAPE_NOTE_4) {
@@ -4481,11 +4481,12 @@ void ExportMusicXml::chord(Chord* chord, staff_idx_t staff, const std::vector<Ly
             noteTag += String(u" dynamics=\"%1\"").arg(String::number(velo * 100.0 / 90.0, 2));
         }
 
+        const Stem* stem = note->chord()->stem();
         bool dotsVisible = true;
         if (note->dots().empty() || std::all_of(note->dots().begin(), note->dots().end(), [](NoteDot* dot) { return !dot->visible(); })) {
             dotsVisible = false;
         }
-        if (!note->visible() && !note->chord()->stem()->visible()) {
+        if (!note->visible() && (stem && !stem->visible())) {
             // TODO: take care of accidental
             // note->accidental()->visible()
             if (dotsVisible) {
@@ -4568,9 +4569,9 @@ void ExportMusicXml::chord(Chord* chord, staff_idx_t staff, const std::vector<Ly
         writeTimeModification(m_xml, note->chord()->tuplet(), tremoloCorrection(note));
 
         // no stem for whole notes and beyond
-        if (chord->noStem() || chord->measure()->stemless(chord->staffIdx()) || (chord->stem() && !chord->stem()->visible())) {
+        if (chord->noStem() || chord->measure()->stemless(chord->staffIdx()) || (stem && !stem->visible())) {
             m_xml.tag("stem", "none");
-        } else if (const Stem* stem = note->chord()->stem()) {
+        } else if (stem) {
             String stemTag = u"stem";
             stemTag += color2xml(stem);
             m_xml.tagRaw(stemTag, note->chord()->up() ? "up" : "down");
