@@ -3920,7 +3920,7 @@ static bool isNoteheadParenthesis(const Symbol* symbol)
 //   writeNotehead
 //---------------------------------------------------------
 
-static void writeNotehead(XmlWriter& xml, const Note* const note)
+static void writeNotehead(XmlWriter& xml, const Note* const note, const bool stem)
 {
     String noteheadTagname = u"notehead";
     noteheadTagname += color2xml(note);
@@ -3943,7 +3943,7 @@ static void writeNotehead(XmlWriter& xml, const Note* const note)
     } else if ((note->headType() == NoteHeadType::HEAD_HALF) || (note->headType() == NoteHeadType::HEAD_WHOLE)) {
         noteheadTagname += u" filled=\"no\"";
     }
-    if (!note->visible() && (note->chord()->stem() && note->chord()->stem()->visible())) {
+    if (!note->visible() && stem) {
         // The notehead is invisible but the stem isn't
         xml.tagRaw(noteheadTagname, "none");
     } else if (note->headGroup() == NoteHeadGroup::HEAD_SLASH) {
@@ -4482,7 +4482,7 @@ void ExportMusicXml::chord(Chord* chord, staff_idx_t staff, const std::vector<Ly
             m_xml.tagRaw(stemTag, note->chord()->up() ? "up" : "down");
         }
 
-        writeNotehead(m_xml, note);
+        writeNotehead(m_xml, note, stem && stem->visible());
 
         // LVIFIX: check move() handling
         if (staff) {
