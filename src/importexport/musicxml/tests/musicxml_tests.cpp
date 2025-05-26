@@ -820,6 +820,9 @@ TEST_F(MusicXml_Tests, invalidTimesig) {
 TEST_F(MusicXml_Tests, invisibleElements) {
     musicXmlIoTest("testInvisibleElements");
 }
+TEST_F(MusicXml_Tests, invisibleAccid) {
+    musicXmlIoTest("testInvisibleAccid");
+}
 TEST_F(MusicXml_Tests, invisibleNote) {
     musicXmlMscxExportTestRef("testInvisibleNote");
 }
