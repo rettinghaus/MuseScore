@@ -4563,7 +4563,7 @@ void ExportMusicXml::chord(Chord* chord, staff_idx_t staff, const std::vector<Ly
             dotTag += elementPosition(this, dot);
             m_xml.tagRaw(dotTag);
         }
-        if (note->accidental()->visible()) {
+        if (note->accidental() && note->accidental()->visible()) {
             writeAccidental(m_xml, u"accidental", note->accidental());
         }
         writeTimeModification(m_xml, note->chord()->tuplet(), tremoloCorrection(note));
