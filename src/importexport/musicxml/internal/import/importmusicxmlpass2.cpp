@@ -7311,12 +7311,11 @@ Note* MusicXmlParserPass2::note(const String& partId,
         }
 
         // accidental handling
-        //LOGD("note acc %p type %hhd acctype %hhd",
-        //       acc, acc ? acc->accidentalType() : static_cast<mu::engraving::AccidentalType>(0), accType);
         Accidental* acc = mnp.acc();
         if (!acc && mnp.accType() != AccidentalType::NONE) {
             acc = Factory::createAccidental(m_score->dummy());
             acc->setAccidentalType(mnp.accType());
+            acc->setVisible(false);
         }
 
         if (acc) {
