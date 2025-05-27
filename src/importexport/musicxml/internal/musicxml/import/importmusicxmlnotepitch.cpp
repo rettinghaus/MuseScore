@@ -143,7 +143,7 @@ void MusicXmlNotePitch::pitch(muse::XmlStreamReader& e)
                 m_logger->logError(String(u"invalid alter '%1'").arg(alter), &e);
                 bool ok2;
                 const double altervalue = alter.toDouble(&ok2);
-                if (ok2 && (std::abs(altervalue) < 2.0) && (m_accType == AccidentalType::NONE)) {
+                if (ok2 && (std::abs(altervalue) < 2.0) && (m_accType == AccidentalType::NONE) && !m_acc) {
                     // try to see if a microtonal accidental is needed
                     m_accType = microtonalGuess(altervalue);
 
