@@ -2062,7 +2062,8 @@ void MusicXmlParserPass1::defaults()
                 }
             }
         } else if (m_e.name() == "music-font") {
-            std::string musicFontString = m_e.readText().toStdString();
+            StringList fontlist = m_e.readText().split(",");
+            std::string musicFontString = fontlist.at(0).toStdString();
             m_score->setEngravingFont(m_score->engravingFonts()->fontByName(musicFontString));
         } else if (m_e.name() == "word-font") {
             wordFontFamily = m_e.attribute("font-family");
