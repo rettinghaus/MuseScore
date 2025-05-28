@@ -57,7 +57,7 @@
       <note-size type="grace">75</note-size>
       <note-size type="grace-cue">56.25</note-size>
       </appearance>
-    <music-font font-family="Leland"/>
+    <music-font font-family="Finale Maestro,engraved"/>
     <word-font font-family="Edwin" font-size="10"/>
     <lyric-font font-family="Edwin" font-size="10"/>
     </defaults>
