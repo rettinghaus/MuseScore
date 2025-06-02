@@ -7,7 +7,7 @@ on:
       code_coverage:
         description: 'Enable code coverage'
         required: false
-        default: 'false'
+        type: boolean
       use_qt69:
         description: 'Use Qt 6.9'
         default: 'on'
@@ -91,7 +91,7 @@ jobs:
         ASAN_OPTIONS: "detect_leaks=0"
 
     - name: Code coverage
-      if: ( github.event_name == 'schedule' || inputs.code_coverage == 'true' ) && github.repository == 'musescore/MuseScore'
+      if: ( github.event_name == 'schedule' || inputs.code_coverage ) && github.repository == 'musescore/MuseScore'
       run: |
         lcov --capture --directory "$(pwd)/build.debug/" --output-file coverage.info
         lcov --remove coverage.info '/usr/*' '*/tests/*' '*/thirdparty/*' '*/moc_*' '*framework/Headers/*' '*/hb-*' '*/Qt/*' --output-file filtered_coverage.info
@@ -99,7 +99,7 @@ jobs:
         python3 buildscripts/ci/linux/tools/lcov_badger.py filtered_coverage.info coverage_badge.svg
 
     - name: Push to S3
-      if: ( github.event_name == 'schedule' || inputs.code_coverage == 'true' ) && github.repository == 'musescore/MuseScore'
+      if: ( github.event_name == 'schedule' || inputs.code_coverage ) && github.repository == 'musescore/MuseScore'
       run: |
         S3_URL='s3://extensions.musescore.org/test/code_coverage/coverage_badge.svg'
 
