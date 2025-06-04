@@ -2262,7 +2262,7 @@ void MusicXmlParserPass2::part()
         for (track_idx_t trk = strack; trk < etrack; trk++) {
             m_extendedLyrics.setExtend(-1, trk, lastTick);
         }
-        if (m_delayedOttava && m_delayedOttava->tick2() < lastTick) {
+        if (m_delayedOttava && m_delayedOttava->tick2() <= lastTick) {
             handleSpannerStop(m_delayedOttava, m_delayedOttava->track2(), lastTick, m_spanners);
             m_delayedOttava = nullptr;
         }
