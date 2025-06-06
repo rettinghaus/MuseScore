@@ -671,8 +671,9 @@ Segment* MeiImporter::findSegment(const libmei::Element& meiElement, Measure* me
             staffIdentAtt->GetStaff().at(0)) - 1 : 0;
         const int layer = (layerIdentAtt->HasLayer()) ? this->getVoiceIndex(staffIdx, layerIdentAtt->GetLayer() - 1) : 0;
 
-        TimeTickAnchor* anchor = createTimeTickAnchor(measure, tstampFraction, staffIdx);
+        TimeTickAnchor* anchor = EditTimeTickAnchors::createTimeTickAnchor(measure, tstampFraction, staffIdx);
         // Convert::logs.push_back(String("Could not find element corresponding to @tstamp '%1'").arg(timestampLogAtt->GetTstamp()));
+        EditTimeTickAnchors::updateLayout(measure);
         return anchor->segment();
     }
 
