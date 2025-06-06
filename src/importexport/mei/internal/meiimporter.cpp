@@ -507,8 +507,8 @@ EngravingItem* MeiImporter::addAnnotation(const libmei::Element& meiElement, Mea
 
 Spanner* MeiImporter::addSpanner(const libmei::Element& meiElement, Measure* measure, pugi::xml_node node)
 {
-    EngravingItem* item = this->findStart(meiElement, measure);
-    Segment* segment = item->segment();
+    ChordRest* chordRest = this->findStart(meiElement, measure);
+    Segment* segment = chordRest->segment();
     if (!segment) {
         return nullptr;
     }
