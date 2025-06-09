@@ -4531,7 +4531,8 @@ void ExportMusicXml::rest(Rest* rest, staff_idx_t staff, const std::vector<Lyric
     // as no display-step or display-octave should be written for a tablature staff,
 
     if (clef != ClefType::TAB && clef != ClefType::TAB_SERIF && clef != ClefType::TAB4 && clef != ClefType::TAB4_SERIF) {
-        double yOffsSp = -2 * rest->offset().y() / rest->spatium();              // positive = up, one spatium is two pitches
+        int autoOffset = rest->computeVoiceOffset(rest->staff()->lines(Fraction(0, 1)), rest->mutldata());
+        double yOffsSp = -2 * rest->offset().y() / rest->spatium() - 4 * autoOffset; // positive = up, one spatium is two pitches
         yOffsSt = int(yOffsSp > 0.0 ? yOffsSp + 0.5 : yOffsSp - 0.5);            // same rounded to int
 
         po -= 4;        // pitch middle staff line (two lines times two steps lower than top line)
@@ -4566,6 +4567,7 @@ void ExportMusicXml::rest(Rest* rest, staff_idx_t staff, const std::vector<Lyric
     if (yOffsSt == 0) {
         m_xml.tagRaw(restTag);
     } else {
+        int autoOffset = rest->computeVoiceOffset(rest->staff()->lines(Fraction(0, 1)), rest->mutldata());
         m_xml.startElementRaw(restTag);
         m_xml.tag("display-step", String(Char(table2[stp])));
         m_xml.tag("display-octave", oct);
