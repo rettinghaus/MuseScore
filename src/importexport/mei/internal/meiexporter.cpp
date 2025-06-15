@@ -993,6 +993,8 @@ bool MeiExporter::writeLayer(track_idx_t track, const Staff* staff, const Measur
             //
         } else if (item->isBreath()) {
             //
+        } else if (item->isHairpin()) {
+            this->writeHairpin(dynamic_cast<const Hairpin*>(item), "");
         } else if (item->isKeySig()) {
             if (m_keySig && (seg != m_keySig)) {
                 LOGD() << "MeiExporter::writeLayer unexpected KeySig segment";
@@ -1824,7 +1826,12 @@ bool MeiExporter::writeHairpin(const Hairpin* hairpin, const std::string& starti
 
     pugi::xml_node hairpinNode = m_currentNode.append_child();
     libmei::Hairpin meiHairpin = Convert::hairpinToMEI(hairpin);
-    meiHairpin.SetStartid(startid);
+    if (startid.empty()) {
+        double tstamp = Convert::tstampFromFraction(hairpin->tick() - hairpin->tick(), hairpin->startMeasure()->timesig());
+        meiHairpin.SetTstamp(tstamp);
+    } else {
+        meiHairpin.SetStartid(startid);
+    }
     meiHairpin.Write(hairpinNode, this->getXmlIdFor(hairpin, 'h'));
 
     // Add the node to the map of open control events
