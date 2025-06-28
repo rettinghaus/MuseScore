@@ -1874,6 +1874,8 @@ bool MeiExporter::writeHairpin(const Hairpin* hairpin, const std::string& starti
 
     pugi::xml_node hairpinNode = m_currentNode.append_child();
     libmei::Hairpin meiHairpin = Convert::hairpinToMEI(hairpin);
+    double tstamp = Convert::tstampFromFraction(hairpin->tick() - hairpin->tick(), hairpin->startMeasure()->timesig());
+    meiHairpin.SetTstamp(tstamp);
     if (startid.empty()) {
         double tstamp = Convert::tstampFromFraction(hairpin->tick() - hairpin->tick(), hairpin->startMeasure()->timesig());
         meiHairpin.SetTstamp(tstamp);
