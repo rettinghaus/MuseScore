@@ -1851,7 +1851,7 @@ bool MeiImporter::readClef(pugi::xml_node clefNode, Measure* measure, int track,
  * Set MuseScore TremoloType.
  */
 
-bool MeiImporter::readFTrem(pugi::xml_node fTremNode, Measure* measure, int track, int& ticks)
+bool MeiImporter::readFTrem(pugi::xml_node fTremNode, Measure* measure, int track, Fraction& ticks)
 {
     IF_ASSERT_FAILED(measure) {
         return false;
