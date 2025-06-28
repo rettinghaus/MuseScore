@@ -3465,10 +3465,10 @@ void MeiImporter::addSpannerEnds()
                 continue;
             }
             Glissando* gliss = toGlissando(spannerMapEntry.first);
-            gliss->setTick2(endNote->chord()->tick());
             gliss->setEndElement(endNote);
+            gliss->setTick2(endNote->chord()->tick());
             gliss->setTrack2(endNote->track());
-            gliss->setParent(endNote);
+            //gliss->setParent(endNote);
 
             // All other Spanners
         } else if (spannerMapEntry.first->startCR()) {
