@@ -261,7 +261,7 @@ ChordRest* MeiImporter::addChordRest(pugi::xml_node node, Measure* measure, int 
     TDuration duration;
     duration.setType(Convert::durFromMEI(durationLogAtt->GetDur(), warning));
     if (node.select_node("ancestor::fTrem")) {
-        duration.setType(static_cast<DurationType>(duration.type() + 1)); // fTrem is a tremolo, so we increase the duration type
+        duration.setType(Convert::durFromMEI(static_cast<libmei::data_DURATION>(durationLogAtt->GetDur() + libmei::DURATION_breve), warning)); // fTrem is a tremolo, so we increase the duration type
     }
     if (warning) {
         this->addLog("duration", node);
