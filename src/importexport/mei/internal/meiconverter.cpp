@@ -512,6 +512,30 @@ libmei::Artic Convert::articToMEI(const engraving::Articulation* articulation)
     return meiArtic;
 }
 
+libmei::Artic Convert::articToMEI(const engraving::ChordLine* chordline)
+{
+    libmei::Artic meiArtic;
+
+    // @artic
+    switch (chordline->chordLineType()) {
+    case engraving::ChordLineType::FALL: meiArtic.SetArtic({ libmei::ARTICULATION_fall });
+        break;
+    case engraving::ChordLineType::DOIT: meiArtic.SetArtic({ libmei::ARTICULATION_doit });
+        break;
+    case engraving::ChordLineType::PLOP: meiArtic.SetArtic({ libmei::ARTICULATION_plop });
+        break;
+    case engraving::ChordLineType::SCOOP: meiArtic.SetArtic({ libmei::ARTICULATION_scoop });
+        break;
+    case engraving::ChordLineType::NOTYPE: meiArtic.SetArtic({ libmei::ARTICULATION_NONE });
+        break;
+    }
+
+    // @color
+    Convert::colorToMEI(chordline, meiArtic);
+
+    return meiArtic;
+}
+
 engraving::BarLineType Convert::barlineFromMEI(const libmei::data_BARRENDITION meiBarline, bool& warning)
 {
     warning = false;

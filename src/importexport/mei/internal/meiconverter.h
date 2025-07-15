@@ -24,6 +24,7 @@
 
 #include "engraving/dom/articulation.h"
 #include "engraving/dom/accidental.h"
+#include "engraving/dom/chordline.h"
 #include "engraving/dom/harppedaldiagram.h"
 #include "engraving/dom/interval.h"
 #include "engraving/dom/timesig.h"
@@ -159,6 +160,7 @@ public:
 
     static void articFromMEI(engraving::Articulation* articulation, const libmei::Artic& meiArtic, bool& warning);
     static libmei::Artic articToMEI(const engraving::Articulation* articulation);
+    static libmei::Artic articToMEI(const engraving::ChordLine* chordline);
 
     static engraving::BarLineType barlineFromMEI(const libmei::data_BARRENDITION meiBarline, bool& warning);
     static libmei::data_BARRENDITION barlineToMEI(engraving::BarLineType barline);
