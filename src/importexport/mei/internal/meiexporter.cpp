@@ -35,6 +35,7 @@
 #include "engraving/dom/bracket.h"
 #include "engraving/dom/breath.h"
 #include "engraving/dom/chord.h"
+#include "engraving/dom/chordline.h"
 #include "engraving/dom/clef.h"
 #include "engraving/dom/dynamic.h"
 #include "engraving/dom/fermata.h"
@@ -1044,6 +1045,11 @@ bool MeiExporter::writeArtics(const Chord* chord)
         }
     }
 
+    const ChordLine* chordline = chord->chordLine();
+    if (chordline) {
+        this->writeArtic(chordline);
+    }
+
     return true;
 }
 
@@ -1060,6 +1066,19 @@ bool MeiExporter::writeArtic(const Articulation* articulation)
     pugi::xml_node articNode = m_currentNode.append_child();
     libmei::Artic meiArtic = Convert::articToMEI(articulation);
     meiArtic.Write(articNode, this->getXmlIdFor(articulation, 'a'));
+
+    return true;
+}
+
+bool MeiExporter::writeArtic(const ChordLine* chordline)
+{
+    IF_ASSERT_FAILED(chordline) {
+        return false;
+    }
+
+    pugi::xml_node articNode = m_currentNode.append_child();
+    libmei::Artic meiArtic = Convert::articToMEI(chordline);
+    meiArtic.Write(articNode, this->getXmlIdFor(chordline, 'a'));
 
     return true;
 }
