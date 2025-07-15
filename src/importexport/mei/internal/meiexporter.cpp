@@ -1039,17 +1039,20 @@ bool MeiExporter::writeArtics(const Chord* chord)
         return false;
     }
 
-    for (const Articulation* articulation : chord->articulations()) {
-        if (articulation->isArticulation() && !this->isLaissezVibrer(articulation->symId())) {
-            this->writeArtic(articulation);
+    for (const EngravingItem* item : chord->el()) {
+        if (item->isArticulation()) {
+            const Articulation* articulation = toArticulation(item);
+            if (!this->isLaissezVibrer(articulation->symId())) {
+                this->writeArtic(articulation);
+            }
+        } else if (item->isChordLine()) {
+            const ChordLine* chordline = toChordLine(item);
+            if (chordline) {
+                this->writeArtic(chordline);
+            }
         }
     }
-
-    const ChordLine* chordline = chord->chordLine();
-    if (chordline) {
-        this->writeArtic(chordline);
-    }
-
+ 
     return true;
 }
 
