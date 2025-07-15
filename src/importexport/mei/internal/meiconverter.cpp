@@ -530,6 +530,13 @@ libmei::Artic Convert::articToMEI(const engraving::ChordLine* chordline)
         break;
     }
 
+    // @type
+    if (chordline->isWavy()) {
+        meiArtic.SetType(std::string(CHORDLINE_TYPE) + "wavy");
+    } else if (chordline->isStraight()) {
+        meiArtic.SetType(std::string(CHORDLINE_TYPE) + "straight");
+    }
+
     // @color
     Convert::colorToMEI(chordline, meiArtic);
 
