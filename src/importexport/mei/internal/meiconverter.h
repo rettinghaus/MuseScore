@@ -81,6 +81,8 @@ enum ElisionType {
 #define MARKER_TYPE "mscore-marker-"
 // The @type attribute prefix for tempo inferring type in <tempo>
 #define TEMPO_INFER_FROM_TEXT "mscore-infer-from-text"
+// The @type attribute prefix for chordline type in <artic>
+#define CHORDLINE_TYPE "mscore-"
 // The @type attribute prefixes for ornament interval (above/below)
 #define INTERVAL_ABOVE "mscore-above-"
 #define INTERVAL_BELOW "mscore-below-"
