@@ -1047,9 +1047,7 @@ bool MeiExporter::writeArtics(const Chord* chord)
             }
         } else if (item->isChordLine()) {
             const ChordLine* chordline = toChordLine(item);
-            if (chordline) {
-                this->writeArtic(chordline);
-            }
+            this->writeArtic(chordline);
         }
     }
  
