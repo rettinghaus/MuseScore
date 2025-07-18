@@ -453,6 +453,7 @@ private:
     void part();
     void measure(const muse::String& partId, const engraving::Fraction time);
     void measureLayout(engraving::Measure* measure);
+    void measureNumbering();
     void setMeasureRepeats(const engraving::staff_idx_t scoreRelStaff, engraving::Measure* measure);
     void attributes(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
     void measureStyle(engraving::Measure* measure);

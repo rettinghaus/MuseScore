@@ -2902,6 +2902,8 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
                         m_e.skipCurrentElement();            // skip but don't log
                     } else if (m_e.name() == "measure-layout") {
                         measureLayout(measure);
+                    } else if (m_e.name() == "measure-numbering") {
+                        measureNumbering();
                     } else {
                         skipLogCurrElem();
                     }
@@ -3066,6 +3068,27 @@ void MusicXmlParserPass2::measureLayout(Measure* measure)
         } else {
             skipLogCurrElem();
         }
+    }
+}
+
+//---------------------------------------------------------
+//   measureNumbering
+//---------------------------------------------------------
+
+void MusicXmlParserPass2::measureNumbering()
+{
+    const String measureNumberingValue = m_e.readText();
+    const Color color = Color::fromString(m_e.attribute("color"));
+    if (color.isValid()) {
+        m_score->style().set(Sid::measureNumberColor, m_e.attribute("color"));
+    }
+
+    m_score->style().set(Sid::measureNumberFontSize, m_e.attribute("font-size").toDouble());
+
+    m_score->style().set(Sid::mmRestShowMeasureNumberRange, m_e.attribute("multiple-rest-range") == "yes");
+
+    if (measureNumberingValue == "none") {
+        m_score->style().set(Sid::showMeasureNumber, false);
     }
 }
 
