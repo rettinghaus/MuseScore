@@ -3079,11 +3079,17 @@ void MusicXmlParserPass2::measureNumbering()
 {
     const String measureNumberingValue = m_e.readText();
     const Color color = Color::fromString(m_e.attribute("color"));
+    const double fontSize = m_e.attribute("font-size").toDouble();
+    const String fontStyle = m_e.attribute("font-style");
+    const String fontWeight = m_e.attribute("font-weight");
+
     if (color.isValid()) {
         m_score->style().set(Sid::measureNumberColor, m_e.attribute("color"));
     }
 
-    m_score->style().set(Sid::measureNumberFontSize, m_e.attribute("font-size").toDouble());
+    if (fontSize) {
+        m_score->style().set(Sid::measureNumberFontSize, fontSize);
+    }
 
     m_score->style().set(Sid::mmRestShowMeasureNumberRange, m_e.attribute("multiple-rest-range") == "yes");
 
