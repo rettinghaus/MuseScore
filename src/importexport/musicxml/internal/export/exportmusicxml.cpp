@@ -7538,10 +7538,21 @@ void ExportMusicXml::measureNumbering()
     const MStyle& style = m_score->style();
     String measureNumberingValue = u"system";
     XmlWriter::Attributes attributes;
+
     const Color measureNumberColor = style.styleV(Sid::measureNumberColor).value<Color>(); 
     if (measureNumberColor != engravingConfiguration()->defaultColor()) {
         attributes.push_back({ "color", String::fromStdString(measureNumberColor.toString()) });
     }
+
+    attributes.push_back({ "font-size", String::number(style.styleD(Sid::measureNumberFontSize)) });
+    FontStyle fStyle = style.styleV(Sid::measureNumberFontStyle).value<FontStyle>();
+    if (!(fStyle & FontStyle::Italic)) {
+        attributes.push_back({ "font-style", "normal" });
+    }
+    if (fStyle & FontStyle::Bold) {
+        attributes.push_back({ "font-weight", "bold" });
+    }
+
     if (!style.styleB(Sid::showMeasureNumber)) {
         measureNumberingValue = u"none";
     } else {
