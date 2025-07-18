@@ -432,6 +432,7 @@ private:
     void print(const Measure* const m, const int partNr, const int firstStaffOfPart, const size_t nrStavesInPart,
                const MeasurePrintContext& mpc);
     void measureLayout(const double distance);
+    void measureNumbering();
     void findAndExportClef(const Measure* const m, const int staves, const track_idx_t strack, const track_idx_t etrack);
     void exportDefaultClef(const Part* const part, const Measure* const m);
     void writeElement(EngravingItem* el, const Measure* m, staff_idx_t sstaff, bool useDrumset);
@@ -7389,6 +7390,9 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
                 measureLayout(m->prev()->width());
             }
 
+            // Measure numbering style.
+            measureNumbering();
+
             m_xml.endElement();
         } else if (!newSystemOrPage.empty()) {
             m_xml.tagRaw(String(u"print%1").arg(newSystemOrPage));
@@ -7409,6 +7413,30 @@ void ExportMusicXml::measureLayout(const double distance)
     m_xml.startElement("measure-layout");
     m_xml.tag("measure-distance", String::number(getTenthsFromDots(distance), 2));
     m_xml.endElement();
+}
+
+//---------------------------------------------------------
+//  measureNumbering
+//---------------------------------------------------------
+
+void ExportMusicXml::measureNumbering()
+{
+    const MStyle& style = m_score->style();
+    String measureNumberingValue = u"system";
+    XmlWriter::Attributes attributes;
+    const Color measureNumberColor = style.styleV(Sid::measureNumberColor).value<Color>(); 
+    if (measureNumberColor != engravingConfiguration()->defaultColor()) {
+        attributes.push_back({ "color", String::fromStdString(measureNumberColor.toString()) });
+    }
+    if (!style.styleB(Sid::showMeasureNumber)) {
+        measureNumberingValue = u"none";
+    } else {
+        if (style.styleB(Sid::mmRestShowMeasureNumberRange)) {
+            attributes.push_back({ "multiple-rest-always", "yes" });
+            attributes.push_back({ "multiple-rest-range", "yes" });
+        }
+    }
+    m_xml.tag("measure-numbering", attributes, measureNumberingValue);
 }
 
 //---------------------------------------------------------
