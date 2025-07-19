@@ -95,7 +95,7 @@
             </system-margins>
           <top-system-distance>170</top-system-distance>
           </system-layout>
-          <measure-numbering font-size="10">system</measure-numbering>
+        <measure-numbering font-size="10">system</measure-numbering>
         </print>
       <attributes>
         <divisions>1</divisions>

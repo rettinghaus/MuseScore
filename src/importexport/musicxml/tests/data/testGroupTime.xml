@@ -100,7 +100,17 @@
     <part-group type="stop" number="1"/>
     </part-list>
   <part id="P1">
-    <measure number="1">
+    <measure number="1" width="162.25">
+      <print>
+        <system-layout>
+          <system-margins>
+            <left-margin>126.16</left-margin>
+            <right-margin>0</right-margin>
+            </system-margins>
+          <top-system-distance>170</top-system-distance>
+          </system-layout>
+        <measure-numbering font-size="10">system</measure-numbering>
+        </print>
       <attributes>
         <divisions>1</divisions>
         <key>
@@ -347,7 +357,13 @@
       </measure>
     </part>
   <part id="P2">
-    <measure number="1">
+    <measure number="1" width="162.25">
+      <print>
+        <staff-layout number="1">
+          <staff-distance>57.53</staff-distance>
+          </staff-layout>
+        <measure-numbering font-size="10">system</measure-numbering>
+        </print>
       <attributes>
         <divisions>1</divisions>
         <key>
@@ -594,7 +610,13 @@
       </measure>
     </part>
   <part id="P3">
-    <measure number="1">
+    <measure number="1" width="162.25">
+      <print>
+        <staff-layout number="1">
+          <staff-distance>57.53</staff-distance>
+          </staff-layout>
+        <measure-numbering font-size="10">system</measure-numbering>
+        </print>
       <attributes>
         <divisions>1</divisions>
         <key>
@@ -837,7 +859,13 @@
       </measure>
     </part>
   <part id="P4">
-    <measure number="1">
+    <measure number="1" width="162.25">
+      <print>
+        <staff-layout number="1">
+          <staff-distance>57.53</staff-distance>
+          </staff-layout>
+        <measure-numbering font-size="10">system</measure-numbering>
+        </print>
       <attributes>
         <divisions>1</divisions>
         <key>
