@@ -3091,17 +3091,15 @@ void MusicXmlParserPass2::measureNumbering()
         m_score->style().set(Sid::measureNumberFontSize, fontSize);
     }
     FontStyle fs = FontStyle::Normal;
-    if (fontStyle == "italic") {
-        fs = fs + FontStyle::Italic;
-    } else {
-        fs = fs - FontStyle::Italic;
-    }
     if (fontWeight == "bold") {
         fs = fs + FontStyle::Bold;
-    } else {
-        fs = fs - FontStyle::Bold;
     }
-    m_score->style().set(Sid::measureNumberFontStyle, int(fs));
+    if (fontStyle != "italic") {
+        fs = fs - FontStyle::Italic;
+    }
+    if (int(fs)) {
+        m_score->style().set(Sid::measureNumberFontStyle, int(fs));
+    }
 
     m_score->style().set(Sid::mmRestShowMeasureNumberRange, m_e.attribute("multiple-rest-range") == "yes");
 
