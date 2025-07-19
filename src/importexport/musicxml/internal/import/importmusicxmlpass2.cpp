@@ -3090,14 +3090,18 @@ void MusicXmlParserPass2::measureNumbering()
     if (fontSize) {
         m_score->style().set(Sid::measureNumberFontSize, fontSize);
     }
-    FontStyle fs = FontStyle::Normal;
-    if (fontWeight == "bold") {
-        fs = fs + FontStyle::Bold;
-    }
-    if (fontStyle != "italic") {
-        fs = fs - FontStyle::Italic;
-    }
-    if (int(fs)) {
+    if (!fontWeight.empty() || !fontStyle.empty()) {
+        FontStyle fs = FontStyle::Normal;
+        if (fontWeight == "bold") {
+            fs = fs + FontStyle::Bold;
+        } else {
+            fs = fs - FontStyle::Bold;
+        }
+        if (fontStyle == "italic") {
+            fs = fs + FontStyle::Italic;
+        } else {
+            fs = fs - FontStyle::Italic;
+        }
         m_score->style().set(Sid::measureNumberFontStyle, int(fs));
     }
 
