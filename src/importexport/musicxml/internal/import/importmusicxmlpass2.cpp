@@ -3101,7 +3101,7 @@ void MusicXmlParserPass2::measureNumbering()
     } else {
         fs = fs - FontStyle::Bold;
     }
-    m_score->style().set(Sid::measureNumberFontStyle, fs);
+    m_score->style().set(Sid::measureNumberFontStyle, int(fs));
 
     m_score->style().set(Sid::mmRestShowMeasureNumberRange, m_e.attribute("multiple-rest-range") == "yes");
 
