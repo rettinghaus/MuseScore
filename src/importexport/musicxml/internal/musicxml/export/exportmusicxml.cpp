@@ -7383,8 +7383,10 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
                 measureLayout(m->prev()->width());
             }
 
-            // Measure numbering style.
-            measureNumbering();
+            if (mpc.scoreStart) {
+                // Measure numbering style.
+                measureNumbering();
+            }
 
             m_xml.endElement();
         } else if (!newSystemOrPage.empty()) {
