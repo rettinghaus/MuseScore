@@ -7473,8 +7473,10 @@ void ExportMusicXml::print(const Measure* const m, const int partNr, const int f
                 m_xml.tag("top-system-distance", String::number(topSysDist, 2));
             }
 
-            // Measure numbering style.
-            measureNumbering();
+            if (mpc.scoreStart) {
+                // Measure numbering style.
+                measureNumbering();
+            }
 
             m_xml.endElement();
         }
