@@ -3080,8 +3080,8 @@ void MusicXmlParserPass2::measureNumbering()
     const String measureNumberingValue = m_e.readText();
     const Color color = Color::fromString(m_e.attribute("color"));
     const double fontSize = m_e.attribute("font-size").toDouble();
-    const String fontStyle = m_e.attribute("font-style");
-    const String fontWeight = m_e.attribute("font-weight");
+    const AsciiStringView fontStyle = m_e.asciiAttribute("font-style");
+    const AsciiStringView fontWeight = m_e.asciiAttribute("font-weight");
 
     if (color.isValid()) {
         m_score->style().set(Sid::measureNumberColor, m_e.attribute("color"));
@@ -3090,6 +3090,18 @@ void MusicXmlParserPass2::measureNumbering()
     if (fontSize) {
         m_score->style().set(Sid::measureNumberFontSize, fontSize);
     }
+    FontStyle fs = FontStyle::Normal;
+    if (fontStyle == "italic") {
+        fs = fs + FontStyle::Italic;
+    } else {
+        fs = fs - FontStyle::Italic;
+    }
+    if (fontWeight == "bold") {
+        fs = fs + FontStyle::Bold;
+    } else {
+        fs = fs - FontStyle::Bold;
+    }
+    m_score->style().set(Sid::measureNumberFontStyle, fs);
 
     m_score->style().set(Sid::mmRestShowMeasureNumberRange, m_e.attribute("multiple-rest-range") == "yes");
 
