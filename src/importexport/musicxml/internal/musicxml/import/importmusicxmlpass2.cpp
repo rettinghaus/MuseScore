@@ -3015,7 +3015,7 @@ void MusicXmlParserPass2::measureNumbering()
         m_score->style().set(Sid::measureNumberColor, m_e.attribute("color"));
     }
 
-    if (fontSize) {
+    if (fontSize > 0.001) {
         m_score->style().set(Sid::measureNumberFontSize, fontSize);
     }
     if (!fontWeight.empty() || !fontStyle.empty()) {
@@ -3028,6 +3028,10 @@ void MusicXmlParserPass2::measureNumbering()
         }
         m_score->style().set(Sid::measureNumberFontStyle, int(fs));
     }
+
+    // test this
+    FontStyle fs = FontStyle::Normal;
+    m_score->style().set(Sid::measureNumberFontStyle, int(fs));
 
     m_score->style().set(Sid::mmRestShowMeasureNumberRange, m_e.attribute("multiple-rest-range") == "yes");
 
