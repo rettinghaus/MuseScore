@@ -90,7 +90,7 @@
         <staff-layout number="2">
           <staff-distance>65</staff-distance>
           </staff-layout>
-        <measure-numbering font-size="12" font-style="normal" font-weight="bold">system</measure-numbering>
+        <measure-numbering font-size="12" font-style="normal" font-weight="bold">none</measure-numbering>
         </print>
       <attributes>
         <divisions>1</divisions>
