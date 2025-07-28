@@ -1411,6 +1411,7 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
     if (!accidAbove.empty()) {
         Accidental* accidental = Factory::createAccidental(turn);
         accidental->setAccidentalType(musicXmlString2accidentalType(accidAbove));
+        accidental->setAccidentalType(AccidentalType::SHARP);
         accidental->setParent(turn);
         turn->setAccidentalAbove(accidental);
     }
@@ -1418,6 +1419,7 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
     if (!accidBelow.empty()) {
         Accidental* accidental = Factory::createAccidental(turn);
         accidental->setAccidentalType(musicXmlString2accidentalType(accidBelow));
+        accidental->setAccidentalType(AccidentalType::FLAT);
         accidental->setParent(turn);
         turn->setAccidentalBelow(accidental);
     }
