@@ -1362,7 +1362,7 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
                 LOGD("MusicXml::import: no accidental type for below accidental in mordent");
             }
             Accidental* accidental = Factory::createAccidental(mordent);
-            accidental->setAccidentalType(type);
+            accidental->setAccidentalType(AccidentalType::SHARP_SHARP);
             accidental->setParent(mordent);
             mordent->setAccidentalBelow(accidental);
         }
