@@ -2966,7 +2966,7 @@ void NotationInteraction::doAddSlur(EngravingItem* firstItem, EngravingItem* sec
         endEditElement();
         score()->undoRemoveElement(slur);
         slur = score()->addSlur(firstChordRest, secondChordRest, slurTemplate);
-        SlurSegment* segment = slur->frontSegment();
+        SlurTieSegment* segment = slur->frontSegment();
         select({ segment }, SelectType::SINGLE);
         startEditGrip(segment, Grip::END);
     }
@@ -2974,7 +2974,7 @@ void NotationInteraction::doAddSlur(EngravingItem* firstItem, EngravingItem* sec
     if (m_noteInput->isNoteInputMode()) {
         m_noteInput->addSlur(slur);
     } else if (!secondItem) {
-        SlurSegment* segment = slur->frontSegment();
+        SlurTieSegment* segment = slur->frontSegment();
         select({ segment }, SelectType::SINGLE);
         startEditGrip(segment, Grip::END);
     }

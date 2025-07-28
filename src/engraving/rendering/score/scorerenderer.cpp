@@ -92,12 +92,12 @@ void ScoreRenderer::layoutText1(TextBase* item, bool base)
     }
 }
 
-void ScoreRenderer::computeBezier(TieSegment* tieSeg, PointF shoulderOffset)
+void ScoreRenderer::computeBezier(SlurTieSegment* tieSeg, PointF shoulderOffset)
 {
     SlurTieLayout::computeBezier(tieSeg, shoulderOffset);
 }
 
-void ScoreRenderer::computeBezier(SlurSegment* slurSeg, PointF shoulderOffset)
+void ScoreRenderer::computeBezier(SlurTieSegment* slurSeg, PointF shoulderOffset)
 {
     SlurTieLayout::computeBezier(slurSeg, shoulderOffset);
 }

@@ -264,7 +264,7 @@ private:
 
     static void draw(const Page* item, muse::draw::Painter* painter);
     static void draw(const Parenthesis* item, muse::draw::Painter* painter);
-    static void draw(const PartialTieSegment* item, muse::draw::Painter* painter);
+    static void draw(const PartialSlurTieSegment* item, muse::draw::Painter* painter);
     static void draw(const PalmMuteSegment* item, muse::draw::Painter* painter);
     static void draw(const PedalSegment* item, muse::draw::Painter* painter);
     static void draw(const PickScrapeSegment* item, muse::draw::Painter* painter);
@@ -275,7 +275,7 @@ private:
     static void draw(const Rest* item, muse::draw::Painter* painter);
 
     static void draw(const ShadowNote* item, muse::draw::Painter* painter);
-    static void draw(const SlurSegment* item, muse::draw::Painter* painter);
+    static void draw(const SlurTieSegment* item, muse::draw::Painter* painter);
     static void draw(const Spacer* item, muse::draw::Painter* painter);
     static void draw(const StaffLines* item, muse::draw::Painter* painter);
     static void draw(const StaffState* item, muse::draw::Painter* painter);
@@ -297,7 +297,7 @@ private:
     static void draw(const TempoText* item, muse::draw::Painter* painter);
     static void draw(const Text* item, muse::draw::Painter* painter);
     static void draw(const TextLineSegment* item, muse::draw::Painter* painter);
-    static void draw(const TieSegment* item, muse::draw::Painter* painter);
+    static void draw(const SlurTieSegment* item, muse::draw::Painter* painter);
     static void draw(const TimeSig* item, muse::draw::Painter* painter);
     static void draw(const TimeTickAnchor* item, muse::draw::Painter* painter);
     static void draw(const TremoloSingleChord* item, muse::draw::Painter* painter);

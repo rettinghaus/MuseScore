@@ -101,7 +101,7 @@ void TieSegment::changeAnchor(EditData& ed, EngravingItem* element)
     if (spanner()->spannerSegments().size() != segments) {
         const std::vector<SpannerSegment*>& ss = spanner()->spannerSegments();
 
-        TieSegment* newSegment = toTieSegment(ed.curGrip == Grip::END ? ss.back() : ss.front());
+        SlurTieSegment* newSegment = toTieSegment(ed.curGrip == Grip::END ? ss.back() : ss.front());
         score()->endCmd();
         score()->startCmd(TranslatableString("undoableAction", "Change tie anchor"));
         ed.view()->changeEditElement(newSegment);

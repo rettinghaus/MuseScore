@@ -1470,9 +1470,9 @@ void SingleLayout::layout(RehearsalMark* item, const Context& ctx)
 void SingleLayout::layout(Slur* item, const Context& ctx)
 {
     double spatium = item->spatium();
-    SlurSegment* s = nullptr;
+    SlurTieSegment* s = nullptr;
     if (item->spannerSegments().empty()) {
-        s = new SlurSegment(ctx.dummyParent()->system());
+        s = new SlurTieSegment(ctx.dummyParent()->system());
         s->setTrack(item->track());
         item->add(s);
     } else {

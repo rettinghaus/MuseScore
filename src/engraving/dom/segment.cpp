@@ -2721,7 +2721,7 @@ void Segment::addArticulationsToShape(const Chord* chord, Shape& shape)
         IF_ASSERT_FAILED(!slur->segmentsEmpty()) {
             return;
         }
-        TappingHalfSlurSegment* slurSeg = toTappingHalfSlurSegment(slur->frontSegment());
+        TappingHalfSlurTieSegment* slurSeg = toTappingHalfSlurSegment(slur->frontSegment());
         Shape slurSegShape = slurSeg->shape();
         // Semi-hack: we don't know the exact position at this stage, but we know that it
         // must end approx on the center of the notehead

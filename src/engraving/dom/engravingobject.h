@@ -145,7 +145,7 @@ class Rest;
 class Score;
 class Segment;
 class Slur;
-class SlurSegment;
+class SlurTieSegment;
 class SlurTieSegment;
 class Spacer;
 class Spanner;

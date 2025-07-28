@@ -25,8 +25,8 @@
 
 NICE-TO-HAVE TODO:
 - draggable handles of glissando segments
-- re-attachable glissando extrema (with [Shift]+arrows, use SlurSegment::edit()
-      and SlurSegment::changeAnchor() in slur.cpp as models)
+- re-attachable glissando extrema (with [Shift]+arrows, use SlurTieSegment::edit()
+      and SlurTieSegment::changeAnchor() in slur.cpp as models)
 */
 
 #include "glissando.h"

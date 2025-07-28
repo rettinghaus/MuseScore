@@ -41,7 +41,7 @@ public:
     TieSegment(System* parent);
     TieSegment(const TieSegment& s);
 
-    TieSegment* clone() const override { return new TieSegment(*this); }
+    SlurTieSegment* clone() const override { return new TieSegment(*this); }
 
     void addAdjustmentOffset(const PointF& offset, Grip grip) { m_adjustmentOffsets[static_cast<size_t>(grip)] += offset; }
     void resetAdjustmentOffset() { m_adjustmentOffsets.fill(PointF()); }

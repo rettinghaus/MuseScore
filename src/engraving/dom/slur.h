@@ -28,13 +28,13 @@
 
 namespace mu::engraving {
 //---------------------------------------------------------
-//   @@ SlurSegment
+//   @@ SlurTieSegment
 ///    a single segment of slur; also used for Tie
 //---------------------------------------------------------
 
-class SlurSegment : public SlurTieSegment
+class SlurTieSegment : public SlurTieSegment
 {
-    OBJECT_ALLOCATOR(engraving, SlurSegment)
+    OBJECT_ALLOCATOR(engraving, SlurTieSegment)
     DECLARE_CLASSOF(ElementType::SLUR_SEGMENT)
 
     M_PROPERTY2(double, extraHeight, setExtraHeight, 0.0)
@@ -42,10 +42,10 @@ class SlurSegment : public SlurTieSegment
     M_PROPERTY2(PointF, endPointOff2, setEndPointOff2, PointF(0.0, 0.0))
 
 public:
-    SlurSegment(System* parent, ElementType type = ElementType::SLUR_SEGMENT);
-    SlurSegment(const SlurSegment& ss);
+    SlurTieSegment(System* parent, ElementType type = ElementType::SLUR_SEGMENT);
+    SlurTieSegment(const SlurTieSegment& ss);
 
-    SlurSegment* clone() const override { return new SlurSegment(*this); }
+    SlurTieSegment* clone() const override { return new SlurTieSegment(*this); }
 
     bool isEdited() const;
     bool isEndPointsEdited() const;
@@ -110,7 +110,7 @@ public:
     const StemFloated& stemFloated() const { return m_stemFloated; }
     StemFloated& stemFloated() { return m_stemFloated; }
 
-    SlurTieSegment* newSlurTieSegment(System* parent) override { return new SlurSegment(parent); }
+    SlurTieSegment* newSlurTieSegment(System* parent) override { return new SlurTieSegment(parent); }
 
     double scalingFactor() const override;
 

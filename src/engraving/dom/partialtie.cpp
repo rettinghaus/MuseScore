@@ -46,7 +46,7 @@ bool PartialTie::setProperty(Pid propertyId, const PropertyValue& v)
 
 SlurTieSegment* PartialTie::newSlurTieSegment(System* parent)
 {
-    PartialTieSegment* seg = new PartialTieSegment(parent);
+    PartialSlurTieSegment* seg = new PartialTieSegment(parent);
     seg->setTrack(track());
     return seg;
 }

@@ -61,7 +61,7 @@ private:
     bool m_isHammerOn = true;
 };
 
-class HammerOnPullOffSegment final : public SlurSegment
+class HammerOnPullOffSegment final : public SlurTieSegment
 {
     OBJECT_ALLOCATOR(engraving, HammerOnPullOffSegment)
     DECLARE_CLASSOF(ElementType::HAMMER_ON_PULL_OFF_SEGMENT)

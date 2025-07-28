@@ -284,7 +284,7 @@ void SingleDraw::drawItem(const EngravingItem* item, Painter* painter)
 
     case ElementType::SHADOW_NOTE:          draw(item_cast<const ShadowNote*>(item), painter);
         break;
-    case ElementType::SLUR_SEGMENT:         draw(item_cast<const SlurSegment*>(item), painter);
+    case ElementType::SLUR_SEGMENT:         draw(item_cast<const SlurTieSegment*>(item), painter);
         break;
     case ElementType::SPACER:               draw(item_cast<const Spacer*>(item), painter);
         break;
@@ -321,7 +321,7 @@ void SingleDraw::drawItem(const EngravingItem* item, Painter* painter)
         break;
     case ElementType::TEXTLINE_SEGMENT:     draw(item_cast<const TextLineSegment*>(item), painter);
         break;
-    case ElementType::TIE_SEGMENT:          draw(item_cast<const TieSegment*>(item), painter);
+    case ElementType::TIE_SEGMENT:          draw(item_cast<const SlurTieSegment*>(item), painter);
         break;
     case ElementType::TIMESIG:              draw(item_cast<const TimeSig*>(item), painter);
         break;
@@ -2085,7 +2085,7 @@ void SingleDraw::draw(const ShadowNote* item, Painter* painter)
     painter->translate(-ap);
 }
 
-void SingleDraw::draw(const SlurSegment* item, Painter* painter)
+void SingleDraw::draw(const SlurTieSegment* item, Painter* painter)
 {
     TRACE_DRAW_ITEM;
 
@@ -2278,7 +2278,7 @@ void SingleDraw::draw(const TextLineSegment* item, Painter* painter)
     drawTextLineBaseSegment(item, painter);
 }
 
-void SingleDraw::draw(const TieSegment* item, Painter* painter)
+void SingleDraw::draw(const SlurTieSegment* item, Painter* painter)
 {
     TRACE_DRAW_ITEM;
 

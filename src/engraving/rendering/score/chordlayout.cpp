@@ -1170,7 +1170,7 @@ void ChordLayout::layoutArticulations2(Chord* item, LayoutContext& ctx, bool lay
 
 void ChordLayout::layoutArticulations3(Chord* item, Slur* slur, LayoutContext& ctx)
 {
-    SlurSegment* ss;
+    SlurTieSegment* ss;
     if (item == slur->startCR()) {
         ss = slur->frontSegment();
     } else if (item == slur->endCR()) {

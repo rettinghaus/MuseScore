@@ -77,7 +77,7 @@ class Rest;
 class ShadowNote;
 class Spanner;
 class Slur;
-class SlurSegment;
+class SlurTieSegment;
 class SlurTie;
 class Spacer;
 class StaffText;
@@ -194,8 +194,8 @@ public:
         doDrawItem(item, p);
     }
 
-    virtual void computeBezier(TieSegment* tieSeg, PointF shoulderOffset = PointF()) = 0;
-    virtual void computeBezier(SlurSegment* slurSeg, PointF shoulderOffser = PointF()) = 0;
+    virtual void computeBezier(SlurTieSegment* tieSeg, PointF shoulderOffset = PointF()) = 0;
+    virtual void computeBezier(SlurTieSegment* slurSeg, PointF shoulderOffser = PointF()) = 0;
 
 private:
     // Layout Single Item

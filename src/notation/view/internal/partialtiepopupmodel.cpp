@@ -44,7 +44,7 @@ QPointF PartialTiePopupModel::dialogPosition() const
 {
     const Tie* tieItem = tie();
     const Note* startNote = tieItem ? tieItem->startNote() : nullptr;
-    const TieSegment* seg = toTieSegment(m_item);
+    const SlurTieSegment* seg = toTieSegment(m_item);
     if (!seg || !startNote) {
         return QPointF();
     }
@@ -173,7 +173,7 @@ muse::uicomponents::MenuItem* PartialTiePopupModel::makeMenuItem(const engraving
 
 Tie* PartialTiePopupModel::tie() const
 {
-    const TieSegment* tieSeg = m_item && m_item->isTieSegment() ? toTieSegment(m_item) : nullptr;
+    const SlurTieSegment* tieSeg = m_item && m_item->isTieSegment() ? toTieSegment(m_item) : nullptr;
 
     return tieSeg ? tieSeg->tie() : nullptr;
 }

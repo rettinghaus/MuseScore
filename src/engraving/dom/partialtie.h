@@ -34,7 +34,7 @@ public:
     PartialTieSegment(System* parent);
     PartialTieSegment(const PartialTieSegment& s);
 
-    PartialTieSegment* clone() const override { return new PartialTieSegment(*this); }
+    PartialSlurTieSegment* clone() const override { return new PartialTieSegment(*this); }
 
     PartialTie* partialTie() const { return (PartialTie*)spanner(); }
 private:
@@ -73,11 +73,11 @@ public:
 
     Note* startNote() const override;
 
-    PartialTieSegment* frontSegment() { return toPartialTieSegment(Spanner::frontSegment()); }
-    const PartialTieSegment* frontSegment() const { return toPartialTieSegment(Spanner::frontSegment()); }
-    PartialTieSegment* backSegment() { return toPartialTieSegment(Spanner::backSegment()); }
-    const PartialTieSegment* backSegment() const { return toPartialTieSegment(Spanner::backSegment()); }
-    PartialTieSegment* segmentAt(int n) { return toPartialTieSegment(Spanner::segmentAt(n)); }
-    const PartialTieSegment* segmentAt(int n) const { return toPartialTieSegment(Spanner::segmentAt(n)); }
+    PartialSlurTieSegment* frontSegment() { return toPartialTieSegment(Spanner::frontSegment()); }
+    const PartialSlurTieSegment* frontSegment() const { return toPartialTieSegment(Spanner::frontSegment()); }
+    PartialSlurTieSegment* backSegment() { return toPartialTieSegment(Spanner::backSegment()); }
+    const PartialSlurTieSegment* backSegment() const { return toPartialTieSegment(Spanner::backSegment()); }
+    PartialSlurTieSegment* segmentAt(int n) { return toPartialTieSegment(Spanner::segmentAt(n)); }
+    const PartialSlurTieSegment* segmentAt(int n) const { return toPartialTieSegment(Spanner::segmentAt(n)); }
 };
 }

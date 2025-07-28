@@ -81,7 +81,7 @@ private:
     TappingHalfSlur* m_halfSlurBelow = nullptr;
 };
 
-class TappingHalfSlurSegment : public SlurSegment
+class TappingHalfSlurSegment : public SlurTieSegment
 {
     OBJECT_ALLOCATOR(engraving, TappingHalfSlurSegment)
     DECLARE_CLASSOF(ElementType::TAPPING_HALF_SLUR_SEGMENT)
@@ -89,7 +89,7 @@ class TappingHalfSlurSegment : public SlurSegment
 public:
     TappingHalfSlurSegment(System* parent);
     TappingHalfSlurSegment(const TappingHalfSlurSegment& other);
-    TappingHalfSlurSegment* clone() const override { return new TappingHalfSlurSegment(*this); }
+    TappingHalfSlurTieSegment* clone() const override { return new TappingHalfSlurSegment(*this); }
 
     TappingHalfSlur* tappingHalfSlur() const { return toTappingHalfSlur(spanner()); }
 };
@@ -106,7 +106,7 @@ public:
     TappingHalfSlur(EngravingItem* parent);
     TappingHalfSlur(const TappingHalfSlur&);
     TappingHalfSlur* clone() const override { return new TappingHalfSlur(*this); }
-    TappingHalfSlurSegment* newSlurTieSegment(System* parent) override { return new TappingHalfSlurSegment(parent); }
+    TappingHalfSlurTieSegment* newSlurTieSegment(System* parent) override { return new TappingHalfSlurSegment(parent); }
 
     Tapping* tapping() const { return toTapping(parent()); }
 

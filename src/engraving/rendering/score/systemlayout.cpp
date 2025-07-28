@@ -1615,12 +1615,12 @@ void SystemLayout::layoutTies(Chord* ch, System* system, const Fraction& stick, 
     if (!staff->show()) {
         return;
     }
-    std::vector<TieSegment*> stackedForwardTies;
-    std::vector<TieSegment*> stackedBackwardTies;
+    std::vector<SlurTieSegment*> stackedForwardTies;
+    std::vector<SlurTieSegment*> stackedBackwardTies;
     for (Note* note : ch->notes()) {
         Tie* t = note->tieFor();
         if (t && !t->isLaissezVib()) {
-            TieSegment* ts = SlurTieLayout::layoutTieFor(t, system);
+            SlurTieSegment* ts = SlurTieLayout::layoutTieFor(t, system);
             if (ts && ts->addToSkyline()) {
                 staff->skyline().add(ts->shape().translate(ts->pos()));
                 stackedForwardTies.push_back(ts);
@@ -1629,7 +1629,7 @@ void SystemLayout::layoutTies(Chord* ch, System* system, const Fraction& stick, 
         t = note->tieBack();
         if (t) {
             if (note->incomingPartialTie() || t->startNote()->tick() < stick) {
-                TieSegment* ts = SlurTieLayout::layoutTieBack(t, system, ctx);
+                SlurTieSegment* ts = SlurTieLayout::layoutTieBack(t, system, ctx);
                 if (ts && ts->addToSkyline()) {
                     staff->skyline().add(ts->shape().translate(ts->pos()));
                     stackedBackwardTies.push_back(ts);

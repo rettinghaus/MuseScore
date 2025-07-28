@@ -2476,7 +2476,7 @@ void Read206::readTie206(XmlReader& e, ReadContext& ctx, Tie* t)
     }
     if (ctx.mscVersion() <= 114 && t->spannerSegments().size() == 1) {
         // ignore manual adjustments to single-segment ties in older scores
-        TieSegment* ss = t->frontSegment();
+        SlurTieSegment* ss = t->frontSegment();
         PointF zeroP;
         ss->ups(Grip::START).off     = zeroP;
         ss->ups(Grip::BEZIER1).off   = zeroP;

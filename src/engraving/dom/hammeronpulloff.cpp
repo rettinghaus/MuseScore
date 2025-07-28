@@ -39,19 +39,19 @@ HammerOnPullOff::HammerOnPullOff(const HammerOnPullOff& other)
 }
 
 HammerOnPullOffSegment::HammerOnPullOffSegment(System* parent)
-    : SlurSegment(parent, ElementType::HAMMER_ON_PULL_OFF_SEGMENT)
+    : SlurTieSegment(parent, ElementType::HAMMER_ON_PULL_OFF_SEGMENT)
 {
 }
 
 HammerOnPullOffSegment::HammerOnPullOffSegment(const HammerOnPullOffSegment& other)
-    : SlurSegment(other)
+    : SlurTieSegment(other)
 {
 }
 
 Color HammerOnPullOffSegment::curColor() const
 {
     if (score()->printing() || !MScore::warnGuitarBends || isValid()) {
-        return SlurSegment::curColor();
+        return SlurTieSegment::curColor();
     }
 
     auto engravingConf = configuration();
@@ -242,7 +242,7 @@ bool HammerOnPullOffSegment::isUserModified() const
         }
     }
 
-    return SlurSegment::isUserModified();
+    return SlurTieSegment::isUserModified();
 }
 
 bool HammerOnPullOffSegment::isValid() const

@@ -169,7 +169,7 @@ void TappingLayout::layoutHalfSlur(Tapping* item, TappingHalfSlur* slur, LayoutC
     }
 
     Skyline& skyline = system->staff(item->staffIdx())->skyline();
-    TappingHalfSlurSegment* slurSeg = toTappingHalfSlurSegment(SlurTieLayout::layoutSystem(slur, system, ctx));
+    TappingHalfSlurTieSegment* slurSeg = toTappingHalfSlurSegment(SlurTieLayout::layoutSystem(slur, system, ctx));
 
     Shape segShape = slurSeg->shape();
 

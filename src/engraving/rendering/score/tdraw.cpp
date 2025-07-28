@@ -314,7 +314,7 @@ void TDraw::drawItem(const EngravingItem* item, Painter* painter)
         break;
     case ElementType::PARENTHESIS:          draw(item_cast<const Parenthesis*>(item), painter);
         break;
-    case ElementType::PARTIAL_TIE_SEGMENT:  draw(item_cast<const PartialTieSegment*>(item), painter);
+    case ElementType::PARTIAL_TIE_SEGMENT:  draw(item_cast<const PartialSlurTieSegment*>(item), painter);
         break;
     case ElementType::PALM_MUTE_SEGMENT:    draw(item_cast<const PalmMuteSegment*>(item), painter);
         break;
@@ -334,7 +334,7 @@ void TDraw::drawItem(const EngravingItem* item, Painter* painter)
 
     case ElementType::SHADOW_NOTE:          draw(item_cast<const ShadowNote*>(item), painter);
         break;
-    case ElementType::SLUR_SEGMENT:         draw(item_cast<const SlurSegment*>(item), painter);
+    case ElementType::SLUR_SEGMENT:         draw(item_cast<const SlurTieSegment*>(item), painter);
         break;
     case ElementType::SPACER:               draw(item_cast<const Spacer*>(item), painter);
         break;
@@ -377,7 +377,7 @@ void TDraw::drawItem(const EngravingItem* item, Painter* painter)
         break;
     case ElementType::TEXTLINE_SEGMENT:     draw(item_cast<const TextLineSegment*>(item), painter);
         break;
-    case ElementType::TIE_SEGMENT:          draw(item_cast<const TieSegment*>(item), painter);
+    case ElementType::TIE_SEGMENT:          draw(item_cast<const SlurTieSegment*>(item), painter);
         break;
     case ElementType::TIMESIG:              draw(item_cast<const TimeSig*>(item), painter);
         break;
@@ -1995,7 +1995,7 @@ void TDraw::draw(const LaissezVibSegment* item, muse::draw::Painter* painter)
         painter->setPen(item->curColor());
         item->drawSymbol(ldata->symbol, painter);
     } else {
-        draw(static_cast<const TieSegment*>(item), painter);
+        draw(static_cast<const SlurTieSegment*>(item), painter);
     }
 }
 
@@ -2391,9 +2391,9 @@ void TDraw::draw(const Parenthesis* item, muse::draw::Painter* painter)
     painter->drawPath(item->ldata()->path());
 }
 
-void TDraw::draw(const PartialTieSegment* item, muse::draw::Painter* painter)
+void TDraw::draw(const PartialSlurTieSegment* item, muse::draw::Painter* painter)
 {
-    draw(static_cast<const TieSegment*>(item), painter);
+    draw(static_cast<const SlurTieSegment*>(item), painter);
 }
 
 void TDraw::draw(const PalmMuteSegment* item, Painter* painter)
@@ -2549,7 +2549,7 @@ void TDraw::draw(const ShadowNote* item, Painter* painter)
     painter->translate(-ap);
 }
 
-void TDraw::draw(const SlurSegment* item, Painter* painter)
+void TDraw::draw(const SlurTieSegment* item, Painter* painter)
 {
     TRACE_DRAW_ITEM;
 
@@ -3001,7 +3001,7 @@ void TDraw::draw(const TextLineSegment* item, Painter* painter)
     drawTextLineBaseSegment(item, painter);
 }
 
-void TDraw::draw(const TieSegment* item, Painter* painter)
+void TDraw::draw(const SlurTieSegment* item, Painter* painter)
 {
     TRACE_DRAW_ITEM;
 

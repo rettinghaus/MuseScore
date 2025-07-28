@@ -51,7 +51,7 @@ SlurSegment::SlurSegment(System* parent, ElementType type)
 {
 }
 
-SlurSegment::SlurSegment(const SlurSegment& ss)
+SlurSegment::SlurSegment(const SlurTieSegment& ss)
     : SlurTieSegment(ss)
 {
 }
@@ -80,7 +80,7 @@ static ChordRest* searchCR(Segment* segment, track_idx_t startTrack, track_idx_t
     return 0;
 }
 
-bool SlurSegment::isEditAllowed(EditData& ed) const
+bool SlurTieSegment::isEditAllowed(EditData& ed) const
 {
     if (SlurTieSegment::isEditAllowed(ed)) {
         return true;
@@ -109,7 +109,7 @@ bool SlurSegment::isEditAllowed(EditData& ed) const
 //    return true if event is accepted
 //---------------------------------------------------------
 
-bool SlurSegment::edit(EditData& ed)
+bool SlurTieSegment::edit(EditData& ed)
 {
     if (!isEditAllowed(ed)) {
         return false;
@@ -214,7 +214,7 @@ bool SlurSegment::edit(EditData& ed)
 //   changeAnchor
 //---------------------------------------------------------
 
-void SlurSegment::changeAnchor(EditData& ed, EngravingItem* element)
+void SlurTieSegment::changeAnchor(EditData& ed, EngravingItem* element)
 {
     ChordRest* cr = element->isChordRest() ? toChordRest(element) : nullptr;
     ChordRest* scr = spanner()->startCR();
@@ -259,13 +259,13 @@ void SlurSegment::changeAnchor(EditData& ed, EngravingItem* element)
     if (spanner()->spannerSegments().size() != segments) {
         const std::vector<SpannerSegment*>& ss = spanner()->spannerSegments();
         const bool moveEnd = ed.curGrip == Grip::END || ed.curGrip == Grip::DRAG;
-        SlurSegment* newSegment = toSlurSegment(moveEnd ? ss.back() : ss.front());
+        SlurTieSegment* newSegment = toSlurSegment(moveEnd ? ss.back() : ss.front());
         ed.view()->changeEditElement(newSegment);
         triggerLayout();
     }
 }
 
-void SlurSegment::editDrag(EditData& ed)
+void SlurTieSegment::editDrag(EditData& ed)
 {
     Grip g = ed.curGrip;
     if (g == Grip::NO_GRIP) {
@@ -328,7 +328,7 @@ void SlurSegment::editDrag(EditData& ed)
 //   isEdited
 //---------------------------------------------------------
 
-bool SlurSegment::isEdited() const
+bool SlurTieSegment::isEdited() const
 {
     for (int i = 0; i < int(Grip::GRIPS); ++i) {
         if (!m_ups[i].off.isNull()) {
@@ -338,27 +338,27 @@ bool SlurSegment::isEdited() const
     return false;
 }
 
-bool SlurSegment::isEndPointsEdited() const
+bool SlurTieSegment::isEndPointsEdited() const
 {
     return !(m_ups[int(Grip::START)].off.isNull() && m_ups[int(Grip::END)].off.isNull());
 }
 
-double SlurSegment::endWidth() const
+double SlurTieSegment::endWidth() const
 {
     return style().styleMM(Sid::slurEndWidth);
 }
 
-double SlurSegment::midWidth() const
+double SlurTieSegment::midWidth() const
 {
     return style().styleMM(Sid::slurMidWidth);
 }
 
-double SlurSegment::dottedWidth() const
+double SlurTieSegment::dottedWidth() const
 {
     return style().styleMM(Sid::slurDottedWidth);
 }
 
-Color SlurSegment::curColor() const
+Color SlurTieSegment::curColor() const
 {
     return EngravingItem::curColor(getProperty(Pid::VISIBLE).toBool(), getProperty(Pid::COLOR).value<Color>());
 }
@@ -444,7 +444,7 @@ PartialSpannerDirection Slur::calcIncomingDirection(bool incoming)
 {
     PartialSpannerDirection dir = PartialSpannerDirection::INCOMING;
     if (incoming) {
-        SlurSegment* firstSeg = nsegments() > 0 ? frontSegment() : nullptr;
+        SlurTieSegment* firstSeg = nsegments() > 0 ? frontSegment() : nullptr;
         if (firstSeg) {
             firstSeg->setSlurOffset(Grip::START, PointF(0, 0));
         }
@@ -460,7 +460,7 @@ PartialSpannerDirection Slur::calcOutgoingDirection(bool outgoing)
 {
     PartialSpannerDirection dir = PartialSpannerDirection::OUTGOING;
     if (outgoing) {
-        SlurSegment* lastSeg = nsegments() > 0 ? backSegment() : nullptr;
+        SlurTieSegment* lastSeg = nsegments() > 0 ? backSegment() : nullptr;
         if (lastSeg) {
             lastSeg->setSlurOffset(Grip::END, PointF(0, 0));
         }
