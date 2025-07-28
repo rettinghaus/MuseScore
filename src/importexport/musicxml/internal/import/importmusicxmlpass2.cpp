@@ -1363,6 +1363,7 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
 
         const String accidAbove = notation.attribute(u"above");
         if (!accidAbove.empty()) {
+            LOGD("upper accid is %s", muPrintable(accidAbove));
             const AccidentalType type = musicXmlString2accidentalType(accidAbove);
             if (type == AccidentalType::NONE) {
                 LOGD("MusicXml::import: no accidental type for above accidental in mordent");
@@ -1371,9 +1372,13 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
             accidental->setAccidentalType(type);
             accidental->setParent(mordent);
             mordent->setAccidentalAbove(accidental);
+            if (!mordent->accidentalAbove()) {
+                LOGD("MusicXml::import: no accidental above in mordent");
+            }
         }
         const String accidBelow = notation.attribute(u"below");
         if (!accidBelow.empty()) {
+            LOGD("lower accid is %s", muPrintable(accidBelow));
             const AccidentalType type = musicXmlString2accidentalType(accidBelow);
             if (type == AccidentalType::NONE) {
                 LOGD("MusicXml::import: no accidental type for below accidental in mordent");
@@ -1382,9 +1387,9 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
             accidental->setAccidentalType(type);
             accidental->setParent(mordent);
             mordent->setAccidentalBelow(accidental);
-        }
-        if (!mordent->accidentalAbove() || !mordent->accidentalBelow()) {
-            LOGD("MusicXml::import: no accidental above or below in mordent");
+            if (!mordent->accidentalBelow()) {
+                LOGD("MusicXml::import: no accidental below in mordent");
+            }
         }
     } else {
         LOGD("unknown ornament: name '%s' long '%s' approach '%s' departure '%s'",
