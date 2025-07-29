@@ -111,6 +111,14 @@ void XmlWriter::tagProperty(Pid id, const PropertyValue& val, const PropertyValu
 
     P_TYPE valType = val.type();
     P_TYPE propType = propertyType(id);
+    
+    //! HACK Temporary hack. We have some kind of property with property type BOOL,
+    //! but the used value type is INT (not just 1 and 0)
+    //! see STAFF_BARLINE_SPAN
+    if (propType == P_TYPE::BOOL && valType == P_TYPE::INT) {
+        propType = P_TYPE::INT;
+    }
+
     if (valType != propType) {
         LOGD() << "property value type mismatch, prop: " << name;
     }
@@ -121,13 +129,6 @@ void XmlWriter::tagProperty(Pid id, const PropertyValue& val, const PropertyValu
         //! (the conversion from Millimetre to Spatium occurred higher up the stack)
         if (propType == P_TYPE::MILLIMETRE) {
             propType = P_TYPE::SPATIUM;
-        }
-
-        //! HACK Temporary hack. We have some kind of property with property type BOOL,
-        //! but the used value type is INT (not just 1 and 0)
-        //! see STAFF_BARLINE_SPAN
-        if (propType == P_TYPE::BOOL && valType == P_TYPE::INT) {
-            propType = P_TYPE::INT;
         }
 
         tagProperty(name, propType, val);

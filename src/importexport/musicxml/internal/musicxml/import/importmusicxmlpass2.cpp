@@ -5718,7 +5718,7 @@ void MusicXmlParserPass2::barline(const String& partId, Measure* measure, const 
                 staff_idx_t nstaves = part->nstaves();
                 for (staff_idx_t i = 0; i < nstaves; ++i) {
                     const Staff* staff = part->staff(i);
-                    bool spanStaff = nstaves > 1 ? i < nstaves - 1 : staff->barLineSpan();
+                    const int spanStaff = nstaves > 1 ? nstaves - 1 : staff->barLineSpan();
                     track_idx_t currentTrack = track + (i * VOICES);
                     auto b = createBarline(measure->score(), currentTrack, type, visible, barStyle, spanStaff);
                     if (barlineColor.isValid()) {
