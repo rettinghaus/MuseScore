@@ -52,6 +52,7 @@
 
 #include "engraving/style/style.h"
 #include "engraving/rw/xmlwriter.h"
+#include "engraving/types/dimension.h"
 #include "engraving/types/typesconv.h"
 #include "engraving/types/symnames.h"
 
@@ -376,7 +377,7 @@ public:
         m_tick = { 0, 1 };
         m_div = 1;
         m_tenths = 40;
-        m_millimeters = m_score->style().spatium() * m_tenths / (10 * DPMM);
+        m_millimeters = m_score->style().valueMM(Sid::spatium).val() * 4;
     }
 
     void write(muse::io::IODevice* dev);
