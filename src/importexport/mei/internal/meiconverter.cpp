@@ -1663,6 +1663,7 @@ libmei::FTrem Convert::fTremToMEI(const engraving::TremoloTwoChord* tremolo)
     // @dur
     const libmei::data_DURATION dur = Convert::durToMEI(tremolo->durationType().type());
     meiFTrem.SetDur(dur);
+    meiFTrem.SetDots(tremolo->durationType().dots());
 
     // @unitdur
     int unitdur = 0;
