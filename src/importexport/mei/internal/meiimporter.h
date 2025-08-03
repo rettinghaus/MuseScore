@@ -252,6 +252,7 @@ private:
     engraving::BeamMode m_graceBeamBeginMode;
     engraving::Chord* m_lastChord;
     std::string m_tremoloId;
+    engraving::TremoloType m_tremoloType;
 
     std::list<engraving::Chord*> m_graceNotes;
     GraceReading m_readingGraceNotes;
