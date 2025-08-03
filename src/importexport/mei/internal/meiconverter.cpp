@@ -1670,7 +1670,6 @@ libmei::FTrem Convert::fTremToMEI(const engraving::TremoloTwoChord* tremolo)
     if (dur > libmei::DURATION_4) {
         unitdur = dur - libmei::DURATION_4;
     }
-    unitdur = dur - libmei::DURATION_4;
     switch (tremolo->tremoloType()) {
     case (engraving::TremoloType::C8):  unitdur += libmei::DURATION_8; break;
     case (engraving::TremoloType::C16): unitdur += libmei::DURATION_16; break;
