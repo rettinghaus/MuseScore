@@ -1185,6 +1185,7 @@ bool MeiExporter::writeBTrem(const TremoloSingleChord* tremolo)
 
     m_currentNode = m_currentNode.append_child();
     libmei::BTrem meiBTrem;
+    meiBTrem.SetUnitdur(meiBTrem.AttTremMeasured::StrToDuration(tremolo->tremoloLen().denominator()));
     std::string xmlId = this->getXmlIdFor(tremolo, 'b');
     meiBTrem.Write(m_currentNode, xmlId);
 
