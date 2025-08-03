@@ -1868,6 +1868,7 @@ bool MeiImporter::readFTrem(pugi::xml_node fTremNode, Measure* measure, int trac
 
     libmei::data_DURATION firstNoteDur = meiFTrem.AttDurationLog::StrToDuration(fTremNode.first_child().attribute("dur").as_string());
 
+    bool warning = false;
     m_tremoloType = Convert::unitdurFromMEI(meiFTrem, warning);
 
     success = readElements(fTremNode, measure, track, ticks);
@@ -2029,7 +2030,7 @@ bool MeiImporter::readNote(pugi::xml_node noteNode, Measure* measure, int track,
             if (isNode(noteNode.parent(), u"fTrem")) {
                 TremoloTwoChord* tremolo = Factory::createTremoloTwoChord(chord);
                 m_uids->reg(tremolo, m_tremoloId);
-                tremolo->setTremoloType(Convert::fTremFromMEI());
+                tremolo->setTremoloType(m_tremoloType);
                 chord->add(tremolo);
             } else {
                 TremoloType ttype = Convert::stemModFromMEI(meiNote.GetStemMod());
