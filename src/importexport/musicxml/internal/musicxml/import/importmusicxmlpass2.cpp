@@ -1461,7 +1461,6 @@ static bool convertArticulationToSymId(const String& mxmlName, SymId& id)
 
         { u"belltree", SymId::handbellsBelltree },
         { u"damp", SymId::handbellsDamp3 },
-        { u"echo", SymId::handbellsEcho1 },
         { u"gyro", SymId::handbellsGyro },
         { u"hand martellato", SymId::handbellsHandMartellato },
         { u"mallet lift", SymId::handbellsMalletLft },
@@ -1469,8 +1468,7 @@ static bool convertArticulationToSymId(const String& mxmlName, SymId& id)
         { u"martellato", SymId::handbellsMartellato },
         { u"martellato lift", SymId::handbellsMartellatoLift },
         { u"muted martellato", SymId::handbellsMutedMartellato },
-        { u"pluck lift", SymId::handbellsPluckLift },
-        { u"swing", SymId::handbellsSwing }
+        { u"pluck lift", SymId::handbellsPluckLift }
     };
 
     auto it = map.find(mxmlName);
@@ -8539,9 +8537,20 @@ void MusicXmlParserNotations::technical()
             harmonic();
         } else if (m_e.name() == "handbell") {
             const std::vector<XmlStreamReader::Attribute> attributes = m_e.attributes();
-            convertArticulationToSymId(m_e.readText(), id);
-            m_notations.push_back(Notation::notationWithAttributes(String::fromAscii(m_e.name().ascii()),
-                                                                   attributes, u"technical", id));
+            const String handbellValue = m_e.readText();
+            convertArticulationToSymId(handbellValue, id);
+            if (id == SymId::noSym) {
+                if (handbellValue == u"swing") {
+                    m_play = "hanbells_swing";
+                    m_wordsText = "<sym>handbellsSwing</sym>";
+                } else if (handbellValue == u"echo") {
+                    m_play = "hanbells_echo_1";
+                    m_wordsText = "<sym>handbellsEcho1</sym>";
+                }
+            } else {
+                m_notations.push_back(Notation::notationWithAttributes(String::fromAscii(m_e.name().ascii()),
+                                      attributes, u"technical", id));
+            }
         } else if (m_e.name() == "harmon-mute") {
             harmonMute();
         } else if (m_e.name() == "hole") {
