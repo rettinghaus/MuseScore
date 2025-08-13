@@ -8628,33 +8628,21 @@ void MusicXmlParserNotations::addTechnical(const Notation& notation, Note* note)
                       color, TextStyleType::FINGERING, m_score, note);
     } else if (notation.name() == u"fret") {
         int fret = notation.text().toInt();
-        if (note) {
-            if (note->staff()->isTabStaff(Fraction(0, 1))) {
-                note->setFret(fret);
-            }
-        } else {
-            m_logger->logError(u"no note for fret", &m_e);
+        if (note->staff()->isTabStaff(Fraction(0, 1))) {
+            note->setFret(fret);
         }
     } else if (notation.name() == "pluck") {
         addTextToNote(m_e.byteOffset(), notation.text(), placement, fontWeight, fontSize, fontStyle, fontFamily,
                       color, TextStyleType::RH_GUITAR_FINGERING, m_score, note);
     } else if (notation.name() == "string") {
-        if (note) {
-            if (note->staff()->isTabStaff(Fraction(0, 1))) {
-                note->setString(notation.text().toInt() - 1);
-            } else {
-                addTextToNote(m_e.byteOffset(), notation.text(), placement, fontWeight, fontSize, fontStyle, fontFamily,
-                              color, TextStyleType::STRING_NUMBER, m_score, note);
-            }
+        if (note->staff()->isTabStaff(Fraction(0, 1))) {
+            note->setString(notation.text().toInt() - 1);
         } else {
-            m_logger->logError(u"no note for string", &m_e);
+            addTextToNote(m_e.byteOffset(), notation.text(), placement, fontWeight, fontSize, fontStyle, fontFamily,
+                          color, TextStyleType::STRING_NUMBER, m_score, note);
         }
     } else if (notation.name() == u"tap") {
-        if (note) {
-            addTapToChord(notation, note->chord());
-        } else {
-            m_logger->logError(u"no note for tap", &m_e);
-        }
+        addTapToChord(notation, note->chord());
     }
 }
 
