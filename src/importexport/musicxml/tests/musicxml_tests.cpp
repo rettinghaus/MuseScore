@@ -1245,6 +1245,9 @@ TEST_F(MusicXml_Tests, timesig3) {
 TEST_F(MusicXml_Tests, timesig4) {
     musicXmlIoTest("testTimesig4");
 }
+TEST_F(MusicXml_Tests, timesig5) {
+    musicXmlMscxExportTestRef("testTimesig5");
+}
 TEST_F(MusicXml_Tests, timeTick) {
     musicXmlImportTestRef("testTimeTick");
 }
