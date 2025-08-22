@@ -1292,7 +1292,7 @@ static void addTapToChord(const Notation& notation, ChordRest* cr)
 //---------------------------------------------------------
 
 /**
- Add Mordent to Chord.
+ Add mordent to chord.
  */
 
 static void addMordentToChord(const Notation& notation, ChordRest* cr)
@@ -1351,7 +1351,7 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
 //---------------------------------------------------------
 
 /**
- Add Turn to Chord.
+ Add turn to chord.
  */
 
 static void addTurnToChord(const Notation& notation, ChordRest* cr)
@@ -1380,7 +1380,7 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
 //---------------------------------------------------------
 
 /**
- Add Other Ornament to Chord.
+ Add other ornament to chord.
  */
 
 static void addOtherOrnamentToChord(const Notation& notation, ChordRest* cr)
@@ -1398,6 +1398,25 @@ static void addOtherOrnamentToChord(const Notation& notation, ChordRest* cr)
     } else {
         LOGD("unknown ornament: name '%s': '%s'.", muPrintable(name), muPrintable(symname));
     }
+}
+
+//---------------------------------------------------------
+//   addOtherNotationToChord
+//---------------------------------------------------------
+
+/**
+ Add other notation to chord.
+ */
+
+static void addOtherNotationToChord(const Notation& notation, ChordRest* cr)
+{
+    const String name = notation.name();
+    const SymId smuflSym = notation.symId();
+    Symbol* symbol = Factory::createSymbol(cr);
+    symbol->setTrack(cr->track());
+    symbol->setSym(smuflSym);
+    colorItem(symbol, Color::fromString(notation.attribute(u"color")));
+    cr->add(symbol);
 }
 
 //---------------------------------------------------------
@@ -9207,6 +9226,8 @@ void MusicXmlParserNotations::addNotation(const Notation& notation, ChordRest* c
             terminateInferredLine(std::vector<TextLineBase*>(lines.begin(), lines.end()), cr->tick(), cr->track());
         } else if (notation.parent() == u"ornaments") {
             addTurnToChord(notation, cr);
+        } else if (notation.name() == u"other-notation") {
+            addOtherNotationToChord(notation, cr);
         } else {
             addArticulationToChord(notation, cr);
         }
@@ -9377,13 +9398,17 @@ void MusicXmlParserNotations::otherNotation()
     const String type = m_e.attribute("type");
     const String smufl = m_e.attribute("smufl");
 
+    if (type != u"single") {
+        m_logger->logError(String(u"other-notation of type %1 cannot be imported").arg(type), &m_e);
+    }
+
     if (!smufl.empty()) {
         SymId id = SymNames::symIdByName(smufl, SymId::noSym);
         Notation notation = Notation::notationWithAttributes(String::fromAscii(m_e.name().ascii()),
                                                              m_e.attributes(), u"notations", id);
         m_notations.push_back(notation);
-        m_e.skipCurrentElement();
     }
+    m_e.skipCurrentElement(); // skip but don't log
 }
 
 //---------------------------------------------------------
