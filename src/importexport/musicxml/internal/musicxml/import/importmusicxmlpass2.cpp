@@ -1385,31 +1385,6 @@ static void addOrnamentToChord(const Notation& notation, ChordRest* cr)
 }
 
 //---------------------------------------------------------
-//   addOtherOrnamentToChord
-//---------------------------------------------------------
-
-/**
- Add Other Ornament to Chord.
- */
-
-static void addOtherOrnamentToChord(const Notation& notation, ChordRest* cr)
-{
-    const String name = notation.name();
-    const String symname = notation.attribute(u"smufl");
-    SymId sym = SymId::noSym;   // legal but impossible ArticulationType value here indicating "not found"
-    sym = SymNames::symIdByName(symname);
-
-    if (sym != SymId::noSym) {
-        Ornament* ornam = Factory::createOrnament(cr);
-        ornam->setSymId(sym);
-        colorItem(ornam, Color::fromString(notation.attribute(u"color")));
-        cr->add(ornam);
-    } else {
-        LOGD("unknown ornament: name '%s': '%s'.", muPrintable(name), muPrintable(symname));
-    }
-}
-
-//---------------------------------------------------------
 //   convertArticulationToSymId
 //---------------------------------------------------------
 
