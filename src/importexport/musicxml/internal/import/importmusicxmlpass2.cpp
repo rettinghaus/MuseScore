@@ -1432,11 +1432,11 @@ static void addOtherOrnamentToChord(const Notation& notation, ChordRest* cr)
 
 static void addOtherNotationToChord(const Notation& notation, ChordRest* cr)
 {
-    const String name = notation.name();
     const SymId smuflSym = notation.symId();
+
     Symbol* symbol = Factory::createSymbol(cr);
-    symbol->setTrack(cr->track());
     symbol->setSym(smuflSym);
+    symbol->setParent(cr);
     colorItem(symbol, Color::fromString(notation.attribute(u"color")));
     cr->add(symbol);
 }
