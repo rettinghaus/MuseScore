@@ -24,6 +24,8 @@
  * @brief Logging
  */
 
+#include <config.h>
+
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -117,8 +119,10 @@ _lou_logMessage(logLevels level, const char *format, ...) {
 	}
 }
 
+#define FILENAMESIZE 256
+
 static FILE *logFile = NULL;
-static char initialLogFileName[256] = "";
+static char initialLogFileName[FILENAMESIZE] = "";
 
 void EXPORT_CALL
 lou_logFile(const char *fileName) {
@@ -126,7 +130,7 @@ lou_logFile(const char *fileName) {
 		fclose(logFile);
 		logFile = NULL;
 	}
-	if (fileName == NULL || fileName[0] == 0) return;
+	if (fileName == NULL || fileName[0] == 0 || strlen(fileName) >= FILENAMESIZE) return;
 	if (initialLogFileName[0] == 0) strcpy(initialLogFileName, fileName);
 	logFile = fopen(fileName, "a");
 	if (logFile == NULL && initialLogFileName[0] != 0)

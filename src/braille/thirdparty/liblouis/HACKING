@@ -17,6 +17,7 @@ when hacking liblouis.
   - [[#build-requirements][Build requirements]]
   - [[#gnulib][Gnulib]]
   - [[#how-to-build][How to build]]
+  - [[#build-documentation][Build documentation]]
   - [[#install-with-homebrew][Install with Homebrew]]
   - [[#docker][Docker]]
   - [[#how-to-run-tests][How to run tests]]
@@ -129,6 +130,16 @@ Unicode run configure with ~--enable-ucs4~.
 After running configure run ~make~ and then ~make install~. You must
 have root privileges for the installation step.
 
+** Build documentation
+As with any project that uses the autotools the documentation can be
+built using any of the provided make targets:
+
+- For html documentation type ~make html~
+- For html documentation in a single file type ~make html MAKEINFOFLAGS="--no-headers --no-split"~
+- For documentation in the [[https://www.gnu.org/software/texinfo/manual/info-stnd/html_node/index.html#Top][info]] format type ~make info~
+- For pdf documentation type ~make pdf~
+- For plain text documentation type ~cd doc; make liblouis.txt~
+
 ** Install with Homebrew
 Homebrew (http://brew.sh) is a package manager for Mac OS X that
 installs software from source. There is nothing special about the
@@ -159,9 +170,7 @@ problematic especially for Windows. Thanks to Docker we can set up the
 environment for you, we can easily distribute it as an image, which
 can be run by anybody and will behave exactly the same for everybody.
 
-Docker images of liblouis are being built automatically each time
-something changes in the code (see https://registry.hub.docker.com/repos/liblouis).
-In order to use them, first get Docker at
+In order to use Docker images of liblouis, first get Docker at
 http://docs.docker.com/introduction/get-docker. Download the latest
 liblouis image with:
 
@@ -439,7 +448,7 @@ Make sure you add the proper YAML front matter. Again see below for
 instructions on how to update the web site.
 
 ** Web site maintenance
-The liblouis web site at liblouis.org is maintained with the help of
+The liblouis web site at liblouis.io is maintained with the help of
 [[https://pages.github.com/][github pages]]. To edit the site just check out the repo at
 https://github.com/liblouis/liblouis.github.io. You'll need to know a
 few things about [[http://jekyllrb.com/][Jekyll]] and markdown, the markup that is used to edit

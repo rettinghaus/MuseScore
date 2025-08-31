@@ -1,7 +1,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.68)
-AC_INIT([Liblouis], [3.24.0], [liblouis-liblouisxml@freelists.org], [liblouis], [http://www.liblouis.org])
+AC_INIT([Liblouis], [3.34.0], [liblouis-liblouisxml@freelists.org], [liblouis], [http://www.liblouis.io])
 AC_CONFIG_SRCDIR([liblouis/lou_backTranslateString.c])
 AM_CONFIG_HEADER(liblouis/config.h)
 
@@ -43,13 +43,13 @@ AC_ARG_WITH([fuzzer],
     [])
 
 # Checks for libraries.
-if test "x$with_yaml" == xno; then
+if test "x$with_yaml" = xno; then
   AC_DEFINE([WITHOUT_YAML],[1],[Disable YAML tests])
 else
   AC_CHECK_LIB([yaml], [yaml_parser_initialize])
 fi
 
-AM_CONDITIONAL([WITH_YAML], [test "x$ac_cv_lib_yaml_yaml_parser_initialize" == xyes -a "x$with_yaml" != xno])
+AM_CONDITIONAL([WITH_YAML], [test "x$ac_cv_lib_yaml_yaml_parser_initialize" = xyes -a "x$with_yaml" != xno])
 
 # If libyaml is missing warn or die depending on --with-yaml
 if test x$ac_cv_lib_yaml_yaml_parser_initialize != xyes; then
@@ -65,8 +65,17 @@ AM_CONDITIONAL(USE_COVERAGE, [test x"$with_coverage" = xyes])
 
 # Check for fuzzer 
 AC_MSG_CHECKING([whether to enable fuzzer])
-AS_IF([test "x$with_fuzzer" = "xyes" && test "$CC" = "clang" && test "$CXX" = "clang++"], AC_MSG_RESULT([yes]), AC_MSG_RESULT([no]))
-AM_CONDITIONAL(USE_FUZZER, [test "x$with_fuzzer" = "xyes" && test "$CC" = "clang" && test "$CXX" = "clang++"])
+AS_IF([test "$CC" != "clang" || test "$CXX" != "clang++"], [with_fuzzer=no])
+AS_IF([test "x$with_fuzzer" = "xyes"],
+      [
+        AC_MSG_RESULT([yes])
+        HOST_CPU="`$CC -print-target-triple | sed -e 's/-.*//'`"
+        CFLAGS="$CFLAGS -fsanitize=fuzzer-no-link"
+        LIBFUZZER_NO_MAIN="`$CC $CFLAGS -print-file-name=libclang_rt.fuzzer_no_main-$HOST_CPU.a` -lstdc++ -lm"
+      ],
+      AC_MSG_RESULT([no]))
+AC_SUBST(LIBFUZZER_NO_MAIN)
+AM_CONDITIONAL(USE_FUZZER, [test "x$with_fuzzer" = "xyes"])
 
 # Checks for header files.
 AC_HEADER_STDC
@@ -95,7 +104,7 @@ LIBLOUIS_CURRENT=20
 
 # increment any time the source changes; set to 0 if you increment
 # CURRENT
-LIBLOUIS_REVISION=12
+LIBLOUIS_REVISION=22
 
 # increment if any interfaces have been added; set to 0 if any
 # interfaces have been changed or removed. removal has precedence over
@@ -114,21 +123,6 @@ AC_ISC_POSIX
 AC_HEADER_STDC
 AC_LIBTOOL_WIN32_DLL
 AC_PROG_LIBTOOL
-
-# catch as many warnings as possible with the help of the gnulib manywarnings module
-gl_MANYWARN_ALL_GCC([warnings])
-# Set up the list of the pointless, undesired warnings.
-nw=
-nw="$nw -Wsystem-headers"       # Don't let system headers trigger warnings
-nw="$nw -Wsuggest-attribute=pure"   # ignore recommendations to use
-nw="$nw -Wsuggest-attribute=format" # attributes, most of these only
-nw="$nw -Wsuggest-attribute=const"  # work in gcc
-nw="$nw -Wsuggest-attribute=noreturn"
-# Enable all GCC warnings not in this list.
-gl_MANYWARN_COMPLEMENT([warnings], [$warnings], [$nw])
-for w in $warnings; do
-  gl_WARN_ADD([$w])
-done
 
 # define an additional recursive make target to format the sources.
 # Also check if clang-format is installed
@@ -182,7 +176,7 @@ AC_ARG_ENABLE([macros],
   [enable_macros=$enableval],
   [])
 
-if test "x$enable_macros" == xyes; then
+if test "x$enable_macros" = xyes; then
    AC_DEFINE([ENABLE_MACROS],[1],[Enable macros])
 fi
 AM_CONDITIONAL([ENABLE_MACROS], [test "x$enable_macros" = xyes])
@@ -209,14 +203,54 @@ case $host in
   ;;
 esac
 
+# add an --enable-macos-universal-binary flag that when building for
+# mac create a universal x86_64 / arm64 binary
+AC_ARG_ENABLE([macos-universal-binary],
+    [AS_HELP_STRING([--enable-macos-universal-binary],
+            [Create an universal x86_64+arm64 binary when building for macos)])],,
+    [enable_macos_universal_binary=no])
+
+# Determine if we're building for macos/darwin by checking for macos &
+# darwin in the build triple.
 AC_CANONICAL_HOST
 build_macosx=no
 case $host_os in
-  darwin*)
-    build_macosx=yes
-  ;;
+  *macos*)
+    build_macosx=yes ;;
+  *darwin*)
+    build_macosx=yes ;;
 esac
 AM_CONDITIONAL([OSX], [test "$build_macosx" = "yes"])
+
+# If building for Mac we will pass x86_64 or arm64 to the compiler
+# based on user options or target type.
+AS_IF([test "$build_macosx" = "yes"],[
+  clang_arch_x86_64="no"
+  clang_arch_arm64="no"
+
+  # If building a universal binary ask clang for both
+  AS_IF([test "$enable_macos_universal_binary" = "yes"],[
+      clang_arch_x86_64="yes"
+      clang_arch_arm64="yes"
+  ],[
+    # If building for x86_64 ask for that
+    AS_IF([test "$host_cpu" = "x86_64"],[
+      clang_arch_x86_64="yes"
+    ])
+    # If building for arm64, ask for that
+    AS_IF([test "$host_cpu" = "aarch64"],[
+      clang_arch_arm64="yes"
+    ])
+  ])
+  # set the defines for our makefile
+  AM_CONDITIONAL([CLANG_ARCH_X86_64], [test "$clang_arch_x86_64" = "yes"])
+  AM_CONDITIONAL([CLANG_ARCH_ARM64], [test "$clang_arch_arm64" = "yes"])
+], [
+  # Just set these to false. They need to be present in the else
+  # clause to keep automake happy.
+  AM_CONDITIONAL([CLANG_ARCH_X86_64], [false])
+  AM_CONDITIONAL([CLANG_ARCH_ARM64], [false])
+])
 
 AC_CONFIG_FILES([
 	Makefile
@@ -231,6 +265,7 @@ AC_CONFIG_FILES([
 	liblouis.pc
 	tests/Makefile
 	tests/braille-specs/Makefile
+	tests/fuzzing/Makefile
 	tests/resolve_table.h
 	tests/tables/Makefile
 	tests/tables/emphclass/Makefile
@@ -241,11 +276,12 @@ AC_CONFIG_FILES([
 	tests/tables/resolve_table/dir_1/dir_1.1/Makefile
 	tests/tables/resolve_table/dir_2/Makefile
 	tests/tablesWithMetadata/Makefile
-	tests/ueb_test_data/Makefile
 	tests/yaml/Makefile
 	python/Makefile
 	python/setup.py
 	python/louis/Makefile
+	python/examples/Makefile
+	python/tests/Makefile
 	tools/Makefile
 	tools/gnulib/Makefile
 	tools/lou_maketable.d/Makefile
