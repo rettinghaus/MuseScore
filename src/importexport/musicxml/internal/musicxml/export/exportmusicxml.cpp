@@ -5879,12 +5879,13 @@ void ExportMusicXml::dynamic(Dynamic const* const dyn, staff_idx_t staff)
     tagName += frame2xml(dyn);
     tagName += color2xml(dyn);
     tagName += positioningAttributes(dyn);
-    m_xml.startElementRaw(tagName);
     const String dynTypeName = String::fromAscii(TConv::toXml(dyn->dynamicType()).ascii());
     bool hasCustomText = dyn->hasCustomText();
 
     if (muse::contains(validMusicXmlDynamics, dynTypeName) && !hasCustomText) {
+        m_xml.startElementRaw(tagName);
         m_xml.tagRaw(dynTypeName);
+        m_xml.endElement();
     } else if (!dynTypeName.empty()) {
         static const std::map<ushort, Char> map = {
             { 0xE520, u'p' },
@@ -5912,7 +5913,9 @@ void ExportMusicXml::dynamic(Dynamic const* const dyn, staff_idx_t staff)
                 // found a SMuFL single letter dynamics glyph
                 if (!inDynamicsSym) {
                     if (!text.empty()) {
+                        m_xml.startElementRaw(tagName);
                         m_xml.tag("other-dynamics", text);
+                        m_xml.endElement();
                         text.clear();
                     }
                     inDynamicsSym = true;
@@ -5923,10 +5926,11 @@ void ExportMusicXml::dynamic(Dynamic const* const dyn, staff_idx_t staff)
                 if (inDynamicsSym) {
                     if (!text.empty()) {
                         if (muse::contains(validMusicXmlDynamics, text)) {
+                            m_xml.startElementRaw(tagName);
                             m_xml.tagRaw(text);
+                            m_xml.endElement();
                         } else {
-                            // TODO: this is wrong, should be <words>
-                            m_xml.tag("other-dynamics", text);
+                            m_xml.tag("words", text);
                         }
                         text.clear();
                     }
@@ -5937,14 +5941,16 @@ void ExportMusicXml::dynamic(Dynamic const* const dyn, staff_idx_t staff)
         }
         if (!text.empty()) {
             if (inDynamicsSym && muse::contains(validMusicXmlDynamics, text)) {
+                m_xml.startElementRaw(tagName);
                 m_xml.tagRaw(text);
+                m_xml.endElement();
             } else {
+                m_xml.startElementRaw(tagName);
                 m_xml.tag("other-dynamics", text);
+                m_xml.endElement();
             }
         }
     }
-
-    m_xml.endElement();
 
     m_xml.endElement();
 
