@@ -1334,24 +1334,6 @@ Err MusicXmlParserPass1::parse()
 }
 
 //---------------------------------------------------------
-//   allStaffGroupsIdentical
-//---------------------------------------------------------
-
-/**
- Return true if all staves in Part \a p have the same staff group
- */
-
-static bool allStaffGroupsIdentical(Part const* const p)
-{
-    for (size_t i = 1; i < p->nstaves(); ++i) {
-        if (p->staff(0)->constStaffType(Fraction(0, 1))->group() != p->staff(i)->constStaffType(Fraction(0, 1))->group()) {
-            return false;
-        }
-    }
-    return true;
-}
-
-//---------------------------------------------------------
 //   isRedundantBracket
 //---------------------------------------------------------
 
@@ -1479,23 +1461,6 @@ void MusicXmlParserPass1::scorePartwise()
         }
     }
 
-    // handle the implicit brackets:
-    // multi-staff parts w/o explicit brackets get a brace
-    for (const Part* p : il) {
-        if (p->nstaves() > 1 && !muse::contains(partSet, p)) {
-            const size_t column = p->staff(0)->bracketLevels() + 1;
-            p->staff(0)->setBracketType(column, BracketType::BRACE);
-            p->staff(0)->setBracketSpan(column, p->nstaves());
-            if (allStaffGroupsIdentical(p)) {
-                // span only if the same types
-                for (Staff* spannedStaff : p->staves()) {
-                    if (spannedStaff != p->staves().back()) { // not last staff
-                        spannedStaff->setBarLineSpan(true);
-                    }
-                }
-            }
-        }
-    }
     addError(checkAtEndElement(m_e, u"score-partwise"));
 }
 
@@ -2285,7 +2250,7 @@ static void partGroupStart(MusicXmlPartGroupMap& pgs, int n, int p, const String
 
     BracketType bracketType = BracketType::NO_BRACKET;
     if (s.empty()) {
-        // ignore (handle as NO_BRACKET)
+        return;
     } else if (s == u"none") {
         // already set to NO_BRACKET
     } else if (s == u"brace") {
@@ -2933,6 +2898,8 @@ void MusicXmlParserPass1::attributes(const String& partId, const Fraction cTime)
         } else if (m_e.name() == "divisions") {
             divisions();
         } else if (m_e.name() == "key") {
+            m_e.skipCurrentElement();        // skip but don't log
+        } else if (m_e.name() == "part-symbol") {
             m_e.skipCurrentElement();        // skip but don't log
         } else if (m_e.name() == "instruments") {
             m_e.skipCurrentElement();        // skip but don't log

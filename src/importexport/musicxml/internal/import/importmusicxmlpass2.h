@@ -457,6 +457,7 @@ private:
     void attributes(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
     void measureStyle(engraving::Measure* measure);
     void barline(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
+    void partSymbol(const muse::String& partId);
     void key(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
     void clef(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
     void time(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
