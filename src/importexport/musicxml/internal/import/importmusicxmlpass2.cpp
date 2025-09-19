@@ -3070,6 +3070,8 @@ void MusicXmlParserPass2::attributes(const String& partId, Measure* measure, con
     while (m_e.readNextStartElement()) {
         if (m_e.name() == "clef") {
             clef(partId, measure, tick);
+        } else if (m_e.name() == "part-symbol") {
+            partSymbol(partId);
         } else if (m_e.name() == "divisions") {
             divisions();
         } else if (m_e.name() == "key") {
@@ -3085,6 +3087,21 @@ void MusicXmlParserPass2::attributes(const String& partId, Measure* measure, con
         } else {
             skipLogCurrElem();
         }
+    }
+
+    // set implicit bracket for part
+    Part* part = m_pass1.getPart(partId);
+    IF_ASSERT_FAILED(part) {
+        return;
+    }
+    const size_t nstaves = part->nstaves();
+    Staff* topStaff = part->staff(0);
+    if (nstaves > 1 && !topStaff->brackets().size()) {
+        // this is not correct, but for now we do not add an extra brace if there is already one bracket
+        const size_t column = topStaff->bracketLevels() + 1;
+        topStaff->setBracketType(column, BracketType::BRACE);
+        topStaff->setBracketSpan(column, nstaves);
+        topStaff->setBarLineSpan(nstaves - 1);
     }
 }
 
@@ -5964,6 +5981,62 @@ static void flushAlteredTone(KeySigEvent& kse, String& step, String& alt, String
     step.clear();
     alt.clear();
     acc.clear();
+}
+
+//---------------------------------------------------------
+//   partSymbol
+//---------------------------------------------------------
+
+/**
+ Set bracket for a part
+ */
+
+void MusicXmlParserPass2::partSymbol(const String& partId)
+{
+    const int topStaff = m_e.attribute("top-staff").toInt();
+    const int bottomStaff = m_e.attribute("bottom-staff").toInt();
+    const Color symbolColor = Color::fromString(m_e.asciiAttribute("color").ascii());
+    const String s = m_e.readText();
+
+    Part* part = m_pass1.getPart(partId);
+    IF_ASSERT_FAILED(part) {
+        return;
+    }
+    size_t nstaves = part->nstaves();
+
+    // implicit default bracket is a brace
+    BracketType bracketType = BracketType::BRACE;
+    if (s == u"none") {
+        bracketType = BracketType::NO_BRACKET;
+    } else if (s == u"brace") {
+        bracketType = BracketType::BRACE;
+    } else if (s == u"bracket") {
+        bracketType = BracketType::NORMAL;
+    } else if (s == u"line") {
+        bracketType = BracketType::LINE;
+    } else if (s == u"square") {
+        bracketType = BracketType::SQUARE;
+    } else {
+        LOGD("part-symbol=%s not supported", muPrintable(s));
+        return;
+    }
+
+    const size_t relevantStaff = topStaff ? topStaff - 1 : 0;
+    const size_t span = bottomStaff ? bottomStaff - relevantStaff : nstaves - relevantStaff;
+
+    size_t column = part->staff(relevantStaff)->bracketLevels() + 1;
+    if (part->staff(relevantStaff)->bracketType(column) != BracketType::NO_BRACKET) {
+        column += 1;
+    }
+    part->staff(relevantStaff)->setBracketType(column, bracketType);
+    part->staff(relevantStaff)->setBracketSpan(column, span);
+    if (bracketType != BracketType::NO_BRACKET) {
+        part->staff(relevantStaff)->setBarLineSpan(span - 1);
+    }
+    if (symbolColor.isValid()) {
+        BracketItem* bi = part->staff(relevantStaff)->brackets().at(column);
+        bi->setColor(symbolColor);
+    }
 }
 
 //---------------------------------------------------------
