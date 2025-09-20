@@ -1818,13 +1818,21 @@ static bool isHarpPedalStyle(const TextStyleType tid)
 
 static void updateStyles(Score* score,
                          const String& wordFamily, const String& wordSize,
-                         const String& lyricFamily, const String& lyricSize)
+                         const String& lyricFamily, const String& lyricSize,
+                         const String& musicFamily = String())
 {
     const double dblWordSize = wordSize.toDouble();     // note conversion error results in value 0.0
     const double dblLyricSize = lyricSize.toDouble();   // but avoid comparing (double) floating point number with exact value later
     const double epsilon = 0.001;                       // use epsilon instead
 
     bool needUseDefaultFont = configuration()->needUseDefaultFont();
+
+    // Apply music font if specified and default font not forced
+    if (!musicFamily.isEmpty() && !needUseDefaultFont) {
+        if (auto font = score->engravingFonts()->fontByName(musicFamily.toStdString())) {
+            score->setEngravingFont(font);
+        }
+    }
 
     // loop over all text styles (except the empty, always hidden, first one)
     // set all text styles to the MusicXML defaults
@@ -2062,9 +2070,11 @@ void MusicXmlParserPass1::defaults()
                 }
             }
         } else if (m_e.name() == "music-font") {
-            StringList fontlist = m_e.attribute("font-family").split(u',');
-            std::string musicFontString = fontlist.at(0).toStdString();
-            m_score->setEngravingFont(m_score->engravingFonts()->fontByName(musicFontString));
+            m_musicFontFamily = m_e.attribute("font-family");
+            // Get the first font from the comma-separated list
+            if (m_musicFontFamily.contains(u',')) {
+                m_musicFontFamily = m_musicFontFamily.split(u',').at(0);
+            }
             m_e.skipCurrentElement();
         } else if (m_e.name() == "word-font") {
             wordFontFamily = m_e.attribute("font-family");
@@ -2088,7 +2098,7 @@ void MusicXmlParserPass1::defaults()
     */
     wordFontFamily = wordFontFamily.empty() ? u"Edwin" : wordFontFamily;
     lyricFontFamily = lyricFontFamily.empty() ? wordFontFamily : lyricFontFamily;
-    updateStyles(m_score, wordFontFamily, wordFontSize, lyricFontFamily, lyricFontSize);
+    updateStyles(m_score, wordFontFamily, wordFontSize, lyricFontFamily, lyricFontSize, m_musicFontFamily);
 
     scaleCopyrightText(m_score);
 }

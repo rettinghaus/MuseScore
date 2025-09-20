@@ -237,6 +237,7 @@ private:
     muse::String m_errors;                             // Errors to present to the user
     bool m_hasBeamingInfo = false;               // Whether the score supports or contains beaming info
     bool m_hasInferredHeaderText = false;
+    muse::String m_musicFontFamily;                  // Music font family specified in MusicXML
 
     // part specific data (TODO: move to part-specific class)
     engraving::Fraction m_timeSigDura;                      // Measure duration according to last timesig read
