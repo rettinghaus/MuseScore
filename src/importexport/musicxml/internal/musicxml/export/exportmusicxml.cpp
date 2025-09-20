@@ -360,6 +360,116 @@ struct MeasurePrintContext final
 //   ExportMusicXml
 //---------------------------------------------------------
 
+//---------------------------------------------------------
+// WavyLineHandler template
+//---------------------------------------------------------
+
+template<typename T>
+class WavyLineHandler {
+private:
+    const T* m_elements[MAX_NUMBER_LEVEL];
+    std::unordered_map<const ChordRest*, const T*> m_start;
+    std::unordered_map<const ChordRest*, const T*> m_stop;
+
+public:
+    WavyLineHandler() {
+        std::fill(m_elements, m_elements + MAX_NUMBER_LEVEL, nullptr);
+    }
+
+    int findElement(const T* element) const {
+        for (int i = 0; i < MAX_NUMBER_LEVEL; ++i) {
+            if (m_elements[i] == element) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    void findElements(const Measure* const measure, track_idx_t strack, track_idx_t etrack,
+                     ElementType type) {
+        Fraction stick = measure->tick();
+        Fraction etick = measure->tick() + measure->ticks();
+        for (auto it = measure->score()->spanner().lower_bound(stick.ticks());
+             it != measure->score()->spanner().upper_bound(etick.ticks()); ++it) {
+            EngravingItem* e = it->second;
+            if (e->type() == type && strack <= e->track() && e->track() < etrack
+                && e->tick() >= measure->tick() && e->tick() < (measure->tick() + measure->ticks())) {
+                const T* elem = static_cast<const T*>(e);
+                EngravingItem* elem1 = elem->startElement();
+                EngravingItem* elem2 = elem->endElement();
+
+                if (elem1 && elem1->isChordRest() && elem2 && elem2->isChordRest()) {
+                    m_start.insert({ toChordRest(elem1), elem });
+                    m_stop.insert({ toChordRest(elem2), elem });
+                }
+            }
+        }
+    }
+
+    void writeWavyLine(const ChordRest* cr, Notations& notations, Ornaments& ornaments,
+                      XmlWriter& xml, const char* elementName = "wavy-line") const {
+        if (muse::contains(m_start, cr) && muse::contains(m_stop, cr)) {
+            const T* elem = m_start.at(cr);
+            int n = findElement(nullptr);
+            if (n >= 0) {
+                notations.tag(xml);
+                ornaments.tag(xml);
+                XmlWriter::Attributes attrs = { { "type", "start-stop" } };
+                addColorAttr(elem, attrs);
+                xml.tag(elementName, attrs);
+            }
+        } else {
+            if (muse::contains(m_stop, cr)) {
+                const T* elem = m_stop.at(cr);
+                int n = findElement(elem);
+                if (n >= 0) {
+                    m_elements[n] = nullptr;
+                } else {
+                    n = findElement(nullptr);
+                    if (n >= 0) {
+                        m_elements[n] = elem;
+                    }
+                }
+                if (n >= 0) {
+                    notations.tag(xml);
+                    ornaments.tag(xml);
+                    XmlWriter::Attributes attrs = { { "type", "stop" } };
+                    addColorAttr(elem, attrs);
+                    xml.tag(elementName, attrs);
+                }
+                muse::remove(m_stop, cr);
+            }
+            if (muse::contains(m_start, cr)) {
+                const T* elem = m_start.at(cr);
+                int n = findElement(elem);
+                if (n >= 0) {
+                    LOGD("wavy line error");
+                } else {
+                    n = findElement(nullptr);
+                    if (n >= 0) {
+                        m_elements[n] = elem;
+                        notations.tag(xml);
+                        ornaments.tag(xml);
+                        XmlWriter::Attributes attrs = { { "type", "start" } };
+                        addColorAttr(elem, attrs);
+                        xml.tag(elementName, attrs);
+                    }
+                    muse::remove(m_start, cr);
+                }
+            }
+        }
+    }
+
+    void clear() {
+        m_start.clear();
+        m_stop.clear();
+        std::fill(m_elements, m_elements + MAX_NUMBER_LEVEL, nullptr);
+    }
+
+    const auto& getStart() const { return m_start; }
+    const auto& getStop() const { return m_stop; }
+};
+
 typedef std::unordered_map<const ChordRest*, const Trill*> TrillHash;
 typedef std::unordered_map<const ChordRest*, const Vibrato*> VibratoHash;
 typedef std::map<const Instrument*, int> MusicXmlInstrumentMap;
@@ -416,8 +526,6 @@ private:
     int findDashes(const TextLineBase* tl) const;
     int findHairpin(const Hairpin* tl) const;
     int findOttava(const Ottava* tl) const;
-    int findTrill(const Trill* tl) const;
-    int findVibrato(const Vibrato* vib) const;
     void chord(Chord* chord, staff_idx_t staff, const std::vector<Lyrics*>& ll, bool useDrumset);
     void rest(Rest* chord, staff_idx_t staff, const std::vector<Lyrics*>& ll);
     void clef(staff_idx_t staff, const ClefType ct, const String& extraAttributes = u"");
@@ -431,10 +539,8 @@ private:
     void calcDivMoveToTick(const Fraction& t);
     void calcDivisions();
     void keysigTimesig(const Measure* m, const Part* p);
-    void chordAttributes(Chord* chord, Notations& notations, Technical& technical, TrillHash& trillStart, TrillHash& trillStop);
-    void vibrato(const ChordRest* cr, Notations& notations, Ornaments& ornaments,
-                     VibratoHash& vibratoStart, VibratoHash& vibratoStop);
-    void wavyLineStartStop(const ChordRest* cr, Notations& notations, Ornaments& ornaments, TrillHash& trillStart, TrillHash& trillStop);
+    void chordAttributes(Chord* chord, Notations& notations, Technical& technical);
+    void vibrato(const ChordRest* cr, Notations& notations, Ornaments& ornaments);
     void print(const Measure* const m, const int partNr, const int firstStaffOfPart, const size_t nrStavesInPart,
                const MeasurePrintContext& mpc);
     void measureLayout(const double distance);
@@ -466,8 +572,6 @@ private:
     const TextLineBase* m_dashes[MAX_NUMBER_LEVEL];
     const Hairpin* m_hairpins[MAX_NUMBER_LEVEL];
     const Ottava* m_ottavas[MAX_NUMBER_LEVEL];
-    const Trill* m_trills[MAX_NUMBER_LEVEL];
-    const Vibrato* m_vibratos[MAX_NUMBER_LEVEL];
     std::vector<const Jump*> m_jumpElements;
     ArpeggioMap m_measArpeggios;
     int m_div = 0;
@@ -476,10 +580,8 @@ private:
     bool m_tboxesAboveWritten = false;
     bool m_tboxesBelowWritten = false;
     std::vector<size_t> m_hiddenStaves;
-    TrillHash m_trillStart;
-    TrillHash m_trillStop;
-    VibratoHash m_vibratoStart;
-    VibratoHash m_vibratoStop;
+    WavyLineHandler<Trill> m_trillHandler;
+    WavyLineHandler<Vibrato> m_vibratoHandler;
     MusicXmlInstrumentMap m_instrMap;
     PlayingTechniqueType m_currPlayTechnique;
 };
@@ -1207,41 +1309,6 @@ public:
     Fraction getTick() { return tick; }
     void setDirect(EngravingItem* d) { direct = d; }
 };
-
-//---------------------------------------------------------
-// vibrato handling
-//---------------------------------------------------------
-
-int ExportMusicXml::findVibrato(const Vibrato* vib) const
-{
-    for (int i = 0; i < MAX_NUMBER_LEVEL; ++i) {
-        if (m_vibratos[i] == vib)
-            return i;
-    }
-    return -1;
-}
-
-static void findVibratos(const Measure* const measure, track_idx_t strack, track_idx_t etrack,
-                        VibratoHash& vibratoStart, VibratoHash& vibratoStop)
-{
-    Fraction stick = measure->tick();
-    Fraction etick = measure->tick() + measure->ticks();
-    for (auto it = measure->score()->spanner().lower_bound(stick.ticks());
-         it != measure->score()->spanner().upper_bound(etick.ticks()); ++it) {
-        EngravingItem* e = it->second;
-        if (e->type() == ElementType::VIBRATO && strack <= e->track() && e->track() < etrack
-            && e->tick() >= measure->tick() && e->tick() < (measure->tick() + measure->ticks())) {
-            const Vibrato* vib = toVibrato(e);
-            EngravingItem* elem1 = vib->startElement();
-            EngravingItem* elem2 = vib->endElement();
-
-            if (elem1 && elem1->isChordRest() && elem2 && elem2->isChordRest()) {
-                vibratoStart.insert({ toChordRest(elem1), vib });
-                vibratoStop.insert({ toChordRest(elem2), vib });
-            }
-        }
-    }
-}
 
 //---------------------------------------------------------
 // trill handling
@@ -3054,131 +3121,15 @@ static void wavyLineStop(const Trill* tr, const int number, Notations& notations
     xml.tagRaw(trillXml);
 }
 
-//---------------------------------------------------------
-//   wavyLineStartStop
-//---------------------------------------------------------
 
-void ExportMusicXml::wavyLineStartStop(const ChordRest* cr, Notations& notations, Ornaments& ornaments,
-                                       TrillHash& trillStart, TrillHash& trillStop)
-{
-    if (muse::contains(trillStart, cr) && muse::contains(trillStop, cr)) {
-        const Trill* tr = trillStart.at(cr);
-        int n = findTrill(0);
-        if (n >= 0) {
-            wavyLineStart(tr, n, notations, ornaments, m_xml);
-            wavyLineStop(tr, n, notations, ornaments, m_xml);
-        } else {
-            LOGD("too many overlapping trills (cr %p staff %zu tick %d)",
-                 cr, cr->staffIdx(), cr->tick().ticks());
-        }
-    } else {
-        if (muse::contains(trillStop, cr)) {
-            const Trill* tr = trillStop.at(cr);
-            int n = findTrill(tr);
-            if (n >= 0) {
-                // trill stop after trill start
-                m_trills[n] = 0;
-            } else {
-                // trill stop before trill start
-                n = findTrill(0);
-                if (n >= 0) {
-                    m_trills[n] = tr;
-                } else {
-                    LOGD("too many overlapping trills (cr %p staff %zu tick %d)",
-                         cr, cr->staffIdx(), cr->tick().ticks());
-                }
-            }
-            if (n >= 0) {
-                wavyLineStop(tr, n, notations, ornaments, m_xml);
-            }
-            muse::remove(trillStop, cr);
-        }
-        if (muse::contains(trillStart, cr)) {
-            const Trill* tr = trillStart.at(cr);
-            int n = findTrill(tr);
-            if (n >= 0) {
-                LOGD("wavyLineStartStop error");
-            } else {
-                n = findTrill(0);
-                if (n >= 0) {
-                    m_trills[n] = tr;
-                    wavyLineStart(tr, n, notations, ornaments, m_xml);
-                } else {
-                    LOGD("too many overlapping trills (cr %p staff %zu tick %d)",
-                         cr, cr->staffIdx(), cr->tick().ticks());
-                }
-                muse::remove(trillStart, cr);
-            }
-        }
-    }
-}
 
 //---------------------------------------------------------
 //   vibrato
 //---------------------------------------------------------
 
-void ExportMusicXml::vibrato(const ChordRest* cr, Notations& notations, Ornaments& ornaments,
-                            VibratoHash& vibratoStart, VibratoHash& vibratoStop)
+void ExportMusicXml::vibrato(const ChordRest* cr, Notations& notations, Ornaments& ornaments)
 {
-    if (muse::contains(vibratoStart, cr) && muse::contains(vibratoStop, cr)) {
-        const Vibrato* vib = vibratoStart.at(cr);
-        int n = findVibrato(nullptr);
-        if (n >= 0) {
-            notations.tag(m_xml);
-            ornaments.tag(m_xml);
-            XmlWriter::Attributes attrs = { { "type", "start-stop" } };
-            addColorAttr(vib, attrs);
-            m_xml.tag("wavy-line", attrs);
-        } else {
-            LOGD("too many overlapping vibratos (cr %p staff %zu tick %d)",
-                 cr, cr->staffIdx(), cr->tick().ticks());
-        }
-    } else {
-        if (muse::contains(vibratoStop, cr)) {
-            const Vibrato* vib = vibratoStop.at(cr);
-            int n = findVibrato(vib);
-            if (n >= 0) {
-                m_vibratos[n] = nullptr;
-            } else {
-                n = findVibrato(nullptr);
-                if (n >= 0) {
-                    m_vibratos[n] = vib;
-                } else {
-                    LOGD("too many overlapping vibratos (cr %p staff %zu tick %d)",
-                         cr, cr->staffIdx(), cr->tick().ticks());
-                }
-            }
-            if (n >= 0) {
-                notations.tag(m_xml);
-                ornaments.tag(m_xml);
-                XmlWriter::Attributes attrs = { { "type", "stop" } };
-                addColorAttr(vib, attrs);
-                m_xml.tag("wavy-line", attrs);
-            }
-            muse::remove(vibratoStop, cr);
-        }
-        if (muse::contains(vibratoStart, cr)) {
-            const Vibrato* vib = vibratoStart.at(cr);
-            int n = findVibrato(vib);
-            if (n >= 0) {
-                LOGD("vibrato error");
-            } else {
-                n = findVibrato(nullptr);
-                if (n >= 0) {
-                    m_vibratos[n] = vib;
-                    notations.tag(m_xml);
-                    ornaments.tag(m_xml);
-                    XmlWriter::Attributes attrs = { { "type", "start" } };
-                    addColorAttr(vib, attrs);
-                    m_xml.tag("wavy-line", attrs);
-                } else {
-                    LOGD("too many overlapping vibratos (cr %p staff %zu tick %d)",
-                         cr, cr->staffIdx(), cr->tick().ticks());
-                }
-                muse::remove(vibratoStart, cr);
-            }
-        }
-    }
+    m_vibratoHandler.writeWavyLine(cr, notations, ornaments, m_xml);
 }
 
 //---------------------------------------------------------
@@ -3680,8 +3631,8 @@ void ExportMusicXml::chordAttributes(Chord* chord, Notations& notations, Technic
         }
     }
     tremoloSingleStartStop(chord, notations, ornaments, m_xml);
-    wavyLineStartStop(chord, notations, ornaments, trillStart, trillStop);
-    vibrato(chord, notations, ornaments, m_vibratoStart, m_vibratoStop);
+    m_trillHandler.writeWavyLine(chord, notations, ornaments, m_xml);
+    vibrato(chord, notations, ornaments);
     ornaments.etag(m_xml);
 
     // and finally the attributes whose elements are children of <technical>
@@ -4813,7 +4764,7 @@ void ExportMusicXml::rest(Rest* rest, staff_idx_t staff, const std::vector<Lyric
     articulations.etag(m_xml);
 
     Ornaments ornaments;
-    wavyLineStartStop(rest, notations, ornaments, m_trillStart, m_trillStop);
+    m_trillHandler.writeWavyLine(rest, notations, ornaments, m_xml);
     ornaments.etag(m_xml);
 
     writeNotationSymbols(m_xml, notations, rest->el(), false);
@@ -8494,8 +8445,8 @@ void ExportMusicXml::writeMeasure(const Measure* const m,
 
     m_attr.start();
 
-    findTrills(m, strack, etrack, m_trillStart, m_trillStop);
-    findVibratos(m, strack, etrack, m_vibratoStart, m_vibratoStop);
+    m_trillHandler.findElements(m, strack, etrack, ElementType::TRILL);
+    m_vibratoHandler.findElements(m, strack, etrack, ElementType::VIBRATO);
 
     // barline left must be the first element in a measure
     barlineLeft(m, strack);
@@ -8606,10 +8557,8 @@ void ExportMusicXml::writeParts()
         m_tick = { 0, 1 };
         m_xml.startElementRaw(String(u"part id=\"P%1\"").arg(partIndex + 1));
 
-        m_trillStart.clear();
-        m_trillStop.clear();
-        m_vibratoStart.clear();
-        m_vibratoStop.clear();
+        m_trillHandler.clear();
+        m_vibratoHandler.clear();
         initInstrMap(m_instrMap, part->instruments(), m_score);
 
         MeasureNumberStateHandler mnsh;
