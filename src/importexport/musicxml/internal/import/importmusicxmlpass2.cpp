@@ -1429,14 +1429,12 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
     colorItem(turn, Color::fromString(notation.attribute(u"color")));
     cr->add(turn);
 
-    const String accidAbove = notation.attribute(u"above");
     if (!accidAbove.empty()) {
         Accidental* accidental = Factory::createAccidental(turn);
         accidental->setAccidentalType(musicXmlString2accidentalType(accidAbove));
         accidental->setParent(turn);
         turn->setAccidentalAbove(accidental);
     }
-    const String accidBelow = notation.attribute(u"below");
     if (!accidBelow.empty()) {
         Accidental* accidental = Factory::createAccidental(turn);
         accidental->setAccidentalType(musicXmlString2accidentalType(accidBelow));
