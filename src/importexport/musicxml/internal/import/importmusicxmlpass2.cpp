@@ -1359,7 +1359,6 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
         }
         mordent->setVisible(notation.visible());
         colorItem(mordent, Color::fromString(notation.attribute(u"color")));
-        cr->add(mordent);
 
         const String accidAbove = notation.attribute(u"above");
         if (!accidAbove.empty()) {
@@ -1391,6 +1390,7 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
                 LOGD("MusicXml::import: no accidental below in mordent");
             }
         }
+        cr->add(mordent);
     } else {
         LOGD("unknown ornament: name '%s' long '%s' approach '%s' departure '%s'",
              muPrintable(name), muPrintable(attrLong), muPrintable(attrAppr), muPrintable(attrDep));        // TODO
