@@ -721,6 +721,9 @@ TEST_F(MusicXml_Tests, harmony8) {
 TEST_F(MusicXml_Tests, harmony9) {
     musicXmlIoTest("testHarmony9"); // chordnames without chordrest
 }
+TEST_F(MusicXml_Tests, harmony10) {
+    musicXmlIoTest("testStackedHarm_ref");
+}
 TEST_F(MusicXml_Tests, harmonMutes) {
     musicXmlIoTest("testHarmonMutes");
 }
