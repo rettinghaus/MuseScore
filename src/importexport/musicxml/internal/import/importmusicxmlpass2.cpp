@@ -65,6 +65,7 @@
 #include "engraving/dom/measure.h"
 #include "engraving/dom/mscore.h"
 #include "engraving/dom/note.h"
+#include "engraving/dom/ornament.h"
 #include "engraving/dom/ottava.h"
 #include "engraving/dom/part.h"
 #include "engraving/dom/pedal.h"
@@ -1437,6 +1438,7 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
         accidental->setTrack(turn->track());
         accidental->setParent(turn);
         turn->setAccidentalAbove(accidental);
+        turn->add(accidental);
     }
     if (!accidBelow.empty()) {
         Accidental* accidental = Factory::createAccidental(turn);
@@ -1444,6 +1446,7 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
         accidental->setTrack(turn->track());
         accidental->setParent(turn);
         turn->setAccidentalBelow(accidental);
+        turn->add(accidental);
     }
 }
 
