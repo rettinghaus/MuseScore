@@ -1369,6 +1369,7 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
             }
             Accidental* accidental = Factory::createAccidental(mordent);
             accidental->setAccidentalType(type);
+            accidental->setTrack(mordent->track());
             accidental->setParent(mordent);
             mordent->setAccidentalAbove(accidental);
             if (!mordent->accidentalAbove()) {
@@ -1384,6 +1385,7 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
             }
             Accidental* accidental = Factory::createAccidental(mordent);
             accidental->setAccidentalType(type);
+            accidental->setTrack(mordent->track());
             accidental->setParent(mordent);
             mordent->setAccidentalBelow(accidental);
             if (!mordent->accidentalBelow()) {
@@ -1432,12 +1434,14 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
     if (!accidAbove.empty()) {
         Accidental* accidental = Factory::createAccidental(turn);
         accidental->setAccidentalType(musicXmlString2accidentalType(accidAbove));
+        accidental->setTrack(turn->track());
         accidental->setParent(turn);
         turn->setAccidentalAbove(accidental);
     }
     if (!accidBelow.empty()) {
         Accidental* accidental = Factory::createAccidental(turn);
         accidental->setAccidentalType(musicXmlString2accidentalType(accidBelow));
+        accidental->setTrack(turn->track());
         accidental->setParent(turn);
         turn->setAccidentalBelow(accidental);
     }
