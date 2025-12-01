@@ -696,7 +696,7 @@ const std::array<StyleDef::StyleValue, size_t(Sid::STYLES)> StyleDef::styleValue
     styleDef(tremoloWidth,                               1.2_sp), // tremolo stroke width: notehead width
     styleDef(tremoloBoxHeight,                           0.65_sp),
     styleDef(tremoloLineWidth,                           0.5_sp), // was 0.35
-    styleDef(tremoloDistance,                            0.8_sp),
+    styleDef(tremoloDistance,                            1.0_sp),
     styleDef(tremoloStyle,                               int(TremoloStyle::DEFAULT)),
     styleDef(tremoloStrokeLengthMultiplier,              0.62),
     styleDef(tremoloNoteSidePadding,                     1.25_sp),
