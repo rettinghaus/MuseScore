@@ -155,44 +155,26 @@ staff_idx_t TremoloSingleChord::vStaffIdx() const
 //   basePath
 //---------------------------------------------------------
 
-PainterPath TremoloSingleChord::basePath(double /*stretch*/) const
-{
-    if (isBuzzRoll()) {
-        return PainterPath();
-    }
-
-    const double sp = spatium() * chordMag();
-
-    double w2  = sp * style().styleS(Sid::tremoloWidth).val() * .5;
-    double lw  = sp * style().styleS(Sid::tremoloLineWidth).val();
-    double td  = sp * style().styleS(Sid::tremoloDistance).val();
-
-    PainterPath ppath;
-
-    // first line
-    ppath.addRect(-w2, 0.0, 2.0 * w2, lw);
-    double ty = td;
-
-    // other lines
-    for (int i = 1; i < m_lines; i++) {
-        ppath.addRect(-w2, ty, 2.0 * w2, lw);
-        ty += td;
-    }
-
-    Transform shearTransform;
-    shearTransform.shear(0.0, -(lw / 2.0) / w2);
-    ppath = shearTransform.map(ppath);
-
-    return ppath;
-}
-
 void TremoloSingleChord::computeShape()
 {
-    if (isBuzzRoll()) {
-        setbbox(symBbox(SymId::buzzRoll));
-    } else {
-        m_path = basePath();
-        setbbox(m_path.boundingRect());
+    setbbox(symBbox(tremoloSymbol()));
+}
+
+SymId TremoloSingleChord::tremoloSymbol() const
+{
+    switch (tremoloType()) {
+        case TremoloType::R8:
+            return SymId::tremolo1;
+        case TremoloType::R16:
+            return SymId::tremolo2;
+        case TremoloType::R32:
+            return SymId::tremolo3;
+        case TremoloType::R64:
+            return SymId::tremolo4;
+        case TremoloType::BUZZ_ROLL:
+            return SymId::buzzRoll;
+        default:
+            return SymId::noSym;
     }
 }
 

@@ -61,6 +61,7 @@ public:
 
     TDuration durationType() const;
     void setDurationType(TDuration d);
+    SymId tremoloSymbol() const;
 
     Fraction tremoloLen() const;
     bool isBuzzRoll() const { return m_tremoloType == TremoloType::BUZZ_ROLL; }
@@ -85,8 +86,6 @@ public:
     void endEdit(EditData&) override;
 
     muse::draw::PainterPath basePath(double stretch = 0) const;
-    const muse::draw::PainterPath& path() const { return m_path; }
-    void setPath(const muse::draw::PainterPath& p) { m_path = p; }
 
     void computeShape();
 
@@ -98,7 +97,6 @@ private:
 
     TremoloType m_tremoloType = TremoloType::INVALID_TREMOLO;
     TDuration m_durationType;
-    muse::draw::PainterPath m_path;
     bool m_playTremolo = true;
 
     int m_lines = 0; // derived from _subtype
