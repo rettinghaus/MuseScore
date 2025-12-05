@@ -2361,7 +2361,7 @@ void SingleDraw::draw(const TremoloSingleChord* item, Painter* painter, const Pa
 
     const TremoloSingleChord::LayoutData* ldata = item->ldata();
 
-    painter->setPen(item->curColor());
+    painter->setPen(item->curColor(opt));
     switch (item->tremoloType()) {
     case TremoloType::R8:          item->drawSymbol(SymId::tremolo1, painter);
         break;
