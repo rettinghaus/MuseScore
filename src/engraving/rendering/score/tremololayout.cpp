@@ -171,7 +171,7 @@ void TremoloLayout::layoutOneNoteTremolo(TremoloSingleChord* item, const LayoutC
     // elongate stem if tremolo is now outside the staff
     if (y < 0 || y > (item->staff()->lines(item->tick()) - 1) * spatium) {
         if (auto* stem = item->chord()->stem()) {
-            stem->setUserLength(stem->userLength() + spatium);
+            stem->setUserLength(stem->userLength() + Spatium(spatium));
         }
     }
     item->setPos(x, y);
