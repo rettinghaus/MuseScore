@@ -153,24 +153,24 @@ void TremoloLayout::layoutOneNoteTremolo(TremoloSingleChord* item, const LayoutC
         y = std::max(y, 0.0);
     }
 
-    // clear of noteheads by at least one space
-    double noteheadEnd = item->chord()->stem()->y() + item->chord()->stem()->length();
+    if (auto* stem = item->chord()->stem()) {
+        // clear of noteheads by at least one space
+        double noteheadEnd = stem->y() + stem->length();
 
-    if (up) {
-        const double yMargin = noteheadEnd - spatium - item->ldata()->bbox().height();
-        if (y > yMargin) {
-            y = yMargin;
+        if (up) {
+            const double yMargin = noteheadEnd - spatium - item->ldata()->bbox().height();
+            if (y > yMargin) {
+                y = yMargin;
+            }
+        } else {
+            const double yMargin = noteheadEnd + spatium;
+            if (y < yMargin) {
+                y = yMargin;
+            }
         }
-    } else {
-        const double yMargin = noteheadEnd + spatium;
-        if (y < yMargin) {
-            y = yMargin;
-        }
-    }
 
-    // elongate stem if tremolo is now outside the staff
-    if (y < 0 || y > (item->staff()->lines(item->tick()) - 1) * spatium) {
-        if (auto* stem = item->chord()->stem()) {
+        // elongate stem if tremolo is now outside the staff
+        if (y < 0 || y > (item->staff()->lines(item->tick()) - 1) * spatium) {
             stem->setUserLength(stem->userLength() + Spatium(spatium));
         }
     }
