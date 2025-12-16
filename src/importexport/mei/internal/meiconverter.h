@@ -161,6 +161,7 @@ public:
     static libmei::Arpeg arpegToMEI(const engraving::Arpeggio* arpeggio);
 
     static void articFromMEI(engraving::Articulation* articulation, const libmei::Artic& meiArtic, bool& warning);
+    static void articFromMEI(engraving::ChordLine* chordline, const libmei::Artic& meiArtic, bool& warning);
     static libmei::Artic articToMEI(const engraving::Articulation* articulation);
     static libmei::Artic articToMEI(const engraving::ChordLine* chordline);
 
