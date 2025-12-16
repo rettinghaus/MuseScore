@@ -29,6 +29,7 @@
 #include "engraving/dom/bracket.h"
 #include "engraving/dom/breath.h"
 #include "engraving/dom/chord.h"
+#include "engraving/dom/chordline.h"
 #include "engraving/dom/clef.h"
 #include "engraving/dom/dynamic.h"
 #include "engraving/dom/expression.h"
@@ -576,7 +577,12 @@ EngravingItem* MeiImporter::addToChordRest(const libmei::Element& meiElement, Me
             item = Factory::createArpeggio(toChord(chordRest));
         }
     } else if (meiElement.m_name == "artic") {
-        item = Factory::createArticulation(chordRest);
+        static const std::vector<std::string> s_chordlines = { "fall", "doit", "plop", "scoop" };
+        if (chordRest->isChord() && std::find(s_chordlines.begin(), s_chordlines.end(), meiElement.m_name) != s_chordlines.end()) {
+            item = Factory::createChordLine(toChord(chordRest));
+        } else if (meiElement.m_name == "arpeg") {
+            item = Factory::createArticulation(chordRest);
+        }
     } else {
         return nullptr;
     }
@@ -1708,13 +1714,17 @@ bool MeiImporter::readArtic(pugi::xml_node articNode, Chord* chord)
     libmei::Artic meiArtic;
     meiArtic.Read(articNode);
 
-    Articulation* articulation = toArticulation(this->addToChordRest(meiArtic, nullptr, chord));
+    EngravingItem* articulation = this->addToChordRest(meiArtic, nullptr, chord);
     if (!articulation) {
         // Warning message given in MeiImporter::addToChordRest
         return true;
     }
 
-    Convert::articFromMEI(articulation, meiArtic, warning);
+    if (articulation->isChordLine()) {
+        Convert::articFromMEI(static_cast<ChordLine*>(articulation), meiArtic, warning);
+    } else {
+        Convert::articFromMEI(static_cast<Articulation*>(articulation), meiArtic, warning);
+    }
 
     return true;
 }
