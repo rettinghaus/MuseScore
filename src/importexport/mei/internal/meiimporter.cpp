@@ -584,7 +584,7 @@ EngravingItem* MeiImporter::addToChordRest(const libmei::Element& meiElement, Me
             if (chordRest->isChord()) {
                 item = Factory::createChordLine(toChord(chordRest));
             }
-        } else if (meiElement.m_name == "arpeg") {
+        } else {
             item = Factory::createArticulation(chordRest);
         }
     } else {
