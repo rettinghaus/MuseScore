@@ -5,8 +5,7 @@
    <meiHead>
       <fileDesc>
          <titleStmt>
-            <title type="main">Unbenannte Partitur</title>
-            <title type="subordinate">Untertitel</title>
+            <title type="main">Chordlines test</title>
             <respStmt>
                <persName role="composer">Komponist / Arrangeur</persName>
             </respStmt>
@@ -21,6 +20,14 @@
          <mdiv>
             <score>
                <scoreDef>
+                  <pgHead func="first">
+                     <rend halign="center" valign="top">
+                        <rend type="title" fontsize="x-large">Chordlines test</rend>
+                     </rend>
+                     <rend halign="right" valign="bottom">
+                        <rend type="composer">Composer / arranger</rend>
+                     </rend>
+                  </pgHead>
                   <staffGrp>
                      <staffDef n="1" lines="5" meter.count="4" meter.unit="4" trans.diat="-1" trans.semi="-2">
                         <label>Trompete</label>

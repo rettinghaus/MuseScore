@@ -577,7 +577,6 @@ EngravingItem* MeiImporter::addToChordRest(const libmei::Element& meiElement, Me
             item = Factory::createArpeggio(toChord(chordRest));
         }
     } else if (meiElement.m_name == "artic") {
-        static const std::vector<std::string> s_chordlines = { "fall", "doit", "plop", "scoop" };
         const libmei::Artic meiArtic = static_cast<const libmei::Artic&>(meiElement);
         if (meiArtic.HasArtic() && (meiArtic.GetArtic().at(0) >= libmei::ARTICULATION_doit &&
                                     meiArtic.GetArtic().at(0) < libmei::ARTICULATION_longfall)) {
