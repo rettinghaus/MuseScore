@@ -578,8 +578,10 @@ EngravingItem* MeiImporter::addToChordRest(const libmei::Element& meiElement, Me
         }
     } else if (meiElement.m_name == "artic") {
         static const std::vector<std::string> s_chordlines = { "fall", "doit", "plop", "scoop" };
-        if (chordRest->isChord() && std::find(s_chordlines.begin(), s_chordlines.end(), meiElement.m_name) != s_chordlines.end()) {
-            item = Factory::createChordLine(toChord(chordRest));
+        if (std::find(s_chordlines.begin(), s_chordlines.end(), meiElement.attribute("artic").value()) != s_chordlines.end()) {
+            if (chordRest->isChord()) {
+                item = Factory::createChordLine(toChord(chordRest));
+            }
         } else if (meiElement.m_name == "arpeg") {
             item = Factory::createArticulation(chordRest);
         }
