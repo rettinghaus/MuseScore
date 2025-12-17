@@ -423,6 +423,13 @@ void Convert::articFromMEI(engraving::ChordLine* chordline, const libmei::Artic&
         }
     }
 
+    // @type
+    if (Convert::hasTypeValue(meiArtic.GetType(), std::string(CHORDLINE_TYPE) + "straight")) {
+        chordline->setStraight(true);
+    } else if (Convert::hasTypeValue(meiArtic.GetType(), std::string(CHORDLINE_TYPE) + "wavy")) {
+        chordline->setWavy(true);
+    }
+
     // @place
     if (meiArtic.HasPlace()) {
         bool placeWarning = true;
