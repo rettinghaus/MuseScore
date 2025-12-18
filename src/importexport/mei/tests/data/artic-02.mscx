@@ -188,6 +188,7 @@
             </Chord>
           <Rest>
             <eid>h_h</eid>
+            <BeamMode>auto</BeamMode>
             <durationType>half</durationType>
             </Rest>
           </voice>
@@ -212,6 +213,7 @@
             </Chord>
           <Rest>
             <eid>m_m</eid>
+            <BeamMode>auto</BeamMode>
             <durationType>half</durationType>
             </Rest>
           </voice>
@@ -236,6 +238,7 @@
             </Chord>
           <Rest>
             <eid>r_r</eid>
+            <BeamMode>auto</BeamMode>
             <durationType>half</durationType>
             </Rest>
           </voice>
@@ -260,6 +263,7 @@
             </Chord>
           <Rest>
             <eid>w_w</eid>
+            <BeamMode>auto</BeamMode>
             <durationType>half</durationType>
             </Rest>
           </voice>
@@ -275,7 +279,7 @@
             <eid>z_z</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>wqaW/mcXm1O_kLXO7ztG6cB</eid>
+              <eid>0_0</eid>
               <pitch>70</pitch>
               <tpc>12</tpc>
               <tpc2>14</tpc2>
@@ -283,23 +287,24 @@
             <ChordLine>
               <subtype>1</subtype>
               <wavy>1</wavy>
-              <eid>r40IsSp7CfJ_/nq80Cf1NdD</eid>
+              <eid>1_1</eid>
               </ChordLine>
             </Chord>
           <Rest>
-            <eid>5ts8Qf5o6kB_XohKRxpvb4O</eid>
+            <eid>2_2</eid>
+            <BeamMode>auto</BeamMode>
             <durationType>half</durationType>
             </Rest>
           </voice>
         </Measure>
       <Measure>
-        <eid>mT8dsRxHbkG_nPkxhFaQyrJ</eid>
+        <eid>3_3</eid>
         <voice>
           <Chord>
-            <eid>1BrRo7d3fwM_R3iIH8z2jnH</eid>
+            <eid>4_4</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>dd/2WkOAkdG_EP12fwcMEyC</eid>
+              <eid>5_5</eid>
               <pitch>70</pitch>
               <tpc>12</tpc>
               <tpc2>14</tpc2>
@@ -307,23 +312,24 @@
             <ChordLine>
               <subtype>2</subtype>
               <wavy>1</wavy>
-              <eid>cF1HXrbWu+F_xNQ5NwIZwPK</eid>
+              <eid>6_6</eid>
               </ChordLine>
             </Chord>
           <Rest>
-            <eid>bsW80oAk8AC_uQkDz5HC9tI</eid>
+            <eid>7_7</eid>
+            <BeamMode>auto</BeamMode>
             <durationType>half</durationType>
             </Rest>
           </voice>
         </Measure>
       <Measure>
-        <eid>o82ctdsPeJH_Q6BZ8X85WnM</eid>
+        <eid>8_8</eid>
         <voice>
           <Chord>
-            <eid>ybu5XxhnenL_JcY6+Uno5DB</eid>
+            <eid>9_9</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>tKq7EU+A9yE_PlrYSqGdC+B</eid>
+              <eid>+_+</eid>
               <pitch>70</pitch>
               <tpc>12</tpc>
               <tpc2>14</tpc2>
@@ -331,23 +337,24 @@
             <ChordLine>
               <subtype>3</subtype>
               <wavy>1</wavy>
-              <eid>Q3BHaYeSyJJ_ASy/bLzg6dI</eid>
+              <eid>/_/</eid>
               </ChordLine>
             </Chord>
           <Rest>
-            <eid>4G0k2xLdGuI_C/uU+CGS9bD</eid>
+            <eid>AB_AB</eid>
+            <BeamMode>auto</BeamMode>
             <durationType>half</durationType>
             </Rest>
           </voice>
         </Measure>
       <Measure>
-        <eid>MlaIXfypsjO_JmJsL5j/KSM</eid>
+        <eid>BB_BB</eid>
         <voice>
           <Chord>
-            <eid>YIcqudWWeaG_M8eByoAAFHB</eid>
+            <eid>CB_CB</eid>
             <durationType>half</durationType>
             <Note>
-              <eid>oq1iOA9YFfD_AxLjlxzPn5C</eid>
+              <eid>DB_DB</eid>
               <pitch>70</pitch>
               <tpc>12</tpc>
               <tpc2>14</tpc2>
@@ -355,11 +362,12 @@
             <ChordLine>
               <subtype>4</subtype>
               <wavy>1</wavy>
-              <eid>nA/Kt/GSPtG_Chh4KHOVqTL</eid>
+              <eid>EB_EB</eid>
               </ChordLine>
             </Chord>
           <Rest>
-            <eid>fYInBLzYDfJ_uRUTuDnVqhP</eid>
+            <eid>FB_FB</eid>
+            <BeamMode>auto</BeamMode>
             <durationType>half</durationType>
             </Rest>
           </voice>
