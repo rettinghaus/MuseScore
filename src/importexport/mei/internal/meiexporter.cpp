@@ -1039,13 +1039,27 @@ bool MeiExporter::writeArtics(const Chord* chord)
         return false;
     }
 
-    for (const EngravingItem* item : chord->el()) {
-        if (item->isArticulation()) {
-            const Articulation* articulation = toArticulation(item);
-            if (!this->isLaissezVibrer(articulation->symId())) {
-                this->writeArtic(articulation);
-            }
-        } else if (item->isChordLine()) {
+    for (const Articulation* articulation : chord->articulations()) {
+        if (articulation->isArticulation() && !this->isLaissezVibrer(articulation->symId())) {
+            this->writeArtic(articulation);
+        }
+    }
+ 
+    return true;
+}
+
+/**
+ * Write the ChordLines attached to a Note
+ */
+
+bool MeiExporter::writeArtics(const Note* note)
+{
+    IF_ASSERT_FAILED(note) {
+        return false;
+    }
+
+    for (const EngravingItem* item : note->el()) {
+        if (item->isChordLine()) {
             const ChordLine* chordline = toChordLine(item);
             this->writeArtic(chordline);
         }
@@ -1365,6 +1379,7 @@ bool MeiExporter::writeNote(const Note* note, const Chord* chord, const Staff* s
         this->writeArtics(chord);
         this->writeVerses(chord);
     }
+    this->writeArtics(note);
     const int velocity = note->userVelocity();
     if (velocity != 0) {
         meiNote.SetVel(velocity);
