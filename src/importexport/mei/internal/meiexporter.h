@@ -107,6 +107,7 @@ private:
      * Methods for writing MEI elements within a <layer>
      */
     bool writeArtics(const engraving::Chord* chord);
+    bool writeArtics(const engraving::Note* note);
     bool writeArtic(const engraving::Articulation* articulation);
     bool writeArtic(const engraving::ChordLine* chordline);
     bool writeBeamAndTuplet(const engraving::ChordRest* chordRest, bool& closingBeam, bool& closingTuplet, bool& closingBeamInTuplet);
