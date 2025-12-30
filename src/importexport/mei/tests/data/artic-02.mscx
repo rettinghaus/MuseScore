@@ -179,7 +179,7 @@
               <pitch>70</pitch>
               <tpc>12</tpc>
               <tpc2>14</tpc2>
-            </Note>
+              </Note>
             <ChordLine>
               <subtype>1</subtype>
               <straight>1</straight>
@@ -204,7 +204,7 @@
               <pitch>70</pitch>
               <tpc>12</tpc>
               <tpc2>14</tpc2>
-            </Note>
+              </Note>
             <ChordLine>
               <subtype>2</subtype>
               <straight>1</straight>
@@ -229,7 +229,7 @@
               <pitch>70</pitch>
               <tpc>12</tpc>
               <tpc2>14</tpc2>
-            </Note>
+              </Note>
             <ChordLine>
               <straight>1</straight>
               <subtype>3</subtype>
@@ -254,7 +254,7 @@
               <pitch>70</pitch>
               <tpc>12</tpc>
               <tpc2>14</tpc2>
-            </Note>
+              </Note>
             <ChordLine>
               <subtype>4</subtype>
               <straight>1</straight>
@@ -283,7 +283,7 @@
               <pitch>70</pitch>
               <tpc>12</tpc>
               <tpc2>14</tpc2>
-            </Note>
+              </Note>
             <ChordLine>
               <subtype>1</subtype>
               <wavy>1</wavy>
@@ -308,7 +308,7 @@
               <pitch>70</pitch>
               <tpc>12</tpc>
               <tpc2>14</tpc2>
-            </Note>
+              </Note>
             <ChordLine>
               <subtype>2</subtype>
               <wavy>1</wavy>
@@ -333,7 +333,7 @@
               <pitch>70</pitch>
               <tpc>12</tpc>
               <tpc2>14</tpc2>
-            </Note>
+              </Note>
             <ChordLine>
               <subtype>3</subtype>
               <wavy>1</wavy>
@@ -358,7 +358,7 @@
               <pitch>70</pitch>
               <tpc>12</tpc>
               <tpc2>14</tpc2>
-            </Note>
+              </Note>
             <ChordLine>
               <subtype>4</subtype>
               <wavy>1</wavy>
