@@ -6,9 +6,6 @@
       <fileDesc>
          <titleStmt>
             <title type="main">Chordlines test</title>
-            <respStmt>
-               <persName role="composer">Komponist / Arrangeur</persName>
-            </respStmt>
          </titleStmt>
          <pubStmt>
             <date isodate="2025-12-16T22:39:33" />
@@ -24,14 +21,11 @@
                      <rend halign="center" valign="top">
                         <rend type="title" fontsize="x-large">Chordlines test</rend>
                      </rend>
-                     <rend halign="right" valign="bottom">
-                        <rend type="composer">Composer / arranger</rend>
-                     </rend>
                   </pgHead>
                   <staffGrp>
                      <staffDef n="1" lines="5" meter.count="4" meter.unit="4" trans.diat="-1" trans.semi="-2">
-                        <label>Trompete</label>
-                        <labelAbbr>Trp.</labelAbbr>
+                        <label>Trompete in B</label>
+                        <labelAbbr>Trp. in B</labelAbbr>
                         <instrDef midi.instrnum="56" />
                         <clef shape="G" line="2" />
                      </staffDef>
