@@ -7723,7 +7723,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
                         const int number = findPartGroupNumber(partGroupEnd);
                         if (number < MAX_PART_GROUPS) {
                             const BracketItem* bi = st->brackets().at(j);
-                            partGroupStart(xml, number + 1, bi, st->barLineSpan());
+                            partGroupStart(xml, number + 1, bi, st->barLineSpan(), groupTime);
                             partGroupEnd[number] = static_cast<int>(staffCount + st->bracketSpan(j));
                         }
                     }
