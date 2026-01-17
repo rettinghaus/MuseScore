@@ -78,10 +78,6 @@ Gtr. 2</part-abbreviation>
         </midi-instrument>
       </score-part>
     <part-group type="stop" number="2"/>
-    <part-group type="start" number="2">
-      <group-symbol>none</group-symbol>
-      <group-barline>yes</group-barline>
-      </part-group>
     <score-part id="P4">
       <part-name>Acoustic
 Guitar</part-name>
@@ -98,7 +94,6 @@ Gtr.</part-abbreviation>
         <pan>0</pan>
         </midi-instrument>
       </score-part>
-    <part-group type="stop" number="2"/>
     <part-group type="stop" number="1"/>
     <part-group type="start" number="1">
       <group-symbol>bracket</group-symbol>
@@ -159,6 +154,7 @@ Gtr.</part-abbreviation>
           <beat-type>4</beat-type>
           </time>
         <staves>2</staves>
+        <part-symbol>none</part-symbol>
         <clef number="1">
           <sign>G</sign>
           <line>2</line>
