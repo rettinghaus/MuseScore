@@ -1889,10 +1889,6 @@ bool MeiExporter::writeHairpin(const Hairpin* hairpin, const Measure* measure)
         return false;
     }
 
-    if (hairpin->isLineType()) {
-        return this->writeDir(dynamic_cast<const TextLineBase*>(hairpin), startid);
-    }
-
     pugi::xml_node hairpinNode = m_currentNode.append_child();
     libmei::Hairpin meiHairpin = Convert::hairpinToMEI(hairpin);
     double tstamp = Convert::tstampFromFraction(hairpin->tick() - measure->tick(), measure->timesig());
