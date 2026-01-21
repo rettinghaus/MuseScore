@@ -1005,9 +1005,11 @@ bool MeiExporter::writeLayer(track_idx_t track, const Staff* staff, const Measur
         } else if (item->isBreath()) {
             //
         } else if (item->isHairpinSegment()) {
+            LOGD() << "MeiExporter::Hit a HairpinSegment";
             Hairpin* hairpin = toHairpinSegment(item)->hairpin();
             this->writeHairpin(hairpin, measure);
         } else if (item->isHairpin()) {
+            LOGD() << "MeiExporter::Hit a Hairpin";
             this->writeHairpin(toHairpin(item), measure);
         } else if (item->isKeySig()) {
             if (m_keySig && (seg != m_keySig)) {
