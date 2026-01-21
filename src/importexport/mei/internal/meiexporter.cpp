@@ -877,8 +877,8 @@ bool MeiExporter::writeMeasure(const Measure* measure, int& measureN, bool& isFi
             success = success && this->writeFing(toFingering(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isGlissando()) {
             success = success && this->writeGliss(toGlissando(controlEvent.first), controlEvent.second);
-        } else if (controlEvent.first->isHairpin()) {
-            success = success && this->writeHairpin(toHairpin(controlEvent.first), controlEvent.second);
+        //} else if (controlEvent.first->isHairpin()) {
+        //    success = success && this->writeHairpin(toHairpin(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isHarmony()) {
             success = success && this->writeHarm(toHarmony(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isHarpPedalDiagram()) {
@@ -1004,6 +1004,9 @@ bool MeiExporter::writeLayer(track_idx_t track, const Staff* staff, const Measur
             //
         } else if (item->isBreath()) {
             //
+        } else if (item->isHairpinSegment()) {
+            Hairpin* hairpin = toHairpinSegment(item)->hairpin();
+            this->writeHairpin(hairpin, measure);
         } else if (item->isHairpin()) {
             this->writeHairpin(toHairpin(item), measure);
         } else if (item->isKeySig()) {
