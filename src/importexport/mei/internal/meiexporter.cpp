@@ -988,11 +988,14 @@ bool MeiExporter::writeLayer(track_idx_t track, const Staff* staff, const Measur
             this->addFermataToMap(track, seg, measure);
         }
 
+        LOGD("MeiExporter:: processing tick %d", seg->tick());
+
         // Do not go any further than the measure tick (ignore EndBarLine, KeySigAnnounce, TimeSigAnnounce)
         const EngravingItem* item = seg->element(track);
         if (!item || item->generated()) {
             continue;
         }
+        LOGD("MeiExporter:: processing item at tick %d", item->tick());
 
         if (item->isClef()) {
             this->writeClef(dynamic_cast<const Clef*>(item));
