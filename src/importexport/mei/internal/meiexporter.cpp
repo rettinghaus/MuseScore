@@ -988,12 +988,14 @@ bool MeiExporter::writeLayer(track_idx_t track, const Staff* staff, const Measur
             this->addFermataToMap(track, seg, measure);
         }
 
-        LOGD("MeiExporter:: processing tick %d", seg->tick());
-
-        if (seg->isHairpinSegment()) {
-            LOGD() << "MeiExporter::Hit a HairpinSegment";
-            Hairpin* hairpin = toHairpinSegment(seg)->hairpin();
-            this->writeHairpin(hairpin, measure);
+        if (seg->isChordRestType() || seg->isTimeTickType()) {
+            Fraction stick = seg->tick();
+            for (auto it = exp->score()->spanner().lower_bound(stick.ticks()); it != exp->score()->spanner().upper_bound(stick.ticks()); ++it) {
+                Spanner* e = it->second;
+                if (e->isHairpin()) {
+                    this->writeHairpin(toHairpin(e), measure);
+                }
+            }
         }
 
         // Do not go any further than the measure tick (ignore EndBarLine, KeySigAnnounce, TimeSigAnnounce)
@@ -1001,7 +1003,6 @@ bool MeiExporter::writeLayer(track_idx_t track, const Staff* staff, const Measur
         if (!item || item->generated()) {
             continue;
         }
-        LOGD("MeiExporter:: processing item at tick %d", item->tick());
 
         if (item->isClef()) {
             this->writeClef(dynamic_cast<const Clef*>(item));
@@ -1014,7 +1015,6 @@ bool MeiExporter::writeLayer(track_idx_t track, const Staff* staff, const Measur
         } else if (item->isBreath()) {
             //
         } else if (item->isHairpin()) {
-            LOGD() << "MeiExporter::Hit a Hairpin";
             this->writeHairpin(toHairpin(item), measure);
         } else if (item->isKeySig()) {
             if (m_keySig && (seg != m_keySig)) {
