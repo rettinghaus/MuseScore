@@ -990,6 +990,12 @@ bool MeiExporter::writeLayer(track_idx_t track, const Staff* staff, const Measur
 
         LOGD("MeiExporter:: processing tick %d", seg->tick());
 
+        if (seg->isHairpinSegment()) {
+            LOGD() << "MeiExporter::Hit a HairpinSegment";
+            Hairpin* hairpin = toHairpinSegment(seg)->hairpin();
+            this->writeHairpin(hairpin, measure);
+        }
+
         // Do not go any further than the measure tick (ignore EndBarLine, KeySigAnnounce, TimeSigAnnounce)
         const EngravingItem* item = seg->element(track);
         if (!item || item->generated()) {
@@ -1007,10 +1013,6 @@ bool MeiExporter::writeLayer(track_idx_t track, const Staff* staff, const Measur
             //
         } else if (item->isBreath()) {
             //
-        } else if (item->isHairpinSegment()) {
-            LOGD() << "MeiExporter::Hit a HairpinSegment";
-            Hairpin* hairpin = toHairpinSegment(item)->hairpin();
-            this->writeHairpin(hairpin, measure);
         } else if (item->isHairpin()) {
             LOGD() << "MeiExporter::Hit a Hairpin";
             this->writeHairpin(toHairpin(item), measure);
