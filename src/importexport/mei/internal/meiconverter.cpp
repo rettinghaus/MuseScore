@@ -1962,6 +1962,7 @@ void Convert::lvFromMEI(engraving::LaissezVib* lv, const libmei::Lv& meiLv, bool
 
     // @color
     Convert::colorFromMEI(lv, meiLv);
+    Convert::colorlineFromMEI(lv, meiLv);
 }
 
 void Convert::jumpFromMEI(engraving::Jump* jump, const libmei::RepeatMark& meiRepeatMark, bool& warning)
