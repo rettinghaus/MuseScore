@@ -2759,10 +2759,18 @@ bool MeiImporter::readInstrDef(pugi::xml_node instrDefNode, Part* part)
     libmei::InstrDef meiInstrDef;
     meiInstrDef.Read(instrDefNode);
 
-    const int port = -1;
+    int port = -1;
 
     part->setMidiProgram(meiInstrDef.GetMidiInstrnum());
-    part->setMidiChannel(meiInstrDef.GetMidiChannel(), port);
+    if (meiInstrDef.HasMidiPort()) {
+        port = meiInstrDef.GetMidiPort().GetMidivalue();
+    }
+    if (meiInstrDef.HasMidiChannel()) {
+        part->setMidiChannel(meiInstrDef.GetMidiChannel(), port);
+    }
+
+    InstrChannel* channel = part->instrument()->channel(0);
+    channel->setPan(meiInstrDef.GetMidiPan().GetMidivalue());
 
     return true;
 }
