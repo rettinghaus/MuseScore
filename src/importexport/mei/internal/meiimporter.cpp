@@ -2860,7 +2860,9 @@ bool MeiImporter::readInstrDef(pugi::xml_node instrDefNode, Part* part)
     }
 
     InstrChannel* channel = part->instrument()->channel(0);
-    channel->setPan(meiInstrDef.GetMidiPan().GetMidivalue());
+    if (meiInstrDef.HasMidiPan()) {
+        channel->setPan(meiInstrDef.GetMidiPan().GetMidivalue());
+    }
 
     return true;
 }
