@@ -32,7 +32,7 @@
                      <staffGrp bar.thru="true" symbol="brace">
                         <label>Piano</label>
                         <labelAbbr>Pno.</labelAbbr>
-                        <instrDef midi.instrnum="0" />
+                        <instrDef midi.instrnum="0" midi.pan="0" />
                         <staffDef n="1" lines="5" meter.count="4" meter.unit="4">
                            <clef shape="G" line="2" />
                         </staffDef>
@@ -43,7 +43,7 @@
                      <staffGrp bar.thru="true" symbol="brace">
                         <label>Harp</label>
                         <labelAbbr>Hp.</labelAbbr>
-                        <instrDef midi.instrnum="46" />
+                        <instrDef midi.instrnum="46" midi.pan="127" />
                         <staffDef n="3" lines="5" meter.count="4" meter.unit="4">
                            <clef shape="G" line="2" />
                         </staffDef>
@@ -54,7 +54,7 @@
                      <staffDef n="5" lines="5" meter.count="4" meter.unit="4">
                         <label>Violin</label>
                         <labelAbbr>Vl.</labelAbbr>
-                        <instrDef midi.instrnum="40" />
+                        <instrDef midi.instrnum="40" midi.pan="53" />
                         <clef shape="G" line="2" />
                      </staffDef>
                   </staffGrp>
