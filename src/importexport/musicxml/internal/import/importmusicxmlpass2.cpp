@@ -1431,6 +1431,7 @@ static bool convertArticulationToSymId(const String& mxmlName, SymId& id)
         { u"inverted-turn",          SymId::ornamentTurnInverted },
         { u"vertical-turn",          SymId::ornamentTurnUp },
         { u"inverted-vertical-turn", SymId::ornamentTurnUpS },
+        { u"trill-mark",             SymId::ornamentTrill },
         { u"turn",                   SymId::ornamentTurn },
         { u"shake",                  SymId::ornamentTremblementCouperin },
         { u"schleifer",              SymId::ornamentPrecompSlide },
@@ -8536,8 +8537,6 @@ void MusicXmlParserNotations::articulations()
 
 void MusicXmlParserNotations::ornaments()
 {
-    bool trillMark = false;
-    // <trill-mark placement="above"/>
     while (m_e.readNextStartElement()) {
         SymId id { SymId::noSym };
         if (convertArticulationToSymId(String::fromAscii(m_e.name().ascii()), id)) {
@@ -8546,11 +8545,26 @@ void MusicXmlParserNotations::ornaments()
             notation.setVisible(m_visible);
             m_notations.push_back(notation);
             m_e.skipCurrentElement();  // skip but don't log
-        } else if (m_e.name() == "trill-mark") {
-            trillMark = true;
-            m_e.skipCurrentElement();  // skip but don't log
         } else if (m_e.name() == "wavy-line") {
             bool wavyLineTypeWasStart = (m_wavyLineType == "start");
+            if (wavyLineTypeWasStart && m_notations.back().name() == u"ornaments") {
+                switch (m_notations.back().symId()) {
+                case SymId::ornamentTrill:
+                    m_wavyTrill = TrillType::TRILL_LINE;
+                    m_notations.pop_back();
+                    break;
+                case SymId::ornamentBottomLeftConcaveStroke:
+                    m_wavyTrill = TrillType::UPPRALL_LINE;
+                    m_notations.pop_back();
+                    break;
+                case SymId::ornamentLeftVerticalStroke:
+                    m_wavyTrill = TrillType::DOWNPRALL_LINE;
+                    m_notations.pop_back();
+                    break;
+                default:
+                    break;
+                }
+            }
             m_wavyLineType = m_e.attribute("type");
             m_wavyLineNo   = m_e.intAttribute("number");
             if (m_wavyLineNo > 0) {
@@ -8585,14 +8599,6 @@ void MusicXmlParserNotations::ornaments()
         } else {
             skipLogCurrElem();
         }
-    }
-
-    // note that mscore wavy line already implicitly includes a trillsym
-    // so don't add an additional one
-    if (trillMark && m_wavyLineType != "start" && m_wavyLineType != "startstop") {
-        Notation ornament = Notation::notationWithAttributes(u"trill-mark", m_e.attributes(), u"ornaments", SymId::ornamentTrill);
-        ornament.setVisible(m_visible);
-        m_notations.push_back(ornament);
     }
 }
 
@@ -9133,7 +9139,7 @@ static void addTie(const Notation& notation, Note* note, const track_idx_t track
 //---------------------------------------------------------
 
 static void addWavyLine(ChordRest* cr, const Fraction& tick,
-                        const int wavyLineNo, const String& wavyLineType,
+                        const int wavyLineNo, const String& wavyLineType, const TrillType trillType,
                         MusicXmlSpannerMap& spanners, TrillStack& trills,
                         MusicXmlLogger* logger, const XmlStreamReader* const xmlreader)
 {
@@ -9148,6 +9154,10 @@ static void addWavyLine(ChordRest* cr, const Fraction& tick,
                 trill = Factory::createTrill(cr->score()->dummy());
                 trill->setTrack(track);
                 trill->setTrack2(track);
+
+                if (trillType != TrillType::TRILL_LINE) {
+                    // trill->setTrillType(trillType);
+                }
 
                 trill->setOrnament(Factory::createOrnament(cr));
                 trill->ornament()->setAnchor(ArticulationAnchor::AUTO);
@@ -9434,7 +9444,7 @@ void MusicXmlParserNotations::addToScore(ChordRest* const cr, Note* const note, 
                                          DelayedArpMap& delayedArps)
 {
     addArpeggio(cr, m_arpeggioType, m_arpeggioNo, m_arpeggioColor, arpMap, delayedArps);
-    addWavyLine(cr, tick, m_wavyLineNo, m_wavyLineType, spanners, trills, m_logger, &m_e);
+    addWavyLine(cr, tick, m_wavyLineNo, m_wavyLineType, m_wavyTrill, spanners, trills, m_logger, &m_e);
 
     for (const Notation& notation : m_notations) {
         if (notation.symId() != SymId::noSym) {
