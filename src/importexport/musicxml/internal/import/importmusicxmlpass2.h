@@ -394,6 +394,7 @@ private:
     engraving::Color m_tremoloColor;
     muse::String m_wavyLineType;
     int m_wavyLineNo = 0;
+    TrillType m_wavyTrill = TrillType::PRALLPRALL_LINE;
     muse::String m_arpeggioType;
     int m_arpeggioNo = 0;
     engraving::Color m_arpeggioColor;
