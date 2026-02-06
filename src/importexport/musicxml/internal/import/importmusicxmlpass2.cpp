@@ -8653,8 +8653,8 @@ void MusicXmlParserNotations::ornaments()
             m_e.skipCurrentElement();  // skip but don't log
         } else if (m_e.name() == "accidental-mark") {
             Notation lastNotation = m_notations.back();
-            if (lastNotation.parent() == u"ornaments" && !m_e.attribute("placement").empty()) {
-                const String attr = m_e.attribute("placement");
+            const String attr = m_e.attribute("placement");
+            if (lastNotation.parent() == u"ornaments" && !attr.empty()) {
                 lastNotation.addAttribute(attr, m_e.readText());
                 m_notations.back() = lastNotation;
             } else {
