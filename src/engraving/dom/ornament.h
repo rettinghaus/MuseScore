@@ -55,6 +55,7 @@ public:
 
     void scanElements(std::function<void(EngravingItem*)> func) override;
 
+    void add(EngravingItem*) override;
     void remove(EngravingItem* e) override;
 
     Chord* cueNoteChord() const { return m_cueNoteChord; }
