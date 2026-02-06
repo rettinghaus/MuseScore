@@ -1360,40 +1360,44 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
         }
         mordent->setVisible(notation.visible());
         colorItem(mordent, Color::fromString(notation.attribute(u"color")));
+        cr->add(mordent);
 
         const String accidAbove = notation.attribute(u"above");
         if (!accidAbove.empty()) {
             LOGD("upper accid is %s", muPrintable(accidAbove));
-            const AccidentalType type = musicXmlString2accidentalType(accidAbove);
+            const AccidentalType type = musicXmlString2accidentalType(accidAbove, notation.attribute(u"above-smufl"));
             if (type == AccidentalType::NONE) {
                 LOGD("MusicXml::import: no accidental type for above accidental in mordent");
-            }
-            Accidental* accidental = Factory::createAccidental(mordent);
-            accidental->setAccidentalType(type);
-            accidental->setTrack(mordent->track());
-            accidental->setParent(mordent);
-            mordent->setAccidentalAbove(accidental);
-            if (!mordent->accidentalAbove()) {
-                LOGD("MusicXml::import: no accidental above in mordent");
+            } else {
+                Accidental* accidental = Factory::createAccidental(mordent);
+                accidental->setAccidentalType(type);
+                accidental->setTrack(mordent->track());
+                accidental->setParent(mordent);
+                mordent->setAccidentalAbove(accidental);
+                mordent->add(accidental);
+                if (!mordent->accidentalAbove()) {
+                    LOGD("MusicXml::import: no accidental above in mordent");
+                }
             }
         }
         const String accidBelow = notation.attribute(u"below");
         if (!accidBelow.empty()) {
             LOGD("lower accid is %s", muPrintable(accidBelow));
-            const AccidentalType type = musicXmlString2accidentalType(accidBelow);
+            const AccidentalType type = musicXmlString2accidentalType(accidBelow, notation.attribute(u"below-smufl"));
             if (type == AccidentalType::NONE) {
                 LOGD("MusicXml::import: no accidental type for below accidental in mordent");
-            }
-            Accidental* accidental = Factory::createAccidental(mordent);
-            accidental->setAccidentalType(type);
-            accidental->setTrack(mordent->track());
-            accidental->setParent(mordent);
-            mordent->setAccidentalBelow(accidental);
-            if (!mordent->accidentalBelow()) {
-                LOGD("MusicXml::import: no accidental below in mordent");
+            } else {
+                Accidental* accidental = Factory::createAccidental(mordent);
+                accidental->setAccidentalType(type);
+                accidental->setTrack(mordent->track());
+                accidental->setParent(mordent);
+                mordent->setAccidentalBelow(accidental);
+                mordent->add(accidental);
+                if (!mordent->accidentalBelow()) {
+                    LOGD("MusicXml::import: no accidental below in mordent");
+                }
             }
         }
-        cr->add(mordent);
     } else {
         LOGD("unknown ornament: name '%s' long '%s' approach '%s' departure '%s'",
              muPrintable(name), muPrintable(attrLong), muPrintable(attrAppr), muPrintable(attrDep));        // TODO
@@ -1433,20 +1437,26 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
     cr->add(turn);
 
     if (!accidAbove.empty()) {
-        Accidental* accidental = Factory::createAccidental(turn);
-        accidental->setAccidentalType(musicXmlString2accidentalType(accidAbove));
-        accidental->setTrack(turn->track());
-        accidental->setParent(turn);
-        turn->setAccidentalAbove(accidental);
-        turn->add(accidental);
+        const AccidentalType type = musicXmlString2accidentalType(accidAbove, notation.attribute(u"above-smufl"));
+        if (type != AccidentalType::NONE) {
+            Accidental* accidental = Factory::createAccidental(turn);
+            accidental->setAccidentalType(type);
+            accidental->setTrack(turn->track());
+            accidental->setParent(turn);
+            turn->setAccidentalAbove(accidental);
+            turn->add(accidental);
+        }
     }
     if (!accidBelow.empty()) {
-        Accidental* accidental = Factory::createAccidental(turn);
-        accidental->setAccidentalType(musicXmlString2accidentalType(accidBelow));
-        accidental->setTrack(turn->track());
-        accidental->setParent(turn);
-        turn->setAccidentalBelow(accidental);
-        turn->add(accidental);
+        const AccidentalType type = musicXmlString2accidentalType(accidBelow, notation.attribute(u"below-smufl"));
+        if (type != AccidentalType::NONE) {
+            Accidental* accidental = Factory::createAccidental(turn);
+            accidental->setAccidentalType(type);
+            accidental->setTrack(turn->track());
+            accidental->setParent(turn);
+            turn->setAccidentalBelow(accidental);
+            turn->add(accidental);
+        }
     }
 }
 
@@ -1471,6 +1481,31 @@ static void addOtherOrnamentToChord(const Notation& notation, ChordRest* cr)
         ornam->setVisible(notation.visible());
         colorItem(ornam, Color::fromString(notation.attribute(u"color")));
         cr->add(ornam);
+
+        const String accidAbove = notation.attribute(u"above");
+        if (!accidAbove.empty()) {
+            const AccidentalType type = musicXmlString2accidentalType(accidAbove, notation.attribute(u"above-smufl"));
+            if (type != AccidentalType::NONE) {
+                Accidental* accidental = Factory::createAccidental(ornam);
+                accidental->setAccidentalType(type);
+                accidental->setTrack(ornam->track());
+                accidental->setParent(ornam);
+                ornam->setAccidentalAbove(accidental);
+                ornam->add(accidental);
+            }
+        }
+        const String accidBelow = notation.attribute(u"below");
+        if (!accidBelow.empty()) {
+            const AccidentalType type = musicXmlString2accidentalType(accidBelow, notation.attribute(u"below-smufl"));
+            if (type != AccidentalType::NONE) {
+                Accidental* accidental = Factory::createAccidental(ornam);
+                accidental->setAccidentalType(type);
+                accidental->setTrack(ornam->track());
+                accidental->setParent(ornam);
+                ornam->setAccidentalBelow(accidental);
+                ornam->add(accidental);
+            }
+        }
     } else {
         LOGD("unknown ornament: name '%s': '%s'.", muPrintable(name), muPrintable(symname));
     }
@@ -8617,6 +8652,9 @@ void MusicXmlParserNotations::ornaments()
             m_e.skipCurrentElement();  // skip but don't log
         } else if (m_e.name() == "trill-mark") {
             trillMark = true;
+            Notation notation = Notation::notationWithAttributes(u"trill-mark", m_e.attributes(), u"ornaments", SymId::ornamentTrill);
+            notation.setVisible(m_visible);
+            m_notations.push_back(notation);
             m_e.skipCurrentElement();  // skip but don't log
         } else if (m_e.name() == "wavy-line") {
             bool wavyLineTypeWasStart = (m_wavyLineType == "start");
@@ -8652,11 +8690,29 @@ void MusicXmlParserNotations::ornaments()
             m_notations.push_back(notation);
             m_e.skipCurrentElement();  // skip but don't log
         } else if (m_e.name() == "accidental-mark") {
-            Notation lastNotation = m_notations.back();
-            const String attr = m_e.attribute("placement");
-            if (lastNotation.parent() == u"ornaments" && !attr.empty()) {
-                lastNotation.addAttribute(attr, m_e.readText());
-                m_notations.back() = lastNotation;
+            if (!m_notations.empty()) {
+                Notation& lastNotation = m_notations.back();
+                String placement = m_e.attribute("placement");
+                String smufl = m_e.attribute("smufl");
+                if (lastNotation.parent() == u"ornaments") {
+                    if (placement.empty()) {
+                        if (lastNotation.name() == u"turn" || lastNotation.name() == u"inverted-turn") {
+                            if (lastNotation.attribute(u"above").empty()) {
+                                placement = u"above";
+                            } else {
+                                placement = u"below";
+                            }
+                        } else {
+                            placement = (lastNotation.name() == u"mordent" ? u"below" : u"above");
+                        }
+                    }
+                    lastNotation.addAttribute(placement, m_e.readText());
+                    if (!smufl.empty()) {
+                        lastNotation.addAttribute(placement + u"-smufl", smufl);
+                    }
+                } else {
+                    m_e.skipCurrentElement();
+                }
             } else {
                 m_e.skipCurrentElement();  // skip but don't log
             }
@@ -8666,11 +8722,17 @@ void MusicXmlParserNotations::ornaments()
     }
 
     // note that mscore wavy line already implicitly includes a trillsym
-    // so don't add an additional one
-    if (trillMark && m_wavyLineType != "start" && m_wavyLineType != "startstop") {
-        Notation ornament = Notation::notationWithAttributes(u"trill-mark", m_e.attributes(), u"ornaments", SymId::ornamentTrill);
-        ornament.setVisible(m_visible);
-        m_notations.push_back(ornament);
+    // so remove it if it was added
+    if (trillMark && (m_wavyLineType == "start" || m_wavyLineType == "startstop")) {
+        for (auto it = m_notations.begin(); it != m_notations.end(); ++it) {
+            if (it->name() == u"trill-mark") {
+                // but only remove it if it doesn't have accidental marks!
+                if (it->attribute(u"above").empty() && it->attribute(u"below").empty()) {
+                    m_notations.erase(it);
+                }
+                break;
+            }
+        }
     }
 }
 
