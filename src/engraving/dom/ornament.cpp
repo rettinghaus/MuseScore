@@ -83,6 +83,29 @@ Ornament::~Ornament()
     m_cueNoteChord = nullptr;
 }
 
+void Ornament::add(EngravingItem* e)
+{
+    if (e->isAccidental()) {
+        Accidental* acc = toAccidental(e);
+        if (acc->placement() == PlacementV::ABOVE) {
+            setAccidentalAbove(acc);
+        } else if (acc->placement() == PlacementV::BELOW) {
+            setAccidentalBelow(acc);
+        } else {
+            if (hasIntervalAbove() && !accidentalAbove()) {
+                acc->setPlacement(PlacementV::ABOVE);
+                setAccidentalAbove(acc);
+            } else if (hasIntervalBelow() && !accidentalBelow()) {
+                acc->setPlacement(PlacementV::BELOW);
+                setAccidentalBelow(acc);
+            }
+        }
+        e->added();
+    } else {
+        Articulation::add(e);
+    }
+}
+
 void Ornament::remove(EngravingItem* e)
 {
     if (e->isAccidental()) {
