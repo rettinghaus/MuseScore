@@ -393,6 +393,11 @@ void Ornament::updateAccidentalsAboveAndBelow()
         Note* note = m_notesAboveAndBelow[i];
         Accidental* accidental = note ? note->accidental() : nullptr;
         Accidental*& curAccidental = m_accidentalsAboveAndBelow[i];
+
+        if (curAccidental && curAccidental->role() == AccidentalRole::USER) {
+            continue;
+        }
+
         if (showCueNote() || !accidental) {
             if (curAccidental) {
                 delete curAccidental;

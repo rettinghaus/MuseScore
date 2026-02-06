@@ -1368,6 +1368,7 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
             if (type != AccidentalType::NONE) {
                 Accidental* accidental = Factory::createAccidental(mordent);
                 accidental->setAccidentalType(type);
+                accidental->setRole(AccidentalRole::USER);
                 accidental->setTrack(mordent->track());
                 accidental->setPlacement(PlacementV::ABOVE);
                 mordent->add(accidental);
@@ -1379,6 +1380,7 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
             if (type != AccidentalType::NONE) {
                 Accidental* accidental = Factory::createAccidental(mordent);
                 accidental->setAccidentalType(type);
+                accidental->setRole(AccidentalRole::USER);
                 accidental->setTrack(mordent->track());
                 accidental->setPlacement(PlacementV::BELOW);
                 mordent->add(accidental);
@@ -1427,6 +1429,7 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
         if (type != AccidentalType::NONE) {
             Accidental* accidental = Factory::createAccidental(turn);
             accidental->setAccidentalType(type);
+            accidental->setRole(AccidentalRole::USER);
             accidental->setTrack(turn->track());
             accidental->setPlacement(PlacementV::ABOVE);
             turn->add(accidental);
@@ -1437,6 +1440,7 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
         if (type != AccidentalType::NONE) {
             Accidental* accidental = Factory::createAccidental(turn);
             accidental->setAccidentalType(type);
+            accidental->setRole(AccidentalRole::USER);
             accidental->setTrack(turn->track());
             accidental->setPlacement(PlacementV::BELOW);
             turn->add(accidental);
@@ -1472,6 +1476,7 @@ static void addOtherOrnamentToChord(const Notation& notation, ChordRest* cr)
             if (type != AccidentalType::NONE) {
                 Accidental* accidental = Factory::createAccidental(ornam);
                 accidental->setAccidentalType(type);
+                accidental->setRole(AccidentalRole::USER);
                 accidental->setTrack(ornam->track());
                 accidental->setPlacement(PlacementV::ABOVE);
                 ornam->add(accidental);
@@ -1483,6 +1488,7 @@ static void addOtherOrnamentToChord(const Notation& notation, ChordRest* cr)
             if (type != AccidentalType::NONE) {
                 Accidental* accidental = Factory::createAccidental(ornam);
                 accidental->setAccidentalType(type);
+                accidental->setRole(AccidentalRole::USER);
                 accidental->setTrack(ornam->track());
                 accidental->setPlacement(PlacementV::BELOW);
                 ornam->add(accidental);
