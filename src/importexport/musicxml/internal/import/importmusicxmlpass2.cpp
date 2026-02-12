@@ -1368,6 +1368,7 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
             const AccidentalType type = musicXmlString2accidentalType(accidAbove);
             Accidental* accidental = Factory::createAccidental(mordent);
             accidental->setAccidentalType(type);
+            accidental->setAccidentalType(AccidentalType::SHARP);
             accidental->setParent(mordent);
             mordent->setAccidentalAbove(accidental);
             mordent->setShowAccidental(OrnamentShowAccidental::ALWAYS);
@@ -1376,6 +1377,7 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
             const AccidentalType type = musicXmlString2accidentalType(accidBelow);
             Accidental* accidental = Factory::createAccidental(mordent);
             accidental->setAccidentalType(type);
+            accidental->setAccidentalType(AccidentalType::SHARP);
             accidental->setParent(mordent);
             mordent->setAccidentalBelow(accidental);
             mordent->setShowAccidental(OrnamentShowAccidental::ALWAYS);
