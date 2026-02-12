@@ -1372,6 +1372,7 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
             accidental->setTrack(mordent->track());
             accidental->setParent(mordent);
             mordent->setAccidentalAbove(accidental);
+            mordent->setShowAccidental(OrnamentShowAccidental::ALWAYS);
         }
         if (!accidBelow.empty()) {
             const AccidentalType type = musicXmlString2accidentalType(accidBelow);
@@ -1381,6 +1382,7 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
             accidental->setTrack(mordent->track());
             accidental->setParent(mordent);
             mordent->setAccidentalBelow(accidental);
+            mordent->setShowAccidental(OrnamentShowAccidental::ALWAYS);
         }
     } else {
         LOGD("unknown ornament: name '%s' long '%s' approach '%s' departure '%s'",
@@ -1426,7 +1428,7 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
         accidental->setTrack(turn->track());
         accidental->setParent(turn);
         turn->setAccidentalAbove(accidental);
-        turn->add(accidental);
+        turn->setShowAccidental(OrnamentShowAccidental::ALWAYS);
     }
     if (!accidBelow.empty()) {
         Accidental* accidental = Factory::createAccidental(turn);
@@ -1435,7 +1437,7 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
         accidental->setTrack(turn->track());
         accidental->setParent(turn);
         turn->setAccidentalBelow(accidental);
-        turn->add(accidental);
+        turn->setShowAccidental(OrnamentShowAccidental::ALWAYS);
     }
 }
 
