@@ -1368,8 +1368,6 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
             const AccidentalType type = musicXmlString2accidentalType(accidAbove);
             Accidental* accidental = Factory::createAccidental(mordent);
             accidental->setAccidentalType(type);
-            accidental->setRole(AccidentalRole::USER);
-            accidental->setTrack(mordent->track());
             accidental->setParent(mordent);
             mordent->setAccidentalAbove(accidental);
             mordent->setShowAccidental(OrnamentShowAccidental::ALWAYS);
@@ -1378,8 +1376,6 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
             const AccidentalType type = musicXmlString2accidentalType(accidBelow);
             Accidental* accidental = Factory::createAccidental(mordent);
             accidental->setAccidentalType(type);
-            accidental->setRole(AccidentalRole::USER);
-            accidental->setTrack(mordent->track());
             accidental->setParent(mordent);
             mordent->setAccidentalBelow(accidental);
             mordent->setShowAccidental(OrnamentShowAccidental::ALWAYS);
@@ -1424,7 +1420,6 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
     if (!accidAbove.empty()) {
         Accidental* accidental = Factory::createAccidental(turn);
         accidental->setAccidentalType(musicXmlString2accidentalType(accidAbove));
-        accidental->setRole(AccidentalRole::USER);
         accidental->setTrack(turn->track());
         accidental->setParent(turn);
         turn->setAccidentalAbove(accidental);
@@ -1433,7 +1428,6 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
     if (!accidBelow.empty()) {
         Accidental* accidental = Factory::createAccidental(turn);
         accidental->setAccidentalType(musicXmlString2accidentalType(accidBelow));
-        accidental->setRole(AccidentalRole::USER);
         accidental->setTrack(turn->track());
         accidental->setParent(turn);
         turn->setAccidentalBelow(accidental);
