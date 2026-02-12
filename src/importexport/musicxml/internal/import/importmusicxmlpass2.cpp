@@ -119,6 +119,53 @@ static std::shared_ptr<mu::iex::musicxml::IMusicXmlConfiguration> configuration(
     return muse::modularity::globalIoc()->resolve<mu::iex::musicxml::IMusicXmlConfiguration>("iex_musicxml");
 }
 
+static void setOrnamentIntervalFromAccidental(Ornament* ornam, Note* mainNote, AccidentalType accType, bool above)
+{
+    if (!mainNote) {
+        return;
+    }
+
+    // Desired alter value
+    AccidentalVal desiredAlter = Accidental::subtype2value(accType);
+
+    // Try different interval types
+    // MAJOR, MINOR, PERFECT, AUGMENTED, DIMINISHED
+    static const std::vector<IntervalType> types = {
+        IntervalType::MAJOR, IntervalType::MINOR,
+        IntervalType::AUGMENTED, IntervalType::DIMINISHED,
+        IntervalType::PERFECT
+    };
+
+    for (IntervalType it : types) {
+        OrnamentInterval oi;
+        oi.type = it;
+        oi.step = IntervalStep::SECOND;
+
+        Interval interval = Interval::fromOrnamentInterval(oi);
+        if (!above) {
+            interval.flip();
+        }
+
+        int tpc = mainNote->tpc();
+        int transposedTpc = Transpose::transposeTpc(tpc, interval, true);
+        if (tpcIsValid(transposedTpc)) {
+            if (tpc2alter(transposedTpc) == desiredAlter) {
+                if (above) {
+                    ornam->setIntervalAbove(oi);
+                } else {
+                    ornam->setIntervalBelow(oi);
+                }
+                ornam->setShowAccidental(OrnamentShowAccidental::ALWAYS);
+                return;
+            }
+        }
+    }
+
+    // Fallback: if no match found with SECOND step, try UNISON for unusual accidentals?
+    // Or just force the accidental visibility anyway.
+    ornam->setShowAccidental(OrnamentShowAccidental::ALWAYS);
+}
+
 static std::shared_ptr<mu::engraving::IEngravingFontsProvider> engravingFonts()
 {
     return muse::modularity::globalIoc()->resolve<mu::engraving::IEngravingFontsProvider>("iex_musicxml");
@@ -1366,24 +1413,18 @@ static void addMordentToChord(const Notation& notation, ChordRest* cr)
         if (!accidAbove.empty()) {
             const AccidentalType type = musicXmlString2accidentalType(accidAbove, notation.attribute(u"above-smufl"));
             if (type != AccidentalType::NONE) {
-                Accidental* accidental = Factory::createAccidental(mordent);
-                accidental->setAccidentalType(type);
-                accidental->setRole(AccidentalRole::USER);
-                accidental->setTrack(mordent->track());
-                accidental->setPlacement(PlacementV::ABOVE);
-                mordent->add(accidental);
+                Chord* chord = cr->isChord() ? toChord(cr) : nullptr;
+                Note* mainNote = chord ? chord->upNote() : nullptr;
+                setOrnamentIntervalFromAccidental(mordent, mainNote, type, true);
             }
         }
         const String accidBelow = notation.attribute(u"below");
         if (!accidBelow.empty()) {
             const AccidentalType type = musicXmlString2accidentalType(accidBelow, notation.attribute(u"below-smufl"));
             if (type != AccidentalType::NONE) {
-                Accidental* accidental = Factory::createAccidental(mordent);
-                accidental->setAccidentalType(type);
-                accidental->setRole(AccidentalRole::USER);
-                accidental->setTrack(mordent->track());
-                accidental->setPlacement(PlacementV::BELOW);
-                mordent->add(accidental);
+                Chord* chord = cr->isChord() ? toChord(cr) : nullptr;
+                Note* mainNote = chord ? chord->upNote() : nullptr;
+                setOrnamentIntervalFromAccidental(mordent, mainNote, type, false);
             }
         }
     } else {
@@ -1427,23 +1468,17 @@ static void addTurnToChord(const Notation& notation, ChordRest* cr)
     if (!accidAbove.empty()) {
         const AccidentalType type = musicXmlString2accidentalType(accidAbove, notation.attribute(u"above-smufl"));
         if (type != AccidentalType::NONE) {
-            Accidental* accidental = Factory::createAccidental(turn);
-            accidental->setAccidentalType(type);
-            accidental->setRole(AccidentalRole::USER);
-            accidental->setTrack(turn->track());
-            accidental->setPlacement(PlacementV::ABOVE);
-            turn->add(accidental);
+            Chord* chord = cr->isChord() ? toChord(cr) : nullptr;
+            Note* mainNote = chord ? chord->upNote() : nullptr;
+            setOrnamentIntervalFromAccidental(turn, mainNote, type, true);
         }
     }
     if (!accidBelow.empty()) {
         const AccidentalType type = musicXmlString2accidentalType(accidBelow, notation.attribute(u"below-smufl"));
         if (type != AccidentalType::NONE) {
-            Accidental* accidental = Factory::createAccidental(turn);
-            accidental->setAccidentalType(type);
-            accidental->setRole(AccidentalRole::USER);
-            accidental->setTrack(turn->track());
-            accidental->setPlacement(PlacementV::BELOW);
-            turn->add(accidental);
+            Chord* chord = cr->isChord() ? toChord(cr) : nullptr;
+            Note* mainNote = chord ? chord->upNote() : nullptr;
+            setOrnamentIntervalFromAccidental(turn, mainNote, type, false);
         }
     }
 }
@@ -1474,24 +1509,18 @@ static void addOtherOrnamentToChord(const Notation& notation, ChordRest* cr)
         if (!accidAbove.empty()) {
             const AccidentalType type = musicXmlString2accidentalType(accidAbove, notation.attribute(u"above-smufl"));
             if (type != AccidentalType::NONE) {
-                Accidental* accidental = Factory::createAccidental(ornam);
-                accidental->setAccidentalType(type);
-                accidental->setRole(AccidentalRole::USER);
-                accidental->setTrack(ornam->track());
-                accidental->setPlacement(PlacementV::ABOVE);
-                ornam->add(accidental);
+                Chord* chord = cr->isChord() ? toChord(cr) : nullptr;
+                Note* mainNote = chord ? chord->upNote() : nullptr;
+                setOrnamentIntervalFromAccidental(ornam, mainNote, type, true);
             }
         }
         const String accidBelow = notation.attribute(u"below");
         if (!accidBelow.empty()) {
             const AccidentalType type = musicXmlString2accidentalType(accidBelow, notation.attribute(u"below-smufl"));
             if (type != AccidentalType::NONE) {
-                Accidental* accidental = Factory::createAccidental(ornam);
-                accidental->setAccidentalType(type);
-                accidental->setRole(AccidentalRole::USER);
-                accidental->setTrack(ornam->track());
-                accidental->setPlacement(PlacementV::BELOW);
-                ornam->add(accidental);
+                Chord* chord = cr->isChord() ? toChord(cr) : nullptr;
+                Note* mainNote = chord ? chord->upNote() : nullptr;
+                setOrnamentIntervalFromAccidental(ornam, mainNote, type, false);
             }
         }
     } else {
@@ -8629,6 +8658,8 @@ void MusicXmlParserNotations::articulations()
 void MusicXmlParserNotations::ornaments()
 {
     bool trillMark = false;
+    String trillAccidAbove, trillAccidBelow, trillAccidAboveSmufl, trillAccidBelowSmufl;
+
     // <trill-mark placement="above"/>
     while (m_e.readNextStartElement()) {
         SymId id { SymId::noSym };
@@ -8660,6 +8691,13 @@ void MusicXmlParserNotations::ornaments()
             // check for start and stop on same note
             if (wavyLineTypeWasStart && m_wavyLineType == u"stop") {
                 m_wavyLineType = u"startstop";
+            }
+            // If it is a start, it might be associated with a preceding trill-mark's accidentals
+            if (m_wavyLineType == u"start" || m_wavyLineType == u"startstop") {
+                m_wavyLineAccidAbove = trillAccidAbove;
+                m_wavyLineAccidBelow = trillAccidBelow;
+                m_wavyLineAccidAboveSmufl = trillAccidAboveSmufl;
+                m_wavyLineAccidBelowSmufl = trillAccidBelowSmufl;
             }
             m_e.skipCurrentElement();  // skip but don't log
         } else if (m_e.name() == "tremolo") {
@@ -8694,9 +8732,21 @@ void MusicXmlParserNotations::ornaments()
                             placement = (lastNotation.name() == u"mordent" ? u"below" : u"above");
                         }
                     }
-                    lastNotation.addAttribute(placement, m_e.readText());
+                    String text = m_e.readText();
+                    lastNotation.addAttribute(placement, text);
                     if (!smufl.empty()) {
                         lastNotation.addAttribute(placement + u"-smufl", smufl);
+                    }
+
+                    // Also store if it's a trill-mark, for possible wavy-line association
+                    if (lastNotation.name() == u"trill-mark") {
+                        if (placement == u"above") {
+                            trillAccidAbove = text;
+                            trillAccidAboveSmufl = smufl;
+                        } else {
+                            trillAccidBelow = text;
+                            trillAccidBelowSmufl = smufl;
+                        }
                     }
                 } else {
                     m_e.skipCurrentElement();
@@ -8714,10 +8764,7 @@ void MusicXmlParserNotations::ornaments()
     if (trillMark && (m_wavyLineType == "start" || m_wavyLineType == "startstop")) {
         for (auto it = m_notations.begin(); it != m_notations.end(); ++it) {
             if (it->name() == u"trill-mark") {
-                // but only remove it if it doesn't have accidental marks!
-                if (it->attribute(u"above").empty() && it->attribute(u"below").empty()) {
-                    m_notations.erase(it);
-                }
+                m_notations.erase(it);
                 break;
             }
         }
@@ -9263,7 +9310,9 @@ static void addTie(const Notation& notation, Note* note, const track_idx_t track
 static void addWavyLine(ChordRest* cr, const Fraction& tick,
                         const int wavyLineNo, const String& wavyLineType,
                         MusicXmlSpannerMap& spanners, TrillStack& trills,
-                        MusicXmlLogger* logger, const XmlStreamReader* const xmlreader)
+                        MusicXmlLogger* logger, const XmlStreamReader* const xmlreader,
+                        const String& accidAbove = {}, const String& accidBelow = {},
+                        const String& accidAboveSmufl = {}, const String& accidBelowSmufl = {})
 {
     if (!wavyLineType.empty()) {
         const Fraction ticks = cr->ticks();
@@ -9279,6 +9328,22 @@ static void addWavyLine(ChordRest* cr, const Fraction& tick,
 
                 trill->setOrnament(Factory::createOrnament(cr));
                 trill->ornament()->setAnchor(ArticulationAnchor::AUTO);
+
+                Chord* chord = cr->isChord() ? toChord(cr) : nullptr;
+                Note* mainNote = chord ? chord->upNote() : nullptr;
+
+                if (!accidAbove.empty()) {
+                    const AccidentalType type = musicXmlString2accidentalType(accidAbove, accidAboveSmufl);
+                    if (type != AccidentalType::NONE) {
+                        setOrnamentIntervalFromAccidental(trill->ornament(), mainNote, type, true);
+                    }
+                }
+                if (!accidBelow.empty()) {
+                    const AccidentalType type = musicXmlString2accidentalType(accidBelow, accidBelowSmufl);
+                    if (type != AccidentalType::NONE) {
+                        setOrnamentIntervalFromAccidental(trill->ornament(), mainNote, type, false);
+                    }
+                }
 
                 if (wavyLineType == u"start") {
                     spanners[trill] = std::pair<int, int>(tick.ticks(), -1);
@@ -9562,7 +9627,8 @@ void MusicXmlParserNotations::addToScore(ChordRest* const cr, Note* const note, 
                                          DelayedArpMap& delayedArps)
 {
     addArpeggio(cr, m_arpeggioType, m_arpeggioNo, m_arpeggioColor, arpMap, delayedArps);
-    addWavyLine(cr, tick, m_wavyLineNo, m_wavyLineType, spanners, trills, m_logger, &m_e);
+    addWavyLine(cr, tick, m_wavyLineNo, m_wavyLineType, spanners, trills, m_logger, &m_e,
+                m_wavyLineAccidAbove, m_wavyLineAccidBelow, m_wavyLineAccidAboveSmufl, m_wavyLineAccidBelowSmufl);
 
     for (const Notation& notation : m_notations) {
         if (notation.symId() != SymId::noSym) {

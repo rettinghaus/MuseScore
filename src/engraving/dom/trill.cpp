@@ -221,16 +221,6 @@ EngravingItem* Trill::linkedClone()
 //   remove
 //---------------------------------------------------------
 
-void Trill::add(EngravingItem* e)
-{
-    if (e->isAccidental()) {
-        m_accidental = toAccidental(e);
-        e->added();
-    } else {
-        SLine::add(e);
-    }
-}
-
 void Trill::remove(EngravingItem* e)
 {
     if (e == m_accidental) {

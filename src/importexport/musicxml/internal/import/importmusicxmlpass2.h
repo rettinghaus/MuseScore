@@ -394,6 +394,10 @@ private:
     engraving::Color m_tremoloColor;
     muse::String m_wavyLineType;
     int m_wavyLineNo = 0;
+    muse::String m_wavyLineAccidAbove;
+    muse::String m_wavyLineAccidBelow;
+    muse::String m_wavyLineAccidAboveSmufl;
+    muse::String m_wavyLineAccidBelowSmufl;
     muse::String m_arpeggioType;
     int m_arpeggioNo = 0;
     engraving::Color m_arpeggioColor;

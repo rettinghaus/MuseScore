@@ -85,7 +85,6 @@ public:
     EngravingItem* linkedClone() override;
 
     LineSegment* createLineSegment(System* parent) override;
-    void add(EngravingItem*) override;
     void remove(EngravingItem*) override;
 
     void setTrack(track_idx_t n) override;
