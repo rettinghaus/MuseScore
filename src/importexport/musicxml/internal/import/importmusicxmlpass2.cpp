@@ -6975,10 +6975,10 @@ Note* MusicXmlParserPass2::note(const String& partId,
     String noteheadFilled;
     int velocity = round(m_e.doubleAttribute("dynamics") * 0.9);
     bool graceSlash = false;
-    const bool printDot = m_e.asciiAttribute("print-dot") != "no";
-    const bool printLeger = m_e.asciiAttribute("print-leger") != "no";
-    bool printLyric = (printObject && m_e.asciiAttribute("print-lyric") != "no") || m_e.asciiAttribute("print-lyric") == "yes";
     const bool printObject = m_e.asciiAttribute("print-object") != "no";
+    const bool printDot = (printObject && m_e.asciiAttribute("print-dot") != "no") || m_e.asciiAttribute("print-dot") == "yes";
+    // const bool printLeger = m_e.asciiAttribute("print-leger") != "no";
+    bool printLyric = (printObject && m_e.asciiAttribute("print-lyric") != "no") || m_e.asciiAttribute("print-lyric") == "yes";
     bool isSingleDrumset = false;
     BeamMode bm;
     std::map<int, String> beamTypes;
@@ -7265,6 +7265,7 @@ Note* MusicXmlParserPass2::note(const String& partId,
         setNoteHead(note, noteheadColor, noteheadParentheses, noteheadFilled);
         note->setVisible(hasHead && printObject);
         stem->setVisible(printObject);
+        note->setDotsHidden(!printDot);
 
         if (!grace) {
             // regular note
