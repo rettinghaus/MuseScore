@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<museScore version="4.40">
-  <programVersion>4.4.0</programVersion>
+<museScore version="4.60">
+  <programVersion>4.6.5</programVersion>
   <programRevision></programRevision>
   <Score>
     <Division>480</Division>
@@ -116,18 +116,26 @@
             <sigD>4</sigD>
             </TimeSig>
           <Chord>
+            <dots>1</dots>
             <durationType>quarter</durationType>
             <Stem>
               <visible>0</visible>
               </Stem>
             <Note>
               <visible>0</visible>
-              <pitch>71</pitch>
-              <tpc>19</tpc>
+              <Accidental>
+                <subtype>accidentalFlat</subtype>
+                <visible>0</visible>
+                </Accidental>
+              <NoteDot>
+                <visible>0</visible>
+                </NoteDot>
+              <pitch>70</pitch>
+              <tpc>12</tpc>
               </Note>
             </Chord>
           <Rest>
-            <durationType>quarter</durationType>
+            <durationType>eighth</durationType>
             </Rest>
           <Rest>
             <durationType>half</durationType>
