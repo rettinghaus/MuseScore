@@ -4483,7 +4483,7 @@ void ExportMusicXml::chord(Chord* chord, staff_idx_t staff, const std::vector<Ly
 
         const Stem* stem = note->chord()->stem();
         bool dotsVisible = true;
-        if (note->dots().empty() || std::all_of(note->dots().begin(), note->dots().end(), [](NoteDot* dot) { return !dot->visible(); })) {
+        if (!note->dots().empty() && std::all_of(note->dots().begin(), note->dots().end(), [](NoteDot* dot) { return !dot->visible(); })) {
             dotsVisible = false;
         }
         if (!note->visible() && (stem && !stem->visible())) {
@@ -4494,7 +4494,7 @@ void ExportMusicXml::chord(Chord* chord, staff_idx_t staff, const std::vector<Ly
             } else {
                 noteTag += QString(" print-object=\"no\"");
             }
-        } else if (note->dotsHidden()) {
+        } else if (note->dotsHidden() || !dotsVisible) {
             noteTag += QString(" print-dot=\"no\"");
         }
 
