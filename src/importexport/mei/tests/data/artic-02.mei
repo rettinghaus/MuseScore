@@ -24,8 +24,8 @@
                   </pgHead>
                   <staffGrp>
                      <staffDef n="1" lines="5" meter.count="4" meter.unit="4" trans.diat="-1" trans.semi="-2">
-                        <label>Trompete in B</label>
-                        <labelAbbr>Trp. in B</labelAbbr>
+                        <label>Trompete</label>
+                        <labelAbbr>Trp.</labelAbbr>
                         <instrDef midi.instrnum="56" />
                         <clef shape="G" line="2" />
                      </staffDef>
