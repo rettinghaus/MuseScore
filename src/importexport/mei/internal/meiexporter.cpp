@@ -1058,8 +1058,8 @@ bool MeiExporter::writeArtics(const Note* note)
         return false;
     }
 
-    for (const EngravingItem* item : note->el()) {
-        if (item->isChordLine()) {
+    for (const EngravingItem* item : note->chord()->el()) {
+        if (item->isChordLine() && toChordLine(item)->note() == note) {
             const ChordLine* chordline = toChordLine(item);
             this->writeArtic(chordline);
         }
