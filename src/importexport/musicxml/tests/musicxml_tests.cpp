@@ -763,6 +763,9 @@ TEST_F(MusicXml_Tests, invisibleNotations1) {
 TEST_F(MusicXml_Tests, invisibleNotations2) {
     musicXmlIoTest("testInvisibleNotations2");
 }
+TEST_F(MusicXml_Tests, invisibleSwing) {
+    musicXmlIoTest("testInvisibleSwing");
+}
 TEST_F(MusicXml_Tests, incorrectStaffNumber1) {
     musicXmlIoTestRef("testIncorrectStaffNumber1");
 }
