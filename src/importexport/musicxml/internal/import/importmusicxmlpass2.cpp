@@ -2887,7 +2887,43 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
             }
         } else if (m_e.name() == "sound") {
             tempoString = m_e.attribute("tempo");
-            m_e.skipCurrentElement();
+            while (m_e.readNextStartElement()) {
+                if (m_e.name() == "swing") {
+                    StaffText* st = Factory::createStaffText(m_score->dummy()->segment());
+                    st->setVisible(false);
+                    st->setSwing(true);
+                    st->setXmlText(u"Swing");
+                    int swingNumerator = 0;
+                    int swingDenominator = 1;
+                    int swingUnit = 0;
+                    while (m_e.readNextStartElement()) {
+                        if (m_e.name() == "straight") {
+                            st->setXmlText(u"Straight");
+                            m_e.skipCurrentElement();
+                        } else if (m_e.name() == "first") {
+                            swingDenominator = m_e.readText().toInt();
+                        } else if (m_e.name() == "second") {
+                            swingNumerator = m_e.readText().toInt();
+                        } else if (m_e.name() == "swing-type") {
+                            const String swingType = m_e.readText();
+                            if (swingType == u"eighth") {
+                                swingUnit = Constants::DIVISION / 2;
+                            } else if (swingType == u"16th") {
+                                swingUnit = Constants::DIVISION / 4;
+                            }
+                        } else if (m_e.name() == "swing-style") {
+                            // unused
+                            m_e.skipCurrentElement();
+                        } else {
+                            skipLogCurrElem();
+                        }
+                    }
+                    st->setSwingParameters(swingUnit, (swingNumerator * 100) / swingDenominator);
+                    addElemOffset(st, m_pass1.trackForPart(partId), u"above", measure, time + mTime);
+                } else {
+                    skipLogCurrElem();
+                }
+            }
         } else if (m_e.name() == "barline") {
             barline(partId, measure, time + mTime);
         } else if (m_e.name() == "print") {
