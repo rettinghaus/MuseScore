@@ -2890,7 +2890,6 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
             while (m_e.readNextStartElement()) {
                 if (m_e.name() == "swing") {
                     StaffText* st = Factory::createStaffText(m_score->dummy()->segment());
-                    st->setVisible(false);
                     st->setSwing(true);
                     st->setXmlText(u"Swing");
                     int swingNumerator = 0;
@@ -2919,6 +2918,7 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
                         }
                     }
                     st->setSwingParameters(swingUnit, (swingNumerator * 100) / swingDenominator);
+                    st->setVisible(false);
                     addElemOffset(st, m_pass1.trackForPart(partId), u"above", measure, time + mTime);
                 } else {
                     skipLogCurrElem();
