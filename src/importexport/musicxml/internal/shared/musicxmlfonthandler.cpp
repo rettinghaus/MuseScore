@@ -202,7 +202,13 @@ void MScoreTextToMusicXml::writeTextFragments(const std::list<TextFragment>& fr,
     for (const TextFragment& f : fr) {
         newFormat = f.format;
         String formatAttr = updateFormat();
-        xml.tagRaw(tagname + (firstTime ? attribs : String()) + formatAttr, f.text);
+        if (f.size() == 1) {
+            const SymId symId = engravingFonts()->fallbackFont()->fromCode(f.at[0]);
+            const AsciiStringView name = SymNames::nameForSymId(symId);
+            xml.tagRaw(u"symbol" + formatAttr, name);
+        } else {
+            xml.tagRaw(tagname + (firstTime ? attribs : String()) + formatAttr, f.text);
+        }
         firstTime = false;
     }
 }
