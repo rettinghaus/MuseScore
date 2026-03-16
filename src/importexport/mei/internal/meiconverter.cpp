@@ -546,7 +546,14 @@ libmei::Artic Convert::articToMEI(const engraving::ChordLine* chordline)
 
     // @artic
     switch (chordline->chordLineType()) {
-    case engraving::ChordLineType::FALL: meiArtic.SetArtic({ libmei::ARTICULATION_fall });
+    case engraving::ChordLineType::FALL:
+        if (chordline->isWavy()) {
+            meiArtic.SetArtic({ libmei::ARTICULATION_longfall });
+        } else if (chordline->isStraight()) {
+            meiArtic.SetArtic({ libmei::ARTICULATION_smear });
+        } else {
+            meiArtic.SetArtic({ libmei::ARTICULATION_fall });
+        }
         break;
     case engraving::ChordLineType::DOIT: meiArtic.SetArtic({ libmei::ARTICULATION_doit });
         break;
