@@ -4379,10 +4379,13 @@ void ExportMusicXml::chord(Chord* chord, staff_idx_t staff, const std::vector<Ly
 
         noteTag += elementPosition(this, note);
 
-        int velo = note->userVelocity();
+        const int velo = note->userVelocity();
         if (velo != 0) {
             noteTag += String(u" dynamics=\"%1\"").arg(String::number(velo * 100.0 / 90.0, 2));
         }
+        else if (!note->play()) {
+            noteTag += String(u" dynamics=\"0\"");
+        }        
 
         m_xml.startElementRaw(noteTag);
 

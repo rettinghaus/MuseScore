@@ -7303,6 +7303,9 @@ Note* MusicXmlParserPass2::note(const String& partId,
         if (velocity > 0) {
             note->setUserVelocity(velocity);
         }
+        if (velocity == 0) {
+            note->setPlay(false);
+        }
 
         if (mnp.unpitched() && !isSingleDrumset) {
             setDrumset(c, m_pass1, partId, instrumentId, noteStartTime, mnp, stemDir, headGroup);
