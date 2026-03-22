@@ -203,6 +203,13 @@ void MusicXmlNoteDuration::duration(muse::XmlStreamReader& e)
     m_specDura = m_pass1->calcTicks(intDura, m_divs, &e); // Duration reading (and rounding) code consolidated to pass1
 }
 
+void MusicXmlNoteDuration::duration(const pugi::xml_node& node)
+{
+    m_specDura.set(0, 0);          // invalid unless set correctly
+    int intDura = String::fromUtf8(node.child_value()).toInt();
+    m_specDura = m_pass1->calcTicks(intDura, m_divs); // Duration reading (and rounding) code consolidated to pass1
+}
+
 //---------------------------------------------------------
 //   readProperties
 //---------------------------------------------------------
@@ -225,6 +232,22 @@ bool MusicXmlNoteDuration::readProperties(muse::XmlStreamReader& e)
         return true;
     } else if (tag == "time-modification") {
         timeModification(e);
+        return true;
+    }
+    return false;
+}
+
+bool MusicXmlNoteDuration::readProperties(const pugi::xml_node& node)
+{
+    const char* tag = node.name();
+    if (strcmp(tag, "dot") == 0) {
+        m_dots++;
+        return true;
+    } else if (strcmp(tag, "duration") == 0) {
+        duration(node);
+        return true;
+    } else if (strcmp(tag, "time-modification") == 0) {
+        timeModification(node);
         return true;
     }
     return false;
@@ -275,6 +298,41 @@ void MusicXmlNoteDuration::timeModification(muse::XmlStreamReader& e)
         m_timeMod.set(1, 1);
         m_logger->logError(String(u"illegal time-modification: actual-notes %1 normal-notes %2")
                            .arg(strActual, strNormal), &e);
+    }
+}
+
+void MusicXmlNoteDuration::timeModification(const pugi::xml_node& node)
+{
+    int intActual = 0;
+    int intNormal = 0;
+    String strActual;
+    String strNormal;
+
+    for (pugi::xml_node child : node.children()) {
+        const char* tag = child.name();
+        if (strcmp(tag, "actual-notes") == 0) {
+            strActual = String::fromUtf8(child.child_value());
+        } else if (strcmp(tag, "normal-notes") == 0) {
+            strNormal = String::fromUtf8(child.child_value());
+        } else if (strcmp(tag, "normal-type") == 0) {
+            // "measure" is not a valid normal-type,
+            // but would be accepted by setType()
+            String strNormalType = String::fromUtf8(child.child_value());
+            if (strNormalType != u"measure") {
+                muse::ByteArray ba = strNormalType.toAscii();
+                m_normalType.setType(TConv::fromXml(ba.constChar(), DurationType::V_INVALID));
+            }
+        }
+    }
+
+    intActual = strActual.toInt();
+    intNormal = strNormal.toInt();
+    if (intActual > 0 && intNormal > 0) {
+        m_timeMod.set(intNormal, intActual);
+    } else {
+        m_timeMod.set(1, 1);
+        m_logger->logError(String(u"illegal time-modification: actual-notes %1 normal-notes %2")
+                           .arg(strActual, strNormal));
     }
 }
 }

@@ -23,6 +23,7 @@
 #pragma once
 
 #include "serialization/xmlstreamreader.h"
+#include "pugixml.hpp"
 
 #include "engraving/dom/accidental.h"
 
@@ -43,7 +44,9 @@ public:
     MusicXmlNotePitch(MusicXmlLogger* logger)
         : m_logger(logger) { /* nothing so far */ }
     void pitch(muse::XmlStreamReader& e);
+    void pitch(const pugi::xml_node& node);
     bool readProperties(muse::XmlStreamReader& e, engraving::Score* score);
+    bool readProperties(const pugi::xml_node& node, engraving::Score* score);
     engraving::Accidental* acc() const { return m_acc; }
     engraving::AccidentalType accType() const { return m_accType; }
     int alter() const { return m_alter; }
@@ -51,11 +54,13 @@ public:
     int displayOctave() const { return m_displayOctave; }
     int displayStep() const { return m_displayStep; }
     void displayStepOctave(muse::XmlStreamReader& e);
+    void displayStepOctave(const pugi::xml_node& node);
     int octave() const { return m_octave; }
     int step() const { return m_step; }
     bool unpitched() const { return m_unpitched; }
 
 private:
+    void accidental(const pugi::xml_node& node, engraving::Score* score);
     engraving::Accidental* m_acc = nullptr;                             // created based on accidental element
     engraving::AccidentalType m_accType = engraving::AccidentalType::NONE;         // set by pitch() based on alter value (can be microtonal)
     int m_alter = 0;
