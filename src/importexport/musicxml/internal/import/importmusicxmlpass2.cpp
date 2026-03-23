@@ -3207,7 +3207,7 @@ void MusicXmlParserPass2::staffTuning(const pugi::xml_node& node, StringData* t)
     int octave = 0;
     for (pugi::xml_node child : node.children()) {
         if (strcmp(child.name(), "tuning-alter") == 0) {
-            alter = String::fromUtf8(child.child_value()).trimmed().toInt();
+            alter = child.text().as_int();
         } else if (strcmp(child.name(), "tuning-octave") == 0) {
             octave = String::fromUtf8(child.child_value()).toInt();
         } else if (strcmp(child.name(), "tuning-step") == 0) {
@@ -3962,7 +3962,7 @@ void MusicXmlParserDirection::directionType(const pugi::xml_node& node,
                                             std::vector<MusicXmlSpannerDesc>& stops)
 {
     for (pugi::xml_node child : node.children()) {
-        m_defaultY = child.attribute("default-y").as_double(&m_hasDefaultY) * -0.1;
+        pugi::xml_attribute defaultYAttr = child.attribute("default-y"); m_hasDefaultY = !defaultYAttr.empty(); m_defaultY = defaultYAttr.as_double() * -0.1;
         m_relativeX = child.attribute("relative-x").as_double() / 10 * m_score->style().spatium();
         m_visible = strcmp(child.attribute("print-object").value(), "no") != 0; // only available for "metronome" and "other-direction"
         const String number = String::fromUtf8(child.attribute("number").value());
@@ -4176,7 +4176,7 @@ void MusicXmlParserDirection::harpPedal(const pugi::xml_node& node)
             if (strcmp(subchild.name(), "pedal-step") == 0) {
                 stepIndex = std::distance(std::begin(pedalSteps), std::find(std::begin(pedalSteps), std::end(pedalSteps), String::fromUtf8(subchild.child_value())));
             } else if (strcmp(subchild.name(), "pedal-alter") == 0) {
-                pedpos = static_cast<PedalPosition>(String::fromUtf8(subchild.child_value()).trimmed().toInt() + 1);
+                pedpos = static_cast<PedalPosition>(subchild.text().as_int() + 1);
             }
         }
         hpd->setPedal(static_cast<HarpStringType>(stepIndex), pedpos);
@@ -7711,7 +7711,7 @@ void MusicXmlParserPass2::harmony(const String& partId, const pugi::xml_node& no
                 } else if (strcmp(subchild.name(), "root-alter") == 0) {
                     // attributes: print-object, print-style
                     //             location (left-right)
-                    alter = String::fromUtf8(subchild.child_value()).trimmed().toInt();
+                    alter = subchild.text().as_int();
                 }
             }
             if (invalidRoot) {
@@ -7785,7 +7785,7 @@ void MusicXmlParserPass2::harmony(const String& partId, const pugi::xml_node& no
                 } else if (strcmp(subchild.name(), "bass-alter") == 0) {
                     // attributes: print-object, print-style
                     //             location (left-right)
-                    alter = String::fromUtf8(subchild.child_value()).trimmed().toInt();
+                    alter = subchild.text().as_int();
                 }
             }
             info->setBassTpc(step2tpc(step, AccidentalVal(alter)));
@@ -7797,7 +7797,7 @@ void MusicXmlParserPass2::harmony(const String& partId, const pugi::xml_node& no
                 if (strcmp(subchild.name(), "degree-value") == 0) {
                     degreeValue = String::fromUtf8(subchild.child_value()).toInt();
                 } else if (strcmp(subchild.name(), "degree-alter") == 0) {
-                    degreeAlter = String::fromUtf8(subchild.child_value()).trimmed().toInt();
+                    degreeAlter = subchild.text().as_int();
                 } else if (strcmp(subchild.name(), "degree-type") == 0) {
                     degreeType = String::fromUtf8(subchild.child_value());
                 }

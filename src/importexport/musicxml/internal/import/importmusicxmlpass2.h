@@ -25,7 +25,7 @@
 #include <array>
 
 #include "importmusicxmlpass1.h"
-#include "pugixml.hpp"
+#include "thirdparty/pugixml/pugixml.hpp"
 #include "../shared/musicxmlsupport.h"
 #include "../shared/musicxmltypes.h"
 #include "musicxmltupletstate.h"

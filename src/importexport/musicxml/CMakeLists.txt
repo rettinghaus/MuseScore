@@ -81,7 +81,11 @@ else()
     )
 endif()
 
-target_link_libraries(iex_musicxml PRIVATE engraving)
+target_link_libraries(iex_musicxml PRIVATE engraving muse_global)
+
+target_include_directories(iex_musicxml PRIVATE
+    ${PROJECT_SOURCE_DIR}/src/framework/global/thirdparty/pugixml
+)
 
 if (MUE_BUILD_IMPORTEXPORT_TESTS)
     add_subdirectory(tests)

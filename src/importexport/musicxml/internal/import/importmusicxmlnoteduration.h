@@ -25,7 +25,7 @@
 #include "engraving/dom/durationtype.h"
 #include "engraving/types/fraction.h"
 #include "serialization/xmlstreamreader.h"
-#include "pugixml.hpp"
+#include "thirdparty/pugixml/pugixml.hpp"
 
 namespace mu::iex::musicxml {
 class MusicXmlLogger;

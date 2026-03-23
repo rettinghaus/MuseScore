@@ -23,7 +23,7 @@
 #pragma once
 
 #include "serialization/xmlstreamreader.h"
-#include "pugixml.hpp"
+#include "thirdparty/pugixml/pugixml.hpp"
 
 #include "engraving/dom/accidental.h"
 
