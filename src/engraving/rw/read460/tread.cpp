@@ -3635,14 +3635,16 @@ void TRead::read(Pedal* p, XmlReader& e, ReadContext& ctx)
         if (readStyledProperty(p, tag, e, ctx)) {
         } else if (TRead::readProperty(p, tag, e, ctx, Pid::LINE_VISIBLE)) {
             p->resetProperty(Pid::END_TEXT);
-        } else if (TRead::readProperty(p, tag, e, ctx, Pid::BEGIN_HOOK_TYPE)) {
-            if (p->beginHookType() != HookType::NONE) {
-                p->setBeginText(String());
-                p->setContinueText(String());
-            }
         } else if (!readProperties(toTextLineBase(p), e, ctx)) {
             e.unknown();
         }
+    }
+    if (!beginTextTag) {
+        p->setBeginText(String());
+    } else if (!continueTextTag) {
+        p->setContinueText(String());
+    } else if (!endTextTag) {
+        p->setEndText(String());
     }
     if (ctx.mscVersion() < 470) {
         compat::CompatUtils::setTextLineTextPositionFromAlign(p);
