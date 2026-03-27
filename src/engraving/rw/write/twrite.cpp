@@ -2684,12 +2684,15 @@ void TWrite::write(const Pedal* item, XmlWriter& xml, WriteContext& ctx)
     xml.startElement(item);
 
     for (auto i : {
-        Pid::END_HOOK_TYPE,
-        Pid::LINE_VISIBLE,
-        Pid::BEGIN_HOOK_TYPE,
+        Pid::BEGIN_TEXT,
         Pid::BEGIN_TEXT_OFFSET,
+        Pid::BEGIN_HOOK_TYPE,
+        Pid::CONTINUE_TEXT,
         Pid::CONTINUE_TEXT_OFFSET,
-        Pid::END_TEXT_OFFSET
+        Pid::END_TEXT,
+        Pid::END_TEXT_OFFSET,
+        Pid::END_HOOK_TYPE,
+        Pid::LINE_VISIBLE
     }) {
         writeProperty(item, xml, i);
     }
