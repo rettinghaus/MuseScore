@@ -319,7 +319,7 @@ static void xmlSetPitch(Note* n, int step, int alter, double tuning, int octave,
  Fill one gap (tstart - tend) in this track in this measure with rest(s).
  */
 
-static void fillGap(Measure* measure, track_idx_t track, const Fraction& tstart, const Fraction& tend)
+static void fillGap(engraving::Measure* measure, track_idx_t track, const Fraction& tstart, const Fraction& tend)
 {
     Fraction ctick = tstart;
     Fraction restLen = tend - tstart;
@@ -356,7 +356,7 @@ static void fillGap(Measure* measure, track_idx_t track, const Fraction& tstart,
  Fill gaps in first voice of every staff in this measure for this part with rest(s).
  */
 
-static void fillGapsInFirstVoices(Measure* measure, Part* part)
+static void fillGapsInFirstVoices(engraving::Measure* measure, Part* part)
 {
     IF_ASSERT_FAILED(measure) {
         return;
@@ -2065,7 +2065,7 @@ static std::unique_ptr<BarLine> createBarline(const Score* score, const track_id
  * Add barline to the measure at tick.
  */
 
-static void addBarlineToMeasure(Measure* measure, const Fraction tick, std::unique_ptr<BarLine> barline)
+static void addBarlineToMeasure(engraving::Measure* measure, const Fraction tick, std::unique_ptr<BarLine> barline)
 {
     SegmentType st = SegmentType::BarLine;
     if (tick == measure->endTick()) {
@@ -2097,7 +2097,7 @@ void MusicXmlParserPass2::scorePartwise(const pugi::xml_node& node)
     // set last measure barline to normal or MuseScore will generate light-heavy EndBarline
     // this creates non-generated barlines spanning only the current instrument
     // BarLine::_spanStaff is set using the default in Staff::_barLineSpan
-    Measure* const lm = m_score->lastMeasure();
+    engraving::Measure* const lm = m_score->lastMeasure();
     if (lm && lm->endBarLineType() & BarLineType::NORMAL) {
         for (staff_idx_t staffidx = 0; staffidx < m_score->nstaves(); ++staffidx) {
             const Staff* staff = m_score->staff(staffidx);
@@ -2526,7 +2526,7 @@ static void handleBeamAndStemDir(ChordRest* cr, const BeamMode bm, const Directi
 static void markUserAccidentals(const staff_idx_t firstStaff,
                                 const size_t staves,
                                 const Key key,
-                                const Measure* measure,
+                                const engraving::Measure* measure,
                                 const std::map<Note*, int>& alterMap)
 {
     std::map<int, bool> accTmp;
@@ -2682,7 +2682,7 @@ static bool canAddTempoText(const TempoMap* const tempoMap, const int tick)
  Parse the /score-partwise/part/measure node.
  */
 
-void MusicXmlParserPass2::measure(const pugi::xml_node& node, const String& partId, const Fraction time)
+void MusicXmlParserPass2::measure(const pugi::xml_node& node, const muse::String& partId, const engraving::Fraction time)
 {
     // "measure numbers" don't have to be actual numbers in MusicXML
     bool isNumericMeasureNumber = false;
@@ -2778,7 +2778,7 @@ void MusicXmlParserPass2::measure(const pugi::xml_node& node, const String& part
                 fbl.push_back(fb);
             }
         } else if (strcmp(child.name(), "harmony") == 0) {
-            harmony(child, partId, measure, time + mTime, delayedHarmony);
+            harmony(partId, child, measure, time + mTime, delayedHarmony);
         } else if (strcmp(child.name(), "note") == 0) {
             if (!tempoString.empty()) {
                 // sound tempo="..."
@@ -2813,8 +2813,8 @@ void MusicXmlParserPass2::measure(const pugi::xml_node& node, const String& part
             int alt = -10;                          // any number outside range of xml-tag "alter"
             // note: chord and grace note handling done in note()
             // dura > 0 iff valid rest or first note of chord found
-            Note* n = note(child, partId, measure, time + mTime, time + prevTime, missingPrev, dura, missingCurr, cv, gcl, gac, beams, fbl, alt,
-                           tupletStates, tuplets, arpMap, delayedArps);
+            engraving::Note* n = note(partId, child, measure, time + mTime, time + prevTime, missingPrev, dura, missingCurr, cv, gcl, gac, beams, fbl, alt,
+                                      tupletStates, tuplets, arpMap, delayedArps);
             if (n && !n->chord()->isGrace()) {
                 prevChord = n->chord();          // remember last non-grace chord
             }
@@ -2979,7 +2979,7 @@ void MusicXmlParserPass2::measure(const pugi::xml_node& node, const String& part
  Measure repeat handling, based on values set in measureStyle().
  */
 
-void MusicXmlParserPass2::setMeasureRepeats(const staff_idx_t scoreRelStaff, Measure* measure)
+void MusicXmlParserPass2::setMeasureRepeats(const staff_idx_t scoreRelStaff, engraving::Measure* measure)
 {
     for (staff_idx_t i = 0; i < m_nstaves; ++i) {
         staff_idx_t staffIdx = scoreRelStaff + i;
@@ -3017,7 +3017,7 @@ void MusicXmlParserPass2::setMeasureRepeats(const staff_idx_t scoreRelStaff, Mea
 //   measureLayout
 //---------------------------------------------------------
 
-void MusicXmlParserPass2::measureLayout(const pugi::xml_node& node, Measure* measure)
+void MusicXmlParserPass2::measureLayout(const pugi::xml_node& node, engraving::Measure* measure)
 {
     for (pugi::xml_node child : node.children()) {
         if (strcmp(child.name(), "measure-distance") == 0) {
@@ -3044,7 +3044,7 @@ void MusicXmlParserPass2::measureLayout(const pugi::xml_node& node, Measure* mea
  * -> check if it is necessary to insert them in order
  */
 
-void MusicXmlParserPass2::attributes(const pugi::xml_node& node, const String& partId, Measure* measure, const Fraction& tick)
+void MusicXmlParserPass2::attributes(const pugi::xml_node& node, const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick)
 {
     for (pugi::xml_node child : node.children()) {
         if (strcmp(child.name(), "clef") == 0) {
@@ -3085,7 +3085,7 @@ static void setStaffLines(Score* score, staff_idx_t staffIdx, int stafflines)
  Parse the /score-partwise/part/measure/attributes/staff-details node.
  */
 
-void MusicXmlParserPass2::staffDetails(const String& partId, const pugi::xml_node& node, Measure* measure)
+void MusicXmlParserPass2::staffDetails(const String& partId, const pugi::xml_node& node, engraving::Measure* measure)
 {
     //logDebugTrace("MusicXmlParserPass2::staffDetails");
 
@@ -3242,7 +3242,7 @@ void MusicXmlParserPass2::staffTuning(const pugi::xml_node& node, StringData* t)
  - Set/reset the "rhythmic/slash notation" state
  */
 
-void MusicXmlParserPass2::measureStyle(const pugi::xml_node& node, Measure* measure)
+void MusicXmlParserPass2::measureStyle(const pugi::xml_node& node, engraving::Measure* measure)
 {
     const char* staffNumberString = node.attribute("number").value();
 
@@ -3373,7 +3373,7 @@ static void terminateInferredLine(const std::vector<TextLineBase*> lines, const 
 
 void MusicXmlParserDirection::direction(const String& partId,
                                         const pugi::xml_node& node,
-                                        Measure* measure,
+                                        engraving::Measure* measure,
                                         const Fraction& tick,
                                         MusicXmlSpannerMap& spanners,
                                         DelayedDirectionsList& delayedDirections,
@@ -4335,7 +4335,7 @@ MusicXmlInferredFingering::MusicXmlInferredFingering(double totalY,
                                                      String& text,
                                                      track_idx_t track,
                                                      String placement,
-                                                     Measure* measure,
+                                                     engraving::Measure* measure,
                                                      Fraction tick)
     : m_totalY(totalY), m_element(element),  m_text(text), m_track(track), m_placement(placement), m_measure(measure), m_tick(tick)
 {
@@ -4349,7 +4349,7 @@ MusicXmlInferredFingering::MusicXmlInferredFingering(double totalY,
  Round tick to multiple of gcd of measure
  */
 
-void MusicXmlInferredFingering::roundTick(Measure* measure)
+void MusicXmlInferredFingering::roundTick(engraving::Measure* measure)
 {
     measure->computeTicks();
     int gcdTicks = Fraction(1, 1).ticks();
@@ -4373,7 +4373,7 @@ void MusicXmlInferredFingering::roundTick(Measure* measure)
  fingerings to. Adds notes and returns true if successful, else no-op
  and returns false.
  */
-bool MusicXmlInferredFingering::findAndAddToNotes(Measure* measure)
+bool MusicXmlInferredFingering::findAndAddToNotes(engraving::Measure* measure)
 {
     roundTick(measure);
     std::vector<Note*> collectedNotes;
@@ -4522,7 +4522,7 @@ void MusicXmlParserDirection::addInferredTempoLine(const Fraction& tick)
     m_pass2.addInferredTempoLine(m_inferredTempoLineStart);
 }
 
-static String findDetachedRepeatNumber(const Measure* measure, const track_idx_t track, const Fraction tick, const String& placement,
+static String findDetachedRepeatNumber(const engraving::Measure* measure, const track_idx_t track, const Fraction tick, const String& placement,
                                        DelayedDirectionsList& directions)
 {
     static const std::wregex number(L"^(i{1,3})$");
@@ -4574,7 +4574,7 @@ static String countSegno(const String& plainWords)
 //   handleRepeats
 //---------------------------------------------------------
 
-void MusicXmlParserDirection::handleRepeats(Measure* measure, const Fraction tick, bool& measureHasCoda,
+void MusicXmlParserDirection::handleRepeats(engraving::Measure* measure, const Fraction tick, bool& measureHasCoda,
                                             SegnoStack& segnos, DelayedDirectionsList& delayedDirections)
 {
     if (!configuration()->inferTextType()) {
@@ -4760,7 +4760,7 @@ Jump* MusicXmlParserDirection::findJump(const String& repeat) const
 //    text direction "NmiCmi".
 //---------------------------------------------------------
 
-void MusicXmlParserDirection::handleNmiCmi(Measure* measure, const Fraction& tick,
+void MusicXmlParserDirection::handleNmiCmi(engraving::Measure* measure, const Fraction& tick,
                                            DelayedDirectionsList& delayedDirections)
 {
     if (!configuration()->inferTextType()) {
@@ -5642,7 +5642,7 @@ static bool determineBarLineType(const String& barStyle, const String& repeat,
 Regular barlines should not be added at the start or end of a measure, as that could lead to inconsistent behaviour.
  */
 
-void MusicXmlParserPass2::barline(const pugi::xml_node& node, const String& partId, Measure* measure, const Fraction& tick)
+void MusicXmlParserPass2::barline(const pugi::xml_node& node, const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick)
 {
     String loc = String::fromUtf8(node.attribute("location").value());
     if (loc.empty()) {
@@ -5740,7 +5740,7 @@ void MusicXmlParserPass2::barline(const pugi::xml_node& node, const String& part
 //---------------------------------------------------------
 //   findRedundantVolta
 //---------------------------------------------------------
-static Volta* findRedundantVolta(const track_idx_t track, const Measure* measure)
+static Volta* findRedundantVolta(const track_idx_t track, const engraving::Measure* measure)
 {
     auto spanners = measure->score()->spannerMap().findOverlapping(measure->tick().ticks(), measure->endTick().ticks());
     for (auto spanner : spanners) {
@@ -5755,7 +5755,7 @@ static Volta* findRedundantVolta(const track_idx_t track, const Measure* measure
 //   doEnding
 //---------------------------------------------------------
 
-void MusicXmlParserPass2::doEnding(const String& partId, Measure* measure, const String& number,
+void MusicXmlParserPass2::doEnding(const String& partId, engraving::Measure* measure, const String& number,
                                    const String& type, const Color color,
                                    const String& text, const bool print)
 {
@@ -5878,7 +5878,7 @@ static void addSymToSig(KeySigEvent& sig, const String& step, const String& alte
  */
 
 static void addKey(const KeySigEvent key, const Color keyColor, const bool printObj, Score* score,
-                   Measure* measure, const staff_idx_t staffIdx, const Fraction& tick)
+                   engraving::Measure* measure, const staff_idx_t staffIdx, const Fraction& tick)
 {
     Key oldkey = score->staff(staffIdx)->key(tick);
     // TODO only if different custom key ?
@@ -5938,7 +5938,7 @@ static void flushAlteredTone(KeySigEvent& kse, String& step, String& alt, String
 
 // TODO: check currKeySig handling
 
-void MusicXmlParserPass2::key(const pugi::xml_node& node, const String& partId, Measure* measure, const Fraction& tick)
+void MusicXmlParserPass2::key(const pugi::xml_node& node, const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick)
 {
     const char* strKeyno = node.attribute("number").value();
     int keyno = -1;   // assume no number (see below)
@@ -6038,7 +6038,7 @@ void MusicXmlParserPass2::key(const pugi::xml_node& node, const String& partId, 
  Parse the /score-partwise/part/measure/attributes/clef node.
  */
 
-void MusicXmlParserPass2::clef(const pugi::xml_node& node, const String& partId, Measure* measure, const Fraction& tick)
+void MusicXmlParserPass2::clef(const pugi::xml_node& node, const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick)
 {
     ClefType clef   = ClefType::G;
     StaffTypes st = StaffTypes::STANDARD;
@@ -6241,7 +6241,7 @@ static bool determineTimeSig(const String& beats, const String& beatType, const 
  Parse the /score-partwise/part/measure/attributes/time node.
  */
 
-void MusicXmlParserPass2::time(const pugi::xml_node& node, const String& partId, Measure* measure, const Fraction& tick)
+void MusicXmlParserPass2::time(const pugi::xml_node& node, const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick)
 {
     String beats;
     String beatType;
@@ -6574,7 +6574,7 @@ static BeamMode computeBeamMode(const std::map<int, String>& beamTypes)
  */
 
 static void addFiguredBassElements(FiguredBassList& fbl, const Fraction noteStartTime, const int msTrack,
-                                   const Fraction dura, Measure* measure)
+                                   const Fraction dura, engraving::Measure* measure)
 {
     if (!fbl.empty()) {
         Fraction sTick = noteStartTime;                  // starting tick
@@ -6827,15 +6827,15 @@ void MusicXmlParserPass2::xmlSetDrumsetPitch(Note* note, const Chord* chord, con
  Parse the /score-partwise/part/measure/note node.
  */
 
-Note* MusicXmlParserPass2::note(const String& partId,
+engraving::Note* MusicXmlParserPass2::note(const muse::String& partId,
                                 const pugi::xml_node& node,
-                                Measure* measure,
-                                const Fraction sTime,
-                                const Fraction prevSTime,
-                                Fraction& missingPrev,
-                                Fraction& dura,
-                                Fraction& missingCurr,
-                                String& currentVoice,
+                                engraving::Measure* measure,
+                                const engraving::Fraction sTime,
+                                const engraving::Fraction prevSTime,
+                                engraving::Fraction& missingPrev,
+                                engraving::Fraction& dura,
+                                engraving::Fraction& missingCurr,
+                                muse::String& currentVoice,
                                 GraceChordList& gcl,
                                 size_t& gac,
                                 Beams& currBeams,
@@ -7559,9 +7559,9 @@ FiguredBass* MusicXmlParserPass2::figuredBass(const pugi::xml_node& node)
    which affects both single strings and barres
  */
 
-FretDiagram* MusicXmlParserPass2::frame(const pugi::xml_node& node)
+engraving::FretDiagram* MusicXmlParserPass2::frame(const pugi::xml_node& node)
 {
-    FretDiagram* fd = Factory::createFretDiagram(m_score->dummy()->segment());
+    engraving::FretDiagram* fd = Factory::createFretDiagram(m_score->dummy()->segment());
 
     colorItem(fd, Color::fromString(String::fromUtf8(node.attribute("color").value())));
 
@@ -7660,7 +7660,7 @@ FretDiagram* MusicXmlParserPass2::frame(const pugi::xml_node& node)
  Parse the /score-partwise/part/measure/harmony node.
  */
 
-void MusicXmlParserPass2::harmony(const String& partId, const pugi::xml_node& node, Measure* measure, const Fraction& sTime, HarmonyMap& harmonyMap)
+void MusicXmlParserPass2::harmony(const muse::String& partId, const pugi::xml_node& node, engraving::Measure* measure, const engraving::Fraction& sTime, HarmonyMap& harmonyMap)
 {
     UNUSED(measure);
     track_idx_t track = m_pass1.trackForPart(partId);

@@ -444,37 +444,36 @@ private:
     void initPartState(const muse::String& partId);
     SpannerSet findIncompleteSpannersAtPartEnd();
     engraving::Err parse();
-    void scorePartwise();
-    void partList();
-    void scorePart();
-    void part();
-    void measure(const muse::String& partId, const engraving::Fraction time);
+    void scorePartwise(const pugi::xml_node& node);
+    void partList(const pugi::xml_node& node);
+    void scorePart(const pugi::xml_node& node);
+    void part(const pugi::xml_node& node);
+    void measure(const pugi::xml_node& node, const muse::String& partId, const engraving::Fraction time);
     void measureLayout(engraving::Measure* measure);
     void setMeasureRepeats(const engraving::staff_idx_t scoreRelStaff, engraving::Measure* measure);
-    void attributes(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
-    void measureStyle(engraving::Measure* measure);
-    void barline(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
-    void key(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
-    void clef(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
-    void time(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
+    void attributes(const pugi::xml_node& node, const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
+    void measureStyle(const pugi::xml_node& node, engraving::Measure* measure);
+    void barline(const pugi::xml_node& node, const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
+    void key(const pugi::xml_node& node, const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
+    void clef(const pugi::xml_node& node, const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
+    void time(const pugi::xml_node& node, const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
     void divisions(const pugi::xml_node& node);
-    engraving::Note* note(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction sTime,
-                          const engraving::Fraction prevTime, engraving::Fraction& missingPrev, engraving::Fraction& dura,
+    engraving::Note* note(const muse::String& partId, const pugi::xml_node& node, engraving::Measure* measure, const engraving::Fraction sTime,
+                          const engraving::Fraction prevSTime, engraving::Fraction& missingPrev, engraving::Fraction& dura,
                           engraving::Fraction& missingCurr, muse::String& currentVoice, GraceChordList& gcl, size_t& gac, Beams& currBeams,
                           FiguredBassList& fbl, int& alt, MusicXmlTupletStates& tupletStates, Tuplets& tuplets, ArpeggioMap& arpMap,
                           DelayedArpMap& delayedArps);
     void notePrintSpacingNo(const pugi::xml_node& node, engraving::Fraction& dura);
     engraving::FiguredBassItem* figure(const pugi::xml_node& node, const int idx, const bool paren, engraving::FiguredBass* parent);
     engraving::FiguredBass* figuredBass(const pugi::xml_node& node);
-    FretDiagram* frame(const pugi::xml_node& node);
+    engraving::FretDiagram* frame(const pugi::xml_node& node);
     void harmony(const muse::String& partId, const pugi::xml_node& node, engraving::Measure* measure, const engraving::Fraction& sTime, HarmonyMap& harmonyMap);
     engraving::Accidental* accidental(const pugi::xml_node& node);
     void beam(const pugi::xml_node& node, std::map<int, muse::String>& beamTypes);
     void duration(const pugi::xml_node& node, engraving::Fraction& dura);
     void forward(const pugi::xml_node& node, engraving::Fraction& dura);
     void backup(const pugi::xml_node& node, engraving::Fraction& dura);
-    void timeModification(engraving::Fraction& timeMod, engraving::TDuration& normalType);
-    void stem(engraving::DirectionV& sd, bool& nost);
+    void stem(const pugi::xml_node& node, engraving::DirectionV& sd, bool& nost);
     void doEnding(const muse::String& partId, engraving::Measure* measure, const muse::String& number, const muse::String& type,
                   const engraving::Color color, const muse::String& text, const bool print);
     void staffDetails(const muse::String& partId, const pugi::xml_node& node, engraving::Measure* measure = nullptr);
