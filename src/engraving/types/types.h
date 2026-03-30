@@ -1112,13 +1112,15 @@ struct InstrumentTrackId {
 // Tremolo subtypes:
 enum class TremoloType : signed char {
     INVALID_TREMOLO = -1,
-    R8 = 0, R16, R32, R64, R128, R256, BUZZ_ROLL,    // one note tremolo (repeat)
-    C8, C16, C32, C64, C128, C256       // two note tremolo (change)
+    R8 = 0, R16, R32, R64, BUZZ_ROLL,               // one note tremolo (repeat)
+    C8, C16, C32, C64,                              // two note tremolo (change)
+    R128, R256,                                     // additional one note tremolo
+    C128, C256                                      // additional two note tremolo
 };
 
 inline bool isTremoloTwoChord(TremoloType type)
 {
-    return type >= TremoloType::C8;
+    return (type >= TremoloType::C8 && type <= TremoloType::C64) || type == TremoloType::C128 || type == TremoloType::C256;
 }
 
 // only applicable to minim two-note tremolo in non-TAB staves

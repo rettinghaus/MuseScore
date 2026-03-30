@@ -146,7 +146,7 @@ RectF TremoloTwoChord::drag(EditData& ed)
 
 void TremoloTwoChord::setTremoloType(TremoloType t)
 {
-    IF_ASSERT_FAILED(t >= TremoloType::C8) {
+    IF_ASSERT_FAILED(isTremoloTwoChord(t)) {
         return;
     }
     m_tremoloType = t;
