@@ -47,6 +47,12 @@ static mpe::ArticulationType toArticulationType(TremoloType type)
     case TremoloType::R64:
     case TremoloType::C64:
         return mpe::ArticulationType::Tremolo64th;
+    case TremoloType::R128:
+    case TremoloType::C128:
+        return mpe::ArticulationType::Tremolo128th;
+    case TremoloType::R256:
+    case TremoloType::C256:
+        return mpe::ArticulationType::Tremolo256th;
     case TremoloType::BUZZ_ROLL:
         return mpe::ArticulationType::TremoloBuzz;
     case TremoloType::INVALID_TREMOLO:
