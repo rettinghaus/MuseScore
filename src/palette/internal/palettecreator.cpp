@@ -639,15 +639,15 @@ PalettePtr PaletteCreator::newTremoloPalette()
     sp->setDrawGrid(true);
     sp->setVisible(false);
 
-    for (int i = int(TremoloType::R8); i <= int(TremoloType::BUZZ_ROLL); ++i) {
+    for (TremoloType t : { TremoloType::R8, TremoloType::R16, TremoloType::R32, TremoloType::R64, TremoloType::R128, TremoloType::R256, TremoloType::BUZZ_ROLL }) {
         auto tremolo = Factory::makeTremoloSingleChord(paletteScore()->dummy()->chord());
-        tremolo->setTremoloType(TremoloType(i));
+        tremolo->setTremoloType(t);
         sp->appendElement(tremolo, tremolo->subtypeUserName());
     }
 
-    for (int i = int(TremoloType::C8); i <= int(TremoloType::C256); ++i) {
+    for (TremoloType t : { TremoloType::C8, TremoloType::C16, TremoloType::C32, TremoloType::C64, TremoloType::C128, TremoloType::C256 }) {
         auto tremolo = Factory::makeTremoloTwoChord(paletteScore()->dummy()->chord());
-        tremolo->setTremoloType(TremoloType(i));
+        tremolo->setTremoloType(t);
         sp->appendElement(tremolo, tremolo->subtypeUserName());
     }
 
