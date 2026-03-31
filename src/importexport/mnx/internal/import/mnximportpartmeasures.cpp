@@ -603,13 +603,27 @@ void MnxImporter::createTremolo(const mnx::sequence::MultiNoteTremolo& mnxTremol
     }
     TremoloType type = TremoloType::INVALID_TREMOLO;
     switch (mnxTremolo.marks()) {
-    case 1:  type = TremoloType::C8;   break;
-    case 2:  type = TremoloType::C16;  break;
-    case 3:  type = TremoloType::C32;  break;
-    case 4:  type = TremoloType::C64;  break;
-    case 5:  type = TremoloType::C128; break;
-    case 6:  type = TremoloType::C256; break;
-    default: type = TremoloType::C256; break;
+    case 1:
+        type = TremoloType::C8;
+        break;
+    case 2:
+        type = TremoloType::C16;
+        break;
+    case 3:
+        type = TremoloType::C32;
+        break;
+    case 4:
+        type = TremoloType::C64;
+        break;
+    case 5:
+        type = TremoloType::C128;
+        break;
+    case 6:
+        type = TremoloType::C256;
+        break;
+    default:
+        type = TremoloType::C256;
+        break;
     }
     if (int(type) <= c1->durationType().hooks()) {
         return; // no tremolo is possible
