@@ -601,9 +601,17 @@ void MnxImporter::createTremolo(const mnx::sequence::MultiNoteTremolo& mnxTremol
         LOGE() << mnxTremolo.dump(2);
         return;
     }
-    int tremoloBeamsNum = int(TremoloType::C8) - 1 + mnxTremolo.marks();
-    tremoloBeamsNum = std::clamp(tremoloBeamsNum, int(TremoloType::C8), int(TremoloType::C64));
-    if (tremoloBeamsNum <= c1->durationType().hooks()) {
+    TremoloType type = TremoloType::INVALID_TREMOLO;
+    switch (mnxTremolo.marks()) {
+    case 1:  type = TremoloType::C8;   break;
+    case 2:  type = TremoloType::C16;  break;
+    case 3:  type = TremoloType::C32;  break;
+    case 4:  type = TremoloType::C64;  break;
+    case 5:  type = TremoloType::C128; break;
+    case 6:  type = TremoloType::C256; break;
+    default: type = TremoloType::C256; break;
+    }
+    if (int(type) <= c1->durationType().hooks()) {
         return; // no tremolo is possible
     }
 
@@ -624,7 +632,7 @@ void MnxImporter::createTremolo(const mnx::sequence::MultiNoteTremolo& mnxTremol
     }
 
     TremoloTwoChord* tremolo = Factory::createTremoloTwoChord(c1);
-    tremolo->setTremoloType(TremoloType(tremoloBeamsNum));
+    tremolo->setTremoloType(type);
     tremolo->setTrack(curTrackIdx);
     tremolo->setVisible(c1->notes().front()->visible());
     tremolo->setParent(c1);

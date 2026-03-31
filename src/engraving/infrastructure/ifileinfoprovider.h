@@ -19,8 +19,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-
-#pragma once
+#ifndef MU_ENGRAVING_IFILEINFOPROVIDER_H
+#define MU_ENGRAVING_IFILEINFOPROVIDER_H
 
 #include <memory>
 
@@ -32,8 +32,6 @@ class IFileInfoProvider
 {
 public:
     virtual ~IFileInfoProvider() = default;
-
-    virtual bool saved() const = 0;
 
     virtual muse::io::path_t path() const = 0; //! Absolute path
     virtual muse::io::path_t fileName(bool includingExtension = true) const = 0;
@@ -47,3 +45,5 @@ public:
 
 using IFileInfoProviderPtr = std::shared_ptr<IFileInfoProvider>;
 }
+
+#endif // MU_ENGRAVING_IFILEINFOPROVIDER_H

@@ -19,8 +19,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-
-#pragma once
+#ifndef MU_PROJECT_PROJECTFILEINFOPROVIDER_H
+#define MU_PROJECT_PROJECTFILEINFOPROVIDER_H
 
 #include "engraving/infrastructure/ifileinfoprovider.h"
 
@@ -36,8 +36,6 @@ class ProjectFileInfoProvider : public engraving::IFileInfoProvider
 public:
     explicit ProjectFileInfoProvider(NotationProject* project);
 
-    bool saved() const override;
-
     muse::io::path_t path() const override;
     muse::io::path_t fileName(bool includingExtension = true) const override;
     muse::io::path_t absoluteDirPath() const override;
@@ -51,3 +49,5 @@ private:
     NotationProject* m_project = nullptr;
 };
 }
+
+#endif // MU_PROJECT_PROJECTFILEINFOPROVIDER_H

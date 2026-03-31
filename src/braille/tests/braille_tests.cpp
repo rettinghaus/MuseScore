@@ -48,6 +48,7 @@ static void fixupScore(MasterScore* score)
 {
     score->connectTies();
     score->masterScore()->rebuildMidiMapping();
+    score->setSaved(false);
 }
 
 static bool saveBraille(MasterScore* score, const String& saveName)

@@ -272,6 +272,7 @@ Ret EditStaffType::loadScore(mu::engraving::MasterScore* score, const muse::io::
         s->setLayoutAll();
     }
     score->updateChannel();
+    score->setSaved(true);
     score->update();
 
     return score->sanityCheck();

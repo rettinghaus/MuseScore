@@ -28,7 +28,6 @@
 #include "dom/page.h"
 #include "dom/text.h"
 
-#include "ifileinfoprovider.h"
 #include "tlayout.h"
 
 using namespace mu::engraving;
@@ -318,25 +317,22 @@ TextBlock HeaderFooterLayout::replaceTextMacros(const LayoutContext& ctx, const 
                     }
                 }
                 break;
-                case 'm': {
-                    IFileInfoProviderPtr fileInfo = page->score()->masterScore()->fileInfo();
-                    if (page->score()->dirty() || !fileInfo->saved()) {
+                case 'm':
+                    if (page->score()->dirty() || !page->score()->masterScore()->saved()) {
                         newFragments.back().text += muse::Time::currentTime().toString(muse::DateFormat::ISODate);
                     } else {
-                        newFragments.back().text += fileInfo->lastModified().time().toString(
+                        newFragments.back().text += page->score()->masterScore()->fileInfo()->lastModified().time().toString(
                             muse::DateFormat::ISODate);
                     }
-                }
-                break;
-                case 'M': {
-                    IFileInfoProviderPtr fileInfo = page->score()->masterScore()->fileInfo();
-                    if (page->score()->dirty() || !fileInfo->saved()) {
+                    break;
+                case 'M':
+                    if (page->score()->dirty() || !page->score()->masterScore()->saved()) {
                         newFragments.back().text += muse::Date::currentDate().toString(muse::DateFormat::ISODate);
                     } else {
-                        newFragments.back().text += fileInfo->lastModified().date().toString(muse::DateFormat::ISODate);
+                        newFragments.back().text += page->score()->masterScore()->fileInfo()->lastModified().date().toString(
+                            muse::DateFormat::ISODate);
                     }
-                }
-                break;
+                    break;
                 case 'C': // only on first page
                     if (page->pageNumber()) {
                         break;

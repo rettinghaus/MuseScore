@@ -140,6 +140,16 @@ void MasterScore::setFileInfoProvider(IFileInfoProviderPtr fileInfoProvider)
     m_fileInfoProvider = fileInfoProvider;
 }
 
+bool MasterScore::saved() const
+{
+    return m_saved;
+}
+
+void MasterScore::setSaved(bool v)
+{
+    m_saved = v;
+}
+
 String MasterScore::name() const
 {
     return fileInfo()->displayName();

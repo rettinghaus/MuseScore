@@ -249,9 +249,16 @@ void MnxImporter::importTremolo(const mnx::sequence::SingleNoteTremolo& tremolo,
     if (marks <= 0) {
         return;
     }
-    int tremoloTypeValue = int(TremoloType::R8) - 1 + marks;
-    tremoloTypeValue = std::clamp(tremoloTypeValue, int(TremoloType::R8), int(TremoloType::R256));
-    TremoloType type = TremoloType(tremoloTypeValue);
+    TremoloType type = TremoloType::INVALID_TREMOLO;
+    switch (marks) {
+    case 1:  type = TremoloType::R8;   break;
+    case 2:  type = TremoloType::R16;  break;
+    case 3:  type = TremoloType::R32;  break;
+    case 4:  type = TremoloType::R64;  break;
+    case 5:  type = TremoloType::R128; break;
+    case 6:  type = TremoloType::R256; break;
+    default: type = TremoloType::R256; break;
+    }
     if (type == TremoloType::INVALID_TREMOLO) {
         return;
     }

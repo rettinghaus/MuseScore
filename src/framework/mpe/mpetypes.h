@@ -260,8 +260,6 @@ enum class ArticulationType : signed char {
     Tremolo32nd,
     Tremolo64th,
     TremoloBuzz,
-    Tremolo128th,
-    Tremolo256th,
 
     TrillBaroque,
     UpperMordent,

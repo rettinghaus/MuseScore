@@ -19,8 +19,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-
-#pragma once
+#ifndef MU_ENGRAVING_MASTERSCORE_H
+#define MU_ENGRAVING_MASTERSCORE_H
 
 #include <array>
 
@@ -183,6 +183,9 @@ public:
     IFileInfoProviderPtr fileInfo() const;
     void setFileInfoProvider(IFileInfoProviderPtr fileInfoProvider);
 
+    bool saved() const;
+    void setSaved(bool v);
+
     String name() const override;
 
     muse::Ret sanityCheck();
@@ -244,5 +247,9 @@ private:
     // FIXME: Move to EngravingProject
     // We can't yet, because m_project is not set on every MasterScore
     IFileInfoProviderPtr m_fileInfoProvider;
+
+    bool m_saved = false;
 };
 }
+
+#endif // MU_ENGRAVING_MASTERSCORE_H

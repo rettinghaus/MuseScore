@@ -158,6 +158,7 @@ static void fixupScore(MasterScore* score)
 {
     score->connectTies();
     score->masterScore()->rebuildMidiMapping();
+    score->setSaved(false);
 }
 
 MasterScore* Mnx_Tests::readMnxScore(const String& fileName, bool isAbsolutePath)

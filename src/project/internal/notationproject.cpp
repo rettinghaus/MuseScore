@@ -1136,22 +1136,26 @@ void NotationProject::setNeedSave(bool needSave)
 
     setNeedAutoSave(needSave);
 
-    if (!needSave) {
+    bool saved = !needSave;
+
+    if (saved) {
         m_hasNonUndoStackChanges = false;
     }
 
-    if (m_needSave == needSave) {
+    if (score->saved() == saved) {
         return;
     }
 
-    m_needSave = needSave;
+    score->setSaved(saved);
     m_needSaveNotification.notify();
 }
 
 ValNt<bool> NotationProject::needSave() const
 {
+    const mu::engraving::MasterScore* score = m_masterNotation->masterScore();
+
     ValNt<bool> needSave;
-    needSave.val = m_needSave;
+    needSave.val = score && !score->saved();
     needSave.notification = m_needSaveNotification;
 
     return needSave;
