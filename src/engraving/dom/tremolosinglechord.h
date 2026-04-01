@@ -64,7 +64,7 @@ public:
     Fraction tremoloLen() const;
     bool isBuzzRoll() const { return m_tremoloType == TremoloType::BUZZ_ROLL; }
 
-    int lines() const { return tremoloTypeLines(m_tremoloType); }
+    int lines() const;
 
     void spatiumChanged(double oldValue, double newValue) override;
     void localSpatiumChanged(double oldValue, double newValue) override;
@@ -88,6 +88,8 @@ public:
         bool isValid() const override { return EngravingItem::LayoutData::isValid() && sym != SymId::noSym; }
     };
     DECLARE_LAYOUTDATA_METHODS(TremoloSingleChord)
+
+    static SymId tremoloType2symbol(TremoloType type);
 
 private:
     friend class Factory;

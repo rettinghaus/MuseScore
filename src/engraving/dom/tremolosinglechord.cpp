@@ -77,6 +77,14 @@ double TremoloSingleChord::minHeight() const
     return (lines() - 1) * td + sw;
 }
 
+int TremoloSingleChord::lines() const
+{
+    if (m_tremoloType == TremoloType::BUZZ_ROLL) {
+        return 1;
+    }
+    return static_cast<int>(m_tremoloType) + 1;
+}
+
 //---------------------------------------------------------
 //   drag
 //---------------------------------------------------------
@@ -267,6 +275,18 @@ PropertyValue TremoloSingleChord::propertyDefault(Pid propertyId) const
         return true;
     default:
         return EngravingItem::propertyDefault(propertyId);
+    }
+}
+
+SymId TremoloSingleChord::tremoloType2symbol(TremoloType type)
+{
+    switch (type) {
+    case TremoloType::R8:        return SymId::tremolo1;
+    case TremoloType::R16:       return SymId::tremolo2;
+    case TremoloType::R32:       return SymId::tremolo3;
+    case TremoloType::R64:       return SymId::tremolo4;
+    case TremoloType::BUZZ_ROLL: return SymId::buzzRoll;
+    default:                     return SymId::noSym;
     }
 }
 
