@@ -1783,7 +1783,7 @@ void SingleLayout::layout(TimeSig* item, const Context& ctx)
 void SingleLayout::layout(TremoloSingleChord* item, const Context&)
 {
     TremoloSingleChord::LayoutData* ldata = item->mutldata();
-    ldata->sym = tremoloTypeSymbol(item->tremoloType());
+    ldata->sym = TremoloSingleChord::tremoloType2symbol(item->tremoloType());
     item->setbbox(item->symBbox(ldata->sym));
 }
 

@@ -1121,35 +1121,6 @@ inline bool isTremoloTwoChord(TremoloType type)
     return type >= TremoloType::C8;
 }
 
-inline int tremoloTypeLines(TremoloType type)
-{
-    switch (type) {
-    case TremoloType::R16:
-    case TremoloType::C16:
-        return 2;
-    case TremoloType::R32:
-    case TremoloType::C32:
-        return 3;
-    case TremoloType::R64:
-    case TremoloType::C64:
-        return 4;
-    default:
-        return 1;
-    }
-}
-
-inline SymId tremoloTypeSymbol(TremoloType type)
-{
-    switch (type) {
-    case TremoloType::R8:        return SymId::tremolo1;
-    case TremoloType::R16:       return SymId::tremolo2;
-    case TremoloType::R32:       return SymId::tremolo3;
-    case TremoloType::R64:       return SymId::tremolo4;
-    case TremoloType::BUZZ_ROLL: return SymId::buzzRoll;
-    default:                     return SymId::noSym;
-    }
-}
-
 // only applicable to minim two-note tremolo in non-TAB staves
 enum class TremoloStyle : signed char {
     DEFAULT = 0, TRADITIONAL, TRADITIONAL_ALTERNATE
