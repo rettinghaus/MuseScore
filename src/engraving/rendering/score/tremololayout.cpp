@@ -69,8 +69,9 @@ void TremoloLayout::layout(TremoloSingleChord* item, const LayoutContext& ctx)
         return;
     }
 
-    item->computeShape();      // set bbox
-    item->setPath(item->basePath());
+    TremoloSingleChord::LayoutData* ldata = item->mutldata();
+    ldata->sym = tremoloTypeSymbol(item->tremoloType());
+    item->setbbox(item->symBbox(ldata->sym));
 
     Note* anchor1 = item->chord()->up() ? item->chord()->upNote() : item->chord()->downNote();
     Stem* stem = item->chord()->stem();
