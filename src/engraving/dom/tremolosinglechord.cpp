@@ -77,6 +77,14 @@ double TremoloSingleChord::minHeight() const
     return (lines() - 1) * td + sw;
 }
 
+int TremoloSingleChord::lines() const
+{
+    if (m_tremoloType == TremoloType::BUZZ_ROLL) {
+        return 1;
+    }
+    return static_cast<int>(m_tremoloType) + 1;
+}
+
 //---------------------------------------------------------
 //   drag
 //---------------------------------------------------------
@@ -93,24 +101,6 @@ RectF TremoloSingleChord::drag(EditData& ed)
 void TremoloSingleChord::setTremoloType(TremoloType t)
 {
     m_tremoloType = t;
-    switch (tremoloType()) {
-    case TremoloType::R16:
-    case TremoloType::C16:
-        m_lines = 2;
-        break;
-    case TremoloType::R32:
-    case TremoloType::C32:
-        m_lines = 3;
-        break;
-    case TremoloType::R64:
-    case TremoloType::C64:
-        m_lines = 4;
-        break;
-    default:
-        m_lines = 1;
-        break;
-    }
-
     styleChanged();
 }
 
@@ -121,7 +111,7 @@ void TremoloSingleChord::setTremoloType(TremoloType t)
 void TremoloSingleChord::spatiumChanged(double oldValue, double newValue)
 {
     EngravingItem::spatiumChanged(oldValue, newValue);
-    computeShape();
+    triggerLayout();
 }
 
 //---------------------------------------------------------
@@ -132,7 +122,7 @@ void TremoloSingleChord::spatiumChanged(double oldValue, double newValue)
 void TremoloSingleChord::localSpatiumChanged(double oldValue, double newValue)
 {
     EngravingItem::localSpatiumChanged(oldValue, newValue);
-    computeShape();
+    triggerLayout();
 }
 
 //---------------------------------------------------------
@@ -143,65 +133,12 @@ void TremoloSingleChord::localSpatiumChanged(double oldValue, double newValue)
 void TremoloSingleChord::styleChanged()
 {
     EngravingItem::styleChanged();
-    computeShape();
+    triggerLayout();
 }
 
 staff_idx_t TremoloSingleChord::vStaffIdx() const
 {
     return chord() ? chord()->vStaffIdx() : EngravingItem::vStaffIdx();
-}
-
-//---------------------------------------------------------
-//   basePath
-//---------------------------------------------------------
-
-PainterPath TremoloSingleChord::basePath(double /*stretch*/) const
-{
-    if (isBuzzRoll()) {
-        return PainterPath();
-    }
-
-    const double sp = spatium() * chordMag();
-
-    double w2  = sp * style().styleS(Sid::tremoloWidth).val() * .5;
-    double lw  = sp * style().styleS(Sid::tremoloLineWidth).val();
-    double td  = sp * style().styleS(Sid::tremoloDistance).val();
-
-    PainterPath ppath;
-
-    // first line
-    ppath.addRect(-w2, 0.0, 2.0 * w2, lw);
-    double ty = td;
-
-    // other lines
-    for (int i = 1; i < m_lines; i++) {
-        ppath.addRect(-w2, ty, 2.0 * w2, lw);
-        ty += td;
-    }
-
-    Transform shearTransform;
-    shearTransform.shear(0.0, -(lw / 2.0) / w2);
-    ppath = shearTransform.map(ppath);
-
-    return ppath;
-}
-
-void TremoloSingleChord::computeShape()
-{
-    switch (tremoloType()) {
-    case TremoloType::R8: setbbox(symBbox(SymId::tremolo1));
-        break;
-    case TremoloType::R16: setbbox(symBbox(SymId::tremolo2));
-        break;
-    case TremoloType::R32: setbbox(symBbox(SymId::tremolo3));
-        break;
-    case TremoloType::R64: setbbox(symBbox(SymId::tremolo4));
-        break;
-    case TremoloType::BUZZ_ROLL: setbbox(symBbox(SymId::buzzRoll));
-        break;
-    default:
-        break;
-    }
 }
 
 //---------------------------------------------------------
@@ -338,6 +275,18 @@ PropertyValue TremoloSingleChord::propertyDefault(Pid propertyId) const
         return true;
     default:
         return EngravingItem::propertyDefault(propertyId);
+    }
+}
+
+SymId TremoloSingleChord::tremoloType2symbol(TremoloType type)
+{
+    switch (type) {
+    case TremoloType::R8:        return SymId::tremolo1;
+    case TremoloType::R16:       return SymId::tremolo2;
+    case TremoloType::R32:       return SymId::tremolo3;
+    case TremoloType::R64:       return SymId::tremolo4;
+    case TremoloType::BUZZ_ROLL: return SymId::buzzRoll;
+    default:                     return SymId::noSym;
     }
 }
 
