@@ -133,7 +133,6 @@ staff_idx_t TremoloSingleChord::vStaffIdx() const
     return chord() ? chord()->vStaffIdx() : EngravingItem::vStaffIdx();
 }
 
-
 //---------------------------------------------------------
 //   reset
 //---------------------------------------------------------
