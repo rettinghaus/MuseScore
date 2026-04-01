@@ -2413,23 +2413,12 @@ void SingleDraw::draw(const TremoloSingleChord* item, Painter* painter, const Pa
     TRACE_DRAW_ITEM;
 
     const TremoloSingleChord::LayoutData* ldata = item->ldata();
+    IF_ASSERT_FAILED(ldata) {
+        return;
+    }
 
     painter->setPen(item->curColor(opt));
-    switch (item->tremoloType()) {
-    case TremoloType::R8:          item->drawSymbol(SymId::tremolo1, painter);
-        break;
-    case TremoloType::R16:         item->drawSymbol(SymId::tremolo2, painter);
-        break;
-    case TremoloType::R32:         item->drawSymbol(SymId::tremolo3, painter);
-        break;
-    case TremoloType::R64:         item->drawSymbol(SymId::tremolo4, painter);
-        break;
-    case TremoloType::BUZZ_ROLL:   item->drawSymbol(SymId::buzzRoll, painter);
-        break;
-    default:
-        NOT_IMPLEMENTED << item->typeName();
-        UNREACHABLE;
-    }
+    item->drawSymbol(ldata->sym, painter);
 
     // vertical line (stem)
     {

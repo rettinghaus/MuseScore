@@ -25,7 +25,6 @@
 #include "engravingitem.h"
 
 #include "durationtype.h"
-#include "draw/types/painterpath.h"
 #include "../types/types.h"
 #include "beam.h"
 #include "chord.h"
@@ -65,7 +64,7 @@ public:
     Fraction tremoloLen() const;
     bool isBuzzRoll() const { return m_tremoloType == TremoloType::BUZZ_ROLL; }
 
-    int lines() const { return m_lines; }
+    int lines() const { return tremoloTypeLines(m_tremoloType); }
 
     void spatiumChanged(double oldValue, double newValue) override;
     void localSpatiumChanged(double oldValue, double newValue) override;
@@ -84,11 +83,11 @@ public:
     bool isEditable() const override { return true; }
     void endEdit(EditData&) override;
 
-    muse::draw::PainterPath basePath(double stretch = 0) const;
-    const muse::draw::PainterPath& path() const { return m_path; }
-    void setPath(const muse::draw::PainterPath& p) { m_path = p; }
-
-    void computeShape();
+    struct LayoutData : public EngravingItem::LayoutData {
+        SymId sym = SymId::noSym;
+        bool isValid() const override { return EngravingItem::LayoutData::isValid() && sym != SymId::noSym; }
+    };
+    DECLARE_LAYOUTDATA_METHODS(TremoloSingleChord)
 
 private:
     friend class Factory;
@@ -98,9 +97,6 @@ private:
 
     TremoloType m_tremoloType = TremoloType::INVALID_TREMOLO;
     TDuration m_durationType;
-    muse::draw::PainterPath m_path;
     bool m_playTremolo = true;
-
-    int m_lines = 0; // derived from _subtype
 };
 } // namespace mu::engraving
