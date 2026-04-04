@@ -4736,9 +4736,30 @@ static void directionETag(XmlWriter& xml, staff_idx_t staff, const int offset = 
 //   partGroupStart
 //---------------------------------------------------------
 
-static void partGroupStart(XmlWriter& xml, int number, const BracketItem* const bracket, const bool barlineSpan, const bool groupTime)
+static void partGroupStart(XmlWriter& xml, int number, const BracketItem* const bracket, const bool barlineSpan, const InstrumentLabel& instrumentLabel, const bool groupTime)
 {
     xml.startElement("part-group", { { "type", "start" }, { "number", number } });
+
+    if (instrumentLabel.allowGroupName()) {
+        static const std::wregex acc(L"[♭♯]");
+        String groupName = instrumentLabel.useCustomGroupName() ? instrumentLabel.customNameLongGroup() : instrumentLabel.longName();
+        xml.tag("group-name", MScoreTextToMusicXml::toPlainText(groupName).replace(u'♭', 'b').replace(u'♯', '#'));
+        if (groupName.contains(acc)) {
+            xml.startElement("group-name-display");
+            writeDisplayName(xml, groupName);
+            xml.endElement();
+        }
+        if (!instrumentLabel.shortName().isEmpty()) {
+            String groupName = instrumentLabel.useCustomGroupName() ? instrumentLabel.customNameShortGroup() : instrumentLabel.shortName();
+            xml.tag("group-abbreviation", MScoreTextToMusicXml::toPlainText(groupName).replace(u'♭', 'b').replace(u'♯', '#'));
+            if (groupName.contains(acc)) {
+                xml.startElement("group-abbreviation-display");
+                writeDisplayName(xml, groupName);
+                xml.endElement();
+            }
+        }
+    }
+
     String br;
     switch (bracket->bracketType()) {
     case BracketType::NO_BRACKET:
@@ -7663,6 +7684,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
     partGroupEnd.fill(-1);
     for (size_t idx = 0; idx < parts.size(); ++idx) {
         const Part* part = parts.at(idx);
+        const Instrument* curInstrument = part->instrument();
         bool bracketFound = false;
         // handle brackets
         for (size_t i = 0; i < part->nstaves(); i++) {
@@ -7683,7 +7705,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
                                     int number = findPartGroupNumber(partGroupEnd);
                                     if (number < MAX_PART_GROUPS) {
                                         const BracketItem* bi = st->brackets().at(j);
-                                        partGroupStart(xml, number + 1, bi, st->barLineSpan(), groupTime);
+                                        partGroupStart(xml, number + 1, bi, st->barLineSpan(), curInstrument->instrumentLabel(), groupTime);
                                         partGroupEnd[number] = static_cast<int>(staffCount + st->bracketSpan(j));
                                     }
                                 }
@@ -7701,7 +7723,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
             int number = findPartGroupNumber(partGroupEnd);
             if (number < MAX_PART_GROUPS) {
                 const BracketItem* bi = Factory::createBracketItem(score->dummy());
-                partGroupStart(xml, number + 1, bi, false, groupTime);
+                partGroupStart(xml, number + 1, bi, false, curInstrument->instrumentLabel(), groupTime);
                 delete bi;
                 partGroupEnd[number] = static_cast<int>(idx + part->nstaves());
             }
