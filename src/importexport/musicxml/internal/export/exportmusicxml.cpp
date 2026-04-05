@@ -7667,6 +7667,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
     for (size_t idx = 0; idx < parts.size(); ++idx) {
         const Part* part = parts.at(idx);
         const Instrument* curInstrument = part->instrument();
+        InstrumentLabel curInstrumentLabel = InstrumentLabel();
         bool bracketFound = false;
         // handle brackets
         for (size_t i = 0; i < part->nstaves(); i++) {
@@ -7687,7 +7688,11 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
                                     int number = findPartGroupNumber(partGroupEnd);
                                     if (number < MAX_PART_GROUPS) {
                                         const BracketItem* bi = st->brackets().at(j);
-                                        partGroupStart(xml, number + 1, bi, st->barLineSpan(), curInstrument->instrumentLabel(), groupTime);
+                                        if (j == st->bracketLevels()) {
+                                            // set group-name on last
+                                            curInstrumentLabel = curInstrument->instrumentLabel();
+                                        }
+                                        partGroupStart(xml, number + 1, bi, st->barLineSpan(), curInstrumentLabel, groupTime);
                                         partGroupEnd[number] = static_cast<int>(staffCount + st->bracketSpan(j));
                                     }
                                 }
@@ -7705,7 +7710,7 @@ static void partList(XmlWriter& xml, Score* score, MusicXmlInstrumentMap& instrM
             int number = findPartGroupNumber(partGroupEnd);
             if (number < MAX_PART_GROUPS) {
                 const BracketItem* bi = Factory::createBracketItem(score->dummy());
-                partGroupStart(xml, number + 1, bi, false, curInstrument->instrumentLabel(), groupTime);
+                partGroupStart(xml, number + 1, bi, false, curInstrumentLabel, groupTime);
                 delete bi;
                 partGroupEnd[number] = static_cast<int>(idx + part->nstaves());
             }
