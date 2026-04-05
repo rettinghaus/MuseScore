@@ -72,16 +72,16 @@ typedef std::multimap<int, MusicXmlArpeggioDesc> ArpeggioMap;
 
 struct MusicXmlInstrument {
     int unpitched;                     // midi-unpitched read from MusicXML
-    muse::String name;                       // instrument-name read from MusicXML
-    muse::String sound;                      // instrument-sound read from MusicXML
-    muse::String virtLib;                    // virtual-library read from MusicXML
-    muse::String virtName;                   // virtual-name read from MusicXML
+    muse::String name;                 // instrument-name read from MusicXML
+    muse::String sound;                // instrument-sound read from MusicXML
+    muse::String virtLib;              // virtual-library read from MusicXML
+    muse::String virtName;             // virtual-name read from MusicXML
     int midiChannel;                   // midi-channel read from MusicXML
     int midiPort;                      // port read from MusicXML
     int midiProgram;                   // midi-program read from MusicXML
     int midiVolume;                    // volume read from MusicXML
     int midiPan;                       // pan value read from MusicXML
-    engraving::NoteHeadGroup notehead;            // notehead symbol set
+    engraving::NoteHeadGroup notehead; // notehead symbol set
     int line = 0;                      // place notehead onto this line
     engraving::DirectionV stemDirection;
 
