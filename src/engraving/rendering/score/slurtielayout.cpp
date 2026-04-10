@@ -3202,38 +3202,38 @@ void SlurTieLayout::layoutSegment(SlurSegment* item, const PointF& p1, const Poi
 
 void SlurTieLayout::computeMidThickness(SlurTieSegment* slurTieSeg, double slurTieLengthInSp)
 {
+    const double endWidth = slurTieSeg->endWidth();
+    const double midWidth = slurTieSeg->midWidth();
     Staff* staff = slurTieSeg->score() ? slurTieSeg->score()->staff(slurTieSeg->vStaffIdx()) : nullptr;
     const double mag = staff ? staff->staffMag(slurTieSeg->slurTie()->tick()) : 1.0;
+    const double minTieLength = mag * slurTieSeg->style().styleS(Sid::minTieLength).val();
+    const double shortTieLimit = mag * 4.0;
     const double scalingFactor = slurTieSeg->slurTie()->scalingFactor();
 
     if (slurTieSeg->slurTie()->styleType() != SlurStyleType::Solid) {
-        double finalThickness = 0.5 * slurTieSeg->dottedWidth() * mag * scalingFactor;
-        slurTieSeg->mutldata()->midThickness.set_value(finalThickness);
+        double endThickness = 0.5 * slurTieSeg->dottedWidth() * mag * scalingFactor;
+        slurTieSeg->mutldata()->midThickness.set_value(endThickness);
         return;
     }
 
-    const double endWidth = slurTieSeg->endWidth();
-    const double midWidth = slurTieSeg->midWidth();
-    const double minTieLength = mag * slurTieSeg->style().styleS(Sid::minTieLength).val();
-    const double shortTieLimit = mag * 4.0;
     const double minTieThickness = mag * (0.15 * slurTieSeg->spatium() - endWidth);
     const double normalThickness = mag * (midWidth - endWidth);
 
     bool invalid = muse::RealIsEqualOrMore(minTieLength, shortTieLimit);
 
-    double finalThickness;
+    double endThickness;
     if (slurTieLengthInSp > shortTieLimit || invalid) {
-        finalThickness = normalThickness;
+        endThickness = normalThickness;
     } else {
         const double A = 1 / (shortTieLimit - minTieLength);
         const double B = normalThickness - minTieThickness;
         const double C = shortTieLimit * minTieThickness - minTieLength * normalThickness;
-        finalThickness = A * (B * slurTieLengthInSp + C);
+        endThickness = A * (B * slurTieLengthInSp + C);
     }
 
-    finalThickness = std::min(finalThickness, normalThickness * scalingFactor);
+    endThickness = std::min(endThickness, normalThickness * scalingFactor);
 
-    slurTieSeg->mutldata()->midThickness.set_value(finalThickness);
+    slurTieSeg->mutldata()->midThickness.set_value(endThickness);
 }
 
 void SlurTieLayout::fillShape(SlurTieSegment* slurTieSeg, double slurTieLengthInSp)
