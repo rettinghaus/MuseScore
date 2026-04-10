@@ -2683,7 +2683,10 @@ void SlurTieLayout::computeBezier(TieSegment* tieSeg, PointF shoulderOffset)
 
     computeMidThickness(tieSeg, tieLengthInSp);
 
-    PointF tieThickness(0.0, tieSeg->ldata()->midThickness());
+    PointF tieThickness(0.0, 0.0);
+    if (tieSeg->tie()->styleType() == SlurStyleType::Solid) {
+        tieThickness.setY(tieSeg->ldata()->midThickness());
+    }
 
     const PointF bezier1Offset = t.map(tieSeg->ups(Grip::BEZIER1).off);
     const PointF bezier2Offset = t.map(tieSeg->ups(Grip::BEZIER2).off);
@@ -2843,7 +2846,11 @@ void SlurTieLayout::computeBezier(SlurSegment* slurSeg, PointF shoulderOffset)
 
     // Set slur thickness
     computeMidThickness(slurSeg, p2.x() / slurSeg->spatium());
-    PointF thick(0.0, slurSeg->ldata()->midThickness());
+
+    PointF thick(0.0, 0.0);
+    if (slurSeg->slur()->styleType() == SlurStyleType::Solid) {
+        thick.setY(slurSeg->ldata()->midThickness());
+    }
 
     // Set path
     PainterPath path = PainterPath();
@@ -3173,10 +3180,18 @@ void SlurTieLayout::layoutSegment(SlurSegment* item, const PointF& p1, const Poi
 
 void SlurTieLayout::computeMidThickness(SlurTieSegment* slurTieSeg, double slurTieLengthInSp)
 {
-    const double endWidth = slurTieSeg->endWidth();
-    const double midWidth = slurTieSeg->midWidth();
     Staff* staff = slurTieSeg->score() ? slurTieSeg->score()->staff(slurTieSeg->vStaffIdx()) : nullptr;
     const double mag = staff ? staff->staffMag(slurTieSeg->slurTie()->tick()) : 1.0;
+    const double scalingFactor = slurTieSeg->slurTie()->scalingFactor();
+
+    if (slurTieSeg->slurTie()->styleType() != SlurStyleType::Solid) {
+        double finalThickness = 0.5 * slurTieSeg->dottedWidth() * mag * scalingFactor;
+        slurTieSeg->mutldata()->midThickness.set_value(finalThickness);
+        return;
+    }
+
+    const double endWidth = slurTieSeg->endWidth();
+    const double midWidth = slurTieSeg->midWidth();
     const double minTieLength = mag * slurTieSeg->style().styleS(Sid::minTieLength).val();
     const double shortTieLimit = mag * 4.0;
     const double minTieThickness = mag * (0.15 * slurTieSeg->spatium() - endWidth);
@@ -3193,8 +3208,6 @@ void SlurTieLayout::computeMidThickness(SlurTieSegment* slurTieSeg, double slurT
         const double C = shortTieLimit * minTieThickness - minTieLength * normalThickness;
         finalThickness = A * (B * slurTieLengthInSp + C);
     }
-
-    double scalingFactor = slurTieSeg->slurTie()->scalingFactor();
 
     finalThickness = std::min(finalThickness, normalThickness * scalingFactor);
 
@@ -3216,7 +3229,10 @@ void SlurTieLayout::fillShape(SlurTieSegment* slurTieSeg, double slurTieLengthIn
         double percent = pow(sin(0.5 * M_PI * (double(i) / double(nbShapes))), 2);
         const PointF point = b.pointAtPercent(percent);
         RectF re = RectF(startPoint, point).normalized();
-        double approxThicknessAtPercent = (1 - 2 * std::abs(0.5 - percent)) * midThickness;
+        double approxThicknessAtPercent = midThickness;
+        if (slurTieSeg->slurTie()->styleType() == SlurStyleType::Solid) {
+            approxThicknessAtPercent *= (1 - 2 * std::abs(0.5 - percent));
+        }
         if (re.height() < approxThicknessAtPercent) {
             double adjust = (approxThicknessAtPercent - re.height()) * .5;
             re.adjust(0.0, -adjust, 0.0, adjust);
