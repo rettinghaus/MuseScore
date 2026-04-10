@@ -2400,9 +2400,19 @@ void SlurTieLayout::adjustY(TieSegment* tieSegment)
     RectF tieSegmentBBox = tieSegment->ldata()->bbox();
     double tieLength = tieSegmentBBox.width();
     double tieHeight = tieSegmentBBox.height();
-    double midThickness = tieSegment->ldata()->midThickness() * 2;
-    double yOuterApogee = up ? tieSegmentBBox.top() : tieSegmentBBox.bottom();
-    double yInnerApogee = yOuterApogee - midThickness * upSign;
+    double bodyWidth = tieSegment->ldata()->midThickness() * 2;
+    double yPeak = up ? tieSegmentBBox.top() : tieSegmentBBox.bottom();
+    double yOuterApogee;
+    double yInnerApogee;
+
+    if (tieSegment->slurTie()->styleType() == SlurStyleType::Solid) {
+        yOuterApogee = yPeak;
+        yInnerApogee = yOuterApogee - bodyWidth * upSign;
+    } else {
+        yOuterApogee = yPeak + 0.5 * bodyWidth * upSign;
+        yInnerApogee = yPeak - 0.5 * bodyWidth * upSign;
+    }
+
     double yMidApogee = 0.5 * (yOuterApogee + yInnerApogee);
 
     int closestLineToArc = round(yMidApogee / staffLineDist);
@@ -2506,9 +2516,21 @@ void SlurTieLayout::resolveVerticalTieCollisions(const std::vector<TieSegment*>&
         bool up = thisTie->tie()->up();
         int upSign = up ? -1 : 1;
 
+        double thisTieBodyWidth = thisTie->ldata()->midThickness() * 2;
         double thisTieOuterY = up ? thisTie->ldata()->bbox().top() : thisTie->ldata()->bbox().bottom();
-        double nextTieInnerY = (up ? nextTie->ldata()->bbox().top() : nextTie->ldata()->bbox().bottom())
-                               - upSign * 2 * nextTie->ldata()->midThickness();
+        if (thisTie->slurTie()->styleType() != SlurStyleType::Solid) {
+            thisTieOuterY += 0.5 * thisTieBodyWidth * upSign;
+        }
+
+        double nextTieBodyWidth = nextTie->ldata()->midThickness() * 2;
+        double nextTiePeakY = up ? nextTie->ldata()->bbox().top() : nextTie->ldata()->bbox().bottom();
+        double nextTieInnerY;
+        if (nextTie->slurTie()->styleType() == SlurStyleType::Solid) {
+            nextTieInnerY = nextTiePeakY - nextTieBodyWidth * upSign;
+        } else {
+            nextTieInnerY = nextTiePeakY - 0.5 * nextTieBodyWidth * upSign;
+        }
+
         double clearanceMargin = 0.15 * spatium;
         bool collision = upSign * (nextTieInnerY - thisTieOuterY) < clearanceMargin;
         if (!collision) {
