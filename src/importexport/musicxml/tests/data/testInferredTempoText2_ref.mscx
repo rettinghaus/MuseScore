@@ -61,6 +61,7 @@
         <InstrumentLabel>
           <longName>Flute</longName>
           <shortName>Fl.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Flute</trackName>
         <minPitchP>59</minPitchP>
@@ -125,6 +126,7 @@
         <InstrumentLabel>
           <longName>Timpani</longName>
           <shortName>Timp.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Timpani</trackName>
         <minPitchP>36</minPitchP>

@@ -61,6 +61,7 @@
         <InstrumentLabel>
           <longName>Flute</longName>
           <shortName>Fl.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Flute</trackName>
         <minPitchP>59</minPitchP>
@@ -137,6 +138,7 @@
         <InstrumentLabel>
           <longName>Piano</longName>
           <shortName>Pno.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Piano</trackName>
         <minPitchP>21</minPitchP>

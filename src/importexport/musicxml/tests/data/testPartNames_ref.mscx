@@ -72,6 +72,7 @@
       <Instrument id="piano">
         <InstrumentLabel>
           <shortName>Pno.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Piano</trackName>
         <minPitchP>21</minPitchP>
@@ -136,6 +137,7 @@
       <Instrument id="voice">
         <InstrumentLabel>
           <longName>Voice</longName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Voice</trackName>
         <minPitchP>38</minPitchP>

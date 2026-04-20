@@ -175,6 +175,7 @@
         <InstrumentLabel>
           <longName>A</longName>
           <shortName>A</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Violin</trackName>
         <minPitchP>55</minPitchP>
@@ -253,6 +254,7 @@
         <InstrumentLabel>
           <longName>B</longName>
           <shortName>B</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Violin</trackName>
         <minPitchP>55</minPitchP>
@@ -337,6 +339,7 @@
         <InstrumentLabel>
           <longName>A</longName>
           <shortName>A</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Viola</trackName>
         <minPitchP>48</minPitchP>
@@ -416,6 +419,7 @@
         <InstrumentLabel>
           <longName>B</longName>
           <shortName>B</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Viola</trackName>
         <minPitchP>48</minPitchP>
@@ -501,6 +505,7 @@
         <InstrumentLabel>
           <longName>A</longName>
           <shortName>A</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Viola</trackName>
         <minPitchP>48</minPitchP>
@@ -581,6 +586,7 @@
         <InstrumentLabel>
           <longName>Cello  B</longName>
           <shortName>Cello  B</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Cello  B</trackName>
         <minPitchP>36</minPitchP>
@@ -660,6 +666,7 @@
         <InstrumentLabel>
           <longName>C</longName>
           <shortName>C</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Viola</trackName>
         <minPitchP>48</minPitchP>
@@ -745,6 +752,7 @@
         <InstrumentLabel>
           <longName>A</longName>
           <shortName>A</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Bass</trackName>
         <minPitchP>38</minPitchP>
@@ -814,6 +822,7 @@
         <InstrumentLabel>
           <longName>C</longName>
           <shortName>C</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Bass</trackName>
         <minPitchP>38</minPitchP>
@@ -883,6 +892,7 @@
         <InstrumentLabel>
           <longName>Piano</longName>
           <shortName>Piano</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Piano</trackName>
         <minPitchP>21</minPitchP>

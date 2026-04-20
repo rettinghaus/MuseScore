@@ -68,6 +68,7 @@
         <InstrumentLabel>
           <longName>Drumset</longName>
           <shortName>D. Set</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Drum Kit</trackName>
         <instrumentId>drum.group.set</instrumentId>
@@ -310,6 +311,7 @@
         <InstrumentLabel>
           <longName>Percussion</longName>
           <shortName>Perc.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Percussion</trackName>
         <instrumentId>drum.group.set</instrumentId>

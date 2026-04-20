@@ -36,6 +36,7 @@
         <InstrumentLabel>
           <longName>Backing<br/>Vocals</longName>
           <shortName>B. Vx.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Voice</trackName>
         <minPitchP>38</minPitchP>
@@ -138,6 +139,7 @@
         <InstrumentLabel>
           <longName>Electric<br/>Guitar 1</longName>
           <shortName>Elec.<br/>Gtr. 1</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Electric Guitar</trackName>
         <minPitchP>40</minPitchP>
@@ -270,6 +272,7 @@
         <InstrumentLabel>
           <longName>Electric<br/>Guitar 2</longName>
           <shortName>Elec.<br/>Gtr. 2</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Electric Guitar</trackName>
         <minPitchP>40</minPitchP>
@@ -401,6 +404,7 @@
         <InstrumentLabel>
           <longName>Acoustic<br/>Guitar</longName>
           <shortName>Ac.<br/>Gtr.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Acoustic Guitar</trackName>
         <minPitchP>40</minPitchP>
@@ -501,6 +505,7 @@
         <InstrumentLabel>
           <longName>Piano 2</longName>
           <shortName>Pno.<br/>2</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Piano</trackName>
         <minPitchP>21</minPitchP>
