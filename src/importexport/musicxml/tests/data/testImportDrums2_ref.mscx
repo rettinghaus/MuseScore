@@ -56,6 +56,7 @@
         <InstrumentLabel>
           <longName>Drum Set</longName>
           <shortName>Dr.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Drum Set (Rock)</trackName>
         <instrumentId>drum.group.set</instrumentId>

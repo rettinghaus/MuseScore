@@ -157,6 +157,7 @@
         <InstrumentLabel>
           <longName>Soprano/Tenor</longName>
           <shortName>S./T.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Piano</trackName>
         <minPitchP>21</minPitchP>
@@ -225,6 +226,7 @@
         <InstrumentLabel>
           <longName>Alto</longName>
           <shortName>A.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Piano</trackName>
         <minPitchP>21</minPitchP>
@@ -293,6 +295,7 @@
         <InstrumentLabel>
           <longName>Bass</longName>
           <shortName>B.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Piano</trackName>
         <minPitchP>21</minPitchP>
@@ -361,6 +364,7 @@
         <InstrumentLabel>
           <longName>Piano</longName>
           <shortName>Pno.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Piano (2)</trackName>
         <minPitchP>21</minPitchP>

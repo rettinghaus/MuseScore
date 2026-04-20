@@ -73,6 +73,7 @@
         <InstrumentLabel>
           <longName>Flute</longName>
           <shortName>Fl.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Flute</trackName>
         <minPitchP>59</minPitchP>
@@ -138,6 +139,7 @@
         <InstrumentLabel>
           <longName>Oboe</longName>
           <shortName>Ob.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Oboe</trackName>
         <minPitchP>58</minPitchP>
@@ -209,6 +211,7 @@
         <InstrumentLabel>
           <longName>Horn in F</longName>
           <shortName>Hn. in F</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Horn in F</trackName>
         <minPitchP>31</minPitchP>
@@ -279,6 +282,7 @@
         <InstrumentLabel>
           <longName>Trombone</longName>
           <shortName>Tbn.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Trombone</trackName>
         <minPitchP>36</minPitchP>
@@ -361,6 +365,7 @@
         <InstrumentLabel>
           <longName>Piano</longName>
           <shortName>Pno.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Piano</trackName>
         <minPitchP>21</minPitchP>
@@ -433,6 +438,7 @@
         <InstrumentLabel>
           <longName>Violin</longName>
           <shortName>Vln.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Violin</trackName>
         <minPitchP>55</minPitchP>
@@ -505,6 +511,7 @@
         <InstrumentLabel>
           <longName>Viola</longName>
           <shortName>Vla.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Viola</trackName>
         <minPitchP>48</minPitchP>

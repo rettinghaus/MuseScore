@@ -61,6 +61,7 @@
         <InstrumentLabel>
           <longName>Soprano</longName>
           <shortName>S.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Soprano</trackName>
         <minPitchP>60</minPitchP>
@@ -129,6 +130,7 @@
         <InstrumentLabel>
           <longName>Piano</longName>
           <shortName>Pno.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Piano</trackName>
         <minPitchP>21</minPitchP>

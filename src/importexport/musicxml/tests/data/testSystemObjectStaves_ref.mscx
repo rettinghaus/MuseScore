@@ -71,6 +71,7 @@
         <InstrumentLabel>
           <longName>Flute</longName>
           <shortName>Fl.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Flute</trackName>
         <minPitchP>59</minPitchP>
@@ -137,6 +138,7 @@
         <InstrumentLabel>
           <longName>Oboe</longName>
           <shortName>Ob.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Oboe</trackName>
         <minPitchP>58</minPitchP>
@@ -202,6 +204,7 @@
         <InstrumentLabel>
           <longName>Clarinet in B♭</longName>
           <shortName>Cl. in B♭</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Clarinet</trackName>
         <minPitchP>50</minPitchP>
@@ -281,6 +284,7 @@
         <InstrumentLabel>
           <longName>Piano</longName>
           <shortName>Pno.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Piano</trackName>
         <minPitchP>21</minPitchP>

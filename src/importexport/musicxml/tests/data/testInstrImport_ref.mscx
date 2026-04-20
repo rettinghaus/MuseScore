@@ -44,6 +44,7 @@
         <InstrumentLabel>
           <longName>Flute</longName>
           <shortName>Flute Oboe</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Flute</trackName>
         <minPitchP>59</minPitchP>
@@ -111,6 +112,7 @@
         <InstrumentLabel>
           <longName>Oboe</longName>
           <shortName>Ob.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Oboe</trackName>
         <minPitchP>58</minPitchP>
@@ -178,6 +180,7 @@
         <InstrumentLabel>
           <longName>Bassoon</longName>
           <shortName>Bsn.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Bassoon</trackName>
         <minPitchP>34</minPitchP>
@@ -246,6 +249,7 @@
         <InstrumentLabel>
           <longName>B♭ Clarinet</longName>
           <shortName>B¯ Clarinet B¯ Bass Clar.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Bb Clarinet</trackName>
         <minPitchP>50</minPitchP>
@@ -313,6 +317,7 @@
         <InstrumentLabel>
           <longName>E♭ Alto Clarinet</longName>
           <shortName>Alto Cl.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Eb Alto Clarinet</trackName>
         <minPitchP>43</minPitchP>
@@ -380,6 +385,7 @@
         <InstrumentLabel>
           <longName>B♭ Bass Clarinet</longName>
           <shortName>B. Cl.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Bb Bass Clarinet</trackName>
         <minPitchP>34</minPitchP>
@@ -449,6 +455,7 @@
         <InstrumentLabel>
           <longName>E♭ Alto Sax.</longName>
           <shortName>E¯ Alto Sax. E¯ Bar. Sax.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Eb Alto Sax.</trackName>
         <minPitchP>49</minPitchP>
@@ -516,6 +523,7 @@
         <InstrumentLabel>
           <longName> B♭ Tenor Sax.</longName>
           <shortName>Ten. Sax.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName> Bb Tenor Sax.</trackName>
         <minPitchP>44</minPitchP>
@@ -585,6 +593,7 @@
         <InstrumentLabel>
           <longName>E♭ Baritone Sax.</longName>
           <shortName>Bari. Sax.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Eb Baritone Sax.</trackName>
         <minPitchP>36</minPitchP>
@@ -654,6 +663,7 @@
         <InstrumentLabel>
           <longName>B♭ Trumpet</longName>
           <shortName>Tpt.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Bb Trumpet</trackName>
         <minPitchP>52</minPitchP>
@@ -726,6 +736,7 @@
         <InstrumentLabel>
           <longName>F Horn</longName>
           <shortName>Hn.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>F Horn</trackName>
         <minPitchP>31</minPitchP>
@@ -798,6 +809,7 @@
         <InstrumentLabel>
           <longName>Trombone</longName>
           <shortName>Tbn.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Trombone</trackName>
         <minPitchP>36</minPitchP>
@@ -872,6 +884,7 @@
         <InstrumentLabel>
           <longName>Baritone (B.C.)</longName>
           <shortName>Bar. Hn.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Baritone (B.C.)</trackName>
         <minPitchP>59</minPitchP>
@@ -944,6 +957,7 @@
         <InstrumentLabel>
           <longName>Baritone (T.C.)</longName>
           <shortName>Bar.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Baritone (T.C.)</trackName>
         <minPitchP>59</minPitchP>
@@ -1016,6 +1030,7 @@
         <InstrumentLabel>
           <longName>Tuba</longName>
           <shortName>Tba.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Tuba</trackName>
         <minPitchP>22</minPitchP>
@@ -1084,6 +1099,7 @@
         <InstrumentLabel>
           <longName>Electric Bass</longName>
           <shortName>E. Bass</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Electric Bass</trackName>
         <minPitchP>28</minPitchP>
@@ -1171,6 +1187,7 @@
         <InstrumentLabel>
           <longName>Percussion</longName>
           <shortName>Perc.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Percussion</trackName>
         <instrumentId>drum.group.set</instrumentId>
@@ -1637,6 +1654,7 @@
         <InstrumentLabel>
           <longName>Keyboard Percussion</longName>
           <shortName>Glock.</shortName>
+          <allowGroupName>0</allowGroupName>
           </InstrumentLabel>
         <trackName>Keyboard Percussion</trackName>
         <minPitchP>76</minPitchP>
