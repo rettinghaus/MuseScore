@@ -52,6 +52,10 @@ public:
     void calcOctaveShifts();
     void setName(muse::String nm) { m_name = nm; }
     muse::String getName() const { return m_name; }
+    void setGroupName(muse::String groupName) { m_groupName = groupName; }
+    muse::String getGroupName() const { return m_groupName; }
+    void setGroupAbbr(muse::String groupAbbr) { m_groupAbbr = groupAbbr; }
+    muse::String getGroupAbbr() const { return m_groupAbbr; }
     void setPrintName(const bool b) { m_printName = b; }
     bool getPrintName() const { return m_printName; }
     void setAbbr(muse::String ab) { m_abbr = ab; }
@@ -71,6 +75,8 @@ public:
 private:
     muse::String m_id;
     muse::String m_name;
+    muse::String m_groupName;
+    muse::String m_groupAbbr;
     bool m_printName = true;
     muse::String m_abbr;
     bool m_printAbbr = true;

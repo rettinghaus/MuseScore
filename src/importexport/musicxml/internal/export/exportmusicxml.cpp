@@ -4743,11 +4743,13 @@ static void partGroupStart(XmlWriter& xml, int number, const BracketItem* const 
     if (instrumentLabel.allowGroupName()) {
         static const std::wregex acc(L"[♭♯]");
         String groupName = instrumentLabel.useCustomGroupName() ? instrumentLabel.customNameLongGroup() : instrumentLabel.longName();
-        xml.tag("group-name", MScoreTextToMusicXml::toPlainText(groupName).replace(u'♭', 'b').replace(u'♯', '#'));
-        if (groupName.contains(acc)) {
-            xml.startElement("group-name-display");
-            writeDisplayName(xml, groupName);
-            xml.endElement();
+        if (!groupName.isEmpty()) {
+            xml.tag("group-name", MScoreTextToMusicXml::toPlainText(groupName).replace(u'♭', 'b').replace(u'♯', '#'));
+            if (groupName.contains(acc)) {
+                xml.startElement("group-name-display");
+                writeDisplayName(xml, groupName);
+                xml.endElement();
+            }
         }
         if (!instrumentLabel.shortName().isEmpty()) {
             String groupName = instrumentLabel.useCustomGroupName() ? instrumentLabel.customNameShortGroup() : instrumentLabel.shortName();
