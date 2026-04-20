@@ -4736,7 +4736,8 @@ static void directionETag(XmlWriter& xml, staff_idx_t staff, const int offset = 
 //   partGroupStart
 //---------------------------------------------------------
 
-static void partGroupStart(XmlWriter& xml, int number, const BracketItem* const bracket, const bool barlineSpan, const InstrumentLabel& instrumentLabel, const bool groupTime)
+static void partGroupStart(XmlWriter& xml, int number, const BracketItem* const bracket, const bool barlineSpan,
+                           const InstrumentLabel& instrumentLabel, const bool groupTime)
 {
     xml.startElement("part-group", { { "type", "start" }, { "number", number } });
 
