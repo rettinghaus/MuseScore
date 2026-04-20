@@ -2252,6 +2252,19 @@ void MusicXmlParserPass2::part()
         part->setPlainShortNameAll(u"");
     }
 
+    // set the group name
+    const String partGroupName = mxmlPart.getGroupName();
+    const String partGroupAbbr = mxmlPart.getGroupAbbr();
+    InstrumentLabel& instrumentLabel = part->instrument()->instrumentLabel();
+    if (!partGroupName.empty() || !partGroupAbbr.empty()) {
+        instrumentLabel.setAllowGroupName(true);
+        instrumentLabel.setCustomNameLongGroup(partGroupName);
+        instrumentLabel.setCustomNameShortGroup(partGroupAbbr);
+        instrumentLabel.setUseCustomGroupName(true);
+    } else if (m_pass1.nparts() > 1) {
+        instrumentLabel.setAllowGroupName(false);
+    }
+
     if (m_pass1.nparts() == 1 && mxmlPart.getPrintName() && mxmlPart.getPrintAbbr()) {
         m_score->style().set(Sid::hideInstrumentNameIfOneInstrument, false);
     }

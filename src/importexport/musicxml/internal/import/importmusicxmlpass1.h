@@ -81,9 +81,11 @@ struct MusicXmlOctaveShiftDesc {
 struct MusicXmlPartGroup {
     int span = 0;
     int start = 0;
+    muse::String name;
+    muse::String abbr;
     engraving::BracketType type = engraving::BracketType::NO_BRACKET;
-    bool barlineSpan = false;
     muse::draw::Color color;
+    bool barlineSpan = false;
     size_t column = 0;
 };
 typedef std::vector<MusicXmlPartGroup*> MusicXmlPartGroupList;
@@ -147,10 +149,9 @@ public:
     void defaults();
     void pageLayout(PageFormat& pf, const double conversion);
     void partList(MusicXmlPartGroupList& partGroupList);
-    void partGroup(const int scoreParts, MusicXmlPartGroupList& partGroupList, MusicXmlPartGroupMap& partGroups,
-                   muse::String& curPartGroupName);
-    void scorePart(const muse::String& curPartGroupName);
-    void scoreInstrument(const muse::String& partId, const muse::String& curPartGroupName);
+    void partGroup(const int scoreParts, MusicXmlPartGroupList& partGroupList, MusicXmlPartGroupMap& partGroups);
+    void scorePart(const MusicXmlPartGroupMap& partGroups);
+    void scoreInstrument(const muse::String& partId, const muse::String& groupName);
     void setStyle(const muse::String& type, const double val);
     void midiInstrument(const muse::String& partId);
     void part();
