@@ -926,8 +926,8 @@ bool MeiExporter::writeMeasure(const Measure* measure, int& measureN, bool& isFi
                 measureOffset++;
             }
             libmei::data_MEASUREBEAT tstamp2 = Convert::tstamp2ToMEI(spanner->tick2() - spanner->endMeasure()->tick(),
-                                                                    spanner->endMeasure()->timesig(),
-                                                                    measureOffset);
+                                                                     spanner->endMeasure()->timesig(),
+                                                                     measureOffset);
             success = success && this->writeHairpin(toHairpin(spanner), tstamp, tstamp2);
         }
     }
