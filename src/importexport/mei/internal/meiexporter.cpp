@@ -250,7 +250,7 @@ bool MeiExporter::writeHeader()
     return true;
 }
 
-bool MeiExporter::writeDir(const TextLineBase* dir, double tstamp, const std::string& tstamp2)
+bool MeiExporter::writeDir(const TextLineBase* dir, double tstamp, libmei::data_MEASUREBEAT tstamp2)
 {
     IF_ASSERT_FAILED(dir) {
         return false;
@@ -415,7 +415,7 @@ bool MeiExporter::writeScoreDef()
     return true;
 }
 
-bool MeiExporter::writeHairpin(const Hairpin* hairpin, double tstamp, const std::string& tstamp2)
+bool MeiExporter::writeHairpin(const Hairpin* hairpin, double tstamp, libmei::data_MEASUREBEAT tstamp2)
 {
     IF_ASSERT_FAILED(hairpin) {
         return false;
@@ -925,8 +925,8 @@ bool MeiExporter::writeMeasure(const Measure* measure, int& measureN, bool& isFi
             for (Measure* m = const_cast<Measure*>(measure); m && m != spanner->endMeasure(); m = m->nextMeasure()) {
                 measureOffset++;
             }
-            std::string tstamp2 = Convert::tstamp2ToMEI(spanner->tick2() - spanner->endMeasure()->tick(),
-                                                        spanner->endMeasure()->timesig(), measureOffset);
+            libmei::data_MEASUREBEAT tstamp2 = Convert::tstamp2ToMEI(spanner->tick2() - spanner->endMeasure()->tick(),
+                                                                    spanner->endMeasure()->timesig(), measureOffset);
             success = success && this->writeHairpin(toHairpin(spanner), tstamp, tstamp2);
         }
     }

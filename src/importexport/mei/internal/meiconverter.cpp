@@ -3833,16 +3833,10 @@ double Convert::tstampFromFraction(const engraving::Fraction& fraction, const en
     return (double)fraction.numerator() / fraction.denominator() * timesig.denominator() + 1.0;
 }
 
-std::string Convert::tstamp2ToMEI(const engraving::Fraction& fraction, const engraving::Fraction& timesig, int measureOffset)
+libmei::data_MEASUREBEAT Convert::tstamp2ToMEI(const engraving::Fraction& fraction, const engraving::Fraction& timesig, int measureOffset)
 {
     double beat = tstampFromFraction(fraction, timesig);
-    String tstamp2;
-    if (measureOffset > 0) {
-        tstamp2 = String("%1m+%2").arg(measureOffset).arg(String::number(beat));
-    } else {
-        tstamp2 = String::number(beat);
-    }
-    return tstamp2.toStdString();
+    return { measureOffset, beat };
 }
 
 /**
