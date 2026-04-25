@@ -911,8 +911,11 @@ bool MeiExporter::writeMeasure(const Measure* measure, int& measureN, bool& isFi
     for (Segment* seg = measure->first(); seg; seg = seg->next()) {
         for (const EngravingItem* annotation : seg->annotations()) {
             if (annotation->isDynamic()) {
-                double tstamp = Convert::tstampFromFraction(seg->rtick(), measure->timesig());
-                success = success && this->writeDynam(toDynamic(annotation), tstamp);
+                Dynamic* dynamic = toDynamic(annotation);
+                if (dynamic) {
+                    double tstamp = Convert::tstampFromFraction(seg->rtick(), measure->timesig());
+                    success = success && this->writeDynam(dynamic, tstamp);
+                }
             }
         }
     }
@@ -927,14 +930,17 @@ bool MeiExporter::writeMeasure(const Measure* measure, int& measureN, bool& isFi
             if (endM) {
                 for (Measure* m = const_cast<Measure*>(measure); m && m != endM; m = m->nextMeasure()) {
                     measureOffset++;
-                    if (measureOffset > 1000) {
+                    if (measureOffset > 1000) { // safety break
                         break;
                     }
                 }
                 libmei::data_MEASUREBEAT tstamp2 = Convert::tstamp2ToMEI(spanner->tick2() - endM->tick(),
                                                                          endM->timesig(),
                                                                          measureOffset);
-                success = success && this->writeHairpin(toHairpin(spanner), tstamp, tstamp2);
+                Hairpin* hp = toHairpin(spanner);
+                if (hp) {
+                    success = success && this->writeHairpin(hp, tstamp, tstamp2);
+                }
             }
         }
     }
