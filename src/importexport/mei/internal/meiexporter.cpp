@@ -43,6 +43,7 @@
 #include "engraving/dom/fingering.h"
 #include "engraving/dom/glissando.h"
 #include "engraving/dom/hairpin.h"
+#include "engraving/dom/spannermap.h"
 #include "engraving/dom/harmony.h"
 #include "engraving/dom/harppedaldiagram.h"
 #include "engraving/dom/instrument.h"
@@ -922,13 +923,19 @@ bool MeiExporter::writeMeasure(const Measure* measure, int& measureN, bool& isFi
         if (spanner && spanner->isHairpin() && spanner->tick() >= measure->tick() && spanner->tick() < measure->endTick()) {
             double tstamp = Convert::tstampFromFraction(spanner->tick() - measure->tick(), measure->timesig());
             int measureOffset = 0;
-            for (Measure* m = const_cast<Measure*>(measure); m && m != spanner->endMeasure(); m = m->nextMeasure()) {
-                measureOffset++;
+            Measure* endM = spanner->endMeasure();
+            if (endM) {
+                for (Measure* m = const_cast<Measure*>(measure); m && m != endM; m = m->nextMeasure()) {
+                    measureOffset++;
+                    if (measureOffset > 1000) {
+                        break;
+                    }
+                }
+                libmei::data_MEASUREBEAT tstamp2 = Convert::tstamp2ToMEI(spanner->tick2() - endM->tick(),
+                                                                         endM->timesig(),
+                                                                         measureOffset);
+                success = success && this->writeHairpin(toHairpin(spanner), tstamp, tstamp2);
             }
-            libmei::data_MEASUREBEAT tstamp2 = Convert::tstamp2ToMEI(spanner->tick2() - spanner->endMeasure()->tick(),
-                                                                     spanner->endMeasure()->timesig(),
-                                                                     measureOffset);
-            success = success && this->writeHairpin(toHairpin(spanner), tstamp, tstamp2);
         }
     }
 
