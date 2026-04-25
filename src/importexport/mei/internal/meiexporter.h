@@ -132,7 +132,9 @@ private:
     bool writeBreath(const engraving::Breath* breath, const std::string& startid);
     bool writeDir(const engraving::TextBase* dir, const std::string& startid);
     bool writeDir(const engraving::TextLineBase* dir, const std::string& startid);
+    bool writeDir(const engraving::TextLineBase* dir, double tstamp, const std::string& tstamp2);
     bool writeDynam(const engraving::Dynamic* dynamic, const std::string& startid);
+    bool writeDynam(const engraving::Dynamic* dynamic, double tstamp);
     bool writeF(const engraving::FiguredBassItem* figuredBassItem);
     bool writeFb(const engraving::FiguredBass* figuredBass, const std::string& startid);
     bool writeFermata(const engraving::Fermata* fermata, const std::string& startid);
@@ -140,6 +142,7 @@ private:
     bool writeFing(const engraving::Fingering* fing, const std::string& startid);
     bool writeGliss(const engraving::Glissando* gliss, const std::string& startid);
     bool writeHairpin(const engraving::Hairpin* hairpin, const std::string& startid);
+    bool writeHairpin(const engraving::Hairpin* hairpin, double tstamp, const std::string& tstamp2);
     bool writeHarm(const engraving::Harmony* harmony, const std::string& startid);
     bool writeHarpPedal(const engraving::HarpPedalDiagram* harpPedalDiagram, const std::string& startid);
     bool writeOctave(const engraving::Ottava* ottava, const std::string& startid);

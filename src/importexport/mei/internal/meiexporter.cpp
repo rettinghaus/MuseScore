@@ -250,6 +250,25 @@ bool MeiExporter::writeHeader()
     return true;
 }
 
+bool MeiExporter::writeDir(const TextLineBase* dir, double tstamp, const std::string& tstamp2)
+{
+    IF_ASSERT_FAILED(dir) {
+        return false;
+    }
+
+    StringList meiLines;
+
+    pugi::xml_node dirNode = m_currentNode.append_child();
+    libmei::Dir meiDir = Convert::dirToMEI(dir, meiLines);
+    meiDir.SetTstamp(tstamp);
+    meiDir.SetTstamp2(tstamp2);
+    meiDir.Write(dirNode, this->getXmlIdFor(dir, 'd'));
+
+    this->writeLines(dirNode, meiLines);
+
+    return true;
+}
+
 /**
  * Write the MEI score.
  * First write the initial scoreDef, and then loop through pages and systems.
@@ -317,6 +336,24 @@ bool MeiExporter::writeScore()
     return true;
 }
 
+bool MeiExporter::writeDynam(const Dynamic* dynamic, double tstamp)
+{
+    IF_ASSERT_FAILED(dynamic) {
+        return false;
+    }
+
+    StringList meiLines;
+
+    pugi::xml_node dynamNode = m_currentNode.append_child();
+    libmei::Dynam meiDynam = Convert::dynamToMEI(dynamic, meiLines);
+    meiDynam.SetTstamp(tstamp);
+    meiDynam.Write(dynamNode, this->getXmlIdFor(dynamic, 'd'));
+
+    this->writeLines(dynamNode, meiLines);
+
+    return true;
+}
+
 /**
  * Write the initial score definition.
  */
@@ -374,6 +411,25 @@ bool MeiExporter::writeScoreDef()
     m_currentNode = m_currentNode.parent();
     // pop the scoreDef
     m_currentNode = m_currentNode.parent();
+
+    return true;
+}
+
+bool MeiExporter::writeHairpin(const Hairpin* hairpin, double tstamp, const std::string& tstamp2)
+{
+    IF_ASSERT_FAILED(hairpin) {
+        return false;
+    }
+
+    if (hairpin->isLineType()) {
+        return this->writeDir(dynamic_cast<const TextLineBase*>(hairpin), tstamp, tstamp2);
+    }
+
+    pugi::xml_node hairpinNode = m_currentNode.append_child();
+    libmei::Hairpin meiHairpin = Convert::hairpinToMEI(hairpin);
+    meiHairpin.SetTstamp(tstamp);
+    meiHairpin.SetTstamp2(tstamp2);
+    meiHairpin.Write(hairpinNode, this->getXmlIdFor(hairpin, 'h'));
 
     return true;
 }
@@ -851,6 +907,30 @@ bool MeiExporter::writeMeasure(const Measure* measure, int& measureN, bool& isFi
         this->writeStaff(staff, measure);
     }
 
+    for (Segment* seg = measure->first(); seg; seg = seg->next()) {
+        for (const EngravingItem* annotation : seg->annotations()) {
+            if (annotation->isDynamic()) {
+                double tstamp = Convert::tstampFromFraction(seg->rtick(), measure->timesig());
+                success = success && this->writeDynam(toDynamic(annotation), tstamp);
+            }
+        }
+    }
+
+    auto spanners = m_score->spannerMap().findOverlapping(measure->tick().ticks(), measure->endTick().ticks());
+    for (auto interval : spanners) {
+        Spanner* spanner = interval.value;
+        if (spanner && spanner->isHairpin() && spanner->tick() >= measure->tick() && spanner->tick() < measure->endTick()) {
+            double tstamp = Convert::tstampFromFraction(spanner->tick() - measure->tick(), measure->timesig());
+            int measureOffset = 0;
+            for (Measure* m = const_cast<Measure*>(measure); m && m != spanner->endMeasure(); m = m->nextMeasure()) {
+                measureOffset++;
+            }
+            std::string tstamp2 = Convert::tstamp2ToMEI(spanner->tick2() - spanner->endMeasure()->tick(),
+                                                        spanner->endMeasure()->timesig(), measureOffset);
+            success = success && this->writeHairpin(toHairpin(spanner), tstamp, tstamp2);
+        }
+    }
+
     for (EngravingItem* item : measure->el()) {
         switch (item->type()) {
         case ElementType::JUMP: success = success && this->writeRepeatMark(toJump(item), measure);
@@ -866,8 +946,6 @@ bool MeiExporter::writeMeasure(const Measure* measure, int& measureN, bool& isFi
             success = success && this->writeArpeg(toArpeggio(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isBreath()) {
             success = success && this->writeBreath(toBreath(controlEvent.first), controlEvent.second);
-        } else if (controlEvent.first->isDynamic()) {
-            success = success && this->writeDynam(toDynamic(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isExpression() || controlEvent.first->isPlayTechAnnotation()) {
             success = success && this->writeDir(toTextBase(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isFermata()) {
@@ -878,8 +956,6 @@ bool MeiExporter::writeMeasure(const Measure* measure, int& measureN, bool& isFi
             success = success && this->writeFing(toFingering(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isGlissando()) {
             success = success && this->writeGliss(toGlissando(controlEvent.first), controlEvent.second);
-        } else if (controlEvent.first->isHairpin()) {
-            success = success && this->writeHairpin(toHairpin(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isHarmony()) {
             success = success && this->writeHarm(toHarmony(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isHarpPedalDiagram()) {
@@ -2345,7 +2421,7 @@ void MeiExporter::fillControlEventMap(const std::string& xmlId, const ChordRest*
 
     if (!chordRest->isGrace()) {
         for (const EngravingItem* element : chordRest->segment()->annotations()) {
-            if (element->track() == trackIdx) {
+            if (element->track() == trackIdx && !element->isDynamic()) {
                 m_startingControlEventList.push_back(std::make_pair(element, "#" + xmlId));
             }
         }
@@ -2360,7 +2436,7 @@ void MeiExporter::fillControlEventMap(const std::string& xmlId, const ChordRest*
     auto spanners = smap.findOverlapping(chordRest->tick().ticks(), chordRest->tick().ticks());
     for (auto interval : spanners) {
         Spanner* spanner = interval.value;
-        if (spanner && (spanner->isHairpin() || spanner->isOttava() || spanner->isPedal() || spanner->isSlur() || spanner->isTrill())) {
+        if (spanner && (spanner->isOttava() || spanner->isPedal() || spanner->isSlur() || spanner->isTrill())) {
             if (spanner->startCR() == chordRest) {
                 m_startingControlEventList.push_back(std::make_pair(spanner, "#" + xmlId));
             } else if (spanner->endCR() == chordRest) {

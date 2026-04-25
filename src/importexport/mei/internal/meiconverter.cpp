@@ -1266,6 +1266,9 @@ libmei::Dir Convert::dirToMEI(const engraving::TextLineBase* textLineBase, Strin
     // @color
     Convert::colorlineToMEI(textLineBase, meiDir);
 
+    // @staff
+    Convert::staffIdentToMEI(textLineBase, meiDir);
+
     // text content - only split lines
     meiLines = String(textLineBase->beginText()).split(u"\n");
 
@@ -3828,6 +3831,18 @@ void Convert::staffIdentToMEI(const engraving::EngravingItem* item, libmei::Elem
 double Convert::tstampFromFraction(const engraving::Fraction& fraction, const engraving::Fraction& timesig)
 {
     return (double)fraction.numerator() / fraction.denominator() * timesig.denominator() + 1.0;
+}
+
+std::string Convert::tstamp2ToMEI(const engraving::Fraction& fraction, const engraving::Fraction& timesig, int measureOffset)
+{
+    double beat = tstampFromFraction(fraction, timesig);
+    String tstamp2;
+    if (measureOffset > 0) {
+        tstamp2 = String("%1m+%2").arg(measureOffset).arg(String::number(beat));
+    } else {
+        tstamp2 = String::number(beat);
+    }
+    return tstamp2.toStdString();
 }
 
 /**
