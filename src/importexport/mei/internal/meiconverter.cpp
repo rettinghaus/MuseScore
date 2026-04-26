@@ -3858,8 +3858,11 @@ engraving::Fraction Convert::tstampToFraction(double tstamp, const engraving::Fr
     // However, make sure it is not smaller than 0.0, which means that a tstamp 0.0 is moved to 1.0 (the first note)
     tstamp = std::max(tstamp - 1.0, 0.0);
 
+    // Apply sensitive rounding (to the next 0.001)
+    tstamp = std::round(tstamp * 1000.0) / 1000.0;
+
     const int cycles = 10;
-    const double precision = 0.01;
+    const double precision = 0.0001;
 
     int sign = tstamp > 0 ? 1 : -1;
     tstamp = tstamp * sign; //abs(number);
