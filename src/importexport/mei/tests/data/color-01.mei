@@ -90,7 +90,7 @@
                         </layer>
                      </staff>
                      <octave xml:id="oggpsks" staff="1" dis="8" dis.place="above" startid="#nx5z8ek" color="#0433FF" endid="#n1p30nx0" />
-                     <hairpin xml:id="h1ofeby0" form="cres" staff="1" tstamp="1" color="#0433FF" tstamp2="4" />
+                     <hairpin xml:id="h1ofeby0" form="cres" staff="1" tstamp="1" color="#0433FF" tstamp2="0m+4" />
                      <tie xml:id="t1cu6c7m" startid="#n12667r3" color="#0433FF" endid="#n1oshtpn" />
                   </measure>
                   <measure xml:id="m1dsz34o" n="4">

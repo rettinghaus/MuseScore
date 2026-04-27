@@ -58,7 +58,7 @@
                      <dynam xml:id="dvuqhls" label="p" staff="1" tstamp="1" place="above">p</dynam>
                      <dynam xml:id="d1hg5le3" label="mp" staff="1" tstamp="3">mp</dynam>
                      <dynam xml:id="d1n0kf96" label="sffz" staff="1" tstamp="3.5">sffz</dynam>
-                     <dynam xml:id="d1btxom9" label="sfz" layer="1" staff="1" tstamp="4">sfz</dynam>
+                     <dynam xml:id="d1btxom9" label="sfz" staff="1" tstamp="4">sfz</dynam>
                      <dynam xml:id="d1rbma6l" label="pp" staff="1" tstamp="1" place="below">pp</dynam>
                   </measure>
                   <measure xml:id="m428gem" right="end" n="2">
