@@ -55,11 +55,11 @@
                            <note xml:id="ns8t4tw" dur="1" pname="c" oct="4" />
                         </layer>
                      </staff>
-                     <dynam xml:id="dvuqhls" label="p" staff="1" startid="#nrgzdcj" place="above">p</dynam>
-                     <dynam xml:id="d1hg5le3" label="mp" staff="1" startid="#n6si3n7">mp</dynam>
-                     <dynam xml:id="d1n0kf96" label="sffz" staff="1" startid="#n7c44ti">sffz</dynam>
-                     <dynam xml:id="d1btxom9" label="sfz" layer="1" staff="1" startid="#nvtsktx">sfz</dynam>
-                     <dynam xml:id="d1rbma6l" label="pp" staff="1" startid="#ns8t4tw" place="below">pp</dynam>
+                     <dynam xml:id="dvuqhls" label="p" staff="1" tstamp="1" place="above">p</dynam>
+                     <dynam xml:id="d1hg5le3" label="mp" staff="1" tstamp="3">mp</dynam>
+                     <dynam xml:id="d1n0kf96" label="sffz" staff="1" tstamp="3.5">sffz</dynam>
+                     <dynam xml:id="d1btxom9" label="sfz" layer="1" staff="1" tstamp="4">sfz</dynam>
+                     <dynam xml:id="d1rbma6l" label="pp" staff="1" tstamp="1" place="below">pp</dynam>
                   </measure>
                   <measure xml:id="m428gem" right="end" n="2">
                      <staff xml:id="m2s1" n="1">
@@ -77,9 +77,9 @@
                            </chord>
                         </layer>
                      </staff>
-                     <dynam xml:id="d1pv19cd" label="mp" staff="1" startid="#noxjpqs">sempre mp e <lb />dolce</dynam>
-                     <dynam xml:id="da76h31" label="p" staff="1" startid="#c1bio1o2">p e sempre<lb />dolce</dynam>
-                     <dynam xml:id="dqa2pt" label="ff" staff="1" startid="#c19y1p0c">molto ff</dynam>
+                     <dynam xml:id="d1pv19cd" label="mp" staff="1" tstamp="1">sempre mp e <lb />dolce</dynam>
+                     <dynam xml:id="da76h31" label="p" staff="1" tstamp="2">p e sempre<lb />dolce</dynam>
+                     <dynam xml:id="dqa2pt" label="ff" staff="1" tstamp="3">molto ff</dynam>
                   </measure>
                </section>
             </score>

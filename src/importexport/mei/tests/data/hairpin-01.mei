@@ -58,7 +58,7 @@
                            <mRest xml:id="mfs9r97" />
                         </layer>
                      </staff>
-                     <hairpin xml:id="h1dor5os" form="cres" staff="1" startid="#n1n2q0nd" endid="#n14xf1ls" />
+                     <hairpin xml:id="h1dor5os" form="cres" staff="1" tstamp="3" tstamp2="1m+2" />
                   </measure>
                   <measure xml:id="mcatpri" n="2">
                      <staff xml:id="m2s1" n="1">
@@ -74,8 +74,8 @@
                            <mRest xml:id="m1sz0e05" />
                         </layer>
                      </staff>
-                     <dynam xml:id="d1eogas6" label="f" staff="1" startid="#nspxw9k">f</dynam>
-                     <hairpin xml:id="hniw3gu" form="dim" staff="1" startid="#nspxw9k" endid="#n1w9pjbk" />
+                     <dynam xml:id="d1eogas6" label="f" staff="1" tstamp="3">f</dynam>
+                     <hairpin xml:id="hniw3gu" form="dim" staff="1" tstamp="3" tstamp2="1m+2" />
                   </measure>
                   <measure xml:id="mzs8qux" n="3">
                      <staff xml:id="m3s1" n="1">
@@ -105,7 +105,7 @@
                            <note xml:id="n1v5qqi1" dur="4" pname="d" oct="3" />
                         </layer>
                      </staff>
-                     <dir xml:id="d1yivsdb" type="mscore-hairpin mscore-cresc" startid="#n1ev5pao" extender="true" endid="#n11epc2m">cresc.</dir>
+                     <dir xml:id="d1yivsdb" type="mscore-hairpin mscore-cresc" staff="2" tstamp="3" extender="true" tstamp2="1m+2">cresc.</dir>
                   </measure>
                   <measure xml:id="m1e50bnv" n="5">
                      <staff xml:id="m5s1" n="1">
@@ -121,8 +121,8 @@
                            <note xml:id="naukxk7" dur="4" pname="g" oct="2" />
                         </layer>
                      </staff>
-                     <dynam xml:id="d16couhq" label="f" staff="2" startid="#n1h73eje">f</dynam>
-                     <dir xml:id="dxfp0cj" type="mscore-hairpin mscore-dim" startid="#n1h73eje" extender="true" endid="#n4ihxav">dim.</dir>
+                     <dynam xml:id="d16couhq" label="f" staff="2" tstamp="3">f</dynam>
+                     <dir xml:id="dxfp0cj" type="mscore-hairpin mscore-dim" staff="2" tstamp="3" extender="true" tstamp2="1m+2">dim.</dir>
                   </measure>
                   <measure xml:id="m1suce6e" n="6">
                      <staff xml:id="m6s1" n="1">
@@ -166,7 +166,7 @@
                            <mRest xml:id="mks294k" />
                         </layer>
                      </staff>
-                     <hairpin xml:id="hjs1sym" form="cres" staff="1" startid="#n9ff3t1" lform="dashed" place="above" endid="#n2tj1jf" />
+                     <hairpin xml:id="hjs1sym" form="cres" staff="1" tstamp="3" lform="dashed" place="above" tstamp2="1m+2" />
                   </measure>
                   <measure xml:id="moaa1gv" n="9">
                      <staff xml:id="m9s1" n="1">
@@ -182,7 +182,7 @@
                            <mRest xml:id="m1okzahl" />
                         </layer>
                      </staff>
-                     <hairpin xml:id="hhnn0kt" form="dim" staff="1" startid="#nq8sgb7" lform="dotted" place="above" endid="#n19df3r8" />
+                     <hairpin xml:id="hhnn0kt" form="dim" staff="1" tstamp="3" lform="dotted" place="above" tstamp2="1m+2" />
                   </measure>
                   <measure xml:id="m1vhuhz5" n="10">
                      <staff xml:id="m10s1" n="1">
@@ -212,7 +212,7 @@
                            <note xml:id="ntcvrux" dur="4" pname="d" oct="3" />
                         </layer>
                      </staff>
-                     <hairpin xml:id="heiz76k" form="cres" niente="true" staff="2" startid="#n1ahnf5i" place="above" endid="#nsqyndt" />
+                     <hairpin xml:id="heiz76k" form="cres" niente="true" staff="2" tstamp="3" place="above" tstamp2="1m+2" />
                   </measure>
                   <measure xml:id="mjmh4f6" n="12">
                      <staff xml:id="m12s1" n="1">
@@ -228,7 +228,7 @@
                            <note xml:id="n3ccbzy" dur="4" pname="g" oct="2" />
                         </layer>
                      </staff>
-                     <dir xml:id="d1h5zlat" type="mscore-hairpin mscore-dim" startid="#n13xf9ul" extender="true" lform="dotted" endid="#nfbqb4p">diminuendo</dir>
+                     <dir xml:id="d1h5zlat" type="mscore-hairpin mscore-dim" staff="2" tstamp="3" extender="true" lform="dotted" tstamp2="2m+1">diminuendo</dir>
                   </measure>
                   <measure xml:id="m15y798u" n="13">
                      <staff xml:id="m13s1" n="1">
