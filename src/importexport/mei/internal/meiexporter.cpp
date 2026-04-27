@@ -1251,7 +1251,7 @@ bool MeiExporter::writeBeam(const Beam* beam, const ChordRest* chordRest, bool& 
     }
 
     // Cross-measure beams are not supported in the export to MEI Basic
-    if (beam->elements().front()->measure() != beam->elements().back()->measure()) {
+    if (beam->elements().front()->findMeasure() != beam->elements().back()->findMeasure()) {
         return true;
     }
 
@@ -2259,8 +2259,9 @@ bool MeiExporter::writeTempo(const TempoText* tempoText, const std::string& star
 
     pugi::xml_node tempoNode = m_currentNode.append_child();
     libmei::Tempo meiTempo = Convert::tempoToMEI(tempoText, meiLines);
-    if (tempoText->tick() == tempoText->measure()->tick()) {
-        double tstamp = Convert::tstampFromFraction(tempoText->tick() - tempoText->measure()->tick(), tempoText->measure()->timesig());
+    if (tempoText->tick() == tempoText->findMeasure()->tick()) {
+        double tstamp = Convert::tstampFromFraction(tempoText->tick() - tempoText->findMeasure()->tick(),
+                                                    tempoText->findMeasure()->timesig());
         meiTempo.SetTstamp(tstamp);
     } else {
         meiTempo.SetStartid(startid);

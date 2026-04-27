@@ -644,7 +644,7 @@ MEIPosition MeiImporter::findStart(const libmei::Element& meiElement, Measure* m
         }
         pos.chordRest = m_startIdChordRests.at(startId);
         if (pos.chordRest) {
-            pos.measure = pos.chordRest->measure();
+            pos.measure = pos.chordRest->findMeasure();
             pos.tick = pos.chordRest->tick();
             pos.track = pos.chordRest->track();
         }
@@ -694,7 +694,7 @@ MEIPosition MeiImporter::findEnd(pugi::xml_node controlNode, Spanner* spanner)
         }
         pos.chordRest = m_endIdChordRests.at(endId);
         if (pos.chordRest) {
-            pos.measure = pos.chordRest->measure();
+            pos.measure = pos.chordRest->findMeasure();
             pos.tick = pos.chordRest->tick();
             pos.track = pos.chordRest->track();
         }
