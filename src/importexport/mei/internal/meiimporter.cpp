@@ -708,7 +708,9 @@ MEIPosition MeiImporter::findEnd(pugi::xml_node controlNode, Spanner* spanner)
         layerIdentAtt.ReadLayerIdent(controlNode);
 
         // We need at least a @tstamp2 and a spanner with its startMeasure
-        Measure* startM = (spanner->startElement()) ? spanner->startElement()->measure() : m_score->tick2measure(spanner->tick());
+        Measure* startM = (spanner->startElement())
+                          ? spanner->startElement()->findMeasure()
+                          : m_score->tick2measure(spanner->tick());
 
         if (!timestamp2LogAtt.HasTstamp2() || !startM) {
             return pos;
@@ -731,9 +733,10 @@ MEIPosition MeiImporter::findEnd(pugi::xml_node controlNode, Spanner* spanner)
         staff_idx_t staffIdx = (staffIdentAtt.HasStaff() && staffIdentAtt.GetStaff().size() > 0) ? this->getStaffIndex(
             staffIdentAtt.GetStaff().at(0)) : track2staff(spanner->track());
         // Use the spanner voice unless given in @layer
-        track_idx_t layer
-            = (layerIdentAtt.HasLayer()) ? static_cast<track_idx_t>(this->getVoiceIndex(static_cast<int>(staffIdx),
-                                                                                       layerIdentAtt.GetLayer())) : track2voice(spanner->track());
+        track_idx_t layer = (layerIdentAtt.HasLayer())
+                            ? static_cast<track_idx_t>(this->getVoiceIndex(static_cast<int>(staffIdx),
+                                                                           layerIdentAtt.GetLayer()))
+                            : track2voice(spanner->track());
 
         pos.tick = measure->tick() + tstampFraction;
         pos.track = staffIdx * VOICES + layer;
