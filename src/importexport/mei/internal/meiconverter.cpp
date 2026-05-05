@@ -1188,6 +1188,18 @@ void Convert::dirFromMEI(engraving::TextLineBase* textLineBase, const StringList
         warning = (warning || lformWarning);
     }
 
+    // @lstartsym and @lendsym
+    if (meiDir.HasLstartsym()) {
+        bool lendWarning = false;
+        textLineBase->setBeginHookType(Convert::lendsymFromMEI(meiDir.GetLstartsym(), lendWarning));
+        warning = (warning || lendWarning);
+    }
+    if (meiDir.HasLendsym()) {
+        bool lendWarning = false;
+        textLineBase->setEndHookType(Convert::lendsymFromMEI(meiDir.GetLendsym(), lendWarning));
+        warning = (warning || lendWarning);
+    }
+
     // @color
     Convert::colorlineFromMEI(textLineBase, meiDir);
 
@@ -1262,6 +1274,10 @@ libmei::Dir Convert::dirToMEI(const engraving::TextLineBase* textLineBase, Strin
     if (textLineBase->propertyFlags(engraving::Pid::LINE_STYLE) == engraving::PropertyFlags::UNSTYLED) {
         meiDir.SetLform(Convert::lineToMEI(textLineBase->lineStyle()));
     }
+
+    // @lstartsym and @lendsym
+    meiDir.SetLstartsym(Convert::lendsymToMEI(textLineBase->beginHookType()));
+    meiDir.SetLendsym(Convert::lendsymToMEI(textLineBase->endHookType()));
 
     // @color
     Convert::colorlineToMEI(textLineBase, meiDir);
@@ -2085,6 +2101,34 @@ libmei::data_KEYSIGNATURE Convert::keyToMEI(const engraving::Key key)
         return std::make_pair(std::abs(std::max(static_cast<int>(key), -7)), libmei::ACCIDENTAL_WRITTEN_f);
     } else {
         return std::make_pair(0, libmei::ACCIDENTAL_WRITTEN_n);
+    }
+}
+
+engraving::HookType Convert::lendsymFromMEI(const libmei::data_LINESTARTENDSYMBOL meiLine, bool& warning)
+{
+    warning = false;
+    switch (meiLine) {
+    case (libmei::LINESTARTENDSYMBOL_angledown):
+    case (libmei::LINESTARTENDSYMBOL_angleup):
+        return engraving::HookType::HOOK_90;
+    case (libmei::LINESTARTENDSYMBOL_arrow): return engraving::HookType::ARROW_FILLED;
+    case (libmei::LINESTARTENDSYMBOL_arrowopen): return engraving::HookType::ARROW;
+    case (libmei::LINESTARTENDSYMBOL_none):
+    default:
+        return engraving::HookType::NONE;
+    }
+}
+
+libmei::data_LINESTARTENDSYMBOL Convert::lendsymToMEI(engraving::HookType type)
+{
+    switch (type) {
+    case (engraving::HookType::HOOK_90): return libmei::LINESTARTENDSYMBOL_angledown;
+    case (engraving::HookType::HOOK_90T): return libmei::LINESTARTENDSYMBOL_angledown;
+    case (engraving::HookType::ARROW): return libmei::LINESTARTENDSYMBOL_arrowopen;
+    case (engraving::HookType::ARROW_FILLED): return libmei::LINESTARTENDSYMBOL_arrow;
+    case (engraving::HookType::NONE):
+    default:
+        return libmei::LINESTARTENDSYMBOL_NONE;
     }
 }
 

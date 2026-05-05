@@ -256,6 +256,9 @@ public:
     static engraving::Key keyFromMEI(const libmei::data_KEYSIGNATURE& meiKeysig, bool& warning);
     static libmei::data_KEYSIGNATURE keyToMEI(const engraving::Key key);
 
+    static engraving::HookType lendsymFromMEI(const libmei::data_LINESTARTENDSYMBOL meiLine, bool& warning);
+    static libmei::data_LINESTARTENDSYMBOL lendsymToMEI(engraving::HookType type);
+
     static engraving::LineType lineFromMEI(const libmei::data_LINEFORM meiLine, bool& warning);
     static libmei::data_LINEFORM lineToMEI(engraving::LineType line);
 
