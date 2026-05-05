@@ -900,6 +900,8 @@ bool MeiExporter::writeMeasure(const Measure* measure, int& measureN, bool& isFi
             success = success && this->writeDir(toTextBase(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isTempoText()) {
             success = success && this->writeTempo(toTempoText(controlEvent.first), controlEvent.second);
+        } else if (controlEvent.first->isTextLine()) {
+            success = success && this->writeDir(toTextLineBase(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isTie()) {
             success = success && this->writeTie(toTie(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isTrill()) {
