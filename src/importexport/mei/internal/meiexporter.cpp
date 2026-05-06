@@ -900,6 +900,8 @@ bool MeiExporter::writeMeasure(const Measure* measure, int& measureN, bool& isFi
             success = success && this->writeDir(toTextBase(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isTempoText()) {
             success = success && this->writeTempo(toTempoText(controlEvent.first), controlEvent.second);
+        } else if (controlEvent.first->isTextLine()) {
+            success = success && this->writeDir(toTextLineBase(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isTie()) {
             success = success && this->writeTie(toTie(controlEvent.first), controlEvent.second);
         } else if (controlEvent.first->isTrill()) {
@@ -2360,7 +2362,7 @@ void MeiExporter::fillControlEventMap(const std::string& xmlId, const ChordRest*
     auto spanners = smap.findOverlapping(chordRest->tick().ticks(), chordRest->tick().ticks());
     for (auto interval : spanners) {
         Spanner* spanner = interval.value;
-        if (spanner && (spanner->isHairpin() || spanner->isOttava() || spanner->isPedal() || spanner->isSlur() || spanner->isTrill())) {
+        if (spanner && (spanner->isHairpin() || spanner->isOttava() || spanner->isPedal() || spanner->isSlur() || spanner->isTextLine() || spanner->isTrill())) {
             if (spanner->startCR() == chordRest) {
                 m_startingControlEventList.push_back(std::make_pair(spanner, "#" + xmlId));
             } else if (spanner->endCR() == chordRest) {
