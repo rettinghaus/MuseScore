@@ -890,23 +890,26 @@ bool MeiExporter::writeMeasure(const Measure* measure, int& measureN, bool& isFi
     auto spanners = m_score->spannerMap().findOverlapping(measure->tick().ticks(), measure->endTick().ticks());
     for (auto interval : spanners) {
         Spanner* spanner = interval.value;
-        if (spanner && spanner->isHairpin() && spanner->tick() >= measure->tick() && spanner->tick() < measure->endTick()) {
-            double tstamp = Convert::tstampFromFraction(spanner->tick() - measure->tick(), measure->timesig());
-            int measureOffset = 0;
-            Measure* endM = spanner->findEndMeasure();
-            if (endM) {
-                for (Measure* m = const_cast<Measure*>(measure); m && m != endM; m = m->nextMeasure()) {
-                    measureOffset++;
-                    if (measureOffset > 1000) { // safety break
-                        break;
+        if (spanner && (spanner->isHairpin() || spanner->isTextLine())) {
+            if (spanner->tick() >= measure->tick() && spanner->tick() < measure->endTick()) {
+                double tstamp = Convert::tstampFromFraction(spanner->tick() - measure->tick(), measure->timesig());
+                int measureOffset = 0;
+                Measure* endM = spanner->findEndMeasure();
+                if (endM) {
+                    for (Measure* m = const_cast<Measure*>(measure); m && m != endM; m = m->nextMeasure()) {
+                        measureOffset++;
+                        if (measureOffset > 1000) { // safety break
+                            break;
+                        }
                     }
-                }
-                libmei::data_MEASUREBEAT tstamp2 = Convert::tstamp2FromFraction(spanner->tick2() - endM->tick(),
-                                                                         endM->timesig(),
-                                                                         measureOffset);
-                const Hairpin* hp = toHairpin(spanner);
-                if (hp) {
-                    success = success && this->writeHairpin(hp, tstamp, tstamp2);
+                    libmei::data_MEASUREBEAT tstamp2 = Convert::tstamp2FromFraction(spanner->tick2() - endM->tick(),
+                                                                             endM->timesig(),
+                                                                             measureOffset);
+                    if (spanner->isHairpin()) {
+                        success = success && this->writeHairpin(toHairpin(spanner), tstamp, tstamp2);
+                    } else if (spanner->isTextLine()) {
+                        success = success && this->writeDir(toTextLineBase(spanner), tstamp, tstamp2);
+                    }
                 }
             }
         }
@@ -2416,7 +2419,7 @@ void MeiExporter::fillControlEventMap(const std::string& xmlId, const ChordRest*
     auto spanners = smap.findOverlapping(chordRest->tick().ticks(), chordRest->tick().ticks());
     for (auto interval : spanners) {
         Spanner* spanner = interval.value;
-        if (spanner && (spanner->isOttava() || spanner->isPedal() || spanner->isSlur() || spanner->isTrill())) {
+        if (spanner && (spanner->isOttava() || spanner->isPedal() || spanner->isSlur() || spanner->isTextLine() || spanner->isTrill())) {
             if (spanner->startCR() == chordRest) {
                 m_startingControlEventList.push_back(std::make_pair(spanner, "#" + xmlId));
             } else if (spanner->endCR() == chordRest) {
