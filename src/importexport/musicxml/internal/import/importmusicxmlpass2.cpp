@@ -998,12 +998,16 @@ static void addInferredStickings(ChordRest* cr, const std::vector<Sticking*>& nu
 //---------------------------------------------------------
 
 void MusicXmlParserPass2::addElemOffset(engraving::EngravingItem* el, engraving::track_idx_t track, const muse::String& placement,
-                                        engraving::Measure* measure, const engraving::Fraction& tick)
+                                        engraving::Measure* measure, const engraving::Fraction& tick, bool voiceAssigned)
 {
     if (!measure) {
         return;
     }
     Fraction elTick = tick;
+
+    if (voiceAssigned && el->hasVoiceAssignmentProperties() && !el->isTempoText() && !el->isSystemText()) {
+        el->setProperty(Pid::VOICE_ASSIGNMENT, VoiceAssignment::CURRENT_VOICE_ONLY);
+    }
 
     if (!placement.empty()) {
         if (el->hasVoiceAssignmentProperties()) {
@@ -2988,7 +2992,8 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
     }
               );
     for (MusicXmlDelayedDirectionElement* direction : delayedDirections) {
-        addElemOffset(direction->element(), direction->track(), direction->placement(), direction->measure(), direction->tick());
+        addElemOffset(direction->element(), direction->track(), direction->placement(), direction->measure(), direction->tick(),
+                      direction->voiceAssigned());
     }
 
     // TODO:
@@ -3466,22 +3471,35 @@ void MusicXmlParserDirection::direction(const String& partId,
     // but the <direction-type> children also have formatting attributes
     // (currently NOT supported by MS, at least not for spanners when <direction> children)
 
+    int mxStaff = 0;
+    int mxVoice = -1;
+
     while (m_e.readNextStartElement()) {
         if (m_e.name() == "direction-type") {
             directionType(starts, stops);
+        } else if (m_e.name() == "voice") {
+            mxVoice = m_e.readInt();
         } else if (m_e.name() == "offset") {
             m_offset = m_pass1.calcTicks(m_e.readInt(), m_pass2.divs(), &m_e);
             preventNegativeTick(tick, m_offset, m_logger);
         } else if (m_e.name() == "sound") {
             sound();
         } else if (m_e.name() == "staff") {
-            String strStaff = m_e.readText();
-            int staff = m_pass1.getMusicXmlPart(partId).staffNumberToIndex(strStaff.toInt());
-            if (staff >= 0) {
-                m_track += staff * VOICES;
+            mxStaff = m_e.readInt();
+            int staffIdx = m_pass1.getMusicXmlPart(partId).staffNumberToIndex(mxStaff);
+            if (staffIdx >= 0) {
+                m_track = m_pass1.trackForPart(partId) + staffIdx * VOICES;
             }
+            mxStaff--; // determineStaffMoveVoice expects 0-indexed staff
         } else {
             skipLogCurrElem();
+        }
+    }
+
+    if (mxVoice != -1) {
+        int msMove, msTrack, msVoice;
+        if (m_pass1.determineStaffMoveVoice(partId, std::max(0, mxStaff), mxVoice, msMove, msTrack, msVoice)) {
+            m_track = msTrack + msVoice;
         }
     }
 
@@ -3673,10 +3691,10 @@ void MusicXmlParserDirection::direction(const String& partId,
                     // Add element to score later, after collecting all the others and sorting by default-y
                     // This allows default-y to be at least respected by the order of elements
                     MusicXmlDelayedDirectionElement* delayedDirection = new MusicXmlDelayedDirectionElement(
-                        totalY(), t, m_track, placement(), measure, tick + m_offset);
+                        totalY(), t, m_track, placement(), measure, tick + m_offset, mxVoice != -1);
                     delayedDirections.push_back(delayedDirection);
                 } else {
-                    m_pass2.addElemOffset(t, m_track, placement(), measure, tick + m_offset);
+                    m_pass2.addElemOffset(t, m_track, placement(), measure, tick + m_offset, mxVoice != -1);
                 }
             }
         }
@@ -3757,7 +3775,7 @@ void MusicXmlParserDirection::direction(const String& partId,
         // Add element to score later, after collecting all the others and sorting by default-y
         // This allows default-y to be at least respected by the order of elements
         MusicXmlDelayedDirectionElement* delayedDirection = new MusicXmlDelayedDirectionElement(
-            hasTotalY() ? totalY() : 100, dynamic, m_track, dynamicsPlacement, measure, tick + m_offset);
+            hasTotalY() ? totalY() : 100, dynamic, m_track, dynamicsPlacement, measure, tick + m_offset, mxVoice != -1);
         delayedDirections.push_back(delayedDirection);
     }
 
@@ -3768,10 +3786,10 @@ void MusicXmlParserDirection::direction(const String& partId,
         // TODO (?) if (_hasDefaultY) elem->setYoff(_defaultY);
         if (hasTotalY()) {
             MusicXmlDelayedDirectionElement* delayedDirection = new MusicXmlDelayedDirectionElement(
-                totalY(), elem, m_track, placement(), measure, tick + m_offset);
+                totalY(), elem, m_track, placement(), measure, tick + m_offset, mxVoice != -1);
             delayedDirections.push_back(delayedDirection);
         } else {
-            m_pass2.addElemOffset(elem, m_track, placement(), measure, tick + m_offset);
+            m_pass2.addElemOffset(elem, m_track, placement(), measure, tick + m_offset, mxVoice != -1);
         }
     }
 

@@ -440,7 +440,7 @@ public:
     }
 
     void addElemOffset(engraving::EngravingItem* el, engraving::track_idx_t track, const muse::String& placement,
-                       engraving::Measure* measure, const engraving::Fraction& tick);
+                       engraving::Measure* measure, const engraving::Fraction& tick, bool voiceAssigned = false);
 
 private:
     void addError(const muse::String& error);      // Add an error to be shown in the GUI
@@ -672,15 +672,17 @@ class MusicXmlDelayedDirectionElement
 {
 public:
     MusicXmlDelayedDirectionElement(double totalY, engraving::EngravingItem* element, engraving::track_idx_t track,
-                                    muse::String placement, engraving::Measure* measure, engraving::Fraction tick)
+                                    muse::String placement, engraving::Measure* measure, engraving::Fraction tick,
+                                    bool voiceAssigned = false)
         : m_totalY(totalY),  m_element(element), m_track(track), m_placement(placement),
-        m_measure(measure), m_tick(tick) {}
+        m_measure(measure), m_tick(tick), m_voiceAssigned(voiceAssigned) {}
     double totalY() const { return m_totalY; }
     engraving::EngravingItem* element() const { return m_element; }
     engraving::track_idx_t track() const { return m_track; }
     const engraving::Fraction& tick() const { return m_tick; }
     const muse::String& placement() const { return m_placement; }
     engraving::Measure* measure() const { return m_measure; }
+    bool voiceAssigned() const { return m_voiceAssigned; }
 
 private:
     double m_totalY = 0.0;
@@ -689,6 +691,7 @@ private:
     muse::String m_placement;
     engraving::Measure* m_measure = nullptr;
     engraving::Fraction m_tick;
+    bool m_voiceAssigned = false;
 };
 
 //---------------------------------------------------------
