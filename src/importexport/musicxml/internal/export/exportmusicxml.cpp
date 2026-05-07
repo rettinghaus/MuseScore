@@ -5914,7 +5914,7 @@ void ExportMusicXml::dynamic(Dynamic const* const dyn, staff_idx_t staff)
             bool isDyn = (it != map.end());
             if (isDyn != inDynamicsSym) {
                 if (!currentText.empty()) {
-                    runs.push_back({inDynamicsSym, currentText});
+                    runs.push_back({ inDynamicsSym, currentText });
                     currentText.clear();
                 }
                 inDynamicsSym = isDyn;
@@ -5926,7 +5926,7 @@ void ExportMusicXml::dynamic(Dynamic const* const dyn, staff_idx_t staff)
             }
         }
         if (!currentText.empty()) {
-            runs.push_back({inDynamicsSym, currentText});
+            runs.push_back({ inDynamicsSym, currentText });
         }
 
         if (runs.empty()) {
