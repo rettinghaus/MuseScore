@@ -5912,18 +5912,17 @@ void ExportMusicXml::dynamic(Dynamic const* const dyn, staff_idx_t staff)
             Char ch = dynText.at(i);
             const auto it = map.find(ch.unicode());
             bool isDyn = (it != map.end());
-            if (isDyn != inDynamicsSym) {
+            Char charEquivalent = isDyn ? it->second : ch;
+            bool isDynChar = isDyn || (String(u"fmnprsz").contains(ch));
+
+            if (isDynChar != inDynamicsSym) {
                 if (!currentText.empty()) {
                     runs.push_back({ inDynamicsSym, currentText });
                     currentText.clear();
                 }
-                inDynamicsSym = isDyn;
+                inDynamicsSym = isDynChar;
             }
-            if (isDyn) {
-                currentText += it->second;
-            } else {
-                currentText += ch;
-            }
+            currentText += charEquivalent;
         }
         if (!currentText.empty()) {
             runs.push_back({ inDynamicsSym, currentText });
