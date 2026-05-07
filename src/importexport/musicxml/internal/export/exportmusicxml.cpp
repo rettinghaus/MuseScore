@@ -5863,24 +5863,26 @@ void ExportMusicXml::dynamic(Dynamic const* const dyn, staff_idx_t staff)
         u"mf", u"mp",
         u"p", u"pp", u"ppp", u"pppp", u"ppppp", u"pppppp",
         u"rf", u"rfz",
-        u"sf", u"sffz", u"sfp", u"sfpp", u"sfz"
+        u"sf", u"sffz", u"sfp", u"sfpp", u"sfz",
+        u"n", u"pf", u"sfzp"
     };
 
     directionTag(m_xml, m_attr, dyn);
 
-    m_xml.startElement("direction-type");
+    String commonAttrs = frame2xml(dyn);
+    commonAttrs += color2xml(dyn);
+    commonAttrs += positioningAttributes(dyn);
 
-    String tagName = u"dynamics";
-    tagName += frame2xml(dyn);
-    tagName += color2xml(dyn);
-    tagName += positioningAttributes(dyn);
-    m_xml.startElementRaw(tagName);
     const String dynTypeName = String::fromAscii(TConv::toXml(dyn->dynamicType()).ascii());
     bool hasCustomText = dyn->hasCustomText();
 
     if (muse::contains(validMusicXmlDynamics, dynTypeName) && !hasCustomText) {
+        m_xml.startElement("direction-type");
+        m_xml.startElementRaw(u"dynamics" + commonAttrs);
         m_xml.tagRaw(dynTypeName);
-    } else if (!dynTypeName.empty()) {
+        m_xml.endElement();
+        m_xml.endElement();
+    } else {
         static const std::map<ushort, Char> map = {
             { 0xE520, u'p' },
             { 0xE521, u'm' },
@@ -5898,50 +5900,58 @@ void ExportMusicXml::dynamic(Dynamic const* const dyn, staff_idx_t staff)
 
         // collect consecutive runs of either dynamics glyphs
         // or other characters and write the runs.
-        String text;
+        struct Run {
+            bool isDynamics;
+            String text;
+        };
+        std::vector<Run> runs;
+
+        String currentText;
         bool inDynamicsSym = false;
         for (size_t i = 0; i < dynText.size(); ++i) {
             Char ch = dynText.at(i);
             const auto it = map.find(ch.unicode());
-            if (it != map.end()) {
-                // found a SMuFL single letter dynamics glyph
-                if (!inDynamicsSym) {
-                    if (!text.empty()) {
-                        m_xml.tag("other-dynamics", text);
-                        text.clear();
-                    }
-                    inDynamicsSym = true;
+            bool isDyn = (it != map.end());
+            if (isDyn != inDynamicsSym) {
+                if (!currentText.empty()) {
+                    runs.push_back({inDynamicsSym, currentText});
+                    currentText.clear();
                 }
-                text += it->second;
+                inDynamicsSym = isDyn;
+            }
+            if (isDyn) {
+                currentText += it->second;
             } else {
-                // found a non-dynamics character
-                if (inDynamicsSym) {
-                    if (!text.empty()) {
-                        if (muse::contains(validMusicXmlDynamics, text)) {
-                            m_xml.tagRaw(text);
-                        } else {
-                            // TODO: this is wrong, should be <words>
-                            m_xml.tag("other-dynamics", text);
-                        }
-                        text.clear();
-                    }
-                    inDynamicsSym = false;
-                }
-                text += ch.unicode();
+                currentText += ch;
             }
         }
-        if (!text.empty()) {
-            if (inDynamicsSym && muse::contains(validMusicXmlDynamics, text)) {
-                m_xml.tagRaw(text);
-            } else {
-                m_xml.tag("other-dynamics", text);
+        if (!currentText.empty()) {
+            runs.push_back({inDynamicsSym, currentText});
+        }
+
+        if (runs.empty()) {
+            m_xml.startElement("direction-type");
+            m_xml.startElementRaw(u"dynamics" + commonAttrs);
+            m_xml.endElement();
+            m_xml.endElement();
+        } else {
+            for (const auto& run : runs) {
+                m_xml.startElement("direction-type");
+                if (run.isDynamics) {
+                    m_xml.startElementRaw(u"dynamics" + commonAttrs);
+                    if (muse::contains(validMusicXmlDynamics, run.text)) {
+                        m_xml.tagRaw(run.text);
+                    } else {
+                        m_xml.tag("other-dynamics", run.text);
+                    }
+                    m_xml.endElement();
+                } else {
+                    writeWordsAndSymbolsXml(m_xml, run.text, commonAttrs);
+                }
+                m_xml.endElement();
             }
         }
     }
-
-    m_xml.endElement();
-
-    m_xml.endElement();
 
     const int offset = calculateTimeDeltaInDivisions(dyn->tick(), tick(), m_div);
     if (offset) {
