@@ -5883,84 +5883,127 @@ void ExportMusicXml::dynamic(Dynamic const* const dyn, staff_idx_t staff)
         m_xml.endElement();
         m_xml.endElement();
     } else {
-        static const std::map<ushort, Char> map = {
-            { 0xE520, u'p' },
-            { 0xE521, u'm' },
-            { 0xE522, u'f' },
-            { 0xE523, u'r' },
-            { 0xE524, u's' },
-            { 0xE525, u'z' },
-            { 0xE526, u'n' }
+        enum class RunType
+        {
+            NONE,
+            DYNAMICS,
+            TEXT
         };
 
-        String dynText = dynTypeName;
-        if (dyn->dynamicType() == DynamicType::OTHER || hasCustomText) {
-            dynText = dyn->plainText();
-        }
-
-        // collect consecutive runs of either dynamics glyphs
-        // or other characters and write the runs.
-        struct Run {
-            bool isDynamics;
+        struct Run
+        {
+            RunType type;
             String text;
         };
-        std::vector<Run> runs;
 
-        String currentText;
-        enum class RunType { NONE, DYNAMICS, TEXT };
-        RunType currentType = RunType::NONE;
+        std::vector<Run> runParts;
 
-        auto isDynamicChar = [](Char c) {
+        auto isDynamicLetter = [](Char c) {
             return String(u"fmnprsz").contains(c.toLower());
         };
 
-        auto isNonDynamicLetter = [&](int index) {
-            if (index < 0 || index >= int(dynText.size())) {
+        auto isNonDynamicLetter = [&](const String& s, int idx) {
+            if (idx < 0 || idx >= int(s.size())) {
                 return false;
             }
-            Char c = dynText.at(index);
-            return c.isLetter() && !isDynamicChar(c) && (map.find(c.unicode()) == map.end());
+            Char c = s.at(idx);
+            return c.isLetter() && !isDynamicLetter(c);
         };
 
-        for (int i = 0; i < int(dynText.size()); ++i) {
-            Char ch = dynText.at(i);
-            const auto it = map.find(ch.unicode());
-            bool isSmufl = (it != map.end());
+        static const std::map<String, String> smuflDynamicMap = {
+            { u"dynamicPiano", u"p" },
+            { u"dynamicMezzo", u"m" },
+            { u"dynamicForte", u"f" },
+            { u"dynamicRinforzando", u"r" },
+            { u"dynamicSforzando", u"s" },
+            { u"dynamicZ", u"z" },
+            { u"dynamicNiente", u"n" },
+            { u"dynamicPPPPPP", u"pppppp" },
+            { u"dynamicPPPPP", u"ppppp" },
+            { u"dynamicPPPP", u"pppp" },
+            { u"dynamicPPP", u"ppp" },
+            { u"dynamicPP", u"pp" },
+            { u"dynamicP", u"p" },
+            { u"dynamicMP", u"mp" },
+            { u"dynamicMF", u"mf" },
+            { u"dynamicF", u"f" },
+            { u"dynamicFF", u"ff" },
+            { u"dynamicFFF", u"fff" },
+            { u"dynamicFFFF", u"ffff" },
+            { u"dynamicFFFFF", u"fffff" },
+            { u"dynamicFFFFFF", u"ffffff" },
+            { u"dynamicFortePiano", u"fp" },
+            { u"dynamicForzando", u"fz" },
+            { u"dynamicSforzando1", u"s" },
+            { u"dynamicSforzato", u"s" },
+            { u"dynamicSforzandoPiano", u"sfp" },
+            { u"dynamicSforzandoPianissimo", u"sfpp" },
+            { u"dynamicSforzatoForte", u"sf" },
+            { u"dynamicSforzatoPiano", u"sfp" },
+            { u"dynamicRinforzando1", u"r" },
+            { u"dynamicRinforzando2", u"r" }
+        };
 
-            RunType chType;
-            Char charValue = ch;
-            if (isSmufl) {
-                chType = RunType::DYNAMICS;
-                charValue = it->second;
-            } else if (isDynamicChar(ch)) {
-                bool partOfWord = isNonDynamicLetter(i - 1) || isNonDynamicLetter(i + 1);
-                chType = partOfWord ? RunType::TEXT : RunType::DYNAMICS;
-            } else {
-                chType = RunType::TEXT;
-            }
-
-            if (chType != currentType && currentType != RunType::NONE) {
-                if (!currentText.empty()) {
-                    runs.push_back({ currentType == RunType::DYNAMICS, currentText });
-                    currentText.clear();
+        auto processText = [&](const String& s) {
+            for (int i = 0; i < int(s.size()); ++i) {
+                Char c = s.at(i);
+                RunType type = RunType::TEXT;
+                String val;
+                val += c;
+                if (isDynamicLetter(c)) {
+                    if (!isNonDynamicLetter(s, i - 1) && !isNonDynamicLetter(s, i + 1)) {
+                        type = RunType::DYNAMICS;
+                    }
                 }
+                runParts.push_back({ type, val });
             }
-            currentType = chType;
-            currentText += charValue;
+        };
+
+        String xmlText = dyn->xmlText();
+        std::wstring wText = xmlText.toStdWString();
+        static const std::wregex symRegex(LR"(<sym>([^<>]+)</sym>)");
+
+        size_t lastPos = 0;
+        std::wsregex_iterator it(wText.begin(), wText.end(), symRegex);
+        std::wsregex_iterator end;
+
+        while (it != end) {
+            if (it->position() > lastPos) {
+                processText(String::fromStdWString(wText.substr(lastPos, it->position() - lastPos)));
+            }
+            String symName = String::fromStdWString((*it)[1].str());
+            auto itMap = smuflDynamicMap.find(symName);
+            if (itMap != smuflDynamicMap.end()) {
+                runParts.push_back({ RunType::DYNAMICS, itMap->second });
+            } else {
+                runParts.push_back({ RunType::TEXT, String(u"<sym>") + symName + String(u"</sym>") });
+            }
+            lastPos = it->position() + it->length();
+            ++it;
         }
-        if (!currentText.empty()) {
-            runs.push_back({ currentType == RunType::DYNAMICS, currentText });
+        if (lastPos < wText.size()) {
+            processText(String::fromStdWString(wText.substr(lastPos)));
         }
 
-        if (runs.empty()) {
+        // Merge consecutive run parts of the same type
+        std::vector<Run> mergedRuns;
+        for (const auto& part : runParts) {
+            if (!mergedRuns.empty() && mergedRuns.back().type == part.type) {
+                mergedRuns.back().text += part.text;
+            } else {
+                mergedRuns.push_back(part);
+            }
+        }
+
+        if (mergedRuns.empty()) {
             m_xml.startElement("direction-type");
             m_xml.startElementRaw(u"dynamics" + commonAttrs);
             m_xml.endElement();
             m_xml.endElement();
         } else {
-            for (const auto& run : runs) {
+            for (const auto& run : mergedRuns) {
                 m_xml.startElement("direction-type");
-                if (run.isDynamics) {
+                if (run.type == RunType::DYNAMICS) {
                     m_xml.startElementRaw(u"dynamics" + commonAttrs);
                     if (muse::contains(validMusicXmlDynamics, run.text)) {
                         m_xml.tagRaw(run.text);
