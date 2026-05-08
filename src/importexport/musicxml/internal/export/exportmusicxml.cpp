@@ -6258,7 +6258,7 @@ static track_idx_t findTrackForAnnotations(track_idx_t track, Segment* seg)
     track_idx_t etrack = strack + VOICES;       // end track of staff containing track + 1
 
     for (track_idx_t i = strack; i < etrack; i++) {
-        if (seg->element(i)) {
+        if (seg->element(i) || seg->preAppendedItem(i)) {
             return i;
         }
     }
@@ -8310,6 +8310,10 @@ void ExportMusicXml::writeMeasureTracks(const Measure* const m,
             }
             EngravingItem* const el = seg->element(track);
             if (!el) {
+                if (seg->preAppendedItem(track)) {
+                    // if there are grace notes, they might have annotations
+                    annotations(this, strack, etrack, track, partRelStaffNo, seg);
+                }
                 continue;
             }
             // must ignore start repeat to prevent spurious backup/forward
