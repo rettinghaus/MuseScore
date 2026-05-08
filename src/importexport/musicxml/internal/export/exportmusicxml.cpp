@@ -5907,25 +5907,49 @@ void ExportMusicXml::dynamic(Dynamic const* const dyn, staff_idx_t staff)
         std::vector<Run> runs;
 
         String currentText;
-        bool inDynamicsSym = false;
-        for (size_t i = 0; i < dynText.size(); ++i) {
+        enum class RunType { NONE, DYNAMICS, TEXT };
+        RunType currentType = RunType::NONE;
+
+        auto isDynamicChar = [](Char c) {
+            return String(u"fmnprsz").contains(c.toLower());
+        };
+
+        auto isNonDynamicLetter = [&](int index) {
+            if (index < 0 || index >= int(dynText.size())) {
+                return false;
+            }
+            Char c = dynText.at(index);
+            return c.isLetter() && !isDynamicChar(c) && (map.find(c.unicode()) == map.end());
+        };
+
+        for (int i = 0; i < int(dynText.size()); ++i) {
             Char ch = dynText.at(i);
             const auto it = map.find(ch.unicode());
-            bool isDyn = (it != map.end());
-            Char charEquivalent = isDyn ? it->second : ch;
-            bool isDynChar = isDyn || (String(u"fmnprsz").contains(ch));
+            bool isSmufl = (it != map.end());
 
-            if (isDynChar != inDynamicsSym) {
+            RunType chType;
+            Char charValue = ch;
+            if (isSmufl) {
+                chType = RunType::DYNAMICS;
+                charValue = it->second;
+            } else if (isDynamicChar(ch)) {
+                bool partOfWord = isNonDynamicLetter(i - 1) || isNonDynamicLetter(i + 1);
+                chType = partOfWord ? RunType::TEXT : RunType::DYNAMICS;
+            } else {
+                chType = RunType::TEXT;
+            }
+
+            if (chType != currentType && currentType != RunType::NONE) {
                 if (!currentText.empty()) {
-                    runs.push_back({ inDynamicsSym, currentText });
+                    runs.push_back({ currentType == RunType::DYNAMICS, currentText });
                     currentText.clear();
                 }
-                inDynamicsSym = isDynChar;
             }
-            currentText += charEquivalent;
+            currentType = chType;
+            currentText += charValue;
         }
         if (!currentText.empty()) {
-            runs.push_back({ inDynamicsSym, currentText });
+            runs.push_back({ currentType == RunType::DYNAMICS, currentText });
         }
 
         if (runs.empty()) {
