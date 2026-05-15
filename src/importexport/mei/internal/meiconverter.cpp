@@ -2123,7 +2123,7 @@ libmei::data_LINESTARTENDSYMBOL Convert::lendsymToMEI(engraving::HookType type)
 {
     switch (type) {
     case (engraving::HookType::HOOK_90): return libmei::LINESTARTENDSYMBOL_angledown;
-    case (engraving::HookType::HOOK_90T): return libmei::LINESTARTENDSYMBOL_angledown;
+    case (engraving::HookType::HOOK_90T): return libmei::LINESTARTENDSYMBOL_NONE;
     case (engraving::HookType::ARROW): return libmei::LINESTARTENDSYMBOL_arrowopen;
     case (engraving::HookType::ARROW_FILLED): return libmei::LINESTARTENDSYMBOL_arrow;
     case (engraving::HookType::NONE):
