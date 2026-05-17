@@ -675,6 +675,9 @@ TEST_F(MusicXml_Tests, DISABLED_graceAfter4) {
 TEST_F(MusicXml_Tests, graceFermata) {
     musicXmlIoTest("testGraceFermata");
 }
+TEST_F(MusicXml_Tests, groupName) {
+    musicXmlIoTest("testGroupName");
+}
 TEST_F(MusicXml_Tests, groupTime) {
     musicXmlIoTest("testGroupTime");
 }
