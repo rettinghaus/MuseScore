@@ -11,6 +11,9 @@
         <longName>Voice</longName>
         <trackName>Voice</trackName>
         <instrumentId>voice.vocals</instrumentId>
+        <Channel>
+          <program value="52"/>
+        </Channel>
       </Instrument>
     </Part>
     <Staff id="1">
