@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<museScore version="4.00">
+  <Score>
+    <Part>
+      <Staff id="1">
+        <StaffType group="pitched">
+          <name>stdNormal</name>
+        </StaffType>
+      </Staff>
+      <Instrument>
+        <longName>Voice</longName>
+        <trackName>Voice</trackName>
+        <instrumentId>voice.vocals</instrumentId>
+      </Instrument>
+    </Part>
+    <Staff id="1">
+      <Measure>
+        <voice>
+          <Tempo>
+            <tempo>2</tempo>
+            <text><sym>metNoteQuarterUp</sym> = 120</text>
+          </Tempo>
+          <Rest>
+            <duration>4/4</duration>
+          </Rest>
+        </voice>
+      </Measure>
+      <Measure>
+        <voice>
+          <Tempo>
+            <tempo>2</tempo>
+            <text><sym>metNoteQuarterUp</sym></text>
+          </Tempo>
+          <Rest>
+            <duration>4/4</duration>
+          </Rest>
+        </voice>
+      </Measure>
+      <Measure>
+        <voice>
+          <Tempo>
+            <tempo>2</tempo>
+            <text><sym>metNoteQuarterUp</sym> = <sym>metNoteHalfUp</sym></text>
+          </Tempo>
+          <Rest>
+            <duration>4/4</duration>
+          </Rest>
+        </voice>
+      </Measure>
+      <Measure>
+        <voice>
+          <Tempo>
+            <tempo>2</tempo>
+            <text>(<sym>metNoteQuarterUp</sym> = 80)</text>
+          </Tempo>
+          <Rest>
+            <duration>4/4</duration>
+          </Rest>
+        </voice>
+      </Measure>
+      <Measure>
+        <voice>
+          <Tempo>
+            <tempo>2</tempo>
+            <text>Adagio <sym>metNoteQuarterUp</sym> = 60</text>
+          </Tempo>
+          <Rest>
+            <duration>4/4</duration>
+          </Rest>
+        </voice>
+      </Measure>
+    </Staff>
+  </Score>
+</museScore>
