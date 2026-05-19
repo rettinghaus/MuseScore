@@ -7187,21 +7187,27 @@ static void midiInstrument(XmlWriter& xml, const size_t partNr, const int instrN
                            const Instrument* instr, const Score* score, const int unpitched = 0)
 {
     xml.startElementRaw(String(u"midi-instrument %1").arg(instrId(partNr, instrNr)));
-    const InstrChannel* chan = instr->channel(0);
-    if (chan) {
-        int midiChannel = score->masterScore()->midiChannel(chan->channel());
-        if (midiChannel >= 0 && midiChannel < 16) {
-            xml.tag("midi-channel", midiChannel + 1);
+    if (instr && score && score->masterScore() && !instr->channel().empty()) {
+        const InstrChannel* chan = instr->channel(0);
+        if (chan) {
+            int chanIdx = chan->channel();
+            const MasterScore* ms = score->masterScore();
+            if (chanIdx >= 0 && chanIdx < int(ms->midiMapping().size())) {
+                int midiChannel = ms->midiChannel(chanIdx);
+                if (midiChannel >= 0 && midiChannel < 16) {
+                    xml.tag("midi-channel", midiChannel + 1);
+                }
+            }
+            int midiProgram = chan->program();
+            if (midiProgram >= 0 && midiProgram < 128) {
+                xml.tag("midi-program", midiProgram + 1);
+            }
+            if (unpitched > 0) {
+                xml.tag("midi-unpitched", unpitched);
+            }
+            xml.tag("volume", (chan->volume() / 127.0) * 100);    //percent
+            xml.tag("pan", int(((chan->pan() - 63.5) / 63.5) * 90));   //-90 hard left, +90 hard right      xml.etag();
         }
-        int midiProgram = chan->program();
-        if (midiProgram >= 0 && midiProgram < 128) {
-            xml.tag("midi-program", midiProgram + 1);
-        }
-        if (unpitched > 0) {
-            xml.tag("midi-unpitched", unpitched);
-        }
-        xml.tag("volume", (chan->volume() / 127.0) * 100);    //percent
-        xml.tag("pan", int(((chan->pan() - 63.5) / 63.5) * 90));   //-90 hard left, +90 hard right      xml.etag();
     }
     xml.endElement();
 }

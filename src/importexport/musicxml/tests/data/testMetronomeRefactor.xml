@@ -46,7 +46,7 @@
           <line>2</line>
           </clef>
         </attributes>
-      <direction placement="above">
+      <direction placement="above" system="only-top">
         <direction-type>
           <metronome parentheses="no">
             <beat-unit>quarter</beat-unit>
@@ -57,41 +57,43 @@
         </direction>
       <note>
         <rest measure="yes"/>
-        <duration>4</duration>
+        <duration>1</duration>
         <voice>1</voice>
         </note>
       </measure>
     <measure number="2">
-      <direction placement="above">
+      <direction placement="above" system="only-top">
         <direction-type>
           <metronome parentheses="no">
             <beat-unit>quarter</beat-unit>
             </metronome>
           </direction-type>
+        <sound tempo="120"/>
         </direction>
       <note>
         <rest measure="yes"/>
-        <duration>4</duration>
+        <duration>1</duration>
         <voice>1</voice>
         </note>
       </measure>
     <measure number="3">
-      <direction placement="above">
+      <direction placement="above" system="only-top">
         <direction-type>
           <metronome parentheses="no">
             <beat-unit>quarter</beat-unit>
             <beat-unit>half</beat-unit>
             </metronome>
           </direction-type>
+        <sound tempo="120"/>
         </direction>
       <note>
         <rest measure="yes"/>
-        <duration>4</duration>
+        <duration>1</duration>
         <voice>1</voice>
         </note>
       </measure>
     <measure number="4">
-      <direction placement="above">
+      <direction placement="above" system="only-top">
         <direction-type>
           <metronome parentheses="yes">
             <beat-unit>quarter</beat-unit>
@@ -102,12 +104,12 @@
         </direction>
       <note>
         <rest measure="yes"/>
-        <duration>4</duration>
+        <duration>1</duration>
         <voice>1</voice>
         </note>
       </measure>
     <measure number="5">
-      <direction placement="above">
+      <direction placement="above" system="only-top">
         <direction-type>
           <words>Adagio </words>
           </direction-type>
@@ -121,7 +123,7 @@
         </direction>
       <note>
         <rest measure="yes"/>
-        <duration>4</duration>
+        <duration>1</duration>
         <voice>1</voice>
         </note>
       </measure>

@@ -1253,7 +1253,7 @@ TEST_F(MusicXml_Tests, tempo4) {
     musicXmlIoTestRef("testTempo4");
 }
 TEST_F(MusicXml_Tests, metronomeRefactor) {
-    musicXmlMscxExportTestRef("testMetronomeRefactor");
+    musicXmlIoTest("testMetronomeRefactor");
 }
 TEST_F(MusicXml_Tests, tempo5) {
     musicXmlIoTest("testTempo5");
