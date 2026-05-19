@@ -656,6 +656,7 @@ private:
     bool m_systemDirection = false;
     std::pair<int, int> m_swing = { 0, 0 };
     std::vector<engraving::EngravingItem*> m_elems;
+    int m_mxVoice = -1;
     engraving::Fraction m_offset;
     engraving::track_idx_t m_track = muse::nidx;
 };
@@ -689,6 +690,7 @@ private:
     muse::String m_placement;
     engraving::Measure* m_measure = nullptr;
     engraving::Fraction m_tick;
+    bool m_voiceAssigned = false;
 };
 
 //---------------------------------------------------------
@@ -702,7 +704,7 @@ class MusicXmlInferredFingering
 {
 public:
     MusicXmlInferredFingering(double totalY, engraving::EngravingItem* element, muse::String& text, engraving::track_idx_t track,
-                              muse::String placement, engraving::Measure* measure, engraving::Fraction tick);
+                              muse::String placement, engraving::Measure* measure, engraving::Fraction tick, bool voiceAssigned = false);
     double totalY() const { return m_totalY; }
     engraving::Fraction tick() const { return m_tick; }
     engraving::track_idx_t track() const { return m_track; }
@@ -719,6 +721,7 @@ private:
     muse::String m_placement;
     engraving::Measure* m_measure;
     engraving::Fraction m_tick;
+    bool m_voiceAssigned = false;
 
     void roundTick(engraving::Measure* measure);
     void addToNotes(std::vector<engraving::Note*>& notes) const;

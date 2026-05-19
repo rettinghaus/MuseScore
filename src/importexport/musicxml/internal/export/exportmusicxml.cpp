@@ -4669,6 +4669,11 @@ void ExportMusicXml::rest(Rest* rest, staff_idx_t staff, const std::vector<Lyric
 
     writeTimeModification(m_xml, rest->tuplet());
 
+    int v = (std::max(1, (int)staff) - 1) * VOICES + (dyn->track() % VOICES) + 1;
+    if (v > 0) {
+        m_xml.tag("voice", v);
+    }
+
     if (staff) {
         m_xml.tag("staff", static_cast<int>(staff));
     }
@@ -4723,10 +4728,13 @@ static void directionTag(XmlWriter& xml, Attributes& attr, EngravingItem const* 
 //   directionETag
 //---------------------------------------------------------
 
-static void directionETag(XmlWriter& xml, staff_idx_t staff, const int offset = 0)
+static void directionETag(XmlWriter& xml, staff_idx_t staff, const int offset = 0, int voice = 0)
 {
     if (offset) {
         xml.tag("offset", { { "sound", "yes" } }, offset);
+    }
+    if (voice > 0) {
+        xml.tag("voice", voice);
     }
     if (staff) {
         xml.tag("staff", static_cast<int>(staff));
@@ -4984,6 +4992,9 @@ static void wordsMetronome(XmlWriter& xml, const MStyle& s, TextBase const* cons
     if (offset) {
         xml.tag("offset", { { "sound", "yes" } }, offset);
     }
+    if (voice > 0) {
+        xml.tag("voice", voice);
+    }
 }
 
 //---------------------------------------------------------
@@ -5010,6 +5021,11 @@ void ExportMusicXml::tempoText(TempoText const* const text, staff_idx_t staff)
 
     m_xml.startElement("direction", tempoAttrs);
     wordsMetronome(m_xml, m_score->style(), text, offset);
+
+    int v = (std::max(1, (int)staff) - 1) * VOICES + (dyn->track() % VOICES) + 1;
+    if (v > 0) {
+        m_xml.tag("voice", v);
+    }
 
     if (staff) {
         m_xml.tag("staff", static_cast<int>(staff));
@@ -5407,7 +5423,8 @@ void ExportMusicXml::hairpin(Hairpin const* const hp, staff_idx_t staff, const F
             }
             directionTag(m_xml, m_attr, hp);
             writeHairpinText(m_xml, hp, isStart);
-            directionETag(m_xml, staff, calculateTimeDeltaInDivisions(tick, m_tick, m_div));
+            int v = (std::max(1, (int)staff) - 1) * VOICES + (hp->track() % VOICES) + 1;
+            directionETag(m_xml, staff, calculateTimeDeltaInDivisions(tick, m_tick, m_div), v);
             return;
         }
         n = findDashes(hp);
@@ -5962,6 +5979,11 @@ void ExportMusicXml::dynamic(Dynamic const* const dyn, staff_idx_t staff)
     const int offset = calculateTimeDeltaInDivisions(dyn->tick(), tick(), m_div);
     if (offset) {
         m_xml.tag("offset", offset);
+    }
+
+    int v = (std::max(1, (int)staff) - 1) * VOICES + (dyn->track() % VOICES) + 1;
+    if (v > 0) {
+        m_xml.tag("voice", v);
     }
 
     if (staff) {

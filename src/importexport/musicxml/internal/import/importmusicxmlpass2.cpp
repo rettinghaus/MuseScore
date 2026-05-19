@@ -3453,22 +3453,35 @@ void MusicXmlParserDirection::direction(const String& partId,
     // but the <direction-type> children also have formatting attributes
     // (currently NOT supported by MS, at least not for spanners when <direction> children)
 
+    int mxStaff = 0;
+    m_mxVoice = -1;
+
     while (m_e.readNextStartElement()) {
         if (m_e.name() == "direction-type") {
             directionType(starts, stops);
+        } else if (m_e.name() == "voice") {
+            m_mxVoice = m_e.readInt();
         } else if (m_e.name() == "offset") {
             m_offset = m_pass1.calcTicks(m_e.readInt(), m_pass2.divs(), &m_e);
             preventNegativeTick(tick, m_offset, m_logger);
         } else if (m_e.name() == "sound") {
             sound();
         } else if (m_e.name() == "staff") {
-            String strStaff = m_e.readText();
-            int staff = m_pass1.getMusicXmlPart(partId).staffNumberToIndex(strStaff.toInt());
-            if (staff >= 0) {
-                m_track += staff * VOICES;
+            mxStaff = m_e.readInt();
+            int staffIdx = m_pass1.getMusicXmlPart(partId).staffNumberToIndex(mxStaff);
+            if (staffIdx >= 0) {
+                m_track = m_pass1.trackForPart(partId) + staffIdx * VOICES;
             }
+            mxStaff--; // determineStaffMoveVoice expects 0-indexed staff
         } else {
             skipLogCurrElem();
+        }
+    }
+
+    if (m_mxVoice != -1) {
+        int msMove, msTrack, msVoice;
+        if (m_pass1.determineStaffMoveVoice(partId, std::max(0, mxStaff), m_mxVoice, msMove, msTrack, msVoice)) {
+            m_track = msTrack + msVoice;
         }
     }
 
@@ -3521,7 +3534,7 @@ void MusicXmlParserDirection::direction(const String& partId,
         }
         tt->setVisible(m_visible);
 
-        m_pass2.addElemOffset(tt, m_track, placement(), measure, tick + m_offset);
+        m_pass2.addElemOffset(tt, m_track, placement(), measure, tick + m_offset, false);
         tempoTextAdded = true;
     } else if (isLikelyTempoLine(m_track)) {
         String simplifiedText = MScoreTextToMusicXml::toPlainText(m_wordsText).simplified();
@@ -3548,10 +3561,10 @@ void MusicXmlParserDirection::direction(const String& partId,
             // Add element to score later, after collecting all the others and sorting by default-y
             // This allows default-y to be at least respected by the order of elements
             MusicXmlDelayedDirectionElement* delayedDirection = new MusicXmlDelayedDirectionElement(
-                totalY(), sticking, m_track, placement(), measure, tick + m_offset);
+                totalY(), sticking, m_track, placement(), measure, tick + m_offset, m_mxVoice != -1);
             delayedDirections.push_back(delayedDirection);
         } else {
-            m_pass2.addElemOffset(sticking, m_track, placement(), measure, tick + m_offset);
+            m_pass2.addElemOffset(sticking, m_track, placement(), measure, tick + m_offset, m_mxVoice != -1);
         }
     } else if (isLikelyDynamicRange()) {
         isDynamicRange = true;
@@ -3656,17 +3669,17 @@ void MusicXmlParserDirection::direction(const String& partId,
                 m_logger->logDebugInfo(String(u"Inferring fingering: %1").arg(fingeringStr));
                 t->setXmlText(fingeringStr);
                 MusicXmlInferredFingering* inferredFingering = new MusicXmlInferredFingering(totalY(), t, fingeringStr, m_track,
-                                                                                             placement(), measure, tick + m_offset);
+                                                                                             placement(), measure, tick + m_offset, m_mxVoice != -1);
                 inferredFingerings.push_back(inferredFingering);
             } else {
                 if (hasTotalY()) {
                     // Add element to score later, after collecting all the others and sorting by default-y
                     // This allows default-y to be at least respected by the order of elements
                     MusicXmlDelayedDirectionElement* delayedDirection = new MusicXmlDelayedDirectionElement(
-                        totalY(), t, m_track, placement(), measure, tick + m_offset);
+                        totalY(), t, m_track, placement(), measure, tick + m_offset, m_mxVoice != -1);
                     delayedDirections.push_back(delayedDirection);
                 } else {
-                    m_pass2.addElemOffset(t, m_track, placement(), measure, tick + m_offset);
+                    m_pass2.addElemOffset(t, m_track, placement(), measure, tick + m_offset, !m_systemDirection && m_mxVoice != -1);
                 }
             }
         }
@@ -3686,7 +3699,7 @@ void MusicXmlParserDirection::direction(const String& partId,
             // TBD may want ro use tick + _offset if sound is affected
             m_score->setTempo(tick, tpo);
 
-            m_pass2.addElemOffset(t, m_track, placement(), measure, tick + m_offset);
+            m_pass2.addElemOffset(t, m_track, placement(), measure, tick + m_offset, false);
             tempoTextAdded = true;
         }
     }
@@ -3750,7 +3763,7 @@ void MusicXmlParserDirection::direction(const String& partId,
         // Add element to score later, after collecting all the others and sorting by default-y
         // This allows default-y to be at least respected by the order of elements
         MusicXmlDelayedDirectionElement* delayedDirection = new MusicXmlDelayedDirectionElement(
-            hasTotalY() ? totalY() : 100, dynamic, m_track, dynamicsPlacement, measure, tick + m_offset);
+            hasTotalY() ? totalY() : 100, dynamic, m_track, dynamicsPlacement, measure, tick + m_offset, m_mxVoice != -1);
         delayedDirections.push_back(delayedDirection);
     }
 
@@ -3761,10 +3774,10 @@ void MusicXmlParserDirection::direction(const String& partId,
         // TODO (?) if (_hasDefaultY) elem->setYoff(_defaultY);
         if (hasTotalY()) {
             MusicXmlDelayedDirectionElement* delayedDirection = new MusicXmlDelayedDirectionElement(
-                totalY(), elem, m_track, placement(), measure, tick + m_offset);
+                totalY(), elem, m_track, placement(), measure, tick + m_offset, m_mxVoice != -1);
             delayedDirections.push_back(delayedDirection);
         } else {
-            m_pass2.addElemOffset(elem, m_track, placement(), measure, tick + m_offset);
+            m_pass2.addElemOffset(elem, m_track, placement(), measure, tick + m_offset, m_mxVoice != -1);
         }
     }
 
@@ -4403,8 +4416,9 @@ MusicXmlInferredFingering::MusicXmlInferredFingering(double totalY,
                                                      track_idx_t track,
                                                      String placement,
                                                      Measure* measure,
-                                                     Fraction tick)
-    : m_totalY(totalY), m_element(element),  m_text(text), m_track(track), m_placement(placement), m_measure(measure), m_tick(tick)
+                                                     Fraction tick,
+                                                     bool voiceAssigned)
+    : m_totalY(totalY), m_element(element),  m_text(text), m_track(track), m_placement(placement), m_measure(measure), m_tick(tick), m_voiceAssigned(voiceAssigned)
 {
     m_fingerings = m_text.simplified().split(u" ");
 }
@@ -4490,7 +4504,7 @@ void MusicXmlInferredFingering::addToNotes(std::vector<Note*>& notes) const
 
 MusicXmlDelayedDirectionElement* MusicXmlInferredFingering::toDelayedDirection()
 {
-    MusicXmlDelayedDirectionElement* dd = new MusicXmlDelayedDirectionElement(m_totalY, m_element, m_track, m_placement, m_measure, m_tick);
+    MusicXmlDelayedDirectionElement* dd = new MusicXmlDelayedDirectionElement(m_totalY, m_element, m_track, m_placement, m_measure, m_tick, m_voiceAssigned);
     return dd;
 }
 
@@ -4843,7 +4857,7 @@ void MusicXmlParserDirection::handleNmiCmi(Measure* measure, const Fraction& tic
     info->setTextName(u"N.C.");
     ha->setTrack(m_track);
     ha->addChord(info);
-    MusicXmlDelayedDirectionElement* delayedDirection = new MusicXmlDelayedDirectionElement(totalY(), ha, m_track, u"above", measure, tick);
+    MusicXmlDelayedDirectionElement* delayedDirection = new MusicXmlDelayedDirectionElement(totalY(), ha, m_track, u"above", measure, tick, m_mxVoice != -1);
     delayedDirections.push_back(delayedDirection);
     m_wordsText.replace(u"NmiCmi", u"N.C.");
 }
@@ -9473,7 +9487,7 @@ void MusicXmlParserNotations::addToScore(ChordRest* const cr, Note* const note, 
         Dynamic* dynamic = Factory::createDynamic(m_score->dummy()->segment());
         dynamic->setDynamicType(d);
         colorItem(dynamic, m_dynamicsColor);
-        m_pass2.addElemOffset(dynamic, cr->track(), m_dynamicsPlacement, cr->measure(), tick);
+        m_pass2.addElemOffset(dynamic, cr->track(), m_dynamicsPlacement, cr->measure(), tick, false);
     }
 }
 
