@@ -143,6 +143,7 @@ public:
     int midiPortCount() const { return m_midiPortCount; }
     void setMidiPortCount(int val) { m_midiPortCount = val; }
     std::vector<MidiMapping>& midiMapping() { return m_midiMapping; }
+    const std::vector<MidiMapping>& midiMapping() const { return m_midiMapping; }
     MidiMapping* midiMapping(int channel) { return &m_midiMapping[channel]; }
     void addMidiMapping(InstrChannel* channel, Part* part, int midiPort, int midiChannel);
     void updateMidiMapping(InstrChannel* channel, Part* part, int midiPort, int midiChannel);

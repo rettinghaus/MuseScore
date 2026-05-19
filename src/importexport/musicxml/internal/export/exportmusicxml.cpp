@@ -4856,7 +4856,7 @@ static bool findMetronome(const std::list<TextFragment>& list,
     }
 
     if (metroPos > 0 && words.at(metroPos - 1) == '(') {
-        if (words.size() > metroPos + metroLen && words.at(metroPos + metroLen) == ')') {
+        if (words.size() > size_t(metroPos + metroLen) && words.at(metroPos + metroLen) == ')') {
             hasParen = true;
             metroPos -= 1;
             metroLen += 2;
