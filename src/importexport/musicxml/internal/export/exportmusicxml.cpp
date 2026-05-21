@@ -5140,7 +5140,7 @@ void ExportMusicXml::image(const Image* const img, staff_idx_t staff)
 
     String source = String::fromStdString(isi->hashName());
     String type;
-    String suffix = muse::io::suffix(source);
+    String suffix = muse::io::FileInfo::suffix(source);
     if (suffix == u"svg" || suffix == u"svgz") {
         type = u"image/svg+xml";
     } else if (suffix == u"png") {
@@ -5158,8 +5158,7 @@ void ExportMusicXml::image(const Image* const img, staff_idx_t staff)
     imgTag += u" width=\"" + String::number(img->imageWidth() * 10.0) + u"\"";
     imgTag += positioningAttributes(img);
 
-    m_xml.startElementRaw(imgTag);
-    m_xml.endElement(); // image
+    m_xml.tagRaw(imgTag);
     m_xml.endElement(); // direction-type
 
     const int offset = calculateTimeDeltaInDivisions(img->tick(), tick(), m_div);
