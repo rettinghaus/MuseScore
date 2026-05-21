@@ -5149,16 +5149,17 @@ void ExportMusicXml::image(const Image* const img, staff_idx_t staff)
         type = u"image/jpeg";
     }
 
-    String imgTag = u"image source=\"" + source + u"\"";
+    String imgTag = u"image source=\"" + XmlWriter::xmlString(source) + u"\"";
     if (!type.isEmpty()) {
-        imgTag += u" type=\"" + type + u"\"";
+        imgTag += u" type=\"" + XmlWriter::xmlString(type) + u"\"";
     }
 
     imgTag += u" height=\"" + String::number(img->imageHeight() * 10.0) + u"\"";
     imgTag += u" width=\"" + String::number(img->imageWidth() * 10.0) + u"\"";
     imgTag += positioningAttributes(img);
 
-    m_xml.tagRaw(imgTag);
+    m_xml.startElementRaw(imgTag);
+    m_xml.endElement(); // image
     m_xml.endElement(); // direction-type
 
     const int offset = calculateTimeDeltaInDivisions(img->tick(), tick(), m_div);
@@ -8897,7 +8898,7 @@ static void writeMxlArchive(Score* score, muse::ZipWriter& zip, const String& fi
 
     for (const ImageStoreItem* isi : imageStore) {
         if (isi->isUsed(score)) {
-            zip.addFile(isi->hashName(), isi->buffer().data());
+            zip.addFile(isi->hashName(), isi->buffer());
         }
     }
 }
