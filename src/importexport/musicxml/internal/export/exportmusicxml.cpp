@@ -5125,6 +5125,66 @@ void ExportMusicXml::words(TextBase const* const text, staff_idx_t staff)
 }
 
 //---------------------------------------------------------
+//   getImageInfo
+//---------------------------------------------------------
+
+static void getImageInfo(const ImageStoreItem* isi, String& source, String& type)
+{
+    source = String::fromStdString(isi->hashName());
+    String suffix = String::fromStdString(isi->type()).toLower();
+
+    if (suffix == u"svg" || suffix == u"svgz") {
+        type = u"image/svg+xml";
+    } else if (suffix == u"png") {
+        type = u"image/png";
+    } else if (suffix == u"jpg" || suffix == u"jpeg") {
+        type = u"image/jpeg";
+    } else if (suffix == u"gif") {
+        type = u"image/gif";
+    } else if (suffix == u"bmp") {
+        type = u"image/bmp";
+    } else if (suffix == u"tif" || suffix == u"tiff") {
+        type = u"image/tiff";
+    }
+
+    if (type.isEmpty()) {
+        const ByteArray& ba = isi->buffer();
+        if (ba.size() >= 4) {
+            if (ba.at(0) == 0x89 && ba.at(1) == 0x50 && ba.at(2) == 0x4E && ba.at(3) == 0x47) {
+                type = u"image/png";
+                if (suffix.isEmpty()) {
+                    source += u".png";
+                }
+            } else if (ba.at(0) == 0xFF && ba.at(1) == 0xD8 && ba.at(2) == 0xFF) {
+                type = u"image/jpeg";
+                if (suffix.isEmpty()) {
+                    source += u".jpg";
+                }
+            } else if (ba.at(0) == 0x47 && ba.at(1) == 0x49 && ba.at(2) == 0x46 && ba.at(3) == 0x38) {
+                type = u"image/gif";
+                if (suffix.isEmpty()) {
+                    source += u".gif";
+                }
+            } else if (ba.at(0) == 0x42 && ba.at(1) == 0x4D) {
+                type = u"image/bmp";
+                if (suffix.isEmpty()) {
+                    source += u".bmp";
+                }
+            } else if (ba.at(0) == 0x3C && (ba.at(1) == 0x3F || ba.at(1) == 0x73)) {
+                type = u"image/svg+xml";
+                if (suffix.isEmpty()) {
+                    source += u".svg";
+                }
+            }
+        }
+    }
+
+    if (type.isEmpty()) {
+        type = u"application/octet-stream";
+    }
+}
+
+//---------------------------------------------------------
 //   image
 //---------------------------------------------------------
 
@@ -5138,24 +5198,25 @@ void ExportMusicXml::image(const Image* const img, staff_idx_t staff)
     directionTag(m_xml, m_attr, img);
     m_xml.startElement("direction-type");
 
-    String source = String::fromStdString(isi->hashName());
+    String source;
     String type;
-    String suffix = muse::io::FileInfo::suffix(source);
-    if (suffix == u"svg" || suffix == u"svgz") {
-        type = u"image/svg+xml";
-    } else if (suffix == u"png") {
-        type = u"image/png";
-    } else if (suffix == u"jpg" || suffix == u"jpeg") {
-        type = u"image/jpeg";
-    }
+    getImageInfo(isi, source, type);
 
     String imgTag = u"image source=\"" + XmlWriter::xmlString(source) + u"\"";
-    if (!type.isEmpty()) {
-        imgTag += u" type=\"" + XmlWriter::xmlString(type) + u"\"";
+    imgTag += u" type=\"" + XmlWriter::xmlString(type) + u"\"";
+
+    double width = img->imageWidth();
+    double height = img->imageHeight();
+    if (!img->sizeIsSpatium()) {
+        double sp = img->spatium();
+        if (sp > 0.0) {
+            width /= sp;
+            height /= sp;
+        }
     }
 
-    imgTag += u" height=\"" + String::number(img->imageHeight() * 10.0) + u"\"";
-    imgTag += u" width=\"" + String::number(img->imageWidth() * 10.0) + u"\"";
+    imgTag += u" height=\"" + String::number(height * 10.0, 2) + u"\"";
+    imgTag += u" width=\"" + String::number(width * 10.0, 2) + u"\"";
     imgTag += positioningAttributes(img);
 
     m_xml.tagRaw(imgTag);
@@ -8897,7 +8958,10 @@ static void writeMxlArchive(Score* score, muse::ZipWriter& zip, const String& fi
 
     for (const ImageStoreItem* isi : imageStore) {
         if (isi->isUsed(score)) {
-            zip.addFile(isi->hashName(), isi->buffer());
+            String source;
+            String type;
+            getImageInfo(isi, source, type);
+            zip.addFile(source.toStdString(), isi->buffer());
         }
     }
 }
