@@ -76,6 +76,8 @@
 #include "engraving/dom/hammeronpulloff.h"
 #include "engraving/dom/harmonicmark.h"
 #include "engraving/dom/harmony.h"
+#include "engraving/dom/image.h"
+#include "engraving/dom/imageStore.h"
 #include "engraving/dom/harppedaldiagram.h"
 #include "engraving/dom/instrchange.h"
 #include "engraving/dom/jump.h"
@@ -347,6 +349,7 @@ public:
     void moveToTickIfNeed(const Fraction& t, track_idx_t track, const Fraction& measureTick);
     void words(TextBase const* const text, staff_idx_t staff);
     void tboxTextAsWords(TextBase const* const text, const staff_idx_t staff, PointF position);
+    void image(const Image* const img, staff_idx_t staff);
     void rehearsal(RehearsalMark const* const rmk, staff_idx_t staff);
     void harpPedals(HarpPedalDiagram const* const hpd, staff_idx_t staff);
     void hairpin(Hairpin const* const hp, staff_idx_t staff, const Fraction& tick);
@@ -5109,7 +5112,7 @@ void ExportMusicXml::words(TextBase const* const text, staff_idx_t staff)
            muPrintable(text->plainText()));
     */
 
-    if (text->plainText() == "") {
+    if (text->plainText() == u"") {
         // sometimes empty Texts are present, exporting would result
         // in invalid MusicXML (as an empty direction-type would be created)
         return;
@@ -5119,6 +5122,47 @@ void ExportMusicXml::words(TextBase const* const text, staff_idx_t staff)
     wordsMetronome(m_xml, m_score->style(), text, offset);
 
     directionETag(m_xml, staff);
+}
+
+//---------------------------------------------------------
+//   image
+//---------------------------------------------------------
+
+void ExportMusicXml::image(const Image* const img, staff_idx_t staff)
+{
+    ImageStoreItem* isi = img->storeItem();
+    if (!isi) {
+        return;
+    }
+
+    directionTag(m_xml, m_attr, img);
+    m_xml.startElement("direction-type");
+
+    String source = String::fromStdString(isi->hashName());
+    String type;
+    String suffix = muse::io::suffix(source);
+    if (suffix == u"svg" || suffix == u"svgz") {
+        type = u"image/svg+xml";
+    } else if (suffix == u"png") {
+        type = u"image/png";
+    } else if (suffix == u"jpg" || suffix == u"jpeg") {
+        type = u"image/jpeg";
+    }
+
+    String imgTag = u"image source=\"" + source + u"\"";
+    if (!type.isEmpty()) {
+        imgTag += u" type=\"" + type + u"\"";
+    }
+
+    imgTag += u" height=\"" + String::number(img->imageHeight() * 10.0) + u"\"";
+    imgTag += u" width=\"" + String::number(img->imageWidth() * 10.0) + u"\"";
+    imgTag += positioningAttributes(img);
+
+    m_xml.tagRaw(imgTag);
+    m_xml.endElement(); // direction-type
+
+    const int offset = calculateTimeDeltaInDivisions(img->tick(), tick(), m_div);
+    directionETag(m_xml, staff, offset);
 }
 
 //---------------------------------------------------------
@@ -6523,6 +6567,8 @@ static bool commonAnnotations(ExportMusicXml* exp, const EngravingItem* e, staff
         exp->harpPedals(toHarpPedalDiagram(e), sstaff);
     } else if (e->isRehearsalMark()) {
         exp->rehearsal(toRehearsalMark(e), sstaff);
+    } else if (e->isImage()) {
+        exp->image(toImage(e), sstaff);
     } else if (e->isSystemText()) {
         exp->systemText(toStaffTextBase(e), sstaff);
     }
@@ -8848,6 +8894,12 @@ static void writeMxlArchive(Score* score, muse::ZipWriter& zip, const String& fi
     em.write(&dbuf);
     dbuf.seek(0);
     zip.addFile(filename.toStdString(), dbuf.data());
+
+    for (const ImageStoreItem* isi : imageStore) {
+        if (isi->isUsed(score)) {
+            zip.addFile(isi->hashName(), isi->buffer().data());
+        }
+    }
 }
 
 bool saveMxl(Score* score, IODevice* device)
