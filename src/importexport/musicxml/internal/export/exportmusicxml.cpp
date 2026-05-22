@@ -6198,7 +6198,11 @@ static void directionMarker(XmlWriter& xml, const Marker* const m, const std::ve
         smufl = u"segnoSerpent1";
         [[fallthrough]];
     case MarkerType::SEGNO:
-        type = u"segno";
+        if (m->plainText().empty()) {
+            type = u"segno";
+        } else {
+            words = m->plainText();
+        }
         if (m->label() == "") {
             sound = u"segno=\"1\"";
         } else {
