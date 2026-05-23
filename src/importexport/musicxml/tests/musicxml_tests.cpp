@@ -1438,6 +1438,11 @@ TEST_F(MusicXml_Tests, words1) {
 TEST_F(MusicXml_Tests, words2) {
     musicXmlIoTest("testWords2");
 }
+
+TEST_F(MusicXml_Tests, voiceText) {
+    musicXmlIoTest("testVoiceText");
+}
+
 TEST_F(MusicXml_Tests, hiddenStaves)
 {
     String fileName = String::fromUtf8("testHiddenStaves.xml");
