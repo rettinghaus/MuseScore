@@ -6240,10 +6240,10 @@ static void directionMarker(XmlWriter& xml, const Marker* const m, const std::ve
         xml.startElement("direction-type");
         String attrs = color2xml(m);
         attrs += ExportMusicXml::positioningAttributes(m);
-        if (!smufl.empty()) {
-            attrs += String(u" smufl=\"%1\"").arg(smufl);
-        }
         if (!type.empty()) {
+            if (!smufl.empty()) {
+                attrs += String(u" smufl=\"%1\"").arg(smufl);
+            }
             xml.tagRaw(type + attrs);
         }
         if (!words.empty()) {
