@@ -1001,7 +1001,6 @@ void MusicXmlParserPass2::addElemOffset(engraving::EngravingItem* el, engraving:
         return;
     }
     Fraction elTick = tick;
-    bool found = false;
 
     if (!placement.empty()) {
         if (el->hasVoiceAssignmentProperties()) {
@@ -1022,6 +1021,7 @@ void MusicXmlParserPass2::addElemOffset(engraving::EngravingItem* el, engraving:
 
     el->setTrack(el->isTempoText() ? 0 : track);      // TempoText must be in track 0
     Segment* s = measure->getSegment(SegmentType::ChordRest, elTick);
+    bool found = false;
 
     if (el->isSticking()) {
         if (el->propertyFlags(Pid::OFFSET) == PropertyFlags::UNSTYLED) {
@@ -1047,6 +1047,7 @@ void MusicXmlParserPass2::addElemOffset(engraving::EngravingItem* el, engraving:
             }
             score->addSystemObjectStaff(st);
         }
+
         for (EngravingItem* existingEl : muse::values(systemElements(), elTick.ticks())) {
             if (el->type() == existingEl->type()) {
                 if (el->isCapo()) {
