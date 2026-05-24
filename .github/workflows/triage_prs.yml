@@ -9,7 +9,6 @@ permissions:
 
 jobs:
   add_to_projects:
-    if: github.repository == 'musescore/MuseScore' && secrets.ADD_TO_PROJECT_PAT != ''
     runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v6

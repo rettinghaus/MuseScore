@@ -8984,7 +8984,13 @@ void ExportMusicXml::capo(Capo const* const c, staff_idx_t staff)
         attributes.emplace_back(std::make_pair("number", static_cast<int>(staff)));
     }
     m_xml.startElement("staff-details", attributes);
-    m_xml.tag("capo", c->params().fretPosition);
+
+    int fret = 0;
+    if (c->params().active && c->params().ignoredStrings.empty()) {
+        fret = c->params().fretPosition;
+    }
+    m_xml.tag("capo", fret);
+
     m_xml.endElement();
     m_attr.doAttr(m_xml, false);
 
