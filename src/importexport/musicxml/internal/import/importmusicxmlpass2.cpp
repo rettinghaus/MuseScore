@@ -3131,7 +3131,7 @@ void MusicXmlParserPass2::attributes(const String& partId, Measure* measure, con
         } else if (m_e.name() == "measure-style") {
             measureStyle(measure);
         } else if (m_e.name() == "staff-details") {
-            staffDetails(partId, measure);
+            staffDetails(partId, measure, tick);
         } else if (m_e.name() == "time") {
             time(partId, measure, tick);
         } else if (m_e.name() == "transpose") {
@@ -3164,7 +3164,7 @@ static void setStaffLines(Score* score, staff_idx_t staffIdx, int stafflines)
  Parse the /score-partwise/part/measure/attributes/staff-details node.
  */
 
-void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure)
+void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure, const Fraction& tick)
 {
     //logDebugTrace("MusicXmlParserPass2::staffDetails");
 
@@ -3243,7 +3243,7 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure)
                 CapoParams p = c->params();
                 p.fretPosition = fret;
                 c->setParams(p);
-                addElemOffset(c, staff2track(staffIdx), u"", measure, measure->tick());
+                addElemOffset(c, staff2track(staffIdx), u"", measure, tick);
             } else {
                 m_e.skipCurrentElement();
             }
