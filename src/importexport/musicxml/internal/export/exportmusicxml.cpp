@@ -8005,13 +8005,18 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vecto
 
 void ExportMusicXml::writeCapo(const Capo* c, staff_idx_t staff)
 {
+    // MusicXML does not support partial capos.
+    if (c->params().active && !c->params().ignoredStrings.empty()) {
+        return;
+    }
+
     m_attr.doAttr(m_xml, true);
     XmlWriter::Attributes attributes;
     if (staff > 0) {
         attributes.emplace_back(std::make_pair("number", static_cast<int>(staff)));
     }
     m_xml.startElement("staff-details", attributes);
-    m_xml.tag("capo", c->params().fretPosition);
+    m_xml.tag("capo", c->params().active ? c->params().fretPosition : 0);
     m_xml.endElement();
 }
 
@@ -8367,9 +8372,7 @@ void ExportMusicXml::writeMeasureTracks(const Measure* const m,
             EngravingItem* capoItem = seg->findAnnotation(ElementType::CAPO, strack, etrack - 1);
             if (capoItem && (track == strack)) {
                 const Capo* c = toCapo(capoItem);
-                if (c->params().active && c->params().ignoredStrings.empty()) {
-                    writeCapo(c, partRelStaffNo);
-                }
+                writeCapo(c, partRelStaffNo);
             }
 
             // handle annotations and spanners (directions attached to this note or rest)
