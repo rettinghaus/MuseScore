@@ -5766,15 +5766,16 @@ void MusicXmlParserPass2::barline(const String& partId, Measure* measure, const 
         } else if (m_e.name() == "segno") {
             const Color segnoColor = Color::fromString(m_e.asciiAttribute("color").ascii());
             const AsciiStringView segnoSymbol = m_e.asciiAttribute("smufl");
-            Measure* markedMeasure = (loc == "left") ? measure : measure->nextMeasure();
+            Measure* markedMeasure = (loc == u"left") ? measure : measure->nextMeasure();
             if (markedMeasure == nullptr) {
                 m_logger->logError(u"coda or segno marker cannot be placed at the end of the score", &m_e);
+                m_e.skipCurrentElement();
                 continue;
             }
             Marker* m = Factory::createMarker(markedMeasure);
             m->setMarkerType(MarkerType::SEGNO);
             if (!segnoSymbol.empty()) {
-                //m->setSymId(SymNames::symIdByName(segnoSymbol, SymId::noSym));
+                m->setXmlText(u"<sym>" + String::fromAscii(segnoSymbol.ascii()) + u"</sym>");
             }
             if (!segnoLabel.empty()) {
                 m->setLabel(segnoLabel);
@@ -5782,21 +5783,21 @@ void MusicXmlParserPass2::barline(const String& partId, Measure* measure, const 
             if (segnoColor.isValid()) {
                 colorItem(m, segnoColor);
             }
-            m->setTrack(0);
-            markedMeasure->add(m);
+            addElemOffset(m, 0, u"above", markedMeasure, markedMeasure->tick());
             m_e.skipCurrentElement();
         } else if (m_e.name() == "coda") {
             const Color codaColor = Color::fromString(m_e.asciiAttribute("color").ascii());
             const AsciiStringView codaSymbol = m_e.asciiAttribute("smufl");
-            Measure* markedMeasure = (loc == "left") ? measure : measure->nextMeasure();
+            Measure* markedMeasure = (loc == u"left") ? measure : measure->nextMeasure();
             if (markedMeasure == nullptr) {
                 m_logger->logError(u"coda or segno marker cannot be placed at the end of the score", &m_e);
+                m_e.skipCurrentElement();
                 continue;
             }
             Marker* m = Factory::createMarker(markedMeasure);
             m->setMarkerType(MarkerType::CODA);
             if (!codaSymbol.empty()) {
-                //m->setSymId(SymNames::symIdByName(codaSymbol, SymId::noSym));
+                m->setXmlText(u"<sym>" + String::fromAscii(codaSymbol.ascii()) + u"</sym>");
             }
             if (!codaLabel.empty()) {
                 m->setLabel(codaLabel);
@@ -5804,8 +5805,7 @@ void MusicXmlParserPass2::barline(const String& partId, Measure* measure, const 
             if (codaColor.isValid()) {
                 colorItem(m, codaColor);
             }
-            m->setTrack(0);
-            markedMeasure->add(m);
+            addElemOffset(m, 0, u"above", markedMeasure, markedMeasure->tick());
             m_e.skipCurrentElement();
         } else if (m_e.name() == "fermata") {
             const Color fermataColor = Color::fromString(m_e.asciiAttribute("color").ascii());
