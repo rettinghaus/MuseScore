@@ -58,6 +58,7 @@
 #include "engraving/dom/beam.h"
 #include "engraving/dom/box.h"
 #include "engraving/dom/bracket.h"
+#include "engraving/dom/capo.h"
 #include "engraving/dom/breath.h"
 #include "engraving/dom/chord.h"
 #include "engraving/dom/chordline.h"
@@ -357,6 +358,7 @@ public:
     void dynamic(Dynamic const* const dyn, staff_idx_t staff);
     void systemText(StaffTextBase const* const text, staff_idx_t staff);
     void tempoText(TempoText const* const text, staff_idx_t staff);
+    void capo(Capo const* const c, staff_idx_t staff);
     void swingSound(StaffTextBase const* const text, const bool offset = false);
     void tempoSound(TempoText const* const text);
     void harmony(Harmony const* const, FretDiagram const* const fd, const Fraction& offset = Fraction(0, 1));
@@ -6516,7 +6518,9 @@ static bool commonAnnotations(ExportMusicXml* exp, const EngravingItem* e, staff
         exp->tempoText(toTempoText(e), sstaff);
     } else if (e->isPlayTechAnnotation()) {
         exp->playText(toPlayTechAnnotation(e), sstaff);
-    } else if (e->isCapo() || e->isStringTunings() || e->isStaffText() || e->isTripletFeel() || e->isText()
+    } else if (e->isCapo()) {
+        exp->capo(toCapo(e), sstaff);
+    } else if (e->isStringTunings() || e->isStaffText() || e->isTripletFeel() || e->isText()
                || e->isExpression() || (e->isInstrumentChange() && e->visible()) || e->isSticking()) {
         exp->words(toTextBase(e), sstaff);
     } else if (e->isDynamic()) {
@@ -8966,6 +8970,25 @@ static void writeMusicXml(const FretDiagram* item, XmlWriter& xml)
     }
 
     xml.endElement();
+}
+
+//---------------------------------------------------------
+//   capo
+//---------------------------------------------------------
+
+void ExportMusicXml::capo(Capo const* const c, staff_idx_t staff)
+{
+    m_attr.doAttr(m_xml, true);
+    XmlWriter::Attributes attributes;
+    if (staff > 0) {
+        attributes.emplace_back(std::make_pair("number", static_cast<int>(staff)));
+    }
+    m_xml.startElement("staff-details", attributes);
+    m_xml.tag("capo", c->params().fretPosition);
+    m_xml.endElement();
+    m_attr.doAttr(m_xml, false);
+
+    words(c, staff);
 }
 
 //---------------------------------------------------------

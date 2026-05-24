@@ -37,6 +37,7 @@
 #include "engraving/dom/barline.h"
 #include "engraving/dom/beam.h"
 #include "engraving/dom/box.h"
+#include "engraving/dom/capo.h"
 #include "engraving/dom/breath.h"
 #include "engraving/dom/chord.h"
 #include "engraving/dom/chordline.h"
@@ -1049,6 +1050,16 @@ void MusicXmlParserPass2::addElemOffset(engraving::EngravingItem* el, engraving:
         bool found = false;
         for (EngravingItem* existingEl : muse::values(systemElements(), elTick.ticks())) {
             if (el->type() == existingEl->type()) {
+                if (el->isCapo()) {
+                    Capo* elCapo = toCapo(el);
+                    Capo* existingCapo = toCapo(existingEl);
+                    if (elCapo->params().fretPosition == existingCapo->params().fretPosition) {
+                        found = true;
+                        break;
+                    } else {
+                        continue;
+                    }
+                }
                 if (el->isTextBase()) {
                     TextBase* elText = toTextBase(el);
                     TextBase* existingText = toTextBase(existingEl);
@@ -1066,8 +1077,40 @@ void MusicXmlParserPass2::addElemOffset(engraving::EngravingItem* el, engraving:
         if (!found) {
             el->setParent(s);
             addSystemElement(el, elTick);
+        } else {
+            delete el;
         }
     } else {
+        if (el->isCapo()) {
+            bool found = false;
+            for (EngravingItem* item : s->annotations()) {
+                if (item->track() == el->track() && item->isCapo()) {
+                    if (toCapo(item)->params().fretPosition == toCapo(el)->params().fretPosition) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (found) {
+                delete el;
+                return;
+            }
+        } else if (el->isTextBase()) {
+            bool found = false;
+            for (EngravingItem* item : s->annotations()) {
+                if (item->track() == el->track() && item->isCapo()) {
+                    Capo* c = toCapo(item);
+                    if (c->generateText(m_score->staff(track2staff(track))->part()->instrument()->stringData()->strings()) == toTextBase(el)->plainText()) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (found) {
+                delete el;
+                return;
+            }
+        }
         s->add(el);
     }
 }
@@ -3194,6 +3237,17 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure)
             m_e.skipCurrentElement();
         } else if (m_e.name() == "staff-tuning") {
             staffTuning(&stringData);
+        } else if (m_e.name() == "capo") {
+            if (measure) {
+                const int fret = m_e.readInt();
+                Capo* c = Factory::makeCapo(measure->segment());
+                CapoParams p = c->params();
+                p.fretPosition = fret;
+                c->setParams(p);
+                addElemOffset(c, staff2track(staffIdx), u"", measure, measure->tick());
+            } else {
+                m_e.skipCurrentElement();
+            }
         } else if (m_e.name() == "staff-size") {
             const double scaling = m_e.doubleAttribute("scaling", 100.0);
             const Spatium val(m_e.readDouble() / scaling);
