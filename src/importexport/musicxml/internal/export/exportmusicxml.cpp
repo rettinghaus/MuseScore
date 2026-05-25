@@ -7969,6 +7969,11 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vecto
                 }
             }
 
+            const CapoParams& capo = st->capo(Fraction(0, 1));
+            if (capo.active) {
+                xml.tag("capo", capo.fretPosition);
+            }
+
             double lineDistance = st->lineDistance(Fraction(0, 1));
             bool needWriteLineDistance = !muse::RealIsEqual(lineDistance, 1.0);
             bool needWriteMag = !muse::RealIsEqual(mag, 1.0);
@@ -8001,7 +8006,7 @@ void ExportMusicXml::writeCapo(const Capo* c)
     }
 
     m_attr.doAttr(m_xml, true);
-    m_xml.startElement("staff-details", attributes);
+    m_xml.startElement("staff-details");
     m_xml.tag("capo", c->params().active ? c->params().fretPosition : 0);
     m_xml.endElement();
 }
