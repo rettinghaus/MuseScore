@@ -37,6 +37,7 @@
 #include "engraving/dom/barline.h"
 #include "engraving/dom/beam.h"
 #include "engraving/dom/box.h"
+#include "engraving/dom/capo.h"
 #include "engraving/dom/breath.h"
 #include "engraving/dom/chord.h"
 #include "engraving/dom/chordline.h"
@@ -3089,7 +3090,7 @@ void MusicXmlParserPass2::attributes(const String& partId, Measure* measure, con
         } else if (m_e.name() == "measure-style") {
             measureStyle(measure);
         } else if (m_e.name() == "staff-details") {
-            staffDetails(partId, measure);
+            staffDetails(partId, measure, tick);
         } else if (m_e.name() == "time") {
             time(partId, measure, tick);
         } else if (m_e.name() == "transpose") {
@@ -3122,7 +3123,7 @@ static void setStaffLines(Score* score, staff_idx_t staffIdx, int stafflines)
  Parse the /score-partwise/part/measure/attributes/staff-details node.
  */
 
-void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure)
+void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure, const Fraction& tick)
 {
     //logDebugTrace("MusicXmlParserPass2::staffDetails");
 
@@ -3194,6 +3195,17 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure)
             m_e.skipCurrentElement();
         } else if (m_e.name() == "staff-tuning") {
             staffTuning(&stringData);
+        } else if (m_e.name() == "capo") {
+            if (measure) {
+                const int fret = m_e.readInt();
+                Capo* c = Factory::createCapo(m_score->dummy()->segment());
+                CapoParams p = c->params();
+                p.fretPosition = fret;
+                c->setParams(p);
+                addElemOffset(c, staff2track(staffIdx), u"", measure, tick);
+            } else {
+                m_e.skipCurrentElement();
+            }
         } else if (m_e.name() == "staff-size") {
             const double scaling = m_e.doubleAttribute("scaling", 100.0);
             const Spatium val(m_e.readDouble() / scaling);
