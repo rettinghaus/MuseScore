@@ -58,6 +58,7 @@
 #include "engraving/dom/beam.h"
 #include "engraving/dom/box.h"
 #include "engraving/dom/bracket.h"
+#include "engraving/dom/capo.h"
 #include "engraving/dom/breath.h"
 #include "engraving/dom/chord.h"
 #include "engraving/dom/chordline.h"
@@ -359,6 +360,7 @@ public:
     void swingSound(StaffTextBase const* const text, const bool offset = false);
     void tempoSound(TempoText const* const text);
     void harmony(Harmony const* const, FretDiagram const* const fd, const Fraction& offset = Fraction(0, 1));
+    void writeCapo(const Capo* c);
     Score* score() const { return m_score; }
     double getTenthsFromInches(double) const;
     double getTenthsFromDots(double) const;
@@ -7984,6 +7986,27 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vecto
 }
 
 //---------------------------------------------------------
+//  writeCapo
+//---------------------------------------------------------
+
+/**
+ Write the capo.
+ */
+
+void ExportMusicXml::writeCapo(const Capo* c)
+{
+    // MusicXML does not support partial capos.
+    if (c->params().active && !c->params().ignoredStrings.empty()) {
+        return;
+    }
+
+    m_attr.doAttr(m_xml, true);
+    m_xml.startElement("staff-details", attributes);
+    m_xml.tag("capo", c->params().active ? c->params().fretPosition : 0);
+    m_xml.endElement();
+}
+
+//---------------------------------------------------------
 //  writeInstrumentChange
 //---------------------------------------------------------
 
@@ -8325,6 +8348,12 @@ void ExportMusicXml::writeMeasureTracks(const Measure* const m,
 
             // generate backup or forward to the start time of the element
             moveToTickIfNeed(seg->tick(), track, m->tick());
+
+            EngravingItem* c = seg->findAnnotation(ElementType::CAPO, strack, etrack - 1);
+            if (c && (track == strack)) {
+                const Capo* capo = toCapo(c);
+                writeCapo(capo);
+            }
 
             EngravingItem* ic = seg->findAnnotation(ElementType::INSTRUMENT_CHANGE, strack, etrack - 1);
             if (ic && (track == strack)) {
