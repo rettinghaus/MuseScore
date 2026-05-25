@@ -309,7 +309,7 @@ static void xmlSetPitch(Note* n, int step, int alter, double tuning, int octave,
     const CapoParams& capo = n->staff()->capo(n->tick());
     int capoFret = 0;
 
-    if (capo.active && n->staff().isTabStaff(Fraction(0, 1))) {
+    if (capo.active && n->staff()->isTabStaff(Fraction(0, 1))) {
         capoFret = capo.fretPosition;
     }
 
