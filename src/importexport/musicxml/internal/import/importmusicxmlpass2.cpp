@@ -1025,6 +1025,7 @@ void MusicXmlParserPass2::addElemOffset(engraving::EngravingItem* el, engraving:
 
     el->setTrack(el->isTempoText() ? 0 : track);      // TempoText must be in track 0
     Segment* s = measure->getSegment(SegmentType::ChordRest, elTick);
+    bool found = false;
 
     if (el->isSticking()) {
         if (el->propertyFlags(Pid::OFFSET) == PropertyFlags::UNSTYLED) {
@@ -1051,9 +1052,18 @@ void MusicXmlParserPass2::addElemOffset(engraving::EngravingItem* el, engraving:
             score->addSystemObjectStaff(st);
         }
 
-        bool found = false;
         for (EngravingItem* existingEl : muse::values(systemElements(), elTick.ticks())) {
             if (el->type() == existingEl->type()) {
+                if (el->isCapo()) {
+                    Capo* elCapo = toCapo(el);
+                    Capo* existingCapo = toCapo(existingEl);
+                    if (elCapo->params().fretPosition == existingCapo->params().fretPosition) {
+                        found = true;
+                        break;
+                    } else {
+                        continue;
+                    }
+                }
                 if (el->isTextBase()) {
                     TextBase* elText = toTextBase(el);
                     TextBase* existingText = toTextBase(existingEl);
@@ -1071,8 +1081,39 @@ void MusicXmlParserPass2::addElemOffset(engraving::EngravingItem* el, engraving:
         if (!found) {
             el->setOwnershipParent(s);
             addSystemElement(el, elTick);
+        } else {
+            delete el;
         }
     } else {
+        if (el->isCapo()) {
+            for (EngravingItem* item : s->annotations()) {
+                if (item->track() == el->track() && item->isCapo()) {
+                    if (toCapo(item)->params().fretPosition == toCapo(el)->params().fretPosition) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (found) {
+                delete el;
+                return;
+            }
+        } else if (el->isTextBase()) {
+            for (EngravingItem* item : s->annotations()) {
+                if (item->track() == el->track() && item->isCapo()) {
+                    Capo* c = toCapo(item);
+                    const int strings = m_score->staff(track2staff(track))->part()->instrument()->stringData()->strings();
+                    if (c->generateText(strings) == toTextBase(el)->plainText()) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (found) {
+                delete el;
+                return;
+            }
+        }
         s->add(el);
     }
 }
