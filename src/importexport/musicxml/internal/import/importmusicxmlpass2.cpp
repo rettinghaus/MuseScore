@@ -306,7 +306,14 @@ static void xmlSetPitch(Note* n, int step, int alter, double tuning, int octave,
     // ensure sane values
     pitch = std::clamp(pitch, 0, 127);
 
-    int tpc2 = step2tpc(step, AccidentalVal(alter));
+    const CapoParams& capo = n->staff()->capo(n->tick());
+    int capoFret = 0;
+
+    if (capo.active && n->staff().isTabStaff(Fraction(0, 1))) {
+        capoFret = capo.fretPosition;
+    }
+
+    int tpc2 = step2tpc(step + capoFret, AccidentalVal(alter));
     int tpc1 = Transpose::transposeTpc(tpc2, intval, true);
     n->setPitch(pitch, tpc1, tpc2);
     n->setTuning(tuning);
