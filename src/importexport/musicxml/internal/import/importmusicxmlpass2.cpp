@@ -287,7 +287,9 @@ static int MusicXmlStepAltOct2Pitch(int step, int alter, int octave)
  Note that n's staff and track have not been set yet
  */
 
-static void xmlSetPitch(Note* n, const Staff* staff, const Fraction& tick, int step, int alter, double tuning, int octave, const int octaveShift, const Instrument* const instr)
+static void xmlSetPitch(Note* n, const Staff* staff, const Fraction& tick,
+                        int step, int alter, double tuning, int octave,
+                        const int octaveShift, const Instrument* const instr)
 {
     //LOGD("xmlSetPitch(n=%p, step=%d, alter=%d, octave=%d, octaveShift=%d)",
     //       n, step, alter, octave, octaveShift);
@@ -6838,7 +6840,9 @@ static void addTremolo(ChordRest* cr, const int tremoloNr, const String& tremolo
 
 // TODO: refactor: optimize parameters
 
-static void setPitch(Note* note, const Staff* staff, const Fraction& tick, const MusicXmlInstruments& instruments, const String& instrumentId, const MusicXmlNotePitch& mnp,
+static void setPitch(Note* note, const Staff* staff, const Fraction& tick,
+                     const MusicXmlInstruments& instruments,
+                     const String& instrumentId, const MusicXmlNotePitch& mnp,
                      const int octaveShift, const Instrument* const instrument)
 {
     if (mnp.unpitched()) {
@@ -6900,8 +6904,9 @@ static void setDrumset(Chord* c, MusicXmlParserPass1& pass1, const String& partI
     pass1.setDrumsetDefault(partId, instrumentId, headGroup, line, overruledStemDir);
 }
 
-void MusicXmlParserPass2::xmlSetDrumsetPitch(Note* note, const Fraction& tick, const Staff* staff, int step, int octave,
-                                             NoteHeadGroup headGroup, DirectionV& stemDir, Instrument* instrument)
+void MusicXmlParserPass2::xmlSetDrumsetPitch(Note* note, const Fraction& tick, const Staff* staff,
+                                             int step, int octave, NoteHeadGroup headGroup,
+                                             DirectionV& stemDir, Instrument* instrument)
 {
     Drumset* ds = instrument->drumset();
     // get line
