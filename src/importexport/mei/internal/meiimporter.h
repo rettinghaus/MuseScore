@@ -57,12 +57,7 @@ struct ClefTypeList;
 namespace mu::iex::mei {
 class UIDRegister;
 
-struct ControlElementPosition {
-    engraving::Measure* measure = nullptr;
-    engraving::Fraction tick;
-    int track = 0;
-    engraving::ChordRest* chordRest = nullptr;
-};
+
 
 enum GraceReading {
     GraceNone = 0,
@@ -195,8 +190,8 @@ private:
     engraving::EngravingItem* addToChordRest(const libmei::Element& meiElement, engraving::Measure* measure,
                                              engraving::Chord* chord = nullptr);
     std::string xmlIdFrom(std::string dataURI);
-    ControlElementPosition findStart(const libmei::Element& meiElement, engraving::Measure* measure);
-    ControlElementPosition findEnd(pugi::xml_node controlNode, engraving::Spanner* spanner);
+    engraving::ChordRest* findStart(const libmei::Element& meiElement, engraving::Measure* measure);
+    engraving::ChordRest* findEnd(pugi::xml_node controlNode, const engraving::ChordRest* startChordRest);
     engraving::Note* findStartNote(const libmei::Element& meiElement);
     engraving::Note* findEndNote(pugi::xml_node controlNode);
     const std::vector<engraving::ChordRest*> findPlistChordRests(pugi::xml_node controlNode);

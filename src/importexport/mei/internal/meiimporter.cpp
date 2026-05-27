@@ -450,57 +450,54 @@ bool MeiImporter::addGraceNotesToChord(ChordRest* chordRest, bool isAfter)
 
 EngravingItem* MeiImporter::addAnnotation(const libmei::Element& meiElement, Measure* measure)
 {
-    ControlElementPosition pos = this->findStart(meiElement, measure);
-    if (!pos.measure || (pos.chordRest && pos.chordRest->isGrace())) {
+    const ChordRest* chordRest = this->findStart(meiElement, measure);
+    if (!chordRest || chordRest->isGrace()) {
         return nullptr;
     }
 
-    Segment* segment = pos.measure->getSegment(SegmentType::ChordRest, pos.tick);
+    Segment* segment = chordRest->segment();
     EngravingItem* item = nullptr;
 
     if (meiElement.m_name == "breath" || meiElement.m_name == "caesura") {
         // For Breath we need to add a specific segment and add the breath to it (and not to the ChordRest one)
-        Fraction tick = (pos.chordRest) ? pos.chordRest->endTick() : pos.tick;
-        segment = pos.measure->getSegment(SegmentType::Breath, tick);
+        segment = measure->getSegment(SegmentType::Breath, chordRest->endTick());
         item = Factory::createBreath(segment);
     } else if (meiElement.m_name == "dir") {
         ElementType elementType = Convert::elementTypeForDir(meiElement);
         switch (elementType) {
-        case (ElementType::PLAYTECH_ANNOTATION):
-            item = Factory::createPlayTechAnnotation(segment, PlayingTechniqueType::Natural, TextStyleType::STAFF);
+        case (ElementType::PLAYTECH_ANNOTATION): item = Factory::createPlayTechAnnotation(
+                chordRest->segment(), PlayingTechniqueType::Natural, TextStyleType::STAFF);
             break;
-        case (ElementType::STAFF_TEXT):
-            item = Factory::createStaffText(segment);
+        case (ElementType::STAFF_TEXT): item = Factory::createStaffText(chordRest->segment());
             break;
-        case (ElementType::SYSTEM_TEXT):
-            item = Factory::createSystemText(segment);
+        case (ElementType::SYSTEM_TEXT): item = Factory::createSystemText(chordRest->segment());
             break;
         default:
-            item = Factory::createExpression(segment);
+            item = Factory::createExpression(chordRest->segment());
         }
     } else if (meiElement.m_name == "dynam") {
-        item = Factory::createDynamic(segment);
+        item = Factory::createDynamic(chordRest->segment());
     } else if (meiElement.m_name == "fermata") {
-        item = Factory::createFermata(segment);
+        item = Factory::createFermata(chordRest->segment());
     } else if (meiElement.m_name == "harm") {
         const libmei::AttLabelled* labeledAtt = dynamic_cast<const libmei::AttLabelled*>(&meiElement);
         if (labeledAtt && (labeledAtt->GetLabel() == MEI_FB_HARM)) {
-            item = Factory::createFiguredBass(segment);
+            item = Factory::createFiguredBass(chordRest->segment());
         } else {
-            item = Factory::createHarmony(segment);
+            item = Factory::createHarmony(chordRest->segment());
         }
     } else if (meiElement.m_name == "harpPedal") {
-        item = Factory::createHarpPedalDiagram(segment);
+        item = Factory::createHarpPedalDiagram(chordRest->segment());
     } else if (meiElement.m_name == "reh") {
-        item = Factory::createRehearsalMark(segment);
+        item = Factory::createRehearsalMark(chordRest->segment());
     } else if (meiElement.m_name == "tempo") {
-        item = Factory::createTempoText(segment);
+        item = Factory::createTempoText(chordRest->segment());
     } else {
         return nullptr;
     }
     this->readXmlId(item, meiElement.m_xmlId);
 
-    item->setTrack(pos.track);
+    item->setTrack(chordRest->track());
     segment->add(item);
 
     return item;
@@ -515,8 +512,8 @@ EngravingItem* MeiImporter::addAnnotation(const libmei::Element& meiElement, Mea
 
 Spanner* MeiImporter::addSpanner(const libmei::Element& meiElement, Measure* measure, pugi::xml_node node)
 {
-    ControlElementPosition pos = this->findStart(meiElement, measure);
-    if (!pos.measure) {
+    ChordRest* chordRest = this->findStart(meiElement, measure);
+    if (!chordRest) {
         return nullptr;
     }
 
@@ -546,10 +543,10 @@ Spanner* MeiImporter::addSpanner(const libmei::Element& meiElement, Measure* mea
     }
     this->readXmlId(item, meiElement.m_xmlId);
 
-    item->setTick(pos.tick);
-    item->setStartElement(pos.chordRest);
-    item->setTrack(pos.track);
-    item->setTrack2(pos.track);
+    item->setTick(chordRest->tick());
+    item->setStartElement(chordRest);
+    item->setTrack(chordRest->track());
+    item->setTrack2(chordRest->track());
 
     m_score->addElement(item);
 
@@ -569,7 +566,7 @@ Spanner* MeiImporter::addSpanner(const libmei::Element& meiElement, Measure* mea
 
 EngravingItem* MeiImporter::addToChordRest(const libmei::Element& meiElement, Measure* measure, Chord* chord)
 {
-    ChordRest* chordRest = (!measure) ? chord : this->findStart(meiElement, measure).chordRest;
+    ChordRest* chordRest = (!measure) ? chord : this->findStart(meiElement, measure);
     if (!chordRest) {
         return nullptr;
     }
@@ -617,26 +614,23 @@ std::string MeiImporter::xmlIdFrom(std::string dataURI)
  * If there is not @startid but a @tstamp (MEI not written by MuseScore), try to find the corresponding ChordRest
  */
 
-ControlElementPosition MeiImporter::findStart(const libmei::Element& meiElement, Measure* measure)
+ChordRest* MeiImporter::findStart(const libmei::Element& meiElement, Measure* measure)
 {
-    ControlElementPosition pos;
     const libmei::AttStartId* startIdAtt = dynamic_cast<const libmei::AttStartId*>(&meiElement);
     IF_ASSERT_FAILED(measure && startIdAtt) {
-        return pos;
+        return nullptr;
     }
 
+    ChordRest* chordRest = nullptr;
     if (startIdAtt->HasStartid()) {
         std::string startId = this->xmlIdFrom(startIdAtt->GetStartid());
         // The startid corresponding ChordRest should have been added to the m_startIdChordRests previously
         if (!m_startIdChordRests.count(startId) || !m_startIdChordRests.at(startId)) {
             Convert::logs.push_back(String("Could not find element for @startid '%1'").arg(String::fromStdString(
                                                                                                startIdAtt->GetStartid())));
-            return pos;
+            return nullptr;
         }
-        pos.chordRest = m_startIdChordRests.at(startId);
-        pos.measure = pos.chordRest->measure();
-        pos.tick = pos.chordRest->tick();
-        pos.track = static_cast<int>(pos.chordRest->track());
+        chordRest = m_startIdChordRests.at(startId);
     } else {
         // No @startid, try a lookup based on the @tstamp. This is only for files not written via MuseScore
         const libmei::AttTimestampLog* timestampLogAtt = dynamic_cast<const libmei::AttTimestampLog*>(&meiElement);
@@ -644,7 +638,7 @@ ControlElementPosition MeiImporter::findStart(const libmei::Element& meiElement,
         const libmei::AttLayerIdent* layerIdentAtt = dynamic_cast<const libmei::AttLayerIdent*>(&meiElement);
 
         IF_ASSERT_FAILED(timestampLogAtt && staffIdentAtt) {
-            return pos;
+            return nullptr;
         }
 
         // If no @tstamp (invalid), put it on 1.0;
@@ -654,13 +648,14 @@ ControlElementPosition MeiImporter::findStart(const libmei::Element& meiElement,
             staffIdentAtt->GetStaff().at(0)) : 0;
         const int layer = (layerIdentAtt && layerIdentAtt->HasLayer()) ? this->getVoiceIndex(staffIdx, layerIdentAtt->GetLayer()) : 0;
 
-        pos.measure = measure;
-        pos.tick = measure->tick() + tstampFraction;
-        pos.track = staffIdx * VOICES + layer;
-        pos.chordRest = measure->findChordRest(pos.tick, pos.track);
+        chordRest = measure->findChordRest(measure->tick() + tstampFraction, staffIdx * VOICES + layer);
+        if (!chordRest) {
+            Convert::logs.push_back(String("Could not find element corresponding to @tstamp '%1'").arg(timestampLogAtt->GetTstamp()));
+            return nullptr;
+        }
     }
 
-    return pos;
+    return chordRest;
 }
 
 /**
