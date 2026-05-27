@@ -307,7 +307,6 @@ static void xmlSetPitch(Note* n, const Staff* staff, const Fraction& tick,
     pitch += 12 * octaveShift;   // correct for octave shift
 
     int tpc2 = step2tpc(step, AccidentalVal(alter));
-    int tpc1 = Transpose::transposeTpc(tpc2, intval, true);
 
     const CapoParams& capo = staff->capo(tick);
 
@@ -319,6 +318,7 @@ static void xmlSetPitch(Note* n, const Staff* staff, const Fraction& tick,
     // ensure sane values
     pitch = std::clamp(pitch, 0, 127);
 
+    int tpc1 = Transpose::transposeTpc(tpc2, intval, true);
     n->setPitch(pitch, tpc1, tpc2);
     n->setTuning(tuning);
     //LOGD("  pitch=%d tpc1=%d tpc2=%d", n->pitch(), n->tpc1(), n->tpc2());
