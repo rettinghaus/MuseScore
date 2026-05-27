@@ -57,8 +57,6 @@ struct ClefTypeList;
 namespace mu::iex::mei {
 class UIDRegister;
 
-
-
 enum GraceReading {
     GraceNone = 0,
     GraceAsGrp,

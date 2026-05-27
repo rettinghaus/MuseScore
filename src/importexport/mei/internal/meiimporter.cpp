@@ -518,7 +518,7 @@ Spanner* MeiImporter::addSpanner(const libmei::Element& meiElement, Measure* mea
     }
 
     Spanner* item = nullptr;
-    Segment* segment = pos.measure->getSegment(SegmentType::ChordRest, pos.tick);
+    Segment* segment = chordRest->segment();
 
     if (meiElement.m_name == "dir") {
         ElementType elementType = Convert::elementTypeForDirWithExt(meiElement);
@@ -664,23 +664,20 @@ ChordRest* MeiImporter::findStart(const libmei::Element& meiElement, Measure* me
  * If there is not @endid but a @tstamp2 (MEI not written by MuseScore), try to find the corresponding ChordRest
  */
 
-ControlElementPosition MeiImporter::findEnd(pugi::xml_node controlNode, Spanner* spanner)
+ChordRest* MeiImporter::findEnd(pugi::xml_node controlNode, const ChordRest* startChordRest)
 {
-    ControlElementPosition pos;
     libmei::InstStartEndId startEndIdAtt;
     startEndIdAtt.ReadStartEndId(controlNode);
 
+    ChordRest* chordRest = nullptr;
     if (startEndIdAtt.HasEndid()) {
         std::string endId = this->xmlIdFrom(startEndIdAtt.GetEndid());
         // The @endid corresponding ChordRest should have been added to the m_endIdChordRests previously
         if (!m_endIdChordRests.count(endId) || !m_endIdChordRests.at(endId)) {
             Convert::logs.push_back(String("Could not find element for @endid '%1'").arg(String::fromStdString(startEndIdAtt.GetEndid())));
-            return pos;
+            return nullptr;
         }
-        pos.chordRest = m_endIdChordRests.at(endId);
-        pos.measure = pos.chordRest->measure();
-        pos.tick = pos.chordRest->tick();
-        pos.track = static_cast<int>(pos.chordRest->track());
+        chordRest = m_endIdChordRests.at(endId);
     } else {
         // No @endid, try a lookup based on the @tstamp2. This is only for files not written via MuseScore
         libmei::InstTimestamp2Log timestamp2LogAtt;
@@ -690,43 +687,40 @@ ControlElementPosition MeiImporter::findEnd(pugi::xml_node controlNode, Spanner*
         libmei::InstLayerIdent layerIdentAtt;
         layerIdentAtt.ReadLayerIdent(controlNode);
 
-        // We need at least a @tstamp2 and a spanner with its startMeasure
-        Measure* startM = (spanner->startElement())
-                          ? spanner->startElement()->findMeasure()
-                          : m_score->tick2measure(spanner->tick());
-
-        if (!timestamp2LogAtt.HasTstamp2() || !startM) {
-            return pos;
+        // We need at least a @tstamp2 and a startChordRest with its Measure
+        if (!timestamp2LogAtt.HasTstamp2() || !startChordRest || !startChordRest->measure()) {
+            return nullptr;
         }
 
         libmei::data_MEASUREBEAT tstamp2Value = timestamp2LogAtt.GetTstamp2();
 
         // Find the end Measure
-        Measure* measure = startM;
+        Measure* measure = startChordRest->measure();
         for (int i = tstamp2Value.first; i > 0; --i) {
             if (!measure->next() || !measure->next()->isMeasure()) {
-                return pos;
+                return nullptr;
             }
             measure = toMeasure(measure->next());
         }
 
-        pos.measure = measure;
         Fraction tstampFraction = Convert::tstampToFraction(tstamp2Value.second, measure->timesig());
-        // Use the spanner staffIdx unless given in @staff
+        // Use the startChordRest staffIdx unless given in @staff
         staff_idx_t staffIdx = (staffIdentAtt.HasStaff() && staffIdentAtt.GetStaff().size() > 0) ? this->getStaffIndex(
-            staffIdentAtt.GetStaff().at(0)) : track2staff(spanner->track());
-        // Use the spanner voice unless given in @layer
-        track_idx_t layer = (layerIdentAtt.HasLayer())
-                            ? static_cast<track_idx_t>(this->getVoiceIndex(static_cast<int>(staffIdx),
-                                                                           layerIdentAtt.GetLayer()))
-                            : track2voice(spanner->track());
+            staffIdentAtt.GetStaff().at(0)) : startChordRest->staffIdx();
+        // Use the startChordRest voice unless given in @layer
+        track_idx_t layer
+            = (layerIdentAtt.HasLayer()) ? this->getVoiceIndex(static_cast<int>(staffIdx),
+                                                               layerIdentAtt.GetLayer()) : startChordRest->voice();
 
-        pos.tick = measure->tick() + tstampFraction;
-        pos.track = static_cast<int>(staffIdx * VOICES + layer);
-        pos.chordRest = measure->findChordRest(pos.tick, pos.track);
+        chordRest = measure->findChordRest(measure->tick() + tstampFraction, staffIdx * VOICES + layer);
+        if (!chordRest) {
+            Convert::logs.push_back(String("Could not find element corresponding to @tstamp2 '%1m+%2'").arg(tstamp2Value.first).arg(
+                                        tstamp2Value.second));
+            return nullptr;
+        }
     }
 
-    return pos;
+    return chordRest;
 }
 
 /**
@@ -3578,24 +3572,26 @@ void MeiImporter::addSpannerEnds()
             endNote->addSpannerBack(gliss);
 
             // All other Spanners
-        } else {
-            ControlElementPosition pos = this->findEnd(spannerMapEntry.second, spannerMapEntry.first);
-            if (!pos.measure) {
+        } else if (spannerMapEntry.first->startCR()) {
+            ChordRest* chordRest = this->findEnd(spannerMapEntry.second, spannerMapEntry.first->startCR());
+            if (!chordRest) {
                 continue;
             }
-            spannerMapEntry.first->setTick2(pos.tick);
-            spannerMapEntry.first->setEndElement(pos.chordRest);
-            spannerMapEntry.first->setTrack2(pos.track);
+            spannerMapEntry.first->setTick2(chordRest->tick());
+            spannerMapEntry.first->setEndElement(chordRest);
+            spannerMapEntry.first->setTrack2(chordRest->track());
             if (spannerMapEntry.first->isOttava() || spannerMapEntry.first->isTrill()) {
                 // Set the tick2 to include the duration of the ChordRest
-                if (pos.chordRest) {
-                    spannerMapEntry.first->setTick2(pos.chordRest->endTick());
-                }
+                spannerMapEntry.first->setTick2(chordRest->endTick());
                 // Special handling of ottavas
                 if (spannerMapEntry.first->isOttava()) {
                     Ottava* ottava = toOttava(spannerMapEntry.first);
-                    // Make the staff fill the pitch offsets accordingly since we use Note::ppitch in export
-                    ottava->staff()->updateOttava();
+                    if (ottava->ottavaType() == OttavaType::OTTAVA_8VB || ottava->ottavaType() == OttavaType::OTTAVA_15MB
+                        || ottava->ottavaType() == OttavaType::OTTAVA_22MB) {
+                        ottava->setPlacement(ElementPlacement::BELOW);
+                    } else {
+                        ottava->setPlacement(ElementPlacement::ABOVE);
+                    }
                 }
             }
         }

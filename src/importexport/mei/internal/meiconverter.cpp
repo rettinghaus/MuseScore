@@ -3881,7 +3881,7 @@ engraving::Fraction Convert::tstampToFraction(double tstamp, const engraving::Fr
 }
 
 libmei::data_MEASUREBEAT Convert::tstamp2FromFraction(const engraving::Fraction& fraction, const engraving::Fraction& timesig,
-                                               int measureOffset)
+                                                      int measureOffset)
 {
     double beat = tstampFromFraction(fraction, timesig);
     return { measureOffset, beat };
