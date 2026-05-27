@@ -3588,9 +3588,9 @@ void MeiImporter::addSpannerEnds()
                     Ottava* ottava = toOttava(spannerMapEntry.first);
                     if (ottava->ottavaType() == OttavaType::OTTAVA_8VB || ottava->ottavaType() == OttavaType::OTTAVA_15MB
                         || ottava->ottavaType() == OttavaType::OTTAVA_22MB) {
-                        ottava->setPlacement(ElementPlacement::BELOW);
+                        ottava->setPlacement(PlacementV::BELOW);
                     } else {
-                        ottava->setPlacement(ElementPlacement::ABOVE);
+                        ottava->setPlacement(PlacementV::ABOVE);
                     }
                 }
             }
