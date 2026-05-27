@@ -3255,6 +3255,7 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure, c
                 p.fretPosition = fret;
                 c->setParams(p);
                 addElemOffset(c, staff2track(staffIdx), u"", measure, tick);
+                m_score->staff(staffIdx)->insertCapoParams(tick, p, true);
             } else {
                 m_e.skipCurrentElement();
             }
@@ -6904,18 +6905,18 @@ static void setDrumset(Chord* c, MusicXmlParserPass1& pass1, const String& partI
     pass1.setDrumsetDefault(partId, instrumentId, headGroup, line, overruledStemDir);
 }
 
-void MusicXmlParserPass2::xmlSetDrumsetPitch(Note* note, const Fraction& tick, const Staff* staff,
+void MusicXmlParserPass2::xmlSetDrumsetPitch(Note* note, const Chord* chord, const Staff* staff,
                                              int step, int octave, NoteHeadGroup headGroup,
                                              DirectionV& stemDir, Instrument* instrument)
 {
     Drumset* ds = instrument->drumset();
     // get line
     // determine staff line based on display-step / -octave and clef type
-    const ClefType clef = staff->clef(tick);
+    const ClefType clef = staff->clef(chord->tick());
     const int po = ClefInfo::pitchOffset(clef);
     const int pitch = MusicXmlStepAltOct2Pitch(step, 0, octave);
     int line = po - absStep(pitch);
-    const int staffLines = staff->lines(tick);
+    const int staffLines = staff->lines(chord->tick());
     if (staffLines == 1) {
         line -= 8;
     }
@@ -6946,8 +6947,7 @@ void MusicXmlParserPass2::xmlSetDrumsetPitch(Note* note, const Fraction& tick, c
             ds->drum(newPitch) = DrumInstrument();
 
             newPitch = instr.pitch;
-            ds->drum(newPitch) = ds->drum(newPitch) = DrumInstrument(
-                instr.name, headGroup, line, stemDir, static_cast<int>(chord->voice()));
+            ds->drum(newPitch) = DrumInstrument(instr.name, headGroup, line, stemDir, static_cast<int>(chord->voice()));
         }
     }
 
@@ -7263,7 +7263,7 @@ Note* MusicXmlParserPass2::note(const String& partId,
         const int octaveShift = m_pass1.octaveShift(partId, ottavaStaff, noteStartTime);
         const Staff* st = c->staff();
         if (isSingleDrumset && mnp.unpitched() && instrumentId.empty()) {
-            xmlSetDrumsetPitch(note, noteStartTime, st, mnp.displayStep(), mnp.displayOctave(), headGroup, stemDir, instrument);
+            xmlSetDrumsetPitch(note, c, st, mnp.displayStep(), mnp.displayOctave(), headGroup, stemDir, instrument);
         } else {
             setPitch(note, st, noteStartTime, instruments, instrumentId, mnp, octaveShift, instrument);
         }
