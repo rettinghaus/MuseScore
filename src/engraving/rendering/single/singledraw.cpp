@@ -2181,6 +2181,7 @@ void SingleDraw::draw(const SlurSegment* item, Painter* painter, const PaintOpti
 
     Pen pen(item->curColor(opt));
     double mag = item->staff() ? item->staff()->staffMag(item->slur()->tick()) : 1.0;
+    mag *= item->slurTie()->scalingFactor();
 
     //Replace generic Qt dash patterns with improved equivalents to show true dots (keep in sync with tie.cpp)
     std::vector<double> dotted     = { 0.01, 1.99 };   // tighter than Qt PenStyle::DotLine equivalent - would be { 0.01, 2.99 }
@@ -2375,6 +2376,7 @@ void SingleDraw::draw(const TieSegment* item, Painter* painter, const PaintOptio
 
     Pen pen(item->curColor(opt));
     double mag = item->staff() ? item->staff()->staffMag(item->tie()->tick()) : 1.0;
+    mag *= item->slurTie()->scalingFactor();
 
     //Replace generic Qt dash patterns with improved equivalents to show true dots (keep in sync with slur.cpp)
     std::vector<double> dotted     = { 0.01, 1.99 };   // tighter than Qt PenStyle::DotLine equivalent - would be { 0.01, 2.99 }
