@@ -7904,7 +7904,7 @@ static void clampMusicXmlOctave(int& octave)
  Write the staff details for \a part to \a xml.
  */
 
-static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vector<size_t> hiddenStaves)
+static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vector<size_t> hiddenStaves, const Fraction& tick)
 {
     const Instrument* instrument = part->instrument();
     const size_t staves = part->nstaves();
@@ -7912,7 +7912,7 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vecto
     // staff details
     for (size_t i = 0; i < staves; i++) {
         Staff* st = part->staff(i);
-        const double mag = st->staffMag(Fraction(0, 1));
+        const double mag = st->staffMag(tick);
         bool hidden = false;
         if (!st->show()) {
             hidden = true;
@@ -7923,14 +7923,17 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vecto
                 }
             }
         }
-        const Color lineColor = st->color(Fraction(0, 1));
-        const bool invis = st->isLinesInvisible(Fraction(0, 1));
+        const Color lineColor = st->color(tick);
+        const bool invis = st->isLinesInvisible(tick);
         const bool needsLineDetails = invis || lineColor != engravingConfiguration()->defaultColor();
-        if (st->lines(Fraction(0, 1)) != 5 || st->isTabStaff(Fraction(0, 1)) || !muse::RealIsEqual(mag, 1.0)
+        if (st->lines(tick) != 5 || st->isTabStaff(tick) || !muse::RealIsEqual(mag, 1.0)
             || hidden || needsLineDetails) {
             XmlWriter::Attributes attributes;
             if (staves > 1) {
                 attributes.emplace_back(std::make_pair("number", i + 1));
+            }
+            if (st->isTabStaff(tick) && !st->staffType(tick)->useNumbers()) {
+                attributes.emplace_back(std::make_pair("show-frets", "letters"));
             }
             if (hidden) {
                 attributes.emplace_back(std::make_pair("print-object", "no"));
@@ -7945,9 +7948,9 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vecto
                 xml.tag("staff-type", "alternate");
             }
 
-            xml.tag("staff-lines", st->lines(Fraction(0, 1)));
+            xml.tag("staff-lines", st->lines(tick));
             if (needsLineDetails) {
-                for (int lineIdx = 0; lineIdx < st->lines(Fraction(0, 1)); ++lineIdx) {
+                for (int lineIdx = 0; lineIdx < st->lines(tick); ++lineIdx) {
                     String ld = String(u"line-detail line=\"%1\"").arg(lineIdx + 1);
                     if (lineColor != engravingConfiguration()->defaultColor()) {
                         ld += String(u" color=\"%1\"").arg(String::fromStdString(lineColor.toString()));
@@ -8526,7 +8529,7 @@ void ExportMusicXml::writeMeasure(const Measure* const m,
 
     // output attributes with the first actual measure (pickup or regular) only
     if (isFirstActualMeasure) {
-        writeStaffDetails(m_xml, part, m_hiddenStaves);
+        writeStaffDetails(m_xml, part, m_hiddenStaves, m->tick());
         writeInstrumentDetails(part->instrument(), m_score->style().styleB(Sid::concertPitch));
     } else {
         for (size_t staffIdx : m_hiddenStaves) {

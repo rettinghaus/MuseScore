@@ -480,7 +480,7 @@ private:
     void stem(engraving::DirectionV& sd, bool& nost);
     void doEnding(const muse::String& partId, engraving::Measure* measure, const muse::String& number, const muse::String& type,
                   const engraving::Color color, const muse::String& text, const bool print);
-    void staffDetails(const muse::String& partId, engraving::Measure* measure = nullptr);
+    void staffDetails(const muse::String& partId, engraving::Measure* measure, const Fraction& tick);
     void staffTuning(engraving::StringData* t);
     void skipLogCurrElem();
 
