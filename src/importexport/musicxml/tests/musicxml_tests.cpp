@@ -901,6 +901,9 @@ TEST_F(MusicXml_Tests, lines4) {
 TEST_F(MusicXml_Tests, lineDetails) {
     musicXmlIoTest("testLineDetails");
 }
+TEST_F(MusicXml_Tests, luteTablature) {
+    musicXmlIoTest("testLuteTablature");
+}
 TEST_F(MusicXml_Tests, lyricBracket) {
     musicXmlImportTestRef("testLyricBracket");
 }
