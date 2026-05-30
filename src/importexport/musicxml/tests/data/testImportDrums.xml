@@ -171,7 +171,7 @@
     </measure>
     <measure number="3">
       <attributes/>
-      <note print-object="no">
+      <note>
         <rest/>
         <duration>256</duration>
         <voice>1</voice>
@@ -180,7 +180,7 @@
     </measure>
     <measure number="4">
       <attributes/>
-      <note print-object="no">
+      <note>
         <rest/>
         <duration>256</duration>
         <voice>1</voice>

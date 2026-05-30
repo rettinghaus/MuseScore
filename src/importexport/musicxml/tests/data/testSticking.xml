@@ -451,7 +451,7 @@
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         </note>
-      <note print-object="no">
+      <note default-x="292.7" default-y="-20">
         <rest/>
         <duration>8</duration>
         <voice>1</voice>
@@ -577,7 +577,7 @@
             </articulations>
           </notations>
         </note>
-      <note print-object="no">
+      <note default-x="199.79" default-y="-20">
         <rest/>
         <duration>8</duration>
         <voice>1</voice>
@@ -678,13 +678,13 @@
             </articulations>
           </notations>
         </note>
-      <note print-object="no">
+      <note default-x="125.44" default-y="-20">
         <rest/>
         <duration>4</duration>
         <voice>1</voice>
         <type>quarter</type>
         </note>
-      <note print-object="no">
+      <note default-x="188.44" default-y="-20">
         <rest/>
         <duration>8</duration>
         <voice>1</voice>
