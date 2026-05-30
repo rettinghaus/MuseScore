@@ -4579,7 +4579,8 @@ void ExportMusicXml::rest(Rest* rest, staff_idx_t staff, const std::vector<Lyric
     noteTag += color2xml(rest);
     noteTag += elementPosition(this, rest);
     if (!rest->visible()
-        || (rest->staff() && rest->staff()->staffType(rest->tick())->isTabStaff() && !rest->staff()->staffType(rest->tick())->showRests())) {
+        || (rest->staff() && rest->staff()->staffType(rest->tick())->isTabStaff()
+            && !rest->staff()->staffType(rest->tick())->showRests())) {
         noteTag += u" print-object=\"no\"";
     }
     m_xml.startElementRaw(noteTag);
