@@ -7845,8 +7845,7 @@ void ExportMusicXml::writeElement(EngravingItem* el, const Measure* m, staff_idx
         // these will be output at the start of the next measure
         const Clef* cle = toClef(el);
         const Fraction ti = cle->segment()->tick();
-        const String visible
-            = (!cle->visible() || (cle->staff() && !cle->staff()->staffType(cle->tick())->genClef())) ? u" print-object=\"no\"" : String();
+        const String visible = (!cle->visible()) ? u" print-object=\"no\"" : String();
         clefDebug("exportxml: clef in measure ti=%d ct=%d gen=%d", ti, int(cle->clefType()), el->generated());
         if (el->generated()) {
             clefDebug("exportxml: generated clef not exported");
