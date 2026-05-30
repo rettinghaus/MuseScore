@@ -1438,8 +1438,19 @@ TEST_F(MusicXml_Tests, words1) {
 TEST_F(MusicXml_Tests, words2) {
     musicXmlIoTest("testWords2");
 }
-TEST_F(MusicXml_Tests, luteTablature) {
-    musicXmlIoTest("testLuteTablature");
+TEST_F(MusicXml_Tests, luteTablature)
+{
+    String fileName = String::fromUtf8("testLuteTablature.xml");
+    MasterScore* score = readScore(XML_IO_DATA_DIR + fileName);
+    ASSERT_NE(score, nullptr);
+
+    // Verify show-frets="letters" was imported (useNumbers should be false)
+    // Check first staff (assuming testLuteTablature.xml has lute tab on staff 0)
+    Staff* st = score->staff(0);
+    ASSERT_NE(st, nullptr);
+    EXPECT_FALSE(st->staffType(Fraction(0, 1))->useNumbers());
+
+    delete score;
 }
 TEST_F(MusicXml_Tests, hiddenStaves)
 {

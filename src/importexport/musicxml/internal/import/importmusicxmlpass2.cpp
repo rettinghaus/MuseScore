@@ -3108,9 +3108,9 @@ void MusicXmlParserPass2::attributes(const String& partId, Measure* measure, con
  Set stafflines and barline span for a single staff
  */
 
-static void setStaffLines(Score* score, staff_idx_t staffIdx, int stafflines)
+static void setStaffLines(Score* score, staff_idx_t staffIdx, int stafflines, const Fraction& tick)
 {
-    score->staff(staffIdx)->setLines(Fraction(0, 1), stafflines);
+    score->staff(staffIdx)->setLines(tick, stafflines);
     score->staff(staffIdx)->setBarLineTo(0);          // default
 }
 
@@ -3195,11 +3195,16 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure, c
             }
         } else if (m_e.name() == "line-detail") {
             const Color color = Color::fromString(m_e.attribute("color"));
-            if (color.isValid()) {
-                m_score->staff(staffIdx)->staffType(Fraction(0, 1))->setColor(color);
-            }
-            if (m_e.attribute("print-object") == u"no") {
-                m_score->staff(staffIdx)->staffType(Fraction(0, 1))->setInvisible(true);
+            bool invis = (m_e.attribute("print-object") == u"no");
+            if (color.isValid() || invis) {
+                StaffType stt(*(m_score->staff(staffIdx)->staffType(tick)));
+                if (color.isValid()) {
+                    stt.setColor(color);
+                }
+                if (invis) {
+                    stt.setInvisible(true);
+                }
+                m_score->staff(staffIdx)->setStaffType(tick, stt);
             }
             m_e.skipCurrentElement();
         } else if (m_e.name() == "staff-tuning") {
@@ -3215,11 +3220,11 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure, c
     }
 
     if (staffLines > 0) {
-        setStaffLines(m_score, staffIdx, staffLines);
+        setStaffLines(m_score, staffIdx, staffLines, tick);
     }
 
     Instrument* i = part->instrument();
-    if (m_score->staff(staffIdx)->isTabStaff(Fraction(0, 1))) {
+    if (m_score->staff(staffIdx)->isTabStaff(tick)) {
         if (i->stringData()->frets() == 0) {
             stringData.setFrets(25);
         } else {
