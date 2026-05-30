@@ -307,18 +307,19 @@ static void xmlSetPitch(Note* n, const Staff* staff, const Fraction& tick,
     pitch += 12 * octaveShift;   // correct for octave shift
 
     int tpc2 = step2tpc(step, AccidentalVal(alter));
+    int tpc1 = Transpose::transposeTpc(tpc2, intval, true);
 
     const CapoParams& capo = staff->capo(tick);
 
     if (capo.active && staff->isTabStaff(tick)) {
-        pitch += capo.fretPosition;
-        tpc2 = Transpose::transposeTpc(tpc2, Interval(capo.fretPosition), true);
+        if (capo.transposeMode == CapoParams::TransposeMode::TAB_ONLY) {
+            pitch += capo.fretPosition;
+            tpc2 = Transpose::transposeTpc(tpc2, Interval(capo.fretPosition), true);
+        }
     }
 
     // ensure sane values
     pitch = std::clamp(pitch, 0, 127);
-
-    int tpc1 = Transpose::transposeTpc(tpc2, intval, true);
     n->setPitch(pitch, tpc1, tpc2);
     n->setTuning(tuning);
     //LOGD("  pitch=%d tpc1=%d tpc2=%d", n->pitch(), n->tpc1(), n->tpc2());
@@ -3253,6 +3254,9 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure, c
                 Capo* c = Factory::createCapo(m_score->dummy()->segment());
                 CapoParams p = c->params();
                 p.fretPosition = fret;
+                if (m_score->staff(staffIdx)->isTabStaff(tick)) {
+                    p.transposeMode = CapoParams::TransposeMode::TAB_ONLY;
+                }
                 c->setParams(p);
                 addElemOffset(c, staff2track(staffIdx), u"", measure, tick);
                 m_score->staff(staffIdx)->insertCapoParams(tick, p, true);
