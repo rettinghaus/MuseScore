@@ -24,6 +24,8 @@
 
 #include "engraving/engravingerrors.h"
 #include "engraving/dom/masterscore.h"
+#include "engraving/dom/staff.h"
+#include "engraving/dom/stafftype.h"
 
 #include "settings.h"
 #include "importexport/musicxml/imusicxmlconfiguration.h"
