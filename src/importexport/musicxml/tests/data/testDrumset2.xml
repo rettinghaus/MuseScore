@@ -98,10 +98,10 @@
     <measure number="1">
       <attributes>
         <divisions>1</divisions>
-        <key>
+        <key print-object="no">
           <fifths>0</fifths>
           </key>
-        <time>
+        <time print-object="no">
           <beats>4</beats>
           <beat-type>4</beat-type>
           </time>
@@ -165,10 +165,10 @@
     <measure number="1">
       <attributes>
         <divisions>1</divisions>
-        <key>
+        <key print-object="no">
           <fifths>0</fifths>
           </key>
-        <time>
+        <time print-object="no">
           <beats>4</beats>
           <beat-type>4</beat-type>
           </time>
@@ -236,10 +236,10 @@
     <measure number="1">
       <attributes>
         <divisions>1</divisions>
-        <key>
+        <key print-object="no">
           <fifths>0</fifths>
           </key>
-        <time>
+        <time print-object="no">
           <beats>4</beats>
           <beat-type>4</beat-type>
           </time>
