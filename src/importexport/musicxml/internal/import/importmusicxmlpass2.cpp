@@ -3147,6 +3147,16 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure)
 
     staff_idx_t staffIdx = m_score->staffIdx(part) + n;
 
+    if (m_score->staff(staffIdx)->isTabStaff(Fraction(0, 1))) {
+        AsciiStringView showFrets = m_e.asciiAttribute("show-frets");
+        bool useNumbers = (showFrets != "letters"); // "numbers" is default
+        StaffType stt(*(m_score->staff(staffIdx)->staffType(Fraction(0, 1))));
+        if (stt.useNumbers() != useNumbers) {
+            stt.setUseNumbers(useNumbers);
+            m_score->staff(staffIdx)->setStaffType(Fraction(0, 1), stt);
+        }
+    }
+
     StringData stringData;
     AsciiStringView visible = m_e.asciiAttribute("print-object");
     AsciiStringView spacing = m_e.asciiAttribute("print-spacing");
@@ -3188,8 +3198,16 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure)
             }
         } else if (m_e.name() == "line-detail") {
             const Color color = Color::fromString(m_e.attribute("color"));
-            if (color.isValid()) {
-                m_score->staff(staffIdx)->staffType(Fraction(0, 1))->setColor(color);
+            bool invis = (m_e.attribute("print-object") == u"no");
+            if (color.isValid() || invis) {
+                StaffType stt(*(m_score->staff(staffIdx)->staffType(Fraction(0, 1))));
+                if (color.isValid()) {
+                    stt.setColor(color);
+                }
+                if (invis) {
+                    stt.setInvisible(true);
+                }
+                m_score->staff(staffIdx)->setStaffType(Fraction(0, 1), stt);
             }
             if (m_e.attribute("print-object") == u"no") {
                 m_score->staff(staffIdx)->staffType(Fraction(0, 1))->setInvisible(true);
