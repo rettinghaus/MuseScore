@@ -2199,7 +2199,7 @@ void ExportMusicXml::timesig(const TimeSig* tsig, staff_idx_t staff)
         attrs.push_back({ "number", staff });
     }
 
-    if (!tsig->visible() || !tsig->showOnThisStaff()) {
+    if (!tsig->visible() || !tsig->showOnThisStaff() || (tsig->staff() && !tsig->staff()->staffType(tsig->tick())->genTimesig())) {
         attrs.emplace_back(std::make_pair("print-object", "no"));
     }
 
@@ -2438,7 +2438,7 @@ void ExportMusicXml::keysig(const KeySig* ks, ClefType ct, staff_idx_t staff, bo
     if (staff) {
         attrs.emplace_back(std::make_pair("number", staff));
     }
-    if (!visible) {
+    if (!visible || (ks->staff() && !ks->staff()->staffType(ks->tick())->genKeysig())) {
         attrs.emplace_back(std::make_pair("print-object", "no"));
     }
     addColorAttr(ks, attrs);
@@ -4576,7 +4576,7 @@ void ExportMusicXml::rest(Rest* rest, staff_idx_t staff, const std::vector<Lyric
     String noteTag = u"note";
     noteTag += color2xml(rest);
     noteTag += elementPosition(this, rest);
-    if (!rest->visible()) {
+    if (!rest->visible() || (rest->staff() && !rest->staff()->staffType(rest->tick())->showRests())) {
         noteTag += u" print-object=\"no\"";
     }
     m_xml.startElementRaw(noteTag);
@@ -7578,7 +7578,7 @@ void ExportMusicXml::findAndExportClef(const Measure* const m, const int staves,
                     && ((seg->measure() != m) || ((seg->segmentType() == SegmentType::HeaderClef) && !cle->otherClef()))) {
                     clefDebug("exportxml: clef exported");
                     String clefAttr = color2xml(cle);
-                    if (!cle->visible()) {
+                    if (!cle->visible() || (cle->staff() && !cle->staff()->staffType(cle->tick())->genClef())) {
                         clefAttr += u" print-object=\"no\"";
                     }
                     clef(sstaff, cle->clefType(), clefAttr);
@@ -7841,7 +7841,7 @@ void ExportMusicXml::writeElement(EngravingItem* el, const Measure* m, staff_idx
         // these will be output at the start of the next measure
         const Clef* cle = toClef(el);
         const Fraction ti = cle->segment()->tick();
-        const String visible = (!cle->visible()) ? u" print-object=\"no\"" : String();
+        const String visible = (!cle->visible() || (cle->staff() && !cle->staff()->staffType(cle->tick())->genClef())) ? u" print-object=\"no\"" : String();
         clefDebug("exportxml: clef in measure ti=%d ct=%d gen=%d", ti, int(cle->clefType()), el->generated());
         if (el->generated()) {
             clefDebug("exportxml: generated clef not exported");
