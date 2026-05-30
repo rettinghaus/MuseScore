@@ -25,6 +25,7 @@
 #include "engraving/dom/durationtype.h"
 #include "engraving/types/fraction.h"
 #include "serialization/xmlstreamreader.h"
+#include "thirdparty/pugixml/pugixml.hpp"
 
 namespace mu::iex::musicxml {
 class MusicXmlLogger;
@@ -50,11 +51,14 @@ public:
     int dots() const { return m_dots; }
     engraving::TDuration normalType() const { return m_normalType; }
     bool readProperties(muse::XmlStreamReader& e);
+    bool readProperties(const pugi::xml_node& node);
     engraving::Fraction timeMod() const { return m_timeMod; }
 
 private:
     void duration(muse::XmlStreamReader& e);
+    void duration(const pugi::xml_node& node);
     void timeModification(muse::XmlStreamReader& e);
+    void timeModification(const pugi::xml_node& node);
     const int m_divs;                                  // the current divisions value
     int m_dots = 0;
     engraving::Fraction m_calcDura;

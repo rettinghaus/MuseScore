@@ -25,6 +25,7 @@
 #include <array>
 
 #include "importmusicxmlpass1.h"
+#include "thirdparty/pugixml/pugixml.hpp"
 #include "../shared/musicxmlsupport.h"
 #include "../shared/musicxmltypes.h"
 #include "musicxmltupletstate.h"
@@ -231,17 +232,15 @@ typedef std::map<engraving::String, std::pair<engraving::String, engraving::Dura
 class MusicXmlParserLyric
 {
 public:
-    MusicXmlParserLyric(const LyricNumberHandler lyricNumberHandler, muse::XmlStreamReader& e, engraving::Score* score,
+    MusicXmlParserLyric(const LyricNumberHandler lyricNumberHandler, engraving::Score* score,
                         MusicXmlLogger* logger, bool isVoiceStaff);
     std::set<engraving::Lyrics*> extendedLyrics() const { return m_extendedLyrics; }
     std::map<int, engraving::Lyrics*> numberedLyrics() const { return m_numberedLyrics; }
     std::vector<engraving::Sticking*> inferredStickings() const { return m_inferredStickings; }
-    void parse(bool visibility = true);
+    void parse(const pugi::xml_node& node, bool visibility = true);
 private:
-    void skipLogCurrElem();
-    void readElision(muse::String& formattedText);
+    void readElision(const pugi::xml_node& node, muse::String& formattedText);
     const LyricNumberHandler m_lyricNumberHandler;
-    muse::XmlStreamReader& m_e;
     const engraving::Score* m_score = nullptr;            // the score
     MusicXmlLogger* m_logger = nullptr;            // Error logger
     std::map<int, engraving::Lyrics*> m_numberedLyrics;   // lyrics with valid number
@@ -281,7 +280,7 @@ public:
     muse::String text() const { return m_text; }
     void setVisible(const bool visible) { m_visible = visible; }
     bool visible() const { return m_visible; }
-    static Notation notationWithAttributes(const muse::String& name, const std::vector<muse::XmlStreamReader::Attribute>& attributes,
+    static Notation notationWithAttributes(const pugi::xml_node& node,
                                            const muse::String& parent = {}, const engraving::SymId& symId = engraving::SymId::noSym);
 private:
     muse::String m_name;
@@ -342,8 +341,8 @@ using MusicXmlTieMap = std::map<TieLocation, engraving::Tie*>;
 class MusicXmlParserNotations
 {
 public:
-    MusicXmlParserNotations(muse::XmlStreamReader& e, engraving::Score* score, MusicXmlLogger* logger, MusicXmlParserPass2& pass2);
-    void parse();
+    MusicXmlParserNotations(engraving::Score* score, MusicXmlLogger* logger, MusicXmlParserPass2& pass2);
+    void parse(const pugi::xml_node& node);
     void addToScore(engraving::ChordRest* const cr, engraving::Note* const note, const engraving::Fraction& tick, SlurStack& slurs,
                     engraving::Glissando* glissandi[MAX_NUMBER_LEVEL][2], MusicXmlSpannerMap& spanners, TrillStack& trills,
                     MusicXmlTieMap& ties, std::vector<engraving::Note*>& unstartedTieNotes, std::vector<engraving::Note*>& unendedTieNotes,
@@ -360,24 +359,22 @@ private:
     void addError(const muse::String& error);      // Add an error to be shown in the GUI
     void addNotation(const Notation& notation, engraving::ChordRest* const cr, engraving::Note* const note);
     void addTechnical(const Notation& notation, engraving::Note* note);
-    void arpeggio();
-    void harmonic();
-    void harmonMute();
-    void hole();
-    void articulations();
-    void dynamics();
-    void fermata();
-    void glissandoSlide();
-    void mordentNormalOrInverted();
-    void ornaments();
-    void slur();
-    void skipLogCurrElem();
-    void technical();
-    void otherTechnical();
-    void tied();
-    void tuplet();
-    void otherNotation();
-    muse::XmlStreamReader& m_e;
+    void arpeggio(const pugi::xml_node& node);
+    void harmonic(const pugi::xml_node& node);
+    void harmonMute(const pugi::xml_node& node);
+    void hole(const pugi::xml_node& node);
+    void articulations(const pugi::xml_node& node);
+    void dynamics(const pugi::xml_node& node);
+    void fermata(const pugi::xml_node& node);
+    void glissandoSlide(const pugi::xml_node& node);
+    void mordentNormalOrInverted(const pugi::xml_node& node);
+    void ornaments(const pugi::xml_node& node);
+    void slur(const pugi::xml_node& node);
+    void technical(const pugi::xml_node& node);
+    void otherTechnical(const pugi::xml_node& node);
+    void tied(const pugi::xml_node& node);
+    void tuplet(const pugi::xml_node& node);
+    void otherNotation(const pugi::xml_node& node);
     MusicXmlParserPass2& m_pass2;
     engraving::Score* m_score = nullptr;                         // the score
     MusicXmlLogger* m_logger = nullptr;                              // the error logger
@@ -447,42 +444,40 @@ private:
     void initPartState(const muse::String& partId);
     SpannerSet findIncompleteSpannersAtPartEnd();
     engraving::Err parse();
-    void scorePartwise();
-    void partList();
-    void scorePart();
-    void part();
-    void measure(const muse::String& partId, const engraving::Fraction time);
+    void scorePartwise(const pugi::xml_node& node);
+    void partList(const pugi::xml_node& node);
+    void scorePart(const pugi::xml_node& node);
+    void part(const pugi::xml_node& node);
+    void measure(const pugi::xml_node& node, const muse::String& partId, const engraving::Fraction time);
     void measureLayout(engraving::Measure* measure);
     void setMeasureRepeats(const engraving::staff_idx_t scoreRelStaff, engraving::Measure* measure);
-    void attributes(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
-    void measureStyle(engraving::Measure* measure);
-    void barline(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
-    void key(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
-    void clef(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
-    void time(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
-    void divisions();
-    engraving::Note* note(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction sTime,
-                          const engraving::Fraction prevTime, engraving::Fraction& missingPrev, engraving::Fraction& dura,
+    void attributes(const pugi::xml_node& node, const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
+    void measureStyle(const pugi::xml_node& node, engraving::Measure* measure);
+    void barline(const pugi::xml_node& node, const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
+    void key(const pugi::xml_node& node, const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
+    void clef(const pugi::xml_node& node, const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
+    void time(const pugi::xml_node& node, const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick);
+    void divisions(const pugi::xml_node& node);
+    engraving::Note* note(const muse::String& partId, const pugi::xml_node& node, engraving::Measure* measure, const engraving::Fraction sTime,
+                          const engraving::Fraction prevSTime, engraving::Fraction& missingPrev, engraving::Fraction& dura,
                           engraving::Fraction& missingCurr, muse::String& currentVoice, GraceChordList& gcl, size_t& gac, Beams& currBeams,
                           FiguredBassList& fbl, int& alt, MusicXmlTupletStates& tupletStates, Tuplets& tuplets, ArpeggioMap& arpMap,
                           DelayedArpMap& delayedArps);
-    void notePrintSpacingNo(engraving::Fraction& dura);
-    engraving::FiguredBassItem* figure(const int idx, const bool paren, engraving::FiguredBass* parent);
-    engraving::FiguredBass* figuredBass();
-    engraving::FretDiagram* frame();
-    void harmony(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& sTime, HarmonyMap& harmonyMap);
-    engraving::Accidental* accidental();
-    void beam(std::map<int, muse::String>& beamTypes);
-    void duration(engraving::Fraction& dura);
-    void forward(engraving::Fraction& dura);
-    void backup(engraving::Fraction& dura);
-    void timeModification(engraving::Fraction& timeMod, engraving::TDuration& normalType);
-    void stem(engraving::DirectionV& sd, bool& nost);
+    void notePrintSpacingNo(const pugi::xml_node& node, engraving::Fraction& dura);
+    engraving::FiguredBassItem* figure(const pugi::xml_node& node, const int idx, const bool paren, engraving::FiguredBass* parent);
+    engraving::FiguredBass* figuredBass(const pugi::xml_node& node);
+    engraving::FretDiagram* frame(const pugi::xml_node& node);
+    void harmony(const muse::String& partId, const pugi::xml_node& node, engraving::Measure* measure, const engraving::Fraction& sTime, HarmonyMap& harmonyMap);
+    engraving::Accidental* accidental(const pugi::xml_node& node);
+    void beam(const pugi::xml_node& node, std::map<int, muse::String>& beamTypes);
+    void duration(const pugi::xml_node& node, engraving::Fraction& dura);
+    void forward(const pugi::xml_node& node, engraving::Fraction& dura);
+    void backup(const pugi::xml_node& node, engraving::Fraction& dura);
+    void stem(const pugi::xml_node& node, engraving::DirectionV& sd, bool& nost);
     void doEnding(const muse::String& partId, engraving::Measure* measure, const muse::String& number, const muse::String& type,
                   const engraving::Color color, const muse::String& text, const bool print);
-    void staffDetails(const muse::String& partId, engraving::Measure* measure = nullptr);
-    void staffTuning(engraving::StringData* t);
-    void skipLogCurrElem();
+    void staffDetails(const muse::String& partId, const pugi::xml_node& node, engraving::Measure* measure = nullptr);
+    void staffTuning(const pugi::xml_node& node, engraving::StringData* t);
 
     // multi-measure rest state handling
     void setMultiMeasureRestCount(int count);
@@ -493,7 +488,7 @@ private:
 
     // generic pass 2 data
 
-    muse::XmlStreamReader m_e;
+    pugi::xml_document m_doc;
     int m_divs = 0;                        // the current divisions value
     engraving::Score* m_score = nullptr;              // the score
     MusicXmlParserPass1& m_pass1;          // the pass1 results
@@ -555,9 +550,9 @@ private:
 class MusicXmlParserDirection
 {
 public:
-    MusicXmlParserDirection(muse::XmlStreamReader& e, engraving::Score* score, MusicXmlParserPass1& pass1, MusicXmlParserPass2& pass2,
+    MusicXmlParserDirection(engraving::Score* score, MusicXmlParserPass1& pass1, MusicXmlParserPass2& pass2,
                             MusicXmlLogger* logger);
-    void direction(const muse::String& partId, engraving::Measure* measure, const engraving::Fraction& tick, MusicXmlSpannerMap& spanners,
+    void direction(const muse::String& partId, const pugi::xml_node& node, engraving::Measure* measure, const engraving::Fraction& tick, MusicXmlSpannerMap& spanners,
                    DelayedDirectionsList& delayedDirections, InferredFingeringsList& inferredFingerings, HarmonyMap& harmonyMap,
                    bool& measureHasCoda, SegnoStack& segnos);
 
@@ -566,24 +561,24 @@ public:
     void setBpm(const double bpm) { m_tpoSound = bpm; }
 
 private:
-    void directionType(std::vector<MusicXmlSpannerDesc>& starts, std::vector<MusicXmlSpannerDesc>& stops);
-    void bracket(const muse::String& type, const int number, std::vector<MusicXmlSpannerDesc>& starts,
+    void directionType(const pugi::xml_node& node, std::vector<MusicXmlSpannerDesc>& starts, std::vector<MusicXmlSpannerDesc>& stops);
+    void bracket(const pugi::xml_node& node, const muse::String& type, const int number, std::vector<MusicXmlSpannerDesc>& starts,
                  std::vector<MusicXmlSpannerDesc>& stops);
-    void octaveShift(const muse::String& type, const int number, std::vector<MusicXmlSpannerDesc>& starts,
+    void octaveShift(const pugi::xml_node& node, const muse::String& type, const int number, std::vector<MusicXmlSpannerDesc>& starts,
                      std::vector<MusicXmlSpannerDesc>& stops);
-    void pedal(const muse::String& type, const int number, std::vector<MusicXmlSpannerDesc>& starts,
+    void pedal(const pugi::xml_node& node, const muse::String& type, const int number, std::vector<MusicXmlSpannerDesc>& starts,
                std::vector<MusicXmlSpannerDesc>& stops);
-    void dashes(const muse::String& type, const int number, std::vector<MusicXmlSpannerDesc>& starts,
+    void dashes(const pugi::xml_node& node, const muse::String& type, const int number, std::vector<MusicXmlSpannerDesc>& starts,
                 std::vector<MusicXmlSpannerDesc>& stops);
-    void wedge(const muse::String& type, const int number, std::vector<MusicXmlSpannerDesc>& starts,
+    void wedge(const pugi::xml_node& node, const muse::String& type, const int number, std::vector<MusicXmlSpannerDesc>& starts,
                std::vector<MusicXmlSpannerDesc>& stops);
-    muse::String metronome(double& r);
-    void sound();
-    void play();
-    void swing();
-    void dynamics();
-    void harpPedal();
-    void otherDirection();
+    muse::String metronome(const pugi::xml_node& node, double& r);
+    void sound(const pugi::xml_node& node);
+    void play(const pugi::xml_node& node);
+    void swing(const pugi::xml_node& node);
+    void dynamics(const pugi::xml_node& node);
+    void harpPedal(const pugi::xml_node& node);
+    void otherDirection(const pugi::xml_node& node);
     void handleRepeats(engraving::Measure* measure, const engraving::Fraction tick, bool& measureHasCoda, SegnoStack& segnos,
                        DelayedDirectionsList& delayedDirections);
     engraving::Marker* findMarker(const muse::String& repeat) const;
@@ -616,7 +611,6 @@ private:
 
     bool hasTotalY() const { return m_hasRelativeY || m_hasDefaultY; }
 
-    muse::XmlStreamReader& m_e;
     engraving::Score* m_score = nullptr;                    // the score
     MusicXmlParserPass1& m_pass1;                // the pass1 results
     MusicXmlParserPass2& m_pass2;                // the pass2 results

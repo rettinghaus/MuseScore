@@ -186,12 +186,114 @@ void MusicXmlNotePitch::pitch(muse::XmlStreamReader& e)
  Return true if handled.
  */
 
+void MusicXmlNotePitch::accidental(const pugi::xml_node& node, Score* score)
+{
+    const bool cautionary = strcmp(node.attribute("cautionary").value(), "yes") == 0;
+    const bool editorial = strcmp(node.attribute("editorial").value(), "yes") == 0;
+    const bool parentheses = strcmp(node.attribute("parentheses").value(), "yes") == 0;
+    const bool noParentheses = strcmp(node.attribute("parentheses").value(), "no") == 0;
+    const bool brackets = strcmp(node.attribute("bracket").value(), "yes") == 0;
+    const bool noBrackets = strcmp(node.attribute("bracket").value(), "no") == 0;
+    const bool smallAccid = strcmp(node.attribute("size").value(), "cue") == 0 || strcmp(node.attribute("size").value(), "grace-cue") == 0;
+    const Color accColor = Color(node.attribute("color").value());
+    const String smufl = String::fromUtf8(node.attribute("smufl").value());
+
+    const String s = String::fromUtf8(node.child_value());
+    const AccidentalType type = musicXmlString2accidentalType(s, smufl);
+
+    if (type != AccidentalType::NONE) {
+        m_acc = Factory::createAccidental(score->dummy());
+        m_acc->setAccidentalType(type);
+        if (cautionary || editorial) { // no way to tell one from the other
+            m_acc->setRole(AccidentalRole::USER);
+        } // except via the use of parentheses vs. brackets
+        if (noParentheses || noBrackets) { // explicitly none wanted
+        } else if (parentheses || cautionary) { // set to "yes" or "cautionary" and not set at all
+            m_acc->setBracket(AccidentalBracket(AccidentalBracket::PARENTHESIS));
+        } else if (brackets || editorial) { // set to "yes" or "editorial" and not set at all
+            m_acc->setBracket(AccidentalBracket(AccidentalBracket::BRACKET));
+        }
+        if (accColor.isValid()) {
+            m_acc->setColor(accColor);
+        }
+        m_acc->setSmall(smallAccid);
+    }
+}
+
+void MusicXmlNotePitch::displayStepOctave(const pugi::xml_node& node)
+{
+    for (pugi::xml_node child : node.children()) {
+        if (strcmp(child.name(), "display-step") == 0) {
+            const String step = String::fromUtf8(child.child_value());
+            int pos = static_cast<int>(String(u"CDEFGAB").indexOf(step));
+            if (step.size() == 1 && pos >= 0 && pos < 7) {
+                m_displayStep = pos;
+            } else {
+                LOGD("invalid step '%s'", muPrintable(step));
+            }
+        } else if (strcmp(child.name(), "display-octave") == 0) {
+            const String oct = String::fromUtf8(child.child_value());
+            bool ok;
+            m_displayOctave = oct.toInt(&ok);
+            if (!ok || m_displayOctave < 0 || m_displayOctave > 9) {
+                LOGD("invalid octave '%s'", muPrintable(oct));
+                m_displayOctave = -1;
+            }
+        }
+    }
+}
+
+void MusicXmlNotePitch::pitch(const pugi::xml_node& node)
+{
+    // defaults
+    m_step = -1;
+    m_alter = 0;
+    m_tuning = 0.0;
+    m_octave = -1;
+
+    for (pugi::xml_node child : node.children()) {
+        if (strcmp(child.name(), "alter") == 0) {
+            const String alter = String::fromUtf8(child.child_value());
+            bool ok;
+            m_alter = MusicXmlSupport::stringToInt(alter, &ok);
+            if (!ok || m_alter < -2 || m_alter > 2) {
+                m_logger->logError(String(u"invalid alter '%1'").arg(alter));
+                bool ok2;
+                const double altervalue = alter.toDouble(&ok2);
+                if (ok2 && (std::abs(altervalue) < 2.0) && (m_accType == AccidentalType::NONE)) {
+                    m_accType = microtonalGuess(altervalue);
+                    if (m_accType == AccidentalType::NONE) {
+                        m_tuning = 100 * altervalue;
+                    }
+                }
+                m_alter = 0;
+            }
+        } else if (strcmp(child.name(), "octave") == 0) {
+            const String oct = String::fromUtf8(child.child_value());
+            bool ok;
+            m_octave = oct.toInt(&ok);
+            if (!ok || m_octave < 0 || m_octave > 9) {
+                m_logger->logError(String(u"invalid octave '%1'").arg(oct));
+                m_octave = -1;
+            }
+        } else if (strcmp(child.name(), "step") == 0) {
+            const String step = String::fromUtf8(child.child_value());
+            const size_t pos = String(u"CDEFGAB").indexOf(step);
+            if (step.size() == 1 && pos < 7) {
+                m_step = int(pos);
+            } else {
+                m_logger->logError(String(u"invalid step '%1'").arg(step));
+            }
+        }
+    }
+}
+
 bool MusicXmlNotePitch::readProperties(muse::XmlStreamReader& e, Score* score)
 {
     const AsciiStringView tag(e.name());
 
     if (tag == "accidental") {
-        m_acc = accidental(e, score);
+        m_acc = iex::musicxml::accidental(e, score);
         return true;
     } else if (tag == "unpitched") {
         m_unpitched = true;
@@ -199,6 +301,24 @@ bool MusicXmlNotePitch::readProperties(muse::XmlStreamReader& e, Score* score)
         return true;
     } else if (tag == "pitch") {
         pitch(e);
+        return true;
+    }
+    return false;
+}
+
+bool MusicXmlNotePitch::readProperties(const pugi::xml_node& node, Score* score)
+{
+    const char* tag = node.name();
+
+    if (strcmp(tag, "accidental") == 0) {
+        accidental(node, score);
+        return true;
+    } else if (strcmp(tag, "unpitched") == 0) {
+        m_unpitched = true;
+        displayStepOctave(node);
+        return true;
+    } else if (strcmp(tag, "pitch") == 0) {
+        pitch(node);
         return true;
     }
     return false;
