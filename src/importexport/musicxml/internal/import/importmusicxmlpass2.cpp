@@ -3147,14 +3147,16 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure)
 
     staff_idx_t staffIdx = m_score->staffIdx(part) + n;
 
+    AsciiStringView showFrets = m_e.asciiAttribute("show-frets");
+    if (!showFrets.empty() && !m_score->staff(staffIdx)->isTabStaff(Fraction(0, 1))) {
+        // if no clef is specified, we will assume this is a TAB staff. This is consistent with the behavior of the Dolet exporter, which exports show-frets="..." for staves without clefs.
+        m_score->staff(staffIdx)->setStaffType(Fraction(0, 1), *StaffType::preset(StaffTypes::TAB_DEFAULT));
+    }
     if (m_score->staff(staffIdx)->isTabStaff(Fraction(0, 1))) {
-        AsciiStringView showFrets = m_e.asciiAttribute("show-frets");
         bool useNumbers = (showFrets != "letters"); // "numbers" is default
         StaffType stt(*(m_score->staff(staffIdx)->staffType(Fraction(0, 1))));
-        if (stt.useNumbers() != useNumbers) {
-            stt.setUseNumbers(useNumbers);
-            m_score->staff(staffIdx)->setStaffType(Fraction(0, 1), stt);
-        }
+        stt.setUseNumbers(useNumbers);
+        m_score->staff(staffIdx)->setStaffType(Fraction(0, 1), stt);
     }
 
     StringData stringData;
