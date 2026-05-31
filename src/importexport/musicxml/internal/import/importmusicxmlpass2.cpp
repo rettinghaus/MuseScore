@@ -3144,18 +3144,6 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure)
 
     staff_idx_t staffIdx = m_score->staffIdx(part) + n;
 
-    AsciiStringView showFrets = m_e.asciiAttribute("show-frets");
-    if (!showFrets.empty() && !m_score->staff(staffIdx)->isTabStaff(Fraction(0, 1))) {
-        // if no clef is specified, we will assume this is a TAB staff. This is consistent with the behavior of the Dolet exporter, which exports show-frets="..." for staves without clefs.
-        m_score->staff(staffIdx)->setStaffType(Fraction(0, 1), *StaffType::preset(StaffTypes::TAB_DEFAULT));
-    }
-    if (m_score->staff(staffIdx)->isTabStaff(Fraction(0, 1))) {
-        bool useNumbers = (showFrets != "letters"); // "numbers" is default
-        StaffType stt(*(m_score->staff(staffIdx)->staffType(Fraction(0, 1))));
-        stt.setUseNumbers(useNumbers);
-        m_score->staff(staffIdx)->setStaffType(Fraction(0, 1), stt);
-    }
-
     StringData stringData;
     AsciiStringView visible = m_e.asciiAttribute("print-object");
     AsciiStringView spacing = m_e.asciiAttribute("print-spacing");
@@ -3185,6 +3173,8 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure)
     }
 
     int staffLines = 0;
+    bool hasStaffTuning = false;
+    const String showFrets = m_e.attribute("show-frets");
     while (m_e.readNextStartElement()) {
         if (m_e.name() == "staff-lines") {
             // save staff lines for later
@@ -3197,22 +3187,15 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure)
             }
         } else if (m_e.name() == "line-detail") {
             const Color color = Color::fromString(m_e.attribute("color"));
-            bool invis = (m_e.attribute("print-object") == u"no");
-            if (color.isValid() || invis) {
-                StaffType stt(*(m_score->staff(staffIdx)->staffType(Fraction(0, 1))));
-                if (color.isValid()) {
-                    stt.setColor(color);
-                }
-                if (invis) {
-                    stt.setInvisible(true);
-                }
-                m_score->staff(staffIdx)->setStaffType(Fraction(0, 1), stt);
+            if (color.isValid()) {
+                m_score->staff(staffIdx)->staffType(Fraction(0, 1))->setColor(color);
             }
             if (m_e.attribute("print-object") == u"no") {
                 m_score->staff(staffIdx)->staffType(Fraction(0, 1))->setInvisible(true);
             }
             m_e.skipCurrentElement();
         } else if (m_e.name() == "staff-tuning") {
+            hasStaffTuning = true;
             staffTuning(&stringData);
         } else if (m_e.name() == "staff-size") {
             const double scaling = m_e.doubleAttribute("scaling", 100.0);
@@ -3229,6 +3212,23 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure)
     }
 
     Instrument* i = part->instrument();
+
+    if (!m_score->staff(staffIdx)->isTabStaff(Fraction(0, 1)) && (hasStaffTuning || !showFrets.isEmpty())) {
+        StaffTypes st = StaffTypes::TAB_DEFAULT;
+        if (staffLines == 4) {
+            st = StaffTypes::TAB_4COMMON;
+        } else if (staffLines == 5) {
+            st = StaffTypes::TAB_5COMMON;
+        } else if (staffLines == 7) {
+            st = StaffTypes::TAB_7COMMON;
+        } else if (staffLines == 8) {
+            st = StaffTypes::TAB_8COMMON;
+        }
+        int lines = m_score->staff(staffIdx)->lines(Fraction(0, 1));
+        m_score->staff(staffIdx)->setStaffType(Fraction(0, 1), *StaffType::preset(st));
+        m_score->staff(staffIdx)->setLines(Fraction(0, 1), lines);
+    }
+
     if (m_score->staff(staffIdx)->isTabStaff(Fraction(0, 1))) {
         if (i->stringData()->frets() == 0) {
             stringData.setFrets(25);
@@ -3237,6 +3237,9 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure)
         }
         if (stringData.strings() > 0) {
             i->setStringData(stringData);
+        }
+        if (showFrets == u"letters") {
+            m_score->staff(staffIdx)->staffType(Fraction(0, 1))->setUseNumbers(false);
         }
     } else if (stringData.strings() > 0) {
         m_logger->logError(u"trying to change string data for non-TAB staff (not supported)", &m_e);
