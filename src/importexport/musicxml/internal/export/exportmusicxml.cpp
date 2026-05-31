@@ -7898,12 +7898,11 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vecto
 {
     const Instrument* instrument = part->instrument();
     const size_t staves = part->nstaves();
-    const Fraction tick = { 0, 1 };
 
     // staff details
     for (size_t i = 0; i < staves; i++) {
         Staff* st = part->staff(i);
-        const double mag = st->staffMag(tick);
+        const double mag = st->staffMag(Fraction(0, 1));
         bool hidden = false;
         if (!st->show()) {
             hidden = true;
@@ -7914,16 +7913,16 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vecto
                 }
             }
         }
-        const Color lineColor = st->color(tick);
-        const bool invis = st->isLinesInvisible(tick);
+        const Color lineColor = st->color(Fraction(0, 1));
+        const bool invis = st->isLinesInvisible(Fraction(0, 1));
         const bool needsLineDetails = invis || lineColor != engravingConfiguration()->defaultColor();
-        if (st->lines(tick) != 5 || st->isTabStaff(tick) || !muse::RealIsEqual(mag, 1.0)
+        if (st->lines(Fraction(0, 1)) != 5 || st->isTabStaff(Fraction(0, 1)) || !muse::RealIsEqual(mag, 1.0)
             || hidden || needsLineDetails) {
             XmlWriter::Attributes attributes;
             if (staves > 1) {
                 attributes.emplace_back(std::make_pair("number", i + 1));
             }
-            if (st->isTabStaff(tick) && !st->staffType(tick)->useNumbers()) {
+            if (st->isTabStaff(Fraction(0, 1)) && !st->staffType(Fraction(0, 1))->useNumbers()) {
                 attributes.emplace_back(std::make_pair("show-frets", "letters"));
             }
             if (hidden) {
@@ -7939,9 +7938,9 @@ static void writeStaffDetails(XmlWriter& xml, const Part* part, const std::vecto
                 xml.tag("staff-type", "alternate");
             }
 
-            xml.tag("staff-lines", st->lines(tick));
+            xml.tag("staff-lines", st->lines(Fraction(0, 1)));
             if (needsLineDetails) {
-                for (int lineIdx = 0; lineIdx < st->lines(tick); ++lineIdx) {
+                for (int lineIdx = 0; lineIdx < st->lines(Fraction(0, 1)); ++lineIdx) {
                     String ld = String(u"line-detail line=\"%1\"").arg(lineIdx + 1);
                     if (lineColor != engravingConfiguration()->defaultColor()) {
                         ld += String(u" color=\"%1\"").arg(String::fromStdString(lineColor.toString()));
