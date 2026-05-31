@@ -3222,6 +3222,8 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure)
             st = StaffTypes::TAB_4COMMON;
         } else if (staffLines == 5) {
             st = StaffTypes::TAB_5COMMON;
+        } else if (staffLines == 6) {
+            st = (showFrets == u"letters") ? StaffTypes::TAB_FRENCH : StaffTypes::TAB_6COMMON;
         } else if (staffLines == 7) {
             st = StaffTypes::TAB_7COMMON;
         } else if (staffLines == 8) {
