@@ -43,6 +43,9 @@
           <beats>4</beats>
           <beat-type>4</beat-type>
           </time>
+        <clef print-object="no">
+          <sign>TAB</sign>
+          </clef>
         <staff-details show-fret="letters">
           <staff-lines>6</staff-lines>
           <staff-tuning line="1">
