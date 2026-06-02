@@ -515,7 +515,14 @@ struct ScoreConfig
 inline QString staffTypeToString(StaffTypeId type)
 {
     const StaffType* preset = StaffType::preset(type);
-    return preset ? preset->staffTypeName().toQString() : QString();
+    if (!preset) {
+        return QString();
+    }
+    // For German tablature, we want to ensure it has a proper name if it's not already set in the preset
+    if (type == StaffTypeId::TAB_GERMAN && preset->staffTypeName().isEmpty()) {
+        return muse::qtrc("engraving", "Tab. 6-str. German");
+    }
+    return preset->staffTypeName().toQString();
 }
 
 enum class BracketsType : unsigned char

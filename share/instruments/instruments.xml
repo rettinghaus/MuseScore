@@ -14874,6 +14874,16 @@
                   <stafftype staffTypePreset="tab6StrFrench">tablature</stafftype>
                   <genre>earlymusic</genre>
             </Instrument>
+            <Instrument id="lute-german-tablature">
+                  <init>lute</init>
+                  <family>lutes</family>
+                  <trackName>Lute (German tablature)</trackName>
+                  <longName>Lute</longName>
+                  <description>6-course lute (German tablature).</description>
+                  <musicXMLid>pluck.lute</musicXMLid>
+                  <stafftype staffTypePreset="tab6StrGerman">tablature</stafftype>
+                  <genre>earlymusic</genre>
+            </Instrument>
             <Instrument id="ren.-tenor-lute-5-course">
                   <family>lutes</family>
                   <trackName>Tenor Lute</trackName>

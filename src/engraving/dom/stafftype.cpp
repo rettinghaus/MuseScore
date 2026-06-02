@@ -257,6 +257,7 @@ StaffTypes StaffType::type() const
 
         { u"tab6StrItalian", StaffTypes::TAB_ITALIAN },
         { u"tab6StrFrench", StaffTypes::TAB_FRENCH },
+        { u"tab6StrGerman", StaffTypes::TAB_GERMAN },
 
         { u"tab7StrCommon", StaffTypes::TAB_7COMMON },
         { u"tab8StrCommon", StaffTypes::TAB_8COMMON },
@@ -294,6 +295,7 @@ bool StaffType::isSimpleTabStaff() const
     case StaffTypes::TAB_10SIMPLE:
     case StaffTypes::TAB_ITALIAN:
     case StaffTypes::TAB_FRENCH:
+    case StaffTypes::TAB_GERMAN:
         return true;
 
     default:
@@ -599,7 +601,26 @@ String StaffType::fretString(int fret, int string, bool deadNote) const
     }
     if (deadNote) {
         return String(m_fretFontInfo.xChar);
-    } else {
+    }
+
+    if (type() == StaffTypes::TAB_GERMAN) {
+        if (fret == 0) {
+            return String::number(string + 1);
+        }
+        if (string < 5) {
+            int index = (fret - 1) * 5 + (4 - string);
+            if (index >= 0 && index < 23) {
+                return String(char16_t(0xEC00 + index));
+            }
+        } else if (string == 5) {
+            if (fret >= 1 && fret <= 13) {
+                return String(char16_t(0xEC17 + fret - 1));
+            }
+        }
+        return unknownFret;
+    }
+
+    {
         bool hasFret;
         String text  = tabBassStringPrefix(string, &hasFret);
         if (!hasFret) {             // if the notation does not allow to fret this string,
@@ -1146,6 +1167,7 @@ void StaffType::initStaffTypes(const Color& defaultColor)
         StaffType(StaffGroup::TAB, u"tabDulcimer",    muse::mtrc("engraving", "Tab. dulcimer"),       3,  0, 1.5, true,  true, false, true, false,  defaultColor, u"MuseScore Tab Modern", 15, 0, false, true,  u"MuseScore Tab Sans",                     9, 0,  TablatureSymbolRepeat::NEVER, false, TablatureMinimStyle::SHORTER, true,  true,  true,  false, true,  true,  true,  true),
         StaffType(StaffGroup::TAB, u"tab6StrItalian", muse::mtrc("engraving", "Tab. 6-str. Italian"), 6,  0, 1.5, false, true, true,  true, false,  defaultColor, u"MuseScore Tab Italian",15, 0, true,  false, u"MuseScore Tab Renaiss",10, 0, TablatureSymbolRepeat::NEVER, true,  TablatureMinimStyle::NONE,    true,  true,  false, false, true,  false, true,  false),
         StaffType(StaffGroup::TAB, u"tab6StrFrench",  muse::mtrc("engraving", "Tab. 6-str. French"),  6,  0, 1.5, false, true, true,  true, false,  defaultColor, u"MuseScore Tab French", 15, 0, true,  false, u"MuseScore Tab Renaiss",10, 0, TablatureSymbolRepeat::NEVER, true,  TablatureMinimStyle::NONE,    false, false, false, false, false, false, false, false),
+        StaffType(StaffGroup::TAB, u"tab6StrGerman",  muse::mtrc("engraving", "Tab. 6-str. German"),  6,  0, 1.5, false, true, true,  true, false,  defaultColor, u"MuseScore Tab Modern", 15, 0, true,  false, u"Bravura",                10, 0, TablatureSymbolRepeat::NEVER, true,  TablatureMinimStyle::NONE,    true,  true,  false, false, false, false, false, false),
         StaffType(StaffGroup::TAB, u"tab7StrCommon",  muse::mtrc("engraving", "Tab. 7-str. common"),  7,  0, 1.5, true,  true, false, true, false,  defaultColor, u"MuseScore Tab Modern", 15, 0, false, true,  u"MuseScore Tab Sans",                     9, 0,  TablatureSymbolRepeat::NEVER, false, TablatureMinimStyle::SHORTER, true,  true,  true,  false, false, true,  true,  true),
         StaffType(StaffGroup::TAB, u"tab8StrCommon",  muse::mtrc("engraving", "Tab. 8-str. common"),  8,  0, 1.5, true,  true, false, true, false,  defaultColor, u"MuseScore Tab Modern", 15, 0, false, true,  u"MuseScore Tab Sans",                     9, 0,  TablatureSymbolRepeat::NEVER, false, TablatureMinimStyle::SHORTER, true,  true,  true,  false, false, true,  true,  true),
         StaffType(StaffGroup::TAB, u"tab9StrCommon",  muse::mtrc("engraving", "Tab. 9-str. common"),  9,  0, 1.5, true,  true, false, true, false,  defaultColor, u"MuseScore Tab Modern", 15, 0, false, true,  u"MuseScore Tab Sans",                     9, 0,  TablatureSymbolRepeat::NEVER, false, TablatureMinimStyle::SHORTER, true,  true,  true,  false, false, true,  true,  true),

@@ -1496,6 +1496,7 @@ enum class StaffTypes {
     TAB_DULCIMER   = int(mu::engraving::StaffTypes::TAB_DULCIMER),
     TAB_ITALIAN    = int(mu::engraving::StaffTypes::TAB_ITALIAN),
     TAB_FRENCH     = int(mu::engraving::StaffTypes::TAB_FRENCH),
+    TAB_GERMAN     = int(mu::engraving::StaffTypes::TAB_GERMAN),
     TAB_7COMMON    = int(mu::engraving::StaffTypes::TAB_7COMMON),
     TAB_8COMMON    = int(mu::engraving::StaffTypes::TAB_8COMMON),
     TAB_9COMMON    = int(mu::engraving::StaffTypes::TAB_9COMMON),

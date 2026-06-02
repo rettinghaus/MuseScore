@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <museScore version="4.60">
    <fretFont>
+      <family>Bravura</family>
+      <displayName>Bravura</displayName>
+   </fretFont>
+   <fretFont>
+      <family>Leland</family>
+      <displayName>Leland</displayName>
+   </fretFont>
+   <fretFont>
       <family>FreeSans</family>
       <displayName>MuseScore Tab Sans</displayName>
    </fretFont>
