@@ -7028,6 +7028,9 @@ void ExportMusicXml::keysigTimesig(const Measure* m, const Part* p)
             //KeySigEvent kse;
             //kse.setKey(Key::C);
             KeySig* ks = Factory::createKeySig(m_score->dummy()->segment());
+            if (p->staff(0)->isTabStaff(Fraction(0, 1))) {
+                ks->setVisible(false);
+            }
             ks->setKey(Key::C);
             keysig(ks, p->staff(0)->clef(m->tick()));
             delete ks;
