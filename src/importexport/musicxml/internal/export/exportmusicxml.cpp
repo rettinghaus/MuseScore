@@ -2439,7 +2439,7 @@ void ExportMusicXml::keysig(const KeySig* ks, ClefType ct, staff_idx_t staff)
     if (staff) {
         attrs.emplace_back(std::make_pair("number", staff));
     }
-    if (!ks->visible() || (ks->staff() && !ks->staff()->staffType(ks->tick())->genKeysig())) {
+    if (!ks->visible() || (ks->staff() && ks->staff()->isTabStaff(Fraction(0, 1)))) {
         attrs.emplace_back(std::make_pair("print-object", "no"));
     }
     addColorAttr(ks, attrs);
