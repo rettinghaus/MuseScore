@@ -352,6 +352,8 @@ public:
     static bool getTypeValueWithPrefix(const std::string& typeStr, const std::string& prefix, std::string& value);
     static std::list<std::string> getTypeValuesWithPrefix(const std::string& typeStr, const std::string& prefix);
     static double tstampFromFraction(const engraving::Fraction& fraction, const engraving::Fraction& timesig);
+    static libmei::data_MEASUREBEAT tstamp2FromFraction(const engraving::Fraction& fraction, const engraving::Fraction& timesig,
+                                                        int measureOffset);
     static engraving::Fraction tstampToFraction(double tstamp, const engraving::Fraction& timesig);
 
     static muse::StringList logs;
