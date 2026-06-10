@@ -5858,7 +5858,8 @@ void ExportMusicXml::dynamic(Dynamic const* const dyn, staff_idx_t staff)
         u"mf", u"mp",
         u"p", u"pp", u"ppp", u"pppp", u"ppppp", u"pppppp",
         u"rf", u"rfz",
-        u"sf", u"sffz", u"sfp", u"sfpp", u"sfz"
+        u"sf", u"sffz", u"sfp", u"sfpp", u"sfz",
+        u"n", u"pf", u"sfzp"
     };
 
     directionTag(m_xml, m_attr, dyn);
@@ -7022,7 +7023,7 @@ void ExportMusicXml::keysigTimesig(const Measure* m, const Part* p)
                 keysig(ks, p->staff(st)->clef(m->tick()), st + 1);
             }
         }
-    } else {
+    } else if (!p->instrument()->useDrumset()) {
         // always write a keysig at tick = 0
         if (m->tick().isZero()) {
             //KeySigEvent kse;
