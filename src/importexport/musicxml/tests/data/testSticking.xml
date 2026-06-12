@@ -295,11 +295,11 @@
         </print>
       <attributes>
         <divisions>4</divisions>
-        <key>
+        <key print-object="no">
           <fifths>0</fifths>
           <mode>none</mode>
           </key>
-        <time>
+        <time print-object="no">
           <beats>4</beats>
           <beat-type>4</beat-type>
           </time>
