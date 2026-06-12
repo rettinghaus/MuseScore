@@ -399,6 +399,9 @@ TEST_F(MusicXml_Tests, backupRoundingError) {
 TEST_F(MusicXml_Tests, barlineFermatas) {
     musicXmlIoTest("testBarlineFermatas");
 }
+TEST_F(MusicXml_Tests, barlineJump) {
+    musicXmlImportTestRef("testBarlineJump");
+}
 TEST_F(MusicXml_Tests, barlineLoc) {
     musicXmlImportTestRef("testBarlineLoc");
 }
