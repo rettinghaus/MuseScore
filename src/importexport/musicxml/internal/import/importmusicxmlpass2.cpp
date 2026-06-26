@@ -287,8 +287,8 @@ static int MusicXmlStepAltOct2Pitch(int step, int alter, int octave)
  Note that n's staff and track have not been set yet
  */
 
-static void xmlSetPitch(Note* n, int step, int alter, double tuning, int octave,
-                        const int octaveShift, const Instrument* const instr, bool isTabStaff)
+static void xmlSetPitch(Note* n, const Staff* staff, int step, int alter, double tuning, int octave,
+                        const int octaveShift, const Instrument* const instr)
 {
     const Interval intval = instr->transpose();
 
@@ -302,9 +302,9 @@ static void xmlSetPitch(Note* n, int step, int alter, double tuning, int octave,
     int tpc2 = step2tpc(step, AccidentalVal(alter));
     int tpc1 = Transpose::transposeTpc(tpc2, intval, true);
 
-    const CapoParams& capo = staff->capo(tick);
+    const CapoParams& capo = staff->capo(n->tick());
 
-    if (capo.active && isTabStaff) {
+    if (capo.active && staff->isTabStaff(Fraction(0, 1))) {
         if (capo.transposeMode == CapoParams::TransposeMode::TAB_ONLY) {
             pitch += capo.fretPosition;
             tpc2 = Transpose::transposeTpc(tpc2, Interval(capo.fretPosition), true);
@@ -6879,8 +6879,8 @@ static void addTremolo(ChordRest* cr, const int tremoloNr, const String& tremolo
 
 // TODO: refactor: optimize parameters
 
-static void setPitch(Note* note, const MusicXmlInstruments& instruments, const String& instrumentId, const MusicXmlNotePitch& mnp,
-                     const int octaveShift, const Instrument* const instrument, bool isTabStaff)
+static void setPitch(Note* note, const Staff* staff, const MusicXmlInstruments& instruments, const String& instrumentId,
+                     const MusicXmlNotePitch& mnp, const int octaveShift, const Instrument* const instrument)
 {
     if (mnp.unpitched()) {
         if (hasDrumset(instruments) && muse::contains(instruments, instrumentId)) {
@@ -6891,10 +6891,10 @@ static void setPitch(Note* note, const MusicXmlInstruments& instruments, const S
             note->setTpcFromPitch();
         } else {
             //LOGD("disp step %d oct %d", displayStep, displayOctave);
-            xmlSetPitch(note, mnp.displayStep(), 0, 0.0, mnp.displayOctave(), 0, instrument, false);
+            xmlSetPitch(note, staff, mnp.displayStep(), 0, 0.0, mnp.displayOctave(), 0, instrument);
         }
     } else {
-        xmlSetPitch(note, mnp.step(), mnp.alter(), mnp.tuning(), mnp.octave(), octaveShift, instrument, isTabStaff);
+        xmlSetPitch(note, staff, mnp.step(), mnp.alter(), mnp.tuning(), mnp.octave(), octaveShift, instrument);
     }
 }
 
@@ -7301,7 +7301,7 @@ Note* MusicXmlParserPass2::note(const String& partId,
         if (isSingleDrumset && mnp.unpitched() && instrumentId.empty()) {
             xmlSetDrumsetPitch(note, c, st, mnp.displayStep(), mnp.displayOctave(), headGroup, stemDir, instrument);
         } else {
-            setPitch(note, instruments, instrumentId, mnp, octaveShift, instrument, st->isTabStaff(Fraction(0, 1)));
+            setPitch(note, st, instruments, instrumentId, mnp, octaveShift, instrument);
         }
         c->add(note);
         cr = c;
