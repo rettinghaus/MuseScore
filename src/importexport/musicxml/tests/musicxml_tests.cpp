@@ -462,6 +462,9 @@ TEST_F(MusicXml_Tests, buzzRoll) {
 TEST_F(MusicXml_Tests, buzzRoll2) {
     musicXmlIoTest("testBuzzRoll2");
 }
+TEST_F(MusicXml_Tests, capo) {
+    musicXmlIoTest("testCapo");
+}
 TEST_F(MusicXml_Tests, changeTranspose) {
     musicXmlIoTest("testChangeTranspose");
 }
