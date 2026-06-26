@@ -306,7 +306,7 @@ static void xmlSetPitch(Note* n, const Staff* staff, int step, int alter, double
 
     if (capo.active && staff->isTabStaff(Fraction(0, 1))) {
         if (capo.transposeMode == CapoParams::TransposeMode::TAB_ONLY) {
-            pitch += capo.fretPosition;
+            pitch -= capo.fretPosition;
             tpc2 = Transpose::transposeTpc(tpc2, Interval(capo.fretPosition), true);
         }
     }
