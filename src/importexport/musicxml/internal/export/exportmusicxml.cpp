@@ -98,6 +98,7 @@
 #include "engraving/dom/page.h"
 #include "engraving/dom/palmmute.h"
 #include "engraving/dom/part.h"
+#include "engraving/editing/transpose.h"
 #include "engraving/dom/pedal.h"
 #include "engraving/dom/pickscrape.h"
 #include "engraving/dom/pitchspelling.h"
@@ -1652,7 +1653,8 @@ static void pitch2xml(const Note* note, String& s, int& alter, int& octave)
 
     const CapoParams& capo = st->capo(tick);
     int capoOffset = 0;
-    if (capo.active && (capo.transposeMode == CapoParams::TransposeMode::TAB_ONLY || capo.transposeMode == CapoParams::TransposeMode::STANDARD_ONLY)) {
+    if (capo.active
+        && (capo.transposeMode == CapoParams::TransposeMode::TAB_ONLY || capo.transposeMode == CapoParams::TransposeMode::STANDARD_ONLY)) {
         if (capo.ignoredStrings.empty() || !muse::contains(capo.ignoredStrings, static_cast<string_idx_t>(note->string()))) {
             capoOffset = capo.fretPosition;
         }
@@ -1661,8 +1663,12 @@ static void pitch2xml(const Note* note, String& s, int& alter, int& octave)
     int concertPitch = note->pitch() + capoOffset;
     int concertTpc = note->tpc();
 
-    if (!note->concertPitch()) {
-        const Interval intval = instr->transpose();
+    if (!note->concertPitch() || capoOffset != 0) {
+        Interval intval = note->concertPitch() ? Interval(0, 0) : instr->transpose();
+        if (capoOffset != 0) {
+            intval.diatonic -= Interval::chromatic2diatonic(capoOffset);
+            intval.chromatic -= capoOffset;
+        }
         concertPitch -= intval.chromatic;
         concertTpc = Transpose::transposeTpc(concertTpc, intval, true);
     }
@@ -1702,9 +1708,6 @@ static void pitch2xml(const Note* note, String& s, int& alter, int& octave)
                    tick.ticks(), note->pitch(), note->ppitch());
     }
     octave += ottava;
-
-    //LOGD("pitch2xml(pitch %d, tpc %d, ottava %d clef %hhd) step    %s, alter    %d, octave    %d",
-    //       note->pitch(), note->tpc(), ottava, clef, muPrintable(s), alter, octave);
 }
 
 // unpitch2xml -- calculate display-step and display-octave for an unpitched note
