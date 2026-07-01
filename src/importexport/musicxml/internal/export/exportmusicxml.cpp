@@ -1649,13 +1649,29 @@ static void pitch2xml(const Note* note, String& s, int& alter, int& octave)
     const Staff* st = note->staff();
     const Fraction tick = note->tick();
     const Instrument* instr = st->part()->instrument(tick);
-    const Interval intval = note->concertPitch() ? 0 : instr->transpose();
 
-    s      = tpc2stepName(note->tpc());
-    alter  = tpc2alterByKey(note->tpc(), Key::C);
+    const CapoParams& capo = st->capo(tick);
+    int capoOffset = 0;
+    if (capo.active && (capo.transposeMode == CapoParams::TransposeMode::TAB_ONLY || capo.transposeMode == CapoParams::TransposeMode::STANDARD_ONLY)) {
+        if (capo.ignoredStrings.empty() || !muse::contains(capo.ignoredStrings, static_cast<string_idx_t>(note->string()))) {
+            capoOffset = capo.fretPosition;
+        }
+    }
+
+    int concertPitch = note->pitch() + capoOffset;
+    int concertTpc = note->tpc();
+
+    if (!note->concertPitch()) {
+        const Interval intval = instr->transpose();
+        concertPitch -= intval.chromatic;
+        concertTpc = Transpose::transposeTpc(concertTpc, intval, true);
+    }
+
+    s      = tpc2stepName(concertTpc);
+    alter  = tpc2alterByKey(concertTpc, Key::C);
     // note that pitch must be converted to concert pitch
     // in order to calculate the correct octave
-    octave = (note->pitch() - intval.chromatic - alter) / 12 - 1;
+    octave = (concertPitch - alter) / 12 - 1;
 
     //
     // HACK:
