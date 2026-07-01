@@ -6111,8 +6111,10 @@ void Score::updateCapo(bool ignoreNotationUpdate /* = false */)
                 continue;
             }
 
-            for (Staff* staff : e->staff()->staffList()) {
-                staff->insertCapoParams(segmentTick, toCapo(e)->params(), ignoreNotationUpdate);
+            for (Staff* partStaff : e->staff()->part()->staves()) {
+                for (Staff* linkedStaff : partStaff->staffList()) {
+                    linkedStaff->insertCapoParams(segmentTick, toCapo(e)->params(), ignoreNotationUpdate);
+                }
             }
         }
     }

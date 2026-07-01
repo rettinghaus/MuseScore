@@ -3250,12 +3250,14 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure, c
                 Capo* c = Factory::createCapo(m_score->dummy()->segment());
                 CapoParams p = c->params();
                 p.fretPosition = fret;
-                if (m_score->staff(staffIdx)->isTabStaff(Fraction(0, 1))) {
+                if (part->hasTabStaff()) {
                     p.transposeMode = CapoParams::TransposeMode::TAB_ONLY;
                 }
                 c->setParams(p);
                 addElemOffset(c, staff2track(staffIdx), u"", measure, tick);
-                m_score->staff(staffIdx)->insertCapoParams(tick, p, true);
+                for (Staff* s : part->staves()) {
+                    s->insertCapoParams(tick, p, true);
+                }
             } else {
                 m_e.skipCurrentElement();
             }
