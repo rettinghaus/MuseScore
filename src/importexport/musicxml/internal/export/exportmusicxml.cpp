@@ -98,7 +98,6 @@
 #include "engraving/dom/page.h"
 #include "engraving/dom/palmmute.h"
 #include "engraving/dom/part.h"
-#include "engraving/editing/transpose.h"
 #include "engraving/dom/pedal.h"
 #include "engraving/dom/pickscrape.h"
 #include "engraving/dom/pitchspelling.h"
@@ -1649,35 +1648,15 @@ static void pitch2xml(const Note* note, String& s, int& alter, int& octave)
 {
     const Staff* st = note->staff();
     const Fraction tick = note->tick();
-    const Instrument* instr = st->part()->instrument(tick);
 
-    const CapoParams& capo = st->capo(tick);
-    int capoOffset = 0;
-    if (capo.active
-        && (capo.transposeMode == CapoParams::TransposeMode::TAB_ONLY || capo.transposeMode == CapoParams::TransposeMode::STANDARD_ONLY)) {
-        if (capo.ignoredStrings.empty() || !muse::contains(capo.ignoredStrings, static_cast<string_idx_t>(note->string()))) {
-            capoOffset = capo.fretPosition;
-        }
-    }
+    int soundingPitch = note->ppitch();
+    int soundingTpc   = note->playingTpc();
 
-    int concertPitch = note->pitch() + capoOffset;
-    int concertTpc = note->tpc();
-
-    if (!note->concertPitch() || capoOffset != 0) {
-        Interval intval = note->concertPitch() ? Interval(0, 0) : instr->transpose();
-        if (capoOffset != 0) {
-            intval.diatonic -= Interval::chromatic2diatonic(capoOffset);
-            intval.chromatic -= capoOffset;
-        }
-        concertPitch -= intval.chromatic;
-        concertTpc = Transpose::transposeTpc(concertTpc, intval, true);
-    }
-
-    s      = tpc2stepName(concertTpc);
-    alter  = tpc2alterByKey(concertTpc, Key::C);
+    s      = tpc2stepName(soundingTpc);
+    alter  = tpc2alterByKey(soundingTpc, Key::C);
     // note that pitch must be converted to concert pitch
     // in order to calculate the correct octave
-    octave = (concertPitch - alter) / 12 - 1;
+    octave = (soundingPitch - alter) / 12 - 1;
 
     //
     // HACK:
@@ -1690,24 +1669,6 @@ static void pitch2xml(const Note* note, String& s, int& alter, int& octave)
         alter = 0;
         octave = line2pitch(note->line(), ct, Key::C) / 12 - 1;
     }
-
-    // correct for ottava lines
-    int ottava = 0;
-    switch (note->ppitch() - note->pitch()) {
-    case  24: ottava =  2;
-        break;
-    case  12: ottava =  1;
-        break;
-    case   0: ottava =  0;
-        break;
-    case -12: ottava = -1;
-        break;
-    case -24: ottava = -2;
-        break;
-    default:  LOGD("pitch2xml() tick=%d pitch()=%d ppitch()=%d",
-                   tick.ticks(), note->pitch(), note->ppitch());
-    }
-    octave += ottava;
 }
 
 // unpitch2xml -- calculate display-step and display-octave for an unpitched note

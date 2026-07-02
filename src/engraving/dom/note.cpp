@@ -2525,7 +2525,7 @@ int Note::ottaveCapoFret() const
     int capoFret = 0;
 
     using MODE = CapoParams::TransposeMode;
-    if (capo.active && MODE::PLAYBACK_ONLY == capo.transposeMode) {
+    if (capo.active && (MODE::PLAYBACK_ONLY == capo.transposeMode || MODE::TAB_ONLY == capo.transposeMode)) {
         if (capo.ignoredStrings.empty() || !muse::contains(capo.ignoredStrings, static_cast<string_idx_t>(m_string))) {
             capoFret = capo.fretPosition;
         }
