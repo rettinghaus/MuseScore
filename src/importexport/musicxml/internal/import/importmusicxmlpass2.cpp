@@ -2539,68 +2539,6 @@ static void handleBeamAndStemDir(ChordRest* cr, const BeamMode bm, const Directi
     }
 }
 
-//---------------------------------------------------------
-//   markUserAccidentals
-//---------------------------------------------------------
-
-/**
- Check for "superfluous" accidentals to mark them as USER accidentals.
- The candidate map alterMap is ordered on note address. Check it here segment after segment.
- */
-
-static void markUserAccidentals(const staff_idx_t firstStaff,
-                                const size_t staves,
-                                const Key key,
-                                const Measure* measure,
-                                const std::map<Note*, int>& alterMap)
-{
-    std::map<int, bool> accTmp;
-
-    AccidentalState currAcc;
-    currAcc.init(key);
-    SegmentType st = SegmentType::ChordRest;
-    for (mu::engraving::Segment* segment = measure->first(st); segment; segment = segment->next(st)) {
-        for (track_idx_t track = 0; track < staves * VOICES; ++track) {
-            EngravingItem* e = segment->element(firstStaff * VOICES + track);
-            if (!e || !e->isChord()) {
-                continue;
-            }
-            Chord* chord = toChord(e);
-            for (Note* nt : chord->notes()) {
-                if (muse::contains(alterMap, nt)) {
-                    int alter = alterMap.at(nt);
-                    int ln  = absStep(nt->tpc(), nt->pitch());
-                    bool error = false;
-                    AccidentalVal currAccVal = currAcc.accidentalVal(ln, error);
-                    if (error) {
-                        continue;
-                    }
-                    if ((alter == -1
-                         && currAccVal == AccidentalVal::FLAT
-                         && nt->accidental()->accidentalType() == AccidentalType::FLAT
-                         && !muse::value(accTmp, ln, false))
-                        || (alter == 0
-                            && currAccVal == AccidentalVal::NATURAL
-                            && nt->accidental()->accidentalType() == AccidentalType::NATURAL
-                            && !muse::value(accTmp, ln, false))
-                        || (alter == 1
-                            && currAccVal == AccidentalVal::SHARP
-                            && nt->accidental()->accidentalType() == AccidentalType::SHARP
-                            && !muse::value(accTmp, ln, false))) {
-                        nt->accidental()->setRole(AccidentalRole::USER);
-                    } else if (Accidental::isMicrotonal(nt->accidental()->accidentalType())
-                               && nt->accidental()->accidentalType() < AccidentalType::END) {
-                        // microtonal accidental
-                        nt->accidental()->setRole(AccidentalRole::USER);
-                        accTmp.insert({ ln, false });
-                    } else {
-                        accTmp.insert({ ln, true });
-                    }
-                }
-            }
-        }
-    }
-}
 
 //---------------------------------------------------------
 //   coerceGraceCue
@@ -2783,8 +2721,6 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
     bool measureHasCoda = false;
     String tempoString;  // helper for Dorico imports
 
-    // collect candidates for courtesy accidentals to work out at measure end
-    std::map<Note*, int> alterMap;
 
     while (m_e.readNextStartElement()) {
         if (m_e.name() == "attributes") {
@@ -2835,16 +2771,12 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
             Fraction missingPrev;
             Fraction dura;
             Fraction missingCurr;
-            int alt = -10;                          // any number outside range of xml-tag "alter"
             // note: chord and grace note handling done in note()
             // dura > 0 iff valid rest or first note of chord found
-            Note* n = note(partId, measure, time + mTime, time + prevTime, missingPrev, dura, missingCurr, cv, gcl, gac, beams, fbl, alt,
+            Note* n = note(partId, measure, time + mTime, time + prevTime, missingPrev, dura, missingCurr, cv, gcl, gac, beams, fbl,
                            tupletStates, tuplets, arpMap, delayedArps);
             if (n && !n->chord()->isGrace()) {
                 prevChord = n->chord();          // remember last non-grace chord
-            }
-            if (n && n->accidental() && n->accidental()->accidentalType() != AccidentalType::NONE) {
-                alterMap.insert({ n, alt });
             }
             if (missingPrev.isValid()) {
                 mTime += missingPrev;
@@ -2993,10 +2925,7 @@ void MusicXmlParserPass2::measure(const String& partId, const Fraction time)
         measure->setTimesig(m_timeSigDura);
     }
 
-    // mark superfluous accidentals as user accidentals
     const staff_idx_t scoreRelStaff = m_score->staffIdx(part);
-    const Key key = m_score->staff(scoreRelStaff)->keySigEvent(time).key();
-    markUserAccidentals(scoreRelStaff, part->nstaves(), key, measure, alterMap);
 
     // multi-measure rest handling
     if (getAndDecMultiMeasureRestCount() == 0) {
@@ -6971,7 +6900,6 @@ Note* MusicXmlParserPass2::note(const String& partId,
                                 size_t& gac,
                                 Beams& currBeams,
                                 FiguredBassList& fbl,
-                                int& alt,
                                 MusicXmlTupletStates& tupletStates,
                                 Tuplets& tuplets, ArpeggioMap& arpMap, DelayedArpMap& delayedArps)
 {
@@ -7346,15 +7274,12 @@ Note* MusicXmlParserPass2::note(const String& partId,
         if (!acc && mnp.accType() != AccidentalType::NONE) {
             acc = Factory::createAccidental(m_score->dummy());
             acc->setAccidentalType(mnp.accType());
+            acc->setRole(AccidentalRole::USER);
         }
 
         if (acc) {
             acc->setVisible(printObject);
             note->add(acc);
-            // save alter value for user accidental
-            if (acc->accidentalType() != AccidentalType::NONE) {
-                alt = mnp.alter();
-            }
         }
 
         c->setNoStem(noStem);

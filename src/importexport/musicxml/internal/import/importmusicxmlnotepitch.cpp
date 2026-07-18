@@ -64,9 +64,7 @@ static Accidental* accidental(muse::XmlStreamReader& e, Score* score)
     if (type != AccidentalType::NONE) {
         Accidental* a = Factory::createAccidental(score->dummy());
         a->setAccidentalType(type);
-        if (cautionary || editorial) { // no way to tell one from the other
-            a->setRole(AccidentalRole::USER);
-        } // except via the use of parentheses vs. brackets
+        a->setRole(AccidentalRole::USER);
         if (noParentheses || noBrackets) { // explicitly none wanted
         } else if (parentheses || cautionary) { // set to "yes" or "cautionary" and not set at all
             a->setBracket(AccidentalBracket(AccidentalBracket::PARENTHESIS));
