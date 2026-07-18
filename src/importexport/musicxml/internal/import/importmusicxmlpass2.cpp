@@ -2554,11 +2554,8 @@ static void markUserAccidentals(const staff_idx_t firstStaff,
                                 const Measure* measure,
                                 const std::map<Note*, int>& alterMap)
 {
-    std::vector<AccidentalState> currAccs(staves);
-    for (size_t s = 0; s < staves; ++s) {
-        currAccs[s].init(key);
-    }
-
+    AccidentalState currAcc;
+    currAcc.init(key);
     SegmentType st = SegmentType::ChordRest;
     for (mu::engraving::Segment* segment = measure->first(st); segment; segment = segment->next(st)) {
         for (track_idx_t track = 0; track < staves * VOICES; ++track) {
@@ -2567,12 +2564,6 @@ static void markUserAccidentals(const staff_idx_t firstStaff,
                 continue;
             }
             Chord* chord = toChord(e);
-            size_t staffIdx = track / VOICES;
-            if (staffIdx >= staves) {
-                continue;
-            }
-            AccidentalState& currAcc = currAccs[staffIdx];
-
             for (Note* nt : chord->notes()) {
                 if (muse::contains(alterMap, nt)) {
                     int alter = alterMap.at(nt);
