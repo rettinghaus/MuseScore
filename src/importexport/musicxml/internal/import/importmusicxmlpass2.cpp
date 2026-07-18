@@ -2574,26 +2574,35 @@ static void markUserAccidentals(const staff_idx_t firstStaff,
             AccidentalState& currAcc = currAccs[staffIdx];
 
             for (Note* nt : chord->notes()) {
-                int ln = absStep(nt->tpc(), nt->pitch());
-                AccidentalVal noteAccVal = tpc2alter(nt->tpc());
-
                 if (muse::contains(alterMap, nt)) {
+                    int alter = alterMap.at(nt);
+                    int ln  = absStep(nt->tpc(), nt->pitch());
                     bool error = false;
                     AccidentalVal currAccVal = currAcc.accidentalVal(ln, error);
-                    if (!error) {
-                        if (noteAccVal == currAccVal) {
-                            if (nt->accidental()) {
-                                nt->accidental()->setRole(AccidentalRole::USER);
-                            }
-                        } else if (nt->accidental()
-                                   && Accidental::isMicrotonal(nt->accidental()->accidentalType())
-                                   && nt->accidental()->accidentalType() < AccidentalType::END) {
-                            // microtonal accidental
-                            nt->accidental()->setRole(AccidentalRole::USER);
-                        }
+                    if (error) {
+                        continue;
                     }
+                    if ((alter == -1
+                         && currAccVal == AccidentalVal::FLAT
+                         && nt->accidental()
+                         && nt->accidental()->accidentalType() == AccidentalType::FLAT)
+                        || (alter == 0
+                            && currAccVal == AccidentalVal::NATURAL
+                            && nt->accidental()
+                            && nt->accidental()->accidentalType() == AccidentalType::NATURAL)
+                        || (alter == 1
+                            && currAccVal == AccidentalVal::SHARP
+                            && nt->accidental()
+                            && nt->accidental()->accidentalType() == AccidentalType::SHARP)) {
+                        nt->accidental()->setRole(AccidentalRole::USER);
+                    } else if (nt->accidental()
+                               && Accidental::isMicrotonal(nt->accidental()->accidentalType())
+                               && nt->accidental()->accidentalType() < AccidentalType::END) {
+                        // microtonal accidental
+                        nt->accidental()->setRole(AccidentalRole::USER);
+                    }
+                    currAcc.setAccidentalVal(ln, AccidentalVal(alter), false);
                 }
-                currAcc.setAccidentalVal(ln, noteAccVal, false);
             }
         }
     }
