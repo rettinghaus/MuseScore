@@ -1656,7 +1656,7 @@ static void pitch2xml(const Note* note, String& s, int& alter, int& octave)
     const Instrument* instr = st->part()->instrument(tick);
     const Interval intval = note->concertPitch() ? 0 : instr->transpose();
 
-    s      = tpc2stepName(note->tpc());
+    s      = tpc2stepName(note->playingTpc());
     alter  = tpc2alterByKey(note->tpc(), Key::C);
     // note that pitch must be converted to concert pitch
     // in order to calculate the correct octave
