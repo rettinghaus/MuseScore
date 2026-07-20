@@ -79,7 +79,7 @@
         </attributes>
       <note>
         <pitch>
-          <step>B</step>
+          <step>A</step>
           <octave>2</octave>
           </pitch>
         <duration>1</duration>
@@ -90,7 +90,7 @@
         </note>
       <note>
         <pitch>
-          <step>E</step>
+          <step>D</step>
           <octave>3</octave>
           </pitch>
         <duration>1</duration>
@@ -101,7 +101,7 @@
         </note>
       <note>
         <pitch>
-          <step>B</step>
+          <step>A</step>
           <octave>3</octave>
           </pitch>
         <duration>1</duration>
@@ -122,7 +122,7 @@
         </backup>
       <note>
         <pitch>
-          <step>B</step>
+          <step>A</step>
           <octave>2</octave>
           </pitch>
         <duration>1</duration>
@@ -139,7 +139,7 @@
         </note>
       <note>
         <pitch>
-          <step>E</step>
+          <step>D</step>
           <octave>3</octave>
           </pitch>
         <duration>1</duration>
@@ -156,7 +156,7 @@
         </note>
       <note>
         <pitch>
-          <step>B</step>
+          <step>A</step>
           <octave>3</octave>
           </pitch>
         <duration>1</duration>
@@ -181,10 +181,7 @@
       </measure>
     <measure number="2">
       <attributes>
-        <staff-details number="1">
-          <capo>2</capo>
-          </staff-details>
-        <staff-details number="2">
+        <staff-details>
           <capo>2</capo>
           </staff-details>
         </attributes>
@@ -196,7 +193,7 @@
         </direction>
       <note>
         <pitch>
-          <step>B</step>
+          <step>A</step>
           <octave>2</octave>
           </pitch>
         <duration>1</duration>
@@ -207,7 +204,7 @@
         </note>
       <note>
         <pitch>
-          <step>E</step>
+          <step>D</step>
           <octave>3</octave>
           </pitch>
         <duration>1</duration>
@@ -218,7 +215,7 @@
         </note>
       <note>
         <pitch>
-          <step>B</step>
+          <step>A</step>
           <octave>3</octave>
           </pitch>
         <duration>1</duration>
@@ -239,7 +236,7 @@
         </backup>
       <note>
         <pitch>
-          <step>B</step>
+          <step>A</step>
           <octave>2</octave>
           </pitch>
         <duration>1</duration>
@@ -256,7 +253,7 @@
         </note>
       <note>
         <pitch>
-          <step>E</step>
+          <step>D</step>
           <octave>3</octave>
           </pitch>
         <duration>1</duration>
@@ -273,7 +270,7 @@
         </note>
       <note>
         <pitch>
-          <step>B</step>
+          <step>A</step>
           <octave>3</octave>
           </pitch>
         <duration>1</duration>
@@ -298,10 +295,7 @@
       </measure>
     <measure number="3">
       <attributes>
-        <staff-details number="1">
-          <capo>1</capo>
-          </staff-details>
-        <staff-details number="2">
+        <staff-details>
           <capo>1</capo>
           </staff-details>
         </attributes>
@@ -313,7 +307,7 @@
         </direction>
       <note>
         <pitch>
-          <step>B</step>
+          <step>A</step>
           <octave>2</octave>
           </pitch>
         <duration>1</duration>
@@ -324,7 +318,7 @@
         </note>
       <note>
         <pitch>
-          <step>E</step>
+          <step>D</step>
           <octave>3</octave>
           </pitch>
         <duration>1</duration>
@@ -335,7 +329,7 @@
         </note>
       <note>
         <pitch>
-          <step>B</step>
+          <step>A</step>
           <octave>3</octave>
           </pitch>
         <duration>1</duration>
@@ -356,7 +350,7 @@
         </backup>
       <note>
         <pitch>
-          <step>B</step>
+          <step>A</step>
           <octave>2</octave>
           </pitch>
         <duration>1</duration>
@@ -373,7 +367,7 @@
         </note>
       <note>
         <pitch>
-          <step>E</step>
+          <step>D</step>
           <octave>3</octave>
           </pitch>
         <duration>1</duration>
@@ -390,7 +384,7 @@
         </note>
       <note>
         <pitch>
-          <step>B</step>
+          <step>A</step>
           <octave>3</octave>
           </pitch>
         <duration>1</duration>
@@ -415,10 +409,7 @@
       </measure>
     <measure number="4">
       <attributes>
-        <staff-details number="1">
-          <capo>0</capo>
-          </staff-details>
-        <staff-details number="2">
+        <staff-details>
           <capo>0</capo>
           </staff-details>
         </attributes>
@@ -430,7 +421,7 @@
         </direction>
       <note>
         <pitch>
-          <step>B</step>
+          <step>A</step>
           <octave>2</octave>
           </pitch>
         <duration>1</duration>
@@ -441,7 +432,7 @@
         </note>
       <note>
         <pitch>
-          <step>E</step>
+          <step>D</step>
           <octave>3</octave>
           </pitch>
         <duration>1</duration>
@@ -452,7 +443,7 @@
         </note>
       <note>
         <pitch>
-          <step>B</step>
+          <step>A</step>
           <octave>3</octave>
           </pitch>
         <duration>1</duration>
@@ -473,7 +464,7 @@
         </backup>
       <note>
         <pitch>
-          <step>B</step>
+          <step>A</step>
           <octave>2</octave>
           </pitch>
         <duration>1</duration>
@@ -490,7 +481,7 @@
         </note>
       <note>
         <pitch>
-          <step>E</step>
+          <step>D</step>
           <octave>3</octave>
           </pitch>
         <duration>1</duration>
@@ -507,7 +498,7 @@
         </note>
       <note>
         <pitch>
-          <step>B</step>
+          <step>A</step>
           <octave>3</octave>
           </pitch>
         <duration>1</duration>
