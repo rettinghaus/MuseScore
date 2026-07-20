@@ -1655,12 +1655,13 @@ static void pitch2xml(const Note* note, String& s, int& alter, int& octave)
     const Fraction tick = note->tick();
     const Instrument* instr = st->part()->instrument(tick);
     const Interval intval = note->concertPitch() ? 0 : instr->transpose();
+    const CapoParams& capo = st->capo(tick);
 
-    s      = tpc2stepName(note->playingTpc());
-    alter  = tpc2alterByKey(note->tpc(), Key::C);
+    s      = tpc2stepName(note->tpc() + capo.fretPosition);
+    alter  = tpc2alterByKey(note->tpc() + capo.fretPosition, Key::C);
     // note that pitch must be converted to concert pitch
     // in order to calculate the correct octave
-    octave = (note->pitch() - intval.chromatic - alter) / 12 - 1;
+    octave = (note->pitch() - intval.chromatic - capo.fretPosition - alter) / 12 - 1;
 
     //
     // HACK:
