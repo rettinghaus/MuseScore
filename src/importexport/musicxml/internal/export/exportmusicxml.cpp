@@ -2849,6 +2849,9 @@ int ExportMusicXml::findTrill(const Trill* tr) const
 static void writeAccidental(XmlWriter& xml, const String& tagName, const Accidental* const acc)
 {
     if (acc) {
+        if (!acc->visible()) {
+            return;
+        }
         String s = accidentalType2MusicXmlString(acc->accidentalType());
         if (!s.empty()) {
             XmlWriter::Attributes attrs;
