@@ -7356,9 +7356,11 @@ Note* MusicXmlParserPass2::note(const String& partId,
         //LOGD("note acc %p type %hhd acctype %hhd",
         //       acc, acc ? acc->accidentalType() : static_cast<mu::engraving::AccidentalType>(0), accType);
         Accidental* acc = mnp.acc();
-        bool generatedAccidental = false;
         if (acc) {
             acc->setVisible(printObject);
+        }
+        else if (note->accidental()) {
+            note->accidental()->setVisible(false);
         }
         if (mnp.accType() != AccidentalType::NONE) {
             acc = Factory::createAccidental(m_score->dummy());
@@ -7369,7 +7371,7 @@ Note* MusicXmlParserPass2::note(const String& partId,
         if (acc) {
             note->add(acc);
             // save alter value for user accidental
-            if (acc->accidentalType() != AccidentalType::NONE) {
+            if (acc->visible() && acc->accidentalType() != AccidentalType::NONE) {
                 alt = mnp.alter();
             }
         }
