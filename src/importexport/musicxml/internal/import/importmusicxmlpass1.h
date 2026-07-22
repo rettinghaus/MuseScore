@@ -199,6 +199,7 @@ public:
     int octaveShift(const muse::String& id, const engraving::staff_idx_t staff, const engraving::Fraction& f) const;
     const CreditWordsList& credits() const { return m_credits; }
     bool hasBeamingInfo() const { return m_hasBeamingInfo; }
+    bool hasAccidentalInfo() const { return m_hasAccidentalInfo; }
     bool isVocalStaff(const muse::String& partId) const { return m_parts.at(partId).isVocalStaff(); }
     bool isPercussionStaff(const muse::String& partId) const { return m_parts.at(partId).isPercussionStaff(); }
     static engraving::VBox* createAndAddVBoxForCreditWords(engraving::Score* score, engraving::Fraction tick);
@@ -237,6 +238,7 @@ private:
     MusicXmlLogger* m_logger = nullptr;              // Error logger
     muse::String m_errors;                             // Errors to present to the user
     bool m_hasBeamingInfo = false;               // Whether the score supports or contains beaming info
+    bool m_hasAccidentalInfo = false;            // Whether the score supports or contains accidental info
     bool m_hasInferredHeaderText = false;
 
     // part specific data (TODO: move to part-specific class)
