@@ -408,7 +408,9 @@ void MusicXmlParserPass1::addError(const String& error)
 
 void MusicXmlParserPass1::setExporterSoftware(String& exporter)
 {
-    if (exporter.contains(u"sibelius")) {
+    if (exporter.contains(u"musescore")) {
+        m_exporterSoftware = MusicXmlExporterSoftware::MUSESCORE;
+    } else if (exporter.contains(u"sibelius")) {
         if (exporter.contains(u"dolet 6")) {
             m_exporterSoftware = MusicXmlExporterSoftware::DOLET6;
         } else if (exporter.contains(u"dolet 8")) {
@@ -1530,10 +1532,6 @@ void MusicXmlParserPass1::identification()
                     setExporterSoftware(exporterString);
                 } else if (m_e.name() == "supports" && m_e.asciiAttribute("element") == "beam" && m_e.asciiAttribute("type") == "yes") {
                     m_hasBeamingInfo = true;
-                    m_e.skipCurrentElement();
-                } else if (m_e.name() == "supports" && m_e.asciiAttribute("element") == "accidental"
-                           && m_e.asciiAttribute("type") == "yes") {
-                    m_hasAccidentalInfo = true;
                     m_e.skipCurrentElement();
                 } else {
                     m_e.skipCurrentElement();

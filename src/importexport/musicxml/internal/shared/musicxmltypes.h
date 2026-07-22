@@ -41,6 +41,7 @@ enum class MusicXmlExporterSoftware : char {
     FINALE,
     NOTEFLIGHT,
     SIBELIUS,
+    MUSESCORE,
     OTHER
 };
 
