@@ -7367,7 +7367,7 @@ Note* MusicXmlParserPass2::note(const String& partId,
             acc = Factory::createAccidental(m_score->dummy());
             acc->setAccidentalType(Accidental::value2subtype(static_cast<AccidentalVal>(mnp.alter())));
             acc->setVisible(false);
-            acc->setRole(AccidentalRole::USER);
+            acc->setRole(AccidentalRole::AUTO);
         }
 
         if (acc) {
