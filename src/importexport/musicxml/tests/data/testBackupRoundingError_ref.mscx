@@ -196,6 +196,7 @@
               <Accidental>
                 <subtype>accidentalFlat</subtype>
                 <eid>X_X</eid>
+                <visible>0</visible>
                 </Accidental>
               <Fingering>
                 <eid>Y_Y</eid>
@@ -366,6 +367,7 @@
               <Accidental>
                 <subtype>accidentalFlat</subtype>
                 <eid>z_z</eid>
+                <visible>0</visible>
                 </Accidental>
               <pitch>88</pitch>
               <tpc>6</tpc>
@@ -969,6 +971,7 @@
               <Accidental>
                 <subtype>accidentalSharp</subtype>
                 <eid>WC_WC</eid>
+                <visible>0</visible>
                 </Accidental>
               <Fingering>
                 <eid>XC_XC</eid>
@@ -1384,6 +1387,7 @@
               <Accidental>
                 <subtype>accidentalSharp</subtype>
                 <eid>hD_hD</eid>
+                <visible>0</visible>
                 </Accidental>
               <pitch>78</pitch>
               <tpc>20</tpc>
@@ -2143,6 +2147,7 @@
               <Accidental>
                 <subtype>accidentalSharp</subtype>
                 <eid>fF_fF</eid>
+                <visible>0</visible>
                 </Accidental>
               <LaissezVib>
                 <eid>gF_gF</eid>
@@ -2185,6 +2190,7 @@
               <Accidental>
                 <subtype>accidentalSharp</subtype>
                 <eid>lF_lF</eid>
+                <visible>0</visible>
                 </Accidental>
               <pitch>30</pitch>
               <tpc>20</tpc>
