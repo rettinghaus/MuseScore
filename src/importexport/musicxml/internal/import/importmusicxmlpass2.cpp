@@ -7358,10 +7358,9 @@ Note* MusicXmlParserPass2::note(const String& partId,
         Accidental* acc = mnp.acc();
         if (acc) {
             acc->setVisible(printObject);
-        } else if (note->accidentalType() != AccidentalType::NONE) {
+        } else if (note->accidental()) {
             note->accidental()->setVisible(false);
-        }
-        if (mnp.accType() != AccidentalType::NONE) {
+        } else if (mnp.accType() != AccidentalType::NONE) {
             acc = Factory::createAccidental(m_score->dummy());
             acc->setAccidentalType(mnp.accType());
             acc->setVisible(false);
