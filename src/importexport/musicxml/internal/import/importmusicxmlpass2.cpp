@@ -7362,6 +7362,11 @@ Note* MusicXmlParserPass2::note(const String& partId,
             acc = Factory::createAccidental(m_score->dummy());
             acc->setAccidentalType(mnp.accType());
             acc->setVisible(false);
+        } else if (!acc && mnp.alter() != 0 && m_pass1.exporterSoftware() == MusicXmlExporterSoftware::MUSESCORE) {
+            acc = Factory::createAccidental(m_score->dummy());
+            acc->setAccidentalType(Accidental::value2subtype(static_cast<AccidentalVal>(mnp.alter())));
+            acc->setVisible(false);
+            acc->setRole(AccidentalRole::AUTO);
         }
 
         if (acc) {

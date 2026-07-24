@@ -408,7 +408,9 @@ void MusicXmlParserPass1::addError(const String& error)
 
 void MusicXmlParserPass1::setExporterSoftware(String& exporter)
 {
-    if (exporter.contains(u"sibelius")) {
+    if (exporter.contains(u"musescore")) {
+        m_exporterSoftware = MusicXmlExporterSoftware::MUSESCORE;
+    } else if (exporter.contains(u"sibelius")) {
         if (exporter.contains(u"dolet 6")) {
             m_exporterSoftware = MusicXmlExporterSoftware::DOLET6;
         } else if (exporter.contains(u"dolet 8")) {
