@@ -2843,6 +2843,33 @@ int ExportMusicXml::findTrill(const Trill* tr) const
 }
 
 //---------------------------------------------------------
+//   isAccidentalCautionary
+//---------------------------------------------------------
+
+static bool isAccidentalCautionary(const Accidental* const acc)
+{
+    if (Accidental::isMicrotonal(acc->accidentalType())) {
+        return false;
+    }
+    const Note* note = acc->note();
+    if (note) {
+        const Staff* st = note->staff();
+        if (st) {
+            Key key = st->key(note->tick());
+            AccidentalState as;
+            as.init(key);
+            int absLine = absStep(note->tpc(), note->epitch());
+            bool error = false;
+            AccidentalVal keyAlter = as.accidentalVal(absLine, error);
+            if (!error) {
+                return Accidental::subtype2value(acc->accidentalType()) == keyAlter;
+            }
+        }
+    }
+    return false;
+}
+
+//---------------------------------------------------------
 //   writeAccidental
 //---------------------------------------------------------
 
@@ -2856,17 +2883,18 @@ static void writeAccidental(XmlWriter& xml, const String& tagName, const Acciden
                 attrs = { { "smufl", accidentalType2SmuflMusicXmlString(acc->accidentalType()) } };
             }
             String tag = tagName;
+            const bool isCautionary = isAccidentalCautionary(acc);
             if (acc->bracket() == AccidentalBracket::BRACKET) {
-                if (acc->role() == AccidentalRole::USER) {
+                if (acc->role() == AccidentalRole::USER && isCautionary) {
                     attrs.emplace_back(std::make_pair("editorial", "yes"));
                 }
                 attrs.emplace_back(std::make_pair("bracket", "yes"));
             } else if (acc->bracket() == AccidentalBracket::PARENTHESIS) {
-                if (acc->role() == AccidentalRole::USER) {
+                if (acc->role() == AccidentalRole::USER && isCautionary) {
                     attrs.emplace_back(std::make_pair("cautionary", "yes"));
                 }
                 attrs.emplace_back(std::make_pair("parentheses", "yes"));
-            } else if (acc->role() == AccidentalRole::USER) {            // no way to tell "cautionary" from "editorial"
+            } else if (acc->role() == AccidentalRole::USER && isCautionary) {            // no way to tell "cautionary" from "editorial"
                 attrs.emplace_back(std::make_pair("cautionary", "yes")); // so pick one
                 attrs.emplace_back(std::make_pair("parentheses", "no")); // but use neither parenthesis nor bracket ;-)
             }
