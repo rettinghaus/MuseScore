@@ -184,17 +184,17 @@ private:
             if constexpr (std::is_same_v<T, std::monostate>) {
                 return muse::String();
             } else if constexpr (std::is_same_v<T, int>) {
-                return muse::String::number(arg);
+                return muse::String::fromStdString(std::to_string(arg));
             } else if constexpr (std::is_same_v<T, unsigned int>) {
-                return muse::String::number(static_cast<size_t>(arg));
+                return muse::String::fromStdString(std::to_string(arg));
             } else if constexpr (std::is_same_v<T, signed long>) {
-                return muse::String::number(static_cast<int64_t>(arg));
+                return muse::String::fromStdString(std::to_string(arg));
             } else if constexpr (std::is_same_v<T, unsigned long>) {
-                return muse::String::number(static_cast<size_t>(arg));
+                return muse::String::fromStdString(std::to_string(arg));
             } else if constexpr (std::is_same_v<T, signed long long>) {
-                return muse::String::number(static_cast<int64_t>(arg));
+                return muse::String::fromStdString(std::to_string(arg));
             } else if constexpr (std::is_same_v<T, unsigned long long>) {
-                return muse::String::number(static_cast<size_t>(arg));
+                return muse::String::fromStdString(std::to_string(arg));
             } else if constexpr (std::is_same_v<T, double>) {
                 std::stringstream ss;
                 ss << arg;
