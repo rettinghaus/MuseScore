@@ -628,9 +628,7 @@ static bool isAppr(const double v, const double ref, const double epsilon)
 AccidentalType microtonalGuess(double val)
 {
     const double eps = 0.001;
-    if (isAppr(val, -2, eps)) {
-        return AccidentalType::FLAT2;
-    } else if (isAppr(val, -1.5, eps)) {
+    if (isAppr(val, -1.5, eps)) {
         return AccidentalType::MIRRORED_FLAT2;
     } else if (isAppr(val, -1, eps)) {
         return AccidentalType::FLAT;
@@ -644,8 +642,6 @@ AccidentalType microtonalGuess(double val)
         return AccidentalType::SHARP;
     } else if (isAppr(val, 1.5, eps)) {
         return AccidentalType::SHARP_SLASH4;
-    } else if (isAppr(val, 2, eps)) {
-        return AccidentalType::SHARP2;
     } else {
         LOGD("Guess for microtonal accidental corresponding to value %f failed.", val);
     }
