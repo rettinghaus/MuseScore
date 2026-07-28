@@ -151,7 +151,9 @@ namespace mu::iex::musicxml {
 struct IODeviceXmlWriter : public pugi::xml_writer
 {
     muse::io::IODevice* m_device;
-    IODeviceXmlWriter(muse::io::IODevice* dev) : m_device(dev) {}
+    IODeviceXmlWriter(muse::io::IODevice* dev)
+        : m_device(dev)
+    {}
     void write(const void* data, size_t size) override
     {
         if (m_device) {
@@ -169,7 +171,9 @@ public:
     using Attributes = std::vector<Attribute>;
 
     XmlWriter() = default;
-    XmlWriter(muse::io::IODevice* dev) : m_device(dev) {}
+    XmlWriter(muse::io::IODevice* dev)
+        : m_device(dev)
+    {}
     ~XmlWriter() { flush(); }
 
     void setDevice(muse::io::IODevice* dev) { m_device = dev; }
