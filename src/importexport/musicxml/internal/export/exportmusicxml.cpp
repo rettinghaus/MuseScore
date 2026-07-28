@@ -47,7 +47,7 @@
 #include "global/serialization/zipwriter.h"
 
 #include "engraving/style/style.h"
-#include "engraving/rw/xmlwriter.h"
+#include "pugixml.hpp"
 #include "engraving/types/typesconv.h"
 #include "engraving/types/symnames.h"
 
@@ -147,6 +147,190 @@ using namespace mu::iex::musicxml;
 using namespace mu::engraving;
 
 namespace mu::iex::musicxml {
+
+struct IODeviceXmlWriter : public pugi::xml_writer
+{
+    muse::io::IODevice* m_device;
+    IODeviceXmlWriter(muse::io::IODevice* dev) : m_device(dev) {}
+    void write(const void* data, size_t size) override
+    {
+        if (m_device) {
+            m_device->write(reinterpret_cast<const uint8_t*>(data), size);
+        }
+    }
+};
+
+class XmlWriter
+{
+public:
+    using Value = std::variant<std::monostate, int, unsigned int, signed long int, unsigned long int, signed long long, unsigned long long,
+                               double, const char*, std::string_view, String>;
+    using Attribute = std::pair<std::string_view, Value>;
+    using Attributes = std::vector<Attribute>;
+
+    XmlWriter() = default;
+    XmlWriter(muse::io::IODevice* dev) : m_device(dev) {}
+    ~XmlWriter() { flush(); }
+
+    void setDevice(muse::io::IODevice* dev) { m_device = dev; }
+
+    void startDocument()
+    {
+        pugi::xml_node decl = m_doc.prepend_child(pugi::node_declaration);
+        decl.append_attribute("version") = "1.0";
+        decl.append_attribute("encoding") = "UTF-8";
+    }
+
+    void writeDoctype(const String& doctype)
+    {
+        pugi::xml_node dt = m_doc.append_child(pugi::node_doctype);
+        dt.set_value(doctype.toStdString().c_str());
+    }
+
+    void startElement(const AsciiStringView& name, const Attributes& attrs = {})
+    {
+        pugi::xml_node parent = m_nodeStack.empty() ? m_doc : m_nodeStack.back();
+        pugi::xml_node child = parent.append_child(std::string(std::string_view(name)).c_str());
+        m_nodeStack.push_back(child);
+        addAttributes(child, attrs);
+    }
+
+    void startElement(const String& name, const Attributes& attrs = {})
+    {
+        pugi::xml_node parent = m_nodeStack.empty() ? m_doc : m_nodeStack.back();
+        pugi::xml_node child = parent.append_child(name.toStdString().c_str());
+        m_nodeStack.push_back(child);
+        addAttributes(child, attrs);
+    }
+
+    void startElementRaw(const String& rawString)
+    {
+        pugi::xml_document fragment;
+        std::string xmlStr = "<" + rawString.toStdString() + "/>";
+        fragment.load_string(xmlStr.c_str());
+        pugi::xml_node parent = m_nodeStack.empty() ? m_doc : m_nodeStack.back();
+        pugi::xml_node child = parent.append_copy(fragment.first_child());
+        m_nodeStack.push_back(child);
+    }
+
+    void endElement()
+    {
+        if (!m_nodeStack.empty()) {
+            m_nodeStack.pop_back();
+        }
+    }
+
+    void tag(const AsciiStringView& name, const Attributes& attrs = {})
+    {
+        pugi::xml_node parent = m_nodeStack.empty() ? m_doc : m_nodeStack.back();
+        pugi::xml_node child = parent.append_child(std::string(std::string_view(name)).c_str());
+        addAttributes(child, attrs);
+    }
+
+    void tag(const AsciiStringView& name, const Value& body)
+    {
+        pugi::xml_node parent = m_nodeStack.empty() ? m_doc : m_nodeStack.back();
+        pugi::xml_node child = parent.append_child(std::string(std::string_view(name)).c_str());
+        String bodyStr = String::decodeXmlEntities(valueToString(body));
+        child.append_child(pugi::node_pcdata).set_value(bodyStr.toStdString().c_str());
+    }
+
+    void tag(const AsciiStringView& name, const Value& val, const Value& def)
+    {
+        if (val == def) {
+            return;
+        }
+        tag(name, val);
+    }
+
+    void tag(const AsciiStringView& name, const Attributes& attrs, const Value& body)
+    {
+        pugi::xml_node parent = m_nodeStack.empty() ? m_doc : m_nodeStack.back();
+        pugi::xml_node child = parent.append_child(std::string(std::string_view(name)).c_str());
+        addAttributes(child, attrs);
+        String bodyStr = String::decodeXmlEntities(valueToString(body));
+        child.append_child(pugi::node_pcdata).set_value(bodyStr.toStdString().c_str());
+    }
+
+    void tagRaw(const String& elementWithAttrs, const Value& body = Value())
+    {
+        startElementRaw(elementWithAttrs);
+        if (!std::holds_alternative<std::monostate>(body)) {
+            String bodyStr = String::decodeXmlEntities(valueToString(body));
+            m_nodeStack.back().append_child(pugi::node_pcdata).set_value(bodyStr.toStdString().c_str());
+        }
+        endElement();
+    }
+
+    void comment(const String& text)
+    {
+        pugi::xml_node parent = m_nodeStack.empty() ? m_doc : m_nodeStack.back();
+        pugi::xml_node c = parent.append_child(pugi::node_comment);
+        c.set_value(text.toStdString().c_str());
+    }
+
+    void flush()
+    {
+        if (m_device && !m_written) {
+            IODeviceXmlWriter writer(m_device);
+            m_doc.save(writer, "  ", pugi::format_default, pugi::encoding_utf8);
+            m_written = true;
+        }
+    }
+
+    static String xmlString(const String& s)
+    {
+        return s;
+    }
+
+private:
+    static String valueToString(const Value& val)
+    {
+        return std::visit([](auto&& arg) -> String {
+            using T = std::decay_t<decltype(arg)>;
+            if constexpr (std::is_same_v<T, std::monostate>) {
+                return String();
+            } else if constexpr (std::is_same_v<T, int>) {
+                return String::number(arg);
+            } else if constexpr (std::is_same_v<T, unsigned int>) {
+                return String::number(arg);
+            } else if constexpr (std::is_same_v<T, signed long>) {
+                return String::number(arg);
+            } else if constexpr (std::is_same_v<T, unsigned long>) {
+                return String::number(arg);
+            } else if constexpr (std::is_same_v<T, signed long long>) {
+                return String::number(arg);
+            } else if constexpr (std::is_same_v<T, unsigned long long>) {
+                return String::number(arg);
+            } else if constexpr (std::is_same_v<T, double>) {
+                return String::number(arg);
+            } else if constexpr (std::is_same_v<T, const char*>) {
+                return String(arg);
+            } else if constexpr (std::is_same_v<T, std::string_view>) {
+                return String(std::string(arg).c_str());
+            } else if constexpr (std::is_same_v<T, String>) {
+                return arg;
+            } else {
+                return String();
+            }
+        }, val);
+    }
+
+    void addAttributes(pugi::xml_node node, const Attributes& attrs)
+    {
+        for (const auto& attr : attrs) {
+            String valStr = valueToString(attr.second);
+            std::string key(attr.first);
+            node.append_attribute(key.c_str()) = valStr.toStdString().c_str();
+        }
+    }
+
+    pugi::xml_document m_doc;
+    std::vector<pugi::xml_node> m_nodeStack;
+    muse::io::IODevice* m_device = nullptr;
+    bool m_written = false;
+};
+
 //---------------------------------------------------------
 //   local defines for debug output
 //---------------------------------------------------------
@@ -5919,7 +6103,7 @@ void ExportMusicXml::textLine(TextLineBase const* const tl, staff_idx_t staff, c
 //   Writes a string that may contain <sym>...</sym> elements as words and symbol elements.
 //---------------------------------------------------------
 
-static void writeWordsAndSymbolsXml(mu::engraving::XmlWriter& xml, const mu::engraving::String& words, const mu::engraving::String& attrs)
+static void writeWordsAndSymbolsXml(XmlWriter& xml, const String& words, const String& attrs)
 {
     // Write symbols as separate elements, the rest as words.
     static const std::wregex symRegex(LR"(<sym>([^<>]+)</sym>)");
