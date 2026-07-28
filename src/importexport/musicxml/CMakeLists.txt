@@ -81,7 +81,7 @@ else()
     )
 endif()
 
-target_link_libraries(iex_musicxml PRIVATE engraving)
+target_link_libraries(iex_musicxml PRIVATE engraving pugixml)
 
 if (MUE_BUILD_IMPORTEXPORT_TESTS)
     add_subdirectory(tests)
