@@ -147,7 +147,6 @@ using namespace mu::iex::musicxml;
 using namespace mu::engraving;
 
 namespace mu::iex::musicxml {
-
 struct IODeviceXmlWriter : public pugi::xml_writer
 {
     muse::io::IODevice* m_device;
