@@ -47,7 +47,8 @@
 #include "global/serialization/zipwriter.h"
 
 #include "engraving/style/style.h"
-#include "engraving/rw/xmlwriter.h"
+#include "pugixml.hpp"
+#include <sstream>
 #include "engraving/types/typesconv.h"
 #include "engraving/types/symnames.h"
 
@@ -147,6 +148,8 @@ using namespace mu::iex::musicxml;
 using namespace mu::engraving;
 
 namespace mu::iex::musicxml {
+#include "../shared/musicxmlpugiwriter.h"
+
 //---------------------------------------------------------
 //   local defines for debug output
 //---------------------------------------------------------
@@ -5919,7 +5922,7 @@ void ExportMusicXml::textLine(TextLineBase const* const tl, staff_idx_t staff, c
 //   Writes a string that may contain <sym>...</sym> elements as words and symbol elements.
 //---------------------------------------------------------
 
-static void writeWordsAndSymbolsXml(mu::engraving::XmlWriter& xml, const mu::engraving::String& words, const mu::engraving::String& attrs)
+static void writeWordsAndSymbolsXml(XmlWriter& xml, const String& words, const String& attrs)
 {
     // Write symbols as separate elements, the rest as words.
     static const std::wregex symRegex(LR"(<sym>([^<>]+)</sym>)");
