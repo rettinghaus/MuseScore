@@ -48,6 +48,7 @@
 
 #include "engraving/style/style.h"
 #include "pugixml.hpp"
+#include <sstream>
 #include "engraving/types/typesconv.h"
 #include "engraving/types/symnames.h"
 
