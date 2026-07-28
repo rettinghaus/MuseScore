@@ -32,7 +32,6 @@
 #include <sstream>
 
 namespace mu::iex::musicxml {
-
 struct IODeviceXmlWriter : public pugi::xml_writer
 {
     muse::io::IODevice* m_device;
@@ -225,5 +224,4 @@ private:
     muse::io::IODevice* m_device = nullptr;
     bool m_written = false;
 };
-
 } // namespace mu::iex::musicxml
