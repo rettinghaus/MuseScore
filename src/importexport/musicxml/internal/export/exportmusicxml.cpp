@@ -2855,14 +2855,46 @@ static bool isAccidentalCautionary(const Accidental* const acc)
     if (note) {
         const Staff* st = note->staff();
         if (st) {
-            Key key = st->key(note->tick());
-            AccidentalState as;
-            as.init(key);
-            int absLine = absStep(note->tpc(), note->epitch());
-            bool error = false;
-            AccidentalVal keyAlter = as.accidentalVal(absLine, error);
-            if (!error) {
-                return Accidental::subtype2value(acc->accidentalType()) == keyAlter;
+            const Note* prevNote = nullptr;
+            const Measure* meas = note->findMeasure();
+            if (meas) {
+                staff_idx_t staffIdx = st->idx();
+                const TrackRange trackRange = st->part()->trackRange();
+                int absLine = absStep(note->tpc(), note->epitch());
+                for (const Segment& segment : meas->segments()) {
+                    if (segment.tick() >= note->tick()) {
+                        break;
+                    }
+                    if (segment.isJustType(SegmentType::ChordRest)) {
+                        for (track_idx_t t = trackRange.startTrack; t < trackRange.endTrack; ++t) {
+                            Chord* chord = item_cast<Chord*>(segment.element(t), CastMode::MAYBE_BAD);
+                            if (chord && chord->vStaffIdx() == staffIdx) {
+                                for (Note* n : chord->notes()) {
+                                    if (absStep(n->tpc(), n->epitch()) == absLine) {
+                                        prevNote = n;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            double currentAlter = static_cast<int>(Accidental::subtype2value(acc->accidentalType())) + Accidental::subtype2centOffset(acc->accidentalType()) / 100.0;
+            if (prevNote) {
+                double prevAlter = static_cast<int>(tpc2alter(prevNote->tpc())) + prevNote->centOffset() / 100.0;
+                return muse::RealIsEqual(currentAlter, prevAlter);
+            } else {
+                Key key = st->key(note->tick());
+                AccidentalState as;
+                as.init(key);
+                int absLine = absStep(note->tpc(), note->epitch());
+                bool error = false;
+                AccidentalVal keyAlter = as.accidentalVal(absLine, error);
+                if (!error) {
+                    double keyAlterVal = static_cast<int>(keyAlter);
+                    return muse::RealIsEqual(currentAlter, keyAlterVal);
+                }
             }
         }
     }
