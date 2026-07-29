@@ -3,89 +3,89 @@
 <score-partwise version="4.0">
   <work>
     <work-title>Test guitar taps</work-title>
-    </work>
+  </work>
   <identification>
     <encoding>
       <encoder>Klaus Rettinghaus</encoder>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
-      </encoding>
-    </identification>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
+    </encoding>
+  </identification>
   <part-list>
     <score-part id="P1">
       <part-name>Guitar</part-name>
       <part-abbreviation>Guit.</part-abbreviation>
       <score-instrument id="P1-I1">
         <instrument-name>Classical Guitar</instrument-name>
-        </score-instrument>
+      </score-instrument>
       <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>25</midi-program>
         <volume>78.7402</volume>
         <pan>0</pan>
-        </midi-instrument>
-      </score-part>
-    </part-list>
+      </midi-instrument>
+    </score-part>
+  </part-list>
   <part id="P1">
     <measure number="1">
       <attributes>
         <divisions>2</divisions>
         <key>
           <fifths>0</fifths>
-          </key>
+        </key>
         <time>
           <beats>4</beats>
           <beat-type>4</beat-type>
-          </time>
+        </time>
         <staves>2</staves>
         <clef number="1">
           <sign>G</sign>
           <line>2</line>
           <clef-octave-change>-1</clef-octave-change>
-          </clef>
+        </clef>
         <clef number="2">
           <sign>TAB</sign>
-          </clef>
+        </clef>
         <staff-details number="2">
           <staff-lines>6</staff-lines>
           <staff-tuning line="1">
             <tuning-step>E</tuning-step>
             <tuning-octave>2</tuning-octave>
-            </staff-tuning>
+          </staff-tuning>
           <staff-tuning line="2">
             <tuning-step>A</tuning-step>
             <tuning-octave>2</tuning-octave>
-            </staff-tuning>
+          </staff-tuning>
           <staff-tuning line="3">
             <tuning-step>D</tuning-step>
             <tuning-octave>3</tuning-octave>
-            </staff-tuning>
+          </staff-tuning>
           <staff-tuning line="4">
             <tuning-step>G</tuning-step>
             <tuning-octave>3</tuning-octave>
-            </staff-tuning>
+          </staff-tuning>
           <staff-tuning line="5">
             <tuning-step>B</tuning-step>
             <tuning-octave>3</tuning-octave>
-            </staff-tuning>
+          </staff-tuning>
           <staff-tuning line="6">
             <tuning-step>E</tuning-step>
             <tuning-octave>4</tuning-octave>
-            </staff-tuning>
+          </staff-tuning>
           <staff-size>150</staff-size>
-          </staff-details>
-        </attributes>
+        </staff-details>
+      </attributes>
       <note>
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -94,16 +94,16 @@
         <beam number="1">begin</beam>
         <notations>
           <technical>
-            <tap hand="left"/>
-            </technical>
-          </notations>
-        </note>
+            <tap hand="left" />
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>F</step>
           <alter>1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -113,15 +113,15 @@
         <beam number="1">continue</beam>
         <notations>
           <technical>
-            <tap hand="right"/>
-            </technical>
-          </notations>
-        </note>
+            <tap hand="right" />
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -130,16 +130,16 @@
         <beam number="1">continue</beam>
         <notations>
           <technical>
-            <tap hand="right"/>
-            </technical>
-          </notations>
-        </note>
+            <tap hand="right" />
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <alter>-1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -149,15 +149,15 @@
         <beam number="1">end</beam>
         <notations>
           <technical>
-            <tap hand="right"/>
-            </technical>
-          </notations>
-        </note>
+            <tap hand="right" />
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -167,16 +167,16 @@
         <beam number="1">begin</beam>
         <notations>
           <technical>
-            <tap hand="left" placement="above"/>
-            </technical>
-          </notations>
-        </note>
+            <tap hand="left" placement="above" />
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>F</step>
           <alter>1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -186,15 +186,15 @@
         <beam number="1">continue</beam>
         <notations>
           <technical>
-            <tap hand="right" placement="above"/>
-            </technical>
-          </notations>
-        </note>
+            <tap hand="right" placement="above" />
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -204,16 +204,16 @@
         <beam number="1">continue</beam>
         <notations>
           <technical>
-            <tap hand="right" placement="above"/>
-            </technical>
-          </notations>
-        </note>
+            <tap hand="right" placement="above" />
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <alter>-1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -223,18 +223,18 @@
         <beam number="1">end</beam>
         <notations>
           <technical>
-            <tap hand="right" placement="above"/>
-            </technical>
-          </notations>
-        </note>
+            <tap hand="right" placement="above" />
+          </technical>
+        </notations>
+      </note>
       <backup>
         <duration>8</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>eighth</type>
@@ -242,18 +242,18 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="left"/>
+            <tap hand="left" />
             <string>3</string>
             <fret>10</fret>
-            </technical>
-          </notations>
-        </note>
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>F</step>
           <alter>1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>eighth</type>
@@ -261,17 +261,17 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
             <string>3</string>
             <fret>11</fret>
-            </technical>
-          </notations>
-        </note>
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>eighth</type>
@@ -279,18 +279,18 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
             <string>3</string>
             <fret>12</fret>
-            </technical>
-          </notations>
-        </note>
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <alter>-1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>eighth</type>
@@ -298,17 +298,17 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
             <string>3</string>
             <fret>11</fret>
-            </technical>
-          </notations>
-        </note>
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>eighth</type>
@@ -316,18 +316,18 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="left"/>
+            <tap hand="left" />
             <string>3</string>
             <fret>10</fret>
-            </technical>
-          </notations>
-        </note>
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>F</step>
           <alter>1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>eighth</type>
@@ -335,17 +335,17 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
             <string>3</string>
             <fret>11</fret>
-            </technical>
-          </notations>
-        </note>
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>eighth</type>
@@ -353,18 +353,18 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
             <string>3</string>
             <fret>12</fret>
-            </technical>
-          </notations>
-        </note>
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <alter>-1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>eighth</type>
@@ -372,19 +372,19 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
             <string>3</string>
             <fret>11</fret>
-            </technical>
-          </notations>
-        </note>
-      </measure>
+          </technical>
+        </notations>
+      </note>
+    </measure>
     <measure number="2">
       <note>
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -393,16 +393,16 @@
         <beam number="1">begin</beam>
         <notations>
           <technical>
-            <tap hand="left"/>
-            </technical>
-          </notations>
-        </note>
+            <tap hand="left" />
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>F</step>
           <alter>1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -412,15 +412,15 @@
         <beam number="1">continue</beam>
         <notations>
           <technical>
-            <tap hand="right" color="#9437FF"/>
-            </technical>
-          </notations>
-        </note>
+            <tap hand="right" color="#9437FF" />
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -429,16 +429,16 @@
         <beam number="1">continue</beam>
         <notations>
           <technical>
-            <tap hand="right"/>
-            </technical>
-          </notations>
-        </note>
+            <tap hand="right" />
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <alter>-1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -448,15 +448,15 @@
         <beam number="1">end</beam>
         <notations>
           <technical>
-            <tap hand="right"/>
-            </technical>
-          </notations>
-        </note>
+            <tap hand="right" />
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -466,16 +466,16 @@
         <beam number="1">begin</beam>
         <notations>
           <technical>
-            <tap hand="left" placement="below"/>
-            </technical>
-          </notations>
-        </note>
+            <tap hand="left" placement="below" />
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>F</step>
           <alter>1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -485,15 +485,15 @@
         <beam number="1">continue</beam>
         <notations>
           <technical>
-            <tap hand="right" placement="below"/>
-            </technical>
-          </notations>
-        </note>
+            <tap hand="right" placement="below" />
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -503,16 +503,16 @@
         <beam number="1">continue</beam>
         <notations>
           <technical>
-            <tap hand="right" placement="below"/>
-            </technical>
-          </notations>
-        </note>
+            <tap hand="right" placement="below" />
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <alter>-1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -522,18 +522,18 @@
         <beam number="1">end</beam>
         <notations>
           <technical>
-            <tap hand="right" placement="below"/>
-            </technical>
-          </notations>
-        </note>
+            <tap hand="right" placement="below" />
+          </technical>
+        </notations>
+      </note>
       <backup>
         <duration>8</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>eighth</type>
@@ -541,18 +541,18 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="left"/>
+            <tap hand="left" />
             <string>3</string>
             <fret>10</fret>
-            </technical>
-          </notations>
-        </note>
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>F</step>
           <alter>1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>eighth</type>
@@ -560,17 +560,17 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right" color="#FF7E79"/>
+            <tap hand="right" color="#FF7E79" />
             <string>3</string>
             <fret>11</fret>
-            </technical>
-          </notations>
-        </note>
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>eighth</type>
@@ -578,18 +578,18 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
             <string>3</string>
             <fret>12</fret>
-            </technical>
-          </notations>
-        </note>
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <alter>-1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>eighth</type>
@@ -597,17 +597,17 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
             <string>3</string>
             <fret>11</fret>
-            </technical>
-          </notations>
-        </note>
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>eighth</type>
@@ -615,18 +615,18 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="left" placement="below"/>
+            <tap hand="left" placement="below" />
             <string>3</string>
             <fret>10</fret>
-            </technical>
-          </notations>
-        </note>
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>F</step>
           <alter>1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>eighth</type>
@@ -634,17 +634,17 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right" placement="below"/>
+            <tap hand="right" placement="below" />
             <string>3</string>
             <fret>11</fret>
-            </technical>
-          </notations>
-        </note>
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>eighth</type>
@@ -652,18 +652,18 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right" placement="below"/>
+            <tap hand="right" placement="below" />
             <string>3</string>
             <fret>12</fret>
-            </technical>
-          </notations>
-        </note>
+          </technical>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <alter>-1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>eighth</type>
@@ -671,15 +671,15 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right" placement="below"/>
+            <tap hand="right" placement="below" />
             <string>3</string>
             <fret>11</fret>
-            </technical>
-          </notations>
-        </note>
+          </technical>
+        </notations>
+      </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        </barline>
-      </measure>
-    </part>
-  </score-partwise>
+      </barline>
+    </measure>
+  </part>
+</score-partwise>

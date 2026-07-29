@@ -170,7 +170,7 @@
             <tempo>5.333333</tempo>
             <followText>1</followText>
             <eid>N_N</eid>
-            <text><font size="12"/><b>Surreptitiously </b><sym>metNoteQuarterUp</sym> = 80</text>
+            <text><font size="12"/><b>Surreptitiously</b> <sym>metNoteQuarterUp</sym> = 80</text>
             </Tempo>
           <Rest>
             <eid>O_O</eid>
