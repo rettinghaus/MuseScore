@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -24,7 +24,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -78,7 +78,7 @@
       </note>
       <direction placement="above">
         <direction-type>
-          <wedge type="crescendo" number="1"></wedge>
+          <wedge type="crescendo" number="1" />
         </direction-type>
         <staff>1</staff>
       </direction>
@@ -120,7 +120,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="2"></wedge>
+          <wedge type="crescendo" number="2" />
         </direction-type>
         <staff>2</staff>
       </direction>
@@ -183,7 +183,7 @@
       </note>
       <direction placement="above">
         <direction-type>
-          <wedge type="stop" number="1"></wedge>
+          <wedge type="stop" number="1" />
         </direction-type>
         <staff>1</staff>
       </direction>
@@ -225,7 +225,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="2"></wedge>
+          <wedge type="stop" number="2" />
         </direction-type>
         <staff>2</staff>
       </direction>
@@ -288,7 +288,7 @@
       </note>
       <direction>
         <direction-type>
-          <octave-shift type="down" size="8" number="1"/>
+          <octave-shift type="down" size="8" number="1" />
         </direction-type>
         <staff>1</staff>
       </direction>
@@ -330,7 +330,7 @@
       </note>
       <direction>
         <direction-type>
-          <octave-shift type="up" size="8" number="2"/>
+          <octave-shift type="up" size="8" number="2" />
         </direction-type>
         <staff>2</staff>
       </direction>
@@ -393,7 +393,7 @@
       </note>
       <direction>
         <direction-type>
-          <octave-shift type="stop" size="8" number="1"/>
+          <octave-shift type="stop" size="8" number="1" />
         </direction-type>
         <staff>1</staff>
       </direction>
@@ -435,7 +435,7 @@
       </note>
       <direction>
         <direction-type>
-          <octave-shift type="stop" size="8" number="2"/>
+          <octave-shift type="stop" size="8" number="2" />
         </direction-type>
         <staff>2</staff>
       </direction>
@@ -474,7 +474,7 @@
       </note>
     </measure>
     <measure number="5">
-      <print new-system="yes"></print>
+      <print new-system="yes" />
       <note>
         <pitch>
           <step>G</step>
@@ -502,7 +502,7 @@
           <words>VII</words>
         </direction-type>
         <direction-type>
-          <bracket type="start" number="1" line-end="none" line-type="solid"/>
+          <bracket type="start" number="1" line-end="none" line-type="solid" />
         </direction-type>
         <staff>1</staff>
       </direction>
@@ -547,7 +547,7 @@
           <words>VII</words>
         </direction-type>
         <direction-type>
-          <bracket type="start" number="2" line-end="none" line-type="solid"/>
+          <bracket type="start" number="2" line-end="none" line-type="solid" />
         </direction-type>
         <staff>2</staff>
       </direction>
@@ -610,7 +610,7 @@
       </note>
       <direction placement="above">
         <direction-type>
-          <bracket type="stop" number="1" line-end="down" end-length="15"/>
+          <bracket type="stop" number="1" line-end="down" end-length="15" />
         </direction-type>
         <staff>1</staff>
       </direction>
@@ -652,7 +652,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <bracket type="stop" number="2" line-end="up" end-length="15"/>
+          <bracket type="stop" number="2" line-end="up" end-length="15" />
         </direction-type>
         <staff>2</staff>
       </direction>
@@ -725,8 +725,8 @@
         <staff>1</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -767,8 +767,8 @@
         <staff>2</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="2"/>
+            <trill-mark />
+            <wavy-line type="start" number="2" />
           </ornaments>
         </notations>
       </note>
@@ -819,7 +819,7 @@
         <staff>1</staff>
         <notations>
           <ornaments>
-            <wavy-line type="stop" number="1"/>
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -860,7 +860,7 @@
         <staff>2</staff>
         <notations>
           <ornaments>
-            <wavy-line type="stop" number="2"/>
+            <wavy-line type="stop" number="2" />
           </ornaments>
         </notations>
       </note>

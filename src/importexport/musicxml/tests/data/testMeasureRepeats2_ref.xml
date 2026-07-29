@@ -7,11 +7,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -20,7 +20,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>SmartMusic SoftSynth</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -58,7 +58,7 @@
           </metronome>
         </direction-type>
         <staff>1</staff>
-        <sound tempo="120"></sound>
+        <sound tempo="120" />
       </direction>
       <note>
         <pitch>
@@ -97,7 +97,7 @@
         <duration>6</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>6</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -329,7 +329,7 @@
     <measure number="5">
       <attributes>
         <measure-style number="1">
-          <measure-repeat type="stop"></measure-repeat>
+          <measure-repeat type="stop" />
         </measure-style>
       </attributes>
       <note>
@@ -669,7 +669,7 @@
     <measure number="8">
       <attributes>
         <measure-style number="2">
-          <measure-repeat type="stop"></measure-repeat>
+          <measure-repeat type="stop" />
         </measure-style>
       </attributes>
       <note>
@@ -755,7 +755,7 @@
         <duration>6</duration>
         <voice>5</voice>
         <type>half</type>
-        <dot></dot>
+        <dot />
         <stem>up</stem>
         <staff>2</staff>
       </note>

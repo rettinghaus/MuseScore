@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -24,7 +24,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -73,7 +73,7 @@
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="start" bracket="yes" show-number="both"></tuplet>
+          <tuplet type="start" bracket="yes" show-number="both" />
         </notations>
       </note>
       <note>
@@ -104,7 +104,7 @@
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="stop"></tuplet>
+          <tuplet type="stop" />
         </notations>
       </note>
       <note>
@@ -163,7 +163,7 @@
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="start" bracket="yes" show-number="both"></tuplet>
+          <tuplet type="start" bracket="yes" show-number="both" />
         </notations>
       </note>
       <note>
@@ -180,7 +180,7 @@
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="stop"></tuplet>
+          <tuplet type="stop" />
         </notations>
       </note>
       <note>
@@ -205,7 +205,7 @@
       </note>
     </measure>
     <measure number="3">
-      <print new-system="yes"></print>
+      <print new-system="yes" />
       <note>
         <pitch>
           <step>G</step>
@@ -230,7 +230,7 @@
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="start" bracket="yes" show-number="both"></tuplet>
+          <tuplet type="start" bracket="yes" show-number="both" />
         </notations>
       </note>
       <note>
@@ -275,7 +275,7 @@
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="stop"></tuplet>
+          <tuplet type="stop" />
         </notations>
       </note>
       <note>
@@ -324,7 +324,7 @@
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="start" bracket="yes" show-number="both"></tuplet>
+          <tuplet type="start" bracket="yes" show-number="both" />
         </notations>
       </note>
       <note>
@@ -355,7 +355,7 @@
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="stop"></tuplet>
+          <tuplet type="stop" />
         </notations>
       </note>
       <note>
@@ -370,7 +370,7 @@
       </note>
     </measure>
     <measure number="5">
-      <print new-system="yes"></print>
+      <print new-system="yes" />
       <note>
         <pitch>
           <step>G</step>
@@ -396,7 +396,7 @@
         <stem>up</stem>
         <beam number="1">begin</beam>
         <notations>
-          <tuplet type="start" bracket="no" show-number="both"></tuplet>
+          <tuplet type="start" bracket="no" show-number="both" />
         </notations>
       </note>
       <note>
@@ -474,7 +474,7 @@
         <stem>up</stem>
         <beam number="1">end</beam>
         <notations>
-          <tuplet type="stop"></tuplet>
+          <tuplet type="stop" />
         </notations>
       </note>
       <note>
@@ -534,7 +534,7 @@
         <stem>up</stem>
         <beam number="1">begin</beam>
         <notations>
-          <tuplet type="start" bracket="no" show-number="both"></tuplet>
+          <tuplet type="start" bracket="no" show-number="both" />
         </notations>
       </note>
       <note>
@@ -582,7 +582,7 @@
         <stem>up</stem>
         <beam number="1">end</beam>
         <notations>
-          <tuplet type="stop"></tuplet>
+          <tuplet type="stop" />
         </notations>
       </note>
       <note>

@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -45,7 +45,7 @@
       <score-instrument id="P1-I65">
         <instrument-name>low conga</instrument-name>
       </score-instrument>
-      <midi-device port="1"></midi-device>
+      <midi-device port="1" />
       <midi-instrument id="P1-I36">
         <midi-channel>10</midi-channel>
         <midi-program>1</midi-program>
@@ -125,7 +125,7 @@
           <display-octave>4</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P1-I36"></instrument>
+        <instrument id="P1-I36" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
@@ -136,7 +136,7 @@
           <display-octave>4</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P1-I65"></instrument>
+        <instrument id="P1-I65" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
@@ -148,7 +148,7 @@
           <display-octave>4</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P1-I42"></instrument>
+        <instrument id="P1-I42" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
@@ -159,7 +159,7 @@
           <display-octave>4</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P1-I64"></instrument>
+        <instrument id="P1-I64" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
@@ -173,7 +173,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P1-I41"></instrument>
+        <instrument id="P1-I41" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
@@ -184,7 +184,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P1-I46"></instrument>
+        <instrument id="P1-I46" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
@@ -195,7 +195,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P1-I47"></instrument>
+        <instrument id="P1-I47" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
@@ -207,7 +207,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P1-I49"></instrument>
+        <instrument id="P1-I49" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>

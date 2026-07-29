@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
     <miscellaneous>
       <miscellaneous-field name="description">Test multi-measure rest handling. When exporting to MusicXML, the global
@@ -27,7 +27,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Staff 1</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -56,28 +56,28 @@
         </measure-style>
       </attributes>
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="2">
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="3">
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="4">
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -89,14 +89,14 @@
         </measure-style>
       </attributes>
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="6">
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
       </note>

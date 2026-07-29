@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <defaults>
@@ -61,9 +61,9 @@
       <note-size type="grace">70</note-size>
       <note-size type="grace-cue">49</note-size>
     </appearance>
-    <music-font font-family="Leland"></music-font>
-    <word-font font-family="Edwin" font-size="10"></word-font>
-    <lyric-font font-family="Edwin" font-size="10"></lyric-font>
+    <music-font font-family="Leland" />
+    <word-font font-family="Edwin" font-size="10" />
+    <lyric-font font-family="Edwin" font-size="10" />
   </defaults>
   <credit page="1">
     <credit-type>title</credit-type>
@@ -76,7 +76,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Flute</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -314,14 +314,14 @@
         </measure-style>
       </attributes>
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="11" width="0">
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -342,14 +342,14 @@
         </measure-style>
       </attributes>
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="13" width="0">
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -361,14 +361,14 @@
         </measure-style>
       </attributes>
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="15" width="0">
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -380,28 +380,28 @@
         </measure-style>
       </attributes>
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="17" width="0">
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="18" width="0">
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="19" width="0">
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -623,14 +623,14 @@
         </measure-style>
       </attributes>
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="30" width="0">
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -664,14 +664,14 @@
         </measure-style>
       </attributes>
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="33" width="0">
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -705,14 +705,14 @@
         </measure-style>
       </attributes>
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="36" width="0">
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -746,14 +746,14 @@
         </measure-style>
       </attributes>
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="39" width="0">
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -787,14 +787,14 @@
         </measure-style>
       </attributes>
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="42" width="0">
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -837,14 +837,14 @@
         </measure-style>
       </attributes>
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="45" width="0">
       <note default-x="0" default-y="0">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>

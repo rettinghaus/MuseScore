@@ -25,9 +25,9 @@
       </attributes>
       <direction placement="above">
         <direction-type>
-          <words></words>
+          <words />
         </direction-type>
-        <sound tempo="60"></sound>
+        <sound tempo="60" />
       </direction>
       <note>
         <pitch>

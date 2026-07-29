@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Voice</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>53</midi-program>
@@ -59,7 +59,7 @@
         <stem>up</stem>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
@@ -70,7 +70,7 @@
         <stem>up</stem>
       </note>
       <note>
-        <grace/>
+        <grace />
         <pitch>
           <step>D</step>
           <octave>5</octave>
@@ -80,8 +80,8 @@
         <stem>up</stem>
       </note>
       <note>
-        <grace/>
-        <chord/>
+        <grace />
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
@@ -101,7 +101,7 @@
         <stem>up</stem>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
@@ -115,7 +115,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <grace slash="yes"/>
+        <grace slash="yes" />
         <pitch>
           <step>E</step>
           <octave>4</octave>
@@ -125,8 +125,8 @@
         <stem>down</stem>
       </note>
       <note>
-        <grace slash="yes"/>
-        <chord/>
+        <grace slash="yes" />
+        <chord />
         <pitch>
           <step>G</step>
           <octave>4</octave>
@@ -146,7 +146,7 @@
         <stem>down</stem>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -167,7 +167,7 @@
         <stem>down</stem>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -180,7 +180,7 @@
     </measure>
     <measure number="2">
       <note>
-        <grace/>
+        <grace />
         <pitch>
           <step>E</step>
           <octave>5</octave>
@@ -192,7 +192,7 @@
         <beam number="2">begin</beam>
       </note>
       <note>
-        <grace/>
+        <grace />
         <pitch>
           <step>D</step>
           <octave>5</octave>
@@ -214,7 +214,7 @@
         <stem>up</stem>
       </note>
       <note>
-        <grace/>
+        <grace />
         <pitch>
           <step>A</step>
           <alter>1</alter>
@@ -229,7 +229,7 @@
         <beam number="3">begin</beam>
       </note>
       <note>
-        <grace/>
+        <grace />
         <pitch>
           <step>G</step>
           <alter>1</alter>
@@ -244,7 +244,7 @@
         <beam number="3">continue</beam>
       </note>
       <note>
-        <grace/>
+        <grace />
         <pitch>
           <step>F</step>
           <alter>1</alter>
@@ -259,7 +259,7 @@
         <beam number="3">continue</beam>
       </note>
       <note>
-        <grace/>
+        <grace />
         <pitch>
           <step>D</step>
           <alter>1</alter>
@@ -298,7 +298,7 @@
     </measure>
     <measure number="3">
       <note>
-        <grace/>
+        <grace />
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -336,7 +336,7 @@
         </lyric>
       </note>
       <note>
-        <grace/>
+        <grace />
         <pitch>
           <step>B</step>
           <octave>4</octave>

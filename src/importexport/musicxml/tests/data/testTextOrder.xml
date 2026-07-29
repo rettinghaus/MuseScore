@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <defaults>
@@ -37,8 +37,8 @@
         <bottom-margin>85.7143</bottom-margin>
       </page-margins>
     </page-layout>
-    <word-font font-family="Edwin" font-size="10"></word-font>
-    <lyric-font font-family="Edwin" font-size="10"></lyric-font>
+    <word-font font-family="Edwin" font-size="10" />
+    <lyric-font font-family="Edwin" font-size="10" />
   </defaults>
   <credit page="1">
     <credit-type>title</credit-type>
@@ -62,7 +62,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -477,7 +477,7 @@
         </lyric>
       </note>
       <note default-x="375.42" default-y="-15.00">
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -488,7 +488,7 @@
         <stem>down</stem>
       </note>
       <note default-x="375.42" default-y="0.00">
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
@@ -499,7 +499,7 @@
         <stem>down</stem>
       </note>
       <note default-x="375.42" default-y="10.00">
-        <chord/>
+        <chord />
         <pitch>
           <step>A</step>
           <octave>5</octave>
@@ -510,7 +510,7 @@
         <stem>down</stem>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -533,7 +533,7 @@
         </lyric>
       </note>
       <note default-x="27.31" default-y="-10.00">
-        <chord/>
+        <chord />
         <pitch>
           <step>D</step>
           <octave>5</octave>
@@ -544,7 +544,7 @@
         <stem>down</stem>
       </note>
       <note default-x="27.31" default-y="0.00">
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
@@ -555,7 +555,7 @@
         <stem>down</stem>
       </note>
       <note default-x="27.31" default-y="15.00">
-        <chord/>
+        <chord />
         <pitch>
           <step>B</step>
           <alter>-1</alter>
@@ -567,7 +567,7 @@
         <stem>down</stem>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -587,7 +587,7 @@
         </lyric>
       </note>
       <note default-x="219.92" default-y="-15.00">
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -598,7 +598,7 @@
         <stem>down</stem>
       </note>
       <note default-x="219.92" default-y="0.00">
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
@@ -609,7 +609,7 @@
         <stem>down</stem>
       </note>
       <note default-x="219.92" default-y="10.00">
-        <chord/>
+        <chord />
         <pitch>
           <step>A</step>
           <octave>5</octave>
@@ -620,7 +620,7 @@
         <stem>down</stem>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>

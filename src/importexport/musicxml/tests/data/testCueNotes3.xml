@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <defaults>
@@ -38,8 +38,8 @@
         <bottom-margin>85.7251</bottom-margin>
       </page-margins>
     </page-layout>
-    <word-font font-family="Edwin" font-size="10"></word-font>
-    <lyric-font font-family="Edwin" font-size="10"></lyric-font>
+    <word-font font-family="Edwin" font-size="10" />
+    <lyric-font font-family="Edwin" font-size="10" />
   </defaults>
   <credit page="1">
     <credit-type>title</credit-type>
@@ -60,7 +60,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Voice</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>53</midi-program>
@@ -130,17 +130,17 @@
           <octave>4</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="start"/>
+        <tie type="start" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <notations>
-          <tied type="start"/>
+          <tied type="start" />
         </notations>
         <lyric number="1" default-y="-89.22" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>stripes</text>
-          <extend></extend>
+          <extend />
         </lyric>
       </note>
     </measure>
@@ -152,12 +152,12 @@
           <octave>4</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop"/>
+        <tie type="stop" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <notations>
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
       </note>
       <note default-x="65.25" default-y="-55.00">
@@ -191,7 +191,7 @@
         </lyric>
       </note>
       <note default-x="119.46" default-y="-40.00">
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <alter>-1</alter>
@@ -203,13 +203,13 @@
         <stem>up</stem>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -227,7 +227,7 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
         <lyric number="1" default-x="4.55" default-y="-89.22" relative-y="-30.00">
@@ -248,7 +248,7 @@
         <type size="cue">quarter</type>
         <stem>down</stem>
         <notations>
-          <fermata type="upright" relative-y="5.00"></fermata>
+          <fermata type="upright" relative-y="5.00" />
           <ornaments>
             <tremolo type="single">4</tremolo>
           </ornaments>
@@ -274,7 +274,7 @@
         </lyric>
       </note>
       <note default-x="106.50" default-y="-5.00">
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <alter>-1</alter>
@@ -302,7 +302,7 @@
         </lyric>
       </note>
       <note default-x="196.64" default-y="-10.00">
-        <chord/>
+        <chord />
         <pitch>
           <step>D</step>
           <octave>5</octave>
@@ -313,7 +313,7 @@
         <stem>down</stem>
       </note>
       <note default-x="196.64" default-y="25.00">
-        <chord/>
+        <chord />
         <pitch>
           <step>D</step>
           <octave>6</octave>
@@ -334,7 +334,7 @@
         <duration>12</duration>
         <voice>1</voice>
         <type size="cue">half</type>
-        <dot></dot>
+        <dot />
         <accidental>sharp</accidental>
         <stem>up</stem>
         <lyric number="1" default-x="6.50" default-y="-89.22" relative-y="-30.00">
@@ -343,7 +343,7 @@
         </lyric>
       </note>
       <note default-x="23.03" default-y="-45.00">
-        <chord/>
+        <chord />
         <pitch>
           <step>D</step>
           <alter>-1</alter>
@@ -352,12 +352,12 @@
         <duration>12</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot></dot>
+        <dot />
         <accidental>flat</accidental>
         <stem>up</stem>
       </note>
       <note default-x="26.92" default-y="-15.00">
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <alter>1</alter>
@@ -366,12 +366,12 @@
         <duration>12</duration>
         <voice>1</voice>
         <type size="cue">half</type>
-        <dot></dot>
+        <dot />
         <accidental>sharp</accidental>
         <stem>up</stem>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
         <type size="cue">quarter</type>

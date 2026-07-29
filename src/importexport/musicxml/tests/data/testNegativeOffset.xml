@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <defaults>
@@ -37,8 +37,8 @@
         <bottom-margin>85.7143</bottom-margin>
       </page-margins>
     </page-layout>
-    <word-font font-family="Edwin" font-size="10"></word-font>
-    <lyric-font font-family="Edwin" font-size="10"></lyric-font>
+    <word-font font-family="Edwin" font-size="10" />
+    <lyric-font font-family="Edwin" font-size="10" />
   </defaults>
   <credit page="1">
     <credit-type>title</credit-type>
@@ -59,7 +59,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -109,7 +109,7 @@
         <staff>1</staff>
       </direction>
       <note>
-        <rest/>
+        <rest />
         <duration>3</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -132,7 +132,7 @@
         <staff>1</staff>
         <beam number="1">begin</beam>
         <notations>
-          <tuplet type="start" bracket="no"></tuplet>
+          <tuplet type="start" bracket="no" />
         </notations>
       </note>
       <note default-x="266.67" default-y="-5.00">
@@ -168,7 +168,7 @@
         <staff>1</staff>
         <beam number="1">end</beam>
         <notations>
-          <tuplet type="stop"></tuplet>
+          <tuplet type="stop" />
         </notations>
       </note>
       <note default-x="332.12" default-y="5.00">
@@ -188,7 +188,7 @@
         <staff>1</staff>
         <beam number="1">begin</beam>
         <notations>
-          <tuplet type="start" bracket="no"></tuplet>
+          <tuplet type="start" bracket="no" />
         </notations>
       </note>
       <note default-x="364.84" default-y="-10.00">
@@ -224,11 +224,11 @@
         <staff>1</staff>
         <beam number="1">end</beam>
         <notations>
-          <tuplet type="stop"></tuplet>
+          <tuplet type="stop" />
         </notations>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>3</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -254,7 +254,7 @@
         <staff>2</staff>
         <beam number="1">begin</beam>
         <notations>
-          <tuplet type="start" bracket="no"></tuplet>
+          <tuplet type="start" bracket="no" />
         </notations>
       </note>
       <note default-x="168.50" default-y="-145.00">
@@ -289,18 +289,18 @@
         <staff>2</staff>
         <beam number="1">end</beam>
         <notations>
-          <tuplet type="stop"></tuplet>
+          <tuplet type="stop" />
         </notations>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>3</duration>
         <voice>5</voice>
         <type>quarter</type>
         <staff>2</staff>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>3</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -323,7 +323,7 @@
         <staff>2</staff>
         <beam number="1">begin</beam>
         <notations>
-          <tuplet type="start" bracket="no"></tuplet>
+          <tuplet type="start" bracket="no" />
         </notations>
       </note>
       <note default-x="463.01" default-y="-150.00">
@@ -359,13 +359,13 @@
         <staff>2</staff>
         <beam number="1">end</beam>
         <notations>
-          <tuplet type="stop"></tuplet>
+          <tuplet type="stop" />
         </notations>
       </note>
     </measure>
     <measure number="2" width="432.42">
       <note>
-        <rest/>
+        <rest />
         <duration>3</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -387,7 +387,7 @@
         <staff>1</staff>
         <beam number="1">begin</beam>
         <notations>
-          <tuplet type="start" bracket="no"></tuplet>
+          <tuplet type="start" bracket="no" />
         </notations>
       </note>
       <note default-x="151.59" default-y="-15.00">
@@ -424,7 +424,7 @@
         <staff>1</staff>
         <beam number="1">end</beam>
         <notations>
-          <tuplet type="stop"></tuplet>
+          <tuplet type="stop" />
         </notations>
       </note>
       <note default-x="219.13" default-y="-5.00">
@@ -443,7 +443,7 @@
         <staff>1</staff>
         <beam number="1">begin</beam>
         <notations>
-          <tuplet type="start" bracket="no"></tuplet>
+          <tuplet type="start" bracket="no" />
         </notations>
       </note>
       <note default-x="252.91" default-y="-20.00">
@@ -479,11 +479,11 @@
         <staff>1</staff>
         <beam number="1">end</beam>
         <notations>
-          <tuplet type="stop"></tuplet>
+          <tuplet type="stop" />
         </notations>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>3</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -508,7 +508,7 @@
         <staff>2</staff>
         <beam number="1">begin</beam>
         <notations>
-          <tuplet type="start" bracket="no"></tuplet>
+          <tuplet type="start" bracket="no" />
         </notations>
       </note>
       <note default-x="50.27" default-y="-155.00">
@@ -545,18 +545,18 @@
         <staff>2</staff>
         <beam number="1">end</beam>
         <notations>
-          <tuplet type="stop"></tuplet>
+          <tuplet type="stop" />
         </notations>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>3</duration>
         <voice>5</voice>
         <type>quarter</type>
         <staff>2</staff>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>3</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -578,7 +578,7 @@
         <staff>2</staff>
         <beam number="1">begin</beam>
         <notations>
-          <tuplet type="start" bracket="no"></tuplet>
+          <tuplet type="start" bracket="no" />
         </notations>
       </note>
       <note default-x="354.22" default-y="-160.00">
@@ -614,7 +614,7 @@
         <staff>2</staff>
         <beam number="1">end</beam>
         <notations>
-          <tuplet type="stop"></tuplet>
+          <tuplet type="stop" />
         </notations>
       </note>
       <barline location="right">

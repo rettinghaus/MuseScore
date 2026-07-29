@@ -8,11 +8,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -22,7 +22,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Fagott</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>71</midi-program>
@@ -53,14 +53,14 @@
           <octave>3</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="start"/>
+        <tie type="start" />
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="start"/>
+          <tied type="start" />
         </notations>
         <notations print-object="no">
-          <slur type="start" orientation="under" placement="below" number="1"/>
+          <slur type="start" orientation="under" placement="below" number="1" />
         </notations>
       </note>
     </measure>
@@ -71,19 +71,19 @@
           <octave>3</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop"/>
-        <tie type="start"/>
+        <tie type="stop" />
+        <tie type="start" />
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
         <notations print-object="no">
-          <tied type="start" orientation="under" placement="below"/>
-          <slur type="stop" number="1"/>
+          <tied type="start" orientation="under" placement="below" />
+          <slur type="stop" number="1" />
         </notations>
         <notations>
-          <slur type="start" number="1"/>
+          <slur type="start" number="1" />
         </notations>
       </note>
     </measure>
@@ -94,14 +94,14 @@
           <octave>3</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop"/>
+        <tie type="stop" />
         <voice>1</voice>
         <type>whole</type>
         <notations print-object="no">
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
         <notations>
-          <slur type="stop" number="1"/>
+          <slur type="stop" number="1" />
         </notations>
       </note>
     </measure>
@@ -117,12 +117,12 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <tenuto/>
+            <tenuto />
           </articulations>
         </notations>
         <notations print-object="no">
           <articulations>
-            <accent/>
+            <accent />
           </articulations>
         </notations>
       </note>
@@ -137,12 +137,12 @@
         <stem>down</stem>
         <notations print-object="no">
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
         <notations>
           <articulations>
-            <accent/>
+            <accent />
           </articulations>
         </notations>
       </note>
@@ -157,7 +157,7 @@
         <stem>down</stem>
         <notations>
           <technical>
-            <up-bow/>
+            <up-bow />
           </technical>
         </notations>
         <notations print-object="no">
@@ -177,7 +177,7 @@
         <stem>down</stem>
         <notations print-object="no">
           <technical>
-            <down-bow/>
+            <down-bow />
           </technical>
         </notations>
         <notations>
@@ -199,12 +199,12 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <turn/>
+            <turn />
           </ornaments>
         </notations>
         <notations print-object="no">
           <ornaments>
-            <inverted-mordent></inverted-mordent>
+            <inverted-mordent />
           </ornaments>
         </notations>
       </note>
@@ -219,12 +219,12 @@
         <stem>down</stem>
         <notations print-object="no">
           <ornaments>
-            <inverted-turn></inverted-turn>
+            <inverted-turn />
           </ornaments>
         </notations>
         <notations>
           <ornaments>
-            <mordent/>
+            <mordent />
           </ornaments>
         </notations>
       </note>

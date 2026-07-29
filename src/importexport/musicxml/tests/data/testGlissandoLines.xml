@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -24,7 +24,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -59,7 +59,7 @@
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <slide line-type="solid" number="1" type="start"/>
+          <slide line-type="solid" number="1" type="start" />
         </notations>
       </note>
       <note>
@@ -72,7 +72,7 @@
         <type>half</type>
         <stem>down</stem>
         <notations>
-          <slide line-type="solid" number="1" type="stop"/>
+          <slide line-type="solid" number="1" type="stop" />
         </notations>
       </note>
     </measure>
@@ -87,7 +87,7 @@
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <slide line-type="dashed" number="1" type="start"/>
+          <slide line-type="dashed" number="1" type="start" />
         </notations>
       </note>
       <note>
@@ -100,7 +100,7 @@
         <type>half</type>
         <stem>down</stem>
         <notations>
-          <slide line-type="dashed" number="1" type="stop"/>
+          <slide line-type="dashed" number="1" type="stop" />
         </notations>
       </note>
     </measure>
@@ -115,7 +115,7 @@
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <slide line-type="dotted" number="1" type="start"/>
+          <slide line-type="dotted" number="1" type="start" />
         </notations>
       </note>
       <note>
@@ -128,7 +128,7 @@
         <type>half</type>
         <stem>down</stem>
         <notations>
-          <slide line-type="dotted" number="1" type="stop"/>
+          <slide line-type="dotted" number="1" type="stop" />
         </notations>
       </note>
     </measure>
@@ -156,7 +156,7 @@
         <type>half</type>
         <stem>down</stem>
         <notations>
-          <glissando line-type="wavy" number="1" type="stop"/>
+          <glissando line-type="wavy" number="1" type="stop" />
         </notations>
       </note>
       <barline location="right">

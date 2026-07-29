@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -27,14 +27,14 @@
       <score-instrument id="P1-I2">
         <instrument-name>B♭ Clarinet</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>72</midi-program>
         <volume>78.7402</volume>
         <pan>0</pan>
       </midi-instrument>
-      <midi-device id="P1-I2" port="1"></midi-device>
+      <midi-device id="P1-I2" port="1" />
       <midi-instrument id="P1-I2">
         <midi-channel>2</midi-channel>
         <midi-program>72</midi-program>
@@ -69,14 +69,14 @@
         </measure-style>
       </attributes>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="2">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -88,7 +88,7 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <instrument id="P1-I1"></instrument>
+        <instrument id="P1-I1" />
         <voice>1</voice>
         <type>whole</type>
       </note>
@@ -116,7 +116,7 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <instrument id="P1-I2"></instrument>
+        <instrument id="P1-I2" />
         <voice>1</voice>
         <type>whole</type>
       </note>

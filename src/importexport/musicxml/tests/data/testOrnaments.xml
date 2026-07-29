@@ -9,11 +9,11 @@
       <encoder>Klaus Rettinghaus</encoder>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -59,7 +59,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <turn/>
+            <turn />
           </ornaments>
         </notations>
       </note>
@@ -74,7 +74,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <inverted-turn></inverted-turn>
+            <inverted-turn />
           </ornaments>
         </notations>
       </note>
@@ -91,7 +91,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <trill-mark/>
+            <trill-mark />
           </ornaments>
         </notations>
       </note>
@@ -106,7 +106,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <inverted-mordent></inverted-mordent>
+            <inverted-mordent />
           </ornaments>
         </notations>
       </note>
@@ -123,7 +123,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <mordent/>
+            <mordent />
           </ornaments>
         </notations>
       </note>
@@ -138,7 +138,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <turn slash="yes"/>
+            <turn slash="yes" />
           </ornaments>
         </notations>
       </note>
@@ -155,7 +155,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <inverted-mordent long="yes"></inverted-mordent>
+            <inverted-mordent long="yes" />
           </ornaments>
         </notations>
       </note>
@@ -170,7 +170,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <mordent long="yes"/>
+            <mordent long="yes" />
           </ornaments>
         </notations>
       </note>
@@ -187,7 +187,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <inverted-mordent long="yes" approach="below"></inverted-mordent>
+            <inverted-mordent long="yes" approach="below" />
           </ornaments>
         </notations>
       </note>
@@ -202,7 +202,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <inverted-mordent long="yes" approach="above"></inverted-mordent>
+            <inverted-mordent long="yes" approach="above" />
           </ornaments>
         </notations>
       </note>
@@ -219,7 +219,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <mordent long="yes" approach="above"/>
+            <mordent long="yes" approach="above" />
           </ornaments>
         </notations>
       </note>
@@ -234,7 +234,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <inverted-mordent long="yes" departure="below"></inverted-mordent>
+            <inverted-mordent long="yes" departure="below" />
           </ornaments>
         </notations>
       </note>
@@ -251,7 +251,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <inverted-mordent long="yes" departure="above"></inverted-mordent>
+            <inverted-mordent long="yes" departure="above" />
           </ornaments>
         </notations>
       </note>
@@ -266,7 +266,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <inverted-mordent long="yes" approach="above"></inverted-mordent>
+            <inverted-mordent long="yes" approach="above" />
           </ornaments>
         </notations>
       </note>
@@ -283,7 +283,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <schleifer></schleifer>
+            <schleifer />
           </ornaments>
         </notations>
       </note>
@@ -298,7 +298,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <trill-mark/>
+            <trill-mark />
           </ornaments>
         </notations>
       </note>
@@ -315,7 +315,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <other-ornament smufl="ornamentTremblementCouperin"></other-ornament>
+            <other-ornament smufl="ornamentTremblementCouperin" />
           </ornaments>
         </notations>
       </note>
@@ -330,7 +330,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <other-ornament smufl="ornamentPinceCouperin"></other-ornament>
+            <other-ornament smufl="ornamentPinceCouperin" />
           </ornaments>
         </notations>
       </note>

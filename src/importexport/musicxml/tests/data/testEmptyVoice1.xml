@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
     <miscellaneous>
       <miscellaneous-field name="description">Test MusicXML patterns leading to an empty voice 1 if not corrected
@@ -40,7 +40,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Voice</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>53</midi-program>
@@ -53,7 +53,7 @@
       <score-instrument id="P2-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P2-I1" port="1"></midi-device>
+      <midi-device id="P2-I1" port="1" />
       <midi-instrument id="P2-I1">
         <midi-channel>2</midi-channel>
         <midi-program>1</midi-program>
@@ -125,28 +125,28 @@
     </measure>
     <measure number="3">
       <note>
-        <rest/>
+        <rest />
         <duration>3</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="4">
       <note>
-        <rest/>
+        <rest />
         <duration>3</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="5">
       <note>
-        <rest/>
+        <rest />
         <duration>3</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="6">
       <note>
-        <rest/>
+        <rest />
         <duration>3</duration>
         <voice>1</voice>
       </note>
@@ -202,7 +202,7 @@
         <duration>3</duration>
       </backup>
       <note>
-        <rest/>
+        <rest />
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
@@ -223,7 +223,7 @@
         <duration>3</duration>
       </backup>
       <note>
-        <rest/>
+        <rest />
         <duration>3</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -244,7 +244,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -259,7 +259,7 @@
         <duration>3</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot></dot>
+        <dot />
         <stem>up</stem>
         <staff>1</staff>
       </note>
@@ -274,7 +274,7 @@
         <duration>3</duration>
         <voice>2</voice>
         <type>half</type>
-        <dot></dot>
+        <dot />
         <stem>down</stem>
         <staff>1</staff>
       </note>
@@ -282,7 +282,7 @@
         <duration>3</duration>
       </backup>
       <note>
-        <rest/>
+        <rest />
         <duration>3</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -297,7 +297,7 @@
         <duration>3</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot></dot>
+        <dot />
         <stem>up</stem>
         <staff>1</staff>
       </note>
@@ -311,7 +311,7 @@
         <duration>3</duration>
         <voice>5</voice>
         <type>half</type>
-        <dot></dot>
+        <dot />
         <stem>down</stem>
         <staff>2</staff>
       </note>
@@ -325,7 +325,7 @@
         <duration>3</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot></dot>
+        <dot />
         <stem>down</stem>
         <staff>1</staff>
       </note>
@@ -340,7 +340,7 @@
         <duration>3</duration>
         <voice>5</voice>
         <type>half</type>
-        <dot></dot>
+        <dot />
         <stem>up</stem>
         <staff>2</staff>
       </note>

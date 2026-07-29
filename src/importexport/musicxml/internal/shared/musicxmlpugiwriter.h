@@ -101,13 +101,9 @@ public:
         m_nodeStack.push_back(child);
     }
 
-    void endElement(bool forceContainer = true)
+    void endElement()
     {
         if (!m_nodeStack.empty()) {
-            pugi::xml_node node = m_nodeStack.back();
-            if (forceContainer && node.first_child().empty()) {
-                node.append_child(pugi::node_pcdata).set_value("");
-            }
             m_nodeStack.pop_back();
         }
     }
@@ -147,12 +143,11 @@ public:
     void tagRaw(const muse::String& elementWithAttrs, const Value& body = Value())
     {
         startElementRaw(elementWithAttrs);
-        bool isMonostate = std::holds_alternative<std::monostate>(body);
-        if (!isMonostate) {
+        if (!std::holds_alternative<std::monostate>(body)) {
             muse::String bodyStr = muse::String::decodeXmlEntities(valueToString(body));
             m_nodeStack.back().append_child(pugi::node_pcdata).set_value(bodyStr.toStdString().c_str());
         }
-        endElement(!isMonostate);
+        endElement();
     }
 
     void element(const muse::AsciiStringView& name, const Attributes& attrs = {}) { tag(name, attrs); }

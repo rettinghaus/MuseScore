@@ -5,11 +5,11 @@
     <encoding>
       <software>MuseScore 3.4.2</software>
       <encoding-date>2020-05-08</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="yes" value="yes"></supports>
-      <supports element="print" attribute="new-system" type="yes" value="yes"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="yes" value="yes" />
+      <supports element="print" attribute="new-system" type="yes" value="yes" />
+      <supports element="stem" type="yes" />
     </encoding>
     <source>http://musescore.com/score/658031</source>
   </identification>
@@ -34,8 +34,8 @@
         <bottom-margin>113.379</bottom-margin>
       </page-margins>
     </page-layout>
-    <word-font font-family="FreeSerif" font-size="10"></word-font>
-    <lyric-font font-family="FreeSerif" font-size="11"></lyric-font>
+    <word-font font-family="FreeSerif" font-size="10" />
+    <lyric-font font-family="FreeSerif" font-size="11" />
   </defaults>
   <credit page="1">
     <credit-words default-x="1133.79" default-y="1449.99" justify="right" valign="bottom" font-family="Times New Roman" font-size="12">Franz Liszt</credit-words>
@@ -53,7 +53,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -100,10 +100,10 @@
           <words default-x="-34.94" relative-y="20.00" font-weight="bold" font-family="Times New Roman" font-size="12">Allegro vivace (quasi presto)</words>
         </direction-type>
         <staff>1</staff>
-        <sound tempo="194"></sound>
+        <sound tempo="194" />
       </direction>
       <note default-x="367.51" default-y="15.00">
-        <grace/>
+        <grace />
         <pitch>
           <step>B</step>
           <octave>5</octave>
@@ -115,8 +115,8 @@
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
-          <fermata type="upright"></fermata>
-          <fermata type="upright"></fermata>
+          <fermata type="upright" />
+          <fermata type="upright" />
         </notations>
       </note>
       <note default-x="401.16" default-y="20.00">

@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -24,7 +24,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -55,7 +55,7 @@
         </clef>
       </attributes>
       <note>
-        <cue/>
+        <cue />
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -89,7 +89,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>A</step>
           <octave>4</octave>
@@ -101,7 +101,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <cue/>
+        <cue />
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -113,7 +113,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>A</step>
           <octave>4</octave>
@@ -128,21 +128,21 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>5</voice>
         <type size="cue">quarter</type>
         <staff>2</staff>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <staff>2</staff>
       </note>
       <note>
-        <cue/>
+        <cue />
         <pitch>
           <step>A</step>
           <octave>2</octave>
@@ -154,7 +154,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>3</octave>
@@ -177,7 +177,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>3</octave>

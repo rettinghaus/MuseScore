@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 4.4.0</software>
       <encoding-date>2024-06-19</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <defaults>
@@ -61,9 +61,9 @@
       <note-size type="grace">70</note-size>
       <note-size type="grace-cue">49</note-size>
     </appearance>
-    <music-font font-family="Leland"></music-font>
-    <word-font font-family="Edwin" font-size="10"></word-font>
-    <lyric-font font-family="Edwin" font-size="10"></lyric-font>
+    <music-font font-family="Leland" />
+    <word-font font-family="Edwin" font-size="10" />
+    <lyric-font font-family="Edwin" font-size="10" />
   </defaults>
   <part-list>
     <score-part id="P1">
@@ -73,7 +73,7 @@
         <instrument-name>Flute</instrument-name>
         <instrument-sound>wind.flutes.flute</instrument-sound>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -110,10 +110,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics default-x="3.1" default-y="-40" relative-y="-25">
-            <p/>
+            <p />
           </dynamics>
         </direction-type>
-        <sound dynamics="54.44"></sound>
+        <sound dynamics="54.44" />
       </direction>
       <note default-x="79.25" default-y="-30">
         <pitch>
@@ -129,7 +129,7 @@
       <direction placement="below">
         <direction-type>
           <dynamics default-x="45" default-y="-69" halign="left">
-            <mf/>
+            <mf />
           </dynamics>
         </direction-type>
         <direction-type>
@@ -137,10 +137,10 @@
         </direction-type>
         <direction-type>
           <dynamics font-size="19.2">
-            <f/>
+            <f />
           </dynamics>
         </direction-type>
-        <sound dynamics="98"></sound>
+        <sound dynamics="98" />
       </direction>
       <note default-x="13" default-y="-30">
         <pitch>
@@ -156,7 +156,7 @@
       <direction placement="below">
         <direction-type>
           <dynamics default-x="45" default-y="-69" halign="left">
-            <mf/>
+            <mf />
           </dynamics>
         </direction-type>
         <direction-type>
@@ -164,10 +164,10 @@
         </direction-type>
         <direction-type>
           <dynamics font-size="19.2">
-            <f/>
+            <f />
           </dynamics>
         </direction-type>
-        <sound dynamics="98"></sound>
+        <sound dynamics="98" />
       </direction>
       <note default-x="13" default-y="-30">
         <pitch>
@@ -183,15 +183,15 @@
       <direction placement="below">
         <direction-type>
           <dynamics default-x="45" default-y="-69" halign="left">
-            <mf/>
+            <mf />
           </dynamics>
         </direction-type>
         <direction-type>
           <dynamics font-size="19.2">
-            <f/>
+            <f />
           </dynamics>
         </direction-type>
-        <sound dynamics="98"></sound>
+        <sound dynamics="98" />
       </direction>
       <note default-x="13" default-y="-30">
         <pitch>

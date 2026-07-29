@@ -10,20 +10,20 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
     <score-part id="P1">
-      <part-name></part-name>
+      <part-name />
       <score-instrument id="P1-I1">
-        <instrument-name></instrument-name>
+        <instrument-name />
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -59,12 +59,12 @@
           <octave>4</octave>
         </pitch>
         <duration>2</duration>
-        <tie type="start"/>
+        <tie type="start" />
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <tied type="start"/>
+          <tied type="start" />
         </notations>
       </note>
       <note>
@@ -73,12 +73,12 @@
           <octave>4</octave>
         </pitch>
         <duration>2</duration>
-        <tie type="stop"/>
+        <tie type="stop" />
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
       </note>
     </measure>
@@ -94,12 +94,12 @@
           <octave>4</octave>
         </pitch>
         <duration>2</duration>
-        <tie type="start"/>
+        <tie type="start" />
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <tied type="start"/>
+          <tied type="start" />
         </notations>
       </note>
       <note>
@@ -108,12 +108,12 @@
           <octave>4</octave>
         </pitch>
         <duration>2</duration>
-        <tie type="stop"/>
+        <tie type="stop" />
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
       </note>
     </measure>
@@ -129,12 +129,12 @@
           <octave>4</octave>
         </pitch>
         <duration>2</duration>
-        <tie type="start"/>
+        <tie type="start" />
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <tied type="start"/>
+          <tied type="start" />
         </notations>
       </note>
       <note>
@@ -143,12 +143,12 @@
           <octave>4</octave>
         </pitch>
         <duration>2</duration>
-        <tie type="stop"/>
+        <tie type="stop" />
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
       </note>
       <barline location="right">

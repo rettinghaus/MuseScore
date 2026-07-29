@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 4.4.0</software>
       <encoding-date>2024-04-22</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="yes" value="yes"></supports>
-      <supports element="print" attribute="new-system" type="yes" value="yes"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="yes" value="yes" />
+      <supports element="print" attribute="new-system" type="yes" value="yes" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <defaults>
@@ -61,9 +61,9 @@
       <note-size type="grace">70</note-size>
       <note-size type="grace-cue">49</note-size>
     </appearance>
-    <music-font font-family="Leland"></music-font>
-    <word-font font-family="Edwin" font-size="10"></word-font>
-    <lyric-font font-family="Edwin" font-size="10"></lyric-font>
+    <music-font font-family="Leland" />
+    <word-font font-family="Edwin" font-size="10" />
+    <lyric-font font-family="Edwin" font-size="10" />
   </defaults>
   <part-list>
     <score-part id="P1">
@@ -132,7 +132,7 @@
       <score-instrument id="P1-I86">
         <instrument-name>Castanets</instrument-name>
       </score-instrument>
-      <midi-device port="1"></midi-device>
+      <midi-device port="1" />
       <midi-instrument id="P1-I28">
         <midi-channel>10</midi-channel>
         <midi-program>49</midi-program>
@@ -318,7 +318,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
@@ -336,7 +336,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
@@ -354,7 +354,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
@@ -372,7 +372,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
@@ -390,7 +390,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
@@ -408,7 +408,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
@@ -426,7 +426,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
@@ -444,7 +444,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
@@ -452,7 +452,7 @@
         <beam number="2">end</beam>
       </note>
       <note default-x="292.7" default-y="-20">
-        <rest/>
+        <rest />
         <duration>8</duration>
         <voice>1</voice>
         <type>half</type>
@@ -470,17 +470,17 @@
         </direction-type>
       </direction>
       <note default-x="11.05" default-y="-15">
-        <grace slash="yes"/>
+        <grace slash="yes" />
         <unpitched>
           <display-step>C</display-step>
           <display-octave>5</display-octave>
         </unpitched>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
         <notations>
-          <slur type="start" number="1"/>
+          <slur type="start" number="1" />
         </notations>
       </note>
       <note default-x="31.79" default-y="-15">
@@ -489,15 +489,15 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>2</duration>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
         <beam number="1">begin</beam>
         <notations>
-          <slur type="stop" number="1"/>
+          <slur type="stop" number="1" />
           <articulations>
-            <accent placement="above"/>
+            <accent placement="above" />
           </articulations>
         </notations>
       </note>
@@ -512,7 +512,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>2</duration>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
@@ -529,7 +529,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>2</duration>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
@@ -546,17 +546,17 @@
         </direction-type>
       </direction>
       <note default-x="137.05" default-y="-15">
-        <grace slash="yes"/>
+        <grace slash="yes" />
         <unpitched>
           <display-step>C</display-step>
           <display-octave>5</display-octave>
         </unpitched>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
         <notations>
-          <slur type="start" number="1"/>
+          <slur type="start" number="1" />
         </notations>
       </note>
       <note default-x="157.79" default-y="-15">
@@ -565,20 +565,20 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>2</duration>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
         <beam number="1">end</beam>
         <notations>
-          <slur type="stop" number="1"/>
+          <slur type="stop" number="1" />
           <articulations>
-            <accent placement="above"/>
+            <accent placement="above" />
           </articulations>
         </notations>
       </note>
       <note default-x="199.79" default-y="-20">
-        <rest/>
+        <rest />
         <duration>8</duration>
         <voice>1</voice>
         <type>half</type>
@@ -611,12 +611,12 @@
         </direction-type>
       </direction>
       <note default-x="11.05" default-y="-15">
-        <grace/>
+        <grace />
         <unpitched>
           <display-step>C</display-step>
           <display-octave>5</display-octave>
         </unpitched>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
@@ -624,12 +624,12 @@
         <beam number="2">begin</beam>
       </note>
       <note default-x="23.65" default-y="-15">
-        <grace/>
+        <grace />
         <unpitched>
           <display-step>C</display-step>
           <display-octave>5</display-octave>
         </unpitched>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
@@ -637,12 +637,12 @@
         <beam number="2">continue</beam>
       </note>
       <note default-x="36.25" default-y="-15">
-        <grace/>
+        <grace />
         <unpitched>
           <display-step>C</display-step>
           <display-octave>5</display-octave>
         </unpitched>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
@@ -650,12 +650,12 @@
         <beam number="2">continue</beam>
       </note>
       <note default-x="48.84" default-y="-15">
-        <grace/>
+        <grace />
         <unpitched>
           <display-step>C</display-step>
           <display-octave>5</display-octave>
         </unpitched>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>16th</type>
         <stem>up</stem>
@@ -668,24 +668,24 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>4</duration>
-        <instrument id="P1-I39"></instrument>
+        <instrument id="P1-I39" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <notations>
           <articulations>
-            <accent placement="above"/>
+            <accent placement="above" />
           </articulations>
         </notations>
       </note>
       <note default-x="125.44" default-y="-20">
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
         <type>quarter</type>
       </note>
       <note default-x="188.44" default-y="-20">
-        <rest/>
+        <rest />
         <duration>8</duration>
         <voice>1</voice>
         <type>half</type>

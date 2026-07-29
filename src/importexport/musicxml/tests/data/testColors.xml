@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Violine</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>41</midi-program>
@@ -63,7 +63,7 @@
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <slide line-type="solid" number="1" type="start" color="#A873BE"/>
+          <slide line-type="solid" number="1" type="start" color="#A873BE" />
         </notations>
       </note>
       <note>
@@ -77,10 +77,10 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <staccato color="#FF2600"/>
-            <accent color="#FF2600"/>
+            <staccato color="#FF2600" />
+            <accent color="#FF2600" />
           </articulations>
-          <slide line-type="solid" number="1" type="stop"/>
+          <slide line-type="solid" number="1" type="stop" />
         </notations>
       </note>
       <note>
@@ -107,10 +107,10 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <strong-accent type="up" color="#C3D610"/>
+            <strong-accent type="up" color="#C3D610" />
             <breath-mark color="#00FFFF">comma</breath-mark>
           </articulations>
-          <glissando line-type="wavy" number="1" type="stop"/>
+          <glissando line-type="wavy" number="1" type="stop" />
         </notations>
       </note>
       <barline location="right">
@@ -128,7 +128,7 @@
         <type>quarter</type>
         <stem color="#2468AC">down</stem>
         <notations>
-          <slur type="start" color="#EFCDAB" number="1"/>
+          <slur type="start" color="#EFCDAB" number="1" />
         </notations>
       </note>
       <note>
@@ -153,7 +153,7 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <mordent color="#047110"/>
+            <mordent color="#047110" />
           </ornaments>
         </notations>
       </note>
@@ -170,7 +170,7 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <turn color="#007007"/>
+            <turn color="#007007" />
           </ornaments>
         </notations>
       </note>
@@ -186,7 +186,7 @@
         <type>whole</type>
         <notehead color="#9437FF">normal</notehead>
         <notations>
-          <slur type="stop" number="1"/>
+          <slur type="stop" number="1" />
         </notations>
       </note>
     </measure>
@@ -203,7 +203,7 @@
         <notehead color="#9437FF">normal</notehead>
         <beam number="1" color="#FF0000">begin</beam>
         <notations>
-          <arpeggiate number="1" color="#FF0000"></arpeggiate>
+          <arpeggiate number="1" color="#FF0000" />
         </notations>
       </note>
       <note>
@@ -233,12 +233,12 @@
         <beam number="2">end</beam>
       </note>
       <note color="#F0A007">
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
         <type>quarter</type>
         <notations>
-          <fermata type="upright" color="#039E0F"></fermata>
+          <fermata type="upright" color="#039E0F" />
         </notations>
       </note>
     </measure>

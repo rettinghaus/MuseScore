@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 4.4.0</software>
       <encoding-date>2024-02-23</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="yes" value="yes"></supports>
-      <supports element="print" attribute="new-system" type="yes" value="yes"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="yes" value="yes" />
+      <supports element="print" attribute="new-system" type="yes" value="yes" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <defaults>
@@ -61,9 +61,9 @@
       <note-size type="grace">70</note-size>
       <note-size type="grace-cue">49</note-size>
     </appearance>
-    <music-font font-family="Leland"></music-font>
-    <word-font font-family="Edwin" font-size="10"></word-font>
-    <lyric-font font-family="Edwin" font-size="10"></lyric-font>
+    <music-font font-family="Leland" />
+    <word-font font-family="Edwin" font-size="10" />
+    <lyric-font font-family="Edwin" font-size="10" />
   </defaults>
   <part-list>
     <score-part id="P1">
@@ -73,7 +73,7 @@
         <instrument-name>Flute</instrument-name>
         <instrument-sound>wind.flutes.flute</instrument-sound>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -119,17 +119,17 @@
         <lyric number="1" default-x="6.5" default-y="-44.42" relative-y="-30">
           <syllabic>single</syllabic>
           <text>ce</text>
-          <elision></elision>
+          <elision />
           <text>e</text>
-          <elision></elision>
+          <elision />
           <text>in</text>
         </lyric>
         <lyric number="2" default-x="6.5" default-y="-44.42" relative-y="-30">
           <syllabic>single</syllabic>
           <text>ce</text>
-          <elision></elision>
+          <elision />
           <text>e</text>
-          <elision></elision>
+          <elision />
           <text>in</text>
         </lyric>
       </note>
@@ -147,7 +147,7 @@
           <text>ce</text>
           <elision>‿</elision>
           <text>e</text>
-          <elision></elision>
+          <elision />
           <text>in</text>
         </lyric>
         <lyric number="2" default-x="6.5" default-y="-44.42" relative-y="-30">
@@ -155,7 +155,7 @@
           <text>ce</text>
           <elision>‿</elision>
           <text>e</text>
-          <elision></elision>
+          <elision />
           <text>in</text>
         </lyric>
       </note>
@@ -171,17 +171,17 @@
         <lyric number="1" default-x="6.5" default-y="-44.42" relative-y="-30">
           <syllabic>single</syllabic>
           <text>ce</text>
-          <elision smufl="lyricsElisionNarrow"></elision>
+          <elision smufl="lyricsElisionNarrow" />
           <text>e</text>
-          <elision smufl="lyricsElision"></elision>
+          <elision smufl="lyricsElision" />
           <text>in</text>
         </lyric>
         <lyric number="2" default-x="6.5" default-y="-44.42" relative-y="-30">
           <syllabic>single</syllabic>
           <text>ce</text>
-          <elision smufl="lyricsElisionNarrow"></elision>
+          <elision smufl="lyricsElisionNarrow" />
           <text>e</text>
-          <elision smufl="lyricsElision"></elision>
+          <elision smufl="lyricsElision" />
           <text>in</text>
         </lyric>
       </note>
@@ -197,7 +197,7 @@
         <lyric number="1" default-x="6.5" default-y="-44.42" relative-y="-30">
           <syllabic>single</syllabic>
           <text>ce</text>
-          <elision smufl="lyricsElisionWide"></elision>
+          <elision smufl="lyricsElisionWide" />
           <text>e</text>
           <elision>‿</elision>
           <text>in</text>
@@ -205,7 +205,7 @@
         <lyric number="2" default-x="6.5" default-y="-44.42" relative-y="-30">
           <syllabic>single</syllabic>
           <text>ce</text>
-          <elision smufl="lyricsElisionWide"></elision>
+          <elision smufl="lyricsElisionWide" />
           <text>e</text>
           <elision>‿</elision>
           <text>in</text>

@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -24,7 +24,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Voice</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>53</midi-program>
@@ -52,14 +52,14 @@
       <direction placement="above">
         <direction-type>
           <dynamics>
-            <mf/>
+            <mf />
           </dynamics>
         </direction-type>
-        <sound dynamics="88.89"></sound>
+        <sound dynamics="88.89" />
       </direction>
       <direction placement="above">
         <direction-type>
-          <wedge type="crescendo" number="1"></wedge>
+          <wedge type="crescendo" number="1" />
         </direction-type>
       </direction>
       <note>
@@ -112,7 +112,7 @@
       </note>
       <direction placement="above">
         <direction-type>
-          <wedge type="stop" number="1"></wedge>
+          <wedge type="stop" number="1" />
         </direction-type>
       </direction>
     </measure>
@@ -120,11 +120,11 @@
       <direction placement="above">
         <direction-type>
           <dynamics>
-            <mf/>
+            <mf />
           </dynamics>
         </direction-type>
         <direction-type>
-          <wedge type="crescendo" number="1"></wedge>
+          <wedge type="crescendo" number="1" />
         </direction-type>
       </direction>
       <note>
@@ -173,18 +173,18 @@
       </note>
       <direction placement="above">
         <direction-type>
-          <wedge type="stop" number="1"></wedge>
+          <wedge type="stop" number="1" />
         </direction-type>
       </direction>
     </measure>
     <measure number="3">
-      <print new-system="yes"></print>
+      <print new-system="yes" />
       <direction placement="above">
         <direction-type>
           <words font-family="FreeSerif" font-size="12" font-style="italic">begin</words>
         </direction-type>
         <direction-type>
-          <wedge type="crescendo" number="1"></wedge>
+          <wedge type="crescendo" number="1" />
         </direction-type>
       </direction>
       <note>
@@ -229,7 +229,7 @@
       </note>
       <direction placement="above">
         <direction-type>
-          <wedge type="stop" number="1"></wedge>
+          <wedge type="stop" number="1" />
         </direction-type>
         <direction-type>
           <words font-family="FreeSerif" font-size="12" font-style="italic">end</words>
@@ -243,11 +243,11 @@
         </direction-type>
         <direction-type>
           <dynamics>
-            <mf/>
+            <mf />
           </dynamics>
         </direction-type>
         <direction-type>
-          <wedge type="crescendo" number="1"></wedge>
+          <wedge type="crescendo" number="1" />
         </direction-type>
       </direction>
       <note>
@@ -292,27 +292,27 @@
       </note>
       <direction placement="above">
         <direction-type>
-          <wedge type="stop" number="1"></wedge>
+          <wedge type="stop" number="1" />
         </direction-type>
         <direction-type>
           <words font-family="FreeSerif" font-size="12" font-style="italic">to</words>
         </direction-type>
         <direction-type>
           <dynamics>
-            <fff/>
+            <fff />
           </dynamics>
         </direction-type>
       </direction>
     </measure>
     <measure number="5">
-      <print new-system="yes"></print>
+      <print new-system="yes" />
       <direction placement="above">
         <direction-type>
           <words font-family="FreeSerif" font-size="12" font-style="italic">cresc. from</words>
         </direction-type>
         <direction-type>
           <dynamics>
-            <mf/>
+            <mf />
           </dynamics>
         </direction-type>
         <direction-type>
@@ -320,11 +320,11 @@
         </direction-type>
         <direction-type>
           <dynamics>
-            <fff/>
+            <fff />
           </dynamics>
         </direction-type>
         <direction-type>
-          <dashes type="start" number="1"/>
+          <dashes type="start" number="1" />
         </direction-type>
       </direction>
       <note>
@@ -369,14 +369,14 @@
       </note>
       <direction placement="above">
         <direction-type>
-          <dashes type="stop" number="1"/>
+          <dashes type="stop" number="1" />
         </direction-type>
       </direction>
     </measure>
     <measure number="6">
-      <print new-system="yes"></print>
+      <print new-system="yes" />
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>

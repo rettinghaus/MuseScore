@@ -8,20 +8,20 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
     <score-part id="P1">
-      <part-name></part-name>
+      <part-name />
       <score-instrument id="P1-I1">
-        <instrument-name></instrument-name>
+        <instrument-name />
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -52,7 +52,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <notations print-object="no">
-          <slur type="start" number="1"/>
+          <slur type="start" number="1" />
         </notations>
       </note>
       <note>
@@ -65,7 +65,7 @@
         <type>quarter</type>
         <stem>down</stem>
         <notations print-object="no">
-          <slur type="stop" number="1"/>
+          <slur type="stop" number="1" />
         </notations>
       </note>
       <note>
@@ -79,7 +79,7 @@
         <stem>down</stem>
         <notations print-object="no">
           <articulations>
-            <accent/>
+            <accent />
           </articulations>
         </notations>
       </note>
@@ -94,7 +94,7 @@
         <stem>down</stem>
         <notations print-object="no">
           <technical>
-            <down-bow/>
+            <down-bow />
           </technical>
         </notations>
       </note>
@@ -126,7 +126,7 @@
         <stem>down</stem>
         <notations print-object="no">
           <articulations>
-            <caesura/>
+            <caesura />
           </articulations>
         </notations>
       </note>
@@ -151,12 +151,12 @@
           <octave>4</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="start"/>
+        <tie type="start" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <notations print-object="no">
-          <tied type="start"/>
+          <tied type="start" />
         </notations>
       </note>
     </measure>
@@ -167,12 +167,12 @@
           <octave>4</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="stop"/>
+        <tie type="stop" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <notations print-object="no">
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
       </note>
       <note>
@@ -186,7 +186,7 @@
         <stem>down</stem>
         <notations print-object="no">
           <ornaments>
-            <turn/>
+            <turn />
           </ornaments>
         </notations>
       </note>
@@ -201,7 +201,7 @@
         <stem>down</stem>
         <notations print-object="no">
           <ornaments>
-            <mordent/>
+            <mordent />
           </ornaments>
         </notations>
       </note>
@@ -215,7 +215,7 @@
         <type>quarter</type>
         <stem>down</stem>
         <notations print-object="no">
-          <fermata type="upright"></fermata>
+          <fermata type="upright" />
         </notations>
       </note>
       <barline location="right">

@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"></supports>
-      <supports element="beam" type="yes"></supports>
-      <supports element="print" attribute="new-page" type="no"></supports>
-      <supports element="print" attribute="new-system" type="no"></supports>
-      <supports element="stem" type="yes"></supports>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
     <miscellaneous>
       <miscellaneous-field name="description">Test multiple notations elements within a note.
@@ -25,11 +25,11 @@
   </identification>
   <part-list>
     <score-part id="P1">
-      <part-name></part-name>
+      <part-name />
       <score-instrument id="P1-I1">
-        <instrument-name></instrument-name>
+        <instrument-name />
       </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -64,7 +64,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <notations>
-          <slur type="start" number="1"/>
+          <slur type="start" number="1" />
         </notations>
       </note>
       <note>
@@ -77,11 +77,11 @@
         <type>quarter</type>
         <stem>up</stem>
         <notations>
-          <slur type="stop" number="1"/>
+          <slur type="stop" number="1" />
         </notations>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
@@ -95,7 +95,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <notations>
-          <slur type="start" number="1"/>
+          <slur type="start" number="1" />
         </notations>
       </note>
       <note>
@@ -108,7 +108,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <notations>
-          <slur type="stop" number="1"/>
+          <slur type="stop" number="1" />
         </notations>
       </note>
       <barline location="right">

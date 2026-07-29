@@ -9,8 +9,8 @@
     <encoding>
       <software>Noteflight version 0.4</software>
       <encoding-date>2026-07-06</encoding-date>
-      <supports attribute="new-system" element="print" type="no" value="no"></supports>
-      <supports attribute="new-page" element="print" type="no" value="no"></supports>
+      <supports attribute="new-system" element="print" type="no" value="no" />
+      <supports attribute="new-page" element="print" type="no" value="no" />
     </encoding>
   </identification>
   <defaults>
@@ -99,16 +99,16 @@
       </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        <repeat direction="backward"></repeat>
+        <repeat direction="backward" />
       </barline>
     </measure>
     <measure number="2">
-      <print new-system="no"></print>
+      <print new-system="no" />
       <barline location="left">
         <bar-style>light-heavy</bar-style>
-        <repeat direction="forward"></repeat>
+        <repeat direction="forward" />
       </barline>
-      <attributes></attributes>
+      <attributes />
       <note>
         <pitch>
           <step>A</step>
@@ -129,7 +129,7 @@
       </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        <repeat direction="backward"></repeat>
+        <repeat direction="backward" />
       </barline>
     </measure>
   </part>

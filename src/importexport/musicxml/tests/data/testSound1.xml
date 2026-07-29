@@ -23,7 +23,7 @@
           <line>2</line>
         </clef>
       </attributes>
-      <sound tempo="60"></sound>
+      <sound tempo="60" />
       <note>
         <pitch>
           <step>C</step>
