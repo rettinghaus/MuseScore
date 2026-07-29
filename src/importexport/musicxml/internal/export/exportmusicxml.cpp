@@ -2880,9 +2880,12 @@ static bool isAccidentalCautionary(const Accidental* const acc)
                 }
             }
 
-            double currentAlter = static_cast<int>(Accidental::subtype2value(acc->accidentalType())) + Accidental::subtype2centOffset(acc->accidentalType()) / 100.0;
+            AccidentalType accType = acc->accidentalType();
+            double currentAlter = static_cast<int>(Accidental::subtype2value(accType))
+                                  + Accidental::subtype2centOffset(accType) / 100.0;
             if (prevNote) {
-                double prevAlter = static_cast<int>(tpc2alter(prevNote->tpc())) + prevNote->centOffset() / 100.0;
+                double prevAlter = static_cast<int>(tpc2alter(prevNote->tpc()))
+                                   + prevNote->centOffset() / 100.0;
                 return muse::RealIsEqual(currentAlter, prevAlter);
             } else {
                 Key key = st->key(note->tick());
