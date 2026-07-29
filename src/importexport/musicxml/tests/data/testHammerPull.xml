@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="beam" type="yes"></supports>
+      <supports element="print" attribute="new-page" type="no"></supports>
+      <supports element="print" attribute="new-system" type="no"></supports>
+      <supports element="stem" type="yes"></supports>
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Classical Guitar</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>25</midi-program>
@@ -92,7 +92,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <hammer-on type="start" color="#73EA02" number="1"/>
+          <hammer-on type="start" color="#73EA02" number="1"></hammer-on>
         </notations>
       </note>
       <note>
@@ -106,7 +106,7 @@
         <stem>down</stem>
         <staff>1</staff>
         <notations>
-          <hammer-on type="stop" number="1"/>
+          <hammer-on type="stop" number="1"></hammer-on>
         </notations>
       </note>
       <note>
@@ -147,7 +147,7 @@
         <stem>none</stem>
         <staff>2</staff>
         <notations>
-          <hammer-on type="start" number="1"/>
+          <hammer-on type="start" number="1"></hammer-on>
           <technical>
             <string>3</string>
             <fret>2</fret>
@@ -165,7 +165,7 @@
         <stem>none</stem>
         <staff>2</staff>
         <notations>
-          <hammer-on type="stop" number="1"/>
+          <hammer-on type="stop" number="1"></hammer-on>
           <technical>
             <string>3</string>
             <fret>4</fret>
@@ -220,7 +220,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <pull-off type="start" number="1"/>
+          <pull-off type="start" number="1"></pull-off>
         </notations>
       </note>
       <note>
@@ -273,7 +273,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <pull-off type="stop" number="1"/>
+          <pull-off type="stop" number="1"></pull-off>
         </notations>
       </note>
       <note>
@@ -316,7 +316,7 @@
         <stem>none</stem>
         <staff>2</staff>
         <notations>
-          <pull-off type="start" number="1"/>
+          <pull-off type="start" number="1"></pull-off>
           <technical>
             <string>4</string>
             <fret>3</fret>
@@ -389,7 +389,7 @@
         <stem>none</stem>
         <staff>2</staff>
         <notations>
-          <pull-off type="stop" number="1"/>
+          <pull-off type="stop" number="1"></pull-off>
           <technical>
             <string>4</string>
             <fret>1</fret>

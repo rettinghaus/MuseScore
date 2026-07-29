@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="beam" type="yes"></supports>
+      <supports element="print" attribute="new-page" type="no"></supports>
+      <supports element="print" attribute="new-system" type="no"></supports>
+      <supports element="stem" type="yes"></supports>
     </encoding>
   </identification>
   <defaults>
@@ -37,8 +37,8 @@
         <bottom-margin>85.7252</bottom-margin>
       </page-margins>
     </page-layout>
-    <word-font font-family="Edwin" font-size="10"/>
-    <lyric-font font-family="Edwin" font-size="10"/>
+    <word-font font-family="Edwin" font-size="10"></word-font>
+    <lyric-font font-family="Edwin" font-size="10"></lyric-font>
   </defaults>
   <credit page="1">
     <credit-type>title</credit-type>
@@ -59,7 +59,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Flute</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -73,7 +73,7 @@
       <score-instrument id="P2-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P2-I1" port="1"/>
+      <midi-device id="P2-I1" port="1"></midi-device>
       <midi-instrument id="P2-I1">
         <midi-channel>2</midi-channel>
         <midi-program>1</midi-program>
@@ -460,7 +460,7 @@
     </measure>
     <measure number="14" width="103.29">
       <barline location="left">
-        <ending number="1" type="start" default-y="32.95"/>
+        <ending number="1" type="start" default-y="32.95"></ending>
       </barline>
       <note>
         <rest measure="yes"/>
@@ -545,13 +545,13 @@
       </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        <ending number="1" type="stop"/>
-        <repeat direction="backward"/>
+        <ending number="1" type="stop"></ending>
+        <repeat direction="backward"></repeat>
       </barline>
     </measure>
     <measure number="21" width="102.42">
       <barline location="left">
-        <ending number="2" type="start" default-y="33.10"/>
+        <ending number="2" type="start" default-y="33.10"></ending>
       </barline>
       <note>
         <rest measure="yes"/>
@@ -559,7 +559,7 @@
         <voice>1</voice>
       </note>
       <barline location="right">
-        <ending number="2" type="discontinue"/>
+        <ending number="2" type="discontinue"></ending>
       </barline>
     </measure>
     <measure number="22" width="102.42">
@@ -1632,7 +1632,7 @@
     </measure>
     <measure number="14" width="103.29">
       <barline location="left">
-        <ending number="1" type="start" default-y="32.95" print-object="no"/>
+        <ending number="1" type="start" default-y="32.95" print-object="no"></ending>
       </barline>
       <note default-x="13.00" default-y="-102.82">
         <pitch>
@@ -1915,13 +1915,13 @@
       </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        <ending number="1" type="stop" print-object="no"/>
-        <repeat direction="backward"/>
+        <ending number="1" type="stop" print-object="no"></ending>
+        <repeat direction="backward"></repeat>
       </barline>
     </measure>
     <measure number="21" width="102.42">
       <barline location="left">
-        <ending number="2" type="start" default-y="33.10" print-object="no"/>
+        <ending number="2" type="start" default-y="33.10" print-object="no"></ending>
       </barline>
       <note default-x="13.00" default-y="-107.82">
         <pitch>
@@ -2011,7 +2011,7 @@
         <staff>2</staff>
       </note>
       <barline location="right">
-        <ending number="2" type="discontinue" print-object="no"/>
+        <ending number="2" type="discontinue" print-object="no"></ending>
       </barline>
     </measure>
     <measure number="22" width="102.42">

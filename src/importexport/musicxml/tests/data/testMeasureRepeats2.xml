@@ -7,11 +7,11 @@
     <encoding>
       <software>Finale v26.2.2 for Windows</software>
       <encoding-date>2020-08-17</encoding-date>
-      <supports attribute="new-system" element="print" type="yes" value="yes"/>
-      <supports attribute="new-page" element="print" type="yes" value="yes"/>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="stem" type="yes"/>
+      <supports attribute="new-system" element="print" type="yes" value="yes"></supports>
+      <supports attribute="new-page" element="print" type="yes" value="yes"></supports>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="beam" type="yes"></supports>
+      <supports element="stem" type="yes"></supports>
     </encoding>
   </identification>
   <defaults>
@@ -56,8 +56,8 @@
       <distance type="hyphen">120</distance>
       <distance type="beam">7.5</distance>
     </appearance>
-    <music-font font-family="Maestro,engraved" font-size="20.5"/>
-    <word-font font-family="Times New Roman" font-size="10.25"/>
+    <music-font font-family="Maestro,engraved" font-size="20.5"></music-font>
+    <word-font font-family="Times New Roman" font-size="10.25"></word-font>
   </defaults>
   <credit page="1">
     <credit-type>title</credit-type>
@@ -76,7 +76,7 @@
       <part-name print-object="no">MusicXML Part</part-name>
       <score-instrument id="P1-I1">
         <instrument-name>SmartMusic SoftSynth</instrument-name>
-        <virtual-instrument/>
+        <virtual-instrument></virtual-instrument>
       </score-instrument>
       <midi-device>Bank 2</midi-device>
       <midi-instrument id="P1-I1">
@@ -120,7 +120,7 @@
           <line>4</line>
         </clef>
       </attributes>
-      <sound tempo="120"/>
+      <sound tempo="120"></sound>
       <note default-x="85">
         <pitch>
           <step>D</step>
@@ -309,7 +309,7 @@
     <measure number="5" width="145">
       <attributes>
         <measure-style number="1">
-          <measure-repeat type="stop"/>
+          <measure-repeat type="stop"></measure-repeat>
         </measure-style>
       </attributes>
       <note default-x="13">
@@ -442,7 +442,7 @@
       </note>
       <attributes>
         <measure-style number="2">
-          <measure-repeat type="stop"/>
+          <measure-repeat type="stop"></measure-repeat>
         </measure-style>
       </attributes>
       <backup>
@@ -456,7 +456,7 @@
         <duration>6</duration>
         <voice>2</voice>
         <type>half</type>
-        <dot/>
+        <dot></dot>
         <stem default-y="0">up</stem>
         <staff>2</staff>
       </note>

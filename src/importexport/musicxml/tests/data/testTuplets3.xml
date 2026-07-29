@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="beam" type="yes"></supports>
+      <supports element="print" attribute="new-page" type="no"></supports>
+      <supports element="print" attribute="new-system" type="no"></supports>
+      <supports element="stem" type="yes"></supports>
     </encoding>
     <miscellaneous>
       <miscellaneous-field name="description">Test tuplets in an unusual (but legal) multi-voice context.
@@ -28,7 +28,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Flute</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -42,7 +42,7 @@
       <score-instrument id="P2-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P2-I1" port="1"/>
+      <midi-device id="P2-I1" port="1"></midi-device>
       <midi-instrument id="P2-I1">
         <midi-channel>2</midi-channel>
         <midi-program>1</midi-program>
@@ -81,7 +81,7 @@
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="start" bracket="yes"/>
+          <tuplet type="start" bracket="yes"></tuplet>
         </notations>
       </note>
       <backup>
@@ -114,7 +114,7 @@
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="stop"/>
+          <tuplet type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -238,7 +238,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <tuplet type="start" bracket="yes"/>
+          <tuplet type="start" bracket="yes"></tuplet>
         </notations>
       </note>
       <backup>
@@ -273,7 +273,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <tuplet type="stop"/>
+          <tuplet type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -355,7 +355,7 @@
         <stem>up</stem>
         <staff>2</staff>
         <notations>
-          <tuplet type="start" bracket="yes"/>
+          <tuplet type="start" bracket="yes"></tuplet>
         </notations>
       </note>
       <backup>
@@ -390,7 +390,7 @@
         <stem>up</stem>
         <staff>2</staff>
         <notations>
-          <tuplet type="stop"/>
+          <tuplet type="stop"></tuplet>
         </notations>
       </note>
       <note>

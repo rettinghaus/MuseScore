@@ -6,10 +6,10 @@
       <software>Sibelius 20231.1</software>
       <software>Dolet 6.6 for Sibelius</software>
       <encoding-date>2024-04-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="transpose" type="no"/>
-      <supports attribute="new-page" element="print" type="yes" value="yes"/>
-      <supports attribute="new-system" element="print" type="yes" value="yes"/>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="transpose" type="no"></supports>
+      <supports attribute="new-page" element="print" type="yes" value="yes"></supports>
+      <supports attribute="new-system" element="print" type="yes" value="yes"></supports>
     </encoding>
   </identification>
   <defaults>
@@ -49,14 +49,14 @@
       <note-size type="grace">60</note-size>
       <note-size type="cue">75</note-size>
     </appearance>
-    <music-font font-family="Opus Std,music"/>
-    <word-font font-family="Times New Roman"/>
+    <music-font font-family="Opus Std,music"></music-font>
+    <word-font font-family="Times New Roman"></word-font>
   </defaults>
   <part-list>
     <score-part id="P1">
       <part-name print-object="no">[Unnamed (treble staff)]</part-name>
       <score-instrument id="P1-I1">
-        <instrument-name/>
+        <instrument-name></instrument-name>
         <instrument-sound>keyboard.piano.grand</instrument-sound>
       </score-instrument>
       <midi-instrument id="P1-I1">
@@ -71,7 +71,7 @@
         <system-layout>
           <top-system-distance>181.5625</top-system-distance>
         </system-layout>
-        <staff-layout/>
+        <staff-layout></staff-layout>
         <measure-layout>
           <measure-distance>50</measure-distance>
         </measure-layout>
@@ -183,7 +183,7 @@
     <measure number="2">
       <direction placement="above">
         <direction-type>
-          <segno/>
+          <segno></segno>
         </direction-type>
       </direction>
       <note>
@@ -280,7 +280,7 @@
       </note>
     </measure>
     <measure number="3">
-      <print new-system="yes"/>
+      <print new-system="yes"></print>
       <note>
         <pitch>
           <step>D</step>
@@ -478,7 +478,7 @@
       </note>
     </measure>
     <measure number="5">
-      <print new-system="yes"/>
+      <print new-system="yes"></print>
       <note>
         <pitch>
           <step>E</step>
@@ -679,7 +679,7 @@
       </note>
     </measure>
     <measure number="7">
-      <print new-system="yes"/>
+      <print new-system="yes"></print>
       <note>
         <pitch>
           <step>F</step>
@@ -871,7 +871,7 @@
       </note>
     </measure>
     <measure number="X2" implicit="yes">
-      <print new-system="yes"/>
+      <print new-system="yes"></print>
       <note>
         <pitch>
           <step>G</step>
@@ -1078,7 +1078,7 @@
       </note>
     </measure>
     <measure number="5">
-      <print new-system="yes"/>
+      <print new-system="yes"></print>
       <note>
         <pitch>
           <step>D</step>
@@ -1291,7 +1291,7 @@
       </note>
     </measure>
     <measure number="7">
-      <print new-system="yes"/>
+      <print new-system="yes"></print>
       <note>
         <pitch>
           <step>F</step>
@@ -1504,7 +1504,7 @@
       </note>
     </measure>
     <measure number="9">
-      <print new-system="yes"/>
+      <print new-system="yes"></print>
       <note>
         <pitch>
           <step>E</step>
@@ -1524,7 +1524,7 @@
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -1561,7 +1561,7 @@
         <beam number="2">end</beam>
         <beam number="3">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -1583,7 +1583,7 @@
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -1622,7 +1622,7 @@
         <beam number="2">end</beam>
         <beam number="3">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -1643,7 +1643,7 @@
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -1682,7 +1682,7 @@
         <beam number="2">end</beam>
         <beam number="3">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -1703,7 +1703,7 @@
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -1740,7 +1740,7 @@
         <beam number="2">end</beam>
         <beam number="3">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -1761,7 +1761,7 @@
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -1799,7 +1799,7 @@
         <beam number="2">end</beam>
         <beam number="3">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -1820,7 +1820,7 @@
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -1859,7 +1859,7 @@
         <beam number="2">end</beam>
         <beam number="3">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -1879,7 +1879,7 @@
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -1917,7 +1917,7 @@
         <beam number="2">end</beam>
         <beam number="3">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -1938,7 +1938,7 @@
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -1975,7 +1975,7 @@
         <beam number="2">end</beam>
         <beam number="3">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -1997,7 +1997,7 @@
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -2035,7 +2035,7 @@
         <beam number="2">end</beam>
         <beam number="3">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -2055,7 +2055,7 @@
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -2094,7 +2094,7 @@
         <beam number="2">end</beam>
         <beam number="3">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -2114,7 +2114,7 @@
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -2152,7 +2152,7 @@
         <beam number="2">end</beam>
         <beam number="3">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -2173,7 +2173,7 @@
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -2210,7 +2210,7 @@
         <beam number="2">end</beam>
         <beam number="3">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -2231,7 +2231,7 @@
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -2269,7 +2269,7 @@
         <beam number="2">end</beam>
         <beam number="3">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -2289,7 +2289,7 @@
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -2328,7 +2328,7 @@
         <beam number="2">end</beam>
         <beam number="3">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -2348,7 +2348,7 @@
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -2386,7 +2386,7 @@
         <beam number="2">end</beam>
         <beam number="3">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -2407,7 +2407,7 @@
         <beam number="2">begin</beam>
         <beam number="3">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -2444,7 +2444,7 @@
         <beam number="2">end</beam>
         <beam number="3">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
     </measure>

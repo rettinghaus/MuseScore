@@ -5,11 +5,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="beam" type="yes"></supports>
+      <supports element="print" attribute="new-page" type="no"></supports>
+      <supports element="print" attribute="new-system" type="no"></supports>
+      <supports element="stem" type="yes"></supports>
     </encoding>
   </identification>
   <part-list>
@@ -19,7 +19,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Flute</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -43,7 +43,7 @@
       <score-instrument id="P2-I1">
         <instrument-name>B♭ Clarinet</instrument-name>
       </score-instrument>
-      <midi-device id="P2-I1" port="1"/>
+      <midi-device id="P2-I1" port="1"></midi-device>
       <midi-instrument id="P2-I1">
         <midi-channel>2</midi-channel>
         <midi-program>72</midi-program>
@@ -56,7 +56,7 @@
     <measure number="1">
       <barline location="left">
         <bar-style>heavy-light</bar-style>
-        <repeat direction="forward"/>
+        <repeat direction="forward"></repeat>
       </barline>
       <attributes>
         <divisions>1</divisions>
@@ -74,7 +74,7 @@
       </attributes>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="1"/>
+          <wedge type="crescendo" number="1"></wedge>
         </direction-type>
       </direction>
       <direction placement="above">
@@ -107,7 +107,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="1"/>
+          <wedge type="stop" number="1"></wedge>
         </direction-type>
       </direction>
       <direction placement="above">
@@ -188,8 +188,8 @@
       </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        <ending number="1" type="stop"/>
-        <repeat direction="backward"/>
+        <ending number="1" type="stop"></ending>
+        <repeat direction="backward"></repeat>
       </barline>
     </measure>
     <measure number="8">
@@ -207,7 +207,7 @@
       </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        <ending number="2" type="discontinue"/>
+        <ending number="2" type="discontinue"></ending>
       </barline>
     </measure>
   </part>
@@ -215,7 +215,7 @@
     <measure number="1">
       <barline location="left">
         <bar-style>heavy-light</bar-style>
-        <repeat direction="forward"/>
+        <repeat direction="forward"></repeat>
       </barline>
       <attributes>
         <divisions>1</divisions>
@@ -259,7 +259,7 @@
     <measure number="3">
       <direction placement="below">
         <direction-type>
-          <wedge type="diminuendo" number="1"/>
+          <wedge type="diminuendo" number="1"></wedge>
         </direction-type>
       </direction>
       <direction placement="above">
@@ -292,7 +292,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="1"/>
+          <wedge type="stop" number="1"></wedge>
         </direction-type>
       </direction>
       <direction placement="above">
@@ -336,7 +336,7 @@
             <f/>
           </dynamics>
         </direction-type>
-        <sound dynamics="106.67"/>
+        <sound dynamics="106.67"></sound>
       </direction>
       <note>
         <pitch>
@@ -350,7 +350,7 @@
       </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        <repeat direction="backward"/>
+        <repeat direction="backward"></repeat>
       </barline>
     </measure>
     <measure number="8">

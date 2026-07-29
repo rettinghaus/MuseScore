@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="beam" type="yes"></supports>
+      <supports element="print" attribute="new-page" type="no"></supports>
+      <supports element="print" attribute="new-system" type="no"></supports>
+      <supports element="stem" type="yes"></supports>
     </encoding>
     <miscellaneous>
       <miscellaneous-field name="description">Due to limitations of lower division values, tuplets
@@ -43,7 +43,7 @@
         <system-layout>
           <top-system-distance>221.5625</top-system-distance>
         </system-layout>
-        <staff-layout/>
+        <staff-layout></staff-layout>
         <measure-layout>
           <measure-distance>70</measure-distance>
         </measure-layout>
@@ -76,7 +76,7 @@
         <duration>1152</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
+        <dot></dot>
         <stem>up</stem>
         <staff>1</staff>
         <notations>
@@ -255,7 +255,7 @@
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
           <slur type="start" number="2"/>
         </notations>
       </note>
@@ -415,7 +415,7 @@
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
           <slur type="stop" number="1"/>
           <slur type="stop" number="2"/>
         </notations>
@@ -440,13 +440,13 @@
         <duration>2304</duration>
         <voice>6</voice>
         <type>half</type>
-        <dot/>
+        <dot></dot>
         <stem>down</stem>
         <staff>2</staff>
       </note>
     </measure>
     <measure number="2">
-      <print new-system="no"/>
+      <print new-system="no"></print>
       <note>
         <pitch>
           <step>C</step>
@@ -517,7 +517,7 @@
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
           <slur type="start" number="1"/>
         </notations>
       </note>
@@ -603,7 +603,7 @@
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
           <slur type="stop" number="1"/>
         </notations>
       </note>
@@ -683,7 +683,7 @@
       </note>
     </measure>
     <measure number="3">
-      <print new-system="yes"/>
+      <print new-system="yes"></print>
       <note>
         <pitch>
           <step>G</step>
@@ -700,7 +700,7 @@
         <stem>down</stem>
         <staff>1</staff>
         <notations>
-          <tuplet number="1" type="start" bracket="no"/>
+          <tuplet number="1" type="start" bracket="no"></tuplet>
           <slur type="stop" number="1"/>
         </notations>
       </note>
@@ -719,7 +719,7 @@
         <stem>down</stem>
         <staff>1</staff>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -758,7 +758,7 @@
         <staff>1</staff>
         <notations>
           <tied type="stop"/>
-          <tuplet number="1" type="start" bracket="no"/>
+          <tuplet number="1" type="start" bracket="no"></tuplet>
         </notations>
       </note>
       <note>
@@ -776,7 +776,7 @@
         <stem>down</stem>
         <staff>1</staff>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
           <slur type="start" number="1"/>
         </notations>
       </note>
@@ -800,7 +800,7 @@
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
-          <tuplet number="1" type="start" bracket="no"/>
+          <tuplet number="1" type="start" bracket="no"></tuplet>
           <slur type="start" number="2"/>
         </notations>
       </note>
@@ -889,7 +889,7 @@
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
           <slur type="stop" number="2"/>
         </notations>
       </note>
@@ -910,7 +910,7 @@
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
-          <tuplet number="1" type="start" bracket="no"/>
+          <tuplet number="1" type="start" bracket="no"></tuplet>
           <slur type="start" number="2"/>
         </notations>
       </note>
@@ -999,7 +999,7 @@
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
           <slur type="stop" number="2"/>
         </notations>
       </note>
@@ -1020,7 +1020,7 @@
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
-          <tuplet number="1" type="start" bracket="no"/>
+          <tuplet number="1" type="start" bracket="no"></tuplet>
           <slur type="start" number="2"/>
         </notations>
       </note>
@@ -1109,7 +1109,7 @@
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
           <slur type="stop" number="2"/>
         </notations>
       </note>
@@ -1130,7 +1130,7 @@
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
-          <tuplet number="1" type="start" bracket="no"/>
+          <tuplet number="1" type="start" bracket="no"></tuplet>
           <slur type="start" number="2"/>
         </notations>
       </note>
@@ -1219,13 +1219,13 @@
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
           <slur type="stop" number="2"/>
         </notations>
       </note>
     </measure>
     <measure number="4">
-      <print new-system="yes"/>
+      <print new-system="yes"></print>
       <direction placement="above">
         <direction-type>
           <words font-weight="bold">rit.</words>
@@ -1306,7 +1306,7 @@
         <tie type="start"/>
         <voice>3</voice>
         <type>quarter</type>
-        <dot/>
+        <dot></dot>
         <stem>up</stem>
         <staff>1</staff>
         <notations>
@@ -1413,7 +1413,7 @@
         <duration>1152</duration>
         <voice>2</voice>
         <type>quarter</type>
-        <dot/>
+        <dot></dot>
         <staff>1</staff>
       </note>
       <backup>
@@ -1430,7 +1430,7 @@
         </time-modification>
         <staff>1</staff>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <direction>
@@ -1466,10 +1466,10 @@
       </note>
       <direction>
         <direction-type>
-          <wedge type="crescendo" number="1" default-y="-54" relative-x="3"/>
+          <wedge type="crescendo" number="1" default-y="-54" relative-x="3"></wedge>
         </direction-type>
         <offset>-2</offset>
-        <level size="cue"/>
+        <level size="cue"></level>
         <staff>1</staff>
       </direction>
       <note>
@@ -1488,7 +1488,7 @@
         <staff>1</staff>
         <beam number="1">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -1507,7 +1507,7 @@
         <staff>1</staff>
         <beam number="1">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <backup>
@@ -1518,12 +1518,12 @@
         <duration>1152</duration>
         <voice>2</voice>
         <type size="cue">quarter</type>
-        <dot/>
+        <dot></dot>
         <staff>1</staff>
       </note>
       <direction>
         <direction-type>
-          <wedge type="stop" number="1" relative-x="8"/>
+          <wedge type="stop" number="1" relative-x="8"></wedge>
         </direction-type>
         <offset>-642</offset>
         <staff>1</staff>
@@ -1563,7 +1563,7 @@
         <staff>1</staff>
         <beam number="1">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -1575,7 +1575,7 @@
         <duration>1152</duration>
         <voice>1</voice>
         <type size="cue">quarter</type>
-        <dot/>
+        <dot></dot>
         <stem>up</stem>
         <staff>1</staff>
         <notations>
@@ -1592,7 +1592,7 @@
         <duration>1152</duration>
         <voice>2</voice>
         <type size="cue">quarter</type>
-        <dot/>
+        <dot></dot>
         <staff>1</staff>
       </note>
       <backup>
@@ -1628,7 +1628,7 @@
         <duration>1152</duration>
         <voice>2</voice>
         <type size="cue">quarter</type>
-        <dot/>
+        <dot></dot>
         <staff>1</staff>
       </note>
       <backup>
@@ -1659,7 +1659,7 @@
         <duration>1152</duration>
         <voice>2</voice>
         <type size="cue">quarter</type>
-        <dot/>
+        <dot></dot>
         <staff>1</staff>
       </note>
       <note>
@@ -1692,7 +1692,7 @@
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <backup>
@@ -1780,7 +1780,7 @@
         <beam number="1">end</beam>
         <beam number="2">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <backup>
@@ -1890,7 +1890,7 @@
           <other-direction default-y="-20" relative-x="8">Treble clef</other-direction>
         </direction-type>
         <offset>1227</offset>
-        <level size="cue"/>
+        <level size="cue"></level>
         <staff>2</staff>
       </direction>
       <note print-object="no">
@@ -1905,12 +1905,12 @@
       </barline>
     </measure>
     <measure number="5">
-      <print new-system="yes"/>
+      <print new-system="yes"></print>
       <direction>
         <direction-type>
-          <wedge type="crescendo" number="1" default-y="-75" relative-x="12"/>
+          <wedge type="crescendo" number="1" default-y="-75" relative-x="12"></wedge>
         </direction-type>
-        <level size="cue"/>
+        <level size="cue"></level>
         <staff>1</staff>
       </direction>
       <note>
@@ -1929,7 +1929,7 @@
       </note>
       <direction>
         <direction-type>
-          <wedge type="stop" number="1" relative-x="-1"/>
+          <wedge type="stop" number="1" relative-x="-1"></wedge>
         </direction-type>
         <offset>-1536</offset>
         <staff>1</staff>
@@ -1952,7 +1952,7 @@
         <beam number="1">begin</beam>
         <notations>
           <tied type="stop"/>
-          <tuplet number="1" type="start" bracket="no" show-number="none"/>
+          <tuplet number="1" type="start" bracket="no" show-number="none"></tuplet>
         </notations>
       </note>
       <note>
@@ -1994,7 +1994,7 @@
         <staff>1</staff>
         <beam number="1">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -2013,7 +2013,7 @@
         <staff>1</staff>
         <beam number="1">begin</beam>
         <notations>
-          <tuplet number="1" type="start" bracket="no" show-number="none"/>
+          <tuplet number="1" type="start" bracket="no" show-number="none"></tuplet>
         </notations>
       </note>
       <note>
@@ -2049,7 +2049,7 @@
         <staff>1</staff>
         <beam number="1">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
           <technical>
             <fingering default-y="35" relative-x="9">5</fingering>
           </technical>
@@ -2063,9 +2063,9 @@
       </direction>
       <direction>
         <direction-type>
-          <wedge type="diminuendo" number="1" default-y="-60" relative-x="12"/>
+          <wedge type="diminuendo" number="1" default-y="-60" relative-x="12"></wedge>
         </direction-type>
-        <level size="cue"/>
+        <level size="cue"></level>
         <staff>1</staff>
       </direction>
       <note>
@@ -2084,7 +2084,7 @@
         <staff>1</staff>
         <beam number="1">begin</beam>
         <notations>
-          <tuplet number="1" type="start" bracket="no" show-number="none"/>
+          <tuplet number="1" type="start" bracket="no" show-number="none"></tuplet>
         </notations>
       </note>
       <note>
@@ -2126,7 +2126,7 @@
         <staff>1</staff>
         <beam number="1">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
           <articulations>
             <staccato/>
           </articulations>
@@ -2150,7 +2150,7 @@
         <staff>1</staff>
         <beam number="1">begin</beam>
         <notations>
-          <tuplet number="1" type="start" bracket="no" show-number="none"/>
+          <tuplet number="1" type="start" bracket="no" show-number="none"></tuplet>
           <articulations>
             <staccato/>
           </articulations>
@@ -2182,7 +2182,7 @@
       </note>
       <direction>
         <direction-type>
-          <wedge type="stop" number="1" relative-x="8"/>
+          <wedge type="stop" number="1" relative-x="8"></wedge>
         </direction-type>
         <offset>-2</offset>
         <staff>1</staff>
@@ -2203,7 +2203,7 @@
         <staff>1</staff>
         <beam number="1">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
           <slur type="stop" number="1"/>
           <articulations>
             <staccato/>
@@ -2227,7 +2227,7 @@
         </time-modification>
         <staff>2</staff>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <backup>
@@ -2242,7 +2242,7 @@
         <duration>2304</duration>
         <voice>6</voice>
         <type>half</type>
-        <dot/>
+        <dot></dot>
         <accidental>sharp</accidental>
         <stem>down</stem>
         <staff>2</staff>
@@ -2288,7 +2288,7 @@
         <staff>2</staff>
         <beam number="1">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -2307,7 +2307,7 @@
         <staff>2</staff>
         <beam number="1">begin</beam>
         <notations>
-          <tuplet number="1" type="start"/>
+          <tuplet number="1" type="start"></tuplet>
         </notations>
       </note>
       <note>
@@ -2342,7 +2342,7 @@
         <staff>2</staff>
         <beam number="1">end</beam>
         <notations>
-          <tuplet number="1" type="stop"/>
+          <tuplet number="1" type="stop"></tuplet>
         </notations>
       </note>
       <note>
@@ -2354,7 +2354,7 @@
         <duration>1152</duration>
         <voice>5</voice>
         <type size="cue">quarter</type>
-        <dot/>
+        <dot></dot>
         <accidental>sharp</accidental>
         <stem>up</stem>
         <staff>2</staff>
@@ -2428,7 +2428,7 @@
         <stem>down</stem>
         <staff>2</staff>
         <notations>
-          <arpeggiate/>
+          <arpeggiate></arpeggiate>
           <fermata>normal</fermata>
         </notations>
       </note>
@@ -2444,7 +2444,7 @@
         <stem>down</stem>
         <staff>2</staff>
         <notations>
-          <arpeggiate/>
+          <arpeggiate></arpeggiate>
         </notations>
       </note>
       <backup>
@@ -2485,7 +2485,7 @@
           <other-direction default-y="-17" relative-x="-3">Bass clef</other-direction>
         </direction-type>
         <offset>-258</offset>
-        <level size="cue"/>
+        <level size="cue"></level>
         <staff>2</staff>
       </direction>
       <backup>

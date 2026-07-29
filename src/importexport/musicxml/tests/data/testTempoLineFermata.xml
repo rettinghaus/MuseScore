@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 4.4.0</software>
       <encoding-date>2024-06-25</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="beam" type="yes"></supports>
+      <supports element="print" attribute="new-page" type="no"></supports>
+      <supports element="print" attribute="new-system" type="no"></supports>
+      <supports element="stem" type="yes"></supports>
     </encoding>
   </identification>
   <defaults>
@@ -61,9 +61,9 @@
       <note-size type="grace">70</note-size>
       <note-size type="grace-cue">49</note-size>
     </appearance>
-    <music-font font-family="Leland"/>
-    <word-font font-family="Edwin" font-size="10"/>
-    <lyric-font font-family="Edwin" font-size="10"/>
+    <music-font font-family="Leland"></music-font>
+    <word-font font-family="Edwin" font-size="10"></word-font>
+    <lyric-font font-family="Edwin" font-size="10"></lyric-font>
   </defaults>
   <credit page="1">
     <credit-type>title</credit-type>
@@ -85,7 +85,7 @@
         <instrument-name>Flute</instrument-name>
         <instrument-sound>wind.flutes.flute</instrument-sound>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -148,7 +148,7 @@
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <fermata type="upright" relative-y="5"/>
+          <fermata type="upright" relative-y="5"></fermata>
         </notations>
       </note>
       <note default-x="120.28" default-y="-20">

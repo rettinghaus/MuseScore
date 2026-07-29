@@ -9,9 +9,9 @@
       <software>Audiveris 5.4-alpha</software>
       <software>ProxyMusic 4.0.2</software>
       <encoding-date>2024-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="beam" type="yes"></supports>
+      <supports element="stem" type="yes"></supports>
     </encoding>
   </identification>
   <part-list>
@@ -118,7 +118,7 @@
         <tie type="start"/>
         <voice>5</voice>
         <type>half</type>
-        <dot/>
+        <dot></dot>
         <stem>up</stem>
         <staff>2</staff>
         <notations>
@@ -136,7 +136,7 @@
         <duration>3</duration>
         <voice>6</voice>
         <type>half</type>
-        <dot/>
+        <dot></dot>
         <stem>down</stem>
         <staff>2</staff>
       </note>

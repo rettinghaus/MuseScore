@@ -4,10 +4,10 @@
       <software>Sibelius 2023.11</software>
       <software>Dolet 8.3 for Sibelius</software>
       <encoding-date>2024-08-16</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="transpose" type="yes"/>
-      <supports attribute="new-page" element="print" type="yes" value="yes"/>
-      <supports attribute="new-system" element="print" type="yes" value="yes"/>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="transpose" type="yes"></supports>
+      <supports attribute="new-page" element="print" type="yes" value="yes"></supports>
+      <supports attribute="new-system" element="print" type="yes" value="yes"></supports>
     </encoding>
   </identification>
   <defaults>
@@ -15,7 +15,7 @@
       <millimeters>7</millimeters>
       <tenths>40</tenths>
     </scaling>
-    <concert-score/>
+    <concert-score></concert-score>
     <page-layout>
       <page-height>1597</page-height>
       <page-width>1234</page-width>
@@ -49,7 +49,7 @@
       <note-size type="cue">75</note-size>
       <glyph type="percussion-clef">unpitchedPercussionClef1</glyph>
     </appearance>
-    <music-font font-family="Helsinki Std,engraved"/>
+    <music-font font-family="Helsinki Std,engraved"></music-font>
   </defaults>
   <part-list>
     <score-part id="P1">
@@ -76,7 +76,7 @@
           </system-margins>
           <top-system-distance>181.5625</top-system-distance>
         </system-layout>
-        <staff-layout/>
+        <staff-layout></staff-layout>
       </print>
       <attributes>
         <divisions>768</divisions>

@@ -9,11 +9,11 @@
     <encoding>
       <software>Finale v27.4 for Windows</software>
       <encoding-date>2024-05-20</encoding-date>
-      <supports attribute="new-system" element="print" type="yes" value="yes"/>
-      <supports attribute="new-page" element="print" type="yes" value="yes"/>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="stem" type="yes"/>
+      <supports attribute="new-system" element="print" type="yes" value="yes"></supports>
+      <supports attribute="new-page" element="print" type="yes" value="yes"></supports>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="beam" type="yes"></supports>
+      <supports element="stem" type="yes"></supports>
     </encoding>
   </identification>
   <defaults>
@@ -61,9 +61,9 @@
       <note-size type="grace">70</note-size>
       <note-size type="grace-cue">49</note-size>
     </appearance>
-    <music-font font-family="Leland"/>
-    <word-font font-family="Edwin" font-size="10"/>
-    <lyric-font font-family="Edwin" font-size="10"/>
+    <music-font font-family="Leland"></music-font>
+    <word-font font-family="Edwin" font-size="10"></word-font>
+    <lyric-font font-family="Edwin" font-size="10"></lyric-font>
   </defaults>
   <part-list>
     <score-part id="P1">
@@ -73,7 +73,7 @@
         <instrument-name>Flute</instrument-name>
         <instrument-sound>wind.flutes.flute</instrument-sound>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -111,7 +111,7 @@
         <direction-type>
           <words default-y="-63" font-family="Scarlatti" font-size="14.4">π</words>
         </direction-type>
-        <sound dynamics="36.67"/>
+        <sound dynamics="36.67"></sound>
       </direction>
       <note default-x="80.22" default-y="-20">
         <pitch>
@@ -127,7 +127,7 @@
         <direction-type>
           <words default-y="-63" font-family="Scarlatti" font-size="14.4">Ï</words>
         </direction-type>
-        <sound dynamics="36.67"/>
+        <sound dynamics="36.67"></sound>
       </direction>
       <note default-x="151.73" default-y="-20">
         <pitch>
@@ -143,7 +143,7 @@
         <direction-type>
           <words default-y="-63" font-family="Scarlatti" font-size="14.4">p</words>
         </direction-type>
-        <sound dynamics="54.44"/>
+        <sound dynamics="54.44"></sound>
       </direction>
       <note default-x="223.25" default-y="-20">
         <pitch>
@@ -159,7 +159,7 @@
         <direction-type>
           <words default-y="-63" font-family="Scarlatti" font-size="14.4">S</words>
         </direction-type>
-        <sound dynamics="36.67"/>
+        <sound dynamics="36.67"></sound>
       </direction>
       <note default-x="294.77" default-y="-20">
         <pitch>
@@ -177,7 +177,7 @@
         <direction-type>
           <words default-y="-63" font-family="Scarlatti" font-size="14.4">P</words>
         </direction-type>
-        <sound dynamics="71.11"/>
+        <sound dynamics="71.11"></sound>
       </direction>
       <note default-x="13" default-y="-20">
         <pitch>
@@ -193,7 +193,7 @@
         <direction-type>
           <words default-y="-63" font-family="Scarlatti" font-size="14.4">ß</words>
         </direction-type>
-        <sound dynamics="36.67"/>
+        <sound dynamics="36.67"></sound>
       </direction>
       <note default-x="84.52" default-y="-20">
         <pitch>
@@ -209,7 +209,7 @@
         <direction-type>
           <words default-y="-62" font-family="Scarlatti" font-size="14.4" relative-x="-9">F</words>
         </direction-type>
-        <sound dynamics="88.89"/>
+        <sound dynamics="88.89"></sound>
       </direction>
       <note default-x="156.04" default-y="-20">
         <pitch>
@@ -225,7 +225,7 @@
         <direction-type>
           <words default-y="-63" font-family="Scarlatti" font-size="14.4">Z</words>
         </direction-type>
-        <sound dynamics="36.67"/>
+        <sound dynamics="36.67"></sound>
       </direction>
       <note default-x="227.55" default-y="-20">
         <pitch>
@@ -243,7 +243,7 @@
         <direction-type>
           <words default-y="-63" font-family="Scarlatti" font-size="14.4">f</words>
         </direction-type>
-        <sound dynamics="106.67"/>
+        <sound dynamics="106.67"></sound>
       </direction>
       <note default-x="13" default-y="-20">
         <pitch>
@@ -259,7 +259,7 @@
         <direction-type>
           <words default-y="-63" font-family="Scarlatti" font-size="14.4">Í</words>
         </direction-type>
-        <sound dynamics="36.67"/>
+        <sound dynamics="36.67"></sound>
       </direction>
       <note default-x="84.52" default-y="-20">
         <pitch>
@@ -275,7 +275,7 @@
         <direction-type>
           <words default-y="-63" font-family="Scarlatti" font-size="14.4">ƒ</words>
         </direction-type>
-        <sound dynamics="124.44"/>
+        <sound dynamics="124.44"></sound>
       </direction>
       <note default-x="156.04" default-y="-20">
         <pitch>

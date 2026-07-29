@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="beam" type="yes"></supports>
+      <supports element="print" attribute="new-page" type="no"></supports>
+      <supports element="print" attribute="new-system" type="no"></supports>
+      <supports element="stem" type="yes"></supports>
     </encoding>
   </identification>
   <defaults>
@@ -37,8 +37,8 @@
         <bottom-margin>85.7143</bottom-margin>
       </page-margins>
     </page-layout>
-    <word-font font-family="Edwin" font-size="10"/>
-    <lyric-font font-family="Edwin" font-size="10"/>
+    <word-font font-family="Edwin" font-size="10"></word-font>
+    <lyric-font font-family="Edwin" font-size="10"></lyric-font>
   </defaults>
   <credit page="1">
     <credit-type>title</credit-type>
@@ -59,7 +59,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -100,14 +100,14 @@
           <sign>F</sign>
           <line>4</line>
         </clef>
-        <staff-details number="1" print-object="no"/>
-        <staff-details number="2" print-object="no"/>
-        <staff-details number="3" print-object="no"/>
-        <staff-details number="4" print-object="no"/>
-        <staff-details number="5" print-object="no"/>
-        <staff-details number="6" print-object="no"/>
-        <staff-details number="7" print-object="no"/>
-        <staff-details number="8" print-object="no"/>
+        <staff-details number="1" print-object="no"></staff-details>
+        <staff-details number="2" print-object="no"></staff-details>
+        <staff-details number="3" print-object="no"></staff-details>
+        <staff-details number="4" print-object="no"></staff-details>
+        <staff-details number="5" print-object="no"></staff-details>
+        <staff-details number="6" print-object="no"></staff-details>
+        <staff-details number="7" print-object="no"></staff-details>
+        <staff-details number="8" print-object="no"></staff-details>
       </attributes>
       <note default-x="83.49" default-y="-35.00">
         <pitch>

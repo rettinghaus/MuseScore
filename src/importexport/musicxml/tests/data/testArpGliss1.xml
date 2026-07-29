@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="beam" type="yes"></supports>
+      <supports element="print" attribute="new-page" type="no"></supports>
+      <supports element="print" attribute="new-system" type="no"></supports>
+      <supports element="stem" type="yes"></supports>
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Voice</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>53</midi-program>
@@ -57,7 +57,7 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <arpeggiate number="1"/>
+          <arpeggiate number="1"></arpeggiate>
         </notations>
       </note>
       <note>
@@ -70,7 +70,7 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <arpeggiate number="1"/>
+          <arpeggiate number="1"></arpeggiate>
         </notations>
       </note>
       <note>
@@ -83,7 +83,7 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <arpeggiate number="1"/>
+          <arpeggiate number="1"></arpeggiate>
         </notations>
       </note>
     </measure>
@@ -97,7 +97,7 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <arpeggiate direction="up" number="1"/>
+          <arpeggiate direction="up" number="1"></arpeggiate>
         </notations>
       </note>
       <note>
@@ -110,7 +110,7 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <arpeggiate direction="up" number="1"/>
+          <arpeggiate direction="up" number="1"></arpeggiate>
         </notations>
       </note>
       <note>
@@ -123,7 +123,7 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <arpeggiate direction="up" number="1"/>
+          <arpeggiate direction="up" number="1"></arpeggiate>
         </notations>
       </note>
     </measure>
@@ -137,7 +137,7 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <arpeggiate direction="down" number="1"/>
+          <arpeggiate direction="down" number="1"></arpeggiate>
         </notations>
       </note>
       <note>
@@ -150,7 +150,7 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <arpeggiate direction="down" number="1"/>
+          <arpeggiate direction="down" number="1"></arpeggiate>
         </notations>
       </note>
       <note>
@@ -163,7 +163,7 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <arpeggiate direction="down" number="1"/>
+          <arpeggiate direction="down" number="1"></arpeggiate>
         </notations>
       </note>
     </measure>
@@ -177,7 +177,7 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <non-arpeggiate type="bottom" number="1"/>
+          <non-arpeggiate type="bottom" number="1"></non-arpeggiate>
         </notations>
       </note>
       <note>
@@ -200,7 +200,7 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <non-arpeggiate type="top" number="1"/>
+          <non-arpeggiate type="top" number="1"></non-arpeggiate>
         </notations>
       </note>
     </measure>

@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 4.4.0</software>
       <encoding-date>2024-02-21</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="yes" value="yes"/>
-      <supports element="print" attribute="new-system" type="yes" value="yes"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="beam" type="yes"></supports>
+      <supports element="print" attribute="new-page" type="yes" value="yes"></supports>
+      <supports element="print" attribute="new-system" type="yes" value="yes"></supports>
+      <supports element="stem" type="yes"></supports>
     </encoding>
   </identification>
   <defaults>
@@ -61,9 +61,9 @@
       <note-size type="grace">70</note-size>
       <note-size type="grace-cue">49</note-size>
     </appearance>
-    <music-font font-family="Leland"/>
-    <word-font font-family="Edwin" font-size="10"/>
-    <lyric-font font-family="Edwin" font-size="10"/>
+    <music-font font-family="Leland"></music-font>
+    <word-font font-family="Edwin" font-size="10"></word-font>
+    <lyric-font font-family="Edwin" font-size="10"></lyric-font>
   </defaults>
   <part-list>
     <score-part id="P1">
@@ -73,7 +73,7 @@
         <instrument-name>Piano</instrument-name>
         <instrument-sound>keyboard.piano</instrument-sound>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -126,7 +126,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <arpeggiate default-x="-10.56" default-y="0.3"/>
+          <arpeggiate default-x="-10.56" default-y="0.3"></arpeggiate>
         </notations>
       </note>
       <note default-x="90.46" default-y="-5">
@@ -141,7 +141,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <arpeggiate default-x="-10.56" default-y="0.3"/>
+          <arpeggiate default-x="-10.56" default-y="0.3"></arpeggiate>
         </notations>
       </note>
       <note default-x="124.71" default-y="-15">
@@ -202,7 +202,7 @@
         <type>whole</type>
         <staff>1</staff>
         <notations>
-          <arpeggiate default-x="-11.52" default-y="-29.56"/>
+          <arpeggiate default-x="-11.52" default-y="-29.56"></arpeggiate>
         </notations>
       </note>
       <backup>
@@ -227,7 +227,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <arpeggiate default-x="-12.86" default-y="20.3"/>
+          <arpeggiate default-x="-12.86" default-y="20.3"></arpeggiate>
         </notations>
       </note>
       <note default-x="19.36" default-y="15">
@@ -242,7 +242,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <arpeggiate default-x="-12.86" default-y="20.3"/>
+          <arpeggiate default-x="-12.86" default-y="20.3"></arpeggiate>
         </notations>
       </note>
       <note default-x="53.61" default-y="-10">
@@ -305,7 +305,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="1" default-x="-10.56" default-y="0.3"/>
+          <arpeggiate number="1" default-x="-10.56" default-y="0.3"></arpeggiate>
         </notations>
       </note>
       <note default-x="30.98" default-y="-5">
@@ -320,7 +320,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="1" default-x="-10.56" default-y="0.3"/>
+          <arpeggiate number="1" default-x="-10.56" default-y="0.3"></arpeggiate>
         </notations>
       </note>
       <note default-x="53.23" default-y="-10">
@@ -369,7 +369,7 @@
         <type>whole</type>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="2" default-x="-11.52" default-y="-29.56"/>
+          <arpeggiate number="2" default-x="-11.52" default-y="-29.56"></arpeggiate>
         </notations>
       </note>
       <backup>
@@ -394,7 +394,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="1" default-x="-12.48" default-y="5.3"/>
+          <arpeggiate number="1" default-x="-12.48" default-y="5.3"></arpeggiate>
         </notations>
       </note>
       <note default-x="53.23" default-y="-20">
@@ -467,7 +467,7 @@
         <type>whole</type>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="1" default-x="-12.48" default-y="5.3"/>
+          <arpeggiate number="1" default-x="-12.48" default-y="5.3"></arpeggiate>
         </notations>
       </note>
       <backup>
@@ -492,7 +492,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="1" default-x="-10.56" default-y="10.34"/>
+          <arpeggiate number="1" default-x="-10.56" default-y="10.34"></arpeggiate>
         </notations>
       </note>
       <note default-x="19.36" default-y="-5">
@@ -507,7 +507,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="1" default-x="-10.56" default-y="10.34"/>
+          <arpeggiate number="1" default-x="-10.56" default-y="10.34"></arpeggiate>
         </notations>
       </note>
       <note default-x="19.36" default-y="5">
@@ -522,7 +522,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="1" default-x="-10.56" default-y="10.34"/>
+          <arpeggiate number="1" default-x="-10.56" default-y="10.34"></arpeggiate>
         </notations>
       </note>
       <note default-x="70.73" default-y="-15">
@@ -536,7 +536,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="1" default-x="-12.86" default-y="10.34"/>
+          <arpeggiate number="1" default-x="-12.86" default-y="10.34"></arpeggiate>
         </notations>
       </note>
       <note default-x="70.73" default-y="-5">
@@ -551,7 +551,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="1" default-x="-12.86" default-y="10.34"/>
+          <arpeggiate number="1" default-x="-12.86" default-y="10.34"></arpeggiate>
         </notations>
       </note>
       <note default-x="70.73" default-y="5">
@@ -566,7 +566,7 @@
         <stem>up</stem>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="1" default-x="-12.86" default-y="10.34"/>
+          <arpeggiate number="1" default-x="-12.86" default-y="10.34"></arpeggiate>
         </notations>
       </note>
       <backup>
@@ -583,7 +583,7 @@
         <stem>down</stem>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="1" default-x="-10.56" default-y="10.34"/>
+          <arpeggiate number="1" default-x="-10.56" default-y="10.34"></arpeggiate>
         </notations>
       </note>
       <note default-x="70.73" default-y="-40">
@@ -597,7 +597,7 @@
         <stem>down</stem>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="1" default-x="-12.86" default-y="10.34"/>
+          <arpeggiate number="1" default-x="-12.86" default-y="10.34"></arpeggiate>
         </notations>
       </note>
       <backup>
@@ -614,7 +614,7 @@
         <stem>up</stem>
         <staff>2</staff>
         <notations>
-          <arpeggiate number="2" default-x="-12.86" default-y="0.34"/>
+          <arpeggiate number="2" default-x="-12.86" default-y="0.34"></arpeggiate>
         </notations>
       </note>
       <note default-x="19.36" default-y="-120">
@@ -629,7 +629,7 @@
         <stem>up</stem>
         <staff>2</staff>
         <notations>
-          <arpeggiate number="2" default-x="-12.86" default-y="0.34"/>
+          <arpeggiate number="2" default-x="-12.86" default-y="0.34"></arpeggiate>
         </notations>
       </note>
       <note default-x="19.36" default-y="-110">
@@ -644,7 +644,7 @@
         <stem>up</stem>
         <staff>2</staff>
         <notations>
-          <arpeggiate number="2" default-x="-12.86" default-y="0.34"/>
+          <arpeggiate number="2" default-x="-12.86" default-y="0.34"></arpeggiate>
         </notations>
       </note>
       <note default-x="70.73" default-y="-130">
@@ -658,7 +658,7 @@
         <stem>up</stem>
         <staff>2</staff>
         <notations>
-          <arpeggiate number="1" default-x="-12.86" default-y="10.34"/>
+          <arpeggiate number="1" default-x="-12.86" default-y="10.34"></arpeggiate>
         </notations>
       </note>
       <note default-x="70.73" default-y="-120">
@@ -673,7 +673,7 @@
         <stem>up</stem>
         <staff>2</staff>
         <notations>
-          <arpeggiate number="1" default-x="-12.86" default-y="10.34"/>
+          <arpeggiate number="1" default-x="-12.86" default-y="10.34"></arpeggiate>
         </notations>
       </note>
       <note default-x="70.73" default-y="-110">
@@ -688,7 +688,7 @@
         <stem>up</stem>
         <staff>2</staff>
         <notations>
-          <arpeggiate number="1" default-x="-12.86" default-y="10.34"/>
+          <arpeggiate number="1" default-x="-12.86" default-y="10.34"></arpeggiate>
         </notations>
       </note>
       <backup>
@@ -705,7 +705,7 @@
         <stem>down</stem>
         <staff>2</staff>
         <notations>
-          <arpeggiate number="2" default-x="-12.86" default-y="0.34"/>
+          <arpeggiate number="2" default-x="-12.86" default-y="0.34"></arpeggiate>
         </notations>
       </note>
       <note default-x="70.73" default-y="-155">
@@ -719,7 +719,7 @@
         <stem>down</stem>
         <staff>2</staff>
         <notations>
-          <arpeggiate number="1" default-x="-12.86" default-y="10.34"/>
+          <arpeggiate number="1" default-x="-12.86" default-y="10.34"></arpeggiate>
         </notations>
       </note>
     </measure>
@@ -734,7 +734,7 @@
         <type>whole</type>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="1" default-x="-12.48" default-y="10.44"/>
+          <arpeggiate number="1" default-x="-12.48" default-y="10.44"></arpeggiate>
         </notations>
       </note>
       <note default-x="20.32" default-y="5">
@@ -748,7 +748,7 @@
         <type>whole</type>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="1" default-x="-12.48" default-y="10.44"/>
+          <arpeggiate number="1" default-x="-12.48" default-y="10.44"></arpeggiate>
         </notations>
       </note>
       <backup>
@@ -764,7 +764,7 @@
         <type>whole</type>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="2" default-x="-11.52" default-y="-14.56"/>
+          <arpeggiate number="2" default-x="-11.52" default-y="-14.56"></arpeggiate>
         </notations>
       </note>
       <note default-x="20.32" default-y="-20">
@@ -778,7 +778,7 @@
         <type>whole</type>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="2" default-x="-11.52" default-y="-14.56"/>
+          <arpeggiate number="2" default-x="-11.52" default-y="-14.56"></arpeggiate>
         </notations>
       </note>
       <backup>
@@ -794,7 +794,7 @@
         <type>whole</type>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="3" default-x="-14.78" default-y="-34.56"/>
+          <arpeggiate number="3" default-x="-14.78" default-y="-34.56"></arpeggiate>
         </notations>
       </note>
       <note default-x="20.32" default-y="-40">
@@ -808,7 +808,7 @@
         <type>whole</type>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="3" default-x="-14.78" default-y="-34.56"/>
+          <arpeggiate number="3" default-x="-14.78" default-y="-34.56"></arpeggiate>
         </notations>
       </note>
       <backup>
@@ -824,7 +824,7 @@
         <type>whole</type>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="4" default-x="-13.82" default-y="35.44"/>
+          <arpeggiate number="4" default-x="-13.82" default-y="35.44"></arpeggiate>
         </notations>
       </note>
       <note default-x="20.32" default-y="30">
@@ -838,7 +838,7 @@
         <type>whole</type>
         <staff>1</staff>
         <notations>
-          <arpeggiate number="4" default-x="-13.82" default-y="35.44"/>
+          <arpeggiate number="4" default-x="-13.82" default-y="35.44"></arpeggiate>
         </notations>
       </note>
       <backup>
@@ -855,7 +855,7 @@
         <stem>up</stem>
         <staff>2</staff>
         <notations>
-          <arpeggiate number="5" default-x="-10.56" default-y="5.3"/>
+          <arpeggiate number="5" default-x="-10.56" default-y="5.3"></arpeggiate>
         </notations>
       </note>
       <note default-x="21.28" default-y="-105">
@@ -870,7 +870,7 @@
         <stem>up</stem>
         <staff>2</staff>
         <notations>
-          <arpeggiate number="5" default-x="-10.56" default-y="5.3"/>
+          <arpeggiate number="5" default-x="-10.56" default-y="5.3"></arpeggiate>
         </notations>
       </note>
       <note default-x="55.53" default-y="-105">
@@ -901,7 +901,7 @@
         <stem>down</stem>
         <staff>2</staff>
         <notations>
-          <arpeggiate number="5" default-x="-10.56" default-y="5.3"/>
+          <arpeggiate number="5" default-x="-10.56" default-y="5.3"></arpeggiate>
         </notations>
       </note>
       <note default-x="55.53" default-y="-145">

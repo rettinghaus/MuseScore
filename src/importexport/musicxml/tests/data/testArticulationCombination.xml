@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="beam" type="yes"></supports>
+      <supports element="print" attribute="new-page" type="no"></supports>
+      <supports element="print" attribute="new-system" type="no"></supports>
+      <supports element="stem" type="yes"></supports>
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -173,13 +173,13 @@
         <notations>
           <articulations>
             <soft-accent/>
-            <detached-legato/>
+            <detached-legato></detached-legato>
           </articulations>
         </notations>
       </note>
     </measure>
     <measure number="3">
-      <print new-system="yes"/>
+      <print new-system="yes"></print>
       <note>
         <pitch>
           <step>A</step>
@@ -305,13 +305,13 @@
         <notations>
           <articulations>
             <soft-accent/>
-            <detached-legato/>
+            <detached-legato></detached-legato>
           </articulations>
         </notations>
       </note>
     </measure>
     <measure number="5">
-      <print new-system="yes"/>
+      <print new-system="yes"></print>
       <note>
         <pitch>
           <step>C</step>
@@ -422,7 +422,7 @@
         <notations>
           <articulations>
             <soft-accent placement="below"/>
-            <detached-legato placement="below"/>
+            <detached-legato placement="below"></detached-legato>
           </articulations>
         </notations>
       </note>
@@ -438,7 +438,7 @@
         <notations>
           <articulations>
             <soft-accent/>
-            <detached-legato placement="below"/>
+            <detached-legato placement="below"></detached-legato>
           </articulations>
         </notations>
       </note>

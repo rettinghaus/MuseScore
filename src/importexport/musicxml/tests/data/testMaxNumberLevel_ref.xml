@@ -5,11 +5,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="beam" type="yes"></supports>
+      <supports element="print" attribute="new-page" type="no"></supports>
+      <supports element="print" attribute="new-system" type="no"></supports>
+      <supports element="stem" type="yes"></supports>
     </encoding>
   </identification>
   <part-list>
@@ -19,7 +19,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Violin</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>41</midi-program>
@@ -722,7 +722,7 @@
     <measure number="3">
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="1"/>
+          <wedge type="crescendo" number="1"></wedge>
         </direction-type>
         <staff>1</staff>
       </direction>
@@ -741,7 +741,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="2"/>
+          <wedge type="crescendo" number="2"></wedge>
         </direction-type>
         <staff>2</staff>
       </direction>
@@ -760,7 +760,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="3"/>
+          <wedge type="crescendo" number="3"></wedge>
         </direction-type>
         <staff>3</staff>
       </direction>
@@ -779,7 +779,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="4"/>
+          <wedge type="crescendo" number="4"></wedge>
         </direction-type>
         <staff>4</staff>
       </direction>
@@ -798,7 +798,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="5"/>
+          <wedge type="crescendo" number="5"></wedge>
         </direction-type>
         <staff>5</staff>
       </direction>
@@ -817,7 +817,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="6"/>
+          <wedge type="crescendo" number="6"></wedge>
         </direction-type>
         <staff>6</staff>
       </direction>
@@ -836,7 +836,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="7"/>
+          <wedge type="crescendo" number="7"></wedge>
         </direction-type>
         <staff>7</staff>
       </direction>
@@ -855,7 +855,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="8"/>
+          <wedge type="crescendo" number="8"></wedge>
         </direction-type>
         <staff>8</staff>
       </direction>
@@ -874,7 +874,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="9"/>
+          <wedge type="crescendo" number="9"></wedge>
         </direction-type>
         <staff>9</staff>
       </direction>
@@ -893,7 +893,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="10"/>
+          <wedge type="crescendo" number="10"></wedge>
         </direction-type>
         <staff>10</staff>
       </direction>
@@ -912,7 +912,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="11"/>
+          <wedge type="crescendo" number="11"></wedge>
         </direction-type>
         <staff>11</staff>
       </direction>
@@ -931,7 +931,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="12"/>
+          <wedge type="crescendo" number="12"></wedge>
         </direction-type>
         <staff>12</staff>
       </direction>
@@ -950,7 +950,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="13"/>
+          <wedge type="crescendo" number="13"></wedge>
         </direction-type>
         <staff>13</staff>
       </direction>
@@ -969,7 +969,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="14"/>
+          <wedge type="crescendo" number="14"></wedge>
         </direction-type>
         <staff>14</staff>
       </direction>
@@ -988,7 +988,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="15"/>
+          <wedge type="crescendo" number="15"></wedge>
         </direction-type>
         <staff>15</staff>
       </direction>
@@ -1007,7 +1007,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="16"/>
+          <wedge type="crescendo" number="16"></wedge>
         </direction-type>
         <staff>16</staff>
       </direction>
@@ -1035,7 +1035,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="1"/>
+          <wedge type="stop" number="1"></wedge>
         </direction-type>
         <staff>1</staff>
       </direction>
@@ -1054,7 +1054,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="2"/>
+          <wedge type="stop" number="2"></wedge>
         </direction-type>
         <staff>2</staff>
       </direction>
@@ -1073,7 +1073,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="3"/>
+          <wedge type="stop" number="3"></wedge>
         </direction-type>
         <staff>3</staff>
       </direction>
@@ -1092,7 +1092,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="4"/>
+          <wedge type="stop" number="4"></wedge>
         </direction-type>
         <staff>4</staff>
       </direction>
@@ -1111,7 +1111,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="5"/>
+          <wedge type="stop" number="5"></wedge>
         </direction-type>
         <staff>5</staff>
       </direction>
@@ -1130,7 +1130,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="6"/>
+          <wedge type="stop" number="6"></wedge>
         </direction-type>
         <staff>6</staff>
       </direction>
@@ -1149,7 +1149,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="7"/>
+          <wedge type="stop" number="7"></wedge>
         </direction-type>
         <staff>7</staff>
       </direction>
@@ -1168,7 +1168,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="8"/>
+          <wedge type="stop" number="8"></wedge>
         </direction-type>
         <staff>8</staff>
       </direction>
@@ -1187,7 +1187,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="9"/>
+          <wedge type="stop" number="9"></wedge>
         </direction-type>
         <staff>9</staff>
       </direction>
@@ -1206,7 +1206,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="10"/>
+          <wedge type="stop" number="10"></wedge>
         </direction-type>
         <staff>10</staff>
       </direction>
@@ -1225,7 +1225,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="11"/>
+          <wedge type="stop" number="11"></wedge>
         </direction-type>
         <staff>11</staff>
       </direction>
@@ -1244,7 +1244,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="12"/>
+          <wedge type="stop" number="12"></wedge>
         </direction-type>
         <staff>12</staff>
       </direction>
@@ -1263,7 +1263,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="13"/>
+          <wedge type="stop" number="13"></wedge>
         </direction-type>
         <staff>13</staff>
       </direction>
@@ -1282,7 +1282,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="14"/>
+          <wedge type="stop" number="14"></wedge>
         </direction-type>
         <staff>14</staff>
       </direction>
@@ -1301,7 +1301,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="15"/>
+          <wedge type="stop" number="15"></wedge>
         </direction-type>
         <staff>15</staff>
       </direction>
@@ -1320,7 +1320,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="16"/>
+          <wedge type="stop" number="16"></wedge>
         </direction-type>
         <staff>16</staff>
       </direction>

@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 3.6.0</software>
       <encoding-date>2020-12-12</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="yes" value="yes"/>
-      <supports element="print" attribute="new-system" type="yes" value="yes"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="beam" type="yes"></supports>
+      <supports element="print" attribute="new-page" type="yes" value="yes"></supports>
+      <supports element="print" attribute="new-system" type="yes" value="yes"></supports>
+      <supports element="stem" type="yes"></supports>
     </encoding>
   </identification>
   <defaults>
@@ -37,8 +37,8 @@
         <bottom-margin>85.0393</bottom-margin>
       </page-margins>
     </page-layout>
-    <word-font font-family="Edwin" font-size="10"/>
-    <lyric-font font-family="Edwin" font-size="11"/>
+    <word-font font-family="Edwin" font-size="10"></word-font>
+    <lyric-font font-family="Edwin" font-size="11"></lyric-font>
   </defaults>
   <credit page="1">
     <credit-type>title</credit-type>
@@ -54,7 +54,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -174,7 +174,7 @@
     <measure number="3" width="247.09">
       <attributes>
         <measure-style>
-          <slash type="start" use-stems="yes"/>
+          <slash type="start" use-stems="yes"></slash>
         </measure-style>
       </attributes>
       <note default-x="17.10" default-y="-20.00">
@@ -280,7 +280,7 @@
       </print>
       <attributes>
         <measure-style>
-          <slash type="start" use-stems="no"/>
+          <slash type="start" use-stems="no"></slash>
         </measure-style>
       </attributes>
       <note default-x="58.60" default-y="-20.00">
@@ -377,7 +377,7 @@
     <measure number="7" width="221.21">
       <attributes>
         <measure-style>
-          <slash type="stop"/>
+          <slash type="stop"></slash>
         </measure-style>
       </attributes>
       <note default-x="13.00" default-y="-25.00">

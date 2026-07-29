@@ -5,11 +5,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes"></supports>
+      <supports element="beam" type="yes"></supports>
+      <supports element="print" attribute="new-page" type="no"></supports>
+      <supports element="print" attribute="new-system" type="no"></supports>
+      <supports element="stem" type="yes"></supports>
     </encoding>
   </identification>
   <part-list>
@@ -19,7 +19,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1"></midi-device>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -57,7 +57,7 @@
             <per-minute>80</per-minute>
           </metronome>
         </direction-type>
-        <sound tempo="80"/>
+        <sound tempo="80"></sound>
       </direction>
       <direction placement="above">
         <direction-type>
@@ -66,7 +66,7 @@
       </direction>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" color="#55AAFF" number="1"/>
+          <wedge type="crescendo" color="#55AAFF" number="1"></wedge>
         </direction-type>
       </direction>
       <note>
@@ -122,7 +122,7 @@
         <stem>down</stem>
         <notations>
           <tied type="stop"/>
-          <fermata type="upright" color="#55FF00"/>
+          <fermata type="upright" color="#55FF00"></fermata>
         </notations>
       </note>
       <direction placement="above">
@@ -132,7 +132,7 @@
       </direction>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="1"/>
+          <wedge type="stop" number="1"></wedge>
         </direction-type>
       </direction>
     </measure>
@@ -146,7 +146,7 @@
             <pp/>
           </dynamics>
         </direction-type>
-        <sound dynamics="36.67"/>
+        <sound dynamics="36.67"></sound>
       </direction>
       <note>
         <pitch>
@@ -205,7 +205,7 @@
         </lyric>
       </note>
       <barline location="right">
-        <ending number="1" type="stop"/>
+        <ending number="1" type="stop"></ending>
       </barline>
     </measure>
     <measure number="3">
@@ -289,7 +289,7 @@
         <type>quarter</type>
         <stem color="#FF40FF">down</stem>
         <notations>
-          <arpeggiate direction="up" number="1" color="#73FDFF"/>
+          <arpeggiate direction="up" number="1" color="#73FDFF"></arpeggiate>
         </notations>
       </note>
       <note>
@@ -303,7 +303,7 @@
         <type>quarter</type>
         <stem color="#FF40FF">down</stem>
         <notations>
-          <arpeggiate direction="up" number="1" color="#73FDFF"/>
+          <arpeggiate direction="up" number="1" color="#73FDFF"></arpeggiate>
         </notations>
       </note>
       <note>
@@ -318,7 +318,7 @@
         <type>quarter</type>
         <stem color="#FF40FF">down</stem>
         <notations>
-          <arpeggiate direction="up" number="1" color="#73FDFF"/>
+          <arpeggiate direction="up" number="1" color="#73FDFF"></arpeggiate>
         </notations>
       </note>
       <note>
@@ -332,7 +332,7 @@
         <type>quarter</type>
         <stem color="#FF40FF">down</stem>
         <notations>
-          <arpeggiate direction="up" number="1" color="#73FDFF"/>
+          <arpeggiate direction="up" number="1" color="#73FDFF"></arpeggiate>
         </notations>
       </note>
       <note>
@@ -404,8 +404,8 @@
         <duration>7</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot color="#00F900"/>
-        <dot color="#00FDFF"/>
+        <dot color="#00F900"></dot>
+        <dot color="#00FDFF"></dot>
         <accidental>natural</accidental>
         <stem>down</stem>
       </note>
