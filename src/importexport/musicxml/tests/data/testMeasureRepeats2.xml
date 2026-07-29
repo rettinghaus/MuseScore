@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
 <score-partwise version="4.0">
   <movement-title>Measure Repeats (Finale, two staves)</movement-title>
@@ -88,7 +88,6 @@
       </midi-instrument>
     </score-part>
   </part-list>
-  <!--=========================================================-->
   <part id="P1">
     <measure number="1" width="191">
       <print>
@@ -165,7 +164,6 @@
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="2" width="120">
       <note default-x="13">
         <pitch>
@@ -237,7 +235,6 @@
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="3" width="120">
       <attributes>
         <measure-style number="1">
@@ -287,7 +284,6 @@
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="4" width="106">
       <note>
         <rest measure="yes"/>
@@ -310,7 +306,6 @@
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="5" width="145">
       <attributes>
         <measure-style number="1">
@@ -399,7 +394,6 @@
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="6" width="106">
       <attributes>
         <measure-style number="1">
@@ -422,7 +416,6 @@
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="7" width="106">
       <note>
         <rest measure="yes"/>
@@ -440,7 +433,6 @@
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="8" width="89">
       <note>
         <rest measure="yes"/>
@@ -473,5 +465,4 @@
       </barline>
     </measure>
   </part>
-  <!--=========================================================-->
 </score-partwise>

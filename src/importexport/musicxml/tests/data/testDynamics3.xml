@@ -4,7 +4,7 @@
   <work>
     <work-number>MuseScore testfile</work-number>
     <work-title>Dynamics 3</work-title>
-    </work>
+  </work>
   <identification>
     <creator type="composer">Leon Vinken</creator>
     <encoding>
@@ -15,104 +15,104 @@
       <supports element="print" attribute="new-page" type="no"/>
       <supports element="print" attribute="new-system" type="no"/>
       <supports element="stem" type="yes"/>
-      </encoding>
-    </identification>
+    </encoding>
+  </identification>
   <part-list>
     <score-part id="P1">
       <part-name>Voice</part-name>
       <score-instrument id="P1-I1">
         <instrument-name>Voice</instrument-name>
-        </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      </score-instrument>
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>53</midi-program>
         <volume>78.7402</volume>
         <pan>0</pan>
-        </midi-instrument>
-      </score-part>
+      </midi-instrument>
+    </score-part>
     <score-part id="P2">
       <part-name>Piano</part-name>
       <score-instrument id="P2-I1">
         <instrument-name>Piano</instrument-name>
-        </score-instrument>
-      <midi-device id="P2-I1" port="1"></midi-device>
+      </score-instrument>
+      <midi-device id="P2-I1" port="1"/>
       <midi-instrument id="P2-I1">
         <midi-channel>2</midi-channel>
         <midi-program>1</midi-program>
         <volume>78.7402</volume>
         <pan>0</pan>
-        </midi-instrument>
-      </score-part>
-    </part-list>
+      </midi-instrument>
+    </score-part>
+  </part-list>
   <part id="P1">
     <measure number="1">
       <attributes>
         <divisions>1</divisions>
         <key>
           <fifths>0</fifths>
-          </key>
+        </key>
         <time>
           <beats>4</beats>
           <beat-type>4</beat-type>
-          </time>
+        </time>
         <clef>
           <sign>G</sign>
           <line>2</line>
-          </clef>
-        </attributes>
+        </clef>
+      </attributes>
       <direction placement="above">
         <direction-type>
           <dynamics>
             <f/>
-            </dynamics>
-          </direction-type>
-        </direction>
+          </dynamics>
+        </direction-type>
+      </direction>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
-        </note>
+      </note>
       <direction placement="below">
         <direction-type>
           <dynamics>
             <p/>
-            </dynamics>
-          </direction-type>
-        </direction>
+          </dynamics>
+        </direction-type>
+      </direction>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="2">
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>4</duration>
         <voice>1</voice>
         <type>whole</type>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="3">
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
@@ -120,14 +120,14 @@
         <notations>
           <dynamics placement="above">
             <f/>
-            </dynamics>
-          </notations>
-        </note>
+          </dynamics>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
@@ -135,197 +135,197 @@
         <notations>
           <dynamics placement="below">
             <p/>
-            </dynamics>
-          </notations>
-        </note>
-      </measure>
+          </dynamics>
+        </notations>
+      </note>
+    </measure>
     <measure number="4">
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>4</duration>
         <voice>1</voice>
         <type>whole</type>
-        </note>
-      </measure>
-    </part>
+      </note>
+    </measure>
+  </part>
   <part id="P2">
     <measure number="1">
       <attributes>
         <divisions>1</divisions>
         <key>
           <fifths>0</fifths>
-          </key>
+        </key>
         <time>
           <beats>4</beats>
           <beat-type>4</beat-type>
-          </time>
+        </time>
         <staves>2</staves>
         <clef number="1">
           <sign>G</sign>
           <line>2</line>
-          </clef>
+        </clef>
         <clef number="2">
           <sign>F</sign>
           <line>4</line>
-          </clef>
-        </attributes>
+        </clef>
+      </attributes>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>4</duration>
         <voice>1</voice>
         <type>whole</type>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>4</duration>
         <voice>5</voice>
         <type>whole</type>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="2">
       <direction placement="above">
         <direction-type>
           <dynamics>
             <ff/>
-            </dynamics>
-          </direction-type>
+          </dynamics>
+        </direction-type>
         <staff>1</staff>
-        </direction>
+      </direction>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <direction placement="below">
         <direction-type>
           <dynamics>
             <pp/>
-            </dynamics>
-          </direction-type>
+          </dynamics>
+        </direction-type>
         <staff>1</staff>
-        </direction>
+      </direction>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <rest/>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>5</voice>
         <type>half</type>
         <stem>up</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <direction placement="above">
         <direction-type>
           <dynamics>
             <fff/>
-            </dynamics>
-          </direction-type>
+          </dynamics>
+        </direction-type>
         <staff>2</staff>
-        </direction>
+      </direction>
       <note>
         <pitch>
           <step>A</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <direction placement="below">
         <direction-type>
           <dynamics>
             <ppp/>
-            </dynamics>
-          </direction-type>
+          </dynamics>
+        </direction-type>
         <staff>2</staff>
-        </direction>
+      </direction>
       <note>
         <pitch>
           <step>B</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="3">
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>4</duration>
         <voice>1</voice>
         <type>whole</type>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>4</duration>
         <voice>5</voice>
         <type>whole</type>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="4">
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -334,14 +334,14 @@
         <notations>
           <dynamics placement="above">
             <ff/>
-            </dynamics>
-          </notations>
-        </note>
+          </dynamics>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -350,35 +350,35 @@
         <notations>
           <dynamics placement="below">
             <pp/>
-            </dynamics>
-          </notations>
-        </note>
+          </dynamics>
+        </notations>
+      </note>
       <note>
         <rest/>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>5</voice>
         <type>half</type>
         <stem>up</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -387,14 +387,14 @@
         <notations>
           <dynamics placement="above">
             <fff/>
-            </dynamics>
-          </notations>
-        </note>
+          </dynamics>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>B</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -403,9 +403,9 @@
         <notations>
           <dynamics placement="below">
             <ppp/>
-            </dynamics>
-          </notations>
-        </note>
-      </measure>
-    </part>
-  </score-partwise>
+          </dynamics>
+        </notations>
+      </note>
+    </measure>
+  </part>
+</score-partwise>

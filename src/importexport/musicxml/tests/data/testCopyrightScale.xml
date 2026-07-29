@@ -3,7 +3,7 @@
 <score-partwise version="4.0">
   <work>
     <work-title>Title title title title title title title title title title title title title title title title title title title title title title title</work-title>
-    </work>
+  </work>
   <identification>
     <creator type="composer">Composer / arranger</creator>
     <rights>Copyright copyright copyright copyright copyright copyright copyright copyright copyright copyright copyright 
@@ -18,13 +18,13 @@ copyright copyright</rights>
       <supports element="print" attribute="new-page" type="yes" value="yes"/>
       <supports element="print" attribute="new-system" type="yes" value="yes"/>
       <supports element="stem" type="yes"/>
-      </encoding>
-    </identification>
+    </encoding>
+  </identification>
   <defaults>
     <scaling>
       <millimeters>6.99912</millimeters>
       <tenths>40</tenths>
-      </scaling>
+    </scaling>
     <page-layout>
       <page-height>422.419</page-height>
       <page-width>297.58</page-width>
@@ -33,14 +33,14 @@ copyright copyright</rights>
         <right-margin>28.575</right-margin>
         <top-margin>85.725</top-margin>
         <bottom-margin>85.725</bottom-margin>
-        </page-margins>
+      </page-margins>
       <page-margins type="odd">
         <left-margin>28.575</left-margin>
         <right-margin>28.575</right-margin>
         <top-margin>28.575</top-margin>
         <bottom-margin>28.575</bottom-margin>
-        </page-margins>
-      </page-layout>
+      </page-margins>
+    </page-layout>
     <appearance>
       <line-width type="light barline">1.8</line-width>
       <line-width type="heavy barline">5.5</line-width>
@@ -64,22 +64,22 @@ copyright copyright</rights>
       <note-size type="cue">70</note-size>
       <note-size type="grace">70</note-size>
       <note-size type="grace-cue">49</note-size>
-      </appearance>
+    </appearance>
     <music-font font-family="Leland"/>
     <word-font font-family="Edwin" font-size="10"/>
     <lyric-font font-family="Edwin" font-size="10"/>
-    </defaults>
-    <credit page="1">
-        <credit-type>title</credit-type>
-        <credit-words default-x="1020" default-y="3250" font-size="24" justify="right" valign="top">Title title title title title title title title title title title title title title title title title title title title title title title</credit-words>
-    </credit>
+  </defaults>
+  <credit page="1">
+    <credit-type>title</credit-type>
+    <credit-words default-x="1020" default-y="3250" font-size="24" justify="right" valign="top">Title title title title title title title title title title title title title title title title title title title title title title title</credit-words>
+  </credit>
   <credit page="1">
     <credit-type>rights</credit-type>
     <credit-words default-x="148.790134" default-y="28.574964" justify="center" valign="bottom" font-size="9">Copyright copyright copyright copyright copyright copyright copyright copyright copyright copyright copyright 
 copyright copyright copyright copyright copyright copyright copyright copyright 
 copyright copyright copyright copyright 
 copyright copyright</credit-words>
-    </credit>
+  </credit>
   <part-list>
     <score-part id="P1">
       <part-name>Flute</part-name>
@@ -87,16 +87,16 @@ copyright copyright</credit-words>
       <score-instrument id="P1-I1">
         <instrument-name>Flute</instrument-name>
         <instrument-sound>wind.flutes.flute</instrument-sound>
-        </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      </score-instrument>
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
         <volume>78.7402</volume>
         <pan>0</pan>
-        </midi-instrument>
-      </score-part>
-    </part-list>
+      </midi-instrument>
+    </score-part>
+  </part-list>
   <part id="P1">
     <measure number="1" width="240.43">
       <print>
@@ -104,32 +104,32 @@ copyright copyright</credit-words>
           <system-margins>
             <left-margin>0</left-margin>
             <right-margin>0</right-margin>
-            </system-margins>
+          </system-margins>
           <top-system-distance>70</top-system-distance>
-          </system-layout>
-        </print>
+        </system-layout>
+      </print>
       <attributes>
         <divisions>1</divisions>
         <key>
           <fifths>0</fifths>
-          </key>
+        </key>
         <time>
           <beats>4</beats>
           <beat-type>4</beat-type>
-          </time>
+        </time>
         <clef>
           <sign>G</sign>
           <line>2</line>
-          </clef>
-        </attributes>
+        </clef>
+      </attributes>
       <note default-x="138.32" default-y="-10">
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
-        </note>
+      </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        </barline>
-      </measure>
-    </part>
-  </score-partwise>
+      </barline>
+    </measure>
+  </part>
+</score-partwise>

@@ -4,7 +4,7 @@
   <work>
     <work-number>MuseScore testfile</work-number>
     <work-title>Track handling</work-title>
-    </work>
+  </work>
   <identification>
     <creator type="composer">Leon Vinken</creator>
     <encoding>
@@ -15,73 +15,73 @@
       <supports element="print" attribute="new-page" type="no"/>
       <supports element="print" attribute="new-system" type="no"/>
       <supports element="stem" type="yes"/>
-      </encoding>
-    </identification>
+    </encoding>
+  </identification>
   <part-list>
     <score-part id="P1">
       <part-name>Voice</part-name>
       <part-abbreviation>Vo.</part-abbreviation>
       <score-instrument id="P1-I1">
         <instrument-name>Voice</instrument-name>
-        </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      </score-instrument>
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>53</midi-program>
         <volume>78.7402</volume>
         <pan>0</pan>
-        </midi-instrument>
-      </score-part>
+      </midi-instrument>
+    </score-part>
     <score-part id="P2">
       <part-name>Piano</part-name>
       <part-abbreviation>Pno.</part-abbreviation>
       <score-instrument id="P2-I1">
         <instrument-name>Piano</instrument-name>
-        </score-instrument>
-      <midi-device id="P2-I1" port="1"></midi-device>
+      </score-instrument>
+      <midi-device id="P2-I1" port="1"/>
       <midi-instrument id="P2-I1">
         <midi-channel>2</midi-channel>
         <midi-program>1</midi-program>
         <volume>78.7402</volume>
         <pan>0</pan>
-        </midi-instrument>
-      </score-part>
+      </midi-instrument>
+    </score-part>
     <score-part id="P3">
       <part-name>Bass Guitar</part-name>
       <part-abbreviation>B. Guit.</part-abbreviation>
       <score-instrument id="P3-I1">
         <instrument-name>Bass Guitar</instrument-name>
-        </score-instrument>
-      <midi-device id="P3-I1" port="1"></midi-device>
+      </score-instrument>
+      <midi-device id="P3-I1" port="1"/>
       <midi-instrument id="P3-I1">
         <midi-channel>3</midi-channel>
         <midi-program>35</midi-program>
         <volume>78.7402</volume>
         <pan>0</pan>
-        </midi-instrument>
-      </score-part>
-    </part-list>
+      </midi-instrument>
+    </score-part>
+  </part-list>
   <part id="P1">
     <measure number="1">
       <attributes>
         <divisions>1</divisions>
         <key>
           <fifths>0</fifths>
-          </key>
+        </key>
         <time>
           <beats>4</beats>
           <beat-type>4</beat-type>
-          </time>
+        </time>
         <clef>
           <sign>G</sign>
           <line>2</line>
-          </clef>
-        </attributes>
+        </clef>
+      </attributes>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <tie type="start"/>
         <voice>1</voice>
@@ -89,13 +89,13 @@
         <stem>up</stem>
         <notations>
           <tied type="start"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <tie type="stop"/>
         <voice>1</voice>
@@ -103,56 +103,56 @@
         <stem>up</stem>
         <notations>
           <tied type="stop"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <tie type="start"/>
         <voice>2</voice>
@@ -160,13 +160,13 @@
         <stem>down</stem>
         <notations>
           <tied type="start"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <tie type="stop"/>
         <voice>2</voice>
@@ -174,1202 +174,1202 @@
         <stem>down</stem>
         <notations>
           <tied type="stop"/>
-          </notations>
-        </note>
-      </measure>
+        </notations>
+      </note>
+    </measure>
     <measure number="2">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="3">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="4">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="5">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
         <notations>
           <fermata type="upright"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
         <stem>down</stem>
         <notations>
           <fermata type="inverted"/>
-          </notations>
-        </note>
-      </measure>
+        </notations>
+      </note>
+    </measure>
     <measure number="6">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
         <stem>down</stem>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="7">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
         <stem>down</stem>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="8">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
         <stem>down</stem>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="9">
       <print new-system="yes"/>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <notations>
           <slur type="start" number="1"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <notations>
           <slur type="stop" number="1"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <notations>
           <slur type="start" number="1"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <notations>
           <slur type="stop" number="1"/>
-          </notations>
-        </note>
-      </measure>
+        </notations>
+      </note>
+    </measure>
     <measure number="10">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="11">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="12">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="13">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <notations>
           <slide line-type="solid" number="1" type="start">gliss.</slide>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <notations>
           <slide line-type="solid" number="1" type="stop"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <notations>
           <slide line-type="solid" number="1" type="start">gliss.</slide>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <notations>
           <slide line-type="solid" number="1" type="stop"/>
-          </notations>
-        </note>
-      </measure>
+        </notations>
+      </note>
+    </measure>
     <measure number="14">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="15">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="16">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        </barline>
-      </measure>
-    </part>
+      </barline>
+    </measure>
+  </part>
   <part id="P2">
     <measure number="1">
       <attributes>
         <divisions>1</divisions>
         <key>
           <fifths>0</fifths>
-          </key>
+        </key>
         <time>
           <beats>4</beats>
           <beat-type>4</beat-type>
-          </time>
+        </time>
         <staves>2</staves>
         <clef number="1">
           <sign>G</sign>
           <line>2</line>
-          </clef>
+        </clef>
         <clef number="2">
           <sign>F</sign>
           <line>4</line>
-          </clef>
-        </attributes>
+        </clef>
+      </attributes>
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="2">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <tie type="start"/>
         <voice>1</voice>
@@ -1378,13 +1378,13 @@
         <staff>1</staff>
         <notations>
           <tied type="start"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <tie type="stop"/>
         <voice>1</voice>
@@ -1393,60 +1393,60 @@
         <staff>1</staff>
         <notations>
           <tied type="stop"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <tie type="start"/>
         <voice>2</voice>
@@ -1455,13 +1455,13 @@
         <staff>1</staff>
         <notations>
           <tied type="start"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <tie type="stop"/>
         <voice>2</voice>
@@ -1470,33 +1470,33 @@
         <staff>1</staff>
         <notations>
           <tied type="stop"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="3">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <tie type="start"/>
         <voice>5</voice>
@@ -1505,13 +1505,13 @@
         <staff>2</staff>
         <notations>
           <tied type="start"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <tie type="stop"/>
         <voice>5</voice>
@@ -1520,60 +1520,60 @@
         <staff>2</staff>
         <notations>
           <tied type="stop"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>6</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>6</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <tie type="start"/>
         <voice>6</voice>
@@ -1582,13 +1582,13 @@
         <staff>2</staff>
         <notations>
           <tied type="start"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <tie type="stop"/>
         <voice>6</voice>
@@ -1597,49 +1597,49 @@
         <staff>2</staff>
         <notations>
           <tied type="stop"/>
-          </notations>
-        </note>
-      </measure>
+        </notations>
+      </note>
+    </measure>
     <measure number="4">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="5">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="6">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
@@ -1647,38 +1647,38 @@
         <staff>1</staff>
         <notations>
           <fermata type="upright"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
@@ -1686,33 +1686,33 @@
         <staff>1</staff>
         <notations>
           <fermata type="inverted"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="7">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>5</voice>
         <type>half</type>
@@ -1720,38 +1720,38 @@
         <staff>2</staff>
         <notations>
           <fermata type="upright"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>5</voice>
         <type>half</type>
         <stem>up</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>6</voice>
         <type>half</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>6</voice>
         <type>half</type>
@@ -1759,26 +1759,26 @@
         <staff>2</staff>
         <notations>
           <fermata type="inverted"/>
-          </notations>
-        </note>
-      </measure>
+        </notations>
+      </note>
+    </measure>
     <measure number="8">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="9">
       <print new-system="yes"/>
       <note>
@@ -1786,23 +1786,23 @@
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="10">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -1810,13 +1810,13 @@
         <staff>1</staff>
         <notations>
           <slur type="start" number="1"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -1824,60 +1824,60 @@
         <staff>1</staff>
         <notations>
           <slur type="stop" number="1"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
@@ -1885,13 +1885,13 @@
         <staff>1</staff>
         <notations>
           <slur type="start" number="1"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
@@ -1899,33 +1899,33 @@
         <staff>1</staff>
         <notations>
           <slur type="stop" number="1"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="11">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -1933,13 +1933,13 @@
         <staff>2</staff>
         <notations>
           <slur type="start" number="1"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -1947,60 +1947,60 @@
         <staff>2</staff>
         <notations>
           <slur type="stop" number="1"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>6</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>6</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>6</voice>
         <type>quarter</type>
@@ -2008,13 +2008,13 @@
         <staff>2</staff>
         <notations>
           <slur type="start" number="1"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>6</voice>
         <type>quarter</type>
@@ -2022,49 +2022,49 @@
         <staff>2</staff>
         <notations>
           <slur type="stop" number="1"/>
-          </notations>
-        </note>
-      </measure>
+        </notations>
+      </note>
+    </measure>
     <measure number="12">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="13">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="14">
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -2072,13 +2072,13 @@
         <staff>1</staff>
         <notations>
           <slide line-type="solid" number="1" type="start">gliss.</slide>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -2086,60 +2086,60 @@
         <staff>1</staff>
         <notations>
           <slide line-type="solid" number="1" type="stop"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
@@ -2147,13 +2147,13 @@
         <staff>1</staff>
         <notations>
           <slide line-type="solid" number="1" type="start">gliss.</slide>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
@@ -2161,33 +2161,33 @@
         <staff>1</staff>
         <notations>
           <slide line-type="solid" number="1" type="stop"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="15">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -2195,13 +2195,13 @@
         <staff>2</staff>
         <notations>
           <slide line-type="solid" number="1" type="start">gliss.</slide>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -2209,60 +2209,60 @@
         <staff>2</staff>
         <notations>
           <slide line-type="solid" number="1" type="stop"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>6</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>6</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>6</voice>
         <type>quarter</type>
@@ -2270,13 +2270,13 @@
         <staff>2</staff>
         <notations>
           <slide line-type="solid" number="1" type="start">gliss.</slide>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>6</voice>
         <type>quarter</type>
@@ -2284,77 +2284,77 @@
         <staff>2</staff>
         <notations>
           <slide line-type="solid" number="1" type="stop"/>
-          </notations>
-        </note>
-      </measure>
+        </notations>
+      </note>
+    </measure>
     <measure number="16">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
-        </note>
+      </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        </barline>
-      </measure>
-    </part>
+      </barline>
+    </measure>
+  </part>
   <part id="P3">
     <measure number="1">
       <attributes>
         <divisions>1</divisions>
         <key>
           <fifths>0</fifths>
-          </key>
+        </key>
         <time>
           <beats>4</beats>
           <beat-type>4</beat-type>
-          </time>
+        </time>
         <clef>
           <sign>F</sign>
           <line>4</line>
-          </clef>
+        </clef>
         <transpose>
           <diatonic>0</diatonic>
           <chromatic>0</chromatic>
           <octave-change>-1</octave-change>
-          </transpose>
-        </attributes>
+        </transpose>
+      </attributes>
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="2">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="3">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="4">
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <tie type="start"/>
         <voice>1</voice>
@@ -2362,13 +2362,13 @@
         <stem>up</stem>
         <notations>
           <tied type="start"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <tie type="stop"/>
         <voice>1</voice>
@@ -2376,56 +2376,56 @@
         <stem>up</stem>
         <notations>
           <tied type="stop"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <tie type="start"/>
         <voice>2</voice>
@@ -2433,13 +2433,13 @@
         <stem>down</stem>
         <notations>
           <tied type="start"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <tie type="stop"/>
         <voice>2</voice>
@@ -2447,320 +2447,320 @@
         <stem>down</stem>
         <notations>
           <tied type="stop"/>
-          </notations>
-        </note>
-      </measure>
+        </notations>
+      </note>
+    </measure>
     <measure number="5">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="6">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="7">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="8">
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
         <notations>
           <fermata type="upright"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>2</voice>
         <type>half</type>
         <stem>down</stem>
         <notations>
           <fermata type="inverted"/>
-          </notations>
-        </note>
-      </measure>
+        </notations>
+      </note>
+    </measure>
     <measure number="9">
       <print new-system="yes"/>
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="10">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="11">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="12">
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <notations>
           <slur type="start" number="1"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <notations>
           <slur type="stop" number="1"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <notations>
           <slur type="start" number="1"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <notations>
           <slur type="stop" number="1"/>
-          </notations>
-        </note>
-      </measure>
+        </notations>
+      </note>
+    </measure>
     <measure number="13">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="14">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="15">
       <note>
         <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="16">
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <notations>
           <slide line-type="solid" number="1" type="start">gliss.</slide>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <notations>
           <slide line-type="solid" number="1" type="stop"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
-        </note>
+      </note>
       <backup>
         <duration>4</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <notations>
           <slide line-type="solid" number="1" type="start">gliss.</slide>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <notations>
           <slide line-type="solid" number="1" type="stop"/>
-          </notations>
-        </note>
+        </notations>
+      </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        </barline>
-      </measure>
-    </part>
-  </score-partwise>
+      </barline>
+    </measure>
+  </part>
+</score-partwise>

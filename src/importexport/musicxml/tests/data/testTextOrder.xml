@@ -3,7 +3,7 @@
 <score-partwise version="3.1">
   <work>
     <work-title>Test Text Layout</work-title>
-    </work>
+  </work>
   <identification>
     <creator type="composer">Henry Ives</creator>
     <encoding>
@@ -14,13 +14,13 @@
       <supports element="print" attribute="new-page" type="no"/>
       <supports element="print" attribute="new-system" type="no"/>
       <supports element="stem" type="yes"/>
-      </encoding>
-    </identification>
+    </encoding>
+  </identification>
   <defaults>
     <scaling>
       <millimeters>7</millimeters>
       <tenths>40</tenths>
-      </scaling>
+    </scaling>
     <page-layout>
       <page-height>1697.14</page-height>
       <page-width>1200</page-width>
@@ -29,48 +29,48 @@
         <right-margin>85.7143</right-margin>
         <top-margin>85.7143</top-margin>
         <bottom-margin>85.7143</bottom-margin>
-        </page-margins>
+      </page-margins>
       <page-margins type="odd">
         <left-margin>85.7143</left-margin>
         <right-margin>85.7143</right-margin>
         <top-margin>85.7143</top-margin>
         <bottom-margin>85.7143</bottom-margin>
-        </page-margins>
-      </page-layout>
+      </page-margins>
+    </page-layout>
     <word-font font-family="Edwin" font-size="10"/>
     <lyric-font font-family="Edwin" font-size="10"/>
-    </defaults>
+  </defaults>
   <credit page="1">
     <credit-type>title</credit-type>
     <credit-words default-x="600" default-y="1611.43" justify="center" valign="top" font-size="22">Test Text Layout</credit-words>
-    </credit>
+  </credit>
   <credit page="1">
     <credit-type>subtitle</credit-type>
     <credit-words default-x="600" default-y="1554.29" justify="center" valign="top" font-size="16">Musescore Testcase</credit-words>
-    </credit>
+  </credit>
   <credit page="1">
     <credit-type>composer</credit-type>
     <credit-words default-x="1114.29" default-y="1511.43" justify="right" valign="bottom">Henry Ives</credit-words>
-    </credit>
+  </credit>
   <part-list>
     <part-group type="start" number="1">
       <group-symbol>brace</group-symbol>
-      </part-group>
+    </part-group>
     <score-part id="P1">
       <part-name>Piano</part-name>
       <part-abbreviation>Pno.</part-abbreviation>
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
-        </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      </score-instrument>
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
         <volume>78.7402</volume>
         <pan>0</pan>
-        </midi-instrument>
-      </score-part>
-    </part-list>
+      </midi-instrument>
+    </score-part>
+  </part-list>
   <part id="P1">
     <measure number="1" width="494.90">
       <print>
@@ -78,50 +78,50 @@
           <system-margins>
             <left-margin>50.00</left-margin>
             <right-margin>0.00</right-margin>
-            </system-margins>
+          </system-margins>
           <top-system-distance>174.70</top-system-distance>
-          </system-layout>
-        </print>
+        </system-layout>
+      </print>
       <attributes>
         <divisions>4</divisions>
         <key>
           <fifths>-2</fifths>
-          </key>
+        </key>
         <time>
           <beats>2</beats>
           <beat-type>4</beat-type>
-          </time>
+        </time>
         <clef>
           <sign>G</sign>
           <line>2</line>
-          </clef>
-        </attributes>
+        </clef>
+      </attributes>
       <direction placement="above">
         <direction-type>
           <words relative-x="1.15" relative-y="31.81">2nd time ad lib.</words>
-          </direction-type>
-        </direction>
+        </direction-type>
+      </direction>
       <direction>
         <direction-type>
           <words relative-y="11.15">3rd time senza Invisalign</words>
-          </direction-type>
-        </direction>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <words default-y="-104.27" relative-y="-25.00" font-style="italic">Cantabile</words>
-          </direction-type>
-        </direction>
+        </direction-type>
+      </direction>
       <direction>
         <direction-type>
           <words default-y="36.97" relative-y="20.00" font-weight="bold" font-size="12">Straight</words>
-          </direction-type>
-        </direction>
+        </direction-type>
+      </direction>
       <note default-x="108.84" default-y="-20.00">
         <pitch>
           <step>B</step>
           <alter>-1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -131,13 +131,13 @@
         <lyric number="1" default-x="6.50" default-y="-54.92" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>glare</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="154.46" default-y="-25.00">
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -147,14 +147,14 @@
         <lyric number="1" default-x="6.50" default-y="-54.92" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>The</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="206.34" default-y="-20.00">
         <pitch>
           <step>B</step>
           <alter>-1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -164,13 +164,13 @@
         <lyric number="1" default-x="6.50" default-y="-54.92" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>bombs</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="265.27" default-y="-10.00">
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -180,13 +180,13 @@
         <lyric number="1" default-x="6.50" default-y="-54.92" relative-y="-30.00">
           <syllabic>begin</syllabic>
           <text>burst</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="312.43" default-y="-35.00">
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -196,13 +196,13 @@
         <lyric number="1" default-x="6.50" default-y="-54.92" relative-y="-30.00">
           <syllabic>end</syllabic>
           <text>ing</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="357.60" default-y="-30.00">
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -212,13 +212,13 @@
         <lyric number="1" default-x="6.50" default-y="-54.92" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>in</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="402.76" default-y="-25.00">
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -228,14 +228,14 @@
         <lyric number="1" default-x="6.50" default-y="-54.92" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>air</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="447.93" default-y="-20.00">
         <pitch>
           <step>B</step>
           <alter>-1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -245,15 +245,15 @@
         <lyric number="1" default-x="6.50" default-y="-54.92" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>gave</text>
-          </lyric>
-        </note>
-      </measure>
+        </lyric>
+      </note>
+    </measure>
     <measure number="2" width="483.67">
       <note default-x="32.35" default-y="-15.00">
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -263,13 +263,13 @@
         <lyric number="1" default-x="6.50" default-y="-54.92" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>proof</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="98.73" default-y="-20.00">
         <pitch>
           <step>B</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -280,13 +280,13 @@
         <lyric number="1" default-x="6.50" default-y="-54.92" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>through</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="155.44" default-y="-15.00">
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -296,14 +296,14 @@
         <lyric number="1" default-x="6.50" default-y="-54.92" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>the</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="209.85" default-y="-5.00">
         <pitch>
           <step>E</step>
           <alter>-1</alter>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -313,23 +313,23 @@
         <lyric number="1" default-x="6.50" default-y="-54.92" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>night</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <direction placement="above">
         <direction-type>
           <words relative-y="10.00">mute</words>
-          </direction-type>
-        </direction>
+        </direction-type>
+      </direction>
       <direction placement="above">
         <direction-type>
           <words default-y="18.71" relative-y="10.00">Staff Text</words>
-          </direction-type>
-        </direction>
+        </direction-type>
+      </direction>
       <note default-x="264.25" default-y="-30.00">
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -339,13 +339,13 @@
         <lyric number="1" default-x="6.50" default-y="-54.92" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>that</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="318.66" default-y="-35.00">
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -355,19 +355,19 @@
         <lyric number="1" default-x="6.50" default-y="-54.92" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>our</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <direction placement="above">
         <direction-type>
           <words relative-y="10.00">open</words>
-          </direction-type>
-        </direction>
+        </direction-type>
+      </direction>
       <note default-x="373.06" default-y="-40.00">
         <pitch>
           <step>E</step>
           <alter>-1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -377,13 +377,13 @@
         <lyric number="1" default-x="6.50" default-y="-54.92" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>SWAG</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="427.47" default-y="-45.00">
         <pitch>
           <step>D</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -393,15 +393,15 @@
         <lyric number="1" default-x="6.50" default-y="-54.92" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>was</text>
-          </lyric>
-        </note>
-      </measure>
+        </lyric>
+      </note>
+    </measure>
     <measure number="3" width="605.39">
       <note default-x="90.21" default-y="-50.00">
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -411,14 +411,14 @@
         <lyric number="1" default-x="6.50" default-y="-65.47" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>still</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="161.51" default-y="-55.00">
         <pitch>
           <step>B</step>
           <alter>-1</alter>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -428,13 +428,13 @@
         <lyric number="1" default-x="6.50" default-y="-65.47" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>there</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="232.82" default-y="-60.00">
         <pitch>
           <step>A</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -444,13 +444,13 @@
         <lyric number="1" default-x="6.50" default-y="-65.47" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>oh</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="304.12" default-y="-65.00">
         <pitch>
           <step>G</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -460,13 +460,13 @@
         <lyric number="1" default-x="6.50" default-y="-65.47" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>say</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="375.42" default-y="-35.00">
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -474,55 +474,55 @@
         <lyric number="1" default-x="6.50" default-y="-65.47" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>does</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="375.42" default-y="-15.00">
         <chord/>
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note default-x="375.42" default-y="0.00">
         <chord/>
         <pitch>
           <step>F</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note default-x="375.42" default-y="10.00">
         <chord/>
         <pitch>
           <step>A</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <rest/>
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="4" width="423.18">
       <note default-x="27.31" default-y="-20.00">
         <pitch>
           <step>B</step>
           <alter>-1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -530,53 +530,53 @@
         <lyric number="1" default-x="6.50" default-y="-65.47" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>that</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="27.31" default-y="-10.00">
         <chord/>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note default-x="27.31" default-y="0.00">
         <chord/>
         <pitch>
           <step>F</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note default-x="27.31" default-y="15.00">
         <chord/>
         <pitch>
           <step>B</step>
           <alter>-1</alter>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <rest/>
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
-        </note>
+      </note>
       <note default-x="219.92" default-y="-35.00">
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -584,50 +584,50 @@
         <lyric number="1" default-x="6.50" default-y="-65.47" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>star</text>
-          </lyric>
-        </note>
+        </lyric>
+      </note>
       <note default-x="219.92" default-y="-15.00">
         <chord/>
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note default-x="219.92" default-y="0.00">
         <chord/>
         <pitch>
           <step>F</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note default-x="219.92" default-y="10.00">
         <chord/>
         <pitch>
           <step>A</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
-        </note>
+      </note>
       <note>
         <rest/>
         <duration>2</duration>
         <voice>1</voice>
         <type>eighth</type>
-        </note>
+      </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        </barline>
-      </measure>
-    </part>
-  </score-partwise>
+      </barline>
+    </measure>
+  </part>
+</score-partwise>

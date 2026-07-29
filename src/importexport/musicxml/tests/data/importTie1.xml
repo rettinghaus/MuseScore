@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0.2 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
 <score-partwise version="4.0.2">
   <work>
@@ -29,7 +29,6 @@
       </midi-instrument>
     </score-part>
   </part-list>
-  <!--= = = = = = = = = = = = = = = = = = = = = = = = = = = = =-->
   <part id="P1">
     <measure number="11">
       <attributes>
@@ -142,7 +141,6 @@
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="12">
       <note>
         <pitch>
@@ -256,8 +254,6 @@
         <staff>2</staff>
       </note>
     </measure>
-    
-    <!--=======================================================-->
     <measure number="13">
       <note>
         <pitch>

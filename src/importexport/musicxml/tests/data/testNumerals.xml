@@ -3,7 +3,7 @@
 <score-partwise version="4.0">
   <work>
     <work-title>Numeral test file</work-title>
-    </work>
+  </work>
   <identification>
     <encoding>
       <software>MuseScore 0.7.0</software>
@@ -13,211 +13,211 @@
       <supports element="print" attribute="new-page" type="no"/>
       <supports element="print" attribute="new-system" type="no"/>
       <supports element="stem" type="yes"/>
-      </encoding>
-    </identification>
+    </encoding>
+  </identification>
   <part-list>
     <score-part id="P1">
       <part-name>Piano</part-name>
       <part-abbreviation>Klav.</part-abbreviation>
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
-        </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      </score-instrument>
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
         <volume>78.7402</volume>
         <pan>0</pan>
-        </midi-instrument>
-      </score-part>
-    </part-list>
+      </midi-instrument>
+    </score-part>
+  </part-list>
   <part id="P1">
     <measure number="1">
       <attributes>
         <divisions>1</divisions>
         <key>
           <fifths>0</fifths>
-          </key>
+        </key>
         <time>
           <beats>4</beats>
           <beat-type>4</beat-type>
-          </time>
+        </time>
         <clef>
           <sign>F</sign>
           <line>4</line>
-          </clef>
-        </attributes>
+        </clef>
+      </attributes>
       <harmony print-frame="no">
         <numeral>
           <numeral-root text="I">1</numeral-root>
-          </numeral>
+        </numeral>
         <kind>major</kind>
-        </harmony>
+      </harmony>
       <note>
         <pitch>
           <step>C</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
-        </note>
+      </note>
       <harmony print-frame="no">
         <numeral>
           <numeral-root text="ii">2</numeral-root>
-          </numeral>
+        </numeral>
         <kind>minor</kind>
-        </harmony>
+      </harmony>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>down</stem>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="2">
       <harmony print-frame="no">
         <numeral>
           <numeral-root text="iii">3</numeral-root>
-          </numeral>
+        </numeral>
         <kind>minor</kind>
-        </harmony>
+      </harmony>
       <note>
         <pitch>
           <step>E</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>down</stem>
-        </note>
+      </note>
       <harmony print-frame="no">
         <numeral>
           <numeral-root text="IV">4</numeral-root>
-          </numeral>
+        </numeral>
         <kind>major</kind>
-        </harmony>
+      </harmony>
       <note>
         <pitch>
           <step>F</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>down</stem>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="3">
       <harmony print-frame="no">
         <numeral>
           <numeral-root text="V">5</numeral-root>
-          </numeral>
+        </numeral>
         <kind>major</kind>
-        </harmony>
+      </harmony>
       <note>
         <pitch>
           <step>G</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>4</duration>
         <voice>1</voice>
         <type>whole</type>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="4">
       <harmony print-frame="no">
         <numeral>
           <numeral-root>1</numeral-root>
-          </numeral>
+        </numeral>
         <kind>major</kind>
-        </harmony>
+      </harmony>
       <note>
         <pitch>
           <step>C</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
-        </note>
+      </note>
       <harmony print-frame="no">
         <numeral>
           <numeral-root>2</numeral-root>
-          </numeral>
+        </numeral>
         <kind text="m">minor</kind>
-        </harmony>
+      </harmony>
       <note>
         <pitch>
           <step>D</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>down</stem>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="5">
       <harmony print-frame="no">
         <numeral>
           <numeral-root>3</numeral-root>
-          </numeral>
+        </numeral>
         <kind use-symbols="yes">minor</kind>
-        </harmony>
+      </harmony>
       <note>
         <pitch>
           <step>E</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>down</stem>
-        </note>
+      </note>
       <harmony print-frame="no">
         <numeral>
           <numeral-root>4</numeral-root>
-          </numeral>
+        </numeral>
         <kind>major</kind>
-        </harmony>
+      </harmony>
       <note>
         <pitch>
           <step>F</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <stem>down</stem>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="6">
       <harmony print-frame="no">
         <numeral>
           <numeral-root>5</numeral-root>
-          </numeral>
+        </numeral>
         <kind text="7">dominant</kind>
-        </harmony>
+      </harmony>
       <note>
         <pitch>
           <step>G</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>4</duration>
         <voice>1</voice>
         <type>whole</type>
-        </note>
+      </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        </barline>
-      </measure>
-    </part>
-  </score-partwise>
+      </barline>
+    </measure>
+  </part>
+</score-partwise>

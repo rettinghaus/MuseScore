@@ -4,8 +4,8 @@
   <part-list>
     <score-part id="P1">
       <part-name>Music</part-name>
-      </score-part>
-    </part-list>
+    </score-part>
+  </part-list>
   <part id="P1">
     <measure number="1">
       <attributes>
@@ -13,94 +13,94 @@
         <key>
           <fifths>0</fifths>
           <mode>major</mode>
-          </key>
+        </key>
         <time>
           <beats>4</beats>
           <beat-type>4</beat-type>
-          </time>
+        </time>
         <clef>
           <sign>G</sign>
           <line>2</line>
-          </clef>
-        </attributes>
-        <sound tempo="60"/>
+        </clef>
+      </attributes>
+      <sound tempo="60"/>
       <note>
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <type>quarter</type>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <type>quarter</type>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <type>quarter</type>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <type>quarter</type>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="2">
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <type>quarter</type>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <type>quarter</type>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <type>quarter</type>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <type>quarter</type>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="3">
       <note>
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>4</duration>
         <voice>1</voice>
         <type>whole</type>
-        </note>
-      </measure>
-    </part>
-  </score-partwise>
+      </note>
+    </measure>
+  </part>
+</score-partwise>
