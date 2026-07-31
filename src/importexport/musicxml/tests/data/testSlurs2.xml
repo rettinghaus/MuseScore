@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes" />
-      <supports element="beam" type="yes" />
-      <supports element="print" attribute="new-page" type="no" />
-      <supports element="print" attribute="new-system" type="no" />
-      <supports element="stem" type="yes" />
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="print" attribute="new-page" type="no"/>
+      <supports element="print" attribute="new-system" type="no"/>
+      <supports element="stem" type="yes"/>
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Staff 1</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1" />
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -49,7 +49,7 @@
         </clef>
       </attributes>
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>A</step>
           <octave>4</octave>
@@ -58,7 +58,7 @@
         <type>eighth</type>
         <stem>up</stem>
         <notations>
-          <slur type="start" number="1" />
+          <slur type="start" number="1"/>
         </notations>
       </note>
       <note>
@@ -70,13 +70,13 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <slur type="stop" number="1" />
+          <slur type="stop" number="1"/>
         </notations>
       </note>
     </measure>
     <measure number="2">
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>A</step>
           <octave>4</octave>
@@ -85,7 +85,7 @@
         <type>eighth</type>
         <stem>up</stem>
         <notations>
-          <slur type="start" number="1" />
+          <slur type="start" number="1"/>
         </notations>
       </note>
       <note>
@@ -98,7 +98,7 @@
         <type>whole</type>
       </note>
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -107,7 +107,7 @@
         <type>eighth</type>
         <stem>up</stem>
         <notations>
-          <slur type="stop" number="1" />
+          <slur type="stop" number="1"/>
         </notations>
       </note>
     </measure>
@@ -121,11 +121,11 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <slur type="start" number="1" />
+          <slur type="start" number="1"/>
         </notations>
       </note>
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -134,13 +134,13 @@
         <type>eighth</type>
         <stem>up</stem>
         <notations>
-          <slur type="stop" number="1" />
+          <slur type="stop" number="1"/>
         </notations>
       </note>
     </measure>
     <measure number="4">
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>A</step>
           <octave>4</octave>
@@ -149,7 +149,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <notations>
-          <slur type="start" number="1" />
+          <slur type="start" number="1"/>
         </notations>
       </note>
       <note>
@@ -161,12 +161,12 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <slur type="stop" number="1" />
-          <slur type="start" number="1" />
+          <slur type="stop" number="1"/>
+          <slur type="start" number="1"/>
         </notations>
       </note>
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -175,13 +175,13 @@
         <type>eighth</type>
         <stem>up</stem>
         <notations>
-          <slur type="stop" number="1" />
+          <slur type="stop" number="1"/>
         </notations>
       </note>
     </measure>
     <measure number="5">
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -191,11 +191,11 @@
         <stem>up</stem>
         <beam number="1">begin</beam>
         <notations>
-          <slur type="start" number="1" />
+          <slur type="start" number="1"/>
         </notations>
       </note>
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>B</step>
           <octave>4</octave>
@@ -206,7 +206,7 @@
         <beam number="1">continue</beam>
       </note>
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>A</step>
           <octave>4</octave>
@@ -216,7 +216,7 @@
         <stem>up</stem>
         <beam number="1">end</beam>
         <notations>
-          <slur type="stop" number="1" />
+          <slur type="stop" number="1"/>
         </notations>
       </note>
       <note>
@@ -240,7 +240,7 @@
         <type>whole</type>
       </note>
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -250,11 +250,11 @@
         <stem>up</stem>
         <beam number="1">begin</beam>
         <notations>
-          <slur type="start" number="1" />
+          <slur type="start" number="1"/>
         </notations>
       </note>
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>E</step>
           <octave>4</octave>
@@ -265,7 +265,7 @@
         <beam number="1">continue</beam>
       </note>
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>D</step>
           <octave>4</octave>
@@ -275,13 +275,13 @@
         <stem>up</stem>
         <beam number="1">end</beam>
         <notations>
-          <slur type="stop" number="1" />
+          <slur type="stop" number="1"/>
         </notations>
       </note>
     </measure>
     <measure number="7">
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>B</step>
           <octave>4</octave>
@@ -291,11 +291,11 @@
         <stem>up</stem>
         <beam number="1">begin</beam>
         <notations>
-          <slur type="start" number="1" />
+          <slur type="start" number="1"/>
         </notations>
       </note>
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>A</step>
           <octave>4</octave>
@@ -314,7 +314,7 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <slur type="stop" number="1" />
+          <slur type="stop" number="1"/>
         </notations>
       </note>
     </measure>
@@ -328,11 +328,11 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <slur type="start" number="1" />
+          <slur type="start" number="1"/>
         </notations>
       </note>
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -343,7 +343,7 @@
         <beam number="1">begin</beam>
       </note>
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>E</step>
           <octave>4</octave>
@@ -353,7 +353,7 @@
         <stem>up</stem>
         <beam number="1">end</beam>
         <notations>
-          <slur type="stop" number="1" />
+          <slur type="stop" number="1"/>
         </notations>
       </note>
       <barline location="right">

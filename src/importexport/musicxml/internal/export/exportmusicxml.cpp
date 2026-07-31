@@ -1821,7 +1821,7 @@ static void ending(XmlWriter& xml, Volta* v, bool left)
             voltaXml += u" print-object=\"no\"";
         }
         voltaXml += color2xml(v);
-        xml.tagRaw(voltaXml, v->text().toXmlEscaped());
+        xml.tagRaw(voltaXml, v->text());
     } else {
         xml.tagRaw(voltaXml);
     }

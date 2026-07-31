@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes" />
-      <supports element="beam" type="yes" />
-      <supports element="print" attribute="new-page" type="no" />
-      <supports element="print" attribute="new-system" type="no" />
-      <supports element="stem" type="yes" />
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="print" attribute="new-page" type="no"/>
+      <supports element="print" attribute="new-system" type="no"/>
+      <supports element="stem" type="yes"/>
     </encoding>
   </identification>
   <part-list>
@@ -24,7 +24,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1" />
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -59,17 +59,17 @@
           <words>let ring</words>
         </direction-type>
         <direction-type>
-          <bracket type="start" number="1" line-end="none" line-type="dashed" />
+          <bracket type="start" number="1" line-end="none" line-type="dashed"/>
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
       <direction placement="below">
         <direction-type>
-          <bracket type="stop" number="1" line-end="both" end-length="12" />
+          <bracket type="stop" number="1" line-end="both" end-length="12"/>
         </direction-type>
       </direction>
     </measure>
@@ -84,23 +84,23 @@
           <words>P.M.</words>
         </direction-type>
         <direction-type>
-          <bracket type="start" number="1" line-end="none" line-type="dashed" />
+          <bracket type="start" number="1" line-end="none" line-type="dashed"/>
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
       <direction placement="below">
         <direction-type>
-          <bracket type="stop" number="1" line-end="both" end-length="12" />
+          <bracket type="stop" number="1" line-end="both" end-length="12"/>
         </direction-type>
       </direction>
     </measure>
     <measure number="3">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>

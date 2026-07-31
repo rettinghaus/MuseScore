@@ -9,18 +9,18 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes" />
-      <supports element="beam" type="yes" />
-      <supports element="print" attribute="new-page" type="no" />
-      <supports element="print" attribute="new-system" type="no" />
-      <supports element="stem" type="yes" />
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="print" attribute="new-page" type="no"/>
+      <supports element="print" attribute="new-system" type="no"/>
+      <supports element="stem" type="yes"/>
     </encoding>
   </identification>
   <part-list>
     <part-group type="start" number="1">
       <group-symbol>bracket</group-symbol>
       <group-barline>yes</group-barline>
-      <group-time />
+      <group-time/>
     </part-group>
     <score-part id="P1">
       <part-name>Flutes</part-name>
@@ -28,7 +28,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Flute</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1" />
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -42,7 +42,7 @@
       <score-instrument id="P2-I1">
         <instrument-name>Oboe</instrument-name>
       </score-instrument>
-      <midi-device id="P2-I1" port="1" />
+      <midi-device id="P2-I1" port="1"/>
       <midi-instrument id="P2-I1">
         <midi-channel>2</midi-channel>
         <midi-program>69</midi-program>
@@ -64,7 +64,7 @@
       <score-instrument id="P3-I1">
         <instrument-name>Clarinet</instrument-name>
       </score-instrument>
-      <midi-device id="P3-I1" port="1" />
+      <midi-device id="P3-I1" port="1"/>
       <midi-instrument id="P3-I1">
         <midi-channel>3</midi-channel>
         <midi-program>72</midi-program>
@@ -78,7 +78,7 @@
       <score-instrument id="P4-I1">
         <instrument-name>Bassoon</instrument-name>
       </score-instrument>
-      <midi-device id="P4-I1" port="1" />
+      <midi-device id="P4-I1" port="1"/>
       <midi-instrument id="P4-I1">
         <midi-channel>4</midi-channel>
         <midi-program>71</midi-program>
@@ -86,16 +86,16 @@
         <pan>0</pan>
       </midi-instrument>
     </score-part>
-    <part-group type="stop" number="1" />
+    <part-group type="stop" number="1"/>
     <part-group type="start" number="1">
       <group-symbol>bracket</group-symbol>
       <group-barline>yes</group-barline>
-      <group-time />
+      <group-time/>
     </part-group>
     <part-group type="start" number="2">
       <group-symbol>square</group-symbol>
       <group-barline>yes</group-barline>
-      <group-time />
+      <group-time/>
     </part-group>
     <score-part id="P5">
       <part-name>Horns in F</part-name>
@@ -103,7 +103,7 @@
       <score-instrument id="P5-I1">
         <instrument-name>Horn in F</instrument-name>
       </score-instrument>
-      <midi-device id="P5-I1" port="1" />
+      <midi-device id="P5-I1" port="1"/>
       <midi-instrument id="P5-I1">
         <midi-channel>5</midi-channel>
         <midi-program>61</midi-program>
@@ -111,7 +111,7 @@
         <pan>0</pan>
       </midi-instrument>
     </score-part>
-    <part-group type="stop" number="2" />
+    <part-group type="stop" number="2"/>
     <score-part id="P6">
       <part-name>Trumpets in Bb</part-name>
       <part-name-display>
@@ -126,7 +126,7 @@
       <score-instrument id="P6-I1">
         <instrument-name>Trumpet</instrument-name>
       </score-instrument>
-      <midi-device id="P6-I1" port="1" />
+      <midi-device id="P6-I1" port="1"/>
       <midi-instrument id="P6-I1">
         <midi-channel>6</midi-channel>
         <midi-program>57</midi-program>
@@ -134,14 +134,14 @@
         <pan>0</pan>
       </midi-instrument>
     </score-part>
-    <part-group type="stop" number="1" />
+    <part-group type="stop" number="1"/>
     <score-part id="P7">
       <part-name>Timpani</part-name>
       <part-abbreviation>Timp.</part-abbreviation>
       <score-instrument id="P7-I1">
         <instrument-name>Timpani</instrument-name>
       </score-instrument>
-      <midi-device id="P7-I1" port="1" />
+      <midi-device id="P7-I1" port="1"/>
       <midi-instrument id="P7-I1">
         <midi-channel>8</midi-channel>
         <midi-program>48</midi-program>
@@ -152,7 +152,7 @@
     <part-group type="start" number="1">
       <group-symbol>bracket</group-symbol>
       <group-barline>yes</group-barline>
-      <group-time />
+      <group-time/>
     </part-group>
     <score-part id="P8">
       <part-name>Violins 1</part-name>
@@ -160,7 +160,7 @@
       <score-instrument id="P8-I1">
         <instrument-name>Violins (section)</instrument-name>
       </score-instrument>
-      <midi-device id="P8-I1" port="1" />
+      <midi-device id="P8-I1" port="1"/>
       <midi-instrument id="P8-I1">
         <midi-channel>9</midi-channel>
         <midi-program>49</midi-program>
@@ -174,7 +174,7 @@
       <score-instrument id="P9-I1">
         <instrument-name>Violins (section)</instrument-name>
       </score-instrument>
-      <midi-device id="P9-I1" port="1" />
+      <midi-device id="P9-I1" port="1"/>
       <midi-instrument id="P9-I1">
         <midi-channel>13</midi-channel>
         <midi-program>49</midi-program>
@@ -188,7 +188,7 @@
       <score-instrument id="P10-I1">
         <instrument-name>Violas (section)</instrument-name>
       </score-instrument>
-      <midi-device id="P10-I1" port="1" />
+      <midi-device id="P10-I1" port="1"/>
       <midi-instrument id="P10-I1">
         <midi-channel>16</midi-channel>
         <midi-program>49</midi-program>
@@ -202,7 +202,7 @@
       <score-instrument id="P11-I1">
         <instrument-name>Violoncellos (section)</instrument-name>
       </score-instrument>
-      <midi-device id="P11-I1" port="2" />
+      <midi-device id="P11-I1" port="2"/>
       <midi-instrument id="P11-I1">
         <midi-channel>3</midi-channel>
         <midi-program>49</midi-program>
@@ -216,7 +216,7 @@
       <score-instrument id="P12-I1">
         <instrument-name>Contrabasses (section)</instrument-name>
       </score-instrument>
-      <midi-device id="P12-I1" port="2" />
+      <midi-device id="P12-I1" port="2"/>
       <midi-instrument id="P12-I1">
         <midi-channel>6</midi-channel>
         <midi-program>49</midi-program>
@@ -224,7 +224,7 @@
         <pan>0</pan>
       </midi-instrument>
     </score-part>
-    <part-group type="stop" number="1" />
+    <part-group type="stop" number="1"/>
   </part-list>
   <part id="P1">
     <measure number="1">
@@ -243,7 +243,7 @@
         </clef>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -269,7 +269,7 @@
         </clef>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -299,7 +299,7 @@
         </transpose>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -325,7 +325,7 @@
         </clef>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -360,7 +360,7 @@
         </transpose>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -369,7 +369,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -400,7 +400,7 @@
         </transpose>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -426,7 +426,7 @@
         </clef>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -452,7 +452,7 @@
         </clef>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -478,7 +478,7 @@
         </clef>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -504,7 +504,7 @@
         </clef>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -530,7 +530,7 @@
         </clef>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -561,7 +561,7 @@
         </transpose>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>

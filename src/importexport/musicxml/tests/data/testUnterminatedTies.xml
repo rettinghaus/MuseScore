@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes" />
-      <supports element="beam" type="yes" />
-      <supports element="print" attribute="new-page" type="no" />
-      <supports element="print" attribute="new-system" type="no" />
-      <supports element="stem" type="yes" />
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="print" attribute="new-page" type="no"/>
+      <supports element="print" attribute="new-system" type="no"/>
+      <supports element="stem" type="yes"/>
     </encoding>
   </identification>
   <defaults>
@@ -37,8 +37,8 @@
         <bottom-margin>85.7143</bottom-margin>
       </page-margins>
     </page-layout>
-    <word-font font-family="Edwin" font-size="10" />
-    <lyric-font font-family="Edwin" font-size="10" />
+    <word-font font-family="Edwin" font-size="10"/>
+    <lyric-font font-family="Edwin" font-size="10"/>
   </defaults>
   <credit page="1">
     <credit-type>title</credit-type>
@@ -62,7 +62,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1" />
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -132,12 +132,12 @@
           <octave>5</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="start" />
+        <tie type="start"/>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <tied type="start" />
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -148,12 +148,12 @@
           <octave>5</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="stop" />
+        <tie type="stop"/>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <tied type="stop" />
+          <tied type="stop"/>
         </notations>
       </note>
       <note default-x="33.61" default-y="-35.00">
@@ -182,12 +182,12 @@
           <octave>4</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="start" />
+        <tie type="start"/>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <notations>
-          <tied type="start" />
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -202,17 +202,17 @@
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <tied type="start" />
+          <tied type="start"/>
         </notations>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
@@ -229,17 +229,17 @@
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <tied type="let-ring" />
+          <tied type="let-ring"/>
         </notations>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
@@ -257,13 +257,13 @@
         <stem>up</stem>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
@@ -281,13 +281,13 @@
         <stem>up</stem>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
@@ -295,7 +295,7 @@
     </measure>
     <measure number="7" width="57.84">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -312,13 +312,13 @@
         <stem>up</stem>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
@@ -331,19 +331,19 @@
           <octave>4</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="stop" />
+        <tie type="stop"/>
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
@@ -390,7 +390,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <notations>
-          <tied type="let-ring" />
+          <tied type="let-ring"/>
         </notations>
       </note>
       <barline location="right">

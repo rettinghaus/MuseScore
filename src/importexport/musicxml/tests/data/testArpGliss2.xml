@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes" />
-      <supports element="beam" type="yes" />
-      <supports element="print" attribute="new-page" type="no" />
-      <supports element="print" attribute="new-system" type="no" />
-      <supports element="stem" type="yes" />
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="print" attribute="new-page" type="no"/>
+      <supports element="print" attribute="new-system" type="no"/>
+      <supports element="stem" type="yes"/>
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Voice</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1" />
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>53</midi-program>
@@ -57,11 +57,11 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <arpeggiate number="1" />
+          <arpeggiate number="1"/>
         </notations>
       </note>
       <note>
-        <chord />
+        <chord/>
         <pitch>
           <step>B</step>
           <octave>4</octave>
@@ -70,11 +70,11 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <arpeggiate number="1" />
+          <arpeggiate number="1"/>
         </notations>
       </note>
       <note>
-        <chord />
+        <chord/>
         <pitch>
           <step>D</step>
           <octave>5</octave>
@@ -83,7 +83,7 @@
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <arpeggiate number="1" />
+          <arpeggiate number="1"/>
         </notations>
       </note>
       <backup>
@@ -98,7 +98,7 @@
         <voice>2</voice>
         <type>whole</type>
         <notations>
-          <arpeggiate number="1" />
+          <arpeggiate number="1"/>
         </notations>
       </note>
     </measure>
@@ -123,7 +123,7 @@
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <slide line-type="solid" number="1" type="start" />
+          <slide line-type="solid" number="1" type="start"/>
         </notations>
       </note>
       <backup>
@@ -149,7 +149,7 @@
         <type>half</type>
         <stem>down</stem>
         <notations>
-          <slide line-type="solid" number="2" type="start" />
+          <slide line-type="solid" number="2" type="start"/>
         </notations>
       </note>
     </measure>
@@ -164,7 +164,7 @@
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <slide line-type="solid" number="1" type="stop" />
+          <slide line-type="solid" number="1" type="stop"/>
         </notations>
       </note>
       <note>
@@ -177,7 +177,7 @@
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <slide line-type="solid" number="1" type="start" />
+          <slide line-type="solid" number="1" type="start"/>
         </notations>
       </note>
       <backup>
@@ -193,7 +193,7 @@
         <type>half</type>
         <stem>down</stem>
         <notations>
-          <slide line-type="solid" number="2" type="stop" />
+          <slide line-type="solid" number="2" type="stop"/>
         </notations>
       </note>
       <note>
@@ -206,7 +206,7 @@
         <type>half</type>
         <stem>down</stem>
         <notations>
-          <glissando line-type="wavy" number="1" type="start" />
+          <glissando line-type="wavy" number="1" type="start"/>
         </notations>
       </note>
     </measure>
@@ -221,7 +221,7 @@
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <slide line-type="solid" number="1" type="stop" />
+          <slide line-type="solid" number="1" type="stop"/>
         </notations>
       </note>
       <note>
@@ -234,7 +234,7 @@
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <glissando line-type="wavy" number="2" type="start" />
+          <glissando line-type="wavy" number="2" type="start"/>
         </notations>
       </note>
       <backup>
@@ -250,7 +250,7 @@
         <type>half</type>
         <stem>down</stem>
         <notations>
-          <glissando line-type="wavy" number="1" type="stop" />
+          <glissando line-type="wavy" number="1" type="stop"/>
         </notations>
       </note>
       <note>
@@ -263,7 +263,7 @@
         <type>half</type>
         <stem>down</stem>
         <notations>
-          <glissando line-type="wavy" number="1" type="start" />
+          <glissando line-type="wavy" number="1" type="start"/>
         </notations>
       </note>
     </measure>
@@ -278,7 +278,7 @@
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <glissando line-type="wavy" number="2" type="stop" />
+          <glissando line-type="wavy" number="2" type="stop"/>
         </notations>
       </note>
       <note>
@@ -304,7 +304,7 @@
         <type>half</type>
         <stem>down</stem>
         <notations>
-          <glissando line-type="wavy" number="1" type="stop" />
+          <glissando line-type="wavy" number="1" type="stop"/>
         </notations>
       </note>
       <note>

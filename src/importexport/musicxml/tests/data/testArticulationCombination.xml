@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes" />
-      <supports element="beam" type="yes" />
-      <supports element="print" attribute="new-page" type="no" />
-      <supports element="print" attribute="new-system" type="no" />
-      <supports element="stem" type="yes" />
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="print" attribute="new-page" type="no"/>
+      <supports element="print" attribute="new-system" type="no"/>
+      <supports element="stem" type="yes"/>
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1" />
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -59,8 +59,8 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <accent />
-            <staccato />
+            <accent/>
+            <staccato/>
           </articulations>
         </notations>
       </note>
@@ -75,8 +75,8 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <staccato placement="above" />
-            <strong-accent type="up" />
+            <staccato placement="above"/>
+            <strong-accent type="up"/>
           </articulations>
         </notations>
       </note>
@@ -91,8 +91,8 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <tenuto placement="above" />
-            <strong-accent type="up" />
+            <tenuto placement="above"/>
+            <strong-accent type="up"/>
           </articulations>
         </notations>
       </note>
@@ -107,8 +107,8 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <tenuto />
-            <accent />
+            <tenuto/>
+            <accent/>
           </articulations>
         </notations>
       </note>
@@ -125,7 +125,7 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <soft-accent />
+            <soft-accent/>
           </articulations>
         </notations>
       </note>
@@ -140,8 +140,8 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <soft-accent />
-            <staccato />
+            <soft-accent/>
+            <staccato/>
           </articulations>
         </notations>
       </note>
@@ -156,8 +156,8 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <soft-accent />
-            <tenuto />
+            <soft-accent/>
+            <tenuto/>
           </articulations>
         </notations>
       </note>
@@ -172,14 +172,14 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <soft-accent />
-            <detached-legato />
+            <soft-accent/>
+            <detached-legato/>
           </articulations>
         </notations>
       </note>
     </measure>
     <measure number="3">
-      <print new-system="yes" />
+      <print new-system="yes"/>
       <note>
         <pitch>
           <step>A</step>
@@ -191,8 +191,8 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <accent />
-            <staccato />
+            <accent/>
+            <staccato/>
           </articulations>
         </notations>
       </note>
@@ -207,8 +207,8 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <staccato placement="above" />
-            <strong-accent type="up" />
+            <staccato placement="above"/>
+            <strong-accent type="up"/>
           </articulations>
         </notations>
       </note>
@@ -223,8 +223,8 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <tenuto placement="above" />
-            <strong-accent type="up" />
+            <tenuto placement="above"/>
+            <strong-accent type="up"/>
           </articulations>
         </notations>
       </note>
@@ -239,8 +239,8 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <tenuto />
-            <accent />
+            <tenuto/>
+            <accent/>
           </articulations>
         </notations>
       </note>
@@ -257,7 +257,7 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <soft-accent />
+            <soft-accent/>
           </articulations>
         </notations>
       </note>
@@ -272,8 +272,8 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <soft-accent />
-            <staccato />
+            <soft-accent/>
+            <staccato/>
           </articulations>
         </notations>
       </note>
@@ -288,8 +288,8 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <soft-accent />
-            <tenuto />
+            <soft-accent/>
+            <tenuto/>
           </articulations>
         </notations>
       </note>
@@ -304,14 +304,14 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <soft-accent />
-            <detached-legato />
+            <soft-accent/>
+            <detached-legato/>
           </articulations>
         </notations>
       </note>
     </measure>
     <measure number="5">
-      <print new-system="yes" />
+      <print new-system="yes"/>
       <note>
         <pitch>
           <step>C</step>
@@ -323,8 +323,8 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <staccato />
-            <accent placement="below" />
+            <staccato/>
+            <accent placement="below"/>
           </articulations>
         </notations>
       </note>
@@ -339,8 +339,8 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <staccato placement="below" />
-            <strong-accent type="up" />
+            <staccato placement="below"/>
+            <strong-accent type="up"/>
           </articulations>
         </notations>
       </note>
@@ -355,8 +355,8 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <tenuto placement="below" />
-            <accent placement="below" />
+            <tenuto placement="below"/>
+            <accent placement="below"/>
           </articulations>
         </notations>
       </note>
@@ -371,8 +371,8 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <accent placement="below" />
-            <staccato placement="below" />
+            <accent placement="below"/>
+            <staccato placement="below"/>
           </articulations>
         </notations>
       </note>
@@ -389,8 +389,8 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <staccato placement="above" />
-            <strong-accent type="up" />
+            <staccato placement="above"/>
+            <strong-accent type="up"/>
           </articulations>
         </notations>
       </note>
@@ -405,8 +405,8 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <staccato placement="above" />
-            <soft-accent />
+            <staccato placement="above"/>
+            <soft-accent/>
           </articulations>
         </notations>
       </note>
@@ -421,8 +421,8 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <soft-accent placement="below" />
-            <detached-legato placement="below" />
+            <soft-accent placement="below"/>
+            <detached-legato placement="below"/>
           </articulations>
         </notations>
       </note>
@@ -437,8 +437,8 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <soft-accent />
-            <detached-legato placement="below" />
+            <soft-accent/>
+            <detached-legato placement="below"/>
           </articulations>
         </notations>
       </note>
@@ -455,12 +455,12 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <strong-accent type="up" />
+            <strong-accent type="up"/>
           </articulations>
         </notations>
       </note>
       <note>
-        <chord />
+        <chord/>
         <pitch>
           <step>E</step>
           <octave>5</octave>
@@ -471,7 +471,7 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <strong-accent type="up" />
+            <strong-accent type="up"/>
           </articulations>
         </notations>
       </note>
@@ -486,12 +486,12 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <accent />
+            <accent/>
           </articulations>
         </notations>
       </note>
       <note>
-        <chord />
+        <chord/>
         <pitch>
           <step>E</step>
           <octave>5</octave>
@@ -502,7 +502,7 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <accent />
+            <accent/>
           </articulations>
         </notations>
       </note>
@@ -517,12 +517,12 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <tenuto />
+            <tenuto/>
           </articulations>
         </notations>
       </note>
       <note>
-        <chord />
+        <chord/>
         <pitch>
           <step>E</step>
           <octave>5</octave>
@@ -533,7 +533,7 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <tenuto />
+            <tenuto/>
           </articulations>
         </notations>
       </note>
@@ -548,12 +548,12 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <staccato />
+            <staccato/>
           </articulations>
         </notations>
       </note>
       <note>
-        <chord />
+        <chord/>
         <pitch>
           <step>E</step>
           <octave>5</octave>
@@ -564,7 +564,7 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <staccato />
+            <staccato/>
           </articulations>
         </notations>
       </note>

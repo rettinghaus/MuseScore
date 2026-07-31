@@ -5,11 +5,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes" />
-      <supports element="beam" type="yes" />
-      <supports element="print" attribute="new-page" type="no" />
-      <supports element="print" attribute="new-system" type="no" />
-      <supports element="stem" type="yes" />
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="print" attribute="new-page" type="no"/>
+      <supports element="print" attribute="new-system" type="no"/>
+      <supports element="stem" type="yes"/>
     </encoding>
   </identification>
   <part-list>
@@ -19,7 +19,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Voice</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1" />
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>5</midi-channel>
         <midi-program>53</midi-program>
@@ -33,7 +33,7 @@
       <score-instrument id="P2-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P2-I1" port="1" />
+      <midi-device id="P2-I1" port="1"/>
       <midi-instrument id="P2-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -47,7 +47,7 @@
       <score-instrument id="P3-I1">
         <instrument-name>Bass Guitar</instrument-name>
       </score-instrument>
-      <midi-device id="P3-I1" port="1" />
+      <midi-device id="P3-I1" port="1"/>
       <midi-instrument id="P3-I1">
         <midi-channel>2</midi-channel>
         <midi-program>35</midi-program>
@@ -79,7 +79,7 @@
             <per-minute>81</per-minute>
           </metronome>
         </direction-type>
-        <sound tempo="81" />
+        <sound tempo="81"/>
       </direction>
       <direction placement="above">
         <direction-type>
@@ -92,34 +92,34 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="2">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="3">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="4">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="5">
-      <print new-system="yes" />
+      <print new-system="yes"/>
       <direction placement="above">
         <direction-type>
           <metronome parentheses="no">
@@ -127,7 +127,7 @@
             <per-minute>85</per-minute>
           </metronome>
         </direction-type>
-        <sound tempo="85" />
+        <sound tempo="85"/>
       </direction>
       <direction placement="above">
         <direction-type>
@@ -135,14 +135,14 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="6">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -155,7 +155,7 @@
             <per-minute>87</per-minute>
           </metronome>
         </direction-type>
-        <sound tempo="87" />
+        <sound tempo="87"/>
       </direction>
       <direction placement="above">
         <direction-type>
@@ -163,34 +163,34 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="8">
-      <print new-system="yes" />
+      <print new-system="yes"/>
       <direction placement="above">
         <direction-type>
           <words>Direction words (empty) with sound tempo</words>
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="9">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="10">
-      <print new-system="yes" />
-      <sound tempo="81" />
+      <print new-system="yes"/>
+      <sound tempo="81"/>
       <direction placement="above">
         <direction-type>
           <words>Voice</words>
@@ -202,62 +202,62 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="11">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="12">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="13">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="14">
-      <print new-system="yes" />
-      <sound tempo="85" />
+      <print new-system="yes"/>
+      <sound tempo="85"/>
       <direction placement="above">
         <direction-type>
           <words>Voice</words>
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="15">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="16">
-      <sound tempo="87" />
+      <sound tempo="87"/>
       <direction placement="above">
         <direction-type>
           <words>Voice</words>
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -288,7 +288,7 @@
         </clef>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -297,7 +297,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -312,7 +312,7 @@
           </metronome>
         </direction-type>
         <staff>1</staff>
-        <sound tempo="82" />
+        <sound tempo="82"/>
       </direction>
       <direction placement="above">
         <direction-type>
@@ -321,7 +321,7 @@
         <staff>1</staff>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -330,7 +330,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -338,7 +338,7 @@
     </measure>
     <measure number="3">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -354,7 +354,7 @@
           </metronome>
         </direction-type>
         <staff>2</staff>
-        <sound tempo="83" />
+        <sound tempo="83"/>
       </direction>
       <direction placement="above">
         <direction-type>
@@ -363,7 +363,7 @@
         <staff>2</staff>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -371,7 +371,7 @@
     </measure>
     <measure number="4">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -380,16 +380,16 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
       </note>
     </measure>
     <measure number="5">
-      <print new-system="yes" />
+      <print new-system="yes"/>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -398,7 +398,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -413,7 +413,7 @@
           </metronome>
         </direction-type>
         <staff>1</staff>
-        <sound tempo="86" />
+        <sound tempo="86"/>
       </direction>
       <direction placement="above">
         <direction-type>
@@ -422,7 +422,7 @@
         <staff>1</staff>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -438,7 +438,7 @@
           </metronome>
         </direction-type>
         <staff>2</staff>
-        <sound tempo="86" />
+        <sound tempo="86"/>
       </direction>
       <direction placement="above">
         <direction-type>
@@ -447,7 +447,7 @@
         <staff>2</staff>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -462,7 +462,7 @@
           </metronome>
         </direction-type>
         <staff>1</staff>
-        <sound tempo="87" />
+        <sound tempo="87"/>
       </direction>
       <direction placement="above">
         <direction-type>
@@ -471,7 +471,7 @@
         <staff>1</staff>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -480,20 +480,20 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
       </note>
     </measure>
     <measure number="8">
-      <print new-system="yes" />
+      <print new-system="yes"/>
       <direction placement="above">
         <direction-type>
-          <words />
+          <words/>
         </direction-type>
         <staff>1</staff>
-        <sound tempo="81" />
+        <sound tempo="81"/>
       </direction>
       <direction placement="above">
         <direction-type>
@@ -502,7 +502,7 @@
         <staff>1</staff>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -511,7 +511,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -520,10 +520,10 @@
     <measure number="9">
       <direction placement="above">
         <direction-type>
-          <words />
+          <words/>
         </direction-type>
         <staff>1</staff>
-        <sound tempo="82" />
+        <sound tempo="82"/>
       </direction>
       <direction placement="above">
         <direction-type>
@@ -532,7 +532,7 @@
         <staff>1</staff>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -542,10 +542,10 @@
       </backup>
       <direction placement="above">
         <direction-type>
-          <words />
+          <words/>
         </direction-type>
         <staff>2</staff>
-        <sound tempo="82" />
+        <sound tempo="82"/>
       </direction>
       <direction placement="above">
         <direction-type>
@@ -554,16 +554,16 @@
         <staff>2</staff>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
       </note>
     </measure>
     <measure number="10">
-      <print new-system="yes" />
+      <print new-system="yes"/>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -572,14 +572,14 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
       </note>
     </measure>
     <measure number="11">
-      <sound tempo="82" />
+      <sound tempo="82"/>
       <direction placement="above">
         <direction-type>
           <words>Piano upper</words>
@@ -587,7 +587,7 @@
         <staff>1</staff>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -596,7 +596,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -604,7 +604,7 @@
     </measure>
     <measure number="12">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -612,7 +612,7 @@
       <backup>
         <duration>4</duration>
       </backup>
-      <sound tempo="83" />
+      <sound tempo="83"/>
       <direction placement="above">
         <direction-type>
           <words>Piano lower</words>
@@ -620,7 +620,7 @@
         <staff>2</staff>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -628,7 +628,7 @@
     </measure>
     <measure number="13">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -637,16 +637,16 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
       </note>
     </measure>
     <measure number="14">
-      <print new-system="yes" />
+      <print new-system="yes"/>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -655,14 +655,14 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
       </note>
     </measure>
     <measure number="15">
-      <sound tempo="86" />
+      <sound tempo="86"/>
       <direction placement="above">
         <direction-type>
           <words>Piano upper</words>
@@ -670,7 +670,7 @@
         <staff>1</staff>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -678,7 +678,7 @@
       <backup>
         <duration>4</duration>
       </backup>
-      <sound tempo="86" />
+      <sound tempo="86"/>
       <direction placement="above">
         <direction-type>
           <words>Piano lower</words>
@@ -686,14 +686,14 @@
         <staff>2</staff>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
       </note>
     </measure>
     <measure number="16">
-      <sound tempo="87" />
+      <sound tempo="87"/>
       <direction placement="above">
         <direction-type>
           <words>Piano</words>
@@ -701,7 +701,7 @@
         <staff>1</staff>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -710,7 +710,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -742,21 +742,21 @@
         </transpose>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="2">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="3">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -769,7 +769,7 @@
             <per-minute>84</per-minute>
           </metronome>
         </direction-type>
-        <sound tempo="84" />
+        <sound tempo="84"/>
       </direction>
       <direction placement="above">
         <direction-type>
@@ -777,13 +777,13 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="5">
-      <print new-system="yes" />
+      <print new-system="yes"/>
       <direction placement="above">
         <direction-type>
           <metronome parentheses="no">
@@ -791,7 +791,7 @@
             <per-minute>85</per-minute>
           </metronome>
         </direction-type>
-        <sound tempo="85" />
+        <sound tempo="85"/>
       </direction>
       <direction placement="above">
         <direction-type>
@@ -799,14 +799,14 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="6">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -819,7 +819,7 @@
             <per-minute>87</per-minute>
           </metronome>
         </direction-type>
-        <sound tempo="87" />
+        <sound tempo="87"/>
       </direction>
       <direction placement="above">
         <direction-type>
@@ -827,91 +827,91 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="8">
-      <print new-system="yes" />
+      <print new-system="yes"/>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="9">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="10">
-      <print new-system="yes" />
+      <print new-system="yes"/>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="11">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="12">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="13">
-      <sound tempo="84" />
+      <sound tempo="84"/>
       <direction placement="above">
         <direction-type>
           <words>Bass</words>
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="14">
-      <print new-system="yes" />
-      <sound tempo="85" />
+      <print new-system="yes"/>
+      <sound tempo="85"/>
       <direction placement="above">
         <direction-type>
           <words>Bass</words>
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="15">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="16">
-      <sound tempo="87" />
+      <sound tempo="87"/>
       <direction placement="above">
         <direction-type>
           <words>Bass</words>
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>

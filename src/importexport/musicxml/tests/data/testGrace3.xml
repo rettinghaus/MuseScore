@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes" />
-      <supports element="beam" type="yes" />
-      <supports element="print" attribute="new-page" type="no" />
-      <supports element="print" attribute="new-system" type="no" />
-      <supports element="stem" type="yes" />
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="print" attribute="new-page" type="no"/>
+      <supports element="print" attribute="new-system" type="no"/>
+      <supports element="stem" type="yes"/>
     </encoding>
   </identification>
   <part-list>
@@ -24,7 +24,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1" />
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -55,7 +55,7 @@
         </direction-type>
       </direction>
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>D</step>
           <octave>4</octave>
@@ -80,7 +80,7 @@
     </measure>
     <measure number="2">
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>E</step>
           <octave>4</octave>
@@ -105,7 +105,7 @@
     </measure>
     <measure number="3">
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -130,7 +130,7 @@
     </measure>
     <measure number="4">
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>G</step>
           <octave>4</octave>
@@ -155,7 +155,7 @@
     </measure>
     <measure number="5">
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>A</step>
           <octave>4</octave>
@@ -180,7 +180,7 @@
     </measure>
     <measure number="6">
       <note>
-        <grace />
+        <grace/>
         <pitch>
           <step>B</step>
           <octave>4</octave>
@@ -210,7 +210,7 @@
         </direction-type>
       </direction>
       <note>
-        <grace slash="yes" />
+        <grace slash="yes"/>
         <pitch>
           <step>D</step>
           <octave>4</octave>
@@ -235,7 +235,7 @@
     </measure>
     <measure number="8">
       <note>
-        <grace slash="yes" />
+        <grace slash="yes"/>
         <pitch>
           <step>E</step>
           <octave>4</octave>
@@ -260,7 +260,7 @@
     </measure>
     <measure number="9">
       <note>
-        <grace slash="yes" />
+        <grace slash="yes"/>
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -285,7 +285,7 @@
     </measure>
     <measure number="10">
       <note>
-        <grace slash="yes" />
+        <grace slash="yes"/>
         <pitch>
           <step>G</step>
           <octave>4</octave>
@@ -310,7 +310,7 @@
     </measure>
     <measure number="11">
       <note>
-        <grace slash="yes" />
+        <grace slash="yes"/>
         <pitch>
           <step>A</step>
           <octave>4</octave>
@@ -335,7 +335,7 @@
     </measure>
     <measure number="12">
       <note>
-        <grace slash="yes" />
+        <grace slash="yes"/>
         <pitch>
           <step>B</step>
           <octave>4</octave>

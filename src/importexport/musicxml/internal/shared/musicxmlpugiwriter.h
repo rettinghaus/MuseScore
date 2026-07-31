@@ -119,7 +119,7 @@ public:
     {
         pugi::xml_node parent = m_nodeStack.empty() ? m_doc : m_nodeStack.back();
         pugi::xml_node child = parent.append_child(std::string(std::string_view(name)).c_str());
-        muse::String bodyStr = muse::String::decodeXmlEntities(valueToString(body));
+        muse::String bodyStr = valueToString(body);
         child.append_child(pugi::node_pcdata).set_value(bodyStr.toStdString().c_str());
     }
 
@@ -136,7 +136,7 @@ public:
         pugi::xml_node parent = m_nodeStack.empty() ? m_doc : m_nodeStack.back();
         pugi::xml_node child = parent.append_child(std::string(std::string_view(name)).c_str());
         addAttributes(child, attrs);
-        muse::String bodyStr = muse::String::decodeXmlEntities(valueToString(body));
+        muse::String bodyStr = valueToString(body);
         child.append_child(pugi::node_pcdata).set_value(bodyStr.toStdString().c_str());
     }
 
@@ -144,7 +144,7 @@ public:
     {
         startElementRaw(elementWithAttrs);
         if (!std::holds_alternative<std::monostate>(body)) {
-            muse::String bodyStr = muse::String::decodeXmlEntities(valueToString(body));
+            muse::String bodyStr = valueToString(body);
             m_nodeStack.back().append_child(pugi::node_pcdata).set_value(bodyStr.toStdString().c_str());
         }
         endElement();
@@ -165,7 +165,7 @@ public:
     {
         if (m_device && !m_written) {
             IODeviceXmlWriter writer(m_device);
-            m_doc.save(writer, "  ", pugi::format_default, pugi::encoding_utf8);
+            m_doc.save(writer, "  ", pugi::format_default | pugi::format_no_empty_element_space, pugi::encoding_utf8);
             m_written = true;
         }
     }

@@ -10,19 +10,21 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes" />
-      <supports element="beam" type="yes" />
-      <supports element="print" attribute="new-page" type="no" />
-      <supports element="print" attribute="new-system" type="no" />
-      <supports element="stem" type="yes" />
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="print" attribute="new-page" type="no"/>
+      <supports element="print" attribute="new-system" type="no"/>
+      <supports element="stem" type="yes"/>
     </encoding>
     <miscellaneous>
-      <miscellaneous-field name="description">Logic Pro X may export notes before duration is defined.
+      <miscellaneous-field name="description">
+        Logic Pro X may export notes before duration is defined.
         This happens when a part starts with a whole measure rest.
         Attributes are exported in the first non-rest measure.
         MuseScore will convert the whole measure to a four quarter rest.
         Note that by reading further ahead, it could be concluded
-        that three quarters are actually needed.</miscellaneous-field>
+        that three quarters are actually needed.
+        </miscellaneous-field>
     </miscellaneous>
   </identification>
   <part-list>
@@ -32,7 +34,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1" />
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -44,7 +46,7 @@
   <part id="P1">
     <measure number="1">
       <note>
-        <rest />
+        <rest/>
         <duration>3</duration>
         <voice>1</voice>
       </note>
@@ -72,7 +74,7 @@
         <duration>3</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
+        <dot/>
         <stem>up</stem>
       </note>
     </measure>

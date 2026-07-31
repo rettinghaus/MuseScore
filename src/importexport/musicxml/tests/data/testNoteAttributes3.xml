@@ -5,20 +5,20 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes" />
-      <supports element="beam" type="yes" />
-      <supports element="print" attribute="new-page" type="no" />
-      <supports element="print" attribute="new-system" type="no" />
-      <supports element="stem" type="yes" />
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="print" attribute="new-page" type="no"/>
+      <supports element="print" attribute="new-system" type="no"/>
+      <supports element="stem" type="yes"/>
     </encoding>
   </identification>
   <part-list>
     <score-part id="P1">
-      <part-name />
+      <part-name/>
       <score-instrument id="P1-I1">
-        <instrument-name />
+        <instrument-name/>
       </score-instrument>
-      <midi-device id="P1-I1" port="1" />
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>20</midi-program>
@@ -54,7 +54,7 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <inverted-mordent />
+            <inverted-mordent/>
           </ornaments>
         </notations>
         <lyric number="1">
@@ -73,7 +73,7 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <mordent />
+            <mordent/>
           </ornaments>
         </notations>
         <lyric number="1">
@@ -92,7 +92,7 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <inverted-mordent long="yes" />
+            <inverted-mordent long="yes"/>
           </ornaments>
         </notations>
         <lyric number="1">
@@ -111,7 +111,7 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <mordent long="yes" />
+            <mordent long="yes"/>
           </ornaments>
         </notations>
         <lyric number="1">
@@ -132,7 +132,7 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <inverted-mordent long="yes" approach="below" />
+            <inverted-mordent long="yes" approach="below"/>
           </ornaments>
         </notations>
         <lyric number="1">
@@ -151,7 +151,7 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <inverted-mordent long="yes" approach="above" />
+            <inverted-mordent long="yes" approach="above"/>
           </ornaments>
         </notations>
         <lyric number="1">
@@ -170,7 +170,7 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <mordent long="yes" approach="below" />
+            <mordent long="yes" approach="below"/>
           </ornaments>
         </notations>
         <lyric number="1">
@@ -189,7 +189,7 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <mordent long="yes" approach="above" />
+            <mordent long="yes" approach="above"/>
           </ornaments>
         </notations>
         <lyric number="1">
@@ -210,7 +210,7 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <inverted-mordent long="yes" departure="below" />
+            <inverted-mordent long="yes" departure="below"/>
           </ornaments>
         </notations>
         <lyric number="1">
@@ -229,7 +229,7 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <inverted-mordent long="yes" departure="above" />
+            <inverted-mordent long="yes" departure="above"/>
           </ornaments>
         </notations>
         <lyric number="1">
@@ -248,7 +248,7 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <inverted-mordent long="yes" approach="above" />
+            <inverted-mordent long="yes" approach="above"/>
           </ornaments>
         </notations>
         <lyric number="1">
@@ -257,7 +257,7 @@
         </lyric>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>

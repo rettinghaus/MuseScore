@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes" />
-      <supports element="beam" type="yes" />
-      <supports element="print" attribute="new-page" type="no" />
-      <supports element="print" attribute="new-system" type="no" />
-      <supports element="stem" type="yes" />
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="print" attribute="new-page" type="no"/>
+      <supports element="print" attribute="new-system" type="no"/>
+      <supports element="stem" type="yes"/>
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1" />
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -51,7 +51,7 @@
         </clef>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -65,7 +65,7 @@
         </key>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -79,7 +79,7 @@
         </key>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -93,7 +93,7 @@
         </key>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -102,7 +102,7 @@
       </barline>
     </measure>
     <measure number="5">
-      <print new-system="yes" />
+      <print new-system="yes"/>
       <attributes>
         <key>
           <key-step>G</key-step>
@@ -111,7 +111,7 @@
         </key>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -125,7 +125,7 @@
         </key>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -139,14 +139,14 @@
         </key>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="8">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -155,7 +155,7 @@
       </barline>
     </measure>
     <measure number="9">
-      <print new-system="yes" />
+      <print new-system="yes"/>
       <attributes>
         <key>
           <key-step>C</key-step>
@@ -164,7 +164,7 @@
         </key>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -178,7 +178,7 @@
         </key>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -192,7 +192,7 @@
         </key>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -206,7 +206,7 @@
         </key>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -215,7 +215,7 @@
       </barline>
     </measure>
     <measure number="13">
-      <print new-system="yes" />
+      <print new-system="yes"/>
       <attributes>
         <key>
           <key-step>G</key-step>
@@ -224,7 +224,7 @@
         </key>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -238,7 +238,7 @@
         </key>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -252,14 +252,14 @@
         </key>
       </attributes>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="16">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
       </note>

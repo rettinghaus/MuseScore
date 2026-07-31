@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes" />
-      <supports element="beam" type="yes" />
-      <supports element="print" attribute="new-page" type="no" />
-      <supports element="print" attribute="new-system" type="no" />
-      <supports element="stem" type="yes" />
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="print" attribute="new-page" type="no"/>
+      <supports element="print" attribute="new-system" type="no"/>
+      <supports element="stem" type="yes"/>
     </encoding>
   </identification>
   <defaults>
@@ -37,8 +37,8 @@
         <bottom-margin>85.725</bottom-margin>
       </page-margins>
     </page-layout>
-    <word-font font-family="Edwin" font-size="10" />
-    <lyric-font font-family="Edwin" font-size="10" />
+    <word-font font-family="Edwin" font-size="10"/>
+    <lyric-font font-family="Edwin" font-size="10"/>
   </defaults>
   <credit page="1">
     <credit-type>title</credit-type>
@@ -59,7 +59,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1" />
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -72,7 +72,7 @@
       <score-instrument id="P2-I1">
         <instrument-name>Voice</instrument-name>
       </score-instrument>
-      <midi-device id="P2-I1" port="1" />
+      <midi-device id="P2-I1" port="1"/>
       <midi-instrument id="P2-I1">
         <midi-channel>2</midi-channel>
         <midi-program>53</midi-program>
@@ -85,7 +85,7 @@
       <score-instrument id="P3-I1">
         <instrument-name>Bass</instrument-name>
       </score-instrument>
-      <midi-device id="P3-I1" port="1" />
+      <midi-device id="P3-I1" port="1"/>
       <midi-instrument id="P3-I1">
         <midi-channel>3</midi-channel>
         <midi-program>53</midi-program>
@@ -175,7 +175,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest />
+        <rest/>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -193,7 +193,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>2</duration>
         <voice>5</voice>
         <type>half</type>
@@ -249,7 +249,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -315,7 +315,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -335,7 +335,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -391,7 +391,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest />
+        <rest/>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -409,7 +409,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>2</duration>
         <voice>5</voice>
         <type>half</type>
@@ -465,7 +465,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -588,7 +588,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
@@ -610,7 +610,7 @@
     </measure>
     <measure number="8" width="56.37">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -619,7 +619,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -627,7 +627,7 @@
     </measure>
     <measure number="9" width="56.37">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -636,7 +636,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -644,7 +644,7 @@
     </measure>
     <measure number="10" width="56.37">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -653,7 +653,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -661,7 +661,7 @@
     </measure>
     <measure number="11" width="221.24">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -670,7 +670,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -678,7 +678,7 @@
     </measure>
     <measure number="12" width="174.67">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -687,7 +687,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -708,14 +708,14 @@
         <staff>1</staff>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <staff>1</staff>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
@@ -725,7 +725,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -733,7 +733,7 @@
     </measure>
     <measure number="14" width="174.67">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -742,7 +742,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -750,7 +750,7 @@
     </measure>
     <measure number="15" width="216.39">
       <note>
-        <rest measure="yes" />
+        <rest measure="yes"/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -770,14 +770,14 @@
         <staff>2</staff>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <staff>2</staff>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>2</duration>
         <voice>5</voice>
         <type>half</type>
@@ -815,16 +815,16 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="start" />
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="start" />
+          <tied type="start"/>
         </notations>
         <lyric number="1" default-y="-40.00" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>yes!</text>
-          <extend />
+          <extend/>
         </lyric>
       </note>
     </measure>
@@ -835,13 +835,13 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -852,13 +852,13 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -869,13 +869,13 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -886,13 +886,13 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -903,13 +903,13 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -920,13 +920,13 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -937,13 +937,13 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -954,13 +954,13 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -971,13 +971,13 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -988,13 +988,13 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1005,13 +1005,13 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1022,13 +1022,13 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1039,13 +1039,13 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1056,11 +1056,11 @@
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
+        <tie type="stop"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
+          <tied type="stop"/>
         </notations>
       </note>
       <barline location="right">
@@ -1095,16 +1095,16 @@
           <octave>2</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="start" />
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="start" />
+          <tied type="start"/>
         </notations>
         <lyric number="1" default-y="-49.65" relative-y="-30.00">
           <syllabic>single</syllabic>
           <text>no</text>
-          <extend />
+          <extend/>
         </lyric>
       </note>
     </measure>
@@ -1115,13 +1115,13 @@
           <octave>2</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1132,13 +1132,13 @@
           <octave>2</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1149,13 +1149,13 @@
           <octave>2</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1166,13 +1166,13 @@
           <octave>2</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1183,13 +1183,13 @@
           <octave>2</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1200,13 +1200,13 @@
           <octave>2</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1217,13 +1217,13 @@
           <octave>2</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1234,13 +1234,13 @@
           <octave>2</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1251,13 +1251,13 @@
           <octave>2</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1268,13 +1268,13 @@
           <octave>2</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1285,13 +1285,13 @@
           <octave>2</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1302,13 +1302,13 @@
           <octave>2</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1319,13 +1319,13 @@
           <octave>2</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
-        <tie type="start" />
+        <tie type="stop"/>
+        <tie type="start"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
-          <tied type="start" />
+          <tied type="stop"/>
+          <tied type="start"/>
         </notations>
       </note>
     </measure>
@@ -1336,11 +1336,11 @@
           <octave>2</octave>
         </pitch>
         <duration>4</duration>
-        <tie type="stop" />
+        <tie type="stop"/>
         <voice>1</voice>
         <type>whole</type>
         <notations>
-          <tied type="stop" />
+          <tied type="stop"/>
         </notations>
       </note>
       <barline location="right">

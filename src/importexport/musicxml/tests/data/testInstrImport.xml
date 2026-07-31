@@ -122,10 +122,10 @@
       </midi-instrument>
     </score-part>
     <score-part id="P8">
-      <part-name>Bb Tenor Sax.</part-name>
+      <part-name> Bb Tenor Sax.</part-name>
       <part-abbreviation>Ten. Sax.</part-abbreviation>
       <score-instrument id="P8I1">
-        <instrument-name>Bb Tenor Sax.</instrument-name>
+        <instrument-name> Bb Tenor Sax.</instrument-name>
         <instrument-sound>wind.reed.saxophone.tenor</instrument-sound>
       </score-instrument>
       <midi-instrument id="P8I1">

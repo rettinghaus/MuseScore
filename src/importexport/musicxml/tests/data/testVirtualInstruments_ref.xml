@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes" />
-      <supports element="beam" type="yes" />
-      <supports element="print" attribute="new-page" type="no" />
-      <supports element="print" attribute="new-system" type="no" />
-      <supports element="stem" type="yes" />
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="print" attribute="new-page" type="no"/>
+      <supports element="print" attribute="new-system" type="no"/>
+      <supports element="stem" type="yes"/>
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Electric Guitar (2)</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1" />
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>28</midi-program>
@@ -37,7 +37,7 @@
       <score-instrument id="P2-I1">
         <instrument-name>Bass Guitar (2)</instrument-name>
       </score-instrument>
-      <midi-device id="P2-I1" port="1" />
+      <midi-device id="P2-I1" port="1"/>
       <midi-instrument id="P2-I1">
         <midi-channel>7</midi-channel>
         <midi-program>35</midi-program>
@@ -129,7 +129,7 @@
       <score-instrument id="P3-I80">
         <instrument-name>Instrument 80</instrument-name>
       </score-instrument>
-      <midi-device port="1" />
+      <midi-device port="1"/>
       <midi-instrument id="P3-I36">
         <midi-channel>10</midi-channel>
         <midi-program>1</midi-program>
@@ -466,7 +466,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P3-I80" />
+        <instrument id="P3-I80"/>
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
@@ -479,7 +479,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P3-I80" />
+        <instrument id="P3-I80"/>
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
@@ -492,7 +492,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P3-I80" />
+        <instrument id="P3-I80"/>
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
@@ -505,7 +505,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P3-I80" />
+        <instrument id="P3-I80"/>
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
@@ -518,7 +518,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P3-I80" />
+        <instrument id="P3-I80"/>
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
@@ -531,7 +531,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P3-I80" />
+        <instrument id="P3-I80"/>
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
@@ -544,7 +544,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P3-I80" />
+        <instrument id="P3-I80"/>
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
@@ -557,7 +557,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>1</duration>
-        <instrument id="P3-I80" />
+        <instrument id="P3-I80"/>
         <voice>1</voice>
         <type>eighth</type>
         <stem>up</stem>
@@ -573,7 +573,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>2</duration>
-        <instrument id="P3-I66" />
+        <instrument id="P3-I66"/>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
@@ -584,7 +584,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>2</duration>
-        <instrument id="P3-I70" />
+        <instrument id="P3-I70"/>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
@@ -595,7 +595,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>2</duration>
-        <instrument id="P3-I66" />
+        <instrument id="P3-I66"/>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
@@ -606,7 +606,7 @@
           <display-octave>5</display-octave>
         </unpitched>
         <duration>2</duration>
-        <instrument id="P3-I63" />
+        <instrument id="P3-I63"/>
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>

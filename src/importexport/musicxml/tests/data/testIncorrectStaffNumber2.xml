@@ -5,17 +5,19 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes" />
-      <supports element="beam" type="yes" />
-      <supports element="print" attribute="new-page" type="no" />
-      <supports element="print" attribute="new-system" type="no" />
-      <supports element="stem" type="yes" />
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="print" attribute="new-page" type="no"/>
+      <supports element="print" attribute="new-system" type="no"/>
+      <supports element="stem" type="yes"/>
     </encoding>
     <miscellaneous>
-      <miscellaneous-field name="description">Cubase 9.5.10 exports multi-staff parts without including a staves element
+      <miscellaneous-field name="description">
+        Cubase 9.5.10 exports multi-staff parts without including a staves element
         and uses voice 1 in both staves.
         Furthermore, many empty notations elements are present.
-        MuseScore will still correctly interpret this as a two staff part.</miscellaneous-field>
+        MuseScore will still correctly interpret this as a two staff part.
+        </miscellaneous-field>
     </miscellaneous>
   </identification>
   <part-list>
@@ -25,7 +27,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1" />
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -72,12 +74,12 @@
         <voice>1</voice>
         <type>whole</type>
         <staff>2</staff>
-        <notations />
+        <notations/>
       </note>
     </measure>
     <measure number="2">
       <note>
-        <rest />
+        <rest/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -86,11 +88,11 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest />
+        <rest/>
         <duration>4</duration>
         <voice>1</voice>
         <staff>2</staff>
-        <notations />
+        <notations/>
       </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>

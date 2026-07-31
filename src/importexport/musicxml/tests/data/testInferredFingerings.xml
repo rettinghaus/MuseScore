@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes" />
-      <supports element="beam" type="yes" />
-      <supports element="print" attribute="new-page" type="no" />
-      <supports element="print" attribute="new-system" type="no" />
-      <supports element="stem" type="yes" />
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="print" attribute="new-page" type="no"/>
+      <supports element="print" attribute="new-system" type="no"/>
+      <supports element="stem" type="yes"/>
     </encoding>
   </identification>
   <defaults>
@@ -37,8 +37,8 @@
         <bottom-margin>85.7143</bottom-margin>
       </page-margins>
     </page-layout>
-    <word-font font-family="Edwin" font-size="10" />
-    <lyric-font font-family="Edwin" font-size="10" />
+    <word-font font-family="Edwin" font-size="10"/>
+    <lyric-font font-family="Edwin" font-size="10"/>
   </defaults>
   <credit page="1">
     <credit-type>title</credit-type>
@@ -59,7 +59,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1" />
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -104,7 +104,7 @@
       <direction placement="above">
         <direction-type>
           <words default-y="16" font-size="7.2" relative-x="3">–</words>
-          <words font-size="2.9" />
+          <words font-size="2.9"> </words>
           <words font-size="7.2">1</words>
         </direction-type>
       </direction>
@@ -256,7 +256,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>4</duration>
         <voice>2</voice>
         <type>half</type>
@@ -381,7 +381,8 @@
       </note>
       <direction>
         <direction-type>
-          <words default-y="-59">4-5</words>
+          <words default-y="-59">4-5
+</words>
         </direction-type>
         <offset>-1</offset>
         <staff>2</staff>
@@ -527,7 +528,7 @@
         <beam number="1">continue</beam>
       </note>
       <note default-x="333.15" default-y="-15.00">
-        <chord />
+        <chord/>
         <pitch>
           <step>C</step>
           <octave>5</octave>

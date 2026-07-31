@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes" />
-      <supports element="beam" type="yes" />
-      <supports element="print" attribute="new-page" type="no" />
-      <supports element="print" attribute="new-system" type="no" />
-      <supports element="stem" type="yes" />
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+      <supports element="print" attribute="new-page" type="no"/>
+      <supports element="print" attribute="new-system" type="no"/>
+      <supports element="stem" type="yes"/>
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1" />
+      <midi-device id="P1-I1" port="1"/>
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -50,7 +50,7 @@
       </attributes>
       <direction placement="below">
         <direction-type>
-          <pedal type="start" line="yes" sign="no" />
+          <pedal type="start" line="yes" sign="no"/>
         </direction-type>
       </direction>
       <note>
@@ -95,7 +95,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <pedal type="stop" line="yes" sign="no" />
+          <pedal type="stop" line="yes" sign="no"/>
         </direction-type>
       </direction>
     </measure>
@@ -122,7 +122,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <pedal type="start" line="yes" sign="no" />
+          <pedal type="start" line="yes" sign="no"/>
         </direction-type>
       </direction>
       <note>
@@ -147,7 +147,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <pedal type="stop" line="yes" sign="no" />
+          <pedal type="stop" line="yes" sign="no"/>
         </direction-type>
       </direction>
     </measure>
@@ -196,7 +196,7 @@
     <measure number="4">
       <direction placement="below">
         <direction-type>
-          <pedal type="start" line="yes" sign="no" />
+          <pedal type="start" line="yes" sign="no"/>
         </direction-type>
       </direction>
       <note>
@@ -221,7 +221,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <pedal type="change" line="yes" sign="no" />
+          <pedal type="change" line="yes" sign="no"/>
         </direction-type>
       </direction>
       <note>
@@ -248,7 +248,7 @@
     <measure number="5">
       <direction placement="below">
         <direction-type>
-          <pedal type="change" line="yes" sign="no" />
+          <pedal type="change" line="yes" sign="no"/>
         </direction-type>
       </direction>
       <note>
@@ -293,7 +293,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <pedal type="stop" line="yes" sign="no" />
+          <pedal type="stop" line="yes" sign="no"/>
         </direction-type>
       </direction>
     </measure>
@@ -342,7 +342,7 @@
     <measure number="7">
       <direction placement="below">
         <direction-type>
-          <pedal type="start" line="yes" sign="no" />
+          <pedal type="start" line="yes" sign="no"/>
         </direction-type>
       </direction>
       <note>
@@ -366,14 +366,14 @@
         <stem>up</stem>
       </note>
       <note>
-        <rest />
+        <rest/>
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
       </note>
       <direction placement="below">
         <direction-type>
-          <pedal type="stop" line="yes" sign="no" />
+          <pedal type="stop" line="yes" sign="no"/>
         </direction-type>
       </direction>
       <barline location="right">
