@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Staff 1</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -51,10 +51,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <pppppp/>
+            <pppppp />
           </dynamics>
         </direction-type>
-        <sound dynamics="1.11"/>
+        <sound dynamics="1.11" />
       </direction>
       <note>
         <pitch>
@@ -70,10 +70,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <ppppp/>
+            <ppppp />
           </dynamics>
         </direction-type>
-        <sound dynamics="5.56"/>
+        <sound dynamics="5.56" />
       </direction>
       <note>
         <pitch>
@@ -89,10 +89,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <pppp/>
+            <pppp />
           </dynamics>
         </direction-type>
-        <sound dynamics="11.11"/>
+        <sound dynamics="11.11" />
       </direction>
       <note>
         <pitch>
@@ -108,10 +108,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <ppp/>
+            <ppp />
           </dynamics>
         </direction-type>
-        <sound dynamics="17.78"/>
+        <sound dynamics="17.78" />
       </direction>
       <note>
         <pitch>
@@ -127,10 +127,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <pp/>
+            <pp />
           </dynamics>
         </direction-type>
-        <sound dynamics="36.67"/>
+        <sound dynamics="36.67" />
       </direction>
       <note>
         <pitch>
@@ -146,10 +146,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <p/>
+            <p />
           </dynamics>
         </direction-type>
-        <sound dynamics="54.44"/>
+        <sound dynamics="54.44" />
       </direction>
       <note>
         <pitch>
@@ -165,10 +165,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <mp/>
+            <mp />
           </dynamics>
         </direction-type>
-        <sound dynamics="71.11"/>
+        <sound dynamics="71.11" />
       </direction>
       <note>
         <pitch>
@@ -184,10 +184,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <mf/>
+            <mf />
           </dynamics>
         </direction-type>
-        <sound dynamics="88.89"/>
+        <sound dynamics="88.89" />
       </direction>
       <note>
         <pitch>
@@ -200,14 +200,14 @@
       </note>
     </measure>
     <measure number="9">
-      <print new-system="yes"/>
+      <print new-system="yes" />
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <f/>
+            <f />
           </dynamics>
         </direction-type>
-        <sound dynamics="106.67"/>
+        <sound dynamics="106.67" />
       </direction>
       <note>
         <pitch>
@@ -223,10 +223,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <ff/>
+            <ff />
           </dynamics>
         </direction-type>
-        <sound dynamics="124.44"/>
+        <sound dynamics="124.44" />
       </direction>
       <note>
         <pitch>
@@ -242,10 +242,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <fff/>
+            <fff />
           </dynamics>
         </direction-type>
-        <sound dynamics="140"/>
+        <sound dynamics="140" />
       </direction>
       <note>
         <pitch>
@@ -261,10 +261,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <ffff/>
+            <ffff />
           </dynamics>
         </direction-type>
-        <sound dynamics="141.11"/>
+        <sound dynamics="141.11" />
       </direction>
       <note>
         <pitch>
@@ -280,10 +280,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <fffff/>
+            <fffff />
           </dynamics>
         </direction-type>
-        <sound dynamics="141.11"/>
+        <sound dynamics="141.11" />
       </direction>
       <note>
         <pitch>
@@ -299,10 +299,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <ffffff/>
+            <ffffff />
           </dynamics>
         </direction-type>
-        <sound dynamics="141.11"/>
+        <sound dynamics="141.11" />
       </direction>
       <note>
         <pitch>
@@ -318,10 +318,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <fp/>
+            <fp />
           </dynamics>
         </direction-type>
-        <sound dynamics="106.67"/>
+        <sound dynamics="106.67" />
       </direction>
       <note>
         <pitch>
@@ -337,10 +337,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <sf/>
+            <sf />
           </dynamics>
         </direction-type>
-        <sound dynamics="124.44"/>
+        <sound dynamics="124.44" />
       </direction>
       <note>
         <pitch>
@@ -353,14 +353,14 @@
       </note>
     </measure>
     <measure number="17">
-      <print new-system="yes"/>
+      <print new-system="yes" />
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <sfz/>
+            <sfz />
           </dynamics>
         </direction-type>
-        <sound dynamics="124.44"/>
+        <sound dynamics="124.44" />
       </direction>
       <note>
         <pitch>
@@ -379,7 +379,7 @@
             <other-dynamics>sff</other-dynamics>
           </dynamics>
         </direction-type>
-        <sound dynamics="140"/>
+        <sound dynamics="140" />
       </direction>
       <note>
         <pitch>
@@ -395,10 +395,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <sffz/>
+            <sffz />
           </dynamics>
         </direction-type>
-        <sound dynamics="140"/>
+        <sound dynamics="140" />
       </direction>
       <note>
         <pitch>
@@ -414,10 +414,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <sfp/>
+            <sfp />
           </dynamics>
         </direction-type>
-        <sound dynamics="124.44"/>
+        <sound dynamics="124.44" />
       </direction>
       <note>
         <pitch>
@@ -433,10 +433,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <sfpp/>
+            <sfpp />
           </dynamics>
         </direction-type>
-        <sound dynamics="124.44"/>
+        <sound dynamics="124.44" />
       </direction>
       <note>
         <pitch>
@@ -452,10 +452,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <rfz/>
+            <rfz />
           </dynamics>
         </direction-type>
-        <sound dynamics="124.44"/>
+        <sound dynamics="124.44" />
       </direction>
       <note>
         <pitch>
@@ -471,10 +471,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <rf/>
+            <rf />
           </dynamics>
         </direction-type>
-        <sound dynamics="124.44"/>
+        <sound dynamics="124.44" />
       </direction>
       <note>
         <pitch>
@@ -490,10 +490,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <fz/>
+            <fz />
           </dynamics>
         </direction-type>
-        <sound dynamics="124.44"/>
+        <sound dynamics="124.44" />
       </direction>
       <note>
         <pitch>
@@ -506,14 +506,14 @@
       </note>
     </measure>
     <measure number="25">
-      <print new-system="yes"/>
+      <print new-system="yes" />
       <direction placement="below">
         <direction-type>
           <dynamics>
             <other-dynamics>m</other-dynamics>
           </dynamics>
         </direction-type>
-        <sound dynamics="106.67"/>
+        <sound dynamics="106.67" />
       </direction>
       <note>
         <pitch>
@@ -532,7 +532,7 @@
             <other-dynamics>r</other-dynamics>
           </dynamics>
         </direction-type>
-        <sound dynamics="124.44"/>
+        <sound dynamics="124.44" />
       </direction>
       <note>
         <pitch>
@@ -551,7 +551,7 @@
             <other-dynamics>s</other-dynamics>
           </dynamics>
         </direction-type>
-        <sound dynamics="124.44"/>
+        <sound dynamics="124.44" />
       </direction>
       <note>
         <pitch>
@@ -570,7 +570,7 @@
             <other-dynamics>z</other-dynamics>
           </dynamics>
         </direction-type>
-        <sound dynamics="88.89"/>
+        <sound dynamics="88.89" />
       </direction>
       <note>
         <pitch>
@@ -586,10 +586,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <n/>
+            <n />
           </dynamics>
         </direction-type>
-        <sound dynamics="54.44"/>
+        <sound dynamics="54.44" />
       </direction>
       <note>
         <pitch>

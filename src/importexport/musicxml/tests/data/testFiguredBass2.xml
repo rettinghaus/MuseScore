@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -24,7 +24,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Flute</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -38,7 +38,7 @@
       <score-instrument id="P2-I1">
         <instrument-name>Harpsichord</instrument-name>
       </score-instrument>
-      <midi-device id="P2-I1" port="1"/>
+      <midi-device id="P2-I1" port="1" />
       <midi-instrument id="P2-I1">
         <midi-channel>2</midi-channel>
         <midi-program>7</midi-program>
@@ -80,14 +80,14 @@
     </measure>
     <measure number="2">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="3">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -96,7 +96,7 @@
       <figured-bass>
         <figure>
           <figure-number>1</figure-number>
-          <extend type="start"/>
+          <extend type="start" />
         </figure>
       </figured-bass>
       <note>
@@ -111,7 +111,7 @@
       </note>
       <figured-bass>
         <figure>
-          <extend type="continue"/>
+          <extend type="continue" />
         </figure>
       </figured-bass>
       <note>
@@ -126,7 +126,7 @@
       </note>
       <figured-bass>
         <figure>
-          <extend type="continue"/>
+          <extend type="continue" />
         </figure>
       </figured-bass>
       <note>
@@ -141,7 +141,7 @@
       </note>
       <figured-bass>
         <figure>
-          <extend type="continue"/>
+          <extend type="continue" />
         </figure>
       </figured-bass>
       <note>
@@ -158,7 +158,7 @@
     <measure number="5">
       <figured-bass>
         <figure>
-          <extend type="stop"/>
+          <extend type="stop" />
         </figure>
       </figured-bass>
       <note>
@@ -208,7 +208,7 @@
         </clef>
       </attributes>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -217,7 +217,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -243,7 +243,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -251,7 +251,7 @@
     </measure>
     <measure number="3">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -301,7 +301,7 @@
       <figured-bass>
         <figure>
           <figure-number>2</figure-number>
-          <extend type="start"/>
+          <extend type="start" />
         </figure>
       </figured-bass>
       <note>
@@ -317,7 +317,7 @@
       </note>
       <figured-bass>
         <figure>
-          <extend type="stop"/>
+          <extend type="stop" />
         </figure>
       </figured-bass>
       <note>
@@ -348,7 +348,7 @@
       <figured-bass>
         <figure>
           <figure-number>3</figure-number>
-          <extend type="start"/>
+          <extend type="start" />
         </figure>
       </figured-bass>
       <note>
@@ -364,7 +364,7 @@
       </note>
       <figured-bass>
         <figure>
-          <extend type="continue"/>
+          <extend type="continue" />
         </figure>
       </figured-bass>
       <note>
@@ -380,7 +380,7 @@
       </note>
       <figured-bass>
         <figure>
-          <extend type="stop"/>
+          <extend type="stop" />
         </figure>
       </figured-bass>
       <note>
@@ -422,7 +422,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>

@@ -5,11 +5,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <defaults>
@@ -57,9 +57,9 @@
       <note-size type="grace">75</note-size>
       <note-size type="grace-cue">56.25</note-size>
     </appearance>
-    <music-font font-family="Leland"/>
-    <word-font font-family="Edwin" font-size="10"/>
-    <lyric-font font-family="Edwin" font-size="10"/>
+    <music-font font-family="Leland" />
+    <word-font font-family="Edwin" font-size="10" />
+    <lyric-font font-family="Edwin" font-size="10" />
   </defaults>
   <part-list>
     <score-part id="P1">
@@ -68,7 +68,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -111,7 +111,7 @@
         </clef>
       </attributes>
       <note default-x="494.11" default-y="-10">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -121,7 +121,7 @@
       </backup>
       <direction>
         <direction-type>
-          <octave-shift type="down" size="8" number="1" default-y="24.09"/>
+          <octave-shift type="down" size="8" number="1" default-y="24.09" />
         </direction-type>
         <staff>2</staff>
       </direction>
@@ -138,12 +138,12 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <pedal type="start" line="yes" sign="yes" default-y="-69.89"/>
+          <pedal type="start" line="yes" sign="yes" default-y="-69.89" />
         </direction-type>
         <staff>2</staff>
       </direction>
       <note default-x="276.77" default-y="-115">
-        <grace slash="yes"/>
+        <grace slash="yes" />
         <pitch>
           <step>F</step>
           <alter>1</alter>
@@ -179,7 +179,7 @@
       </note>
       <direction>
         <direction-type>
-          <octave-shift type="stop" size="8" number="1"/>
+          <octave-shift type="stop" size="8" number="1" />
         </direction-type>
         <staff>2</staff>
       </direction>
@@ -196,7 +196,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <pedal type="stop" line="yes" sign="no"/>
+          <pedal type="stop" line="yes" sign="no" />
         </direction-type>
         <staff>2</staff>
       </direction>

@@ -9,11 +9,11 @@
       <encoder>Klaus Rettinghaus</encoder>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Classical Guitar</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>25</midi-program>
@@ -94,7 +94,7 @@
         <beam number="1">begin</beam>
         <notations>
           <technical>
-            <tap hand="left"/>
+            <tap hand="left" />
           </technical>
         </notations>
       </note>
@@ -113,7 +113,7 @@
         <beam number="1">continue</beam>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
           </technical>
         </notations>
       </note>
@@ -130,7 +130,7 @@
         <beam number="1">continue</beam>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
           </technical>
         </notations>
       </note>
@@ -149,7 +149,7 @@
         <beam number="1">end</beam>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
           </technical>
         </notations>
       </note>
@@ -167,7 +167,7 @@
         <beam number="1">begin</beam>
         <notations>
           <technical>
-            <tap hand="left" placement="above"/>
+            <tap hand="left" placement="above" />
           </technical>
         </notations>
       </note>
@@ -186,7 +186,7 @@
         <beam number="1">continue</beam>
         <notations>
           <technical>
-            <tap hand="right" placement="above"/>
+            <tap hand="right" placement="above" />
           </technical>
         </notations>
       </note>
@@ -204,7 +204,7 @@
         <beam number="1">continue</beam>
         <notations>
           <technical>
-            <tap hand="right" placement="above"/>
+            <tap hand="right" placement="above" />
           </technical>
         </notations>
       </note>
@@ -223,7 +223,7 @@
         <beam number="1">end</beam>
         <notations>
           <technical>
-            <tap hand="right" placement="above"/>
+            <tap hand="right" placement="above" />
           </technical>
         </notations>
       </note>
@@ -242,7 +242,7 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="left"/>
+            <tap hand="left" />
             <string>3</string>
             <fret>10</fret>
           </technical>
@@ -261,7 +261,7 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
             <string>3</string>
             <fret>11</fret>
           </technical>
@@ -279,7 +279,7 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
             <string>3</string>
             <fret>12</fret>
           </technical>
@@ -298,7 +298,7 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
             <string>3</string>
             <fret>11</fret>
           </technical>
@@ -316,7 +316,7 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="left"/>
+            <tap hand="left" />
             <string>3</string>
             <fret>10</fret>
           </technical>
@@ -335,7 +335,7 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
             <string>3</string>
             <fret>11</fret>
           </technical>
@@ -353,7 +353,7 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
             <string>3</string>
             <fret>12</fret>
           </technical>
@@ -372,7 +372,7 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
             <string>3</string>
             <fret>11</fret>
           </technical>
@@ -393,7 +393,7 @@
         <beam number="1">begin</beam>
         <notations>
           <technical>
-            <tap hand="left"/>
+            <tap hand="left" />
           </technical>
         </notations>
       </note>
@@ -412,7 +412,7 @@
         <beam number="1">continue</beam>
         <notations>
           <technical>
-            <tap hand="right" color="#9437FF"/>
+            <tap hand="right" color="#9437FF" />
           </technical>
         </notations>
       </note>
@@ -429,7 +429,7 @@
         <beam number="1">continue</beam>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
           </technical>
         </notations>
       </note>
@@ -448,7 +448,7 @@
         <beam number="1">end</beam>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
           </technical>
         </notations>
       </note>
@@ -466,7 +466,7 @@
         <beam number="1">begin</beam>
         <notations>
           <technical>
-            <tap hand="left" placement="below"/>
+            <tap hand="left" placement="below" />
           </technical>
         </notations>
       </note>
@@ -485,7 +485,7 @@
         <beam number="1">continue</beam>
         <notations>
           <technical>
-            <tap hand="right" placement="below"/>
+            <tap hand="right" placement="below" />
           </technical>
         </notations>
       </note>
@@ -503,7 +503,7 @@
         <beam number="1">continue</beam>
         <notations>
           <technical>
-            <tap hand="right" placement="below"/>
+            <tap hand="right" placement="below" />
           </technical>
         </notations>
       </note>
@@ -522,7 +522,7 @@
         <beam number="1">end</beam>
         <notations>
           <technical>
-            <tap hand="right" placement="below"/>
+            <tap hand="right" placement="below" />
           </technical>
         </notations>
       </note>
@@ -541,7 +541,7 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="left"/>
+            <tap hand="left" />
             <string>3</string>
             <fret>10</fret>
           </technical>
@@ -560,7 +560,7 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right" color="#FF7E79"/>
+            <tap hand="right" color="#FF7E79" />
             <string>3</string>
             <fret>11</fret>
           </technical>
@@ -578,7 +578,7 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
             <string>3</string>
             <fret>12</fret>
           </technical>
@@ -597,7 +597,7 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right"/>
+            <tap hand="right" />
             <string>3</string>
             <fret>11</fret>
           </technical>
@@ -615,7 +615,7 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="left" placement="below"/>
+            <tap hand="left" placement="below" />
             <string>3</string>
             <fret>10</fret>
           </technical>
@@ -634,7 +634,7 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right" placement="below"/>
+            <tap hand="right" placement="below" />
             <string>3</string>
             <fret>11</fret>
           </technical>
@@ -652,7 +652,7 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right" placement="below"/>
+            <tap hand="right" placement="below" />
             <string>3</string>
             <fret>12</fret>
           </technical>
@@ -671,7 +671,7 @@
         <staff>2</staff>
         <notations>
           <technical>
-            <tap hand="right" placement="below"/>
+            <tap hand="right" placement="below" />
             <string>3</string>
             <fret>11</fret>
           </technical>

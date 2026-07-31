@@ -10,19 +10,17 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
     <miscellaneous>
-      <miscellaneous-field name="description">
-        Test the various lyrics number patterns typically used.
+      <miscellaneous-field name="description">Test the various lyrics number patterns typically used.
         Finale uses 'number="1"' etc., but sometimes continuous incrementing numbers
         in subsequent parts.
-        Sibelius uses a pattern like 'number='part1verse1"'.
-        </miscellaneous-field>
+        Sibelius uses a pattern like 'number='part1verse1"'.</miscellaneous-field>
     </miscellaneous>
   </identification>
   <part-list>
@@ -31,7 +29,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Music</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -44,7 +42,7 @@
       <score-instrument id="P2-I1">
         <instrument-name>Music</instrument-name>
       </score-instrument>
-      <midi-device id="P2-I1" port="1"/>
+      <midi-device id="P2-I1" port="1" />
       <midi-instrument id="P2-I1">
         <midi-channel>2</midi-channel>
         <midi-program>53</midi-program>
@@ -57,7 +55,7 @@
       <score-instrument id="P3-I1">
         <instrument-name>Music</instrument-name>
       </score-instrument>
-      <midi-device id="P3-I1" port="1"/>
+      <midi-device id="P3-I1" port="1" />
       <midi-instrument id="P3-I1">
         <midi-channel>3</midi-channel>
         <midi-program>53</midi-program>
@@ -70,7 +68,7 @@
       <score-instrument id="P4-I1">
         <instrument-name>Music</instrument-name>
       </score-instrument>
-      <midi-device id="P4-I1" port="1"/>
+      <midi-device id="P4-I1" port="1" />
       <midi-instrument id="P4-I1">
         <midi-channel>4</midi-channel>
         <midi-program>53</midi-program>
@@ -83,7 +81,7 @@
       <score-instrument id="P5-I1">
         <instrument-name>Music</instrument-name>
       </score-instrument>
-      <midi-device id="P5-I1" port="1"/>
+      <midi-device id="P5-I1" port="1" />
       <midi-instrument id="P5-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>

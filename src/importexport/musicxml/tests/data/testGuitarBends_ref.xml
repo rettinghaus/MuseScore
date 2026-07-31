@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Classical Guitar</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>25</midi-program>
@@ -111,7 +111,7 @@
         </notations>
       </note>
       <note>
-        <grace/>
+        <grace />
         <pitch>
           <step>D</step>
           <octave>3</octave>
@@ -141,7 +141,7 @@
             <fret>0</fret>
             <bend first-beat="0" last-beat="100">
               <bend-alter>-2</bend-alter>
-              <pre-bend/>
+              <pre-bend />
             </bend>
           </technical>
         </notations>
@@ -149,7 +149,7 @@
     </measure>
     <measure number="2">
       <note>
-        <grace/>
+        <grace />
         <pitch>
           <step>D</step>
           <octave>3</octave>
@@ -183,7 +183,7 @@
           <technical>
             <bend first-beat="0" last-beat="25">
               <bend-alter>-2</bend-alter>
-              <pre-bend/>
+              <pre-bend />
             </bend>
           </technical>
         </notations>
@@ -357,7 +357,7 @@
         </notations>
       </note>
       <note print-object="no">
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>

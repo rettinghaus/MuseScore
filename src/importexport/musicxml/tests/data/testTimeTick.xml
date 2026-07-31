@@ -17,7 +17,7 @@
       </attributes>
       <direction>
         <direction-type>
-          <wedge type="crescendo"/>
+          <wedge type="crescendo" />
         </direction-type>
       </direction>
       <note>
@@ -30,19 +30,19 @@
       </note>
       <direction>
         <direction-type>
-          <wedge type="stop"/>
+          <wedge type="stop" />
         </direction-type>
         <offset>-9</offset>
       </direction>
       <direction>
         <direction-type>
-          <wedge type="diminuendo"/>
+          <wedge type="diminuendo" />
         </direction-type>
         <offset>-7</offset>
       </direction>
       <direction>
         <direction-type>
-          <wedge type="stop"/>
+          <wedge type="stop" />
         </direction-type>
       </direction>
     </measure>

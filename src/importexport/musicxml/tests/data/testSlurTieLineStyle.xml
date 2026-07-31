@@ -5,20 +5,20 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
     <score-part id="P1">
-      <part-name/>
+      <part-name />
       <score-instrument id="P1-I1">
-        <instrument-name/>
+        <instrument-name />
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -53,7 +53,7 @@
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <slur type="start" orientation="over" placement="above" number="1"/>
+          <slur type="start" orientation="over" placement="above" number="1" />
         </notations>
       </note>
       <note>
@@ -62,12 +62,12 @@
           <octave>5</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="start"/>
+        <tie type="start" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <tied type="start"/>
+          <tied type="start" />
         </notations>
       </note>
       <note>
@@ -76,12 +76,12 @@
           <octave>5</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="stop"/>
+        <tie type="stop" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
       </note>
       <note>
@@ -94,7 +94,7 @@
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <slur type="stop" number="1"/>
+          <slur type="stop" number="1" />
         </notations>
       </note>
     </measure>
@@ -109,7 +109,7 @@
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <slur type="start" line-type="dotted" orientation="over" placement="above" number="1"/>
+          <slur type="start" line-type="dotted" orientation="over" placement="above" number="1" />
         </notations>
       </note>
       <note>
@@ -118,12 +118,12 @@
           <octave>5</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="start"/>
+        <tie type="start" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <tied type="start" line-type="dotted"/>
+          <tied type="start" line-type="dotted" />
         </notations>
       </note>
       <note>
@@ -132,12 +132,12 @@
           <octave>5</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="stop"/>
+        <tie type="stop" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
       </note>
       <note>
@@ -150,7 +150,7 @@
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <slur type="stop" number="1"/>
+          <slur type="stop" number="1" />
         </notations>
       </note>
     </measure>
@@ -165,7 +165,7 @@
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <slur type="start" line-type="dashed" orientation="over" placement="above" number="1"/>
+          <slur type="start" line-type="dashed" orientation="over" placement="above" number="1" />
         </notations>
       </note>
       <note>
@@ -174,12 +174,12 @@
           <octave>5</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="start"/>
+        <tie type="start" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <tied type="start" line-type="dashed"/>
+          <tied type="start" line-type="dashed" />
         </notations>
       </note>
       <note>
@@ -188,12 +188,12 @@
           <octave>5</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="stop"/>
+        <tie type="stop" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
       </note>
       <note>
@@ -206,7 +206,7 @@
         <type>quarter</type>
         <stem>down</stem>
         <notations>
-          <slur type="stop" number="1"/>
+          <slur type="stop" number="1" />
         </notations>
       </note>
       <barline location="right">

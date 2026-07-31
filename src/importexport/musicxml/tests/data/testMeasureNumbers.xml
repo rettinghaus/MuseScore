@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Voice</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>53</midi-program>
@@ -37,7 +37,7 @@
       <score-instrument id="P2-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P2-I1" port="1"/>
+      <midi-device id="P2-I1" port="1" />
       <midi-instrument id="P2-I1">
         <midi-channel>2</midi-channel>
         <midi-program>1</midi-program>
@@ -68,13 +68,13 @@
         </direction-type>
       </direction>
       <note>
-        <rest/>
+        <rest />
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -87,7 +87,7 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -99,7 +99,7 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -111,7 +111,7 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -123,7 +123,7 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -135,7 +135,7 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -147,7 +147,7 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -159,7 +159,7 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -190,14 +190,14 @@
         </clef>
       </attributes>
       <note>
-        <rest/>
+        <rest />
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <staff>1</staff>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -207,14 +207,14 @@
         <duration>3</duration>
       </backup>
       <note>
-        <rest/>
+        <rest />
         <duration>2</duration>
         <voice>5</voice>
         <type>half</type>
         <staff>2</staff>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -223,7 +223,7 @@
     </measure>
     <measure number="1">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -232,7 +232,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -240,7 +240,7 @@
     </measure>
     <measure number="12">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -249,7 +249,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -257,7 +257,7 @@
     </measure>
     <measure number="13">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -266,7 +266,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -274,7 +274,7 @@
     </measure>
     <measure number="X1" implicit="yes">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -283,7 +283,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -291,7 +291,7 @@
     </measure>
     <measure number="14">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -300,7 +300,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -308,7 +308,7 @@
     </measure>
     <measure number="X2" implicit="yes">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -317,7 +317,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -325,7 +325,7 @@
     </measure>
     <measure number="5">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -334,7 +334,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>

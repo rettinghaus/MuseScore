@@ -9,17 +9,15 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
     <miscellaneous>
-      <miscellaneous-field name="description">
-        Some notations attach to notes only in MuseScore, but in MusicXML
-        they may also be found on rests. These notations will be removed.
-        </miscellaneous-field>
+      <miscellaneous-field name="description">Some notations attach to notes only in MuseScore, but in MusicXML
+        they may also be found on rests. These notations will be removed.</miscellaneous-field>
     </miscellaneous>
   </identification>
   <part-list>
@@ -29,7 +27,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -55,7 +53,7 @@
         </clef>
       </attributes>
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
         <type>whole</type>
@@ -68,7 +66,7 @@
     </measure>
     <measure number="2">
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
         <type>whole</type>
@@ -81,7 +79,7 @@
     </measure>
     <measure number="3">
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
         <type>whole</type>
@@ -94,7 +92,7 @@
     </measure>
     <measure number="4">
       <note>
-        <rest/>
+        <rest />
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
@@ -103,24 +101,24 @@
         </notations>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
         <notations>
-          <slide line-type="solid" number="1" type="stop"/>
+          <slide line-type="solid" number="1" type="stop" />
         </notations>
       </note>
     </measure>
     <measure number="5">
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
         <type>whole</type>
         <notations>
           <articulations>
-            <doit/>
+            <doit />
           </articulations>
         </notations>
       </note>

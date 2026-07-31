@@ -6,10 +6,10 @@
       <software>Sibelius 2023.11</software>
       <software>Dolet 8.3 for Sibelius</software>
       <encoding-date>2024-04-15</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="transpose" type="yes"/>
-      <supports attribute="new-page" element="print" type="yes" value="yes"/>
-      <supports attribute="new-system" element="print" type="yes" value="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="transpose" type="yes" />
+      <supports attribute="new-page" element="print" type="yes" value="yes" />
+      <supports attribute="new-system" element="print" type="yes" value="yes" />
     </encoding>
   </identification>
   <defaults>
@@ -17,7 +17,7 @@
       <millimeters>7</millimeters>
       <tenths>40</tenths>
     </scaling>
-    <concert-score/>
+    <concert-score />
     <page-layout>
       <page-height>1597</page-height>
       <page-width>1234</page-width>
@@ -50,14 +50,14 @@
       <note-size type="grace">60</note-size>
       <note-size type="cue">75</note-size>
     </appearance>
-    <music-font font-family="Opus Std,engraved"/>
+    <music-font font-family="Opus Std,engraved" />
   </defaults>
   <part-list>
     <score-part id="P1">
       <part-name print-object="no">[Unnamed (treble staff)]</part-name>
       <group>score</group>
       <score-instrument id="P1-I1">
-        <instrument-name/>
+        <instrument-name />
         <instrument-sound>keyboard.piano.grand</instrument-sound>
       </score-instrument>
       <midi-instrument id="P1-I1">
@@ -72,11 +72,7 @@
         <system-layout>
           <top-system-distance>181.5625</top-system-distance>
         </system-layout>
-        <staff-layout>
-
-
-
-				</staff-layout>
+        <staff-layout />
         <measure-layout>
           <measure-distance>50</measure-distance>
         </measure-layout>
@@ -171,7 +167,7 @@
           <frame-note>
             <string>5</string>
             <fret>1</fret>
-            <barre type="start"/>
+            <barre type="start" />
           </frame-note>
           <frame-note>
             <string>4</string>
@@ -188,7 +184,7 @@
           <frame-note>
             <string>1</string>
             <fret>1</fret>
-            <barre type="stop"/>
+            <barre type="stop" />
           </frame-note>
         </frame>
       </harmony>
@@ -204,7 +200,7 @@
           <frame-note>
             <string>5</string>
             <fret>1</fret>
-            <barre type="start"/>
+            <barre type="start" />
           </frame-note>
           <frame-note>
             <string>4</string>
@@ -221,7 +217,7 @@
           <frame-note>
             <string>1</string>
             <fret>1</fret>
-            <barre type="stop"/>
+            <barre type="stop" />
           </frame-note>
         </frame>
       </harmony>

@@ -8,19 +8,17 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
     <miscellaneous>
-      <miscellaneous-field name="description">
-        Cubase 6.5.5 exports multi-staff parts as two separate parts, but leaves
+      <miscellaneous-field name="description">Cubase 6.5.5 exports multi-staff parts as two separate parts, but leaves
         number=... in the clef and still refers to staff 2 in the second part.
         This results in incorrect staff numbers for in the second part.
-        MuseScore will interpret the second part as a two staff part.
-        </miscellaneous-field>
+        MuseScore will interpret the second part as a two staff part.</miscellaneous-field>
     </miscellaneous>
   </identification>
   <part-list>
@@ -30,7 +28,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -44,7 +42,7 @@
       <score-instrument id="P2-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P2-I1" port="1"/>
+      <midi-device id="P2-I1" port="1" />
       <midi-instrument id="P2-I1">
         <midi-channel>2</midi-channel>
         <midi-program>1</midi-program>

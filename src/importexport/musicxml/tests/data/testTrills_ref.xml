@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Flute</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -59,9 +59,9 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -76,9 +76,9 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <other-ornament smufl="ornamentBottomLeftConcaveStroke"/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <other-ornament smufl="ornamentBottomLeftConcaveStroke" />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -93,9 +93,9 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <other-ornament smufl="ornamentLeftVerticalStroke"/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <other-ornament smufl="ornamentLeftVerticalStroke" />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -110,8 +110,8 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -128,10 +128,10 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
             <accidental-mark placement="above">flat</accidental-mark>
-            <wavy-line type="stop" number="1"/>
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -146,10 +146,10 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <other-ornament smufl="ornamentBottomLeftConcaveStroke"/>
-            <wavy-line type="start" number="1"/>
+            <other-ornament smufl="ornamentBottomLeftConcaveStroke" />
+            <wavy-line type="start" number="1" />
             <accidental-mark placement="above">flat</accidental-mark>
-            <wavy-line type="stop" number="1"/>
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -164,10 +164,10 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <other-ornament smufl="ornamentLeftVerticalStroke"/>
-            <wavy-line type="start" number="1"/>
+            <other-ornament smufl="ornamentLeftVerticalStroke" />
+            <wavy-line type="start" number="1" />
             <accidental-mark placement="below">flat</accidental-mark>
-            <wavy-line type="stop" number="1"/>
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -182,9 +182,9 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <wavy-line type="start" number="1"/>
+            <wavy-line type="start" number="1" />
             <accidental-mark placement="above">flat</accidental-mark>
-            <wavy-line type="stop" number="1"/>
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>

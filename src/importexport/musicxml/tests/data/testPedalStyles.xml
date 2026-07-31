@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -54,7 +54,7 @@
         </clef>
       </attributes>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -72,12 +72,12 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -89,7 +89,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
@@ -112,12 +112,12 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -129,7 +129,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
@@ -145,7 +145,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <pedal type="start" line="no" sign="yes"/>
+          <pedal type="start" line="no" sign="yes" />
         </direction-type>
         <staff>2</staff>
       </direction>
@@ -172,12 +172,12 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
@@ -189,7 +189,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -212,12 +212,12 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
@@ -229,7 +229,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -254,12 +254,12 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -271,7 +271,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
@@ -294,12 +294,12 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -311,7 +311,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
@@ -323,7 +323,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -344,12 +344,12 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
@@ -361,7 +361,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>4</octave>
@@ -384,12 +384,12 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
@@ -401,7 +401,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>4</octave>
@@ -413,7 +413,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -421,14 +421,14 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <pedal type="stop" line="no" sign="yes"/>
+          <pedal type="stop" line="no" sign="yes" />
         </direction-type>
         <staff>2</staff>
       </direction>
     </measure>
     <measure number="3">
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -446,12 +446,12 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -463,7 +463,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
@@ -486,12 +486,12 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -503,7 +503,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
@@ -519,7 +519,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <pedal type="start" line="yes" sign="yes"/>
+          <pedal type="start" line="yes" sign="yes" />
         </direction-type>
         <staff>2</staff>
       </direction>
@@ -546,12 +546,12 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
@@ -563,7 +563,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -586,12 +586,12 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
@@ -603,7 +603,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -628,12 +628,12 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -645,7 +645,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
@@ -668,12 +668,12 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -685,7 +685,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
@@ -697,7 +697,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -718,12 +718,12 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
@@ -735,7 +735,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>4</octave>
@@ -758,12 +758,12 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
@@ -775,7 +775,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>4</octave>
@@ -787,7 +787,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -795,14 +795,14 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <pedal type="stop" line="yes" sign="yes"/>
+          <pedal type="stop" line="yes" sign="yes" />
         </direction-type>
         <staff>2</staff>
       </direction>
     </measure>
     <measure number="5">
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -820,12 +820,12 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -837,7 +837,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
@@ -860,12 +860,12 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -877,7 +877,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
@@ -893,7 +893,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <pedal type="sostenuto" line="no" sign="yes"/>
+          <pedal type="sostenuto" line="no" sign="yes" />
         </direction-type>
         <staff>2</staff>
       </direction>
@@ -920,12 +920,12 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
@@ -937,7 +937,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -960,12 +960,12 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
@@ -977,7 +977,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -1002,12 +1002,12 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -1019,7 +1019,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
@@ -1042,12 +1042,12 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -1059,7 +1059,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
@@ -1071,7 +1071,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -1092,12 +1092,12 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
@@ -1109,7 +1109,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>4</octave>
@@ -1132,12 +1132,12 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
@@ -1149,7 +1149,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>4</octave>
@@ -1161,7 +1161,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -1169,14 +1169,14 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <pedal type="stop" line="no" sign="yes"/>
+          <pedal type="stop" line="no" sign="yes" />
         </direction-type>
         <staff>2</staff>
       </direction>
     </measure>
     <measure number="7">
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -1194,12 +1194,12 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -1211,7 +1211,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
@@ -1234,12 +1234,12 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -1251,7 +1251,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
@@ -1267,7 +1267,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <pedal type="start" line="yes" sign="no"/>
+          <pedal type="start" line="yes" sign="no" />
         </direction-type>
         <staff>2</staff>
       </direction>
@@ -1294,12 +1294,12 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
@@ -1311,7 +1311,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -1334,12 +1334,12 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
@@ -1351,7 +1351,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -1376,12 +1376,12 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -1393,7 +1393,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
@@ -1416,12 +1416,12 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -1433,7 +1433,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
@@ -1445,7 +1445,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -1466,12 +1466,12 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
@@ -1483,7 +1483,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>4</octave>
@@ -1506,12 +1506,12 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
@@ -1523,7 +1523,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>4</octave>
@@ -1535,7 +1535,7 @@
         <staff>2</staff>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -1543,7 +1543,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <pedal type="stop" line="yes" sign="no"/>
+          <pedal type="stop" line="yes" sign="no" />
         </direction-type>
         <staff>2</staff>
       </direction>

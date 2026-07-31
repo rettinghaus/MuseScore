@@ -9,20 +9,20 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
     <score-part id="P1">
-      <part-name/>
+      <part-name />
       <score-instrument id="P1-I1">
-        <instrument-name/>
+        <instrument-name />
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -31,11 +31,11 @@
       </midi-instrument>
     </score-part>
     <score-part id="P2">
-      <part-name/>
+      <part-name />
       <score-instrument id="P2-I1">
-        <instrument-name/>
+        <instrument-name />
       </score-instrument>
-      <midi-device id="P2-I1" port="1"/>
+      <midi-device id="P2-I1" port="1" />
       <midi-instrument id="P2-I1">
         <midi-channel>2</midi-channel>
         <midi-program>74</midi-program>
@@ -44,11 +44,11 @@
       </midi-instrument>
     </score-part>
     <score-part id="P3">
-      <part-name/>
+      <part-name />
       <score-instrument id="P3-I1">
-        <instrument-name/>
+        <instrument-name />
       </score-instrument>
-      <midi-device id="P3-I1" port="1"/>
+      <midi-device id="P3-I1" port="1" />
       <midi-instrument id="P3-I1">
         <midi-channel>3</midi-channel>
         <midi-program>74</midi-program>
@@ -79,21 +79,21 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="2">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="3">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -102,13 +102,13 @@
       <direction placement="above">
         <direction-type>
           <words font-weight="bold">Bold</words>
-          <words font-weight="normal"> and </words>
+          <words font-weight="normal">and</words>
           <words font-family="Arial">other font</words>
           <words font-family="FreeSerif">. Old font; &amp; is not &amp;amp;</words>
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -131,14 +131,14 @@
         </clef>
       </attributes>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="2">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -146,13 +146,12 @@
     <measure number="3">
       <direction placement="above">
         <direction-type>
-          <words>Normal,
-</words>
+          <words>Normal,</words>
           <words underline="1">underlined</words>
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -160,12 +159,12 @@
     <measure number="4">
       <direction placement="above">
         <direction-type>
-          <words>Dimension1 </words>
+          <words>Dimension1</words>
           <words font-size="14">Dimension2</words>
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -188,7 +187,7 @@
         </clef>
       </attributes>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -200,21 +199,21 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="3">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="4">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>

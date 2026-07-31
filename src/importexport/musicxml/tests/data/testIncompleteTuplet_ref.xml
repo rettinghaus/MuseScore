@@ -8,11 +8,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -22,7 +22,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Harp</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -54,7 +54,7 @@
         </clef>
       </attributes>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>36</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -63,7 +63,7 @@
         <duration>36</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>36</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -71,7 +71,7 @@
     </measure>
     <measure number="2">
       <note>
-        <rest/>
+        <rest />
         <duration>18</duration>
         <voice>1</voice>
         <type>half</type>
@@ -94,7 +94,7 @@
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
-          <tuplet type="start" bracket="no"/>
+          <tuplet type="start" bracket="no" />
         </notations>
       </note>
       <note>
@@ -224,7 +224,7 @@
         <beam number="2">end</beam>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>2</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -234,21 +234,21 @@
         </time-modification>
         <staff>1</staff>
         <notations>
-          <tuplet type="stop"/>
+          <tuplet type="stop" />
         </notations>
       </note>
       <backup>
         <duration>36</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>36</duration>
         <voice>5</voice>
         <staff>2</staff>
       </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        <repeat direction="backward"/>
+        <repeat direction="backward" />
       </barline>
     </measure>
   </part>

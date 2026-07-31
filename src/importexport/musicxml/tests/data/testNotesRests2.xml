@@ -12,11 +12,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -25,7 +25,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Staff 1</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -156,7 +156,7 @@
         <beam number="1">begin</beam>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>8</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -207,7 +207,7 @@
         <beam number="1">continue</beam>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>8</duration>
         <voice>1</voice>
         <type>eighth</type>
@@ -239,7 +239,7 @@
         <beam number="2">begin</beam>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>B</step>
           <octave>4</octave>
@@ -250,7 +250,7 @@
         <stem>up</stem>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -270,7 +270,7 @@
         <beam number="2">continue</beam>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -293,7 +293,7 @@
         <beam number="2">end</beam>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>D</step>
           <octave>5</octave>
@@ -316,7 +316,7 @@
         <beam number="2">begin</beam>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>B</step>
           <octave>4</octave>
@@ -339,7 +339,7 @@
         <beam number="2">continue</beam>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -350,7 +350,7 @@
         <stem>up</stem>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -370,7 +370,7 @@
         <beam number="2">end</beam>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>D</step>
           <octave>5</octave>
@@ -381,7 +381,7 @@
         <stem>up</stem>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>32</duration>
         <voice>1</voice>
         <type>half</type>
@@ -396,8 +396,8 @@
         <duration>56</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot/>
-        <dot/>
+        <dot />
+        <dot />
         <stem>up</stem>
       </note>
       <note>
@@ -412,7 +412,7 @@
       </note>
     </measure>
     <measure number="6">
-      <print new-system="yes"/>
+      <print new-system="yes" />
       <attributes>
         <time>
           <beats>2</beats>
@@ -427,7 +427,7 @@
         <duration>24</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
+        <dot />
         <stem>down</stem>
       </note>
       <note>
@@ -450,8 +450,8 @@
         <duration>28</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
-        <dot/>
+        <dot />
+        <dot />
         <stem>down</stem>
       </note>
       <note>
@@ -474,9 +474,9 @@
         <duration>30</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
-        <dot/>
-        <dot/>
+        <dot />
+        <dot />
+        <dot />
         <stem>down</stem>
       </note>
       <note>
@@ -499,10 +499,10 @@
         <duration>31</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
-        <dot/>
-        <dot/>
-        <dot/>
+        <dot />
+        <dot />
+        <dot />
+        <dot />
         <stem>down</stem>
       </note>
       <note>

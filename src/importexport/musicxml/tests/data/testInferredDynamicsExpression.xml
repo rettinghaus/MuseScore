@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 4.4.0</software>
       <encoding-date>2024-03-14</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="yes" value="yes"/>
-      <supports element="print" attribute="new-system" type="yes" value="yes"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="yes" value="yes" />
+      <supports element="print" attribute="new-system" type="yes" value="yes" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <defaults>
@@ -61,9 +61,9 @@
       <note-size type="grace">70</note-size>
       <note-size type="grace-cue">49</note-size>
     </appearance>
-    <music-font font-family="Leland"/>
-    <word-font font-family="Edwin" font-size="10"/>
-    <lyric-font font-family="Edwin" font-size="10"/>
+    <music-font font-family="Leland" />
+    <word-font font-family="Edwin" font-size="10" />
+    <lyric-font font-family="Edwin" font-size="10" />
   </defaults>
   <part-list>
     <score-part id="P1">
@@ -73,7 +73,7 @@
         <instrument-name>Flute</instrument-name>
         <instrument-sound>wind.flutes.flute</instrument-sound>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -109,7 +109,7 @@
       </attributes>
       <direction placement="below">
         <direction-type>
-          <words default-y="-102" relative-x="-6" font-style="normal"> pp </words>
+          <words default-y="-102" relative-x="-6" font-style="normal">pp</words>
         </direction-type>
       </direction>
       <note default-x="80.22" default-y="-20">
@@ -164,10 +164,10 @@
       <direction placement="below">
         <direction-type>
           <dynamics default-x="2.32" default-y="-46.81" relative-y="-25">
-            <f/>
+            <f />
           </dynamics>
         </direction-type>
-        <sound dynamics="106.67"/>
+        <sound dynamics="106.67" />
       </direction>
       <direction>
         <direction-type>
@@ -225,7 +225,7 @@
     <measure number="5" width="189.72">
       <direction placement="below">
         <direction-type>
-          <words default-y="-102" relative-x="-6" font-style="normal" font-family="Opus Text Std">mf </words>
+          <words default-y="-102" relative-x="-6" font-style="normal" font-family="Opus Text Std">mf</words>
           <words font-style="italic" font-family="Palatino">cresc.</words>
         </direction-type>
       </direction>

@@ -5,11 +5,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -19,7 +19,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Violin</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>41</midi-program>
@@ -107,12 +107,9 @@
       </attributes>
       <direction placement="above" system="only-top">
         <direction-type>
-          <words>Test MAX_NUMBER_LEVEL for all element types using a different implementation
-</words>
-          <words>TODO: extend trill line to two measures (currently incorrectly generates a double stop)
-</words>
-          <words>Using MuseScore 3.x (MusicXML 3.1) only 6 levels are supported
-</words>
+          <words>Test MAX_NUMBER_LEVEL for all element types using a different implementation</words>
+          <words>TODO: extend trill line to two measures (currently incorrectly generates a double stop)</words>
+          <words>Using MuseScore 3.x (MusicXML 3.1) only 6 levels are supported</words>
           <words>Using MuseScore 4 (MusicXML 4.0) 16 levels are supported</words>
         </direction-type>
         <staff>1</staff>
@@ -133,7 +130,7 @@
         <type>whole</type>
         <staff>1</staff>
         <notations>
-          <slur type="start" number="1"/>
+          <slur type="start" number="1" />
         </notations>
       </note>
       <backup>
@@ -155,7 +152,7 @@
         <type>whole</type>
         <staff>2</staff>
         <notations>
-          <slur type="start" number="2"/>
+          <slur type="start" number="2" />
         </notations>
       </note>
       <backup>
@@ -177,7 +174,7 @@
         <type>whole</type>
         <staff>3</staff>
         <notations>
-          <slur type="start" number="3"/>
+          <slur type="start" number="3" />
         </notations>
       </note>
       <backup>
@@ -199,7 +196,7 @@
         <type>whole</type>
         <staff>4</staff>
         <notations>
-          <slur type="start" number="4"/>
+          <slur type="start" number="4" />
         </notations>
       </note>
       <backup>
@@ -221,7 +218,7 @@
         <type>whole</type>
         <staff>5</staff>
         <notations>
-          <slur type="start" number="5"/>
+          <slur type="start" number="5" />
         </notations>
       </note>
       <backup>
@@ -243,7 +240,7 @@
         <type>whole</type>
         <staff>6</staff>
         <notations>
-          <slur type="start" number="6"/>
+          <slur type="start" number="6" />
         </notations>
       </note>
       <backup>
@@ -265,7 +262,7 @@
         <type>whole</type>
         <staff>7</staff>
         <notations>
-          <slur type="start" number="7"/>
+          <slur type="start" number="7" />
         </notations>
       </note>
       <backup>
@@ -287,7 +284,7 @@
         <type>whole</type>
         <staff>8</staff>
         <notations>
-          <slur type="start" number="8"/>
+          <slur type="start" number="8" />
         </notations>
       </note>
       <backup>
@@ -309,7 +306,7 @@
         <type>whole</type>
         <staff>9</staff>
         <notations>
-          <slur type="start" number="9"/>
+          <slur type="start" number="9" />
         </notations>
       </note>
       <backup>
@@ -331,7 +328,7 @@
         <type>whole</type>
         <staff>10</staff>
         <notations>
-          <slur type="start" number="10"/>
+          <slur type="start" number="10" />
         </notations>
       </note>
       <backup>
@@ -353,7 +350,7 @@
         <type>whole</type>
         <staff>11</staff>
         <notations>
-          <slur type="start" number="11"/>
+          <slur type="start" number="11" />
         </notations>
       </note>
       <backup>
@@ -375,7 +372,7 @@
         <type>whole</type>
         <staff>12</staff>
         <notations>
-          <slur type="start" number="12"/>
+          <slur type="start" number="12" />
         </notations>
       </note>
       <backup>
@@ -397,7 +394,7 @@
         <type>whole</type>
         <staff>13</staff>
         <notations>
-          <slur type="start" number="13"/>
+          <slur type="start" number="13" />
         </notations>
       </note>
       <backup>
@@ -419,7 +416,7 @@
         <type>whole</type>
         <staff>14</staff>
         <notations>
-          <slur type="start" number="14"/>
+          <slur type="start" number="14" />
         </notations>
       </note>
       <backup>
@@ -441,7 +438,7 @@
         <type>whole</type>
         <staff>15</staff>
         <notations>
-          <slur type="start" number="15"/>
+          <slur type="start" number="15" />
         </notations>
       </note>
       <backup>
@@ -463,7 +460,7 @@
         <type>whole</type>
         <staff>16</staff>
         <notations>
-          <slur type="start" number="16"/>
+          <slur type="start" number="16" />
         </notations>
       </note>
     </measure>
@@ -478,7 +475,7 @@
         <type>whole</type>
         <staff>1</staff>
         <notations>
-          <slur type="stop" number="1"/>
+          <slur type="stop" number="1" />
         </notations>
       </note>
       <backup>
@@ -494,7 +491,7 @@
         <type>whole</type>
         <staff>2</staff>
         <notations>
-          <slur type="stop" number="2"/>
+          <slur type="stop" number="2" />
         </notations>
       </note>
       <backup>
@@ -510,7 +507,7 @@
         <type>whole</type>
         <staff>3</staff>
         <notations>
-          <slur type="stop" number="3"/>
+          <slur type="stop" number="3" />
         </notations>
       </note>
       <backup>
@@ -526,7 +523,7 @@
         <type>whole</type>
         <staff>4</staff>
         <notations>
-          <slur type="stop" number="4"/>
+          <slur type="stop" number="4" />
         </notations>
       </note>
       <backup>
@@ -542,7 +539,7 @@
         <type>whole</type>
         <staff>5</staff>
         <notations>
-          <slur type="stop" number="5"/>
+          <slur type="stop" number="5" />
         </notations>
       </note>
       <backup>
@@ -558,7 +555,7 @@
         <type>whole</type>
         <staff>6</staff>
         <notations>
-          <slur type="stop" number="6"/>
+          <slur type="stop" number="6" />
         </notations>
       </note>
       <backup>
@@ -574,7 +571,7 @@
         <type>whole</type>
         <staff>7</staff>
         <notations>
-          <slur type="stop" number="7"/>
+          <slur type="stop" number="7" />
         </notations>
       </note>
       <backup>
@@ -590,7 +587,7 @@
         <type>whole</type>
         <staff>8</staff>
         <notations>
-          <slur type="stop" number="8"/>
+          <slur type="stop" number="8" />
         </notations>
       </note>
       <backup>
@@ -606,7 +603,7 @@
         <type>whole</type>
         <staff>9</staff>
         <notations>
-          <slur type="stop" number="9"/>
+          <slur type="stop" number="9" />
         </notations>
       </note>
       <backup>
@@ -622,7 +619,7 @@
         <type>whole</type>
         <staff>10</staff>
         <notations>
-          <slur type="stop" number="10"/>
+          <slur type="stop" number="10" />
         </notations>
       </note>
       <backup>
@@ -638,7 +635,7 @@
         <type>whole</type>
         <staff>11</staff>
         <notations>
-          <slur type="stop" number="11"/>
+          <slur type="stop" number="11" />
         </notations>
       </note>
       <backup>
@@ -654,7 +651,7 @@
         <type>whole</type>
         <staff>12</staff>
         <notations>
-          <slur type="stop" number="12"/>
+          <slur type="stop" number="12" />
         </notations>
       </note>
       <backup>
@@ -670,7 +667,7 @@
         <type>whole</type>
         <staff>13</staff>
         <notations>
-          <slur type="stop" number="13"/>
+          <slur type="stop" number="13" />
         </notations>
       </note>
       <backup>
@@ -686,7 +683,7 @@
         <type>whole</type>
         <staff>14</staff>
         <notations>
-          <slur type="stop" number="14"/>
+          <slur type="stop" number="14" />
         </notations>
       </note>
       <backup>
@@ -702,7 +699,7 @@
         <type>whole</type>
         <staff>15</staff>
         <notations>
-          <slur type="stop" number="15"/>
+          <slur type="stop" number="15" />
         </notations>
       </note>
       <backup>
@@ -718,14 +715,14 @@
         <type>whole</type>
         <staff>16</staff>
         <notations>
-          <slur type="stop" number="16"/>
+          <slur type="stop" number="16" />
         </notations>
       </note>
     </measure>
     <measure number="3">
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="1"/>
+          <wedge type="crescendo" number="1" />
         </direction-type>
         <staff>1</staff>
       </direction>
@@ -744,7 +741,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="2"/>
+          <wedge type="crescendo" number="2" />
         </direction-type>
         <staff>2</staff>
       </direction>
@@ -763,7 +760,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="3"/>
+          <wedge type="crescendo" number="3" />
         </direction-type>
         <staff>3</staff>
       </direction>
@@ -782,7 +779,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="4"/>
+          <wedge type="crescendo" number="4" />
         </direction-type>
         <staff>4</staff>
       </direction>
@@ -801,7 +798,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="5"/>
+          <wedge type="crescendo" number="5" />
         </direction-type>
         <staff>5</staff>
       </direction>
@@ -820,7 +817,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="6"/>
+          <wedge type="crescendo" number="6" />
         </direction-type>
         <staff>6</staff>
       </direction>
@@ -839,7 +836,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="7"/>
+          <wedge type="crescendo" number="7" />
         </direction-type>
         <staff>7</staff>
       </direction>
@@ -858,7 +855,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="8"/>
+          <wedge type="crescendo" number="8" />
         </direction-type>
         <staff>8</staff>
       </direction>
@@ -877,7 +874,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="9"/>
+          <wedge type="crescendo" number="9" />
         </direction-type>
         <staff>9</staff>
       </direction>
@@ -896,7 +893,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="10"/>
+          <wedge type="crescendo" number="10" />
         </direction-type>
         <staff>10</staff>
       </direction>
@@ -915,7 +912,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="11"/>
+          <wedge type="crescendo" number="11" />
         </direction-type>
         <staff>11</staff>
       </direction>
@@ -934,7 +931,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="12"/>
+          <wedge type="crescendo" number="12" />
         </direction-type>
         <staff>12</staff>
       </direction>
@@ -953,7 +950,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="13"/>
+          <wedge type="crescendo" number="13" />
         </direction-type>
         <staff>13</staff>
       </direction>
@@ -972,7 +969,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="14"/>
+          <wedge type="crescendo" number="14" />
         </direction-type>
         <staff>14</staff>
       </direction>
@@ -991,7 +988,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="15"/>
+          <wedge type="crescendo" number="15" />
         </direction-type>
         <staff>15</staff>
       </direction>
@@ -1010,7 +1007,7 @@
       </backup>
       <direction placement="below">
         <direction-type>
-          <wedge type="crescendo" number="16"/>
+          <wedge type="crescendo" number="16" />
         </direction-type>
         <staff>16</staff>
       </direction>
@@ -1038,7 +1035,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="1"/>
+          <wedge type="stop" number="1" />
         </direction-type>
         <staff>1</staff>
       </direction>
@@ -1057,7 +1054,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="2"/>
+          <wedge type="stop" number="2" />
         </direction-type>
         <staff>2</staff>
       </direction>
@@ -1076,7 +1073,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="3"/>
+          <wedge type="stop" number="3" />
         </direction-type>
         <staff>3</staff>
       </direction>
@@ -1095,7 +1092,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="4"/>
+          <wedge type="stop" number="4" />
         </direction-type>
         <staff>4</staff>
       </direction>
@@ -1114,7 +1111,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="5"/>
+          <wedge type="stop" number="5" />
         </direction-type>
         <staff>5</staff>
       </direction>
@@ -1133,7 +1130,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="6"/>
+          <wedge type="stop" number="6" />
         </direction-type>
         <staff>6</staff>
       </direction>
@@ -1152,7 +1149,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="7"/>
+          <wedge type="stop" number="7" />
         </direction-type>
         <staff>7</staff>
       </direction>
@@ -1171,7 +1168,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="8"/>
+          <wedge type="stop" number="8" />
         </direction-type>
         <staff>8</staff>
       </direction>
@@ -1190,7 +1187,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="9"/>
+          <wedge type="stop" number="9" />
         </direction-type>
         <staff>9</staff>
       </direction>
@@ -1209,7 +1206,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="10"/>
+          <wedge type="stop" number="10" />
         </direction-type>
         <staff>10</staff>
       </direction>
@@ -1228,7 +1225,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="11"/>
+          <wedge type="stop" number="11" />
         </direction-type>
         <staff>11</staff>
       </direction>
@@ -1247,7 +1244,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="12"/>
+          <wedge type="stop" number="12" />
         </direction-type>
         <staff>12</staff>
       </direction>
@@ -1266,7 +1263,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="13"/>
+          <wedge type="stop" number="13" />
         </direction-type>
         <staff>13</staff>
       </direction>
@@ -1285,7 +1282,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="14"/>
+          <wedge type="stop" number="14" />
         </direction-type>
         <staff>14</staff>
       </direction>
@@ -1304,7 +1301,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="15"/>
+          <wedge type="stop" number="15" />
         </direction-type>
         <staff>15</staff>
       </direction>
@@ -1323,7 +1320,7 @@
       </note>
       <direction placement="below">
         <direction-type>
-          <wedge type="stop" number="16"/>
+          <wedge type="stop" number="16" />
         </direction-type>
         <staff>16</staff>
       </direction>
@@ -1594,7 +1591,7 @@
         <type>whole</type>
         <staff>1</staff>
         <notations>
-          <slide line-type="solid" number="1" type="stop"/>
+          <slide line-type="solid" number="1" type="stop" />
         </notations>
       </note>
       <backup>
@@ -1610,7 +1607,7 @@
         <type>whole</type>
         <staff>2</staff>
         <notations>
-          <slide line-type="solid" number="2" type="stop"/>
+          <slide line-type="solid" number="2" type="stop" />
         </notations>
       </note>
       <backup>
@@ -1626,7 +1623,7 @@
         <type>whole</type>
         <staff>3</staff>
         <notations>
-          <slide line-type="solid" number="3" type="stop"/>
+          <slide line-type="solid" number="3" type="stop" />
         </notations>
       </note>
       <backup>
@@ -1642,7 +1639,7 @@
         <type>whole</type>
         <staff>4</staff>
         <notations>
-          <slide line-type="solid" number="4" type="stop"/>
+          <slide line-type="solid" number="4" type="stop" />
         </notations>
       </note>
       <backup>
@@ -1658,7 +1655,7 @@
         <type>whole</type>
         <staff>5</staff>
         <notations>
-          <slide line-type="solid" number="5" type="stop"/>
+          <slide line-type="solid" number="5" type="stop" />
         </notations>
       </note>
       <backup>
@@ -1674,7 +1671,7 @@
         <type>whole</type>
         <staff>6</staff>
         <notations>
-          <slide line-type="solid" number="6" type="stop"/>
+          <slide line-type="solid" number="6" type="stop" />
         </notations>
       </note>
       <backup>
@@ -1690,7 +1687,7 @@
         <type>whole</type>
         <staff>7</staff>
         <notations>
-          <slide line-type="solid" number="7" type="stop"/>
+          <slide line-type="solid" number="7" type="stop" />
         </notations>
       </note>
       <backup>
@@ -1706,7 +1703,7 @@
         <type>whole</type>
         <staff>8</staff>
         <notations>
-          <slide line-type="solid" number="8" type="stop"/>
+          <slide line-type="solid" number="8" type="stop" />
         </notations>
       </note>
       <backup>
@@ -1722,7 +1719,7 @@
         <type>whole</type>
         <staff>9</staff>
         <notations>
-          <slide line-type="solid" number="9" type="stop"/>
+          <slide line-type="solid" number="9" type="stop" />
         </notations>
       </note>
       <backup>
@@ -1738,7 +1735,7 @@
         <type>whole</type>
         <staff>10</staff>
         <notations>
-          <slide line-type="solid" number="10" type="stop"/>
+          <slide line-type="solid" number="10" type="stop" />
         </notations>
       </note>
       <backup>
@@ -1754,7 +1751,7 @@
         <type>whole</type>
         <staff>11</staff>
         <notations>
-          <slide line-type="solid" number="11" type="stop"/>
+          <slide line-type="solid" number="11" type="stop" />
         </notations>
       </note>
       <backup>
@@ -1770,7 +1767,7 @@
         <type>whole</type>
         <staff>12</staff>
         <notations>
-          <slide line-type="solid" number="12" type="stop"/>
+          <slide line-type="solid" number="12" type="stop" />
         </notations>
       </note>
       <backup>
@@ -1786,7 +1783,7 @@
         <type>whole</type>
         <staff>13</staff>
         <notations>
-          <slide line-type="solid" number="13" type="stop"/>
+          <slide line-type="solid" number="13" type="stop" />
         </notations>
       </note>
       <backup>
@@ -1802,7 +1799,7 @@
         <type>whole</type>
         <staff>14</staff>
         <notations>
-          <slide line-type="solid" number="14" type="stop"/>
+          <slide line-type="solid" number="14" type="stop" />
         </notations>
       </note>
       <backup>
@@ -1818,7 +1815,7 @@
         <type>whole</type>
         <staff>15</staff>
         <notations>
-          <slide line-type="solid" number="15" type="stop"/>
+          <slide line-type="solid" number="15" type="stop" />
         </notations>
       </note>
       <backup>
@@ -1834,7 +1831,7 @@
         <type>whole</type>
         <staff>16</staff>
         <notations>
-          <slide line-type="solid" number="16" type="stop"/>
+          <slide line-type="solid" number="16" type="stop" />
         </notations>
       </note>
     </measure>
@@ -1850,9 +1847,9 @@
         <staff>1</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -1870,9 +1867,9 @@
         <staff>2</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -1890,9 +1887,9 @@
         <staff>3</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -1910,9 +1907,9 @@
         <staff>4</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -1930,9 +1927,9 @@
         <staff>5</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -1950,9 +1947,9 @@
         <staff>6</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -1970,9 +1967,9 @@
         <staff>7</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -1990,9 +1987,9 @@
         <staff>8</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -2010,9 +2007,9 @@
         <staff>9</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -2030,9 +2027,9 @@
         <staff>10</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -2050,9 +2047,9 @@
         <staff>11</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -2070,9 +2067,9 @@
         <staff>12</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -2090,9 +2087,9 @@
         <staff>13</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -2110,9 +2107,9 @@
         <staff>14</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -2130,9 +2127,9 @@
         <staff>15</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
@@ -2150,16 +2147,16 @@
         <staff>16</staff>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark />
+            <wavy-line type="start" number="1" />
+            <wavy-line type="stop" number="1" />
           </ornaments>
         </notations>
       </note>
     </measure>
     <measure number="8">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -2168,7 +2165,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -2177,7 +2174,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>9</voice>
         <staff>3</staff>
@@ -2186,7 +2183,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>13</voice>
         <staff>4</staff>
@@ -2195,7 +2192,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>17</voice>
         <staff>5</staff>
@@ -2204,7 +2201,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>21</voice>
         <staff>6</staff>
@@ -2213,7 +2210,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>25</voice>
         <staff>7</staff>
@@ -2222,7 +2219,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>29</voice>
         <staff>8</staff>
@@ -2231,7 +2228,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>33</voice>
         <staff>9</staff>
@@ -2240,7 +2237,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>37</voice>
         <staff>10</staff>
@@ -2249,7 +2246,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>41</voice>
         <staff>11</staff>
@@ -2258,7 +2255,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>45</voice>
         <staff>12</staff>
@@ -2267,7 +2264,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>49</voice>
         <staff>13</staff>
@@ -2276,7 +2273,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>53</voice>
         <staff>14</staff>
@@ -2285,7 +2282,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>57</voice>
         <staff>15</staff>
@@ -2294,7 +2291,7 @@
         <duration>4</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>61</voice>
         <staff>16</staff>

@@ -4,10 +4,10 @@
       <software>Sibelius 20231.1</software>
       <software>Dolet 6.6 for Sibelius</software>
       <encoding-date>2024-02-13</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="transpose" type="no"/>
-      <supports attribute="new-page" element="print" type="yes" value="yes"/>
-      <supports attribute="new-system" element="print" type="yes" value="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="transpose" type="no" />
+      <supports attribute="new-page" element="print" type="yes" value="yes" />
+      <supports attribute="new-system" element="print" type="yes" value="yes" />
     </encoding>
   </identification>
   <defaults>
@@ -47,14 +47,14 @@
       <note-size type="grace">60</note-size>
       <note-size type="cue">75</note-size>
     </appearance>
-    <music-font font-family="Opus Std,music"/>
-    <word-font font-family="Times New Roman"/>
+    <music-font font-family="Opus Std,music" />
+    <word-font font-family="Times New Roman" />
   </defaults>
   <part-list>
     <score-part id="P1">
       <part-name print-object="no">[Unnamed (treble staff)]</part-name>
       <score-instrument id="P1-I1">
-        <instrument-name/>
+        <instrument-name />
         <instrument-sound>keyboard.piano.grand</instrument-sound>
       </score-instrument>
       <midi-instrument id="P1-I1">
@@ -69,11 +69,7 @@
         <system-layout>
           <top-system-distance>181.5625</top-system-distance>
         </system-layout>
-        <staff-layout>
-
-
-
-				</staff-layout>
+        <staff-layout />
         <measure-layout>
           <measure-distance>50</measure-distance>
         </measure-layout>
@@ -95,7 +91,7 @@
       </attributes>
       <direction>
         <direction-type>
-          <octave-shift type="down" size="8" number="1" default-y="40" relative-x="-5"/>
+          <octave-shift type="down" size="8" number="1" default-y="40" relative-x="-5" />
         </direction-type>
       </direction>
       <note>
@@ -116,18 +112,18 @@
         <duration>1152</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
+        <dot />
         <stem>up</stem>
       </note>
       <direction>
         <direction-type>
-          <octave-shift type="stop" size="8" number="1" relative-x="25"/>
+          <octave-shift type="stop" size="8" number="1" relative-x="25" />
         </direction-type>
         <offset>-1149</offset>
       </direction>
       <direction>
         <direction-type>
-          <octave-shift type="up" size="8" number="1" default-y="-80" relative-x="-12"/>
+          <octave-shift type="up" size="8" number="1" default-y="-80" relative-x="-12" />
         </direction-type>
       </direction>
       <note>
@@ -136,12 +132,12 @@
           <octave>3</octave>
         </pitch>
         <duration>1536</duration>
-        <tie type="start"/>
+        <tie type="start" />
         <voice>1</voice>
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <tied type="start"/>
+          <tied type="start" />
         </notations>
       </note>
     </measure>
@@ -152,12 +148,12 @@
           <octave>3</octave>
         </pitch>
         <duration>768</duration>
-        <tie type="stop"/>
+        <tie type="stop" />
         <voice>1</voice>
         <type>quarter</type>
         <stem>up</stem>
         <notations>
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
       </note>
       <note>
@@ -172,12 +168,12 @@
       </note>
       <direction>
         <direction-type>
-          <octave-shift type="stop" size="8" number="1" relative-x="25"/>
+          <octave-shift type="stop" size="8" number="1" relative-x="25" />
         </direction-type>
         <offset>-765</offset>
       </direction>
       <note>
-        <rest/>
+        <rest />
         <duration>1536</duration>
         <voice>1</voice>
         <type>half</type>

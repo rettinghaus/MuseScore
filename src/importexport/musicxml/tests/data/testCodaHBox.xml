@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 4.4.0</software>
       <encoding-date>2024-02-20</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="yes" value="yes"/>
-      <supports element="print" attribute="new-system" type="yes" value="yes"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="yes" value="yes" />
+      <supports element="print" attribute="new-system" type="yes" value="yes" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <defaults>
@@ -61,9 +61,9 @@
       <note-size type="grace">70</note-size>
       <note-size type="grace-cue">49</note-size>
     </appearance>
-    <music-font font-family="Leland"/>
-    <word-font font-family="Edwin" font-size="10"/>
-    <lyric-font font-family="Edwin" font-size="10"/>
+    <music-font font-family="Leland" />
+    <word-font font-family="Edwin" font-size="10" />
+    <lyric-font font-family="Edwin" font-size="10" />
   </defaults>
   <part-list>
     <score-part id="P1">
@@ -73,7 +73,7 @@
         <instrument-name>Piano</instrument-name>
         <instrument-sound>keyboard.piano</instrument-sound>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -116,7 +116,7 @@
         </clef>
       </attributes>
       <note default-x="172.71" default-y="-10">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -125,7 +125,7 @@
         <duration>4</duration>
       </backup>
       <note default-x="172.71" default-y="-115">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -133,7 +133,7 @@
     </measure>
     <measure number="2" width="227.26">
       <note default-x="106.23" default-y="-10">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -142,7 +142,7 @@
         <duration>4</duration>
       </backup>
       <note default-x="106.23" default-y="-115">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -150,7 +150,7 @@
     </measure>
     <measure number="3" width="227.26">
       <note default-x="106.23" default-y="-10">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -159,7 +159,7 @@
         <duration>4</duration>
       </backup>
       <note default-x="106.23" default-y="-115">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -167,7 +167,7 @@
     </measure>
     <measure number="4" width="227.26">
       <note default-x="106.23" default-y="-10">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -176,7 +176,7 @@
         <duration>4</duration>
       </backup>
       <note default-x="106.23" default-y="-115">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -196,7 +196,7 @@
         </staff-layout>
       </print>
       <note default-x="157.11" default-y="-10">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -205,7 +205,7 @@
         <duration>4</duration>
       </backup>
       <note default-x="157.11" default-y="-115">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -214,12 +214,12 @@
     <measure number="6" width="245.29">
       <direction placement="above">
         <direction-type>
-          <coda default-x="-13.76" relative-y="20"/>
+          <coda default-x="-13.76" relative-y="20" />
         </direction-type>
-        <sound coda="codab"/>
+        <sound coda="codab" />
       </direction>
       <note default-x="115.25" default-y="-10">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -228,7 +228,7 @@
         <duration>4</duration>
       </backup>
       <note default-x="115.25" default-y="-115">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -236,7 +236,7 @@
     </measure>
     <measure number="7" width="245.29">
       <note default-x="115.25" default-y="-10">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -245,7 +245,7 @@
         <duration>4</duration>
       </backup>
       <note default-x="115.25" default-y="-115">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -253,7 +253,7 @@
     </measure>
     <measure number="8" width="245.29">
       <note default-x="115.25" default-y="-10">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -262,7 +262,7 @@
         <duration>4</duration>
       </backup>
       <note default-x="115.25" default-y="-115">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -283,12 +283,12 @@
       </print>
       <direction placement="above">
         <direction-type>
-          <coda default-x="-13.76" default-y="20.87" relative-y="20"/>
+          <coda default-x="-13.76" default-y="20.87" relative-y="20" />
         </direction-type>
-        <sound coda="codab"/>
+        <sound coda="codab" />
       </direction>
       <note default-x="155.96" default-y="-10">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -297,7 +297,7 @@
         <duration>4</duration>
       </backup>
       <note default-x="155.96" default-y="-115">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -305,7 +305,7 @@
     </measure>
     <measure number="10" width="242.99">
       <note default-x="114.1" default-y="-10">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -314,7 +314,7 @@
         <duration>4</duration>
       </backup>
       <note default-x="114.1" default-y="-115">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -322,7 +322,7 @@
     </measure>
     <measure number="11" width="242.99">
       <note default-x="114.1" default-y="-10">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -331,7 +331,7 @@
         <duration>4</duration>
       </backup>
       <note default-x="114.1" default-y="-115">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -339,7 +339,7 @@
     </measure>
     <measure number="12" width="252.19">
       <note default-x="114.1" default-y="-10">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -348,7 +348,7 @@
         <duration>4</duration>
       </backup>
       <note default-x="114.1" default-y="-115">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>

@@ -10,17 +10,15 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
     <miscellaneous>
-      <miscellaneous-field name="description">
-        Test tuplet corner cases. Most of these only seen sofar
-        with output from Sibelius 7.5.1 (direct export).
-        </miscellaneous-field>
+      <miscellaneous-field name="description">Test tuplet corner cases. Most of these only seen sofar
+        with output from Sibelius 7.5.1 (direct export).</miscellaneous-field>
     </miscellaneous>
   </identification>
   <part-list>
@@ -29,7 +27,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Music</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -62,14 +60,14 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
+        <dot />
         <time-modification>
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="start" bracket="no"/>
+          <tuplet type="start" bracket="no" />
         </notations>
       </note>
       <note>
@@ -112,14 +110,14 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
+        <dot />
         <time-modification>
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="start" bracket="no"/>
+          <tuplet type="start" bracket="no" />
         </notations>
       </note>
       <note>
@@ -130,14 +128,14 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
+        <dot />
         <time-modification>
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="start" bracket="no"/>
+          <tuplet type="start" bracket="no" />
         </notations>
       </note>
       <note>
@@ -200,14 +198,14 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
+        <dot />
         <time-modification>
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="start" bracket="no"/>
+          <tuplet type="start" bracket="no" />
         </notations>
       </note>
     </measure>
@@ -220,14 +218,14 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
+        <dot />
         <time-modification>
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="start" bracket="no"/>
+          <tuplet type="start" bracket="no" />
         </notations>
       </note>
       <note>
@@ -300,14 +298,14 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
+        <dot />
         <time-modification>
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="start" bracket="no"/>
+          <tuplet type="start" bracket="no" />
         </notations>
       </note>
     </measure>
@@ -320,7 +318,7 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
+        <dot />
         <time-modification>
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
@@ -335,14 +333,14 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
+        <dot />
         <time-modification>
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="stop"/>
+          <tuplet type="stop" />
         </notations>
       </note>
       <note>
@@ -375,14 +373,14 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
+        <dot />
         <time-modification>
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="stop"/>
+          <tuplet type="stop" />
         </notations>
       </note>
       <note>
@@ -425,14 +423,14 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
+        <dot />
         <time-modification>
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="stop"/>
+          <tuplet type="stop" />
         </notations>
       </note>
       <note>
@@ -443,14 +441,14 @@
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
-        <dot/>
+        <dot />
         <time-modification>
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
         </time-modification>
         <stem>up</stem>
         <notations>
-          <tuplet type="stop"/>
+          <tuplet type="stop" />
         </notations>
       </note>
       <note>

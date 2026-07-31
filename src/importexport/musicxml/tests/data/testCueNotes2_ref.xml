@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -24,7 +24,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Voice</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>53</midi-program>
@@ -50,7 +50,7 @@
         </clef>
       </attributes>
       <note>
-        <grace slash="yes"/>
+        <grace slash="yes" />
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -59,7 +59,7 @@
         <type>eighth</type>
         <stem>up</stem>
         <notations>
-          <slur type="start" number="1"/>
+          <slur type="start" number="1" />
         </notations>
       </note>
       <note>
@@ -72,7 +72,7 @@
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <slur type="stop" number="1"/>
+          <slur type="stop" number="1" />
         </notations>
         <lyric number="1">
           <syllabic>single</syllabic>
@@ -80,7 +80,7 @@
         </lyric>
       </note>
       <note>
-        <grace/>
+        <grace />
         <pitch>
           <step>F</step>
           <octave>4</octave>
@@ -89,7 +89,7 @@
         <type size="grace-cue">eighth</type>
         <stem>up</stem>
         <notations>
-          <slur type="start" number="1"/>
+          <slur type="start" number="1" />
         </notations>
       </note>
       <note>
@@ -102,7 +102,7 @@
         <type>half</type>
         <stem>up</stem>
         <notations>
-          <slur type="stop" number="1"/>
+          <slur type="stop" number="1" />
         </notations>
         <lyric number="1">
           <syllabic>single</syllabic>
@@ -112,7 +112,7 @@
     </measure>
     <measure number="2">
       <note>
-        <cue/>
+        <cue />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -123,7 +123,7 @@
         <stem>up</stem>
         <beam number="1">begin</beam>
         <notations>
-          <tied type="start"/>
+          <tied type="start" />
         </notations>
         <lyric number="1">
           <syllabic>single</syllabic>
@@ -131,7 +131,7 @@
         </lyric>
       </note>
       <note>
-        <cue/>
+        <cue />
         <pitch>
           <step>C</step>
           <octave>5</octave>
@@ -142,11 +142,11 @@
         <stem>up</stem>
         <beam number="1">end</beam>
         <notations>
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
       </note>
       <note>
-        <cue/>
+        <cue />
         <pitch>
           <step>D</step>
           <octave>5</octave>
@@ -161,7 +161,7 @@
         </lyric>
       </note>
       <note>
-        <cue/>
+        <cue />
         <pitch>
           <step>E</step>
           <octave>5</octave>
@@ -172,8 +172,8 @@
         <stem>up</stem>
       </note>
       <note>
-        <cue/>
-        <chord/>
+        <cue />
+        <chord />
         <pitch>
           <step>G</step>
           <octave>5</octave>
@@ -184,7 +184,7 @@
         <stem>up</stem>
       </note>
       <note>
-        <cue/>
+        <cue />
         <pitch>
           <step>F</step>
           <octave>5</octave>
@@ -202,13 +202,13 @@
           <octave>5</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="start"/>
+        <tie type="start" />
         <voice>1</voice>
         <type size="cue">eighth</type>
         <stem>up</stem>
         <beam number="1">begin</beam>
         <notations>
-          <tied type="start"/>
+          <tied type="start" />
         </notations>
         <lyric number="1">
           <syllabic>single</syllabic>
@@ -221,13 +221,13 @@
           <octave>5</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="stop"/>
+        <tie type="stop" />
         <voice>1</voice>
         <type size="cue">eighth</type>
         <stem>up</stem>
         <beam number="1">end</beam>
         <notations>
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
       </note>
       <note>
@@ -245,7 +245,7 @@
         </lyric>
       </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>B</step>
           <octave>4</octave>
@@ -256,7 +256,7 @@
         <stem>up</stem>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
         <type size="cue">half</type>

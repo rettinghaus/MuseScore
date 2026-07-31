@@ -9,11 +9,11 @@
     <encoding>
       <software>MuseScore 4.4.0</software>
       <encoding-date>2024-06-20</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <defaults>
@@ -61,9 +61,9 @@
       <note-size type="grace">70</note-size>
       <note-size type="grace-cue">49</note-size>
     </appearance>
-    <music-font font-family="Leland"/>
-    <word-font font-family="Edwin" font-size="10"/>
-    <lyric-font font-family="Edwin" font-size="10"/>
+    <music-font font-family="Leland" />
+    <word-font font-family="Edwin" font-size="10" />
+    <lyric-font font-family="Edwin" font-size="10" />
   </defaults>
   <credit page="1">
     <credit-type>title</credit-type>
@@ -89,7 +89,7 @@
         <instrument-name>Flute</instrument-name>
         <instrument-sound>wind.flutes.flute</instrument-sound>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>74</midi-program>
@@ -104,7 +104,7 @@
         <instrument-name>Oboe</instrument-name>
         <instrument-sound>wind.reed.oboe</instrument-sound>
       </score-instrument>
-      <midi-device id="P2-I1" port="1"/>
+      <midi-device id="P2-I1" port="1" />
       <midi-instrument id="P2-I1">
         <midi-channel>2</midi-channel>
         <midi-program>69</midi-program>
@@ -127,7 +127,7 @@
         <instrument-name>Clarinet</instrument-name>
         <instrument-sound>wind.reed.clarinet.bflat</instrument-sound>
       </score-instrument>
-      <midi-device id="P3-I1" port="1"/>
+      <midi-device id="P3-I1" port="1" />
       <midi-instrument id="P3-I1">
         <midi-channel>3</midi-channel>
         <midi-program>72</midi-program>
@@ -135,7 +135,7 @@
         <pan>0</pan>
       </midi-instrument>
     </score-part>
-    <part-group type="stop" number="1"/>
+    <part-group type="stop" number="1" />
     <score-part id="P4">
       <part-name>Piano</part-name>
       <part-abbreviation>Pno.</part-abbreviation>
@@ -143,7 +143,7 @@
         <instrument-name>Piano</instrument-name>
         <instrument-sound>keyboard.piano</instrument-sound>
       </score-instrument>
-      <midi-device id="P4-I1" port="1"/>
+      <midi-device id="P4-I1" port="1" />
       <midi-instrument id="P4-I1">
         <midi-channel>4</midi-channel>
         <midi-program>1</midi-program>
@@ -184,10 +184,10 @@
             <per-minute>80</per-minute>
           </metronome>
         </direction-type>
-        <sound tempo="80"/>
+        <sound tempo="80" />
       </direction>
       <note default-x="214.87" default-y="-10">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -204,7 +204,7 @@
         </direction-type>
       </direction>
       <note default-x="121.14" default-y="-10">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -216,7 +216,7 @@
         </direction-type>
       </direction>
       <note default-x="121.14" default-y="-10">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -247,21 +247,21 @@
         </clef>
       </attributes>
       <note default-x="214.87" default-y="-146.08">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="2" width="257.07">
       <note default-x="121.14" default-y="-146.08">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="3" width="266.27">
       <note default-x="121.14" default-y="-146.08">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -296,21 +296,21 @@
         </transpose>
       </attributes>
       <note default-x="214.87" default-y="-282.16">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="2" width="257.07">
       <note default-x="121.14" default-y="-282.16">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="3" width="266.27">
       <note default-x="121.14" default-y="-282.16">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
       </note>
@@ -349,7 +349,7 @@
         </clef>
       </attributes>
       <note default-x="214.87" default-y="-437.45">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -358,7 +358,7 @@
         <duration>4</duration>
       </backup>
       <note default-x="214.87" default-y="-542.45">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -376,7 +376,7 @@
         </direction-type>
       </direction>
       <note default-x="121.14" default-y="-437.45">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -385,7 +385,7 @@
         <duration>4</duration>
       </backup>
       <note default-x="121.14" default-y="-542.45">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>
@@ -398,7 +398,7 @@
         </direction-type>
       </direction>
       <note default-x="121.14" default-y="-437.45">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -407,7 +407,7 @@
         <duration>4</duration>
       </backup>
       <note default-x="121.14" default-y="-542.45">
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>4</duration>
         <voice>5</voice>
         <staff>2</staff>

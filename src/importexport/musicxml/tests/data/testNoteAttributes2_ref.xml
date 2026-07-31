@@ -11,11 +11,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -24,7 +24,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Violin</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -59,7 +59,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <notations>
-          <fermata type="upright"/>
+          <fermata type="upright" />
         </notations>
       </note>
       <note>
@@ -72,7 +72,7 @@
         <type>quarter</type>
         <stem>up</stem>
         <notations>
-          <fermata type="inverted"/>
+          <fermata type="inverted" />
         </notations>
       </note>
       <note>
@@ -96,7 +96,7 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <accent/>
+            <accent />
           </articulations>
         </notations>
       </note>
@@ -123,7 +123,7 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <staccato/>
+            <staccato />
           </articulations>
         </notations>
       </note>
@@ -138,7 +138,7 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <staccatissimo/>
+            <staccatissimo />
           </articulations>
         </notations>
       </note>
@@ -153,7 +153,7 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <staccatissimo/>
+            <staccatissimo />
           </articulations>
         </notations>
       </note>
@@ -170,7 +170,7 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <tenuto/>
+            <tenuto />
           </articulations>
         </notations>
       </note>
@@ -205,7 +205,7 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <strong-accent type="up"/>
+            <strong-accent type="up" />
           </articulations>
         </notations>
       </note>
@@ -222,7 +222,7 @@
         <stem>down</stem>
         <notations>
           <articulations>
-            <strong-accent type="down"/>
+            <strong-accent type="down" />
           </articulations>
         </notations>
       </note>
@@ -247,7 +247,7 @@
         <stem>down</stem>
         <notations>
           <technical>
-            <stopped/>
+            <stopped />
           </technical>
         </notations>
       </note>
@@ -262,7 +262,7 @@
         <stem>down</stem>
         <notations>
           <technical>
-            <up-bow/>
+            <up-bow />
           </technical>
         </notations>
       </note>
@@ -279,7 +279,7 @@
         <stem>up</stem>
         <notations>
           <technical>
-            <down-bow/>
+            <down-bow />
           </technical>
         </notations>
       </note>
@@ -294,7 +294,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <inverted-turn/>
+            <inverted-turn />
           </ornaments>
         </notations>
       </note>
@@ -309,7 +309,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <turn/>
+            <turn />
           </ornaments>
         </notations>
       </note>
@@ -324,7 +324,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <trill-mark/>
+            <trill-mark />
           </ornaments>
         </notations>
       </note>
@@ -341,7 +341,7 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <inverted-mordent/>
+            <inverted-mordent />
           </ornaments>
         </notations>
       </note>
@@ -356,7 +356,7 @@
         <stem>down</stem>
         <notations>
           <ornaments>
-            <mordent/>
+            <mordent />
           </ornaments>
         </notations>
       </note>
@@ -448,8 +448,8 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <staccato/>
-            <tenuto/>
+            <staccato />
+            <tenuto />
           </articulations>
         </notations>
       </note>
@@ -466,7 +466,7 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <spiccato/>
+            <spiccato />
           </articulations>
         </notations>
       </note>
@@ -481,7 +481,7 @@
         <stem>up</stem>
         <notations>
           <technical>
-            <snap-pizzicato/>
+            <snap-pizzicato />
           </technical>
         </notations>
       </note>
@@ -496,7 +496,7 @@
         <stem>up</stem>
         <notations>
           <ornaments>
-            <schleifer/>
+            <schleifer />
           </ornaments>
         </notations>
       </note>
@@ -511,7 +511,7 @@
         <stem>up</stem>
         <notations>
           <technical>
-            <open/>
+            <open />
           </technical>
         </notations>
       </note>
@@ -528,7 +528,7 @@
         <stem>up</stem>
         <notations>
           <technical>
-            <thumb-position/>
+            <thumb-position />
           </technical>
         </notations>
       </note>
@@ -569,7 +569,7 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <caesura/>
+            <caesura />
           </articulations>
         </notations>
       </note>
@@ -586,7 +586,7 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <scoop/>
+            <scoop />
           </articulations>
         </notations>
       </note>
@@ -601,7 +601,7 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <plop/>
+            <plop />
           </articulations>
         </notations>
       </note>
@@ -616,7 +616,7 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <doit/>
+            <doit />
           </articulations>
         </notations>
       </note>
@@ -631,7 +631,7 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <falloff/>
+            <falloff />
           </articulations>
         </notations>
       </note>
@@ -649,7 +649,7 @@
         <notations>
           <technical>
             <harmonic>
-              <natural/>
+              <natural />
             </harmonic>
           </technical>
         </notations>
@@ -665,7 +665,7 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <stress/>
+            <stress />
           </articulations>
         </notations>
       </note>
@@ -680,7 +680,7 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <unstress/>
+            <unstress />
           </articulations>
         </notations>
       </note>
@@ -695,7 +695,7 @@
         <stem>up</stem>
         <notations>
           <articulations>
-            <soft-accent/>
+            <soft-accent />
           </articulations>
         </notations>
       </note>

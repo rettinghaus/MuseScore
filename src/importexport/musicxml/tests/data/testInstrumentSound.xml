@@ -9,19 +9,17 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
     <miscellaneous>
-      <miscellaneous-field name="description">
-        Check handling of instruments without MIDI info but with instrument-sound
+      <miscellaneous-field name="description">Check handling of instruments without MIDI info but with instrument-sound
         and virtual-instrument, as is produced by Sibelius 7 (Direct export).
         Expected difference: instrument-sound and virtual-instrument replaced by
-        midi-device and midi-instrument.
-        </miscellaneous-field>
+        midi-device and midi-instrument.</miscellaneous-field>
     </miscellaneous>
   </identification>
   <part-list>

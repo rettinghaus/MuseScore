@@ -4,10 +4,10 @@
       <software>Sibelius 20231.1</software>
       <software>Dolet 6.6 for Sibelius</software>
       <encoding-date>2024-04-04</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="transpose" type="no"/>
-      <supports attribute="new-page" element="print" type="yes" value="yes"/>
-      <supports attribute="new-system" element="print" type="yes" value="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="transpose" type="no" />
+      <supports attribute="new-page" element="print" type="yes" value="yes" />
+      <supports attribute="new-system" element="print" type="yes" value="yes" />
     </encoding>
   </identification>
   <defaults>
@@ -47,8 +47,8 @@
       <note-size type="grace">60</note-size>
       <note-size type="cue">75</note-size>
     </appearance>
-    <music-font font-family="Helsinki Std,music"/>
-    <word-font font-family="Times New Roman"/>
+    <music-font font-family="Helsinki Std,music" />
+    <word-font font-family="Times New Roman" />
   </defaults>
   <part-list>
     <score-part id="P1">
@@ -75,9 +75,7 @@
           </system-margins>
           <top-system-distance>181.5625</top-system-distance>
         </system-layout>
-        <staff-layout>
-
-				</staff-layout>
+        <staff-layout />
       </print>
       <attributes>
         <divisions>768</divisions>
@@ -100,7 +98,7 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>3072</duration>
         <voice>1</voice>
       </note>
@@ -112,20 +110,20 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>3072</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="3">
-      <print new-system="yes"/>
+      <print new-system="yes" />
       <direction placement="above">
         <direction-type>
           <words font-weight="bold">A tempo, warmly</words>
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>3072</duration>
         <voice>1</voice>
       </note>
@@ -137,20 +135,20 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>3072</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="5">
-      <print new-system="yes"/>
+      <print new-system="yes" />
       <direction placement="above">
         <direction-type>
           <words font-weight="bold">Classic Ballad</words>
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>3072</duration>
         <voice>1</voice>
       </note>
@@ -162,20 +160,20 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>3072</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="7">
-      <print new-system="yes"/>
+      <print new-system="yes" />
       <direction placement="above">
         <direction-type>
           <words font-weight="bold">Freely, with quiet intensity</words>
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>3072</duration>
         <voice>1</voice>
       </note>
@@ -187,20 +185,20 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>3072</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="9">
-      <print new-system="yes"/>
+      <print new-system="yes" />
       <direction placement="above">
         <direction-type>
           <words font-weight="bold">Andantino</words>
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>3072</duration>
         <voice>1</voice>
       </note>
@@ -212,7 +210,7 @@
         </direction-type>
       </direction>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>3072</duration>
         <voice>1</voice>
       </note>

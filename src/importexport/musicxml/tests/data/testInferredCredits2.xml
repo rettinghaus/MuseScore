@@ -4,8 +4,7 @@
   <work>
     <work-title>Inferred Credits 2
 from MUSESCORE: the musical: a tone poem
-Words &amp; Music by also Henry Ives (and ampersands)
-</work-title>
+Words &amp; Music by also Henry Ives (and ampersands)</work-title>
   </work>
   <identification>
     <creator type="composer">Henry Ives</creator>
@@ -13,11 +12,11 @@ Words &amp; Music by also Henry Ives (and ampersands)
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <defaults>
@@ -41,8 +40,8 @@ Words &amp; Music by also Henry Ives (and ampersands)
         <bottom-margin>85.7143</bottom-margin>
       </page-margins>
     </page-layout>
-    <word-font font-family="Edwin" font-size="10"/>
-    <lyric-font font-family="Edwin" font-size="10"/>
+    <word-font font-family="Edwin" font-size="10" />
+    <lyric-font font-family="Edwin" font-size="10" />
   </defaults>
   <part-list>
     <score-part id="P1">
@@ -51,7 +50,7 @@ Words &amp; Music by also Henry Ives (and ampersands)
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
@@ -108,9 +107,7 @@ Words &amp; Music by also Henry Ives (and ampersands)
       </note>
       <direction placement="above">
         <direction-type>
-          <words default-y="34.66" relative-y="10.00">
-          Op.1 No.43
-</words>
+          <words default-y="34.66" relative-y="10.00">Op.1 No.43</words>
         </direction-type>
       </direction>
       <note default-x="110.42" default-y="-15.00">
@@ -129,13 +126,13 @@ Words &amp; Music by also Henry Ives (and ampersands)
         </lyric>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
         <type>half</type>
@@ -157,13 +154,13 @@ Words &amp; Music by also Henry Ives (and ampersands)
         </lyric>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>2</duration>
         <voice>1</voice>
         <type>quarter</type>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>4</duration>
         <voice>1</voice>
         <type>half</type>
@@ -171,7 +168,7 @@ Words &amp; Music by also Henry Ives (and ampersands)
     </measure>
     <measure number="3" width="161.62">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>8</duration>
         <voice>1</voice>
       </note>
@@ -179,22 +176,21 @@ Words &amp; Music by also Henry Ives (and ampersands)
         <direction-type>
           <words>This music has been legally downloaded.
 Do not photocopy.</words>
-          <words>
-</words>
+          <words />
         </direction-type>
         <staff>1</staff>
       </direction>
     </measure>
     <measure number="4" width="161.62">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>8</duration>
         <voice>1</voice>
       </note>
     </measure>
     <measure number="5" width="163.26">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>8</duration>
         <voice>1</voice>
       </note>

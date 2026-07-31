@@ -9,8 +9,8 @@
     <encoding>
       <software>Noteflight version 0.4</software>
       <encoding-date>2026-07-06</encoding-date>
-      <supports attribute="new-system" element="print" type="no" value="no"/>
-      <supports attribute="new-page" element="print" type="no" value="no"/>
+      <supports attribute="new-system" element="print" type="no" value="no" />
+      <supports attribute="new-page" element="print" type="no" value="no" />
     </encoding>
   </identification>
   <defaults>
@@ -42,15 +42,11 @@
   </defaults>
   <credit page="1">
     <credit-type>title</credit-type>
-    <credit-words default-x="765" default-y="1870" font-size="24" justify="right" valign="top">
-      Untitled score
-    </credit-words>
+    <credit-words default-x="765" default-y="1870" font-size="24" justify="right" valign="top">Untitled score</credit-words>
   </credit>
   <credit page="1">
     <credit-type>composer</credit-type>
-    <credit-words default-x="1377" default-y="1870" font-size="12" justify="right" valign="top">
-      Composer / arranger
-    </credit-words>
+    <credit-words default-x="1377" default-y="1870" font-size="12" justify="right" valign="top">Composer / arranger</credit-words>
   </credit>
   <part-list>
     <score-part id="P1">
@@ -103,16 +99,16 @@
       </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        <repeat direction="backward"/>
+        <repeat direction="backward" />
       </barline>
     </measure>
     <measure number="2">
-      <print new-system="no"/>
+      <print new-system="no" />
       <barline location="left">
         <bar-style>light-heavy</bar-style>
-        <repeat direction="forward"/>
+        <repeat direction="forward" />
       </barline>
-      <attributes/>
+      <attributes />
       <note>
         <pitch>
           <step>A</step>
@@ -133,7 +129,7 @@
       </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        <repeat direction="backward"/>
+        <repeat direction="backward" />
       </barline>
     </measure>
   </part>

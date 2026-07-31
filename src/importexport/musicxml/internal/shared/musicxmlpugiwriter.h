@@ -165,7 +165,7 @@ public:
     {
         if (m_device && !m_written) {
             IODeviceXmlWriter writer(m_device);
-            m_doc.save(writer, "  ", pugi::format_default | pugi::format_no_empty_element_space, pugi::encoding_utf8);
+            m_doc.save(writer, "  ", pugi::format_default, pugi::encoding_utf8);
             m_written = true;
         }
     }

@@ -10,11 +10,11 @@
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -23,7 +23,7 @@
       <score-instrument id="P1-I1">
         <instrument-name>Voice</instrument-name>
       </score-instrument>
-      <midi-device id="P1-I1" port="1"/>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>53</midi-program>
@@ -36,7 +36,7 @@
       <score-instrument id="P2-I1">
         <instrument-name>Piano</instrument-name>
       </score-instrument>
-      <midi-device id="P2-I1" port="1"/>
+      <midi-device id="P2-I1" port="1" />
       <midi-instrument id="P2-I1">
         <midi-channel>2</midi-channel>
         <midi-program>1</midi-program>
@@ -64,7 +64,7 @@
       <direction placement="above">
         <direction-type>
           <dynamics>
-            <f/>
+            <f />
           </dynamics>
         </direction-type>
       </direction>
@@ -81,7 +81,7 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <p/>
+            <p />
           </dynamics>
         </direction-type>
       </direction>
@@ -119,7 +119,7 @@
         <stem>up</stem>
         <notations>
           <dynamics placement="above">
-            <f/>
+            <f />
           </dynamics>
         </notations>
       </note>
@@ -134,7 +134,7 @@
         <stem>up</stem>
         <notations>
           <dynamics placement="below">
-            <p/>
+            <p />
           </dynamics>
         </notations>
       </note>
@@ -200,7 +200,7 @@
       <direction placement="above">
         <direction-type>
           <dynamics>
-            <ff/>
+            <ff />
           </dynamics>
         </direction-type>
         <staff>1</staff>
@@ -219,7 +219,7 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <pp/>
+            <pp />
           </dynamics>
         </direction-type>
         <staff>1</staff>
@@ -236,7 +236,7 @@
         <staff>1</staff>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
@@ -259,7 +259,7 @@
       <direction placement="above">
         <direction-type>
           <dynamics>
-            <fff/>
+            <fff />
           </dynamics>
         </direction-type>
         <staff>2</staff>
@@ -278,7 +278,7 @@
       <direction placement="below">
         <direction-type>
           <dynamics>
-            <ppp/>
+            <ppp />
           </dynamics>
         </direction-type>
         <staff>2</staff>
@@ -333,7 +333,7 @@
         <staff>1</staff>
         <notations>
           <dynamics placement="above">
-            <ff/>
+            <ff />
           </dynamics>
         </notations>
       </note>
@@ -349,12 +349,12 @@
         <staff>1</staff>
         <notations>
           <dynamics placement="below">
-            <pp/>
+            <pp />
           </dynamics>
         </notations>
       </note>
       <note>
-        <rest/>
+        <rest />
         <duration>2</duration>
         <voice>1</voice>
         <type>half</type>
@@ -386,7 +386,7 @@
         <staff>2</staff>
         <notations>
           <dynamics placement="above">
-            <fff/>
+            <fff />
           </dynamics>
         </notations>
       </note>
@@ -402,7 +402,7 @@
         <staff>2</staff>
         <notations>
           <dynamics placement="below">
-            <ppp/>
+            <ppp />
           </dynamics>
         </notations>
       </note>
