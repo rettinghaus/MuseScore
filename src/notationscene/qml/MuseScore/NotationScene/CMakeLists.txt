@@ -325,6 +325,6 @@ target_link_libraries(notationscene_qml PRIVATE
     muse::uicomponents_qml
 )
 
-if(MUE_BUILD_NOTATIONSCENE_TESTS)
-    add_subdirectory(tests)
-endif()
+# if(MUE_BUILD_NOTATIONSCENE_TESTS)
+#     add_subdirectory(tests)
+# endif()

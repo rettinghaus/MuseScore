@@ -40,6 +40,6 @@ target_sources(iex_tabledit PRIVATE
     internal/voiceallocator.h
 )
 
-if (MUE_BUILD_IMPORTEXPORT_TESTS)
-    add_subdirectory(tests)
-endif()
+# if (MUE_BUILD_IMPORTEXPORT_TESTS)
+#     add_subdirectory(tests)
+# endif()

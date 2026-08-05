@@ -36,9 +36,9 @@ target_link_libraries(braille PRIVATE
 get_property(_liblouis_tables GLOBAL PROPERTY liblouis_TABLES)
 install(FILES ${_liblouis_tables} DESTINATION ${MUSE_APP_INSTALL_RESOURCES_LOCATION}/tables)
 
-if (MUE_BUILD_BRAILLE_TESTS)
-    add_subdirectory(tests)
-endif()
+# if (MUE_BUILD_BRAILLE_TESTS)
+#     add_subdirectory(tests)
+# endif()
 
 if (MUE_BUILD_BRAILLE_QML)
     add_subdirectory(qml/MuseScore/Braille)

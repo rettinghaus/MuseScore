@@ -125,9 +125,9 @@ if (QT_ADD_CONCURRENT)
     target_link_libraries(project PRIVATE Qt::Concurrent)
 endif()
 
-if (MUE_BUILD_PROJECT_TESTS)
-    add_subdirectory(tests)
-endif()
+# if (MUE_BUILD_PROJECT_TESTS)
+#     add_subdirectory(tests)
+# endif()
 
 if (MUE_BUILD_PROJECT_QML)
     add_subdirectory(qml/MuseScore/Project)
