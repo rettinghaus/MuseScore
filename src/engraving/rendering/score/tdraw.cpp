@@ -3252,13 +3252,18 @@ void TDraw::draw(const TremoloSingleChord* item, Painter* painter, const PaintOp
 {
     TRACE_DRAW_ITEM;
 
-    if (item->isBuzzRoll()) {
-        painter->setPen(item->curColor(opt));
-        item->drawSymbol(SymId::buzzRoll, painter);
+    painter->setPen(item->curColor(opt));
+    if (item->isMultiDraw()) {
+        const double dy = item->spatium() * item->chordMag();
+        const int N = item->lines();
+        const double totalHeight = (N - 1) * dy;
+        const double startY = -totalHeight / 2.0;
+        for (int i = 0; i < N; ++i) {
+            double y = startY + i * dy;
+            item->drawSymbol(SymId::tremolo1, painter, PointF(0.0, y));
+        }
     } else {
-        painter->setBrush(Brush(item->curColor(opt)));
-        painter->setNoPen();
-        painter->drawPath(item->path());
+        item->drawSymbol(item->symId(), painter);
     }
 }
 

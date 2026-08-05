@@ -70,11 +70,42 @@ double TremoloSingleChord::chordMag() const
     return explicitParent() ? toChord(explicitParent())->intrinsicMag() : 1.0;
 }
 
+SymId TremoloSingleChord::symId() const
+{
+    if (isBuzzRoll()) {
+        return SymId::buzzRoll;
+    }
+    switch (lines()) {
+    case 1:  return SymId::tremolo1;
+    case 2:  return SymId::tremolo2;
+    case 3:  return SymId::tremolo3;
+    case 4:  return SymId::tremolo4;
+    case 5:
+    default: return SymId::tremolo5;
+    }
+}
+
 double TremoloSingleChord::minHeight() const
 {
-    const double sw = style().styleS(Sid::tremoloLineWidth).val() * chordMag();
-    const double td = style().styleS(Sid::tremoloDistance).val() * chordMag();
-    return (lines() - 1) * td + sw;
+    if (isMultiDraw()) {
+        const double dy = spatium() * chordMag();
+        const int N = lines();
+        const double totalHeight = (N - 1) * dy;
+        const double startY = -totalHeight / 2.0;
+        const RectF singleBbox = symBbox(SymId::tremolo1);
+        RectF unionBBox;
+        for (int i = 0; i < N; ++i) {
+            double y = startY + i * dy;
+            RectF b = singleBbox.translated(0.0, y);
+            if (i == 0) {
+                unionBBox = b;
+            } else {
+                unionBBox.unite(b);
+            }
+        }
+        return unionBBox.height() / spatium();
+    }
+    return symBbox(symId()).height() / spatium();
 }
 
 //---------------------------------------------------------
@@ -165,42 +196,30 @@ staff_idx_t TremoloSingleChord::vStaffIdx() const
 
 PainterPath TremoloSingleChord::basePath(double /*stretch*/) const
 {
-    if (isBuzzRoll()) {
-        return PainterPath();
-    }
-
-    const double sp = spatium() * chordMag();
-
-    double w2  = sp * style().styleS(Sid::tremoloWidth).val() * .5;
-    double lw  = sp * style().styleS(Sid::tremoloLineWidth).val();
-    double td  = sp * style().styleS(Sid::tremoloDistance).val();
-
-    PainterPath ppath;
-
-    // first line
-    ppath.addRect(-w2, 0.0, 2.0 * w2, lw);
-    double ty = td;
-
-    // other lines
-    for (int i = 1; i < m_lines; i++) {
-        ppath.addRect(-w2, ty, 2.0 * w2, lw);
-        ty += td;
-    }
-
-    Transform shearTransform;
-    shearTransform.shear(0.0, -(lw / 2.0) / w2);
-    ppath = shearTransform.map(ppath);
-
-    return ppath;
+    return PainterPath();
 }
 
 void TremoloSingleChord::computeShape()
 {
-    if (isBuzzRoll()) {
-        setbbox(symBbox(SymId::buzzRoll));
+    if (isMultiDraw()) {
+        const double dy = spatium() * chordMag();
+        const int N = lines();
+        const double totalHeight = (N - 1) * dy;
+        const double startY = -totalHeight / 2.0;
+        const RectF singleBbox = symBbox(SymId::tremolo1);
+        RectF unionBBox;
+        for (int i = 0; i < N; ++i) {
+            double y = startY + i * dy;
+            RectF b = singleBbox.translated(0.0, y);
+            if (i == 0) {
+                unionBBox = b;
+            } else {
+                unionBBox.unite(b);
+            }
+        }
+        setbbox(unionBBox);
     } else {
-        m_path = basePath();
-        setbbox(m_path.boundingRect());
+        setbbox(symBbox(symId()));
     }
 }
 
