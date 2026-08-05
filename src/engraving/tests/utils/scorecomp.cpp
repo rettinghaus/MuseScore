@@ -242,6 +242,8 @@ bool ScoreComp::compareFiles(const String& fullPath1, const String& fullPath2)
 
     ts.flush();
     std::fwrite(outputBuf.constChar(), 1, outputBuf.size(), stdout);
+    std::fflush(stdout);
+    std::exit(1);
 
     return false;
 }
