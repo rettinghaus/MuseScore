@@ -1266,6 +1266,9 @@ libmei::Dir Convert::dirToMEI(const engraving::TextLineBase* textLineBase, Strin
     // @color
     Convert::colorlineToMEI(textLineBase, meiDir);
 
+    // @staff
+    Convert::staffIdentToMEI(textLineBase, meiDir);
+
     // text content - only split lines
     meiLines = String(textLineBase->beginText()).split(u"\n");
 
@@ -3819,19 +3822,33 @@ void Convert::staffIdentToMEI(const engraving::EngravingItem* item, libmei::Elem
 {
     libmei::AttStaffIdent* staffAtt = dynamic_cast<libmei::AttStaffIdent*>(&meiElement);
 
-    IF_ASSERT_FAILED(staffAtt) {
+    if (!staffAtt || !item) {
         return;
     }
 
     libmei::xsdPositiveInteger_List staffList;
-    staffList.push_back(static_cast<int>(item->staff()->idx()) + 1);
-    // TODO: add staff number if centered between staves
-    staffAtt->SetStaff(staffList);
+    if (item->staff()) {
+        staffList.push_back(static_cast<int>(item->staff()->idx()) + 1);
+    } else if (item->track() != muse::nidx) {
+        staffList.push_back(static_cast<int>(engraving::track2staff(item->track())) + 1);
+    }
+
+    if (!staffList.empty()) {
+        // TODO: add staff number if centered between staves
+        staffAtt->SetStaff(staffList);
+    }
 }
 
 double Convert::tstampFromFraction(const engraving::Fraction& fraction, const engraving::Fraction& timesig)
 {
     return (double)fraction.numerator() / fraction.denominator() * timesig.denominator() + 1.0;
+}
+
+libmei::data_MEASUREBEAT Convert::tstamp2FromFraction(const engraving::Fraction& fraction, const engraving::Fraction& timesig,
+                                               int measureOffset)
+{
+    double beat = tstampFromFraction(fraction, timesig);
+    return { measureOffset, beat };
 }
 
 /**
