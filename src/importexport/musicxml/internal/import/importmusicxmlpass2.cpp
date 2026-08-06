@@ -2554,8 +2554,6 @@ static void markUserAccidentals(const staff_idx_t firstStaff,
                                 const Measure* measure,
                                 const std::map<Note*, int>& alterMap)
 {
-    std::map<int, bool> accTmp;
-
     AccidentalState currAcc;
     currAcc.init(key);
     SegmentType st = SegmentType::ChordRest;
@@ -2577,25 +2575,24 @@ static void markUserAccidentals(const staff_idx_t firstStaff,
                     }
                     if ((alter == -1
                          && currAccVal == AccidentalVal::FLAT
-                         && nt->accidental()->accidentalType() == AccidentalType::FLAT
-                         && !muse::value(accTmp, ln, false))
+                         && nt->accidental()
+                         && nt->accidental()->accidentalType() == AccidentalType::FLAT)
                         || (alter == 0
                             && currAccVal == AccidentalVal::NATURAL
-                            && nt->accidental()->accidentalType() == AccidentalType::NATURAL
-                            && !muse::value(accTmp, ln, false))
+                            && nt->accidental()
+                            && nt->accidental()->accidentalType() == AccidentalType::NATURAL)
                         || (alter == 1
                             && currAccVal == AccidentalVal::SHARP
-                            && nt->accidental()->accidentalType() == AccidentalType::SHARP
-                            && !muse::value(accTmp, ln, false))) {
+                            && nt->accidental()
+                            && nt->accidental()->accidentalType() == AccidentalType::SHARP)) {
                         nt->accidental()->setRole(AccidentalRole::USER);
-                    } else if (Accidental::isMicrotonal(nt->accidental()->accidentalType())
+                    } else if (nt->accidental()
+                               && Accidental::isMicrotonal(nt->accidental()->accidentalType())
                                && nt->accidental()->accidentalType() < AccidentalType::END) {
                         // microtonal accidental
                         nt->accidental()->setRole(AccidentalRole::USER);
-                        accTmp.insert({ ln, false });
-                    } else {
-                        accTmp.insert({ ln, true });
                     }
+                    currAcc.setAccidentalVal(ln, AccidentalVal(alter), false);
                 }
             }
         }
