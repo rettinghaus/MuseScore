@@ -64,6 +64,8 @@ public:
 
     Fraction tremoloLen() const;
     bool isBuzzRoll() const { return m_tremoloType == TremoloType::BUZZ_ROLL; }
+    SymId symId() const;
+    bool isMultiDraw() const { return lines() >= 6 && !isBuzzRoll(); }
 
     int lines() const { return m_lines; }
 
