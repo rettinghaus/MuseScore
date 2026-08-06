@@ -217,9 +217,12 @@ void TremoloSingleChord::computeShape()
                 unionBBox.unite(b);
             }
         }
+        unionBBox.translate(0.0, -unionBBox.top());
         setbbox(unionBBox);
     } else {
-        setbbox(symBbox(symId()));
+        RectF b = symBbox(symId());
+        b.translate(0.0, -b.top());
+        setbbox(b);
     }
 }
 

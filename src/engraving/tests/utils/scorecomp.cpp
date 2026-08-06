@@ -117,16 +117,6 @@ bool ScoreComp::saveCompareScore(Score* score, const String& saveName, const Str
     if (!ScoreRW::saveScore(score, saveName)) {
         return false;
     }
-    if (saveName.contains(u"tremolo") || saveName.contains(u"btrem")) {
-        RetVal<ByteArray> rv = fileSystem()->readFile(saveName);
-        if (rv.ret) {
-            std::printf("\n---BEGIN FILE CONTENT: %s---\n", saveName.toStdString().c_str());
-            std::fwrite(rv.val.constChar(), 1, rv.val.size(), stdout);
-            std::printf("\n---END FILE CONTENT: %s---\n", saveName.toStdString().c_str());
-            std::fflush(stdout);
-            std::exit(1);
-        }
-    }
     return ScoreComp::compareFiles(ScoreRW::rootPath() + u"/" + compareWithLocalPath, saveName);
 }
 
@@ -252,8 +242,6 @@ bool ScoreComp::compareFiles(const String& fullPath1, const String& fullPath2)
 
     ts.flush();
     std::fwrite(outputBuf.constChar(), 1, outputBuf.size(), stdout);
-    std::fflush(stdout);
-    std::exit(1);
 
     return false;
 }
