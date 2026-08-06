@@ -2843,6 +2843,68 @@ int ExportMusicXml::findTrill(const Trill* tr) const
 }
 
 //---------------------------------------------------------
+//   isAccidentalCautionary
+//---------------------------------------------------------
+
+static bool isAccidentalCautionary(const Accidental* const acc)
+{
+    if (Accidental::isMicrotonal(acc->accidentalType())) {
+        return false;
+    }
+    const Note* note = acc->note();
+    if (note) {
+        const Staff* st = note->staff();
+        if (st) {
+            const Note* prevNote = nullptr;
+            const Measure* meas = note->findMeasure();
+            if (meas) {
+                staff_idx_t staffIdx = st->idx();
+                const TrackRange trackRange = st->part()->trackRange();
+                int absLine = absStep(note->tpc(), note->epitch());
+                for (const Segment& segment : meas->segments()) {
+                    if (segment.tick() >= note->tick()) {
+                        break;
+                    }
+                    if (segment.isJustType(SegmentType::ChordRest)) {
+                        for (track_idx_t t = trackRange.startTrack; t < trackRange.endTrack; ++t) {
+                            Chord* chord = item_cast<Chord*>(segment.element(t), CastMode::MAYBE_BAD);
+                            if (chord && chord->vStaffIdx() == staffIdx) {
+                                for (Note* n : chord->notes()) {
+                                    if (absStep(n->tpc(), n->epitch()) == absLine) {
+                                        prevNote = n;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            AccidentalType accType = acc->accidentalType();
+            double currentAlter = static_cast<int>(Accidental::subtype2value(accType))
+                                  + Accidental::subtype2centOffset(accType) / 100.0;
+            if (prevNote) {
+                double prevAlter = static_cast<int>(tpc2alter(prevNote->tpc()))
+                                   + prevNote->centOffset() / 100.0;
+                return muse::RealIsEqual(currentAlter, prevAlter);
+            } else {
+                Key key = st->key(note->tick());
+                AccidentalState as;
+                as.init(key);
+                int absLine = absStep(note->tpc(), note->epitch());
+                bool error = false;
+                AccidentalVal keyAlter = as.accidentalVal(absLine, error);
+                if (!error) {
+                    double keyAlterVal = static_cast<int>(keyAlter);
+                    return muse::RealIsEqual(currentAlter, keyAlterVal);
+                }
+            }
+        }
+    }
+    return false;
+}
+
+//---------------------------------------------------------
 //   writeAccidental
 //---------------------------------------------------------
 
@@ -2856,17 +2918,18 @@ static void writeAccidental(XmlWriter& xml, const String& tagName, const Acciden
                 attrs = { { "smufl", accidentalType2SmuflMusicXmlString(acc->accidentalType()) } };
             }
             String tag = tagName;
+            const bool isCautionary = isAccidentalCautionary(acc);
             if (acc->bracket() == AccidentalBracket::BRACKET) {
-                if (acc->role() == AccidentalRole::USER) {
+                if (acc->role() == AccidentalRole::USER && isCautionary) {
                     attrs.emplace_back(std::make_pair("editorial", "yes"));
                 }
                 attrs.emplace_back(std::make_pair("bracket", "yes"));
             } else if (acc->bracket() == AccidentalBracket::PARENTHESIS) {
-                if (acc->role() == AccidentalRole::USER) {
+                if (acc->role() == AccidentalRole::USER && isCautionary) {
                     attrs.emplace_back(std::make_pair("cautionary", "yes"));
                 }
                 attrs.emplace_back(std::make_pair("parentheses", "yes"));
-            } else if (acc->role() == AccidentalRole::USER) {            // no way to tell "cautionary" from "editorial"
+            } else if (acc->role() == AccidentalRole::USER && isCautionary) {            // no way to tell "cautionary" from "editorial"
                 attrs.emplace_back(std::make_pair("cautionary", "yes")); // so pick one
                 attrs.emplace_back(std::make_pair("parentheses", "no")); // but use neither parenthesis nor bracket ;-)
             }
@@ -4288,25 +4351,11 @@ static void writePitch(XmlWriter& xml, const Note* const note, const bool useDru
     xml.startElement(useDrumset ? "unpitched" : "pitch");
     xml.tag(useDrumset ? "display-step" : "step", step);
     // Check for microtonal accidentals and overwrite "alter" tag
-    const Accidental* acc = note->accidental();
-    double microtonalAlter = 0.0;
-    if (acc) {
-        switch (acc->accidentalType()) {
-        case AccidentalType::MIRRORED_FLAT:  microtonalAlter = -0.5;
-            break;
-        case AccidentalType::SHARP_SLASH:    microtonalAlter = 0.5;
-            break;
-        case AccidentalType::MIRRORED_FLAT2: microtonalAlter = -1.5;
-            break;
-        case AccidentalType::SHARP_SLASH4:   microtonalAlter = 1.5;
-            break;
-        default:                                             break;
-        }
-    }
-    // Override accidental with explicit note tuning
+    double microtonalAlter = note->centOffset() / 100.0;
+    // Explicit note tuning
     double tuning = note->tuning();
     if (!muse::RealIsNull(tuning)) {
-        microtonalAlter = tuning / 100.0;
+        microtonalAlter += tuning / 100.0;
     }
     if (alter || microtonalAlter) {
         xml.tag("alter", alter + microtonalAlter);
