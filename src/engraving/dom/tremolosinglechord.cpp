@@ -87,6 +87,9 @@ SymId TremoloSingleChord::symId() const
 
 double TremoloSingleChord::minHeight() const
 {
+    if (isBuzzRoll()) {
+        return style().styleS(Sid::tremoloLineWidth).val() * chordMag();
+    }
     if (isMultiDraw()) {
         const double dy = spatium() * chordMag();
         const int N = lines();
@@ -201,7 +204,9 @@ PainterPath TremoloSingleChord::basePath(double /*stretch*/) const
 
 void TremoloSingleChord::computeShape()
 {
-    if (isMultiDraw()) {
+    if (isBuzzRoll()) {
+        setbbox(symBbox(SymId::buzzRoll));
+    } else if (isMultiDraw()) {
         const double dy = spatium() * chordMag();
         const int N = lines();
         const double totalHeight = (N - 1) * dy;

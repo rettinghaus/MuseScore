@@ -3253,7 +3253,9 @@ void TDraw::draw(const TremoloSingleChord* item, Painter* painter, const PaintOp
     TRACE_DRAW_ITEM;
 
     painter->setPen(item->curColor(opt));
-    if (item->isMultiDraw()) {
+    if (item->isBuzzRoll()) {
+        item->drawSymbol(SymId::buzzRoll, painter);
+    } else if (item->isMultiDraw()) {
         const double dy = item->spatium() * item->chordMag();
         const int N = item->lines();
         const double totalHeight = (N - 1) * dy;
