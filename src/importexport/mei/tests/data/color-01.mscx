@@ -456,7 +456,7 @@
         <track2>0</track2>
         <startTick>8/4</startTick>
         <ticks>3/4</ticks>
-        <eid>WB_WB</eid>
+        <eid>VB_VB</eid>
         <track>0</track>
         <color r="4" g="51" b="255" a="255"/>
         </HairPin>
@@ -465,7 +465,7 @@
         <track2>0</track2>
         <startTick>8/4</startTick>
         <ticks>2/4</ticks>
-        <eid>VB_VB</eid>
+        <eid>WB_WB</eid>
         <track>0</track>
         <color r="4" g="51" b="255" a="255"/>
         </Ottava>
