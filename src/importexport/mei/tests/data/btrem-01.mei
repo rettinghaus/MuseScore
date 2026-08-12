@@ -115,19 +115,19 @@
                                  </chord>
                               </bTrem>
                               <bTrem xml:id="bjdakpq">
-                                 <chord xml:id="b1iegagm" dur="8" stem.mod="1slash">
+                                 <chord xml:id="b1iegagm" dur="8" stem.mod="2slash">
                                     <note xml:id="nj68own" pname="d" oct="4" />
                                     <note xml:id="n5opgkt" pname="a" oct="4" />
                                  </chord>
                               </bTrem>
                               <bTrem xml:id="b1ye2phy">
-                                 <chord xml:id="cchxgx1" dur="8" stem.mod="2slash">
+                                 <chord xml:id="cchxgx1" dur="8" stem.mod="3slash">
                                     <note xml:id="n1s769l8" pname="d" oct="4" />
                                     <note xml:id="n11h1w1m" pname="a" oct="4" />
                                  </chord>
                               </bTrem>
                               <bTrem xml:id="b8wg96c">
-                                 <chord xml:id="cywc7hv" dur="8" stem.mod="2slash">
+                                 <chord xml:id="cywc7hv" dur="8" stem.mod="4slash">
                                     <note xml:id="nj5bptc" pname="d" oct="4" />
                                     <note xml:id="n1ejnl0h" pname="a" oct="4" />
                                  </chord>
@@ -135,25 +135,25 @@
                            </beam>
                            <beam>
                               <bTrem xml:id="b1apodmb">
-                                 <chord xml:id="cm5hlp7" dur="8" stem.mod="3slash">
+                                 <chord xml:id="cm5hlp7" dur="8" stem.mod="5slash">
                                     <note xml:id="n1qx3wb5" pname="d" oct="4" />
                                     <note xml:id="np4s5qv" pname="a" oct="4" />
                                  </chord>
                               </bTrem>
                               <bTrem xml:id="b1ei6xux">
-                                 <chord xml:id="c44374v" dur="8" stem.mod="3slash">
+                                 <chord xml:id="c44374v" dur="8" stem.mod="5slash">
                                     <note xml:id="n1yrbpqu" pname="d" oct="4" />
                                     <note xml:id="n181ov8u" pname="a" oct="4" />
                                  </chord>
                               </bTrem>
                               <bTrem xml:id="b1nay6ee">
-                                 <chord xml:id="c14ge9eg" dur="8" stem.mod="4slash">
+                                 <chord xml:id="c14ge9eg" dur="8" stem.mod="6slash">
                                     <note xml:id="n1b6cwv9" pname="d" oct="4" />
                                     <note xml:id="n165uy9r" pname="a" oct="4" />
                                  </chord>
                               </bTrem>
                               <bTrem xml:id="b1nitukm">
-                                 <chord xml:id="cqrn7ie" dur="8" stem.mod="4slash">
+                                 <chord xml:id="cqrn7ie" dur="8" stem.mod="6slash">
                                     <note xml:id="n1msb1m6" pname="d" oct="4" />
                                     <note xml:id="nm1425q" pname="a" oct="4" />
                                  </chord>

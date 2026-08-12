@@ -231,8 +231,8 @@
         <voice>
           <Beam>
             <eid>t_t</eid>
-            <l1>-8</l1>
-            <l2>-8</l2>
+            <l1>-22</l1>
+            <l2>-22</l2>
             </Beam>
           <Chord>
             <eid>u_u</eid>
@@ -266,7 +266,7 @@
               <tpc>17</tpc>
               </Note>
             <TremoloSingleChord>
-              <subtype>r8</subtype>
+              <subtype>r16</subtype>
               <eid>1_1</eid>
               </TremoloSingleChord>
             </Chord>
@@ -284,7 +284,7 @@
               <tpc>17</tpc>
               </Note>
             <TremoloSingleChord>
-              <subtype>r16</subtype>
+              <subtype>r32</subtype>
               <eid>5_5</eid>
               </TremoloSingleChord>
             </Chord>
@@ -302,14 +302,14 @@
               <tpc>17</tpc>
               </Note>
             <TremoloSingleChord>
-              <subtype>r16</subtype>
+              <subtype>r64</subtype>
               <eid>9_9</eid>
               </TremoloSingleChord>
             </Chord>
           <Beam>
             <eid>+_+</eid>
-            <l1>-20</l1>
-            <l2>-20</l2>
+            <l1>-44</l1>
+            <l2>-44</l2>
             </Beam>
           <Chord>
             <eid>/_/</eid>
@@ -325,7 +325,7 @@
               <tpc>17</tpc>
               </Note>
             <TremoloSingleChord>
-              <subtype>r32</subtype>
+              <subtype>r128</subtype>
               <eid>CB_CB</eid>
               </TremoloSingleChord>
             </Chord>
@@ -343,7 +343,7 @@
               <tpc>17</tpc>
               </Note>
             <TremoloSingleChord>
-              <subtype>r32</subtype>
+              <subtype>r128</subtype>
               <eid>GB_GB</eid>
               </TremoloSingleChord>
             </Chord>
@@ -361,7 +361,7 @@
               <tpc>17</tpc>
               </Note>
             <TremoloSingleChord>
-              <subtype>r64</subtype>
+              <subtype>r256</subtype>
               <eid>KB_KB</eid>
               </TremoloSingleChord>
             </Chord>
@@ -379,7 +379,7 @@
               <tpc>17</tpc>
               </Note>
             <TremoloSingleChord>
-              <subtype>r64</subtype>
+              <subtype>r256</subtype>
               <eid>OB_OB</eid>
               </TremoloSingleChord>
             </Chord>
