@@ -231,8 +231,8 @@
         <voice>
           <Beam>
             <eid>t_t</eid>
-            <l1>-8</l1>
-            <l2>-8</l2>
+            <l1>-10</l1>
+            <l2>-10</l2>
             </Beam>
           <Chord>
             <eid>u_u</eid>
@@ -308,8 +308,8 @@
             </Chord>
           <Beam>
             <eid>+_+</eid>
-            <l1>-20</l1>
-            <l2>-20</l2>
+            <l1>-22</l1>
+            <l2>-22</l2>
             </Beam>
           <Chord>
             <eid>/_/</eid>
