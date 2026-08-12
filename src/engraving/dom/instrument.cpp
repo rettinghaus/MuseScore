@@ -1167,6 +1167,9 @@ void Instrument::updateInstrumentId()
 
 const InstrChannel* Instrument::playbackChannel(int idx, const MasterScore* score) const
 {
+    if (!score) {
+        return nullptr;
+    }
     return score->playbackChannel(channel(idx));
 }
 
@@ -1176,6 +1179,9 @@ const InstrChannel* Instrument::playbackChannel(int idx, const MasterScore* scor
 
 InstrChannel* Instrument::playbackChannel(int idx, MasterScore* score)
 {
+    if (!score) {
+        return nullptr;
+    }
     return score->playbackChannel(channel(idx));
 }
 

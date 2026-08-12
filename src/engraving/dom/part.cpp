@@ -280,7 +280,8 @@ void Part::setMidiProgram(int program, int bank)
 
 int Part::midiProgram() const
 {
-    return instrument()->playbackChannel(0, masterScore())->program();
+    const InstrChannel* pc = instrument()->playbackChannel(0, masterScore());
+    return pc ? pc->program() : -1;
 }
 
 //---------------------------------------------------------

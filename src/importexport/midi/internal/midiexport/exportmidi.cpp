@@ -251,6 +251,9 @@ bool ExportMidi::write(QIODevice* device, bool midiExpandRepeats, bool exportRPN
             // "normal", "mute" for Trumpet
             for (const InstrChannel* instrChan : pair.second->channel()) {
                 const InstrChannel* ch = part->masterScore()->playbackChannel(instrChan);
+                if (!ch) {
+                    continue;
+                }
                 char port    = part->masterScore()->midiPort(ch->channel());
                 char channel = part->masterScore()->midiChannel(ch->channel());
 
