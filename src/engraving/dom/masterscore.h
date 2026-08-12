@@ -195,20 +195,24 @@ public:
     const Score* playbackScore() const { return m_playbackScore; }
     InstrChannel* playbackChannel(const InstrChannel* c)
     {
-        if (!c
-            || c->channel() < 0
-            || c->channel() >= static_cast<int>(m_midiMapping.size())) {
+        if (!c) {
             return nullptr;
+        }
+        if (c->channel() < 0
+            || c->channel() >= static_cast<int>(m_midiMapping.size())) {
+            return const_cast<InstrChannel*>(c);
         }
         return m_midiMapping[c->channel()].articulation();
     }
 
     const InstrChannel* playbackChannel(const InstrChannel* c) const
     {
-        if (!c
-            || c->channel() < 0
-            || c->channel() >= static_cast<int>(m_midiMapping.size())) {
+        if (!c) {
             return nullptr;
+        }
+        if (c->channel() < 0
+            || c->channel() >= static_cast<int>(m_midiMapping.size())) {
+            return c;
         }
         return m_midiMapping[c->channel()].articulation();
     }
