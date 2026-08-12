@@ -151,13 +151,15 @@ public:
     MidiMapping* midiMapping(int channel) { return &m_midiMapping[channel]; }
     void addMidiMapping(InstrChannel* channel, Part* part, int midiPort, int midiChannel);
     void updateMidiMapping(InstrChannel* channel, Part* part, int midiPort, int midiChannel);
-    int midiPort(int idx) const {
+    int midiPort(int idx) const
+    {
         if (idx < 0 || idx >= static_cast<int>(m_midiMapping.size())) {
             return -1;
         }
         return m_midiMapping[idx].port();
     }
-    int midiChannel(int idx) const {
+    int midiChannel(int idx) const
+    {
         if (idx < 0 || idx >= static_cast<int>(m_midiMapping.size())) {
             return -1;
         }
@@ -189,7 +191,8 @@ public:
     void setPlaybackScore(Score*);
     Score* playbackScore() { return m_playbackScore; }
     const Score* playbackScore() const { return m_playbackScore; }
-    InstrChannel* playbackChannel(const InstrChannel* c) {
+    InstrChannel* playbackChannel(const InstrChannel* c)
+    {
         if (!c
             || c->channel() < 0
             || c->channel() >= static_cast<int>(m_midiMapping.size())) {
@@ -197,7 +200,8 @@ public:
         }
         return m_midiMapping[c->channel()].articulation();
     }
-    const InstrChannel* playbackChannel(const InstrChannel* c) const {
+    const InstrChannel* playbackChannel(const InstrChannel* c) const
+    {
         if (!c
             || c->channel() < 0
             || c->channel() >= static_cast<int>(m_midiMapping.size())) {
