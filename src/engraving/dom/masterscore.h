@@ -158,6 +158,7 @@ public:
         }
         return m_midiMapping[idx].port();
     }
+
     int midiChannel(int idx) const
     {
         if (idx < 0 || idx >= static_cast<int>(m_midiMapping.size())) {
@@ -165,6 +166,7 @@ public:
         }
         return m_midiMapping[idx].channel();
     }
+
     void rebuildMidiMapping();
     void checkMidiMapping();
     bool exportMidiMapping() { return !m_isSimpleMidiMapping; }
@@ -200,6 +202,7 @@ public:
         }
         return m_midiMapping[c->channel()].articulation();
     }
+
     const InstrChannel* playbackChannel(const InstrChannel* c) const
     {
         if (!c
