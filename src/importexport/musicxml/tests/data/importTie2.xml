@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
 <score-partwise version="4.0">
   <identification>
@@ -68,7 +68,7 @@
   </credit>
   <part-list>
     <score-part id="P1">
-      <part-link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="p1.musicxml" xlink:show="new" xlink:title="Part 1"/>
+      <part-link {http://www.w3.org/1999/xlink}href="p1.musicxml" {http://www.w3.org/1999/xlink}show="new" {http://www.w3.org/1999/xlink}title="Part 1"/>
       <part-name print-object="no">MusicXML Part</part-name>
       <group>score</group>
       <score-instrument id="P1-I1">
@@ -87,7 +87,6 @@
       </midi-instrument>
     </score-part>
   </part-list>
-  <!--=========================================================-->
   <part id="P1">
     <measure number="1" width="471">
       <print>
@@ -204,7 +203,6 @@
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="2" width="442">
       <note default-x="14">
         <pitch>
@@ -362,5 +360,4 @@
       </barline>
     </measure>
   </part>
-  <!--=========================================================-->
 </score-partwise>

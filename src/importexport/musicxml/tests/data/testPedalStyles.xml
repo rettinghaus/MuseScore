@@ -3,68 +3,68 @@
 <score-partwise version="4.0">
   <work>
     <work-title>Pedal styles test</work-title>
-    </work>
+  </work>
   <identification>
     <creator type="composer">K. Rettinghaus</creator>
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
-      </encoding>
-    </identification>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
+    </encoding>
+  </identification>
   <part-list>
     <score-part id="P1">
       <part-name>Piano</part-name>
       <part-abbreviation>Pno.</part-abbreviation>
       <score-instrument id="P1-I1">
         <instrument-name>Piano</instrument-name>
-        </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      </score-instrument>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
         <volume>78.7402</volume>
         <pan>0</pan>
-        </midi-instrument>
-      </score-part>
-    </part-list>
+      </midi-instrument>
+    </score-part>
+  </part-list>
   <part id="P1">
     <measure number="1">
       <attributes>
         <divisions>1</divisions>
         <key>
           <fifths>0</fifths>
-          </key>
+        </key>
         <time>
           <beats>3</beats>
           <beat-type>4</beat-type>
-          </time>
+        </time>
         <staves>2</staves>
         <clef number="1">
           <sign>G</sign>
           <line>2</line>
-          </clef>
+        </clef>
         <clef number="2">
           <sign>F</sign>
           <line>4</line>
-          </clef>
-        </attributes>
+        </clef>
+      </attributes>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -72,39 +72,39 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -112,59 +112,59 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>3</duration>
-        </backup>
+      </backup>
       <direction placement="below">
         <direction-type>
-          <pedal type="start" line="no" sign="yes"/>
-          </direction-type>
+          <pedal type="start" line="no" sign="yes" />
+        </direction-type>
         <staff>2</staff>
-        </direction>
+      </direction>
       <note>
         <pitch>
           <step>C</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -172,39 +172,39 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -212,41 +212,41 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="2">
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -254,39 +254,39 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -294,49 +294,49 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>3</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -344,39 +344,39 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -384,61 +384,61 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <staff>2</staff>
-        </note>
+      </note>
       <direction placement="below">
         <direction-type>
-          <pedal type="stop" line="no" sign="yes"/>
-          </direction-type>
+          <pedal type="stop" line="no" sign="yes" />
+        </direction-type>
         <staff>2</staff>
-        </direction>
-      </measure>
+      </direction>
+    </measure>
     <measure number="3">
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -446,39 +446,39 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -486,59 +486,59 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>3</duration>
-        </backup>
+      </backup>
       <direction placement="below">
         <direction-type>
-          <pedal type="start" line="yes" sign="yes"/>
-          </direction-type>
+          <pedal type="start" line="yes" sign="yes" />
+        </direction-type>
         <staff>2</staff>
-        </direction>
+      </direction>
       <note>
         <pitch>
           <step>C</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -546,39 +546,39 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -586,41 +586,41 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="4">
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -628,39 +628,39 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -668,49 +668,49 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>3</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -718,39 +718,39 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -758,61 +758,61 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <staff>2</staff>
-        </note>
+      </note>
       <direction placement="below">
         <direction-type>
-          <pedal type="stop" line="yes" sign="yes"/>
-          </direction-type>
+          <pedal type="stop" line="yes" sign="yes" />
+        </direction-type>
         <staff>2</staff>
-        </direction>
-      </measure>
+      </direction>
+    </measure>
     <measure number="5">
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -820,39 +820,39 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -860,59 +860,59 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>3</duration>
-        </backup>
+      </backup>
       <direction placement="below">
         <direction-type>
-          <pedal type="sostenuto" line="no" sign="yes"/>
-          </direction-type>
+          <pedal type="sostenuto" line="no" sign="yes" />
+        </direction-type>
         <staff>2</staff>
-        </direction>
+      </direction>
       <note>
         <pitch>
           <step>C</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -920,39 +920,39 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -960,41 +960,41 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="6">
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -1002,39 +1002,39 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -1042,49 +1042,49 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>3</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -1092,39 +1092,39 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -1132,61 +1132,61 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <staff>2</staff>
-        </note>
+      </note>
       <direction placement="below">
         <direction-type>
-          <pedal type="stop" line="no" sign="yes"/>
-          </direction-type>
+          <pedal type="stop" line="no" sign="yes" />
+        </direction-type>
         <staff>2</staff>
-        </direction>
-      </measure>
+      </direction>
+    </measure>
     <measure number="7">
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -1194,39 +1194,39 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -1234,59 +1234,59 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>3</duration>
-        </backup>
+      </backup>
       <direction placement="below">
         <direction-type>
-          <pedal type="start" line="yes" sign="no"/>
-          </direction-type>
+          <pedal type="start" line="yes" sign="no" />
+        </direction-type>
         <staff>2</staff>
-        </direction>
+      </direction>
       <note>
         <pitch>
           <step>C</step>
           <octave>2</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>up</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -1294,39 +1294,39 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -1334,41 +1334,41 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>F</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="8">
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -1376,39 +1376,39 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
@@ -1416,49 +1416,49 @@
         <staff>1</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>1</voice>
         <type>quarter</type>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>3</duration>
-        </backup>
+      </backup>
       <note>
         <pitch>
           <step>G</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -1466,39 +1466,39 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>3</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
@@ -1506,50 +1506,50 @@
         <staff>2</staff>
         <notations>
           <articulations>
-            <staccato/>
-            </articulations>
-          </notations>
-        </note>
+            <staccato />
+          </articulations>
+        </notations>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>C</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <chord/>
+        <chord />
         <pitch>
           <step>E</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>2</staff>
-        </note>
+      </note>
       <note>
-        <rest/>
+        <rest />
         <duration>1</duration>
         <voice>5</voice>
         <type>quarter</type>
         <staff>2</staff>
-        </note>
+      </note>
       <direction placement="below">
         <direction-type>
-          <pedal type="stop" line="yes" sign="no"/>
-          </direction-type>
+          <pedal type="stop" line="yes" sign="no" />
+        </direction-type>
         <staff>2</staff>
-        </direction>
+      </direction>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        </barline>
-      </measure>
-    </part>
-  </score-partwise>
+      </barline>
+    </measure>
+  </part>
+</score-partwise>
