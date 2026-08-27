@@ -221,7 +221,7 @@ public:
     double durationBoxH() const;
     double durationBoxY() const;
 
-    const muse::draw::Font& durationFont() const { return m_durationFont; }
+    muse::draw::Font durationFont() const;
     const TablatureDurationFont& tabDurationFont() const { return m_durationFonts[m_durationFontIdx]; }
     const String& durationFontName() const { return m_durationFonts[m_durationFontIdx].displayName; }
     double durationFontSize() const { return m_durationFontSize; }
@@ -237,7 +237,7 @@ public:
     double fretMaskH() const;
     double fretMaskY() const;
 
-    const muse::draw::Font& fretFont() const { return m_fretFont; }
+    muse::draw::Font fretFont() const;
     const String fretFontName() const { return m_fretFontInfo.displayName; }
     double fretFontSize() const { return m_fretFontSize; }
     double fretFontUserY() const { return m_fretFontUserY; }

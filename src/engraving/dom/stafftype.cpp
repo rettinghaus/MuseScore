@@ -501,6 +501,32 @@ double StaffType::durationBoxY() const
     return m_durationBoxY + m_durationFontUserY * defaultSpatium();
 }
 
+Font StaffType::durationFont() const
+{
+    Font f = m_durationFont;
+    if (m_durationFonts[m_durationFontIdx].family.empty()) {
+        String fontName = style().styleSt(Sid::musicalSymbolFont);
+        if (fontName.empty()) {
+            fontName = u"Leland";
+        }
+        f.setFamily(fontName, Font::Type::MusicSymbol);
+    }
+    return f;
+}
+
+Font StaffType::fretFont() const
+{
+    Font f = m_fretFont;
+    if (m_fretFontInfo.family.empty()) {
+        String fontName = style().styleSt(Sid::musicalSymbolFont);
+        if (fontName.empty()) {
+            fontName = u"Leland";
+        }
+        f.setFamily(fontName, Font::Type::MusicSymbol);
+    }
+    return f;
+}
+
 double StaffType::durationFontYOffset() const
 {
     return m_durationYOffset + m_durationFontUserY * defaultSpatium();
@@ -737,9 +763,22 @@ TablatureFretFont::TablatureFretFont()
 
 TablatureDurationFont::TablatureDurationFont()
 {
-    for (size_t i = 0; i < size_t(TabVal::NUM_OF); i++) {
-        displayValue[i] = Char(u'a' + static_cast<char16_t>(i));
-    }
+    family = u""; // empty family string means use score's chosen musicalSymbolFont (e.g. Leland), falling back to Bravura if glyphs missing
+    displayDot = Char(0xE0E7); // SMuFL augmentationDot
+
+    displayValue[size_t(DurationType::V_LONG)]    = Char(0xEBA6); // luteDurationDoubleWhole
+    displayValue[size_t(DurationType::V_BREVE)]   = Char(0xEBA6); // luteDurationDoubleWhole
+    displayValue[size_t(DurationType::V_WHOLE)]   = Char(0xEBA7); // luteDurationWhole
+    displayValue[size_t(DurationType::V_HALF)]    = Char(0xEBA8); // luteDurationHalf
+    displayValue[size_t(DurationType::V_QUARTER)] = Char(0xEBA9); // luteDurationQuarter
+    displayValue[size_t(DurationType::V_EIGHTH)]  = Char(0xEBAA); // luteDuration8th
+    displayValue[size_t(DurationType::V_16TH)]    = Char(0xEBAB); // luteDuration16th
+    displayValue[size_t(DurationType::V_32ND)]    = Char(0xEBAC); // luteDuration32nd
+    displayValue[size_t(DurationType::V_64TH)]    = Char(0xEBAC);
+    displayValue[size_t(DurationType::V_128TH)]   = Char(0xEBAC);
+    displayValue[size_t(DurationType::V_256TH)]   = Char(0xEBAC);
+    displayValue[size_t(DurationType::V_512TH)]   = Char(0xEBAC);
+    displayValue[size_t(DurationType::V_1024TH)]  = Char(0xEBAC);
 }
 
 //---------------------------------------------------------
@@ -755,17 +794,26 @@ static TablatureFretFont makeFretFontPreset(const String& family, const String& 
     return f;
 }
 
-static TablatureFretFont makeMuseScoreFretFontPreset(const String& family, const String& displayName)
+static TablatureFretFont makeSMuFLFretFontPreset(const String& family, const String& displayName)
 {
-    // Create fret font from a specialist MuseScore tablature font
+    // Create fret font from a SMuFL music font (empty family string means use score's chosen musicalSymbolFont)
     TablatureFretFont f;
     f.family = family;
     f.displayName = displayName;
     f.defSize = 10.0;
-    f.displayDigit[10] = String(u"X");
-    for (size_t i = 0; i < NUM_OF_BASSSTRING_SLASHES; ++i) {
-        f.slashChar[i] = String(Char(u'A' + static_cast<char16_t>(i)));
+
+    // Set up French lute fret letters using SMuFL codepoints U+EBC0..U+EBCC
+    for (size_t i = 0; i < 13 && i < NUM_OF_LETTERFRETS; ++i) {
+        f.displayLetter[i] = Char(0xEBC0 + static_cast<char16_t>(i));
     }
+
+    // Set up French course slashes using SMuFL codepoints U+EBCD..U+EBD0
+    f.slashChar[0] = String(Char(0xEBCD)); // 1 slash (7th course)
+    f.slashChar[1] = String(Char(0xEBCE)); // 2 slashes (8th course)
+    f.slashChar[2] = String(Char(0xEBCF)); // 3 slashes (9th course)
+    f.slashChar[3] = String(Char(0xEBD0)); // 4 slashes (10th course)
+    f.slashChar[4] = String(Char(0xEBD0)); // 5th course fallback
+
     return f;
 }
 
@@ -793,23 +841,23 @@ void StaffType::initTabFonts()
     m_fretFonts = {
         makeFretFontPreset(u"FreeSans", u"MuseScore Tab Sans"),
         makeFretFontPreset(u"FreeSerif", u"MuseScore Tab Serif"),
-        makeMuseScoreFretFontPreset(u"MuseScoreTabRenaiss", u"MuseScore Tab Renaiss"),
-        makeMuseScoreFretFontPreset(u"MuseScoreTabPhalese", u"MuseScore Phalèse"),
-        makeMuseScoreFretFontPreset(u"MuseScoreTabBonneuilDeVisee", u"MuseScore Bonneuil-de Visée"),
-        makeMuseScoreFretFontPreset(u"MuseScoreTabBonneuilGaultier", u"MuseScore Bonneuil-Gaultier"),
-        makeMuseScoreFretFontPreset(u"MuseScoreTabDowland", u"MuseScore Dowland"),
-        makeMuseScoreFretFontPreset(u"MuseScoreTabLuteDidactic", u"MuseScore Lute Didactic"),
+        makeSMuFLFretFontPreset(u"", u"MuseScore Tab Renaiss"),
+        makeSMuFLFretFontPreset(u"", u"MuseScore Phalèse"),
+        makeSMuFLFretFontPreset(u"", u"MuseScore Bonneuil-de Visée"),
+        makeSMuFLFretFontPreset(u"", u"MuseScore Bonneuil-Gaultier"),
+        makeSMuFLFretFontPreset(u"", u"MuseScore Dowland"),
+        makeSMuFLFretFontPreset(u"", u"MuseScore Lute Didactic"),
     };
 
     m_durationFonts = {
-        makeDurationFontPreset(u"MuseScoreTabModern", u"MuseScore Tab Modern",
+        makeDurationFontPreset(u"", u"MuseScore Tab Modern",
                                0.5_sp, 3.0_sp, 0.1_sp, DurationType::V_QUARTER),
-        makeDurationFontPreset(u"MuseScoreTabItalian", u"MuseScore Tab Italian",
+        makeDurationFontPreset(u"", u"MuseScore Tab Italian",
                                0.15_sp, 1.75_sp, 0.15_sp, DurationType::V_WHOLE),
-        makeDurationFontPreset(u"MuseScoreTabFrench", u"MuseScore Tab French",
+        makeDurationFontPreset(u"", u"MuseScore Tab French",
                                0.30_sp, 3.125_sp, 0.21_sp, DurationType::V_QUARTER),
-        makeDurationFontPreset(u"MuseScoreTabFrenchBaroqueHeadless", u"MuseScore French Baroque (headless)"),
-        makeDurationFontPreset(u"MuseScoreTabFrenchBaroque", u"MuseScore French Baroque"),
+        makeDurationFontPreset(u"", u"MuseScore French Baroque (headless)"),
+        makeDurationFontPreset(u"", u"MuseScore French Baroque"),
     };
 }
 
