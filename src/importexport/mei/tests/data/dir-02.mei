@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://music-encoding.org/schema/5.1/mei-basic.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://music-encoding.org/schema/5.1/mei-basic.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="5.1+basic">
+   <meiHead>
+      <fileDesc>
+         <titleStmt>
+            <title>Untitled score</title>
+            <respStmt>
+               <persName role="composer">Composer / arranger</persName>
+            </respStmt>
+         </titleStmt>
+         <pubStmt>
+            <date isodate="2023-08-11T14:51:56" />
+         </pubStmt>
+      </fileDesc>
+   </meiHead>
+   <music>
+      <body>
+         <mdiv>
+            <score>
+               <scoreDef>
+                  <pgHead func="first">
+                     <rend halign="center" valign="top">
+                        <rend type="title" fontsize="x-large">Untitled score</rend>
+                        <lb />
+                        <rend type="subtitle" fontsize="large">Subtitle</rend>
+                     </rend>
+                     <rend halign="right" valign="bottom">
+                        <rend type="composer">Composer / arranger</rend>
+                     </rend>
+                  </pgHead>
+                  <staffGrp>
+                     <staffGrp bar.thru="true" symbol="bracket">
+                        <staffDef n="1" lines="5" meter.count="4" meter.unit="4">
+                           <label>Violin</label>
+                           <labelAbbr>Vln.</labelAbbr>
+                           <instrDef midi.instrnum="40" />
+                           <clef shape="G" line="2" />
+                        </staffDef>
+                        <staffDef n="2" lines="5" meter.count="4" meter.unit="4">
+                           <label>Violoncello</label>
+                           <labelAbbr>Vc.</labelAbbr>
+                           <instrDef midi.instrnum="42" />
+                           <clef shape="F" line="4" />
+                        </staffDef>
+                     </staffGrp>
+                  </staffGrp>
+               </scoreDef>
+               <section xml:id="s1">
+                  <pb />
+                  <measure xml:id="m1jreum9" n="1">
+                     <staff xml:id="m1s1" n="1">
+                        <layer xml:id="m1s1l1" n="1">
+                           <mRest xml:id="mrkn6rf" />
+                        </layer>
+                     </staff>
+                     <staff xml:id="m1s2" n="2">
+                        <layer xml:id="m1s2l1" n="1">
+                           <mRest xml:id="muoflm6" />
+                        </layer>
+                     </staff>
+                     <dir xml:id="da68gem" staff="1" tstamp="1" tstamp2="2m+1" extender="true">System text</dir>
+                     <dir xml:id="d1pboqug" staff="2" tstamp="1" tstamp2="1m+1" extender="true">Staff</dir>
+                  </measure>
+                  <measure xml:id="mou62ga" n="2">
+                     <staff xml:id="m2s1" n="1">
+                        <layer xml:id="m2s1l1" n="1">
+                           <mRest xml:id="m1g8qzk0" />
+                        </layer>
+                     </staff>
+                     <staff xml:id="m2s2" n="2">
+                        <layer xml:id="m2s2l1" n="1">
+                           <mRest xml:id="mogb023" />
+                        </layer>
+                     </staff>
+                     <dir xml:id="d1t60ztg" staff="2" tstamp="2" tstamp2="1m+2.5" extender="true" place="below">Staff</dir>
+                  </measure>
+                  <measure xml:id="mzoz4qx" n="3">
+                     <staff xml:id="m3s1" n="1">
+                        <layer xml:id="m3s1l1" n="1">
+                           <mRest xml:id="mwek1l9" />
+                        </layer>
+                     </staff>
+                     <staff xml:id="m3s2" n="2">
+                        <layer xml:id="m3s2l1" n="1">
+                           <mRest xml:id="mtzukeh" />
+                        </layer>
+                     </staff>
+                     <dir xml:id="d1jhg5yd" type="mscore-hairpin mscore-cresc" staff="1" tstamp="1" tstamp2="1m+3" extender="true">cresc.</dir>
+                     <dir xml:id="d1aftytm" staff="2" tstamp="1" tstamp2="1m+1" extender="true"></dir>
+                  </measure>
+                  <measure xml:id="mvrfsn6" right="end" n="4">
+                     <staff xml:id="m4s1" n="1">
+                        <layer xml:id="m4s1l1" n="1">
+                           <mRest xml:id="m1uxv1xq" />
+                        </layer>
+                     </staff>
+                     <staff xml:id="m4s2" n="2">
+                        <layer xml:id="m4s2l1" n="1">
+                           <mRest xml:id="m1bii3jk" />
+                        </layer>
+                     </staff>
+                     <dir xml:id="dcg5nsu" type="mscore-hairpin mscore-dim" staff="2" tstamp="3" tstamp2="0m+5" extender="true">dim.</dir>
+                  </measure>
+               </section>
+            </score>
+         </mdiv>
+      </body>
+   </music>
+</mei>
