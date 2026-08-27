@@ -188,6 +188,10 @@ TEST_F(Mei_Tests, mei_dir_01) {
     meiReadTest("dir-01");
 }
 
+TEST_F(Mei_Tests, mei_dir_02) {
+    meiReadTest("dir-02");
+}
+
 TEST_F(Mei_Tests, mei_dynamic_01) {
     meiReadTest("dynamic-01");
 }
