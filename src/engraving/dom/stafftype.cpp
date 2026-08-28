@@ -26,6 +26,8 @@
 #include "translation.h"
 
 #include "iengravingconfiguration.h"
+#include "internal/iengravingfontsprovider.h"
+#include "internal/iengravingfont.h"
 
 #include "style/defaultstyle.h"
 #include "style/style.h"
@@ -64,6 +66,7 @@ constexpr int NUM_OF_BASSSTRINGS_WITH_NUMBER = 2;     // the max number of bass 
 constexpr double TAB_DEFAULT_DUR_YOFFS = -1.0;
 
 muse::GlobalInject<IEngravingConfiguration> StaffType::configuration;
+static muse::GlobalInject<IEngravingFontsProvider> engravingFonts;
 
 std::vector<TablatureFretFont> StaffType::m_fretFonts = {};
 std::vector<TablatureDurationFont> StaffType::m_durationFonts = {};
@@ -391,7 +394,7 @@ void StaffType::setDurationMetrics()
 // FontMetrics returns results unreliably rounded to integral pixels;
 // use a scaled up font and then scale computed values down
     Font font(durationFont());
-    font.setPointSizeF(m_durationFontSize);
+    font.setPointSizeF(m_durationFontSize * 100.0);
     FontMetrics fm(font);
     String txt(m_durationFonts[m_durationFontIdx].displayValue, size_t(TabVal::NUM_OF));
     RectF bb(fm.tightBoundingRect(txt));
@@ -504,10 +507,15 @@ double StaffType::durationBoxY() const
 Font StaffType::durationFont() const
 {
     Font f = m_durationFont;
-    if (m_durationFonts[m_durationFontIdx].family.empty()) {
-        String fontName = style().styleSt(Sid::musicalSymbolFont);
+    String fontName = m_durationFonts[m_durationFontIdx].family;
+    if (fontName.empty()) {
+        fontName = style().styleSt(Sid::musicalSymbolFont);
         if (fontName.empty()) {
             fontName = u"Leland";
+        }
+        std::shared_ptr<IEngravingFont> ef = engravingFonts()->fontByName(fontName.toStdString());
+        if (!ef || !ef->isValid(SymId::luteDurationWhole)) {
+            fontName = u"Bravura";
         }
         f.setFamily(fontName, Font::Type::MusicSymbol);
     }
@@ -517,10 +525,16 @@ Font StaffType::durationFont() const
 Font StaffType::fretFont() const
 {
     Font f = m_fretFont;
-    if (m_fretFontInfo.family.empty()) {
-        String fontName = style().styleSt(Sid::musicalSymbolFont);
+    String fontName = m_fretFontInfo.family;
+    if (fontName.empty()) {
+        fontName = style().styleSt(Sid::musicalSymbolFont);
         if (fontName.empty()) {
             fontName = u"Leland";
+        }
+        std::shared_ptr<IEngravingFont> ef = engravingFonts()->fontByName(fontName.toStdString());
+        SymId checkSym = useNumbers() ? SymId::luteItalianFret0 : SymId::luteFrenchFretA;
+        if (!ef || !ef->isValid(checkSym)) {
+            fontName = u"Bravura";
         }
         f.setFamily(fontName, Font::Type::MusicSymbol);
     }
@@ -766,19 +780,19 @@ TablatureDurationFont::TablatureDurationFont()
     family = u""; // empty family string means use score's chosen musicalSymbolFont (e.g. Leland), falling back to Bravura if glyphs missing
     displayDot = Char(0xE0E7); // SMuFL augmentationDot
 
-    displayValue[size_t(DurationType::V_LONG)]    = Char(0xEBA6); // luteDurationDoubleWhole
-    displayValue[size_t(DurationType::V_BREVE)]   = Char(0xEBA6); // luteDurationDoubleWhole
-    displayValue[size_t(DurationType::V_WHOLE)]   = Char(0xEBA7); // luteDurationWhole
-    displayValue[size_t(DurationType::V_HALF)]    = Char(0xEBA8); // luteDurationHalf
-    displayValue[size_t(DurationType::V_QUARTER)] = Char(0xEBA9); // luteDurationQuarter
-    displayValue[size_t(DurationType::V_EIGHTH)]  = Char(0xEBAA); // luteDuration8th
-    displayValue[size_t(DurationType::V_16TH)]    = Char(0xEBAB); // luteDuration16th
-    displayValue[size_t(DurationType::V_32ND)]    = Char(0xEBAC); // luteDuration32nd
-    displayValue[size_t(DurationType::V_64TH)]    = Char(0xEBAC);
-    displayValue[size_t(DurationType::V_128TH)]   = Char(0xEBAC);
-    displayValue[size_t(DurationType::V_256TH)]   = Char(0xEBAC);
-    displayValue[size_t(DurationType::V_512TH)]   = Char(0xEBAC);
-    displayValue[size_t(DurationType::V_1024TH)]  = Char(0xEBAC);
+    displayValue[size_t(TabVal::VAL_LONGA)]      = Char(0xEBA6); // luteDurationDoubleWhole
+    displayValue[size_t(TabVal::VAL_BREVIS)]     = Char(0xEBA6); // luteDurationDoubleWhole
+    displayValue[size_t(TabVal::VAL_SEMIBREVIS)] = Char(0xEBA7); // luteDurationWhole
+    displayValue[size_t(TabVal::VAL_MINIMA)]     = Char(0xEBA8); // luteDurationHalf
+    displayValue[size_t(TabVal::VAL_SEMIMINIMA)] = Char(0xEBA9); // luteDurationQuarter
+    displayValue[size_t(TabVal::VAL_FUSA)]       = Char(0xEBAA); // luteDuration8th
+    displayValue[size_t(TabVal::VAL_SEMIFUSA)]   = Char(0xEBAB); // luteDuration16th
+    displayValue[size_t(TabVal::VAL_32)]         = Char(0xEBAC); // luteDuration32nd
+    displayValue[size_t(TabVal::VAL_64)]         = Char(0xEBAC);
+    displayValue[size_t(TabVal::VAL_128)]        = Char(0xEBAC);
+    displayValue[size_t(TabVal::VAL_256)]        = Char(0xEBAC);
+    displayValue[size_t(TabVal::VAL_512)]        = Char(0xEBAC);
+    displayValue[size_t(TabVal::VAL_1024)]       = Char(0xEBAC);
 }
 
 //---------------------------------------------------------
@@ -800,7 +814,12 @@ static TablatureFretFont makeSMuFLFretFontPreset(const String& family, const Str
     TablatureFretFont f;
     f.family = family;
     f.displayName = displayName;
-    f.defSize = 10.0;
+    f.defSize = 20.0;
+
+    // Set up Italian lute fret numbers using SMuFL codepoints U+EBE0..U+EBE9
+    for (size_t i = 0; i < 10 && i < NUM_OF_DIGITFRETS; ++i) {
+        f.displayDigit[i] = String(Char(0xEBE0 + static_cast<char16_t>(i)));
+    }
 
     // Set up French lute fret letters using SMuFL codepoints U+EBC0..U+EBCC
     for (size_t i = 0; i < 13 && i < NUM_OF_LETTERFRETS; ++i) {
