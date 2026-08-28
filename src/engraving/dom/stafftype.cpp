@@ -845,7 +845,7 @@ static TablatureFretFont makeItalianSMuFLFretFontPreset(const String& family, co
             f.displayDigit[i] = String(Char(0xEBE0 + static_cast<char16_t>(i)));
         } else {
             f.displayDigit[i] = String(Char(0xEBE0 + static_cast<char16_t>(i / 10)))
-                              + String(Char(0xEBE0 + static_cast<char16_t>(i % 10)));
+                                + String(Char(0xEBE0 + static_cast<char16_t>(i % 10)));
         }
     }
 
