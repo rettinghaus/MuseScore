@@ -514,7 +514,7 @@ Font StaffType::durationFont() const
             fontName = u"Leland";
         }
         std::shared_ptr<IEngravingFont> ef = engravingFonts()->fontByName(fontName.toStdString());
-        if (!ef || !ef->isValid(SymId::luteDurationWhole)) {
+        if (!ef || ef->useFallbackFont(SymId::luteDurationWhole)) {
             fontName = u"Bravura";
         }
         f.setFamily(fontName, Font::Type::MusicSymbol);
@@ -533,7 +533,7 @@ Font StaffType::fretFont() const
         }
         std::shared_ptr<IEngravingFont> ef = engravingFonts()->fontByName(fontName.toStdString());
         SymId checkSym = useNumbers() ? SymId::luteItalianFret0 : SymId::luteFrenchFretA;
-        if (!ef || !ef->isValid(checkSym)) {
+        if (!ef || ef->useFallbackFont(checkSym)) {
             fontName = u"Bravura";
         }
         f.setFamily(fontName, Font::Type::MusicSymbol);
@@ -808,18 +808,13 @@ static TablatureFretFont makeFretFontPreset(const String& family, const String& 
     return f;
 }
 
-static TablatureFretFont makeSMuFLFretFontPreset(const String& family, const String& displayName)
+static TablatureFretFont makeFrenchSMuFLFretFontPreset(const String& family, const String& displayName)
 {
-    // Create fret font from a SMuFL music font (empty family string means use score's chosen musicalSymbolFont)
+    // Create French fret font from a SMuFL music font (empty family string means use score's chosen musicalSymbolFont)
     TablatureFretFont f;
     f.family = family;
     f.displayName = displayName;
     f.defSize = 20.0;
-
-    // Set up Italian lute fret numbers using SMuFL codepoints U+EBE0..U+EBE9
-    for (size_t i = 0; i < 10 && i < NUM_OF_DIGITFRETS; ++i) {
-        f.displayDigit[i] = String(Char(0xEBE0 + static_cast<char16_t>(i)));
-    }
 
     // Set up French lute fret letters using SMuFL codepoints U+EBC0..U+EBCC
     for (size_t i = 0; i < 13 && i < NUM_OF_LETTERFRETS; ++i) {
@@ -832,6 +827,27 @@ static TablatureFretFont makeSMuFLFretFontPreset(const String& family, const Str
     f.slashChar[2] = String(Char(0xEBCF)); // 3 slashes (9th course)
     f.slashChar[3] = String(Char(0xEBD0)); // 4 slashes (10th course)
     f.slashChar[4] = String(Char(0xEBD0)); // 5th course fallback
+
+    return f;
+}
+
+static TablatureFretFont makeItalianSMuFLFretFontPreset(const String& family, const String& displayName)
+{
+    // Create Italian fret font from a SMuFL music font (empty family string means use score's chosen musicalSymbolFont)
+    TablatureFretFont f;
+    f.family = family;
+    f.displayName = displayName;
+    f.defSize = 20.0;
+
+    // Set up Italian lute fret numbers using SMuFL codepoints U+EBE0..U+EBE9
+    for (size_t i = 0; i < NUM_OF_DIGITFRETS; ++i) {
+        if (i < 10) {
+            f.displayDigit[i] = String(Char(0xEBE0 + static_cast<char16_t>(i)));
+        } else {
+            f.displayDigit[i] = String(Char(0xEBE0 + static_cast<char16_t>(i / 10)))
+                              + String(Char(0xEBE0 + static_cast<char16_t>(i % 10)));
+        }
+    }
 
     return f;
 }
@@ -860,12 +876,13 @@ void StaffType::initTabFonts()
     m_fretFonts = {
         makeFretFontPreset(u"FreeSans", u"MuseScore Tab Sans"),
         makeFretFontPreset(u"FreeSerif", u"MuseScore Tab Serif"),
-        makeSMuFLFretFontPreset(u"", u"MuseScore Tab Renaiss"),
-        makeSMuFLFretFontPreset(u"", u"MuseScore Phalèse"),
-        makeSMuFLFretFontPreset(u"", u"MuseScore Bonneuil-de Visée"),
-        makeSMuFLFretFontPreset(u"", u"MuseScore Bonneuil-Gaultier"),
-        makeSMuFLFretFontPreset(u"", u"MuseScore Dowland"),
-        makeSMuFLFretFontPreset(u"", u"MuseScore Lute Didactic"),
+        makeFrenchSMuFLFretFontPreset(u"", u"MuseScore Tab Renaiss"),
+        makeFrenchSMuFLFretFontPreset(u"", u"MuseScore Phalèse"),
+        makeFrenchSMuFLFretFontPreset(u"", u"MuseScore Bonneuil-de Visée"),
+        makeFrenchSMuFLFretFontPreset(u"", u"MuseScore Bonneuil-Gaultier"),
+        makeFrenchSMuFLFretFontPreset(u"", u"MuseScore Dowland"),
+        makeFrenchSMuFLFretFontPreset(u"", u"MuseScore Lute Didactic"),
+        makeItalianSMuFLFretFontPreset(u"", u"MuseScore Tab Italian"),
     };
 
     m_durationFonts = {
