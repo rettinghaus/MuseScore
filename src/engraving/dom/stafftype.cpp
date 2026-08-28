@@ -26,8 +26,8 @@
 #include "translation.h"
 
 #include "iengravingconfiguration.h"
-#include "internal/iengravingfontsprovider.h"
-#include "internal/iengravingfont.h"
+#include "../iengravingfontsprovider.h"
+#include "../iengravingfont.h"
 
 #include "style/defaultstyle.h"
 #include "style/style.h"
