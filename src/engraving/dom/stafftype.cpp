@@ -514,7 +514,7 @@ Font StaffType::durationFont() const
             fontName = u"Leland";
         }
         std::shared_ptr<IEngravingFont> ef = engravingFonts()->fontByName(fontName.toStdString());
-        if (!ef || ef->useFallbackFont(SymId::luteDurationWhole)) {
+        if (!ef || !ef->isValid(SymId::luteDurationWhole)) {
             fontName = u"Bravura";
         }
         f.setFamily(fontName, Font::Type::MusicSymbol);
@@ -533,7 +533,7 @@ Font StaffType::fretFont() const
         }
         std::shared_ptr<IEngravingFont> ef = engravingFonts()->fontByName(fontName.toStdString());
         SymId checkSym = useNumbers() ? SymId::luteItalianFret0 : SymId::luteFrenchFretA;
-        if (!ef || ef->useFallbackFont(checkSym)) {
+        if (!ef || !ef->isValid(checkSym)) {
             fontName = u"Bravura";
         }
         f.setFamily(fontName, Font::Type::MusicSymbol);
