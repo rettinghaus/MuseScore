@@ -816,6 +816,18 @@ static TablatureFretFont makeFrenchSMuFLFretFontPreset(const String& family, con
     f.displayName = displayName;
     f.defSize = 20.0;
 
+    // Set up Italian lute fret numbers as fallback in French preset using SMuFL codepoints U+EBE0..U+EBEE
+    for (size_t i = 0; i < NUM_OF_DIGITFRETS; ++i) {
+        if (i <= 9) {
+            f.displayDigit[i] = String(Char(0xEBE0 + static_cast<char16_t>(i)));
+        } else if (i <= 14) {
+            f.displayDigit[i] = String(Char(0xEBEA + static_cast<char16_t>(i - 10)));
+        } else {
+            f.displayDigit[i] = String(Char(0xEBE0 + static_cast<char16_t>(i / 10)))
+                                + String(Char(0xEBE0 + static_cast<char16_t>(i % 10)));
+        }
+    }
+
     // Set up French lute fret letters using SMuFL codepoints U+EBC0..U+EBCC
     for (size_t i = 0; i < 13 && i < NUM_OF_LETTERFRETS; ++i) {
         f.displayLetter[i] = Char(0xEBC0 + static_cast<char16_t>(i));
@@ -839,14 +851,21 @@ static TablatureFretFont makeItalianSMuFLFretFontPreset(const String& family, co
     f.displayName = displayName;
     f.defSize = 20.0;
 
-    // Set up Italian lute fret numbers using SMuFL codepoints U+EBE0..U+EBE9
+    // Set up Italian lute fret numbers using SMuFL codepoints U+EBE0..U+EBEE (0-9: EBE0-EBE9, 10-14: EBEA-EBEE)
     for (size_t i = 0; i < NUM_OF_DIGITFRETS; ++i) {
-        if (i < 10) {
+        if (i <= 9) {
             f.displayDigit[i] = String(Char(0xEBE0 + static_cast<char16_t>(i)));
+        } else if (i <= 14) {
+            f.displayDigit[i] = String(Char(0xEBEA + static_cast<char16_t>(i - 10)));
         } else {
             f.displayDigit[i] = String(Char(0xEBE0 + static_cast<char16_t>(i / 10)))
                                 + String(Char(0xEBE0 + static_cast<char16_t>(i % 10)));
         }
+    }
+
+    // Set up French lute fret letters as fallback in Italian preset using SMuFL codepoints U+EBC0..U+EBCC
+    for (size_t i = 0; i < 13 && i < NUM_OF_LETTERFRETS; ++i) {
+        f.displayLetter[i] = Char(0xEBC0 + static_cast<char16_t>(i));
     }
 
     return f;
@@ -1038,7 +1057,7 @@ void StaffType::initStaffTypes(const Color& defaultColor)
         StaffType(StaffGroup::TAB, StaffTypes::TAB_UKULELE,   4,  0, 1.5, true,  true, false, true, false,  defaultColor, u"MuseScore Tab Modern", false, true,  u"MuseScore Tab Sans",                     TablatureSymbolRepeat::NEVER, false, TablatureMinimStyle::SHORTER, true,  true,  true,  false, false, true,  true,  true),
         StaffType(StaffGroup::TAB, StaffTypes::TAB_BALALAJKA, 3,  0, 1.5, true,  true, false, true, false,  defaultColor, u"MuseScore Tab Modern", false, true,  u"MuseScore Tab Sans",                     TablatureSymbolRepeat::NEVER, false, TablatureMinimStyle::SHORTER, true,  true,  true,  false, false, true,  true,  true),
         StaffType(StaffGroup::TAB, StaffTypes::TAB_DULCIMER,  3,  0, 1.5, true,  true, false, true, false,  defaultColor, u"MuseScore Tab Modern", false, true,  u"MuseScore Tab Sans",                     TablatureSymbolRepeat::NEVER, false, TablatureMinimStyle::SHORTER, true,  true,  true,  false, true,  true,  true,  true),
-        StaffType(StaffGroup::TAB, StaffTypes::TAB_ITALIAN,   6,  0, 1.5, false, true, true,  true, false,  defaultColor, u"MuseScore Tab Italian",true,  false, u"MuseScore Tab Renaiss",                  TablatureSymbolRepeat::NEVER, true,  TablatureMinimStyle::NONE,    true,  true,  false, false, true,  false, true,  false),
+        StaffType(StaffGroup::TAB, StaffTypes::TAB_ITALIAN,   6,  0, 1.5, false, true, true,  true, false,  defaultColor, u"MuseScore Tab Italian",true,  false, u"MuseScore Tab Italian",                  TablatureSymbolRepeat::NEVER, true,  TablatureMinimStyle::NONE,    true,  true,  false, false, true,  false, true,  false),
         StaffType(StaffGroup::TAB, StaffTypes::TAB_FRENCH,    6,  0, 1.5, false, true, true,  true, false,  defaultColor, u"MuseScore Tab French", true,  false, u"MuseScore Tab Renaiss",                  TablatureSymbolRepeat::NEVER, true,  TablatureMinimStyle::NONE,    false, false, false, false, false, false, false, false),
         StaffType(StaffGroup::TAB, StaffTypes::TAB_7COMMON,   7,  0, 1.5, true,  true, false, true, false,  defaultColor, u"MuseScore Tab Modern", false, true,  u"MuseScore Tab Sans",                     TablatureSymbolRepeat::NEVER, false, TablatureMinimStyle::SHORTER, true,  true,  true,  false, false, true,  true,  true),
         StaffType(StaffGroup::TAB, StaffTypes::TAB_8COMMON,   8,  0, 1.5, true,  true, false, true, false,  defaultColor, u"MuseScore Tab Modern", false, true,  u"MuseScore Tab Sans",                     TablatureSymbolRepeat::NEVER, false, TablatureMinimStyle::SHORTER, true,  true,  true,  false, false, true,  true,  true),
