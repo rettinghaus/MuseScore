@@ -814,7 +814,7 @@ static TablatureFretFont makeFrenchSMuFLFretFontPreset(const String& family, con
     TablatureFretFont f;
     f.family = family;
     f.displayName = displayName;
-    f.defSize = 20.0;
+    f.defSize = 30.0;
 
     // Set up Italian lute fret numbers as fallback in French preset using SMuFL codepoints U+EBE0..U+EBEE
     for (size_t i = 0; i < NUM_OF_DIGITFRETS; ++i) {
@@ -849,7 +849,7 @@ static TablatureFretFont makeItalianSMuFLFretFontPreset(const String& family, co
     TablatureFretFont f;
     f.family = family;
     f.displayName = displayName;
-    f.defSize = 20.0;
+    f.defSize = 30.0;
 
     // Set up Italian lute fret numbers using SMuFL codepoints U+EBE0..U+EBEE (0-9: EBE0-EBE9, 10-14: EBEA-EBEE)
     for (size_t i = 0; i < NUM_OF_DIGITFRETS; ++i) {
