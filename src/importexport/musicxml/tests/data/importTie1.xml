@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0.2 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
 <score-partwise version="4.0.2">
   <work>
@@ -9,9 +9,9 @@
       <software>Audiveris 5.4-alpha</software>
       <software>ProxyMusic 4.0.2</software>
       <encoding-date>2024-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="stem" type="yes"/>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <part-list>
@@ -29,7 +29,6 @@
       </midi-instrument>
     </score-part>
   </part-list>
-  <!--= = = = = = = = = = = = = = = = = = = = = = = = = = = = =-->
   <part id="P1">
     <measure number="11">
       <attributes>
@@ -82,13 +81,13 @@
           <octave>4</octave>
         </pitch>
         <duration>2</duration>
-        <tie type="stop"/>
+        <tie type="stop" />
         <voice>2</voice>
         <type>half</type>
         <stem>down</stem>
         <staff>1</staff>
         <notations>
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
       </note>
       <note>
@@ -98,13 +97,13 @@
           <octave>4</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="start"/>
+        <tie type="start" />
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
         <notations>
-          <tied type="start" orientation="under"/>
+          <tied type="start" orientation="under" />
         </notations>
       </note>
       <backup>
@@ -116,14 +115,14 @@
           <octave>4</octave>
         </pitch>
         <duration>3</duration>
-        <tie type="start"/>
+        <tie type="start" />
         <voice>5</voice>
         <type>half</type>
-        <dot/>
+        <dot />
         <stem>up</stem>
         <staff>2</staff>
         <notations>
-          <tied type="start" orientation="over"/>
+          <tied type="start" orientation="over" />
         </notations>
       </note>
       <backup>
@@ -137,12 +136,11 @@
         <duration>3</duration>
         <voice>6</voice>
         <type>half</type>
-        <dot/>
+        <dot />
         <stem>down</stem>
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="12">
       <note>
         <pitch>
@@ -177,13 +175,13 @@
           <octave>4</octave>
         </pitch>
         <duration>2</duration>
-        <tie type="stop"/>
+        <tie type="stop" />
         <voice>2</voice>
         <type>half</type>
         <stem>down</stem>
         <staff>1</staff>
         <notations>
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
       </note>
       <note>
@@ -192,13 +190,13 @@
           <octave>4</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="start"/>
+        <tie type="start" />
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
         <notations>
-          <tied type="start" orientation="under"/>
+          <tied type="start" orientation="under" />
         </notations>
       </note>
       <backup>
@@ -210,13 +208,13 @@
           <octave>4</octave>
         </pitch>
         <duration>2</duration>
-        <tie type="stop"/>
+        <tie type="stop" />
         <voice>5</voice>
         <type>half</type>
         <stem>up</stem>
         <staff>2</staff>
         <notations>
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
       </note>
       <note>
@@ -256,8 +254,6 @@
         <staff>2</staff>
       </note>
     </measure>
-    
-    <!--=======================================================-->
     <measure number="13">
       <note>
         <pitch>
@@ -290,13 +286,13 @@
           <octave>4</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="stop"/>
+        <tie type="stop" />
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
         <notations>
-          <tied type="stop"/>
+          <tied type="stop" />
         </notations>
       </note>
       <note>
@@ -316,13 +312,13 @@
           <octave>4</octave>
         </pitch>
         <duration>1</duration>
-        <tie type="start"/>
+        <tie type="start" />
         <voice>2</voice>
         <type>quarter</type>
         <stem>down</stem>
         <staff>1</staff>
         <notations>
-          <tied type="start" orientation="under"/>
+          <tied type="start" orientation="under" />
         </notations>
       </note>
       <backup>
