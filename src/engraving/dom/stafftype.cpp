@@ -26,6 +26,8 @@
 #include "translation.h"
 
 #include "iengravingconfiguration.h"
+#include "../iengravingfontsprovider.h"
+#include "../iengravingfont.h"
 
 #include "style/defaultstyle.h"
 #include "style/style.h"
@@ -64,6 +66,7 @@ constexpr int NUM_OF_BASSSTRINGS_WITH_NUMBER = 2;     // the max number of bass 
 constexpr double TAB_DEFAULT_DUR_YOFFS = -1.0;
 
 muse::GlobalInject<IEngravingConfiguration> StaffType::configuration;
+static muse::GlobalInject<IEngravingFontsProvider> engravingFonts;
 
 std::vector<TablatureFretFont> StaffType::m_fretFonts = {};
 std::vector<TablatureDurationFont> StaffType::m_durationFonts = {};
@@ -391,7 +394,7 @@ void StaffType::setDurationMetrics()
 // FontMetrics returns results unreliably rounded to integral pixels;
 // use a scaled up font and then scale computed values down
     Font font(durationFont());
-    font.setPointSizeF(m_durationFontSize);
+    font.setPointSizeF(m_durationFontSize * 100.0);
     FontMetrics fm(font);
     String txt(m_durationFonts[m_durationFontIdx].displayValue, size_t(TabVal::NUM_OF));
     RectF bb(fm.tightBoundingRect(txt));
@@ -499,6 +502,43 @@ double StaffType::durationBoxY() const
         return 0.0;
     }
     return m_durationBoxY + m_durationFontUserY * defaultSpatium();
+}
+
+Font StaffType::durationFont() const
+{
+    Font f = m_durationFont;
+    String fontName = m_durationFonts[m_durationFontIdx].family;
+    if (fontName.empty()) {
+        fontName = style().styleSt(Sid::musicalSymbolFont);
+        if (fontName.empty()) {
+            fontName = u"Leland";
+        }
+        std::shared_ptr<IEngravingFont> ef = engravingFonts()->fontByName(fontName.toStdString());
+        if (!ef || !ef->isValid(SymId::luteDurationWhole)) {
+            fontName = u"Bravura";
+        }
+        f.setFamily(fontName, Font::Type::MusicSymbol);
+    }
+    return f;
+}
+
+Font StaffType::fretFont() const
+{
+    Font f = m_fretFont;
+    String fontName = m_fretFontInfo.family;
+    if (fontName.empty()) {
+        fontName = style().styleSt(Sid::musicalSymbolFont);
+        if (fontName.empty()) {
+            fontName = u"Leland";
+        }
+        std::shared_ptr<IEngravingFont> ef = engravingFonts()->fontByName(fontName.toStdString());
+        SymId checkSym = useNumbers() ? SymId::luteItalianFret0 : SymId::luteFrenchFretA;
+        if (!ef || !ef->isValid(checkSym)) {
+            fontName = u"Bravura";
+        }
+        f.setFamily(fontName, Font::Type::MusicSymbol);
+    }
+    return f;
 }
 
 double StaffType::durationFontYOffset() const
@@ -737,9 +777,22 @@ TablatureFretFont::TablatureFretFont()
 
 TablatureDurationFont::TablatureDurationFont()
 {
-    for (size_t i = 0; i < size_t(TabVal::NUM_OF); i++) {
-        displayValue[i] = Char(u'a' + static_cast<char16_t>(i));
-    }
+    family = u""; // empty family string means use score's chosen musicalSymbolFont (e.g. Leland), falling back to Bravura if glyphs missing
+    displayDot = Char(0xE0E7); // SMuFL augmentationDot
+
+    displayValue[size_t(TabVal::VAL_LONGA)]      = Char(0xEBA6); // luteDurationDoubleWhole
+    displayValue[size_t(TabVal::VAL_BREVIS)]     = Char(0xEBA6); // luteDurationDoubleWhole
+    displayValue[size_t(TabVal::VAL_SEMIBREVIS)] = Char(0xEBA7); // luteDurationWhole
+    displayValue[size_t(TabVal::VAL_MINIMA)]     = Char(0xEBA8); // luteDurationHalf
+    displayValue[size_t(TabVal::VAL_SEMIMINIMA)] = Char(0xEBA9); // luteDurationQuarter
+    displayValue[size_t(TabVal::VAL_FUSA)]       = Char(0xEBAA); // luteDuration8th
+    displayValue[size_t(TabVal::VAL_SEMIFUSA)]   = Char(0xEBAB); // luteDuration16th
+    displayValue[size_t(TabVal::VAL_32)]         = Char(0xEBAC); // luteDuration32nd
+    displayValue[size_t(TabVal::VAL_64)]         = Char(0xEBAC);
+    displayValue[size_t(TabVal::VAL_128)]        = Char(0xEBAC);
+    displayValue[size_t(TabVal::VAL_256)]        = Char(0xEBAC);
+    displayValue[size_t(TabVal::VAL_512)]        = Char(0xEBAC);
+    displayValue[size_t(TabVal::VAL_1024)]       = Char(0xEBAC);
 }
 
 //---------------------------------------------------------
@@ -755,17 +808,66 @@ static TablatureFretFont makeFretFontPreset(const String& family, const String& 
     return f;
 }
 
-static TablatureFretFont makeMuseScoreFretFontPreset(const String& family, const String& displayName)
+static TablatureFretFont makeFrenchSMuFLFretFontPreset(const String& family, const String& displayName)
 {
-    // Create fret font from a specialist MuseScore tablature font
+    // Create French fret font from a SMuFL music font (empty family string means use score's chosen musicalSymbolFont)
     TablatureFretFont f;
     f.family = family;
     f.displayName = displayName;
-    f.defSize = 10.0;
-    f.displayDigit[10] = String(u"X");
-    for (size_t i = 0; i < NUM_OF_BASSSTRING_SLASHES; ++i) {
-        f.slashChar[i] = String(Char(u'A' + static_cast<char16_t>(i)));
+    f.defSize = 20.0;
+
+    // Set up Italian lute fret numbers as fallback in French preset using SMuFL codepoints U+EBE0..U+EBEE
+    for (size_t i = 0; i < NUM_OF_DIGITFRETS; ++i) {
+        if (i <= 9) {
+            f.displayDigit[i] = String(Char(0xEBE0 + static_cast<char16_t>(i)));
+        } else if (i <= 14) {
+            f.displayDigit[i] = String(Char(0xEBEA + static_cast<char16_t>(i - 10)));
+        } else {
+            f.displayDigit[i] = String(Char(0xEBE0 + static_cast<char16_t>(i / 10)))
+                                + String(Char(0xEBE0 + static_cast<char16_t>(i % 10)));
+        }
     }
+
+    // Set up French lute fret letters using SMuFL codepoints U+EBC0..U+EBCC
+    for (size_t i = 0; i < 13 && i < NUM_OF_LETTERFRETS; ++i) {
+        f.displayLetter[i] = Char(0xEBC0 + static_cast<char16_t>(i));
+    }
+
+    // Set up French course slashes using SMuFL codepoints U+EBCD..U+EBD0
+    f.slashChar[0] = String(Char(0xEBCD)); // 1 slash (7th course)
+    f.slashChar[1] = String(Char(0xEBCE)); // 2 slashes (8th course)
+    f.slashChar[2] = String(Char(0xEBCF)); // 3 slashes (9th course)
+    f.slashChar[3] = String(Char(0xEBD0)); // 4 slashes (10th course)
+    f.slashChar[4] = String(Char(0xEBD0)); // 5th course fallback
+
+    return f;
+}
+
+static TablatureFretFont makeItalianSMuFLFretFontPreset(const String& family, const String& displayName)
+{
+    // Create Italian fret font from a SMuFL music font (empty family string means use score's chosen musicalSymbolFont)
+    TablatureFretFont f;
+    f.family = family;
+    f.displayName = displayName;
+    f.defSize = 20.0;
+
+    // Set up Italian lute fret numbers using SMuFL codepoints U+EBE0..U+EBEE (0-9: EBE0-EBE9, 10-14: EBEA-EBEE)
+    for (size_t i = 0; i < NUM_OF_DIGITFRETS; ++i) {
+        if (i <= 9) {
+            f.displayDigit[i] = String(Char(0xEBE0 + static_cast<char16_t>(i)));
+        } else if (i <= 14) {
+            f.displayDigit[i] = String(Char(0xEBEA + static_cast<char16_t>(i - 10)));
+        } else {
+            f.displayDigit[i] = String(Char(0xEBE0 + static_cast<char16_t>(i / 10)))
+                                + String(Char(0xEBE0 + static_cast<char16_t>(i % 10)));
+        }
+    }
+
+    // Set up French lute fret letters as fallback in Italian preset using SMuFL codepoints U+EBC0..U+EBCC
+    for (size_t i = 0; i < 13 && i < NUM_OF_LETTERFRETS; ++i) {
+        f.displayLetter[i] = Char(0xEBC0 + static_cast<char16_t>(i));
+    }
+
     return f;
 }
 
@@ -793,23 +895,24 @@ void StaffType::initTabFonts()
     m_fretFonts = {
         makeFretFontPreset(u"FreeSans", u"MuseScore Tab Sans"),
         makeFretFontPreset(u"FreeSerif", u"MuseScore Tab Serif"),
-        makeMuseScoreFretFontPreset(u"MuseScoreTabRenaiss", u"MuseScore Tab Renaiss"),
-        makeMuseScoreFretFontPreset(u"MuseScoreTabPhalese", u"MuseScore Phalèse"),
-        makeMuseScoreFretFontPreset(u"MuseScoreTabBonneuilDeVisee", u"MuseScore Bonneuil-de Visée"),
-        makeMuseScoreFretFontPreset(u"MuseScoreTabBonneuilGaultier", u"MuseScore Bonneuil-Gaultier"),
-        makeMuseScoreFretFontPreset(u"MuseScoreTabDowland", u"MuseScore Dowland"),
-        makeMuseScoreFretFontPreset(u"MuseScoreTabLuteDidactic", u"MuseScore Lute Didactic"),
+        makeFrenchSMuFLFretFontPreset(u"", u"MuseScore Tab Renaiss"),
+        makeFrenchSMuFLFretFontPreset(u"", u"MuseScore Phalèse"),
+        makeFrenchSMuFLFretFontPreset(u"", u"MuseScore Bonneuil-de Visée"),
+        makeFrenchSMuFLFretFontPreset(u"", u"MuseScore Bonneuil-Gaultier"),
+        makeFrenchSMuFLFretFontPreset(u"", u"MuseScore Dowland"),
+        makeFrenchSMuFLFretFontPreset(u"", u"MuseScore Lute Didactic"),
+        makeItalianSMuFLFretFontPreset(u"", u"MuseScore Tab Italian"),
     };
 
     m_durationFonts = {
-        makeDurationFontPreset(u"MuseScoreTabModern", u"MuseScore Tab Modern",
+        makeDurationFontPreset(u"", u"MuseScore Tab Modern",
                                0.5_sp, 3.0_sp, 0.1_sp, DurationType::V_QUARTER),
-        makeDurationFontPreset(u"MuseScoreTabItalian", u"MuseScore Tab Italian",
+        makeDurationFontPreset(u"", u"MuseScore Tab Italian",
                                0.15_sp, 1.75_sp, 0.15_sp, DurationType::V_WHOLE),
-        makeDurationFontPreset(u"MuseScoreTabFrench", u"MuseScore Tab French",
+        makeDurationFontPreset(u"", u"MuseScore Tab French",
                                0.30_sp, 3.125_sp, 0.21_sp, DurationType::V_QUARTER),
-        makeDurationFontPreset(u"MuseScoreTabFrenchBaroqueHeadless", u"MuseScore French Baroque (headless)"),
-        makeDurationFontPreset(u"MuseScoreTabFrenchBaroque", u"MuseScore French Baroque"),
+        makeDurationFontPreset(u"", u"MuseScore French Baroque (headless)"),
+        makeDurationFontPreset(u"", u"MuseScore French Baroque"),
     };
 }
 
@@ -954,7 +1057,7 @@ void StaffType::initStaffTypes(const Color& defaultColor)
         StaffType(StaffGroup::TAB, StaffTypes::TAB_UKULELE,   4,  0, 1.5, true,  true, false, true, false,  defaultColor, u"MuseScore Tab Modern", false, true,  u"MuseScore Tab Sans",                     TablatureSymbolRepeat::NEVER, false, TablatureMinimStyle::SHORTER, true,  true,  true,  false, false, true,  true,  true),
         StaffType(StaffGroup::TAB, StaffTypes::TAB_BALALAJKA, 3,  0, 1.5, true,  true, false, true, false,  defaultColor, u"MuseScore Tab Modern", false, true,  u"MuseScore Tab Sans",                     TablatureSymbolRepeat::NEVER, false, TablatureMinimStyle::SHORTER, true,  true,  true,  false, false, true,  true,  true),
         StaffType(StaffGroup::TAB, StaffTypes::TAB_DULCIMER,  3,  0, 1.5, true,  true, false, true, false,  defaultColor, u"MuseScore Tab Modern", false, true,  u"MuseScore Tab Sans",                     TablatureSymbolRepeat::NEVER, false, TablatureMinimStyle::SHORTER, true,  true,  true,  false, true,  true,  true,  true),
-        StaffType(StaffGroup::TAB, StaffTypes::TAB_ITALIAN,   6,  0, 1.5, false, true, true,  true, false,  defaultColor, u"MuseScore Tab Italian",true,  false, u"MuseScore Tab Renaiss",                  TablatureSymbolRepeat::NEVER, true,  TablatureMinimStyle::NONE,    true,  true,  false, false, true,  false, true,  false),
+        StaffType(StaffGroup::TAB, StaffTypes::TAB_ITALIAN,   6,  0, 1.5, false, true, true,  true, false,  defaultColor, u"MuseScore Tab Italian",true,  false, u"MuseScore Tab Italian",                  TablatureSymbolRepeat::NEVER, true,  TablatureMinimStyle::NONE,    true,  true,  false, false, true,  false, true,  false),
         StaffType(StaffGroup::TAB, StaffTypes::TAB_FRENCH,    6,  0, 1.5, false, true, true,  true, false,  defaultColor, u"MuseScore Tab French", true,  false, u"MuseScore Tab Renaiss",                  TablatureSymbolRepeat::NEVER, true,  TablatureMinimStyle::NONE,    false, false, false, false, false, false, false, false),
         StaffType(StaffGroup::TAB, StaffTypes::TAB_7COMMON,   7,  0, 1.5, true,  true, false, true, false,  defaultColor, u"MuseScore Tab Modern", false, true,  u"MuseScore Tab Sans",                     TablatureSymbolRepeat::NEVER, false, TablatureMinimStyle::SHORTER, true,  true,  true,  false, false, true,  true,  true),
         StaffType(StaffGroup::TAB, StaffTypes::TAB_8COMMON,   8,  0, 1.5, true,  true, false, true, false,  defaultColor, u"MuseScore Tab Modern", false, true,  u"MuseScore Tab Sans",                     TablatureSymbolRepeat::NEVER, false, TablatureMinimStyle::SHORTER, true,  true,  true,  false, false, true,  true,  true),
