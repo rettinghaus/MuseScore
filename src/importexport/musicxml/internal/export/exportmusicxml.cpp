@@ -6138,9 +6138,128 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
                 CharFormat defFmt;
                 defFmt.setFontFamily(m_score->style().styleSt(l->isEven() ? Sid::lyricsEvenFontFace : Sid::lyricsOddFontFace));
                 defFmt.setFontSize(m_score->style().styleD(l->isEven() ? Sid::lyricsEvenFontSize : Sid::lyricsOddFontSize));
-                // write formatted
-                MScoreTextToMusicXml mttm(u"text", attr, defFmt, mtf);
-                mttm.writeTextFragments(l->fragmentList(), m_xml);
+
+                struct Piece {
+                    bool isElision = false;
+                    bool isSmufl = false;
+                    String text;
+                    TextFragment frag;
+                };
+
+                std::vector<Piece> pieces;
+
+                auto processText = [&](const TextFragment& origFrag, const String& pieceText, bool isSymbol) {
+                    if (pieceText.isEmpty()) {
+                        return;
+                    }
+                    if (isSymbol) {
+                        SymId symId = SymNames::symIdByName(pieceText);
+                        if (symId != SymId::noSym) {
+                            Piece p;
+                            p.isElision = true;
+                            p.isSmufl = true;
+                            p.text = String::fromAscii(SymNames::nameForSymId(symId).ascii());
+                            pieces.push_back(p);
+                        } else {
+                            Piece p;
+                            p.isElision = true;
+                            p.isSmufl = false;
+                            p.text = pieceText;
+                            pieces.push_back(p);
+                        }
+                    } else {
+                        String currentSub;
+                        bool currentIsElision = false;
+
+                        auto flushSub = [&](bool isEli, const String& str) {
+                            if (str.isEmpty()) {
+                                return;
+                            }
+                            Piece p;
+                            p.isElision = isEli;
+                            p.isSmufl = false;
+                            p.text = str;
+                            p.frag = origFrag;
+                            p.frag.text = str;
+                            pieces.push_back(p);
+                        };
+
+                        for (size_t i = 0; i < pieceText.size(); ++i) {
+                            Char ch = pieceText.at(i);
+                            char32_t u = ch.unicode();
+                            bool isEli = (u == 0x203F) || (u == 0x00A0) || (u == 0x005F) || (u == 0x007E) || (u == 0x0020);
+                            if (i == 0) {
+                                currentIsElision = isEli;
+                                currentSub += ch;
+                            } else if (isEli == currentIsElision) {
+                                currentSub += ch;
+                            } else {
+                                flushSub(currentIsElision, currentSub);
+                                currentIsElision = isEli;
+                                currentSub = ch;
+                            }
+                        }
+                        flushSub(currentIsElision, currentSub);
+                    }
+                };
+
+                for (const TextFragment& f : l->fragmentList()) {
+                    bool isSymFont = (f.format.fontFamily() == u"ScoreText");
+                    String fText = f.text;
+                    if (isSymFont) {
+                        processText(f, fText, true);
+                    } else {
+                        size_t pos = 0;
+                        while (pos < fText.size()) {
+                            size_t symStart = fText.find(u"<sym>", pos);
+                            if (symStart == String::npos) {
+                                processText(f, fText.mid(pos), false);
+                                break;
+                            }
+                            if (symStart > pos) {
+                                processText(f, fText.mid(pos, symStart - pos), false);
+                            }
+                            size_t symEnd = fText.find(u"</sym>", symStart);
+                            if (symEnd == String::npos) {
+                                processText(f, fText.mid(symStart), false);
+                                break;
+                            }
+                            String symName = fText.mid(symStart + 5, symEnd - (symStart + 5));
+                            processText(f, symName, true);
+                            pos = symEnd + 6;
+                        }
+                    }
+                }
+
+                // If any elision piece is at start/end or consecutive elision pieces exist without text between them,
+                // coalesce non-smufl elision back into text or write text fragments properly to respect MusicXML schema.
+                for (size_t i = 0; i < pieces.size(); ++i) {
+                    if (pieces[i].isElision) {
+                        bool hasPrevText = (i > 0 && !pieces[i - 1].isElision);
+                        bool hasNextText = (i + 1 < pieces.size() && !pieces[i + 1].isElision);
+                        if (!hasPrevText || !hasNextText) {
+                            if (!pieces[i].isSmufl) {
+                                pieces[i].isElision = false;
+                                if (pieces[i].frag.text.isEmpty()) {
+                                    pieces[i].frag.text = pieces[i].text;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                for (const Piece& p : pieces) {
+                    if (p.isElision) {
+                        if (p.isSmufl) {
+                            m_xml.tag("elision", { { "smufl", p.text } });
+                        } else {
+                            m_xml.tag("elision", p.text);
+                        }
+                    } else {
+                        MScoreTextToMusicXml mttm(u"text", attr, defFmt, mtf);
+                        mttm.writeTextFragments({ p.frag }, m_xml);
+                    }
+                }
                 if (l->ticks().isNotZero()) {
                     m_xml.tag("extend");
                 }
