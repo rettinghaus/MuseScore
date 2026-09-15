@@ -6234,7 +6234,9 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
 
                 for (const TextFragment& f : l->fragmentList()) {
                     String fontName = f.format.fontFamily();
-                    bool isSymFont = (fontName == u"ScoreText" || fontName.endsWith(u"Text") || fontName == u"Leland" || fontName == u"Bravura" || fontName == u"Petaluma");
+                    bool isSymFont
+                        = (fontName == u"ScoreText" || fontName.endsWith(u"Text") || fontName == u"Leland" || fontName == u"Bravura"
+                           || fontName == u"Petaluma");
                     String fText = f.text;
                     if (isSymFont) {
                         processText(f, fText, true);
