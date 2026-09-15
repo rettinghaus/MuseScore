@@ -6211,16 +6211,16 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
                     } else {
                         size_t pos = 0;
                         while (pos < fText.size()) {
-                            size_t symStart = fText.find(u"<sym>", pos);
-                            if (symStart == String::npos) {
+                            size_t symStart = fText.indexOf(u"<sym>", pos);
+                            if (symStart == muse::nidx) {
                                 processText(f, fText.mid(pos), false);
                                 break;
                             }
                             if (symStart > pos) {
                                 processText(f, fText.mid(pos, symStart - pos), false);
                             }
-                            size_t symEnd = fText.find(u"</sym>", symStart);
-                            if (symEnd == String::npos) {
+                            size_t symEnd = fText.indexOf(u"</sym>", symStart);
+                            if (symEnd == muse::nidx) {
                                 processText(f, fText.mid(symStart), false);
                                 break;
                             }
