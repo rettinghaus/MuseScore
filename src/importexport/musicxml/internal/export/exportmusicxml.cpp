@@ -50,6 +50,7 @@
 #include "engraving/rw/xmlwriter.h"
 #include "engraving/types/typesconv.h"
 #include "engraving/types/symnames.h"
+#include "engraving/infrastructure/smufl.h"
 
 #include "engraving/dom/accidental.h"
 #include "engraving/dom/arpeggio.h"
@@ -6139,6 +6140,19 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
                 defFmt.setFontFamily(m_score->style().styleSt(l->isEven() ? Sid::lyricsEvenFontFace : Sid::lyricsOddFontFace));
                 defFmt.setFontSize(m_score->style().styleD(l->isEven() ? Sid::lyricsEvenFontSize : Sid::lyricsOddFontSize));
 
+                auto getSmuflSymId = [](char32_t code) -> SymId {
+                    if (code < 0xE000 || code > 0xF8FF) {
+                        return SymId::noSym;
+                    }
+                    for (int i = int(SymId::noSym) + 1; i < int(SymId::lastSym); ++i) {
+                        SymId id = static_cast<SymId>(i);
+                        if (Smufl::smuflCode(id) == code) {
+                            return id;
+                        }
+                    }
+                    return SymId::noSym;
+                };
+
                 struct Piece {
                     bool isElision = false;
                     bool isSmufl = false;
@@ -6154,6 +6168,9 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
                     }
                     if (isSymbol) {
                         SymId symId = SymNames::symIdByName(pieceText);
+                        if (symId == SymId::noSym && pieceText.size() == 1) {
+                            symId = getSmuflSymId(pieceText.at(0).unicode());
+                        }
                         if (symId != SymId::noSym) {
                             Piece p;
                             p.isElision = true;
@@ -6187,8 +6204,20 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
                         for (size_t i = 0; i < pieceText.size(); ++i) {
                             Char ch = pieceText.at(i);
                             char32_t u = ch.unicode();
-                            bool isEli = (u == 0x203F) || (u == 0x00A0) || (u == 0x005F) || (u == 0x007E) || (u == 0x0020);
-                            if (i == 0) {
+                            SymId symId = getSmuflSymId(u);
+                            if (symId != SymId::noSym) {
+                                flushSub(currentIsElision, currentSub);
+                                currentSub.clear();
+                                Piece p;
+                                p.isElision = true;
+                                p.isSmufl = true;
+                                p.text = String::fromAscii(SymNames::nameForSymId(symId).ascii());
+                                pieces.push_back(p);
+                                currentIsElision = false;
+                                continue;
+                            }
+                            bool isEli = (u == 0x203F) || (u == 0x00A0) || (u == 0x005F) || (u == 0x007E) || (u == 0x0020) || ch.isPunct();
+                            if (currentSub.isEmpty()) {
                                 currentIsElision = isEli;
                                 currentSub += ch;
                             } else if (isEli == currentIsElision) {
@@ -6204,7 +6233,8 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
                 };
 
                 for (const TextFragment& f : l->fragmentList()) {
-                    bool isSymFont = (f.format.fontFamily() == u"ScoreText");
+                    String fontName = f.format.fontFamily();
+                    bool isSymFont = (fontName == u"ScoreText" || fontName.endsWith(u"Text") || fontName == u"Leland" || fontName == u"Bravura" || fontName == u"Petaluma");
                     String fText = f.text;
                     if (isSymFont) {
                         processText(f, fText, true);
@@ -6231,8 +6261,7 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
                     }
                 }
 
-                // If any elision piece is at start/end or consecutive elision pieces exist without text between them,
-                // coalesce non-smufl elision back into text or write text fragments properly to respect MusicXML schema.
+                // Schema compliance fixup for elisions
                 for (size_t i = 0; i < pieces.size(); ++i) {
                     if (pieces[i].isElision) {
                         bool hasPrevText = (i > 0 && !pieces[i - 1].isElision);
@@ -6243,12 +6272,38 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
                                 if (pieces[i].frag.text.isEmpty()) {
                                     pieces[i].frag.text = pieces[i].text;
                                 }
+                            } else {
+                                if (!hasPrevText) {
+                                    Piece emptyText;
+                                    emptyText.isElision = false;
+                                    emptyText.text = u"";
+                                    pieces.insert(pieces.begin() + i, emptyText);
+                                    i++;
+                                }
+                                if (!hasNextText) {
+                                    Piece emptyText;
+                                    emptyText.isElision = false;
+                                    emptyText.text = u"";
+                                    pieces.insert(pieces.begin() + i + 1, emptyText);
+                                    i++;
+                                }
                             }
                         }
                     }
                 }
 
-                for (const Piece& p : pieces) {
+                // Coalesce adjacent text pieces
+                std::vector<Piece> finalPieces;
+                for (size_t i = 0; i < pieces.size(); ++i) {
+                    if (!pieces[i].isElision && !finalPieces.empty() && !finalPieces.back().isElision) {
+                        finalPieces.back().text += pieces[i].text;
+                        finalPieces.back().frag.text += pieces[i].text;
+                    } else {
+                        finalPieces.push_back(pieces[i]);
+                    }
+                }
+
+                for (const Piece& p : finalPieces) {
                     if (p.isElision) {
                         if (p.isSmufl) {
                             m_xml.tag("elision", { { "smufl", p.text } });
