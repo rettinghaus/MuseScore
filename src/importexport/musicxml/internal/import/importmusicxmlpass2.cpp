@@ -8178,12 +8178,10 @@ void MusicXmlParserLyric::readElision(String& formattedText)
 {
     const String text = m_e.readText();
     const String smufl = m_e.attribute("smufl");
-    if (!smufl.empty()) {
-        formattedText += u"<sym>" + smufl + u"</sym>";
-    } else if (text == u" ") {
-        formattedText += u"\u00A0";
-    } else if (!text.empty()) {
+    if (!text.empty()) {
         formattedText += text;
+    } else if (!smufl.empty()) {
+        formattedText += u"<sym>" + smufl + u"</sym>";
     } else {
         formattedText += u"<sym>lyricsElision</sym>";
     }
