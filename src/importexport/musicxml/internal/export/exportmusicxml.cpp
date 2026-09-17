@@ -6232,7 +6232,7 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
                             }
                         }
                         bool isEli = (u == 0x203F) || (u == 0x2040) || (u == 0x035C) || (u == 0x0361)
-                                     || (u == 0x00A0) || (u == 0x005F) || (u == 0x007E) || (u == 0x0020) || ch.isPunct();
+                                     || (u == 0x00A0) || (u == 0x005F) || (u == 0x007E) || (u == 0x0020);
                         if (currentSub.isEmpty()) {
                             currentIsElision = isEli;
                             currentSub += ch;
