@@ -6153,8 +6153,8 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
                     return SymId::noSym;
                 };
 
-                auto isSmuflLyricsElision = [](SymId symId, const AsciiStringView& symName) -> bool {
-                    if (std::string_view(symName.ascii()).starts_with("lyricsElision")) {
+                auto isSmuflLyricsElision = [](SymId symId, const String& symName) -> bool {
+                    if (symName.startsWith(u"lyricsElision")) {
                         return true;
                     }
                     if (symId != SymId::noSym) {
@@ -6177,7 +6177,7 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
 
                 auto processSymbolTag = [&](const String& symName) {
                     SymId symId = SymNames::symIdByName(symName);
-                    if (isSmuflLyricsElision(symId, symName.ascii())) {
+                    if (isSmuflLyricsElision(symId, symName)) {
                         Piece p;
                         p.isElision = true;
                         p.isSmufl = true;
@@ -6218,13 +6218,14 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
                         if (u >= 0xE000 && u <= 0xF8FF) {
                             SymId symId = getSmuflSymId(u);
                             AsciiStringView symName = SymNames::nameForSymId(symId);
-                            if (isSmuflLyricsElision(symId, symName)) {
+                            String symNameStr = String::fromAscii(symName.ascii());
+                            if (isSmuflLyricsElision(symId, symNameStr)) {
                                 flushSub(currentIsElision, currentSub);
                                 currentSub.clear();
                                 Piece p;
                                 p.isElision = true;
                                 p.isSmufl = true;
-                                p.text = String::fromAscii(symName.ascii());
+                                p.text = symNameStr;
                                 pieces.push_back(p);
                                 currentIsElision = false;
                                 continue;
