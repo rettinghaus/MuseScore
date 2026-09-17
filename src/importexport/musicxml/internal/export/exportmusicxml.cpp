@@ -6154,7 +6154,7 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
                 };
 
                 auto isSmuflLyricsElision = [](SymId symId, const AsciiStringView& symName) -> bool {
-                    if (symName.startsWith("lyricsElision")) {
+                    if (std::string_view(symName.ascii()).starts_with("lyricsElision")) {
                         return true;
                     }
                     if (symId != SymId::noSym) {
