@@ -8177,10 +8177,7 @@ void MusicXmlParserLyric::skipLogCurrElem()
 void MusicXmlParserLyric::readElision(String& formattedText)
 {
     const String text = m_e.readText();
-    String smufl = m_e.attribute("smufl");
-    if (smufl.empty()) {
-        smufl = m_e.attribute("smufle");
-    }
+    const String smufl = m_e.attribute("smufl");
     if (!smufl.empty()) {
         formattedText += u"<sym>" + smufl + u"</sym>";
     } else if (text == u" " || text == u"\u00A0") {

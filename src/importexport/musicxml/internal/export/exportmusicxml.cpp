@@ -6175,7 +6175,7 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
 
                 std::vector<Piece> pieces;
 
-                auto processSymbolTag = [&](const String& symName) {
+                auto processSymbolTag = [&](const TextFragment& origFrag, const String& symName) {
                     SymId symId = SymNames::symIdByName(symName);
                     if (isSmuflLyricsElision(symId, symName)) {
                         Piece p;
@@ -6188,6 +6188,8 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
                         p.isElision = false;
                         p.isSmufl = false;
                         p.text = u"<sym>" + symName + u"</sym>";
+                        p.frag = origFrag;
+                        p.frag.text = p.text;
                         pieces.push_back(p);
                     }
                 };
@@ -6265,7 +6267,7 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
                             break;
                         }
                         String symName = fText.mid(symStart + 5, symEnd - (symStart + 5));
-                        processSymbolTag(symName);
+                        processSymbolTag(f, symName);
                         pos = symEnd + 6;
                     }
                 }
