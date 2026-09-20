@@ -8177,10 +8177,13 @@ void MusicXmlParserLyric::skipLogCurrElem()
 void MusicXmlParserLyric::readElision(String& formattedText)
 {
     const String text = m_e.readText();
-    const String smufl = m_e.attribute("smufl");
+    String smufl = m_e.attribute("smufl");
+    if (smufl.empty()) {
+        smufl = m_e.attribute("smufle");
+    }
     if (!smufl.empty()) {
         formattedText += u"<sym>" + smufl + u"</sym>";
-    } else if (text == u" ") {
+    } else if (text == u" " || text == u"\u00A0") {
         formattedText += u"\u00A0";
     } else if (!text.empty()) {
         formattedText += text;
