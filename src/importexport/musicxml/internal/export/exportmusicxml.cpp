@@ -50,6 +50,7 @@
 #include "engraving/rw/xmlwriter.h"
 #include "engraving/types/typesconv.h"
 #include "engraving/types/symnames.h"
+#include "engraving/infrastructure/smufl.h"
 
 #include "engraving/dom/accidental.h"
 #include "engraving/dom/arpeggio.h"
@@ -6138,9 +6139,184 @@ void ExportMusicXml::lyrics(const std::vector<Lyrics*>& ll, const track_idx_t tr
                 CharFormat defFmt;
                 defFmt.setFontFamily(m_score->style().styleSt(l->isEven() ? Sid::lyricsEvenFontFace : Sid::lyricsOddFontFace));
                 defFmt.setFontSize(m_score->style().styleD(l->isEven() ? Sid::lyricsEvenFontSize : Sid::lyricsOddFontSize));
-                // write formatted
-                MScoreTextToMusicXml mttm(u"text", attr, defFmt, mtf);
-                mttm.writeTextFragments(l->fragmentList(), m_xml);
+
+                auto getSmuflSymId = [](char32_t code) -> SymId {
+                    if (code < 0xE000 || code > 0xF8FF) {
+                        return SymId::noSym;
+                    }
+                    for (int i = int(SymId::noSym) + 1; i < int(SymId::lastSym); ++i) {
+                        SymId id = static_cast<SymId>(i);
+                        if (Smufl::smuflCode(id) == code) {
+                            return id;
+                        }
+                    }
+                    return SymId::noSym;
+                };
+
+                auto isSmuflLyricsElision = [](SymId symId, const String& symName) -> bool {
+                    if (symName.startsWith(u"lyricsElision")) {
+                        return true;
+                    }
+                    if (symId != SymId::noSym) {
+                        char32_t code = Smufl::smuflCode(symId);
+                        if (code >= 0xE550 && code <= 0xE55F) {
+                            return true;
+                        }
+                    }
+                    return false;
+                };
+
+                struct Piece {
+                    bool isElision = false;
+                    bool isSmufl = false;
+                    String text;
+                    TextFragment frag;
+                };
+
+                std::vector<Piece> pieces;
+
+                auto processSymbolTag = [&](const TextFragment& origFrag, const String& symName) {
+                    SymId symId = SymNames::symIdByName(symName);
+                    if (isSmuflLyricsElision(symId, symName)) {
+                        Piece p;
+                        p.isElision = true;
+                        p.isSmufl = true;
+                        p.text = (symId != SymId::noSym) ? String::fromAscii(SymNames::nameForSymId(symId).ascii()) : symName;
+                        pieces.push_back(p);
+                    } else {
+                        Piece p;
+                        p.isElision = false;
+                        p.isSmufl = false;
+                        p.text = u"<sym>" + symName + u"</sym>";
+                        p.frag = origFrag;
+                        p.frag.text = p.text;
+                        pieces.push_back(p);
+                    }
+                };
+
+                auto processTextFragment = [&](const TextFragment& origFrag, const String& pieceText) {
+                    if (pieceText.isEmpty()) {
+                        return;
+                    }
+                    String currentSub;
+                    bool currentIsElision = false;
+
+                    auto flushSub = [&](bool isEli, const String& str) {
+                        if (str.isEmpty()) {
+                            return;
+                        }
+                        Piece p;
+                        p.isElision = isEli;
+                        p.isSmufl = false;
+                        p.text = str;
+                        p.frag = origFrag;
+                        p.frag.text = str;
+                        pieces.push_back(p);
+                    };
+
+                    for (size_t i = 0; i < pieceText.size(); ++i) {
+                        Char ch = pieceText.at(i);
+                        char32_t u = ch.unicode();
+                        if (u >= 0xE000 && u <= 0xF8FF) {
+                            SymId symId = getSmuflSymId(u);
+                            AsciiStringView symName = SymNames::nameForSymId(symId);
+                            String symNameStr = String::fromAscii(symName.ascii());
+                            if (isSmuflLyricsElision(symId, symNameStr)) {
+                                flushSub(currentIsElision, currentSub);
+                                currentSub.clear();
+                                Piece p;
+                                p.isElision = true;
+                                p.isSmufl = true;
+                                p.text = symNameStr;
+                                pieces.push_back(p);
+                                currentIsElision = false;
+                                continue;
+                            }
+                        }
+                        bool isEli = (u == 0x203F) || (u == 0x2040) || (u == 0x035C) || (u == 0x0361)
+                                     || (u == 0x00A0) || (u == 0x005F) || (u == 0x007E) || (u == 0x0020);
+                        if (currentSub.isEmpty()) {
+                            currentIsElision = isEli;
+                            currentSub += ch;
+                        } else if (isEli == currentIsElision) {
+                            currentSub += ch;
+                        } else {
+                            flushSub(currentIsElision, currentSub);
+                            currentIsElision = isEli;
+                            currentSub = ch;
+                        }
+                    }
+                    flushSub(currentIsElision, currentSub);
+                };
+
+                for (const TextFragment& f : l->fragmentList()) {
+                    String fText = f.text;
+                    size_t pos = 0;
+                    while (pos < fText.size()) {
+                        size_t symStart = fText.indexOf(u"<sym>", pos);
+                        if (symStart == muse::nidx) {
+                            processTextFragment(f, fText.mid(pos));
+                            break;
+                        }
+                        if (symStart > pos) {
+                            processTextFragment(f, fText.mid(pos, symStart - pos));
+                        }
+                        size_t symEnd = fText.indexOf(u"</sym>", symStart);
+                        if (symEnd == muse::nidx) {
+                            processTextFragment(f, fText.mid(symStart));
+                            break;
+                        }
+                        String symName = fText.mid(symStart + 5, symEnd - (symStart + 5));
+                        processSymbolTag(f, symName);
+                        pos = symEnd + 6;
+                    }
+                }
+
+                // Schema compliance fixup for elisions
+                for (size_t i = 0; i < pieces.size(); ++i) {
+                    if (pieces[i].isElision) {
+                        bool hasPrevText = (i > 0 && !pieces[i - 1].isElision);
+                        bool hasNextText = (i + 1 < pieces.size() && !pieces[i + 1].isElision);
+                        if (!hasPrevText) {
+                            Piece emptyText;
+                            emptyText.isElision = false;
+                            emptyText.text = u"";
+                            pieces.insert(pieces.begin() + i, emptyText);
+                            i++;
+                        }
+                        if (!hasNextText) {
+                            Piece emptyText;
+                            emptyText.isElision = false;
+                            emptyText.text = u"";
+                            pieces.insert(pieces.begin() + i + 1, emptyText);
+                            i++;
+                        }
+                    }
+                }
+
+                // Coalesce adjacent text pieces
+                std::vector<Piece> finalPieces;
+                for (size_t i = 0; i < pieces.size(); ++i) {
+                    if (!pieces[i].isElision && !finalPieces.empty() && !finalPieces.back().isElision) {
+                        finalPieces.back().text += pieces[i].text;
+                        finalPieces.back().frag.text += pieces[i].text;
+                    } else {
+                        finalPieces.push_back(pieces[i]);
+                    }
+                }
+
+                for (const Piece& p : finalPieces) {
+                    if (p.isElision) {
+                        if (p.isSmufl) {
+                            m_xml.tag("elision", { { "smufl", p.text } });
+                        } else {
+                            m_xml.tag("elision", p.text);
+                        }
+                    } else {
+                        MScoreTextToMusicXml mttm(u"text", attr, defFmt, mtf);
+                        mttm.writeTextFragments({ p.frag }, m_xml);
+                    }
+                }
                 if (l->ticks().isNotZero()) {
                     m_xml.tag("extend");
                 }
