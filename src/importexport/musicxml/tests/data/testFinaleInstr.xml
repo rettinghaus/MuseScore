@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
 <score-partwise version="4.0">
   <identification>
@@ -391,7 +391,7 @@
     <score-part id="P16">
       <part-name>Tuba (String Bass)</part-name>
       <part-name-display>
-        <display-text font-family="MetTimes" xml:space="preserve">Tuba
+        <display-text font-family="MetTimes" {http://www.w3.org/XML/1998/namespace}space="preserve">Tuba
 (String Bass)</display-text>
       </part-name-display>
       <part-abbreviation>Tuba</part-abbreviation>
@@ -498,276 +498,252 @@
     </score-part>
     <part-group number="1" type="stop"/>
   </part-list>
-  <!--=========================================================-->
-  
   <part id="P1">
-    <?SmartMusic maxVoice=1?>
     <measure number="1" width="147.22">
-    <print>
-      <system-layout>
-        <system-margins>
-          <left-margin>50</left-margin>
-          <right-margin>831.82</right-margin>
-        </system-margins>
-        <top-system-distance>170</top-system-distance>
-      </system-layout>
-    </print>
-    <attributes>
-      <divisions>1</divisions>
-      <key>
-        <fifths>0</fifths>
-      </key>
-      <time>
-        <beats>4</beats>
-        <beat-type>4</beat-type>
-      </time>
-      <clef>
-        <sign>G</sign>
-        <line>2</line>
-      </clef>
-    </attributes>
-    <note default-x="91.72" default-y="-10">
-      <rest measure="yes"/>
-      <duration>4</duration>
-      <voice>1</voice>
-    </note>
-    <barline location="right">
-      <bar-style>light-heavy</bar-style>
-    </barline>
-  </measure>
+      <print>
+        <system-layout>
+          <system-margins>
+            <left-margin>50</left-margin>
+            <right-margin>831.82</right-margin>
+          </system-margins>
+          <top-system-distance>170</top-system-distance>
+        </system-layout>
+      </print>
+      <attributes>
+        <divisions>1</divisions>
+        <key>
+          <fifths>0</fifths>
+        </key>
+        <time>
+          <beats>4</beats>
+          <beat-type>4</beat-type>
+        </time>
+        <clef>
+          <sign>G</sign>
+          <line>2</line>
+        </clef>
+      </attributes>
+      <note default-x="91.72" default-y="-10">
+        <rest measure="yes"/>
+        <duration>4</duration>
+        <voice>1</voice>
+      </note>
+      <barline location="right">
+        <bar-style>light-heavy</bar-style>
+      </barline>
+    </measure>
   </part>
-  <!--=========================================================-->
-  
   <part id="P2">
-    <?SmartMusic maxVoice=1?>
     <measure number="1" width="147.22">
-    <print>
-      <system-layout>
-        <system-margins>
-          <left-margin>50</left-margin>
-          <right-margin>831.82</right-margin>
-        </system-margins>
-        <top-system-distance>170</top-system-distance>
-      </system-layout>
-    </print>
-    <attributes>
-      <divisions>1</divisions>
-      <key>
-        <fifths>0</fifths>
-      </key>
-      <time>
-        <beats>4</beats>
-        <beat-type>4</beat-type>
-      </time>
-      <clef>
-        <sign>G</sign>
-        <line>2</line>
-      </clef>
-    </attributes>
-    <note default-x="91.72" default-y="-10">
-      <rest measure="yes"/>
-      <duration>4</duration>
-      <voice>1</voice>
-    </note>
-    <barline location="right">
-      <bar-style>light-heavy</bar-style>
-    </barline>
-  </measure>
+      <print>
+        <system-layout>
+          <system-margins>
+            <left-margin>50</left-margin>
+            <right-margin>831.82</right-margin>
+          </system-margins>
+          <top-system-distance>170</top-system-distance>
+        </system-layout>
+      </print>
+      <attributes>
+        <divisions>1</divisions>
+        <key>
+          <fifths>0</fifths>
+        </key>
+        <time>
+          <beats>4</beats>
+          <beat-type>4</beat-type>
+        </time>
+        <clef>
+          <sign>G</sign>
+          <line>2</line>
+        </clef>
+      </attributes>
+      <note default-x="91.72" default-y="-10">
+        <rest measure="yes"/>
+        <duration>4</duration>
+        <voice>1</voice>
+      </note>
+      <barline location="right">
+        <bar-style>light-heavy</bar-style>
+      </barline>
+    </measure>
   </part>
-  <!--=========================================================-->
   <part id="P3">
-    <?SmartMusic maxVoice=1?>
     <measure number="1" width="147.22">
-    <print>
-      <system-layout>
-        <system-margins>
-          <left-margin>50</left-margin>
-          <right-margin>831.82</right-margin>
-        </system-margins>
-        <top-system-distance>170</top-system-distance>
-      </system-layout>
-    </print>
-    <attributes>
-      <divisions>1</divisions>
-      <key>
-        <fifths>0</fifths>
-      </key>
-      <time>
-        <beats>4</beats>
-        <beat-type>4</beat-type>
-      </time>
-      <clef>
-        <sign>G</sign>
-        <line>2</line>
-      </clef>
-    </attributes>
-    <note default-x="91.72" default-y="-10">
-      <rest measure="yes"/>
-      <duration>4</duration>
-      <voice>1</voice>
-    </note>
-    <barline location="right">
-      <bar-style>light-heavy</bar-style>
-    </barline>
-  </measure>
+      <print>
+        <system-layout>
+          <system-margins>
+            <left-margin>50</left-margin>
+            <right-margin>831.82</right-margin>
+          </system-margins>
+          <top-system-distance>170</top-system-distance>
+        </system-layout>
+      </print>
+      <attributes>
+        <divisions>1</divisions>
+        <key>
+          <fifths>0</fifths>
+        </key>
+        <time>
+          <beats>4</beats>
+          <beat-type>4</beat-type>
+        </time>
+        <clef>
+          <sign>G</sign>
+          <line>2</line>
+        </clef>
+      </attributes>
+      <note default-x="91.72" default-y="-10">
+        <rest measure="yes"/>
+        <duration>4</duration>
+        <voice>1</voice>
+      </note>
+      <barline location="right">
+        <bar-style>light-heavy</bar-style>
+      </barline>
+    </measure>
   </part>
-  <!--=========================================================-->
-  
   <part id="P4">
-    <?SmartMusic maxVoice=2?>
     <measure number="1" width="147.22">
-    <print>
-      <system-layout>
-        <system-margins>
-          <left-margin>50</left-margin>
-          <right-margin>831.82</right-margin>
-        </system-margins>
-        <top-system-distance>170</top-system-distance>
-      </system-layout>
-    </print>
-    <attributes>
-      <divisions>1</divisions>
-      <key>
-        <fifths>0</fifths>
-      </key>
-      <time>
-        <beats>4</beats>
-        <beat-type>4</beat-type>
-      </time>
-      <clef>
-        <sign>G</sign>
-        <line>2</line>
-      </clef>
-    </attributes>
-    <note default-x="91.72" default-y="-10">
-      <rest measure="yes"/>
-      <duration>4</duration>
-      <voice>1</voice>
-    </note>
-    <barline location="right">
-      <bar-style>light-heavy</bar-style>
-    </barline>
-  </measure>
-
+      <print>
+        <system-layout>
+          <system-margins>
+            <left-margin>50</left-margin>
+            <right-margin>831.82</right-margin>
+          </system-margins>
+          <top-system-distance>170</top-system-distance>
+        </system-layout>
+      </print>
+      <attributes>
+        <divisions>1</divisions>
+        <key>
+          <fifths>0</fifths>
+        </key>
+        <time>
+          <beats>4</beats>
+          <beat-type>4</beat-type>
+        </time>
+        <clef>
+          <sign>G</sign>
+          <line>2</line>
+        </clef>
+      </attributes>
+      <note default-x="91.72" default-y="-10">
+        <rest measure="yes"/>
+        <duration>4</duration>
+        <voice>1</voice>
+      </note>
+      <barline location="right">
+        <bar-style>light-heavy</bar-style>
+      </barline>
+    </measure>
   </part>
-  <!--=========================================================-->
-  
   <part id="P5">
-    <?SmartMusic maxVoice=2?>
     <measure number="1" width="147.22">
-    <print>
-      <system-layout>
-        <system-margins>
-          <left-margin>50</left-margin>
-          <right-margin>831.82</right-margin>
-        </system-margins>
-        <top-system-distance>170</top-system-distance>
-      </system-layout>
-    </print>
-    <attributes>
-      <divisions>1</divisions>
-      <key>
-        <fifths>0</fifths>
-      </key>
-      <time>
-        <beats>4</beats>
-        <beat-type>4</beat-type>
-      </time>
-      <clef>
-        <sign>G</sign>
-        <line>2</line>
-      </clef>
-    </attributes>
-    <note default-x="91.72" default-y="-10">
-      <rest measure="yes"/>
-      <duration>4</duration>
-      <voice>1</voice>
-    </note>
-    <barline location="right">
-      <bar-style>light-heavy</bar-style>
-    </barline>
-  </measure>
+      <print>
+        <system-layout>
+          <system-margins>
+            <left-margin>50</left-margin>
+            <right-margin>831.82</right-margin>
+          </system-margins>
+          <top-system-distance>170</top-system-distance>
+        </system-layout>
+      </print>
+      <attributes>
+        <divisions>1</divisions>
+        <key>
+          <fifths>0</fifths>
+        </key>
+        <time>
+          <beats>4</beats>
+          <beat-type>4</beat-type>
+        </time>
+        <clef>
+          <sign>G</sign>
+          <line>2</line>
+        </clef>
+      </attributes>
+      <note default-x="91.72" default-y="-10">
+        <rest measure="yes"/>
+        <duration>4</duration>
+        <voice>1</voice>
+      </note>
+      <barline location="right">
+        <bar-style>light-heavy</bar-style>
+      </barline>
+    </measure>
   </part>
-  <!--=========================================================-->
-  
   <part id="P6">
-    <?SmartMusic maxVoice=1?>
     <measure number="1" width="147.22">
-    <print>
-      <system-layout>
-        <system-margins>
-          <left-margin>50</left-margin>
-          <right-margin>831.82</right-margin>
-        </system-margins>
-        <top-system-distance>170</top-system-distance>
-      </system-layout>
-    </print>
-    <attributes>
-      <divisions>1</divisions>
-      <key>
-        <fifths>0</fifths>
-      </key>
-      <time>
-        <beats>4</beats>
-        <beat-type>4</beat-type>
-      </time>
-      <clef>
-        <sign>G</sign>
-        <line>2</line>
-      </clef>
-    </attributes>
-    <note default-x="91.72" default-y="-10">
-      <rest measure="yes"/>
-      <duration>4</duration>
-      <voice>1</voice>
-    </note>
-    <barline location="right">
-      <bar-style>light-heavy</bar-style>
-    </barline>
-  </measure>
+      <print>
+        <system-layout>
+          <system-margins>
+            <left-margin>50</left-margin>
+            <right-margin>831.82</right-margin>
+          </system-margins>
+          <top-system-distance>170</top-system-distance>
+        </system-layout>
+      </print>
+      <attributes>
+        <divisions>1</divisions>
+        <key>
+          <fifths>0</fifths>
+        </key>
+        <time>
+          <beats>4</beats>
+          <beat-type>4</beat-type>
+        </time>
+        <clef>
+          <sign>G</sign>
+          <line>2</line>
+        </clef>
+      </attributes>
+      <note default-x="91.72" default-y="-10">
+        <rest measure="yes"/>
+        <duration>4</duration>
+        <voice>1</voice>
+      </note>
+      <barline location="right">
+        <bar-style>light-heavy</bar-style>
+      </barline>
+    </measure>
   </part>
-  <!--=========================================================-->
-  
   <part id="P7">
-    <?SmartMusic maxVoice=2?>
     <measure number="1" width="147.22">
-    <print>
-      <system-layout>
-        <system-margins>
-          <left-margin>50</left-margin>
-          <right-margin>831.82</right-margin>
-        </system-margins>
-        <top-system-distance>170</top-system-distance>
-      </system-layout>
-    </print>
-    <attributes>
-      <divisions>1</divisions>
-      <key>
-        <fifths>0</fifths>
-      </key>
-      <time>
-        <beats>4</beats>
-        <beat-type>4</beat-type>
-      </time>
-      <clef>
-        <sign>G</sign>
-        <line>2</line>
-      </clef>
-    </attributes>
-    <note default-x="91.72" default-y="-10">
-      <rest measure="yes"/>
-      <duration>4</duration>
-      <voice>1</voice>
-    </note>
-    <barline location="right">
-      <bar-style>light-heavy</bar-style>
-    </barline>
-  </measure>
+      <print>
+        <system-layout>
+          <system-margins>
+            <left-margin>50</left-margin>
+            <right-margin>831.82</right-margin>
+          </system-margins>
+          <top-system-distance>170</top-system-distance>
+        </system-layout>
+      </print>
+      <attributes>
+        <divisions>1</divisions>
+        <key>
+          <fifths>0</fifths>
+        </key>
+        <time>
+          <beats>4</beats>
+          <beat-type>4</beat-type>
+        </time>
+        <clef>
+          <sign>G</sign>
+          <line>2</line>
+        </clef>
+      </attributes>
+      <note default-x="91.72" default-y="-10">
+        <rest measure="yes"/>
+        <duration>4</duration>
+        <voice>1</voice>
+      </note>
+      <barline location="right">
+        <bar-style>light-heavy</bar-style>
+      </barline>
+    </measure>
   </part>
-  <!--=========================================================-->
-  
   <part id="P8">
-    <?SmartMusic maxVoice=2?>
     <measure number="1" width="147.22">
       <print>
         <system-layout>
@@ -802,9 +778,7 @@
       </barline>
     </measure>
   </part>
-  <!--=========================================================-->
   <part id="P9">
-    <?SmartMusic maxVoice=2?>
     <measure number="1" width="147.22">
       <print>
         <system-layout>
@@ -839,9 +813,7 @@
       </barline>
     </measure>
   </part>
-  <!--=========================================================-->
   <part id="P10">
-    <?SmartMusic maxVoice=1?>
     <measure number="1" width="147.22">
       <print>
         <system-layout>
@@ -876,9 +848,7 @@
       </barline>
     </measure>
   </part>
-  <!--=========================================================-->
   <part id="P11">
-    <?SmartMusic maxVoice=1?>
     <measure number="1" width="147.22">
       <print>
         <system-layout>
@@ -913,9 +883,7 @@
       </barline>
     </measure>
   </part>
-  <!--=========================================================-->
   <part id="P12">
-    <?SmartMusic maxVoice=1?>
     <measure number="1" width="147.22">
       <print>
         <system-layout>
@@ -950,9 +918,7 @@
       </barline>
     </measure>
   </part>
-  <!--=========================================================-->
   <part id="P13">
-    <?SmartMusic maxVoice=2?>
     <measure number="1" width="147.22">
       <print>
         <system-layout>
@@ -987,9 +953,7 @@
       </barline>
     </measure>
   </part>
-  <!--=========================================================-->
   <part id="P14">
-    <?SmartMusic maxVoice=2?>
     <measure number="1" width="147.22">
       <print>
         <system-layout>
@@ -1024,9 +988,7 @@
       </barline>
     </measure>
   </part>
-  <!--=========================================================-->
   <part id="P15">
-    <?SmartMusic maxVoice=1?>
     <measure number="1" width="147.22">
       <print>
         <system-layout>
@@ -1061,9 +1023,7 @@
       </barline>
     </measure>
   </part>
-  <!--=========================================================-->
   <part id="P16">
-    <?SmartMusic maxVoice=1?>
     <measure number="1" width="147.22">
       <print>
         <system-layout>
@@ -1098,9 +1058,7 @@
       </barline>
     </measure>
   </part>
-  <!--=========================================================-->
   <part id="P17">
-    <?SmartMusic maxVoice=2?>
     <measure number="1" width="147.22">
       <print>
         <system-layout>
@@ -1135,9 +1093,7 @@
       </barline>
     </measure>
   </part>
-  <!--=========================================================-->
   <part id="P18">
-    <?SmartMusic maxVoice=2?>
     <measure number="1" width="147.22">
       <print>
         <system-layout>
@@ -1172,9 +1128,7 @@
       </barline>
     </measure>
   </part>
-  <!--=========================================================-->
   <part id="P19">
-    <?SmartMusic maxVoice=2?>
     <measure number="1" width="147.22">
       <print>
         <system-layout>
@@ -1209,9 +1163,7 @@
       </barline>
     </measure>
   </part>
-  <!--=========================================================-->
   <part id="P20">
-    <?SmartMusic maxVoice=1?>
     <measure number="1" width="147.22">
       <print>
         <system-layout>
@@ -1246,5 +1198,4 @@
       </barline>
     </measure>
   </part>
-  <!--=========================================================-->
 </score-partwise>
