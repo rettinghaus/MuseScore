@@ -2125,7 +2125,7 @@ void MusicXmlParserPass2::scorePartwise()
         m_score->undoAddElement(sysEl);
 
         // Remove potential duplicated text for text and text lines
-        const bool elIsText = (sysEl->isTextBase() || sysEl->isTextLineBase());
+        const bool elIsText = (sysEl->isTextBase() || sysEl->isTextLineBase()) && !sysEl->isMarker() && !sysEl->isJump();
         if (!elIsText) {
             continue;
         }
