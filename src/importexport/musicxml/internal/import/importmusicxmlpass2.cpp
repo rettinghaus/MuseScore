@@ -1068,7 +1068,11 @@ void MusicXmlParserPass2::addElemOffset(engraving::EngravingItem* el, engraving:
             }
         }
         if (!found) {
-            el->setOwnershipParent(s);
+            if (el->isMarker() || el->isJump()) {
+                el->setOwnershipParent(measure);
+            } else {
+                el->setOwnershipParent(s);
+            }
             addSystemElement(el, elTick);
         }
     } else {
