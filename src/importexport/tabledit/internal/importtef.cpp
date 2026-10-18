@@ -741,8 +741,6 @@ static void addSingleNoteEffects(Score* score, const std::map<const TefNote* con
         Note* msNote { effect.second };
         const EffectType primary { tefNote->effect() };
         const EffectType combination { tefNote->combinationEffect() };
-        LOGN("note %p tick %d track %zu effect %d combination %d",
-             msNote, msNote->tick().ticks(), msNote->track(), primary, combination);
         if (primary == EffectType::BRUSH
             || combination == EffectType::BRUSH
             || primary == EffectType::RASGUEADO

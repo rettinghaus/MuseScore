@@ -3261,7 +3261,7 @@ void MusicXmlParserPass2::staffDetails(const String& partId, Measure* measure, c
         } else if (m_e.name() == "capo") {
             if (measure) {
                 const int fret = m_e.readInt();
-                Capo* c = Factory::createCapo(m_score->dummy()->segment());
+                Capo* c = Factory::createCapo(m_score->dummy());
                 CapoParams p = c->params();
                 p.fretPosition = fret;
                 if (part->hasTabStaff()) {
