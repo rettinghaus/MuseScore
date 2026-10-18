@@ -318,7 +318,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
-        <notations>
+        <notations print-object="no">
           <ornaments>
             <trill-mark/>
             <wavy-line type="start" number="1"/>
@@ -344,7 +344,7 @@
         <voice>1</voice>
         <type>quarter</type>
         <stem>down</stem>
-        <notations>
+        <notations print-object="no">
           <ornaments>
             <wavy-line type="stop" number="1"/>
             </ornaments>
@@ -372,9 +372,9 @@
         <type>whole</type>
         <notations>
           <ornaments>
-            <trill-mark/>
-            <wavy-line type="start" number="1"/>
-            <wavy-line type="stop" number="1"/>
+            <trill-mark color="#FF2600"/>
+            <wavy-line type="start" number="1" color="#FF2600"/>
+            <wavy-line type="stop" number="1" color="#FF2600"/>
             </ornaments>
           </notations>
         </note>
