@@ -335,14 +335,18 @@ ChordRest* MeiImporter::addChordRest(pugi::xml_node node, Measure* measure, int 
     }
 
     BeamMode beamMode = Convert::beamFromMEI(typedAtt->GetType(), BEAM_ELEMENT_TYPE, warning);
-    if (!m_readingGraceNotes && m_beamBeginMode != BeamMode::AUTO) {
-        chordRest->setBeamMode(m_beamBeginMode);
-        m_beamBeginMode = BeamMode::AUTO;
-    } else if (m_readingGraceNotes && m_graceBeamBeginMode != BeamMode::AUTO) {
-        chordRest->setBeamMode(m_graceBeamBeginMode);
-        m_graceBeamBeginMode = BeamMode::AUTO;
-    } else if (beamMode != BeamMode::AUTO) {
+    if (beamMode != BeamMode::AUTO) {
         chordRest->setBeamMode(beamMode);
+    }
+    // Set BeamMode::BEGIN16 or BeamMode::BEGIN32 (we have a distinct flag for grace notes for handling nested beams)
+    else {
+        if (!m_readingGraceNotes) {
+            chordRest->setBeamMode(m_beamBeginMode);
+            m_beamBeginMode = BeamMode::AUTO;
+        } else {
+            chordRest->setBeamMode(m_graceBeamBeginMode);
+            m_graceBeamBeginMode = BeamMode::AUTO;
+        }
     }
 
     Fraction chordTicks = chordRest->ticks();
@@ -359,11 +363,15 @@ ChordRest* MeiImporter::addChordRest(pugi::xml_node node, Measure* measure, int 
         // Check if we have an AttBeamSecondary and read it for the next ChordRest
         if (beamSecondaryAtt && beamSecondaryAtt->HasBreaksec()) {
             m_beamBeginMode = Convert::breaksecFromMEI(beamSecondaryAtt->GetBreaksec(), warning);
+        } else {
+            m_beamBeginMode = BeamMode::AUTO;
         }
     } else {
         // Check if we have an AttBeamSecondary and read it for the next ChordRest
         if (beamSecondaryAtt && beamSecondaryAtt->HasBreaksec()) {
             m_graceBeamBeginMode = Convert::breaksecFromMEI(beamSecondaryAtt->GetBreaksec(), warning);
+        } else {
+            m_graceBeamBeginMode = BeamMode::AUTO;
         }
     }
 
