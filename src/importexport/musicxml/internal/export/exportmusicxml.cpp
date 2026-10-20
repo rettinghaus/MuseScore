@@ -3843,7 +3843,10 @@ static void writeBeam(XmlWriter& xml, ChordRest* const cr, Beam* const b)
             || (bmc == BeamMode::BEGIN32 && i > 2)) {
             text = u"begin";
         } else if (blp < i && bln < i) {
-            if (bln > 0) {
+            const Fraction subBeamUnit = cr->durationType().fraction();
+            if (subBeamUnit.isNotZero() && (cr->rtick().ticks() % (subBeamUnit.ticks() * 2) >= subBeamUnit.ticks())) {
+                text = u"backward hook";
+            } else if (bln > 0) {
                 text = u"forward hook";
             } else if (blp > 0) {
                 text = u"backward hook";
