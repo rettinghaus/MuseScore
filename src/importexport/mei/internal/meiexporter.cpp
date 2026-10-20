@@ -2551,16 +2551,8 @@ pugi::xml_node MeiExporter::getLastChordRest(pugi::xml_node node)
     pugi::xml_node chordRest;
 
     for (pugi::xml_node child : node.children()) {
-        if (this->isNode(child, u"chord")
-            || this->isNode(child, u"note")
-            || this->isNode(child, u"rest")
-            || this->isNode(child, u"space")) {
+        if (this->isNode(child, u"chord") || this->isNode(child, u"note") || this->isNode(child, u"rest")) {
             chordRest = child;
-        } else if (!this->isNode(child, u"graceGrp")) {
-            pugi::xml_node nested = getLastChordRest(child);
-            if (nested) {
-                chordRest = nested;
-            }
         }
     }
     return chordRest;

@@ -361,17 +361,13 @@ ChordRest* MeiImporter::addChordRest(pugi::xml_node node, Measure* measure, int 
     if (!m_readingGraceNotes) {
         ticks += chordTicks;
         // Check if we have an AttBeamSecondary and read it for the next ChordRest
-        if (beamSecondaryAtt && beamSecondaryAtt->HasBreaksec()) {
+        if (beamSecondaryAtt) {
             m_beamBeginMode = Convert::breaksecFromMEI(beamSecondaryAtt->GetBreaksec(), warning);
-        } else {
-            m_beamBeginMode = BeamMode::AUTO;
         }
     } else {
         // Check if we have an AttBeamSecondary and read it for the next ChordRest
-        if (beamSecondaryAtt && beamSecondaryAtt->HasBreaksec()) {
+        if (beamSecondaryAtt) {
             m_graceBeamBeginMode = Convert::breaksecFromMEI(beamSecondaryAtt->GetBreaksec(), warning);
-        } else {
-            m_graceBeamBeginMode = BeamMode::AUTO;
         }
     }
 
