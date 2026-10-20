@@ -6700,8 +6700,11 @@ static BeamMode computeBeamMode(const std::map<int, String>& beamTypes)
         return BeamMode::MID;
     } else if (muse::value(beamTypes, 1) == u"end") {
         return BeamMode::END;
+    } else if (muse::value(beamTypes, 1) == u"forward hook"
+               || muse::value(beamTypes, 1) == u"backward hook") {
+        return BeamMode::MID;
     } else {
-        // backward-hook, forward-hook, and other unknown combinations
+        // unknown combinations
         return BeamMode::AUTO;
     }
 }
