@@ -3838,11 +3838,16 @@ static void writeBeam(XmlWriter& xml, ChordRest* const cr, Beam* const b)
     // find beam type and write
     for (int i = 1; i <= blc; ++i) {
         String text;
-        if ((blp < i && bln >= i)
-            || (bmc == BeamMode::BEGIN16 && i > 1)
-            || (bmc == BeamMode::BEGIN32 && i > 2)) {
+        const bool isPrevBeamContinuous = (blp >= i) && !(bmc == BeamMode::BEGIN16 && i > 1) && !(bmc == BeamMode::BEGIN32 && i > 2);
+        const bool isNextBeamContinuous = (bln >= i) && !(bmn == BeamMode::BEGIN16 && i > 1) && !(bmn == BeamMode::BEGIN32 && i > 2);
+
+        if (!isPrevBeamContinuous && isNextBeamContinuous) {
             text = u"begin";
-        } else if (blp < i && bln < i) {
+        } else if (isPrevBeamContinuous && !isNextBeamContinuous) {
+            text = u"end";
+        } else if (isPrevBeamContinuous && isNextBeamContinuous) {
+            text = u"continue";
+        } else {
             const Fraction subBeamUnit = cr->durationType().fraction();
             if (subBeamUnit.isNotZero() && (cr->rtick().ticks() % (subBeamUnit.ticks() * 2) >= subBeamUnit.ticks())) {
                 text = u"backward hook";
@@ -3851,12 +3856,6 @@ static void writeBeam(XmlWriter& xml, ChordRest* const cr, Beam* const b)
             } else if (blp > 0) {
                 text = u"backward hook";
             }
-        } else if ((blp >= i && bln < i)
-                   || (bmn == BeamMode::BEGIN16 && i > 1)
-                   || (bmn == BeamMode::BEGIN32 && i > 2)) {
-            text = u"end";
-        } else if (blp >= i && bln >= i) {
-            text = u"continue";
         }
         if (!text.empty()) {
             String tag = u"beam";
