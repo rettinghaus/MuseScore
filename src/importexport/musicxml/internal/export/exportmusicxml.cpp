@@ -6287,6 +6287,7 @@ static void directionMarker(XmlWriter& xml, const Marker* const m, const std::ve
     const MarkerType mtp = getEffectiveMarkerType(m, jumps);
     String words;
     String smufl;
+    String symbol;
     String type;
     String sound;
 
@@ -6323,7 +6324,8 @@ static void directionMarker(XmlWriter& xml, const Marker* const m, const std::ve
     case MarkerType::DA_CODA:
     case MarkerType::DA_DBLCODA: {
         if (m->xmlText().empty()) {
-            words = u"To Coda";
+            words = u"To ";
+            symbol = u"coda";
         } else {
             words = m->xmlText();
         }
@@ -6353,6 +6355,9 @@ static void directionMarker(XmlWriter& xml, const Marker* const m, const std::ve
         }
         if (!words.empty()) {
             writeWordsAndSymbolsXml(xml, words, attrs);
+        }
+        if (!symbol.empty()) {
+            xml.tagRaw(u"symbol" + attrs, symbol);
         }
         xml.endElement();
         if (!sound.empty()) {
