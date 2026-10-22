@@ -23,7 +23,7 @@
 #pragma once
 
 #include "engraving/dom/textbase.h"
-#include "engraving/rw/xmlwriter.h"
+#include "musicxmlpugiwriter.h"
 
 namespace mu::iex::musicxml {
 //---------------------------------------------------------
@@ -38,7 +38,7 @@ public:
     static muse::String toPlainTextPlusSymbols(const std::list<engraving::TextFragment>& list);
     static bool split(const std::list<engraving::TextFragment>& in, const int pos, const int len, std::list<engraving::TextFragment>& left,
                       std::list<engraving::TextFragment>& mid, std::list<engraving::TextFragment>& right);
-    void writeTextFragments(const std::list<engraving::TextFragment>& fr, engraving::XmlWriter& xml);
+    void writeTextFragments(const std::list<engraving::TextFragment>& fr, XmlWriter& xml);
 
 private:
     muse::String updateFormat();
