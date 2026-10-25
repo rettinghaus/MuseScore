@@ -2366,7 +2366,9 @@ void MeiExporter::fillControlEventMap(const std::string& xmlId, const ChordRest*
     auto spanners = smap.findOverlapping(chordRest->tick().ticks(), chordRest->tick().ticks());
     for (auto interval : spanners) {
         Spanner* spanner = interval.value;
-        if (spanner && (spanner->isHairpin() || spanner->isOttava() || spanner->isPedal() || spanner->isSlur() || spanner->isTextLine() || spanner->isTrill())) {
+        if (spanner
+            && (spanner->isHairpin() || spanner->isOttava() || spanner->isPedal() || spanner->isSlur()
+                || spanner->isTextLine() || spanner->isTrill())) {
             if (spanner->startCR() == chordRest) {
                 m_startingControlEventList.push_back(std::make_pair(spanner, "#" + xmlId));
             } else if (spanner->endCR() == chordRest) {
