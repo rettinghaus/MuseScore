@@ -3843,7 +3843,7 @@ void MusicXmlParserDirection::direction(const String& partId,
             dynamicsPlacement = m_dynamicsPlacement;
         }
         if (dynamicsPlacement.empty()) {
-            if (partIsVoice(partId)) {
+            if (isVocalStaff) {
                 dynamicsPlacement = u"above";
             }
         }
