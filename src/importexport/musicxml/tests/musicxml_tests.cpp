@@ -317,7 +317,9 @@ TEST_F(MusicXml_Tests, soundElementOnlyRepeats) {
         "  </part>\n"
         "</score-partwise>\n");
 
-    MasterScore* score = readScoreData("soundElementOnlyRepeats.xml", xmlData);
+    MasterScore* score = Factory::createMasterScore();
+    engraving::Err err = importMusicXmlData(score, xmlData, false);
+    ASSERT_EQ(err, engraving::Err::NoError);
     ASSERT_TRUE(score);
 
     const Jump* dsJump = nullptr;
