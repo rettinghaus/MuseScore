@@ -23,7 +23,7 @@
 #include <gtest/gtest.h>
 
 #include "engraving/engravingerrors.h"
-#include "engraving/dom/factory.h"
+#include "engraving/compat/scoreaccess.h"
 #include "engraving/dom/jump.h"
 #include "engraving/dom/marker.h"
 #include "engraving/dom/masterscore.h"
@@ -318,8 +318,8 @@ TEST_F(MusicXml_Tests, soundElementOnlyRepeats) {
         "  </part>\n"
         "</score-partwise>\n");
 
-    MasterScore* score = Factory::createMasterScore();
-    engraving::Err err = importMusicXmlData(score, xmlData, false);
+    MasterScore* score = compat::ScoreAccess::createMasterScore(nullptr);
+    engraving::Err err = importMusicXmlfromBuffer(score, u"soundElementOnlyRepeats.xml", xmlData);
     ASSERT_EQ(err, engraving::Err::NoError);
     ASSERT_TRUE(score);
 
