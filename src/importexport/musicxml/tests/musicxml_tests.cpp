@@ -23,6 +23,7 @@
 #include <gtest/gtest.h>
 
 #include "engraving/engravingerrors.h"
+#include "engraving/dom/factory.h"
 #include "engraving/dom/jump.h"
 #include "engraving/dom/marker.h"
 #include "engraving/dom/masterscore.h"
