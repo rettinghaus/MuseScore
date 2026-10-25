@@ -3825,7 +3825,7 @@ void MusicXmlParserDirection::direction(const String& partId,
                 firstDyn = dynamic;
             } else if (it == m_dynamicsList.end() - 1 && firstDyn) {
                 // append hyphen and this dynamic to first
-                firstDyn->setDynamicType(firstDyn->xmlText() + u"<sym>dynamicCombinedSeparatorHyphen</sym>" + dynamic->xmlText());
+                firstDyn->setXmlText(firstDyn->xmlText() + u"<sym>dynamicCombinedSeparatorHyphen</sym>" + dynamic->xmlText());
                 delete dynamic;
                 continue;
             }
@@ -3840,7 +3840,12 @@ void MusicXmlParserDirection::direction(const String& partId,
         String dynamicsPlacement = placement();
         // Case-based defaults
         if (dynamicsPlacement.empty()) {
-            dynamicsPlacement = isVocalStaff ? u"above" : u"below";
+            dynamicsPlacement = m_dynamicsPlacement;
+        }
+        if (dynamicsPlacement.empty()) {
+            if (partIsVoice(partId)) {
+                dynamicsPlacement = u"above";
+            }
         }
 
         const InferredHairpinsStack& hairpins = m_pass2.getInferredHairpins();
