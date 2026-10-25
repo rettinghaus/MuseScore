@@ -945,6 +945,66 @@ static bool isDynamicsString(const String& str)
     return true;
 }
 
+static String dynamicTagToSym(const String& tag)
+{
+    static const std::map<String, String> symMap = {
+        { u"p",      u"<sym>dynamicPiano</sym>" },
+        { u"pp",     u"<sym>dynamicPiano</sym><sym>dynamicPiano</sym>" },
+        { u"ppp",    u"<sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym>" },
+        { u"pppp",   u"<sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym>" },
+        { u"ppppp",  u"<sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym>" },
+        { u"pppppp", u"<sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym>" },
+        { u"f",      u"<sym>dynamicForte</sym>" },
+        { u"ff",     u"<sym>dynamicForte</sym><sym>dynamicForte</sym>" },
+        { u"fff",    u"<sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym>" },
+        { u"ffff",   u"<sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym>" },
+        { u"fffff",  u"<sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym>" },
+        { u"ffffff", u"<sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym>" },
+        { u"mp",     u"<sym>dynamicMezzo</sym><sym>dynamicPiano</sym>" },
+        { u"mf",     u"<sym>dynamicMezzo</sym><sym>dynamicForte</sym>" },
+        { u"fp",     u"<sym>dynamicForte</sym><sym>dynamicPiano</sym>" },
+        { u"pf",     u"<sym>dynamicPiano</sym><sym>dynamicForte</sym>" },
+        { u"sf",     u"<sym>dynamicSforzando</sym><sym>dynamicForte</sym>" },
+        { u"sfz",    u"<sym>dynamicSforzando</sym><sym>dynamicForte</sym><sym>dynamicZ</sym>" },
+        { u"sffz",   u"<sym>dynamicSforzando</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicZ</sym>" },
+        { u"sfp",    u"<sym>dynamicSforzando</sym><sym>dynamicForte</sym><sym>dynamicPiano</sym>" },
+        { u"sfpp",   u"<sym>dynamicSforzando</sym><sym>dynamicForte</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym>" },
+        { u"rf",     u"<sym>dynamicRinforzando</sym><sym>dynamicForte</sym>" },
+        { u"rfz",    u"<sym>dynamicRinforzando</sym><sym>dynamicForte</sym><sym>dynamicZ</sym>" },
+        { u"fz",     u"<sym>dynamicForte</sym><sym>dynamicZ</sym>" },
+        { u"m",      u"<sym>dynamicMezzo</sym>" },
+        { u"r",      u"<sym>dynamicRinforzando</sym>" },
+        { u"s",      u"<sym>dynamicSforzando</sym>" },
+        { u"z",      u"<sym>dynamicZ</sym>" },
+        { u"n",      u"<sym>dynamicNiente</sym>" }
+    };
+
+    auto it = symMap.find(tag);
+    if (it != symMap.end()) {
+        return it->second;
+    }
+
+    if (isDynamicsString(tag)) {
+        String res;
+        for (size_t i = 0; i < tag.size(); ++i) {
+            char16_t u = tag.at(i).unicode();
+            switch (u) {
+            case u'p': res += u"<sym>dynamicPiano</sym>"; break;
+            case u'm': res += u"<sym>dynamicMezzo</sym>"; break;
+            case u'f': res += u"<sym>dynamicForte</sym>"; break;
+            case u'r': res += u"<sym>dynamicRinforzando</sym>"; break;
+            case u's': res += u"<sym>dynamicSforzando</sym>"; break;
+            case u'z': res += u"<sym>dynamicZ</sym>"; break;
+            case u'n': res += u"<sym>dynamicNiente</sym>"; break;
+            default: break;
+            }
+        }
+        return res;
+    }
+
+    return tag;
+}
+
 static void parseDynamicsXml(XmlStreamReader& e, StringList& dynamicsList, MusicXmlLogger* logger)
 {
     String dynamicStr;
@@ -960,11 +1020,13 @@ static void parseDynamicsXml(XmlStreamReader& e, StringList& dynamicsList, Music
                     if (logger) {
                         logger->logError(String(u"other-dynamics '%1' contains non-dynamics characters").arg(text), &e);
                     }
+                    dynamicStr += text;
+                } else {
+                    dynamicStr += dynamicTagToSym(text);
                 }
-                dynamicStr += text;
             }
         } else {
-            dynamicStr += String::fromAscii(e.name().ascii());
+            dynamicStr += dynamicTagToSym(String::fromAscii(e.name().ascii()));
             e.skipCurrentElement();
         }
     }
