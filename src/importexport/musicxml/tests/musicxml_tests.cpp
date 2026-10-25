@@ -315,8 +315,7 @@ TEST_F(MusicXml_Tests, soundElementOnlyRepeats) {
         "      <direction><sound dacapo=\"yes\" fine=\"yes\"/></direction>\n"
         "    </measure>\n"
         "  </part>\n"
-        "</score-partwise>\n"
-    );
+        "</score-partwise>\n");
 
     MasterScore* score = readScoreData("soundElementOnlyRepeats.xml", xmlData);
     ASSERT_TRUE(score);
