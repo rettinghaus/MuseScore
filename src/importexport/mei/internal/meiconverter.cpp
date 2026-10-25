@@ -114,6 +114,18 @@ bool Convert::isDirWithExt(const libmei::Dir& meiDir)
     return meiDir.HasExtender() && (meiDir.GetExtender() == libmei::BOOLEAN_true);
 }
 
+bool Convert::isSystemTextLine(const libmei::Element& meiElement)
+{
+    const libmei::AttTyped* typedAtt = dynamic_cast<const libmei::AttTyped*>(&meiElement);
+    if (typedAtt) {
+        if (Convert::hasTypeValue(typedAtt->GetType(), std::string(DIR_TYPE) + "system-text-line")
+            || Convert::hasTypeValue(typedAtt->GetType(), std::string(DIR_TYPE) + "system-text")) {
+            return true;
+        }
+    }
+    return false;
+}
+
 bool Convert::isMordent(const engraving::Ornament* ornament)
 {
     switch (ornament->symId()) {
@@ -1256,6 +1268,8 @@ libmei::Dir Convert::dirToMEI(const engraving::TextLineBase* textLineBase, Strin
         } else {
             dirType += "dim";
         }
+    } else if (engraving::isSystemTextLine(textLineBase)) {
+        dirType = std::string(DIR_TYPE) + "system-text-line";
     }
     meiDir.SetType(dirType);
 

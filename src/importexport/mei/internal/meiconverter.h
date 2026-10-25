@@ -139,6 +139,7 @@ public:
     static engraving::ElementType elementTypeForDirWithExt(const libmei::Element& meiElement);
     static engraving::ElementType elementTypeFor(const libmei::RepeatMark& meiRepeatMark);
     static bool isDirWithExt(const libmei::Dir& meiDir);
+    static bool isSystemTextLine(const libmei::Element& meiElement);
     static bool isMordent(const engraving::Ornament* ornament);
     static bool isTrill(const engraving::Ornament* ornament);
     static bool isTurn(const engraving::Ornament* ornament);

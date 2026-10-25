@@ -527,8 +527,11 @@ Spanner* MeiImporter::addSpanner(const libmei::Element& meiElement, Measure* mea
         switch (elementType) {
         case (ElementType::HAIRPIN): item = Factory::createHairpin(dummy);
             break;
-        default:
-            item = Factory::createTextLine(dummy);
+        default: {
+            bool isSystem = Convert::isSystemTextLine(meiElement);
+            item = new TextLine(dummy, isSystem);
+            break;
+        }
         }
     } else if (meiElement.m_name == "hairpin") {
         item = Factory::createHairpin(dummy);
