@@ -286,6 +286,73 @@ void MusicXml_Tests::musicXmlMscxExportTestRefInvisibleElements(const char* file
     delete score;
 }
 
+TEST_F(MusicXml_Tests, soundElementOnlyRepeats) {
+    // Verify that direction elements containing only <sound dacapo="yes"/>, <sound fine="yes"/>,
+    // or <sound dalsegno="..."/> without explicit <words> still import properly as Jump and Marker elements.
+    MScore::debugMode = true;
+
+    ByteArray xmlData(
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+        "<score-partwise version=\"4.0\">\n"
+        "  <part-list>\n"
+        "    <score-part id=\"P1\"><part-name>Music</part-name></score-part>\n"
+        "  </part-list>\n"
+        "  <part id=\"P1\">\n"
+        "    <measure number=\"1\">\n"
+        "      <attributes>\n"
+        "        <divisions>1</divisions>\n"
+        "        <clef><sign>G</sign><line>2</line></clef>\n"
+        "      </attributes>\n"
+        "      <note><pitch><step>C</step><octave>4</octave></pitch><duration>4</duration><type>whole</type></note>\n"
+        "      <direction><sound dalsegno=\"segno\"/></direction>\n"
+        "    </measure>\n"
+        "    <measure number=\"2\">\n"
+        "      <note><pitch><step>D</step><octave>4</octave></pitch><duration>4</duration><type>whole</type></note>\n"
+        "      <direction><sound fine=\"yes\"/></direction>\n"
+        "    </measure>\n"
+        "    <measure number=\"3\">\n"
+        "      <note><pitch><step>E</step><octave>4</octave></pitch><duration>4</duration><type>whole</type></note>\n"
+        "      <direction><sound dacapo=\"yes\" fine=\"yes\"/></direction>\n"
+        "    </measure>\n"
+        "  </part>\n"
+        "</score-partwise>\n"
+    );
+
+    MasterScore* score = readScoreData("soundElementOnlyRepeats.xml", xmlData);
+    ASSERT_TRUE(score);
+
+    const Jump* dsJump = nullptr;
+    const Marker* fineMarker = nullptr;
+    const Jump* dcAlFineJump = nullptr;
+
+    for (const MeasureBase* mb = score->first(); mb; mb = mb->next()) {
+        for (const EngravingItem* el : mb->el()) {
+            if (el->isJump()) {
+                const Jump* j = toJump(el);
+                if (j->jumpType() == JumpType::DS) {
+                    dsJump = j;
+                } else if (j->jumpType() == JumpType::DC_AL_FINE) {
+                    dcAlFineJump = j;
+                }
+            } else if (el->isMarker()) {
+                const Marker* m = toMarker(el);
+                if (m->markerType() == MarkerType::FINE) {
+                    fineMarker = m;
+                }
+            }
+        }
+    }
+
+    ASSERT_TRUE(dsJump);
+    EXPECT_EQ(dsJump->jumpType(), JumpType::DS);
+    ASSERT_TRUE(fineMarker);
+    EXPECT_EQ(fineMarker->markerType(), MarkerType::FINE);
+    ASSERT_TRUE(dcAlFineJump);
+    EXPECT_EQ(dcAlFineJump->jumpType(), JumpType::DC_AL_FINE);
+
+    delete score;
+}
+
 //---------------------------------------------------------
 //   musicXmlReadTestCompr
 //   read a compressed MusicXML file, write to a new file and verify against reference
