@@ -1017,7 +1017,7 @@ static Dynamic* createDynamicElement(Score* score, const String& dynStr, const C
                                      const String& enclosure, bool visible)
 {
     Dynamic* dynamic = Factory::createDynamic(score->dummy());
-    dynamic->setXmlText(dynStr);
+    dynamic->setDynamicType(dynStr);
     colorItem(dynamic, color);
 
     if (enclosure == u"circle") {
@@ -3825,7 +3825,7 @@ void MusicXmlParserDirection::direction(const String& partId,
                 firstDyn = dynamic;
             } else if (it == m_dynamicsList.end() - 1 && firstDyn) {
                 // append hyphen and this dynamic to first
-                firstDyn->setXmlText(firstDyn->xmlText() + u"<sym>dynamicCombinedSeparatorHyphen</sym>" + dynamic->xmlText());
+                firstDyn->setDynamicType(firstDyn->xmlText() + u"<sym>dynamicCombinedSeparatorHyphen</sym>" + dynamic->xmlText());
                 delete dynamic;
                 continue;
             }
