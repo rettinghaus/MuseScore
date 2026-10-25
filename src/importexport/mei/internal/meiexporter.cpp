@@ -70,6 +70,8 @@
 #include "engraving/dom/system.h"
 #include "engraving/dom/tempotext.h"
 #include "engraving/dom/text.h"
+#include "engraving/dom/textline.h"
+#include "engraving/dom/textlinebase.h"
 #include "engraving/dom/tie.h"
 #include "engraving/dom/timesig.h"
 #include "engraving/dom/trill.h"
@@ -2366,10 +2368,16 @@ void MeiExporter::fillControlEventMap(const std::string& xmlId, const ChordRest*
     auto spanners = smap.findOverlapping(chordRest->tick().ticks(), chordRest->tick().ticks());
     for (auto interval : spanners) {
         Spanner* spanner = interval.value;
-        if (spanner && (spanner->isHairpin() || spanner->isOttava() || spanner->isPedal() || spanner->isSlur() || spanner->isTextLine() || spanner->isTrill())) {
-            if (spanner->startCR() == chordRest) {
+        if (spanner
+            && (spanner->isHairpin() || spanner->isOttava() || spanner->isPedal() || spanner->isSlur()
+                || spanner->isTextLine() || spanner->isTrill())) {
+            bool isStart = spanner->startCR() == chordRest
+                           || (spanner->systemFlag() && chordRest->track() == 0 && spanner->startSegment() == chordRest->segment());
+            bool isEnd = spanner->endCR() == chordRest
+                         || (spanner->systemFlag() && chordRest->track() == 0 && spanner->endSegment() == chordRest->segment());
+            if (isStart) {
                 m_startingControlEventList.push_back(std::make_pair(spanner, "#" + xmlId));
-            } else if (spanner->endCR() == chordRest) {
+            } else if (isEnd) {
                 m_endingControlEventMap[spanner] = "#" + xmlId;
             }
         }

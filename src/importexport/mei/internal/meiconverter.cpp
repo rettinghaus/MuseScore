@@ -58,6 +58,7 @@
 #include "engraving/dom/tempotext.h"
 #include "engraving/dom/text.h"
 #include "engraving/dom/textbase.h"
+#include "engraving/dom/textline.h"
 #include "engraving/dom/tuplet.h"
 #include "engraving/dom/utils.h"
 
@@ -1182,6 +1183,13 @@ void Convert::dirFromMEI(engraving::TextLineBase* textLineBase, const StringList
             hairpinType = engraving::HairpinType::CRESC_LINE;
         }
         hairpin->setHairpinType(hairpinType);
+    } else if (textLineBase->isTextLine()) {
+        if (Convert::hasTypeValue(meiDir.GetType(), std::string(DIR_TYPE) + "system-text-line")
+            || Convert::hasTypeValue(meiDir.GetType(), std::string(DIR_TYPE) + "system-text")) {
+            engraving::TextLine* textLine = engraving::toTextLine(textLineBase);
+            textLine->setSystemFlag(true);
+            textLine->initStyle();
+        }
     }
 
     // @lform
@@ -1256,6 +1264,8 @@ libmei::Dir Convert::dirToMEI(const engraving::TextLineBase* textLineBase, Strin
         } else {
             dirType += "dim";
         }
+    } else if (textLineBase->systemFlag()) {
+        dirType = std::string(DIR_TYPE) + "system-text-line";
     }
     meiDir.SetType(dirType);
 
