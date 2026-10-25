@@ -114,17 +114,6 @@ bool Convert::isDirWithExt(const libmei::Dir& meiDir)
     return meiDir.HasExtender() && (meiDir.GetExtender() == libmei::BOOLEAN_true);
 }
 
-bool Convert::isSystemTextLine(const libmei::Element& meiElement)
-{
-    const libmei::AttTyped* typedAtt = dynamic_cast<const libmei::AttTyped*>(&meiElement);
-    if (typedAtt) {
-        if (Convert::hasTypeValue(typedAtt->GetType(), std::string(DIR_TYPE) + "system-text-line")
-            || Convert::hasTypeValue(typedAtt->GetType(), std::string(DIR_TYPE) + "system-text")) {
-            return true;
-        }
-    }
-    return false;
-}
 
 bool Convert::isMordent(const engraving::Ornament* ornament)
 {
@@ -1194,6 +1183,13 @@ void Convert::dirFromMEI(engraving::TextLineBase* textLineBase, const StringList
             hairpinType = engraving::HairpinType::CRESC_LINE;
         }
         hairpin->setHairpinType(hairpinType);
+    } else if (textLineBase->isTextLine()) {
+        if (Convert::hasTypeValue(meiDir.GetType(), std::string(DIR_TYPE) + "system-text-line")
+            || Convert::hasTypeValue(meiDir.GetType(), std::string(DIR_TYPE) + "system-text")) {
+            engraving::TextLine* textLine = engraving::toTextLine(textLineBase);
+            textLine->setSystemFlag(true);
+            textLine->initStyle();
+        }
     }
 
     // @lform
@@ -1268,7 +1264,7 @@ libmei::Dir Convert::dirToMEI(const engraving::TextLineBase* textLineBase, Strin
         } else {
             dirType += "dim";
         }
-    } else if (engraving::isSystemTextLine(textLineBase)) {
+    } else if (textLineBase->systemFlag()) {
         dirType = std::string(DIR_TYPE) + "system-text-line";
     }
     meiDir.SetType(dirType);
