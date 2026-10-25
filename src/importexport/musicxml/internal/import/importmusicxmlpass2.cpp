@@ -142,72 +142,6 @@ static void addTie(const Notation& notation, Note* note, const track_idx_t track
                    const XmlStreamReader* const xmlreader);
 
 //---------------------------------------------------------
-//   dynamics helpers
-//---------------------------------------------------------
-
-static bool isDynamicsString(const String& str)
-{
-    if (str.empty()) {
-        return false;
-    }
-    for (size_t i = 0; i < str.size(); ++i) {
-        char16_t u = str.at(i).unicode();
-        if (u != u'f' && u != u'm' && u != u'n' && u != u'p' && u != u'r' && u != u's' && u != u'z') {
-            return false;
-        }
-    }
-    return true;
-}
-
-static void parseDynamicsXml(XmlStreamReader& e, StringList& dynamicsList, MusicXmlLogger* logger)
-{
-    String dynamicStr;
-    while (e.readNextStartElement()) {
-        if (e.name() == "other-dynamics") {
-            const String smufl = e.attribute("smufl");
-            if (!smufl.empty()) {
-                dynamicStr += u"<sym>" + smufl + u"</sym>";
-                e.skipCurrentElement();
-            } else {
-                const String text = e.readText();
-                if (!isDynamicsString(text)) {
-                    if (logger) {
-                        logger->logError(String(u"other-dynamics '%1' contains non-dynamics characters").arg(text), &e);
-                    }
-                }
-                dynamicStr += text;
-            }
-        } else {
-            dynamicStr += String::fromAscii(e.name().ascii());
-            e.skipCurrentElement();
-        }
-    }
-    if (!dynamicStr.empty()) {
-        dynamicsList.push_back(dynamicStr);
-    }
-}
-
-static Dynamic* createDynamicElement(Score* score, const String& dynStr, const Color& color,
-                                     const String& enclosure, bool visible)
-{
-    Dynamic* dynamic = Factory::createDynamic(score->dummy());
-    dynamic->setDynamicType(dynStr);
-    colorItem(dynamic, color);
-
-    if (enclosure == u"circle") {
-        dynamic->setFrameType(FrameType::CIRCLE);
-    } else if (enclosure == u"none") {
-        dynamic->setFrameType(FrameType::NO_FRAME);
-    } else if (enclosure == u"rectangle") {
-        dynamic->setFrameType(FrameType::RECTANGLE);
-        dynamic->setFrameRound(0_sp);
-    }
-
-    dynamic->setVisible(visible);
-    return dynamic;
-}
-
-//---------------------------------------------------------
 //   support enums / structs / classes
 //---------------------------------------------------------
 
@@ -991,6 +925,72 @@ static void colorItem(EngravingItem* item, const Color color)
         item->setProperty(Pid::COLOR, color);
         item->setPropertyFlags(Pid::COLOR, PropertyFlags::UNSTYLED);
     }
+}
+
+//---------------------------------------------------------
+//   dynamics helpers
+//---------------------------------------------------------
+
+static bool isDynamicsString(const String& str)
+{
+    if (str.empty()) {
+        return false;
+    }
+    for (size_t i = 0; i < str.size(); ++i) {
+        char16_t u = str.at(i).unicode();
+        if (u != u'f' && u != u'm' && u != u'n' && u != u'p' && u != u'r' && u != u's' && u != u'z') {
+            return false;
+        }
+    }
+    return true;
+}
+
+static void parseDynamicsXml(XmlStreamReader& e, StringList& dynamicsList, MusicXmlLogger* logger)
+{
+    String dynamicStr;
+    while (e.readNextStartElement()) {
+        if (e.name() == "other-dynamics") {
+            const String smufl = e.attribute("smufl");
+            if (!smufl.empty()) {
+                dynamicStr += u"<sym>" + smufl + u"</sym>";
+                e.skipCurrentElement();
+            } else {
+                const String text = e.readText();
+                if (!isDynamicsString(text)) {
+                    if (logger) {
+                        logger->logError(String(u"other-dynamics '%1' contains non-dynamics characters").arg(text), &e);
+                    }
+                }
+                dynamicStr += text;
+            }
+        } else {
+            dynamicStr += String::fromAscii(e.name().ascii());
+            e.skipCurrentElement();
+        }
+    }
+    if (!dynamicStr.empty()) {
+        dynamicsList.push_back(dynamicStr);
+    }
+}
+
+static Dynamic* createDynamicElement(Score* score, const String& dynStr, const Color& color,
+                                     const String& enclosure, bool visible)
+{
+    Dynamic* dynamic = Factory::createDynamic(score->dummy());
+    dynamic->setDynamicType(dynStr);
+    colorItem(dynamic, color);
+
+    if (enclosure == u"circle") {
+        dynamic->setFrameType(FrameType::CIRCLE);
+    } else if (enclosure == u"none") {
+        dynamic->setFrameType(FrameType::NO_FRAME);
+    } else if (enclosure == u"rectangle") {
+        dynamic->setFrameType(FrameType::RECTANGLE);
+        dynamic->setFrameRound(0_sp);
+    }
+
+    dynamic->setVisible(visible);
+    return dynamic;
 }
 
 //---------------------------------------------------------
