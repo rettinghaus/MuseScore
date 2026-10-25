@@ -952,14 +952,18 @@ static String dynamicTagToSym(const String& tag)
         { u"pp",     u"<sym>dynamicPiano</sym><sym>dynamicPiano</sym>" },
         { u"ppp",    u"<sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym>" },
         { u"pppp",   u"<sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym>" },
-        { u"ppppp",  u"<sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym>" },
-        { u"pppppp", u"<sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym>" },
+        { u"ppppp",
+          u"<sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym>" },
+        { u"pppppp",
+          u"<sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym><sym>dynamicPiano</sym>" },
         { u"f",      u"<sym>dynamicForte</sym>" },
         { u"ff",     u"<sym>dynamicForte</sym><sym>dynamicForte</sym>" },
         { u"fff",    u"<sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym>" },
         { u"ffff",   u"<sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym>" },
-        { u"fffff",  u"<sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym>" },
-        { u"ffffff", u"<sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym>" },
+        { u"fffff",
+          u"<sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym>" },
+        { u"ffffff",
+          u"<sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym><sym>dynamicForte</sym>" },
         { u"mp",     u"<sym>dynamicMezzo</sym><sym>dynamicPiano</sym>" },
         { u"mf",     u"<sym>dynamicMezzo</sym><sym>dynamicForte</sym>" },
         { u"fp",     u"<sym>dynamicForte</sym><sym>dynamicPiano</sym>" },
@@ -989,14 +993,29 @@ static String dynamicTagToSym(const String& tag)
         for (size_t i = 0; i < tag.size(); ++i) {
             char16_t u = tag.at(i).unicode();
             switch (u) {
-            case u'p': res += u"<sym>dynamicPiano</sym>"; break;
-            case u'm': res += u"<sym>dynamicMezzo</sym>"; break;
-            case u'f': res += u"<sym>dynamicForte</sym>"; break;
-            case u'r': res += u"<sym>dynamicRinforzando</sym>"; break;
-            case u's': res += u"<sym>dynamicSforzando</sym>"; break;
-            case u'z': res += u"<sym>dynamicZ</sym>"; break;
-            case u'n': res += u"<sym>dynamicNiente</sym>"; break;
-            default: break;
+            case u'p':
+                res += u"<sym>dynamicPiano</sym>";
+                break;
+            case u'm':
+                res += u"<sym>dynamicMezzo</sym>";
+                break;
+            case u'f':
+                res += u"<sym>dynamicForte</sym>";
+                break;
+            case u'r':
+                res += u"<sym>dynamicRinforzando</sym>";
+                break;
+            case u's':
+                res += u"<sym>dynamicSforzando</sym>";
+                break;
+            case u'z':
+                res += u"<sym>dynamicZ</sym>";
+                break;
+            case u'n':
+                res += u"<sym>dynamicNiente</sym>";
+                break;
+            default:
+                break;
             }
         }
         return res;
