@@ -6013,7 +6013,11 @@ void ExportMusicXml::dynamic(Dynamic const* const dyn, staff_idx_t staff)
             { 0xE523, u'r' },
             { 0xE524, u's' },
             { 0xE525, u'z' },
-            { 0xE526, u'n' }
+            { 0xE526, u'n' },
+            { 0xE541, u':' },
+            { 0xE542, u'-' },
+            { 0xE543, u'/' },
+            { 0xE544, u' ' }
         };
 
         String dynText = dynTypeName;

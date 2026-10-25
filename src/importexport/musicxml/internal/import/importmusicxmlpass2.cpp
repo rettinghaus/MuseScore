@@ -1017,7 +1017,7 @@ static Dynamic* createDynamicElement(Score* score, const String& dynStr, const C
                                      const String& enclosure, bool visible)
 {
     Dynamic* dynamic = Factory::createDynamic(score->dummy());
-    dynamic->setDynamicType(dynStr);
+    dynamic->setXmlText(dynStr);
     colorItem(dynamic, color);
 
     if (enclosure == u"circle") {
