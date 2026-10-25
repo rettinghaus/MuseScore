@@ -114,7 +114,6 @@ bool Convert::isDirWithExt(const libmei::Dir& meiDir)
     return meiDir.HasExtender() && (meiDir.GetExtender() == libmei::BOOLEAN_true);
 }
 
-
 bool Convert::isMordent(const engraving::Ornament* ornament)
 {
     switch (ornament->symId()) {
