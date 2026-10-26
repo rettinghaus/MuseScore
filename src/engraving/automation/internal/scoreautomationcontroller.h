@@ -135,10 +135,12 @@ private:
             utick_t endPointTick = 0; // tick + velocityChangeLength (arrival point)
         };
 
+        using Kind = std::variant<Ordinary, SingleNote, Compound>;
+
         utick_t tick = 0;
         EID eid = EID::invalid();
         int priority = 0;
-        std::variant<Ordinary, SingleNote, Compound> kind = Ordinary {};
+        Kind kind = Ordinary {};
     };
 
     struct HairpinInfo {

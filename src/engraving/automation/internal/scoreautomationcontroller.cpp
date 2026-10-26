@@ -727,6 +727,105 @@ void ScoreAutomationController::addSegmentPoints(const Segment* segment, int tic
     }
 }
 
+static DynamicInfo::Kind resolveDynamicKindForOther(const Dynamic* dynamic, BeatsPerSecond tempo, utick_t tick)
+{
+    String xmlText = dynamic->xmlText();
+    String str;
+    for (size_t i = 0; i < xmlText.size();) {
+        if (xmlText.mid(i).startsWith(u"<sym>dynamicPiano</sym>")) {
+            str += u'p';
+            i += std::strlen("<sym>dynamicPiano</sym>");
+        } else if (xmlText.mid(i).startsWith(u"<sym>dynamicMezzo</sym>")) {
+            str += u'm';
+            i += std::strlen("<sym>dynamicMezzo</sym>");
+        } else if (xmlText.mid(i).startsWith(u"<sym>dynamicForte</sym>")) {
+            str += u'f';
+            i += std::strlen("<sym>dynamicForte</sym>");
+        } else if (xmlText.mid(i).startsWith(u"<sym>dynamicRinforzando</sym>")) {
+            str += u'r';
+            i += std::strlen("<sym>dynamicRinforzando</sym>");
+        } else if (xmlText.mid(i).startsWith(u"<sym>dynamicSforzando</sym>")) {
+            str += u's';
+            i += std::strlen("<sym>dynamicSforzando</sym>");
+        } else if (xmlText.mid(i).startsWith(u"<sym>dynamicZ</sym>")) {
+            str += u'z';
+            i += std::strlen("<sym>dynamicZ</sym>");
+        } else if (xmlText.mid(i).startsWith(u"<sym>dynamicNiente</sym>")) {
+            str += u'n';
+            i += std::strlen("<sym>dynamicNiente</sym>");
+        } else {
+            char16_t u = xmlText.at(i).unicode();
+            if (u == u'f' || u == u'm' || u == u'n' || u == u'p' || u == u'r' || u == u's' || u == u'z') {
+                str += u;
+            }
+            i++;
+        }
+    }
+
+    static const std::vector<std::pair<String, real_t>> KNOWN_TOKENS = {
+        { u"ffffff", 0.825 },
+        { u"fffff",  0.775 },
+        { u"ffff",   0.725 },
+        { u"fff",    0.675 },
+        { u"ff",     0.625 },
+        { u"f",      0.575 },
+        { u"mp",     0.475 },
+        { u"mf",     0.525 },
+        { u"pppppp", 0.175 },
+        { u"ppppp",  0.225 },
+        { u"pppp",   0.275 },
+        { u"ppp",    0.325 },
+        { u"pp",     0.375 },
+        { u"p",      0.425 },
+        { u"sffz",   0.625 },
+        { u"sff",    0.625 },
+        { u"sfffz",  0.675 },
+        { u"sfff",   0.675 },
+        { u"sfz",    0.575 },
+        { u"sf",     0.575 },
+        { u"sfp",    0.575 },
+        { u"rfz",    0.575 },
+        { u"rf",     0.575 },
+        { u"fz",     0.575 },
+        { u"fp",     0.575 },
+        { u"n",      0.000 },
+        { u"z",      0.525 },
+        { u"s",      0.575 },
+        { u"r",      0.575 },
+        { u"m",      0.525 },
+    };
+
+    std::vector<real_t> levels;
+    size_t pos = 0;
+    while (pos < str.size()) {
+        bool matched = false;
+        String remaining = str.mid(pos);
+        for (const auto& [token, val] : KNOWN_TOKENS) {
+            if (remaining.startsWith(token)) {
+                levels.push_back(val);
+                pos += token.size();
+                matched = true;
+                break;
+            }
+        }
+        if (!matched) {
+            pos++;
+        }
+    }
+
+    if (levels.size() >= 2) {
+        utick_t endTick = tick + dynamic->velocityChangeLength(tempo).ticks();
+        return DynamicInfo::Compound { levels.front(), levels.back(), endTick };
+    } else if (levels.size() == 1) {
+        return DynamicInfo::Ordinary { levels.front() };
+    } else if (dynamic->velocity() > 0) {
+        real_t val = real_t(dynamic->velocity()) / real_t(127.0);
+        return DynamicInfo::Ordinary { val };
+    }
+
+    return DynamicInfo::Ordinary { 0.525 };
+}
+
 void ScoreAutomationController::addDynamicPoints(const Dynamic* dynamic, int tickOffset, const StaffRange& range, UpdateContext& ctx)
 {
     TRACEFUNC;
@@ -754,8 +853,8 @@ void ScoreAutomationController::addDynamicPoints(const Dynamic* dynamic, int tic
         info.kind = DynamicInfo::Compound { compoundIt->second.first, compoundIt->second.second,
                                             tick + dynamic->velocityChangeLength(tempo).ticks() };
     } else {
-        NOT_SUPPORTED;
-        return;
+        const BeatsPerSecond tempo = denormalizeTempo(currentTempoAt(*ctx.tempoCurve, tick)) * ctx.tempoMultiplier;
+        info.kind = resolveDynamicKindForOther(dynamic, tempo, tick);
     }
 
     const std::vector<AutomationCurveKey> keys = resolveKeys(dynamic, AutomationType::Dynamics, range);
