@@ -728,7 +728,7 @@ void ScoreAutomationController::addSegmentPoints(const Segment* segment, int tic
 }
 
 ScoreAutomationController::DynamicInfo::Kind ScoreAutomationController::resolveDynamicKindForOther(const Dynamic* dynamic,
-                                                                                                      BeatsPerSecond tempo, utick_t tick)
+                                                                                                   BeatsPerSecond tempo, utick_t tick)
 {
     String xmlText = dynamic->xmlText();
     String str;
