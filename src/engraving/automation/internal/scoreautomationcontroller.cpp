@@ -727,7 +727,7 @@ void ScoreAutomationController::addSegmentPoints(const Segment* segment, int tic
     }
 }
 
-static DynamicInfo::Kind resolveDynamicKindForOther(const Dynamic* dynamic, BeatsPerSecond tempo, utick_t tick)
+static ScoreAutomationController::DynamicInfo::Kind resolveDynamicKindForOther(const Dynamic* dynamic, BeatsPerSecond tempo, utick_t tick)
 {
     String xmlText = dynamic->xmlText();
     String str;
@@ -762,7 +762,7 @@ static DynamicInfo::Kind resolveDynamicKindForOther(const Dynamic* dynamic, Beat
         }
     }
 
-    static const std::vector<std::pair<String, real_t>> KNOWN_TOKENS = {
+    static const std::vector<std::pair<String, real_t> > KNOWN_TOKENS = {
         { u"ffffff", 0.825 },
         { u"fffff",  0.775 },
         { u"ffff",   0.725 },
@@ -815,15 +815,15 @@ static DynamicInfo::Kind resolveDynamicKindForOther(const Dynamic* dynamic, Beat
 
     if (levels.size() >= 2) {
         utick_t endTick = tick + dynamic->velocityChangeLength(tempo).ticks();
-        return DynamicInfo::Compound { levels.front(), levels.back(), endTick };
+        return ScoreAutomationController::DynamicInfo::Compound { levels.front(), levels.back(), endTick };
     } else if (levels.size() == 1) {
-        return DynamicInfo::Ordinary { levels.front() };
+        return ScoreAutomationController::DynamicInfo::Ordinary { levels.front() };
     } else if (dynamic->velocity() > 0) {
         real_t val = real_t(dynamic->velocity()) / real_t(127.0);
-        return DynamicInfo::Ordinary { val };
+        return ScoreAutomationController::DynamicInfo::Ordinary { val };
     }
 
-    return DynamicInfo::Ordinary { 0.525 };
+    return ScoreAutomationController::DynamicInfo::Ordinary { 0.525 };
 }
 
 void ScoreAutomationController::addDynamicPoints(const Dynamic* dynamic, int tickOffset, const StaffRange& range, UpdateContext& ctx)
