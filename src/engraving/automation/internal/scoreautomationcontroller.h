@@ -160,6 +160,7 @@ private:
                                      bool includeDynamics, AutomationCurveMap& destCurves);
 
     static void addSegmentPoints(const Segment* segment, int tickOffset, const StaffRange& range, UpdateContext& ctx);
+    static DynamicInfo::Kind resolveDynamicKindForOther(const Dynamic* dynamic, BeatsPerSecond tempo, utick_t tick);
     static void addDynamicPoints(const Dynamic* dynamic, int tickOffset, const StaffRange& range, UpdateContext& ctx);
     static void addDynamicPoints(const DynamicInfo& info, const AutomationCurveKey& key, UpdateContext& ctx);
 

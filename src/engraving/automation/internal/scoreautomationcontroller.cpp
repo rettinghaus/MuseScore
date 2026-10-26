@@ -727,7 +727,8 @@ void ScoreAutomationController::addSegmentPoints(const Segment* segment, int tic
     }
 }
 
-static ScoreAutomationController::DynamicInfo::Kind resolveDynamicKindForOther(const Dynamic* dynamic, BeatsPerSecond tempo, utick_t tick)
+ScoreAutomationController::DynamicInfo::Kind ScoreAutomationController::resolveDynamicKindForOther(const Dynamic* dynamic,
+                                                                                                      BeatsPerSecond tempo, utick_t tick)
 {
     String xmlText = dynamic->xmlText();
     String str;
@@ -815,15 +816,15 @@ static ScoreAutomationController::DynamicInfo::Kind resolveDynamicKindForOther(c
 
     if (levels.size() >= 2) {
         utick_t endTick = tick + dynamic->velocityChangeLength(tempo).ticks();
-        return ScoreAutomationController::DynamicInfo::Compound { levels.front(), levels.back(), endTick };
+        return DynamicInfo::Compound { levels.front(), levels.back(), endTick };
     } else if (levels.size() == 1) {
-        return ScoreAutomationController::DynamicInfo::Ordinary { levels.front() };
+        return DynamicInfo::Ordinary { levels.front() };
     } else if (dynamic->velocity() > 0) {
         real_t val = real_t(dynamic->velocity()) / real_t(127.0);
-        return ScoreAutomationController::DynamicInfo::Ordinary { val };
+        return DynamicInfo::Ordinary { val };
     }
 
-    return ScoreAutomationController::DynamicInfo::Ordinary { 0.525 };
+    return DynamicInfo::Ordinary { 0.525 };
 }
 
 void ScoreAutomationController::addDynamicPoints(const Dynamic* dynamic, int tickOffset, const StaffRange& range, UpdateContext& ctx)
