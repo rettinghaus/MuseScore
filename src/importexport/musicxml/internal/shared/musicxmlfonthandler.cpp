@@ -26,8 +26,6 @@
 
 #include "musicxmlfonthandler.h"
 
-#include "engraving/rw/xmlwriter.h"
-
 using namespace mu::engraving;
 
 namespace mu::iex::musicxml {
