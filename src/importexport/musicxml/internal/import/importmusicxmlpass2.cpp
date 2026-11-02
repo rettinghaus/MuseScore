@@ -137,7 +137,8 @@ constexpr int MAX_LYRICS       = 16;
 //   function declarations
 //---------------------------------------------------------
 
-static void addTie(const Notation& notation, Note* note, const track_idx_t track, MusicXmlTieMap& tie,
+static void addTie(const Notation& notation, Note* note, const track_idx_t track, MusicXmlTieMap& ties,
+                   MusicXmlStoppedTieMap& stoppedTies,
                    std::vector<Note*>& unstartedTieNotes, std::vector<Note*>& unendedTieNotes, MusicXmlLogger* logger,
                    const XmlStreamReader* const xmlreader);
 
@@ -1807,18 +1808,20 @@ void MusicXmlParserPass2::initPartState(const String& partId)
     UNUSED(partId);
     m_timeSigDura = Fraction(0, 0);               // invalid
     m_ties.clear();
+    m_stoppedTies.clear();
     m_unstartedTieNotes.clear();
     m_unendedTieNotes.clear();
     m_lastVolta = 0;
     m_hasDrumset = false;
     for (int i = 0; i < MAX_NUMBER_LEVEL; ++i) {
-        m_slurs[i] = SlurDesc();
+        m_slurs[i].clear();
     }
     for (int i = 0; i < MAX_NUMBER_LEVEL; ++i) {
-        m_trills[i] = 0;
+        m_trills[i].clear();
     }
     for (auto& i : m_glissandi) {
-        i[0] = i[1] = 0;
+        i[0].clear();
+        i[1].clear();
     }
     m_pedalContinue = 0;
     m_harmony = 0;
@@ -1867,6 +1870,22 @@ SpannerSet MusicXmlParserPass2::findIncompleteSpannersAtPartEnd()
         LOGD("pedal not terminated at end of part");
         res.insert(m_pedal.sp);
         m_pedal = {};
+    }
+    for (TrillDesc& td : m_trills) {
+        if (td.isStart() || td.isStop()) {
+            if (td.spanner()) {
+                res.insert(td.spanner());
+            }
+            td.clear();
+        }
+    }
+    for (auto& gPair : m_glissandi) {
+        for (GlissandoDesc& gd : gPair) {
+            if (gd.isStart() && gd.glissando()) {
+                res.insert(gd.glissando());
+            }
+            gd.clear();
+        }
     }
     return res;
 }
@@ -2409,6 +2428,7 @@ void MusicXmlParserPass2::part()
     }
 
     m_ties.clear();
+    m_stoppedTies.clear();
     m_unstartedTieNotes.clear();
     m_unendedTieNotes.clear();
 
@@ -7402,15 +7422,15 @@ Note* MusicXmlParserPass2::note(const String& partId,
     // handle notations
     if (cr) {
         notations.addToScore(cr, note,
-                             noteStartTime, m_slurs, m_glissandi, m_spanners, m_trills, m_ties, m_unstartedTieNotes,
-                             m_unendedTieNotes, arpMap, delayedArps);
+                             noteStartTime, m_slurs, m_glissandi, m_spanners, m_trills, m_ties, m_stoppedTies,
+                             m_unstartedTieNotes, m_unendedTieNotes, arpMap, delayedArps);
 
         // if no tie added yet, convert the "tie" into "tied" and add it.
         if (note && !note->tieFor() && !note->tieBack() && !tieType.empty()) {
             Notation notation = Notation(u"tied");
             const String type2 = u"type";
             notation.addAttribute(type2, tieType);
-            addTie(notation, note, cr->track(), m_ties, m_unstartedTieNotes, m_unendedTieNotes, m_logger, &m_e);
+            addTie(notation, note, cr->track(), m_ties, m_stoppedTies, m_unstartedTieNotes, m_unendedTieNotes, m_logger, &m_e);
         }
     }
 
@@ -8965,8 +8985,34 @@ void MusicXmlParserNotations::glissandoSlide()
 //   addGlissandoSlide
 //---------------------------------------------------------
 
+static void applyGlissandoProperties(Glissando* gliss, const Notation& notation, Note* note,
+                                     const Fraction& tick, const track_idx_t track,
+                                     bool glissandoTag, const String& lineType)
+{
+    gliss->setStartElement(note);
+    gliss->setTick(tick);
+    gliss->setTrack(track);
+    gliss->setVisible(notation.visible());
+    colorItem(gliss, Color::fromString(notation.attribute(u"color")));
+    if (lineType == u"dashed") {
+        gliss->setLineStyle(LineType::DASHED);
+    } else if (lineType == u"dotted") {
+        gliss->setLineStyle(LineType::DOTTED);
+    } else if (lineType == u"solid" || lineType.empty()) {
+        gliss->setLineStyle(LineType::SOLID);
+    }
+    gliss->setText(notation.text());
+    gliss->setGlissandoType(glissandoTag || (lineType == u"wavy") ? GlissandoType::WAVY : GlissandoType::STRAIGHT);
+    const GlissandoStyle instrumentStyle = note->part()->instrument(tick)->glissandoStyle();
+    if (instrumentStyle != gliss->glissandoStyle()) {
+        gliss->setGlissandoStyle(instrumentStyle);
+        // the instrument's style, not the score's: keep it when the score is saved
+        gliss->setPropertyFlags(Pid::GLISS_STYLE, PropertyFlags::UNSTYLED);
+    }
+}
+
 static void addGlissandoSlide(const Notation& notation, Note* note,
-                              Glissando* glissandi[MAX_NUMBER_LEVEL][2], MusicXmlSpannerMap& spanners,
+                              GlissandoStack& glissandi, MusicXmlSpannerMap& spanners,
                               MusicXmlLogger* logger, const XmlStreamReader* const xmlreader)
 {
     int glissandoNumber = notation.attribute(u"number").toInt();
@@ -8975,74 +9021,88 @@ static void addGlissandoSlide(const Notation& notation, Note* note,
     }
     const String glissandoType = notation.attribute(u"type");
     const bool glissandoTag = notation.name() != u"slide";
-    const String lineType  = notation.attribute(u"line-type");
-    Glissando*& gliss = glissandi[glissandoNumber][glissandoTag];
+    const String lineType = notation.attribute(u"line-type");
+    GlissandoDesc& desc = glissandi[glissandoNumber][glissandoTag ? 1 : 0];
 
     const Fraction tick = note->tick();
     const track_idx_t track = note->track();
 
     if (glissandoType == u"start") {
-        const String glissandoText = notation.text();
-        if (gliss) {
+        if (desc.isStart()) {
             logger->logError(String(u"overlapping glissando/slide number %1").arg(glissandoNumber + 1), xmlreader);
         } else if (!note) {
             logger->logError(String(u"no note for glissando/slide number %1 start").arg(glissandoNumber + 1), xmlreader);
+        } else if (desc.isStop()) {
+            // Stop was parsed earlier (out-of-order)
+            Note* endNote = desc.stopNote();
+            const Fraction endTick = desc.stopTick();
+            const track_idx_t endTrack = desc.stopTrack();
+            desc.clear();
+
+            if (endTick == tick) {
+                // A gliss starting and ending on the same tick is a fall
+                ChordLine* cl = Factory::createChordLine(note->chord());
+                cl->setChordLineType(ChordLineType::FALL);
+                cl->setWavy(glissandoTag || (lineType == u"wavy"));
+                cl->setStraight(true);
+                cl->setOwnershipParent(note);
+                note->chord()->add(cl);
+            } else if ((endTick + (endNote ? endNote->chord()->ticks() : Fraction(0, 1))) - tick >= Fraction(4, 1)) {
+                // Remove glissandos longer than 16 beats
+                logger->logError(String(u"glissando/slide number %1 too long (%2)").arg(glissandoNumber + 1,
+                                                                                        ((endTick + (endNote ? endNote->chord()->ticks() : Fraction(0, 1)))
+                                                                                         - tick).ticks()), xmlreader);
+            } else {
+                Glissando* gliss = Factory::createGlissando(note);
+                applyGlissandoProperties(gliss, notation, note, tick, track, glissandoTag, lineType);
+                if (endNote) {
+                    gliss->setEndElement(endNote);
+                }
+                gliss->setTick2(endTick);
+                gliss->setTrack2(endTrack);
+                spanners[gliss] = std::pair<int, int>(tick.ticks(), endTick.ticks() + (endNote ? endNote->chord()->ticks().ticks() : 0));
+            }
         } else {
-            gliss = Factory::createGlissando(note);
-            gliss->setStartElement(note);
-            gliss->setTick(tick);
-            gliss->setTrack(track);
-            gliss->setVisible(notation.visible());
-            colorItem(gliss, Color::fromString(notation.attribute(u"color")));
-            if (lineType == u"dashed") {
-                gliss->setLineStyle(LineType::DASHED);
-            } else if (lineType == u"dotted") {
-                gliss->setLineStyle(LineType::DOTTED);
-            } else if (lineType == u"solid" || lineType.empty()) {
-                gliss->setLineStyle(LineType::SOLID);
-            }
-            gliss->setText(glissandoText);
-            gliss->setGlissandoType(glissandoTag || (lineType == u"wavy") ? GlissandoType::WAVY : GlissandoType::STRAIGHT);
-            const GlissandoStyle instrumentStyle = note->part()->instrument(tick)->glissandoStyle();
-            if (instrumentStyle != gliss->glissandoStyle()) {
-                gliss->setGlissandoStyle(instrumentStyle);
-                // the instrument's style, not the score's: keep it when the score is saved
-                gliss->setPropertyFlags(Pid::GLISS_STYLE, PropertyFlags::UNSTYLED);
-            }
+            Glissando* gliss = Factory::createGlissando(note);
+            applyGlissandoProperties(gliss, notation, note, tick, track, glissandoTag, lineType);
             spanners[gliss] = std::pair<int, int>(tick.ticks(), -1);
-            // LOGD("glissando/slide=%p inserted at first tick %d", gliss, tick);
+            desc.start(gliss);
         }
     } else if (glissandoType == u"stop") {
-        if (!gliss) {
-            logger->logError(String(u"glissando/slide number %1 stop without start").arg(glissandoNumber + 1), xmlreader);
-        } else if (!note) {
+        if (!note) {
             logger->logError(String(u"no note for glissando/slide number %1 stop").arg(glissandoNumber + 1), xmlreader);
-        } else if (gliss->tick() == tick) {
-            // A gliss starting and ending on the same tick is a fall
-            ChordLine* cl = Factory::createChordLine(note->chord());
-            cl->setChordLineType(ChordLineType::FALL);
-            cl->setWavy(gliss->glissandoType() == GlissandoType::WAVY ? true : false);
-            cl->setStraight(true);
-            cl->setOwnershipParent(note);
-            note->chord()->add(cl);
-            spanners.erase(gliss);
-            delete gliss;
-            gliss = nullptr;
-        } else {
-            // Remove glissandos longer than 16 beats
-            if ((tick + note->chord()->ticks()) - gliss->tick() >= Fraction(4, 1)) {
-                logger->logError(String(u"glissando/slide number %1 too long (%2)").arg(glissandoNumber + 1,
-                                                                                        ((tick + note->chord()->ticks())
-                                                                                         - gliss->tick()).ticks()), xmlreader);
+        } else if (desc.isStop()) {
+            logger->logError(String(u"glissando/slide number %1 already stopped").arg(glissandoNumber + 1), xmlreader);
+        } else if (desc.isStart()) {
+            Glissando* gliss = desc.glissando();
+            desc.clear();
+            if (gliss->tick() == tick) {
+                // A gliss starting and ending on the same tick is a fall
+                ChordLine* cl = Factory::createChordLine(note->chord());
+                cl->setChordLineType(ChordLineType::FALL);
+                cl->setWavy(gliss->glissandoType() == GlissandoType::WAVY ? true : false);
+                cl->setStraight(true);
+                cl->setOwnershipParent(note);
+                note->chord()->add(cl);
                 spanners.erase(gliss);
+                delete gliss;
             } else {
-                spanners[gliss].second = tick.ticks() + note->chord()->ticks().ticks();
-                gliss->setEndElement(note);
-                gliss->setTick2(tick);
-                gliss->setTrack2(track);
-                // LOGD("glissando/slide=%p second tick %d", gliss, tick);
+                // Remove glissandos longer than 16 beats
+                if ((tick + note->chord()->ticks()) - gliss->tick() >= Fraction(4, 1)) {
+                    logger->logError(String(u"glissando/slide number %1 too long (%2)").arg(glissandoNumber + 1,
+                                                                                            ((tick + note->chord()->ticks())
+                                                                                             - gliss->tick()).ticks()), xmlreader);
+                    spanners.erase(gliss);
+                } else {
+                    spanners[gliss].second = tick.ticks() + note->chord()->ticks().ticks();
+                    gliss->setEndElement(note);
+                    gliss->setTick2(tick);
+                    gliss->setTrack2(track);
+                }
             }
-            gliss = nullptr;
+        } else {
+            // Stop encountered before start (out-of-order)
+            desc.stop(note, tick, track);
         }
     } else {
         logger->logError(String(u"unknown glissando/slide type %1").arg(glissandoType), xmlreader);
@@ -9115,7 +9175,37 @@ static void addArpeggio(ChordRest* cr, String& arpeggioType, int arpeggioNo, Col
 //   addTie
 //---------------------------------------------------------
 
+static void applyTieProperties(Tie* currTie, const Notation& notation, Note* note, const track_idx_t track,
+                               const String& orientation, const String& placement, const String& lineType,
+                               MusicXmlLogger* logger, const XmlStreamReader* const xmlreader)
+{
+    note->setTieFor(currTie);
+    currTie->setStartNote(note);
+    currTie->setTrack(track);
+    currTie->setVisible(notation.visible());
+    colorItem(currTie, Color::fromString(notation.attribute(u"color")));
+
+    if (configuration()->importLayout()) {
+        if (orientation == u"over" || placement == u"above") {
+            currTie->setSlurDirection(DirectionV::UP);
+        } else if (orientation == u"under" || placement == u"below") {
+            currTie->setSlurDirection(DirectionV::DOWN);
+        } else if (!orientation.empty() || !placement.empty()) {
+            logger->logError(String(u"unknown tied orientation/placement: %1/%2").arg(orientation).arg(placement), xmlreader);
+        }
+    }
+
+    if (lineType == u"dashed") {
+        currTie->setStyleType(SlurStyleType::Dashed);
+    } else if (lineType == u"dotted") {
+        currTie->setStyleType(SlurStyleType::Dotted);
+    } else if (lineType == u"solid" || lineType.empty()) {
+        currTie->setStyleType(SlurStyleType::Solid);
+    }
+}
+
 static void addTie(const Notation& notation, Note* note, const track_idx_t track, MusicXmlTieMap& ties,
+                   MusicXmlStoppedTieMap& stoppedTies,
                    std::vector<Note*>& unstartedTieNotes, std::vector<Note*>& unendedTieNotes, MusicXmlLogger* logger,
                    const XmlStreamReader* const xmlreader)
 {
@@ -9138,32 +9228,29 @@ static void addTie(const Notation& notation, Note* note, const track_idx_t track
             unendedTieNotes.push_back(activeTie->startNote());
             ties.erase(loc);
         }
-        ties[loc] = Factory::createTie(note);
-        Tie* currTie = ties[loc];
-        note->setTieFor(currTie);
-        currTie->setStartNote(note);
-        currTie->setTrack(track);
-        currTie->setVisible(notation.visible());
-        colorItem(currTie, Color::fromString(notation.attribute(u"color")));
 
-        if (configuration()->importLayout()) {
-            if (orientation == u"over" || placement == u"above") {
-                currTie->setSlurDirection(DirectionV::UP);
-            } else if (orientation == u"under" || placement == u"below") {
-                currTie->setSlurDirection(DirectionV::DOWN);
-            } else if (!orientation.empty() || !placement.empty()) {
-                logger->logError(String(u"unknown tied orientation/placement: %1/%2").arg(orientation).arg(placement), xmlreader);
+        if (Note* endNote = muse::value(stoppedTies, loc, nullptr)) {
+            // Stop was seen before start
+            stoppedTies.erase(loc);
+            const Chord* startChord = note->chord();
+            const Chord* endChord = endNote->chord();
+            const Measure* startMeasure = startChord ? startChord->measure() : nullptr;
+            Tie* currTie = Factory::createTie(note);
+            applyTieProperties(currTie, notation, note, track, orientation, placement, lineType, logger, xmlreader);
+            if (startMeasure == endChord->measure()
+                || (startChord && startChord->tick() + startChord->measure()->ticks() >= endChord->tick())) {
+                currTie->setEndNote(endNote);
+                endNote->setTieBack(currTie);
+                muse::remove(unstartedTieNotes, endNote);
+            } else {
+                logger->logError(String(u"Intervening note in voice"), xmlreader);
+                unendedTieNotes.push_back(note);
             }
+        } else {
+            ties[loc] = Factory::createTie(note);
+            Tie* currTie = ties[loc];
+            applyTieProperties(currTie, notation, note, track, orientation, placement, lineType, logger, xmlreader);
         }
-
-        if (lineType == u"dashed") {
-            currTie->setStyleType(SlurStyleType::Dashed);
-        } else if (lineType == u"dotted") {
-            currTie->setStyleType(SlurStyleType::Dotted);
-        } else if (lineType == u"solid" || lineType.empty()) {
-            currTie->setStyleType(SlurStyleType::Solid);
-        }
-        currTie = nullptr;
     } else if (type == "stop") {
         if (Tie* currTie = muse::value(ties, loc, nullptr)) {
             const Note* startNote = currTie->startNote();
@@ -9182,8 +9269,9 @@ static void addTie(const Notation& notation, Note* note, const track_idx_t track
             }
             ties.erase(loc);
         } else {
+            // Stop encountered before start: remember for when start arrives, and track as candidate
+            stoppedTies[loc] = note;
             unstartedTieNotes.push_back(note);
-            logger->logError(String(u"Non-started tie terminated. No-op."), xmlreader);
         }
     } else if (type == "let-ring") {
         LaissezVib* lvTie = Factory::createLaissezVib(note);
@@ -9226,12 +9314,20 @@ static void addWavyLine(ChordRest* cr, const Fraction& tick,
     if (!wavyLineType.empty()) {
         const Fraction ticks = cr->ticks();
         const track_idx_t track = cr->track();
-        Trill*& trill = trills[wavyLineNo];
+        TrillDesc& desc = trills[wavyLineNo];
         if (wavyLineType == u"start" || wavyLineType == u"startstop") {
-            if (trill) {
+            if (desc.isStart()) {
                 logger->logError(String(u"overlapping wavy-line number %1").arg(wavyLineNo + 1), xmlreader);
+            } else if (desc.isStop()) {
+                // Stop was seen earlier
+                Trill* trill = desc.spanner();
+                desc.clear();
+                trill->setTrack(track);
+                trill->setOrnament(Factory::createOrnament(cr));
+                trill->ornament()->setAnchor(ArticulationAnchor::AUTO);
+                spanners[trill].first = tick.ticks();
             } else {
-                trill = Factory::createTrill(cr->score()->dummy());
+                Trill* trill = Factory::createTrill(cr->score()->dummy());
                 trill->setTrack(track);
                 trill->setTrack2(track);
 
@@ -9240,21 +9336,28 @@ static void addWavyLine(ChordRest* cr, const Fraction& tick,
 
                 if (wavyLineType == u"start") {
                     spanners[trill] = std::pair<int, int>(tick.ticks(), -1);
+                    desc.start(trill);
                     // LOGD("trill=%p inserted at first tick %d", trill, tick);
                 }
                 if (wavyLineType == u"startstop") {
                     spanners[trill] = std::pair<int, int>(tick.ticks(), tick.ticks() + ticks.ticks());
-                    trill = nullptr;
                     // LOGD("trill=%p inserted at first tick %d second tick %d", trill, tick, tick);
                 }
             }
         } else if (wavyLineType == u"stop") {
-            if (!trill) {
-                logger->logError(String(u"wavy-line number %1 stop without start").arg(wavyLineNo + 1), xmlreader);
-            } else {
+            if (desc.isStart()) {
+                Trill* trill = desc.spanner();
                 spanners[trill].second = tick.ticks() + ticks.ticks();
+                desc.clear();
                 // LOGD("trill=%p second tick %d", trill, tick);
-                trill = nullptr;
+            } else if (desc.isStop()) {
+                logger->logError(String(u"wavy-line number %1 already stopped").arg(wavyLineNo + 1), xmlreader);
+            } else {
+                // Stop seen before start: create trill and store in stopped state
+                Trill* trill = Factory::createTrill(cr->score()->dummy());
+                trill->setTrack2(track);
+                spanners[trill] = std::pair<int, int>(-1, tick.ticks() + ticks.ticks());
+                desc.stop(trill);
             }
         } else {
             logger->logError(String(u"unknown wavy-line type %1").arg(wavyLineType), xmlreader);
@@ -9524,8 +9627,9 @@ void MusicXmlParserNotations::addNotation(const Notation& notation, ChordRest* c
  */
 
 void MusicXmlParserNotations::addToScore(ChordRest* const cr, Note* const note, const Fraction& tick, SlurStack& slurs,
-                                         Glissando* glissandi[MAX_NUMBER_LEVEL][2], MusicXmlSpannerMap& spanners,
-                                         TrillStack& trills, MusicXmlTieMap& ties, std::vector<Note*>& unstartedTieNotes,
+                                         GlissandoStack& glissandi, MusicXmlSpannerMap& spanners,
+                                         TrillStack& trills, MusicXmlTieMap& ties, MusicXmlStoppedTieMap& stoppedTies,
+                                         std::vector<Note*>& unstartedTieNotes,
                                          std::vector<Note*>& unendedTieNotes, ArpeggioMap& arpMap,
                                          DelayedArpMap& delayedArps)
 {
@@ -9540,7 +9644,7 @@ void MusicXmlParserNotations::addToScore(ChordRest* const cr, Note* const note, 
         } else if (note && (notation.name() == "glissando" || notation.name() == "slide")) {
             addGlissandoSlide(notation, note, glissandi, spanners, m_logger, &m_e);
         } else if (note && notation.name() == "tied") {
-            addTie(notation, note, cr->track(), ties, unstartedTieNotes, unendedTieNotes, m_logger, &m_e);
+            addTie(notation, note, cr->track(), ties, stoppedTies, unstartedTieNotes, unendedTieNotes, m_logger, &m_e);
         } else if (note && notation.parent() == "technical") {
             addTechnical(notation, note);
         } else {
