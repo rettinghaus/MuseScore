@@ -685,7 +685,7 @@ TEST_F(MusicXml_Tests, fractionTicks) {
     musicXmlIoTestRef("testFractionTicks");
 }
 TEST_F(MusicXml_Tests, glissandoCrossStaff) {
-    musicXmlIoTestRef("testGlissandoCrossStaff");
+    musicXmlMscxExportTestRef("testGlissandoCrossStaff");
 }
 TEST_F(MusicXml_Tests, glissandoLines) {
     musicXmlIoTest("testGlissandoLines");
