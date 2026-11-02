@@ -137,8 +137,7 @@ constexpr int MAX_LYRICS       = 16;
 //   function declarations
 //---------------------------------------------------------
 
-static void addTie(const Notation& notation, Note* note, const track_idx_t track, MusicXmlTieMap& ties,
-                   MusicXmlStoppedTieMap& stoppedTies,
+static void addTie(const Notation& notation, Note* note, const track_idx_t track, MusicXmlTieMap& ties, MusicXmlStoppedTieMap& stoppedTies,
                    std::vector<Note*>& unstartedTieNotes, std::vector<Note*>& unendedTieNotes, MusicXmlLogger* logger,
                    const XmlStreamReader* const xmlreader);
 
@@ -9050,7 +9049,9 @@ static void addGlissandoSlide(const Notation& notation, Note* note,
             } else if ((endTick + (endNote ? endNote->chord()->ticks() : Fraction(0, 1))) - tick >= Fraction(4, 1)) {
                 // Remove glissandos longer than 16 beats
                 logger->logError(String(u"glissando/slide number %1 too long (%2)").arg(glissandoNumber + 1,
-                                                                                        ((endTick + (endNote ? endNote->chord()->ticks() : Fraction(0, 1)))
+                                                                                        ((endTick
+                                                                                          + (endNote ? endNote->chord()->ticks() : Fraction(
+                                                                                                 0, 1)))
                                                                                          - tick).ticks()), xmlreader);
             } else {
                 Glissando* gliss = Factory::createGlissando(note);

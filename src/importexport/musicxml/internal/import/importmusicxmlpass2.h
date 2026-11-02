@@ -146,6 +146,7 @@ public:
         m_stopTrack = track;
         m_state = SpannerState::STOP;
     }
+
     bool isStart() const { return m_state == SpannerState::START; }
     bool isStop() const { return m_state == SpannerState::STOP; }
     void clear()
@@ -156,6 +157,7 @@ public:
         m_stopTrack = 0;
         m_state = SpannerState::NONE;
     }
+
     engraving::Note* stopNote() const { return m_stopNote; }
     const engraving::Fraction& stopTick() const { return m_stopTick; }
     engraving::track_idx_t stopTrack() const { return m_stopTrack; }
@@ -391,10 +393,9 @@ public:
     MusicXmlParserNotations(muse::XmlStreamReader& e, engraving::Score* score, MusicXmlLogger* logger, MusicXmlParserPass2& pass2);
     void parse();
     void addToScore(engraving::ChordRest* const cr, engraving::Note* const note, const engraving::Fraction& tick, SlurStack& slurs,
-                    GlissandoStack& glissandi, MusicXmlSpannerMap& spanners, TrillStack& trills,
-                    MusicXmlTieMap& ties, MusicXmlStoppedTieMap& stoppedTies, std::vector<engraving::Note*>& unstartedTieNotes,
-                    std::vector<engraving::Note*>& unendedTieNotes,
-                    ArpeggioMap& arpMap, DelayedArpMap& delayedArps);
+                    GlissandoStack& glissandi, MusicXmlSpannerMap& spanners, TrillStack& trills, MusicXmlTieMap& ties,
+                    MusicXmlStoppedTieMap& stoppedTies, std::vector<engraving::Note*>& unstartedTieNotes,
+                    std::vector<engraving::Note*>& unendedTieNotes, ArpeggioMap& arpMap, DelayedArpMap& delayedArps);
     muse::String errors() const { return m_errors; }
     MusicXmlTupletDesc tupletDesc() const { return m_tupletDesc; }
     bool hasTremolo() const { return m_hasTremolo; }
