@@ -137,7 +137,7 @@ constexpr int MAX_LYRICS       = 16;
 //   function declarations
 //---------------------------------------------------------
 
-static void addTie(const Notation& notation, Note* note, const track_idx_t track, MusicXmlTieMap& ties, MusicXmlStoppedTieMap& stoppedTies,
+static void addTie(const Notation& notation, Note* note, const track_idx_t track, MusicXmlTieMap& tie,
                    std::vector<Note*>& unstartedTieNotes, std::vector<Note*>& unendedTieNotes, MusicXmlLogger* logger,
                    const XmlStreamReader* const xmlreader);
 
@@ -925,6 +925,113 @@ static void colorItem(EngravingItem* item, const Color color)
         item->setProperty(Pid::COLOR, color);
         item->setPropertyFlags(Pid::COLOR, PropertyFlags::UNSTYLED);
     }
+}
+
+//---------------------------------------------------------
+//   dynamics helpers
+//---------------------------------------------------------
+
+static bool isDynamicsString(const String& str)
+{
+    if (str.empty()) {
+        return false;
+    }
+    for (size_t i = 0; i < str.size(); ++i) {
+        char16_t u = str.at(i).unicode();
+        if (u != u'f' && u != u'm' && u != u'n' && u != u'p' && u != u'r' && u != u's' && u != u'z') {
+            return false;
+        }
+    }
+    return true;
+}
+
+static String dynamicTagToSym(const String& tag)
+{
+    if (isDynamicsString(tag)) {
+        String res;
+        for (size_t i = 0; i < tag.size(); ++i) {
+            char16_t u = tag.at(i).unicode();
+            switch (u) {
+            case u'p':
+                res += u"<sym>dynamicPiano</sym>";
+                break;
+            case u'm':
+                res += u"<sym>dynamicMezzo</sym>";
+                break;
+            case u'f':
+                res += u"<sym>dynamicForte</sym>";
+                break;
+            case u'r':
+                res += u"<sym>dynamicRinforzando</sym>";
+                break;
+            case u's':
+                res += u"<sym>dynamicSforzando</sym>";
+                break;
+            case u'z':
+                res += u"<sym>dynamicZ</sym>";
+                break;
+            case u'n':
+                res += u"<sym>dynamicNiente</sym>";
+                break;
+            default:
+                break;
+            }
+        }
+        return res;
+    }
+
+    return tag;
+}
+
+static void parseDynamicsChildren(XmlStreamReader& e, StringList& dynamicsList, MusicXmlLogger* logger)
+{
+    String dynamicStr;
+    while (e.readNextStartElement()) {
+        if (e.name() == "other-dynamics") {
+            const String smufl = e.attribute("smufl");
+            if (!smufl.empty()) {
+                dynamicStr += u"<sym>" + smufl + u"</sym>";
+                e.skipCurrentElement();
+            } else {
+                const String text = e.readText();
+                // ‘other-dynamics’ is often mistakenly used to refer to non-dynamic characters
+                if (!isDynamicsString(text)) {
+                    if (logger) {
+                        logger->logError(String(u"other-dynamics '%1' contains non-dynamics characters").arg(text), &e);
+                    }
+                    dynamicStr += text;
+                } else {
+                    dynamicStr += dynamicTagToSym(text);
+                }
+            }
+        } else {
+            dynamicStr += dynamicTagToSym(String::fromAscii(e.name().ascii()));
+            e.skipCurrentElement();
+        }
+    }
+    if (!dynamicStr.empty()) {
+        dynamicsList.push_back(dynamicStr);
+    }
+}
+
+static Dynamic* createDynamicElement(Score* score, const String& dynStr, const Color& color,
+                                     const String& enclosure, bool visible)
+{
+    Dynamic* dynamic = Factory::createDynamic(score->dummy());
+    dynamic->setDynamicType(dynStr);
+    colorItem(dynamic, color);
+
+    if (enclosure == u"circle") {
+        dynamic->setFrameType(FrameType::CIRCLE);
+    } else if (enclosure == u"none") {
+        dynamic->setFrameType(FrameType::NO_FRAME);
+    } else if (enclosure == u"rectangle") {
+        dynamic->setFrameType(FrameType::RECTANGLE);
+        dynamic->setFrameRound(0_sp);
+    }
+
+    dynamic->setVisible(visible);
+    return dynamic;
 }
 
 //---------------------------------------------------------
@@ -1807,16 +1914,15 @@ void MusicXmlParserPass2::initPartState(const String& partId)
     UNUSED(partId);
     m_timeSigDura = Fraction(0, 0);               // invalid
     m_ties.clear();
-    m_stoppedTies.clear();
     m_unstartedTieNotes.clear();
     m_unendedTieNotes.clear();
     m_lastVolta = 0;
     m_hasDrumset = false;
     for (int i = 0; i < MAX_NUMBER_LEVEL; ++i) {
-        m_slurs[i].clear();
+        m_slurs[i] = SlurDesc();
     }
     for (int i = 0; i < MAX_NUMBER_LEVEL; ++i) {
-        m_trills[i].clear();
+        m_trills[i] = 0;
     }
     for (auto& i : m_glissandi) {
         i[0].clear();
@@ -1869,14 +1975,6 @@ SpannerSet MusicXmlParserPass2::findIncompleteSpannersAtPartEnd()
         LOGD("pedal not terminated at end of part");
         res.insert(m_pedal.sp);
         m_pedal = {};
-    }
-    for (TrillDesc& td : m_trills) {
-        if (td.isStart() || td.isStop()) {
-            if (td.spanner()) {
-                res.insert(td.spanner());
-            }
-            td.clear();
-        }
     }
     for (auto& gPair : m_glissandi) {
         for (GlissandoDesc& gd : gPair) {
@@ -2427,7 +2525,6 @@ void MusicXmlParserPass2::part()
     }
 
     m_ties.clear();
-    m_stoppedTies.clear();
     m_unstartedTieNotes.clear();
     m_unendedTieNotes.clear();
 
@@ -3730,20 +3827,8 @@ void MusicXmlParserDirection::direction(const String& partId,
     Dynamic* firstDyn = nullptr;
 
     // do dynamics
-    // LVIFIX: check import/export of <other-dynamics>unknown_text</...>
     for (StringList::iterator it = m_dynamicsList.begin(); it != m_dynamicsList.end(); ++it) {
-        Dynamic* dynamic = Factory::createDynamic(m_score->dummy());
-        dynamic->setDynamicType(*it);
-        colorItem(dynamic, m_dynamicsColor);
-
-        if (m_enclosure == "circle") {
-            dynamic->setFrameType(FrameType::CIRCLE);
-        } else if (m_enclosure == "none") {
-            dynamic->setFrameType(FrameType::NO_FRAME);
-        } else if (m_enclosure == "rectangle") {
-            dynamic->setFrameType(FrameType::RECTANGLE);
-            dynamic->setFrameRound(0_sp);
-        }
+        Dynamic* dynamic = createDynamicElement(m_score, *it, m_dynamicsColor, m_enclosure, m_visible);
 
         if (isDynamicRange) {
             if (it == m_dynamicsList.begin()) {
@@ -3758,15 +3843,9 @@ void MusicXmlParserDirection::direction(const String& partId,
 
         if (!m_dynaVelocity.empty()) {
             int dynaValue = round(m_dynaVelocity.toDouble() * 0.9);
-            if (dynaValue > 127) {
-                dynaValue = 127;
-            } else if (dynaValue < 0) {
-                dynaValue = 0;
-            }
+            dynaValue = std::clamp(dynaValue, 0, 127);
             dynamic->setVelocity(dynaValue);
         }
-
-        dynamic->setVisible(m_visible);
 
         String dynamicsPlacement = placement();
         // Case-based defaults
@@ -4240,14 +4319,7 @@ void MusicXmlParserDirection::dynamics()
     m_enclosure = m_e.attribute("enclosure");
     m_dynamicsPlacement = m_e.attribute("placement");
 
-    while (m_e.readNextStartElement()) {
-        if (m_e.name() == "other-dynamics") {
-            m_dynamicsList.push_back(m_e.readText());
-        } else {
-            m_dynamicsList.push_back(String::fromAscii(m_e.name().ascii()));
-            m_e.skipCurrentElement();
-        }
-    }
+    parseDynamicsChildren(m_e, m_dynamicsList, m_logger);
 }
 
 //---------------------------------------------------------
@@ -7421,15 +7493,15 @@ Note* MusicXmlParserPass2::note(const String& partId,
     // handle notations
     if (cr) {
         notations.addToScore(cr, note,
-                             noteStartTime, m_slurs, m_glissandi, m_spanners, m_trills, m_ties, m_stoppedTies,
-                             m_unstartedTieNotes, m_unendedTieNotes, arpMap, delayedArps);
+                             noteStartTime, m_slurs, m_glissandi, m_spanners, m_trills, m_ties, m_unstartedTieNotes,
+                             m_unendedTieNotes, arpMap, delayedArps);
 
         // if no tie added yet, convert the "tie" into "tied" and add it.
         if (note && !note->tieFor() && !note->tieBack() && !tieType.empty()) {
             Notation notation = Notation(u"tied");
             const String type2 = u"type";
             notation.addAttribute(type2, tieType);
-            addTie(notation, note, cr->track(), m_ties, m_stoppedTies, m_unstartedTieNotes, m_unendedTieNotes, m_logger, &m_e);
+            addTie(notation, note, cr->track(), m_ties, m_unstartedTieNotes, m_unendedTieNotes, m_logger, &m_e);
         }
     }
 
@@ -8527,14 +8599,7 @@ void MusicXmlParserNotations::dynamics()
     m_dynamicsColor = Color::fromString(m_e.attribute("color"));
     m_dynamicsPlacement = m_e.attribute("placement");
 
-    while (m_e.readNextStartElement()) {
-        if (m_e.name() == "other-dynamics") {
-            m_dynamicsList.push_back(m_e.readText());
-        } else {
-            m_dynamicsList.push_back(String::fromAscii(m_e.name().ascii()));
-            m_e.skipCurrentElement();  // skip but don't log
-        }
-    }
+    parseDynamicsChildren(m_e, m_dynamicsList, m_logger);
 }
 
 //---------------------------------------------------------
@@ -9176,37 +9241,7 @@ static void addArpeggio(ChordRest* cr, String& arpeggioType, int arpeggioNo, Col
 //   addTie
 //---------------------------------------------------------
 
-static void applyTieProperties(Tie* currTie, const Notation& notation, Note* note, const track_idx_t track,
-                               const String& orientation, const String& placement, const String& lineType,
-                               MusicXmlLogger* logger, const XmlStreamReader* const xmlreader)
-{
-    note->setTieFor(currTie);
-    currTie->setStartNote(note);
-    currTie->setTrack(track);
-    currTie->setVisible(notation.visible());
-    colorItem(currTie, Color::fromString(notation.attribute(u"color")));
-
-    if (configuration()->importLayout()) {
-        if (orientation == u"over" || placement == u"above") {
-            currTie->setSlurDirection(DirectionV::UP);
-        } else if (orientation == u"under" || placement == u"below") {
-            currTie->setSlurDirection(DirectionV::DOWN);
-        } else if (!orientation.empty() || !placement.empty()) {
-            logger->logError(String(u"unknown tied orientation/placement: %1/%2").arg(orientation).arg(placement), xmlreader);
-        }
-    }
-
-    if (lineType == u"dashed") {
-        currTie->setStyleType(SlurStyleType::Dashed);
-    } else if (lineType == u"dotted") {
-        currTie->setStyleType(SlurStyleType::Dotted);
-    } else if (lineType == u"solid" || lineType.empty()) {
-        currTie->setStyleType(SlurStyleType::Solid);
-    }
-}
-
 static void addTie(const Notation& notation, Note* note, const track_idx_t track, MusicXmlTieMap& ties,
-                   MusicXmlStoppedTieMap& stoppedTies,
                    std::vector<Note*>& unstartedTieNotes, std::vector<Note*>& unendedTieNotes, MusicXmlLogger* logger,
                    const XmlStreamReader* const xmlreader)
 {
@@ -9229,29 +9264,32 @@ static void addTie(const Notation& notation, Note* note, const track_idx_t track
             unendedTieNotes.push_back(activeTie->startNote());
             ties.erase(loc);
         }
+        ties[loc] = Factory::createTie(note);
+        Tie* currTie = ties[loc];
+        note->setTieFor(currTie);
+        currTie->setStartNote(note);
+        currTie->setTrack(track);
+        currTie->setVisible(notation.visible());
+        colorItem(currTie, Color::fromString(notation.attribute(u"color")));
 
-        if (Note* endNote = muse::value(stoppedTies, loc, nullptr)) {
-            // Stop was seen before start
-            stoppedTies.erase(loc);
-            const Chord* startChord = note->chord();
-            const Chord* endChord = endNote->chord();
-            const Measure* startMeasure = startChord ? startChord->measure() : nullptr;
-            Tie* currTie = Factory::createTie(note);
-            applyTieProperties(currTie, notation, note, track, orientation, placement, lineType, logger, xmlreader);
-            if (startMeasure == endChord->measure()
-                || (startChord && startChord->tick() + startChord->measure()->ticks() >= endChord->tick())) {
-                currTie->setEndNote(endNote);
-                endNote->setTieBack(currTie);
-                muse::remove(unstartedTieNotes, endNote);
-            } else {
-                logger->logError(String(u"Intervening note in voice"), xmlreader);
-                unendedTieNotes.push_back(note);
+        if (configuration()->importLayout()) {
+            if (orientation == u"over" || placement == u"above") {
+                currTie->setSlurDirection(DirectionV::UP);
+            } else if (orientation == u"under" || placement == u"below") {
+                currTie->setSlurDirection(DirectionV::DOWN);
+            } else if (!orientation.empty() || !placement.empty()) {
+                logger->logError(String(u"unknown tied orientation/placement: %1/%2").arg(orientation).arg(placement), xmlreader);
             }
-        } else {
-            ties[loc] = Factory::createTie(note);
-            Tie* currTie = ties[loc];
-            applyTieProperties(currTie, notation, note, track, orientation, placement, lineType, logger, xmlreader);
         }
+
+        if (lineType == u"dashed") {
+            currTie->setStyleType(SlurStyleType::Dashed);
+        } else if (lineType == u"dotted") {
+            currTie->setStyleType(SlurStyleType::Dotted);
+        } else if (lineType == u"solid" || lineType.empty()) {
+            currTie->setStyleType(SlurStyleType::Solid);
+        }
+        currTie = nullptr;
     } else if (type == "stop") {
         if (Tie* currTie = muse::value(ties, loc, nullptr)) {
             const Note* startNote = currTie->startNote();
@@ -9270,9 +9308,8 @@ static void addTie(const Notation& notation, Note* note, const track_idx_t track
             }
             ties.erase(loc);
         } else {
-            // Stop encountered before start: remember for when start arrives, and track as candidate
-            stoppedTies[loc] = note;
             unstartedTieNotes.push_back(note);
+            logger->logError(String(u"Non-started tie terminated. No-op."), xmlreader);
         }
     } else if (type == "let-ring") {
         LaissezVib* lvTie = Factory::createLaissezVib(note);
@@ -9315,20 +9352,12 @@ static void addWavyLine(ChordRest* cr, const Fraction& tick,
     if (!wavyLineType.empty()) {
         const Fraction ticks = cr->ticks();
         const track_idx_t track = cr->track();
-        TrillDesc& desc = trills[wavyLineNo];
+        Trill*& trill = trills[wavyLineNo];
         if (wavyLineType == u"start" || wavyLineType == u"startstop") {
-            if (desc.isStart()) {
+            if (trill) {
                 logger->logError(String(u"overlapping wavy-line number %1").arg(wavyLineNo + 1), xmlreader);
-            } else if (desc.isStop()) {
-                // Stop was seen earlier
-                Trill* trill = desc.spanner();
-                desc.clear();
-                trill->setTrack(track);
-                trill->setOrnament(Factory::createOrnament(cr));
-                trill->ornament()->setAnchor(ArticulationAnchor::AUTO);
-                spanners[trill].first = tick.ticks();
             } else {
-                Trill* trill = Factory::createTrill(cr->score()->dummy());
+                trill = Factory::createTrill(cr->score()->dummy());
                 trill->setTrack(track);
                 trill->setTrack2(track);
 
@@ -9337,28 +9366,21 @@ static void addWavyLine(ChordRest* cr, const Fraction& tick,
 
                 if (wavyLineType == u"start") {
                     spanners[trill] = std::pair<int, int>(tick.ticks(), -1);
-                    desc.start(trill);
                     // LOGD("trill=%p inserted at first tick %d", trill, tick);
                 }
                 if (wavyLineType == u"startstop") {
                     spanners[trill] = std::pair<int, int>(tick.ticks(), tick.ticks() + ticks.ticks());
+                    trill = nullptr;
                     // LOGD("trill=%p inserted at first tick %d second tick %d", trill, tick, tick);
                 }
             }
         } else if (wavyLineType == u"stop") {
-            if (desc.isStart()) {
-                Trill* trill = desc.spanner();
-                spanners[trill].second = tick.ticks() + ticks.ticks();
-                desc.clear();
-                // LOGD("trill=%p second tick %d", trill, tick);
-            } else if (desc.isStop()) {
-                logger->logError(String(u"wavy-line number %1 already stopped").arg(wavyLineNo + 1), xmlreader);
+            if (!trill) {
+                logger->logError(String(u"wavy-line number %1 stop without start").arg(wavyLineNo + 1), xmlreader);
             } else {
-                // Stop seen before start: create trill and store in stopped state
-                Trill* trill = Factory::createTrill(cr->score()->dummy());
-                trill->setTrack2(track);
-                spanners[trill] = std::pair<int, int>(-1, tick.ticks() + ticks.ticks());
-                desc.stop(trill);
+                spanners[trill].second = tick.ticks() + ticks.ticks();
+                // LOGD("trill=%p second tick %d", trill, tick);
+                trill = nullptr;
             }
         } else {
             logger->logError(String(u"unknown wavy-line type %1").arg(wavyLineType), xmlreader);
@@ -9629,8 +9651,7 @@ void MusicXmlParserNotations::addNotation(const Notation& notation, ChordRest* c
 
 void MusicXmlParserNotations::addToScore(ChordRest* const cr, Note* const note, const Fraction& tick, SlurStack& slurs,
                                          GlissandoStack& glissandi, MusicXmlSpannerMap& spanners,
-                                         TrillStack& trills, MusicXmlTieMap& ties, MusicXmlStoppedTieMap& stoppedTies,
-                                         std::vector<Note*>& unstartedTieNotes,
+                                         TrillStack& trills, MusicXmlTieMap& ties, std::vector<Note*>& unstartedTieNotes,
                                          std::vector<Note*>& unendedTieNotes, ArpeggioMap& arpMap,
                                          DelayedArpMap& delayedArps)
 {
@@ -9645,7 +9666,7 @@ void MusicXmlParserNotations::addToScore(ChordRest* const cr, Note* const note, 
         } else if (note && (notation.name() == "glissando" || notation.name() == "slide")) {
             addGlissandoSlide(notation, note, glissandi, spanners, m_logger, &m_e);
         } else if (note && notation.name() == "tied") {
-            addTie(notation, note, cr->track(), ties, stoppedTies, unstartedTieNotes, unendedTieNotes, m_logger, &m_e);
+            addTie(notation, note, cr->track(), ties, unstartedTieNotes, unendedTieNotes, m_logger, &m_e);
         } else if (note && notation.parent() == "technical") {
             addTechnical(notation, note);
         } else {
@@ -9653,13 +9674,8 @@ void MusicXmlParserNotations::addToScore(ChordRest* const cr, Note* const note, 
         }
     }
 
-    // more than one dynamic ???
-    // LVIFIX: check import/export of <other-dynamics>unknown_text</...>
-    // TODO: remove duplicate code (see MusicXml::direction)
     for (const String& d : std::as_const(m_dynamicsList)) {
-        Dynamic* dynamic = Factory::createDynamic(m_score->dummy());
-        dynamic->setDynamicType(d);
-        colorItem(dynamic, m_dynamicsColor);
+        Dynamic* dynamic = createDynamicElement(m_score, d, m_dynamicsColor, u"", m_visible);
         m_pass2.addElemOffset(dynamic, cr->track(), m_dynamicsPlacement, cr->measure(), tick);
     }
 }
