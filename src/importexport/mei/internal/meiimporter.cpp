@@ -1075,6 +1075,12 @@ bool MeiImporter::readScoreDef(pugi::xml_node scoreDefNode, bool isInitial)
         if (warning) {
             this->addLog("key signature", scoreDefNode);
         }
+    } else if (pugi::xml_node keySigNode = scoreDefNode.child("keySig")) {
+        m_keySigs[SCOREDEF_IDX] = Convert::keyFromMEI(
+            meiScoreDef.AttKeySigDefaultLog::StrToKeysignature(keySigNode.attribute("sig").value()), warning);
+        if (warning) {
+            this->addLog("key signature", keySigNode);
+        }
     }
 
     if (isInitial) {
