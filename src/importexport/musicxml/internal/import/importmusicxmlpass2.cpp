@@ -928,6 +928,113 @@ static void colorItem(EngravingItem* item, const Color color)
 }
 
 //---------------------------------------------------------
+//   dynamics helpers
+//---------------------------------------------------------
+
+static bool isDynamicsString(const String& str)
+{
+    if (str.empty()) {
+        return false;
+    }
+    for (size_t i = 0; i < str.size(); ++i) {
+        char16_t u = str.at(i).unicode();
+        if (u != u'f' && u != u'm' && u != u'n' && u != u'p' && u != u'r' && u != u's' && u != u'z') {
+            return false;
+        }
+    }
+    return true;
+}
+
+static String dynamicTagToSym(const String& tag)
+{
+    if (isDynamicsString(tag)) {
+        String res;
+        for (size_t i = 0; i < tag.size(); ++i) {
+            char16_t u = tag.at(i).unicode();
+            switch (u) {
+            case u'p':
+                res += u"<sym>dynamicPiano</sym>";
+                break;
+            case u'm':
+                res += u"<sym>dynamicMezzo</sym>";
+                break;
+            case u'f':
+                res += u"<sym>dynamicForte</sym>";
+                break;
+            case u'r':
+                res += u"<sym>dynamicRinforzando</sym>";
+                break;
+            case u's':
+                res += u"<sym>dynamicSforzando</sym>";
+                break;
+            case u'z':
+                res += u"<sym>dynamicZ</sym>";
+                break;
+            case u'n':
+                res += u"<sym>dynamicNiente</sym>";
+                break;
+            default:
+                break;
+            }
+        }
+        return res;
+    }
+
+    return tag;
+}
+
+static void parseDynamicsChildren(XmlStreamReader& e, StringList& dynamicsList, MusicXmlLogger* logger)
+{
+    String dynamicStr;
+    while (e.readNextStartElement()) {
+        if (e.name() == "other-dynamics") {
+            const String smufl = e.attribute("smufl");
+            if (!smufl.empty()) {
+                dynamicStr += u"<sym>" + smufl + u"</sym>";
+                e.skipCurrentElement();
+            } else {
+                const String text = e.readText();
+                // ‘other-dynamics’ is often mistakenly used to refer to non-dynamic characters
+                if (!isDynamicsString(text)) {
+                    if (logger) {
+                        logger->logError(String(u"other-dynamics '%1' contains non-dynamics characters").arg(text), &e);
+                    }
+                    dynamicStr += text;
+                } else {
+                    dynamicStr += dynamicTagToSym(text);
+                }
+            }
+        } else {
+            dynamicStr += dynamicTagToSym(String::fromAscii(e.name().ascii()));
+            e.skipCurrentElement();
+        }
+    }
+    if (!dynamicStr.empty()) {
+        dynamicsList.push_back(dynamicStr);
+    }
+}
+
+static Dynamic* createDynamicElement(Score* score, const String& dynStr, const Color& color,
+                                     const String& enclosure, bool visible)
+{
+    Dynamic* dynamic = Factory::createDynamic(score->dummy());
+    dynamic->setDynamicType(dynStr);
+    colorItem(dynamic, color);
+
+    if (enclosure == u"circle") {
+        dynamic->setFrameType(FrameType::CIRCLE);
+    } else if (enclosure == u"none") {
+        dynamic->setFrameType(FrameType::NO_FRAME);
+    } else if (enclosure == u"rectangle") {
+        dynamic->setFrameType(FrameType::RECTANGLE);
+        dynamic->setFrameRound(0_sp);
+    }
+
+    dynamic->setVisible(visible);
+    return dynamic;
+}
+
+//---------------------------------------------------------
 //   addLyric
 //---------------------------------------------------------
 
@@ -1818,7 +1925,8 @@ void MusicXmlParserPass2::initPartState(const String& partId)
         m_trills[i] = 0;
     }
     for (auto& i : m_glissandi) {
-        i[0] = i[1] = 0;
+        i[0].clear();
+        i[1].clear();
     }
     m_pedalContinue = 0;
     m_harmony = 0;
@@ -1867,6 +1975,14 @@ SpannerSet MusicXmlParserPass2::findIncompleteSpannersAtPartEnd()
         LOGD("pedal not terminated at end of part");
         res.insert(m_pedal.sp);
         m_pedal = {};
+    }
+    for (auto& gPair : m_glissandi) {
+        for (GlissandoDesc& gd : gPair) {
+            if (gd.isStart() && gd.glissando()) {
+                res.insert(gd.glissando());
+            }
+            gd.clear();
+        }
     }
     return res;
 }
@@ -3711,20 +3827,8 @@ void MusicXmlParserDirection::direction(const String& partId,
     Dynamic* firstDyn = nullptr;
 
     // do dynamics
-    // LVIFIX: check import/export of <other-dynamics>unknown_text</...>
     for (StringList::iterator it = m_dynamicsList.begin(); it != m_dynamicsList.end(); ++it) {
-        Dynamic* dynamic = Factory::createDynamic(m_score->dummy());
-        dynamic->setDynamicType(*it);
-        colorItem(dynamic, m_dynamicsColor);
-
-        if (m_enclosure == "circle") {
-            dynamic->setFrameType(FrameType::CIRCLE);
-        } else if (m_enclosure == "none") {
-            dynamic->setFrameType(FrameType::NO_FRAME);
-        } else if (m_enclosure == "rectangle") {
-            dynamic->setFrameType(FrameType::RECTANGLE);
-            dynamic->setFrameRound(0_sp);
-        }
+        Dynamic* dynamic = createDynamicElement(m_score, *it, m_dynamicsColor, m_enclosure, m_visible);
 
         if (isDynamicRange) {
             if (it == m_dynamicsList.begin()) {
@@ -3739,15 +3843,9 @@ void MusicXmlParserDirection::direction(const String& partId,
 
         if (!m_dynaVelocity.empty()) {
             int dynaValue = round(m_dynaVelocity.toDouble() * 0.9);
-            if (dynaValue > 127) {
-                dynaValue = 127;
-            } else if (dynaValue < 0) {
-                dynaValue = 0;
-            }
+            dynaValue = std::clamp(dynaValue, 0, 127);
             dynamic->setVelocity(dynaValue);
         }
-
-        dynamic->setVisible(m_visible);
 
         String dynamicsPlacement = placement();
         // Case-based defaults
@@ -4221,14 +4319,7 @@ void MusicXmlParserDirection::dynamics()
     m_enclosure = m_e.attribute("enclosure");
     m_dynamicsPlacement = m_e.attribute("placement");
 
-    while (m_e.readNextStartElement()) {
-        if (m_e.name() == "other-dynamics") {
-            m_dynamicsList.push_back(m_e.readText());
-        } else {
-            m_dynamicsList.push_back(String::fromAscii(m_e.name().ascii()));
-            m_e.skipCurrentElement();
-        }
-    }
+    parseDynamicsChildren(m_e, m_dynamicsList, m_logger);
 }
 
 //---------------------------------------------------------
@@ -8508,14 +8599,7 @@ void MusicXmlParserNotations::dynamics()
     m_dynamicsColor = Color::fromString(m_e.attribute("color"));
     m_dynamicsPlacement = m_e.attribute("placement");
 
-    while (m_e.readNextStartElement()) {
-        if (m_e.name() == "other-dynamics") {
-            m_dynamicsList.push_back(m_e.readText());
-        } else {
-            m_dynamicsList.push_back(String::fromAscii(m_e.name().ascii()));
-            m_e.skipCurrentElement();  // skip but don't log
-        }
-    }
+    parseDynamicsChildren(m_e, m_dynamicsList, m_logger);
 }
 
 //---------------------------------------------------------
@@ -8965,8 +9049,34 @@ void MusicXmlParserNotations::glissandoSlide()
 //   addGlissandoSlide
 //---------------------------------------------------------
 
+static void applyGlissandoProperties(Glissando* gliss, const Notation& notation, Note* note,
+                                     const Fraction& tick, const track_idx_t track,
+                                     bool glissandoTag, const String& lineType)
+{
+    gliss->setStartElement(note);
+    gliss->setTick(tick);
+    gliss->setTrack(track);
+    gliss->setVisible(notation.visible());
+    colorItem(gliss, Color::fromString(notation.attribute(u"color")));
+    if (lineType == u"dashed") {
+        gliss->setLineStyle(LineType::DASHED);
+    } else if (lineType == u"dotted") {
+        gliss->setLineStyle(LineType::DOTTED);
+    } else if (lineType == u"solid" || lineType.empty()) {
+        gliss->setLineStyle(LineType::SOLID);
+    }
+    gliss->setText(notation.text());
+    gliss->setGlissandoType(glissandoTag || (lineType == u"wavy") ? GlissandoType::WAVY : GlissandoType::STRAIGHT);
+    const GlissandoStyle instrumentStyle = note->part()->instrument(tick)->glissandoStyle();
+    if (instrumentStyle != gliss->glissandoStyle()) {
+        gliss->setGlissandoStyle(instrumentStyle);
+        // the instrument's style, not the score's: keep it when the score is saved
+        gliss->setPropertyFlags(Pid::GLISS_STYLE, PropertyFlags::UNSTYLED);
+    }
+}
+
 static void addGlissandoSlide(const Notation& notation, Note* note,
-                              Glissando* glissandi[MAX_NUMBER_LEVEL][2], MusicXmlSpannerMap& spanners,
+                              GlissandoStack& glissandi, MusicXmlSpannerMap& spanners,
                               MusicXmlLogger* logger, const XmlStreamReader* const xmlreader)
 {
     int glissandoNumber = notation.attribute(u"number").toInt();
@@ -8975,74 +9085,90 @@ static void addGlissandoSlide(const Notation& notation, Note* note,
     }
     const String glissandoType = notation.attribute(u"type");
     const bool glissandoTag = notation.name() != u"slide";
-    const String lineType  = notation.attribute(u"line-type");
-    Glissando*& gliss = glissandi[glissandoNumber][glissandoTag];
+    const String lineType = notation.attribute(u"line-type");
+    GlissandoDesc& desc = glissandi[glissandoNumber][glissandoTag ? 1 : 0];
 
     const Fraction tick = note->tick();
     const track_idx_t track = note->track();
 
     if (glissandoType == u"start") {
-        const String glissandoText = notation.text();
-        if (gliss) {
+        if (desc.isStart()) {
             logger->logError(String(u"overlapping glissando/slide number %1").arg(glissandoNumber + 1), xmlreader);
         } else if (!note) {
             logger->logError(String(u"no note for glissando/slide number %1 start").arg(glissandoNumber + 1), xmlreader);
+        } else if (desc.isStop()) {
+            // Stop was parsed earlier (out-of-order)
+            Note* endNote = desc.stopNote();
+            const Fraction endTick = desc.stopTick();
+            const track_idx_t endTrack = desc.stopTrack();
+            desc.clear();
+
+            if (endTick == tick) {
+                // A gliss starting and ending on the same tick is a fall
+                ChordLine* cl = Factory::createChordLine(note->chord());
+                cl->setChordLineType(ChordLineType::FALL);
+                cl->setWavy(glissandoTag || (lineType == u"wavy"));
+                cl->setStraight(true);
+                cl->setOwnershipParent(note);
+                note->chord()->add(cl);
+            } else if ((endTick + (endNote ? endNote->chord()->ticks() : Fraction(0, 1))) - tick >= Fraction(4, 1)) {
+                // Remove glissandos longer than 16 beats
+                logger->logError(String(u"glissando/slide number %1 too long (%2)").arg(glissandoNumber + 1,
+                                                                                        ((endTick
+                                                                                          + (endNote ? endNote->chord()->ticks() : Fraction(
+                                                                                                 0, 1)))
+                                                                                         - tick).ticks()), xmlreader);
+            } else {
+                Glissando* gliss = Factory::createGlissando(note);
+                applyGlissandoProperties(gliss, notation, note, tick, track, glissandoTag, lineType);
+                if (endNote) {
+                    gliss->setEndElement(endNote);
+                }
+                gliss->setTick2(endTick);
+                gliss->setTrack2(endTrack);
+                spanners[gliss] = std::pair<int, int>(tick.ticks(), endTick.ticks() + (endNote ? endNote->chord()->ticks().ticks() : 0));
+            }
         } else {
-            gliss = Factory::createGlissando(note);
-            gliss->setStartElement(note);
-            gliss->setTick(tick);
-            gliss->setTrack(track);
-            gliss->setVisible(notation.visible());
-            colorItem(gliss, Color::fromString(notation.attribute(u"color")));
-            if (lineType == u"dashed") {
-                gliss->setLineStyle(LineType::DASHED);
-            } else if (lineType == u"dotted") {
-                gliss->setLineStyle(LineType::DOTTED);
-            } else if (lineType == u"solid" || lineType.empty()) {
-                gliss->setLineStyle(LineType::SOLID);
-            }
-            gliss->setText(glissandoText);
-            gliss->setGlissandoType(glissandoTag || (lineType == u"wavy") ? GlissandoType::WAVY : GlissandoType::STRAIGHT);
-            const GlissandoStyle instrumentStyle = note->part()->instrument(tick)->glissandoStyle();
-            if (instrumentStyle != gliss->glissandoStyle()) {
-                gliss->setGlissandoStyle(instrumentStyle);
-                // the instrument's style, not the score's: keep it when the score is saved
-                gliss->setPropertyFlags(Pid::GLISS_STYLE, PropertyFlags::UNSTYLED);
-            }
+            Glissando* gliss = Factory::createGlissando(note);
+            applyGlissandoProperties(gliss, notation, note, tick, track, glissandoTag, lineType);
             spanners[gliss] = std::pair<int, int>(tick.ticks(), -1);
-            // LOGD("glissando/slide=%p inserted at first tick %d", gliss, tick);
+            desc.start(gliss);
         }
     } else if (glissandoType == u"stop") {
-        if (!gliss) {
-            logger->logError(String(u"glissando/slide number %1 stop without start").arg(glissandoNumber + 1), xmlreader);
-        } else if (!note) {
+        if (!note) {
             logger->logError(String(u"no note for glissando/slide number %1 stop").arg(glissandoNumber + 1), xmlreader);
-        } else if (gliss->tick() == tick) {
-            // A gliss starting and ending on the same tick is a fall
-            ChordLine* cl = Factory::createChordLine(note->chord());
-            cl->setChordLineType(ChordLineType::FALL);
-            cl->setWavy(gliss->glissandoType() == GlissandoType::WAVY ? true : false);
-            cl->setStraight(true);
-            cl->setOwnershipParent(note);
-            note->chord()->add(cl);
-            spanners.erase(gliss);
-            delete gliss;
-            gliss = nullptr;
-        } else {
-            // Remove glissandos longer than 16 beats
-            if ((tick + note->chord()->ticks()) - gliss->tick() >= Fraction(4, 1)) {
-                logger->logError(String(u"glissando/slide number %1 too long (%2)").arg(glissandoNumber + 1,
-                                                                                        ((tick + note->chord()->ticks())
-                                                                                         - gliss->tick()).ticks()), xmlreader);
+        } else if (desc.isStop()) {
+            logger->logError(String(u"glissando/slide number %1 already stopped").arg(glissandoNumber + 1), xmlreader);
+        } else if (desc.isStart()) {
+            Glissando* gliss = desc.glissando();
+            desc.clear();
+            if (gliss->tick() == tick) {
+                // A gliss starting and ending on the same tick is a fall
+                ChordLine* cl = Factory::createChordLine(note->chord());
+                cl->setChordLineType(ChordLineType::FALL);
+                cl->setWavy(gliss->glissandoType() == GlissandoType::WAVY ? true : false);
+                cl->setStraight(true);
+                cl->setOwnershipParent(note);
+                note->chord()->add(cl);
                 spanners.erase(gliss);
+                delete gliss;
             } else {
-                spanners[gliss].second = tick.ticks() + note->chord()->ticks().ticks();
-                gliss->setEndElement(note);
-                gliss->setTick2(tick);
-                gliss->setTrack2(track);
-                // LOGD("glissando/slide=%p second tick %d", gliss, tick);
+                // Remove glissandos longer than 16 beats
+                if ((tick + note->chord()->ticks()) - gliss->tick() >= Fraction(4, 1)) {
+                    logger->logError(String(u"glissando/slide number %1 too long (%2)").arg(glissandoNumber + 1,
+                                                                                            ((tick + note->chord()->ticks())
+                                                                                             - gliss->tick()).ticks()), xmlreader);
+                    spanners.erase(gliss);
+                } else {
+                    spanners[gliss].second = tick.ticks() + note->chord()->ticks().ticks();
+                    gliss->setEndElement(note);
+                    gliss->setTick2(tick);
+                    gliss->setTrack2(track);
+                }
             }
-            gliss = nullptr;
+        } else {
+            // Stop encountered before start (out-of-order)
+            desc.stop(note, tick, track);
         }
     } else {
         logger->logError(String(u"unknown glissando/slide type %1").arg(glissandoType), xmlreader);
@@ -9524,7 +9650,7 @@ void MusicXmlParserNotations::addNotation(const Notation& notation, ChordRest* c
  */
 
 void MusicXmlParserNotations::addToScore(ChordRest* const cr, Note* const note, const Fraction& tick, SlurStack& slurs,
-                                         Glissando* glissandi[MAX_NUMBER_LEVEL][2], MusicXmlSpannerMap& spanners,
+                                         GlissandoStack& glissandi, MusicXmlSpannerMap& spanners,
                                          TrillStack& trills, MusicXmlTieMap& ties, std::vector<Note*>& unstartedTieNotes,
                                          std::vector<Note*>& unendedTieNotes, ArpeggioMap& arpMap,
                                          DelayedArpMap& delayedArps)
@@ -9548,13 +9674,8 @@ void MusicXmlParserNotations::addToScore(ChordRest* const cr, Note* const note, 
         }
     }
 
-    // more than one dynamic ???
-    // LVIFIX: check import/export of <other-dynamics>unknown_text</...>
-    // TODO: remove duplicate code (see MusicXml::direction)
     for (const String& d : std::as_const(m_dynamicsList)) {
-        Dynamic* dynamic = Factory::createDynamic(m_score->dummy());
-        dynamic->setDynamicType(d);
-        colorItem(dynamic, m_dynamicsColor);
+        Dynamic* dynamic = createDynamicElement(m_score, d, m_dynamicsColor, u"", m_visible);
         m_pass2.addElemOffset(dynamic, cr->track(), m_dynamicsPlacement, cr->measure(), tick);
     }
 }

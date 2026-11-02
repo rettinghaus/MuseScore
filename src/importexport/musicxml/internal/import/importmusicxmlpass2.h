@@ -125,6 +125,46 @@ private:
     engraving::Slur* m_slur = nullptr;
     State m_state;
 };
+
+class GlissandoDesc
+{
+public:
+    GlissandoDesc() = default;
+    engraving::Glissando* glissando() const { return m_glissando; }
+    void start(engraving::Glissando* g) { m_glissando = g; m_isStarted = true; }
+    void stop(engraving::Note* note, const engraving::Fraction& tick, engraving::track_idx_t track)
+    {
+        m_stopNote = note;
+        m_stopTick = tick;
+        m_stopTrack = track;
+        m_isStopped = true;
+    }
+
+    bool isStart() const { return m_isStarted; }
+    bool isStop() const { return m_isStopped; }
+    void clear()
+    {
+        m_glissando = nullptr;
+        m_stopNote = nullptr;
+        m_stopTick = engraving::Fraction(0, 0);
+        m_stopTrack = 0;
+        m_isStarted = false;
+        m_isStopped = false;
+    }
+
+    engraving::Note* stopNote() const { return m_stopNote; }
+    const engraving::Fraction& stopTick() const { return m_stopTick; }
+    engraving::track_idx_t stopTrack() const { return m_stopTrack; }
+
+private:
+    engraving::Glissando* m_glissando = nullptr;
+    engraving::Note* m_stopNote = nullptr;
+    engraving::Fraction m_stopTick { 0, 0 };
+    engraving::track_idx_t m_stopTrack = 0;
+    bool m_isStarted = false;
+    bool m_isStopped = false;
+};
+
 typedef std::map<engraving::SLine*, std::pair<int, int> > MusicXmlSpannerMap;
 
 //---------------------------------------------------------
@@ -320,6 +360,7 @@ using DelayedDirectionsList = std::vector<MusicXmlDelayedDirectionElement*>;
 using InferredFingeringsList = std::vector<MusicXmlInferredFingering*>;
 using SlurStack = std::array<SlurDesc, MAX_NUMBER_LEVEL>;
 using TrillStack = std::array<engraving::Trill*, MAX_NUMBER_LEVEL>;
+using GlissandoStack = std::array<std::array<GlissandoDesc, 2>, MAX_NUMBER_LEVEL>;
 using BracketsStack = std::array<MusicXmlExtendedSpannerDesc, MAX_NUMBER_LEVEL>;
 using OttavasStack = std::array<MusicXmlExtendedSpannerDesc, MAX_NUMBER_LEVEL>;
 using HairpinsStack = std::array<MusicXmlExtendedSpannerDesc, MAX_NUMBER_LEVEL>;
@@ -345,9 +386,9 @@ public:
     MusicXmlParserNotations(muse::XmlStreamReader& e, engraving::Score* score, MusicXmlLogger* logger, MusicXmlParserPass2& pass2);
     void parse();
     void addToScore(engraving::ChordRest* const cr, engraving::Note* const note, const engraving::Fraction& tick, SlurStack& slurs,
-                    engraving::Glissando* glissandi[MAX_NUMBER_LEVEL][2], MusicXmlSpannerMap& spanners, TrillStack& trills,
-                    MusicXmlTieMap& ties, std::vector<engraving::Note*>& unstartedTieNotes, std::vector<engraving::Note*>& unendedTieNotes,
-                    ArpeggioMap& arpMap, DelayedArpMap& delayedArps);
+                    GlissandoStack& glissandi, MusicXmlSpannerMap& spanners, TrillStack& trills, MusicXmlTieMap& ties,
+                    std::vector<engraving::Note*>& unstartedTieNotes, std::vector<engraving::Note*>& unendedTieNotes, ArpeggioMap& arpMap,
+                    DelayedArpMap& delayedArps);
     muse::String errors() const { return m_errors; }
     MusicXmlTupletDesc tupletDesc() const { return m_tupletDesc; }
     bool hasTremolo() const { return m_hasTremolo; }
@@ -516,7 +557,7 @@ private:
     InferredTempoLineStack m_inferredTempoLines;
     MusicXmlExtendedSpannerDesc m_dummyNewMusicXmlSpannerDesc;
 
-    engraving::Glissando* m_glissandi[MAX_NUMBER_LEVEL][2] { {} };   // Current slides ([0]) / glissandi ([1])
+    GlissandoStack m_glissandi { {} };   // Current slides ([0]) / glissandi ([1])
 
     MusicXmlTieMap m_ties;
     std::vector<engraving::Note*> m_unstartedTieNotes;
