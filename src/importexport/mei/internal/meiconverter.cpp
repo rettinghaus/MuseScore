@@ -2287,7 +2287,7 @@ libmei::Measure Convert::measureToMEI(const engraving::Measure* measure, int& me
     return meiMeasure;
 }
 
-std::pair<engraving::Fraction, engraving::TimeSigType> Convert::meterFromMEI(const libmei::ScoreDef& meiScoreDef, bool& warning)
+Convert::MeterSigStruct Convert::meterFromMEI(const libmei::ScoreDef& meiScoreDef, bool& warning)
 {
     libmei::StaffDef meiStaffDef;
     meiStaffDef.SetMeterSym(meiScoreDef.GetMeterSym());
@@ -2296,39 +2296,66 @@ std::pair<engraving::Fraction, engraving::TimeSigType> Convert::meterFromMEI(con
     return meterFromMEI(meiStaffDef, warning);
 }
 
-std::pair<engraving::Fraction, engraving::TimeSigType> Convert::meterFromMEI(const libmei::StaffDef& meiStaffDef, bool& warning)
+Convert::MeterSigStruct Convert::meterFromMEI(const libmei::StaffDef& meiStaffDef, bool& warning)
 {
     warning = false;
-    engraving::Fraction fraction;
-    engraving::TimeSigType tsType = engraving::TimeSigType::NORMAL;
+    MeterSigStruct meterSig;
     if (meiStaffDef.HasMeterCount() && meiStaffDef.HasMeterUnit()) {
         auto [counts, sign] = meiStaffDef.GetMeterCount();
-        int numerator = !counts.empty() ? counts.front() : (meiStaffDef.GetMeterSym() == libmei::METERSIGN_common) ? 4 : 2;
-        fraction.set(numerator, meiStaffDef.GetMeterUnit());
+        if (sign == libmei::MeterCountSign::Plus && counts.size() > 1) {
+            int total = 0;
+            StringList countStrings;
+            for (int count : counts) {
+                total += count;
+                countStrings.push_back(String::number(count));
+            }
+            meterSig.fraction.set(total, meiStaffDef.GetMeterUnit());
+            meterSig.numeratorString = countStrings.join(u"+");
+        } else {
+            int numerator = !counts.empty() ? counts.front() : (meiStaffDef.GetMeterSym() == libmei::METERSIGN_common) ? 4 : 2;
+            meterSig.fraction.set(numerator, meiStaffDef.GetMeterUnit());
+        }
     }
     if (meiStaffDef.HasMeterSym()) {
         if (meiStaffDef.GetMeterSym() == libmei::METERSIGN_common) {
-            tsType = engraving::TimeSigType::FOUR_FOUR;
-            fraction.set(4, 4);
+            meterSig.tsType = engraving::TimeSigType::FOUR_FOUR;
+            meterSig.fraction.set(4, 4);
         } else {
-            tsType = engraving::TimeSigType::ALLA_BREVE;
-            fraction.set(2, 2);
+            meterSig.tsType = engraving::TimeSigType::ALLA_BREVE;
+            meterSig.fraction.set(2, 2);
         }
     }
-    if (fraction.isZero()) {
-        fraction.set(4, 4);
+    if (meterSig.fraction.isZero()) {
+        meterSig.fraction.set(4, 4);
         warning = true;
     }
-    return { fraction, tsType };
+    return meterSig;
 }
 
-libmei::StaffDef Convert::meterToMEI(const engraving::Fraction& fraction, engraving::TimeSigType tsType)
+libmei::StaffDef Convert::meterToMEI(const engraving::Fraction& fraction, engraving::TimeSigType tsType,
+                                     const muse::String& numeratorString)
 {
     libmei::StaffDef meiStaffDef;
     if (tsType == engraving::TimeSigType::FOUR_FOUR) {
         meiStaffDef.SetMeterSym(libmei::METERSIGN_common);
     } else if (tsType == engraving::TimeSigType::ALLA_BREVE) {
         meiStaffDef.SetMeterSym(libmei::METERSIGN_cut);
+    } else if (numeratorString.contains(Char(u'+'))) {
+        std::vector<int> counts;
+        StringList parts = numeratorString.split(u"+");
+        for (const String& part : parts) {
+            bool ok = false;
+            int c = part.toInt(&ok);
+            if (ok) {
+                counts.push_back(c);
+            }
+        }
+        if (counts.size() > 1) {
+            meiStaffDef.SetMeterCount({ counts, libmei::MeterCountSign::Plus });
+        } else {
+            meiStaffDef.SetMeterCount({ { fraction.numerator() }, libmei::MeterCountSign::None });
+        }
+        meiStaffDef.SetMeterUnit(fraction.denominator());
     } else {
         meiStaffDef.SetMeterCount({ { fraction.numerator() }, libmei::MeterCountSign::None });
         meiStaffDef.SetMeterUnit(fraction.denominator());

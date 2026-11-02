@@ -326,6 +326,10 @@ TEST_F(Mei_Tests, mei_time_signature_02) {
     meiReadTest("time-signature-02");
 }
 
+TEST_F(Mei_Tests, mei_time_signature_03) {
+    meiReadTest("time-signature-03");
+}
+
 TEST_F(Mei_Tests, mei_transpose_01) {
     meiReadTest("transpose-01");
 }

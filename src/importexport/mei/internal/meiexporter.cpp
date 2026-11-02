@@ -568,7 +568,8 @@ bool MeiExporter::writeScoreDefChange()
 
     // Single timesig change
     if (scoreDefTimeSig) {
-        libmei::StaffDef timeSigDef = Convert::meterToMEI(scoreDefTimeSig->sig(), scoreDefTimeSig->timeSigType());
+        libmei::StaffDef timeSigDef = Convert::meterToMEI(scoreDefTimeSig->sig(), scoreDefTimeSig->timeSigType(),
+                                                          scoreDefTimeSig->numeratorString());
         meiScoreDef.SetMeterSym(timeSigDef.GetMeterSym());
         meiScoreDef.SetMeterUnit(timeSigDef.GetMeterUnit());
         meiScoreDef.SetMeterCount(timeSigDef.GetMeterCount());
@@ -587,7 +588,7 @@ bool MeiExporter::writeScoreDefChange()
             if (!scoreDefTimeSig && m_timeSig) {
                 const TimeSig* timeSig = dynamic_cast<const TimeSig*>(m_timeSig->element(staff2track(staff)));
                 if (timeSig) {
-                    meiStaffDef = Convert::meterToMEI(timeSig->sig(), timeSig->timeSigType());
+                    meiStaffDef = Convert::meterToMEI(timeSig->sig(), timeSig->timeSigType(), timeSig->numeratorString());
                 }
             }
             if (!scoreDefKeySig && m_keySig) {
@@ -707,7 +708,8 @@ bool MeiExporter::writeStaffDef(const Staff* staff, const Measure* measure, cons
             for (track_idx_t track = startTrack; track < endTrack; ++track) {
                 TimeSig* timeSig = toTimeSig(timeSigSeg->element(track));
                 if (timeSig) {
-                    libmei::StaffDef timeSigDef = Convert::meterToMEI(timeSig->sig(), timeSig->timeSigType());
+                    libmei::StaffDef timeSigDef = Convert::meterToMEI(timeSig->sig(), timeSig->timeSigType(),
+                                                                      timeSig->numeratorString());
                     meiStaffDef.SetMeterSym(timeSigDef.GetMeterSym());
                     meiStaffDef.SetMeterUnit(timeSigDef.GetMeterUnit());
                     meiStaffDef.SetMeterCount(timeSigDef.GetMeterCount());
