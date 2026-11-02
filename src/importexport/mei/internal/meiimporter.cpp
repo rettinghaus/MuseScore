@@ -1064,10 +1064,16 @@ bool MeiImporter::readScoreDef(pugi::xml_node scoreDefNode, bool isInitial)
 
     meiScoreDef.Read(scoreDefNode);
 
+    pugi::xml_node meterSigNode = scoreDefNode.child("meterSig");
+    if (meterSigNode) {
+        meiScoreDef.SetMeterCount(meiScoreDef.AttMeterSigDefaultLog::StrToMetercountPair(meterSigNode.attribute("count").value()));
+        meiScoreDef.SetMeterUnit(meterSigNode.attribute("unit").as_int());
+        meiScoreDef.SetMeterSym(meiScoreDef.AttMeterSigDefaultLog::StrToMetersign(meterSigNode.attribute("sym").value()));
+    }
     if (meiScoreDef.HasMeterSym() || meiScoreDef.HasMeterCount()) {
         m_timeSigs[SCOREDEF_IDX] = Convert::meterFromMEI(meiScoreDef, warning);
         if (warning) {
-            this->addLog("meter signature", scoreDefNode);
+            this->addLog("meter signature", meterSigNode ? meterSigNode : scoreDefNode);
         }
     }
     if (meiScoreDef.HasKeysig()) {
