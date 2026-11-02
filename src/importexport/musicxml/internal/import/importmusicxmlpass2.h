@@ -386,9 +386,9 @@ public:
     MusicXmlParserNotations(muse::XmlStreamReader& e, engraving::Score* score, MusicXmlLogger* logger, MusicXmlParserPass2& pass2);
     void parse();
     void addToScore(engraving::ChordRest* const cr, engraving::Note* const note, const engraving::Fraction& tick, SlurStack& slurs,
-                    GlissandoStack& glissandi, MusicXmlSpannerMap& spanners, TrillStack& trills,
-                    MusicXmlTieMap& ties, std::vector<engraving::Note*>& unstartedTieNotes, std::vector<engraving::Note*>& unendedTieNotes,
-                    ArpeggioMap& arpMap, DelayedArpMap& delayedArps);
+                    GlissandoStack& glissandi, MusicXmlSpannerMap& spanners, TrillStack& trills, MusicXmlTieMap& ties,
+                    std::vector<engraving::Note*>& unstartedTieNotes, std::vector<engraving::Note*>& unendedTieNotes, ArpeggioMap& arpMap,
+                    DelayedArpMap& delayedArps);
     muse::String errors() const { return m_errors; }
     MusicXmlTupletDesc tupletDesc() const { return m_tupletDesc; }
     bool hasTremolo() const { return m_hasTremolo; }
