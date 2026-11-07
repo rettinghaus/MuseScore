@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
 <score-partwise version="4.0">
   <movement-title>Measure Repeats (Finale, two staves)</movement-title>
@@ -7,11 +7,11 @@
     <encoding>
       <software>Finale v26.2.2 for Windows</software>
       <encoding-date>2020-08-17</encoding-date>
-      <supports attribute="new-system" element="print" type="yes" value="yes"/>
-      <supports attribute="new-page" element="print" type="yes" value="yes"/>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="stem" type="yes"/>
+      <supports attribute="new-system" element="print" type="yes" value="yes" />
+      <supports attribute="new-page" element="print" type="yes" value="yes" />
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="stem" type="yes" />
     </encoding>
   </identification>
   <defaults>
@@ -56,8 +56,8 @@
       <distance type="hyphen">120</distance>
       <distance type="beam">7.5</distance>
     </appearance>
-    <music-font font-family="Maestro,engraved" font-size="20.5"/>
-    <word-font font-family="Times New Roman" font-size="10.25"/>
+    <music-font font-family="Maestro,engraved" font-size="20.5" />
+    <word-font font-family="Times New Roman" font-size="10.25" />
   </defaults>
   <credit page="1">
     <credit-type>title</credit-type>
@@ -76,7 +76,7 @@
       <part-name print-object="no">MusicXML Part</part-name>
       <score-instrument id="P1-I1">
         <instrument-name>SmartMusic SoftSynth</instrument-name>
-        <virtual-instrument/>
+        <virtual-instrument />
       </score-instrument>
       <midi-device>Bank 2</midi-device>
       <midi-instrument id="P1-I1">
@@ -88,7 +88,6 @@
       </midi-instrument>
     </score-part>
   </part-list>
-  <!--=========================================================-->
   <part id="P1">
     <measure number="1" width="191">
       <print>
@@ -121,7 +120,7 @@
           <line>4</line>
         </clef>
       </attributes>
-      <sound tempo="120"/>
+      <sound tempo="120" />
       <note default-x="85">
         <pitch>
           <step>D</step>
@@ -159,13 +158,12 @@
         <duration>6</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>6</duration>
         <voice>2</voice>
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="2" width="120">
       <note default-x="13">
         <pitch>
@@ -237,7 +235,6 @@
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="3" width="120">
       <attributes>
         <measure-style number="1">
@@ -245,7 +242,7 @@
         </measure-style>
       </attributes>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>6</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -287,10 +284,9 @@
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="4" width="106">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>6</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -304,17 +300,16 @@
         <duration>6</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>6</duration>
         <voice>2</voice>
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="5" width="145">
       <attributes>
         <measure-style number="1">
-          <measure-repeat type="stop"/>
+          <measure-repeat type="stop" />
         </measure-style>
       </attributes>
       <note default-x="13">
@@ -393,13 +388,12 @@
         <duration>6</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>6</duration>
         <voice>2</voice>
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="6" width="106">
       <attributes>
         <measure-style number="1">
@@ -407,7 +401,7 @@
         </measure-style>
       </attributes>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>6</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -416,16 +410,15 @@
         <duration>6</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>6</duration>
         <voice>2</voice>
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="7" width="106">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>6</duration>
         <voice>1</voice>
         <staff>1</staff>
@@ -434,23 +427,22 @@
         <duration>6</duration>
       </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>6</duration>
         <voice>2</voice>
         <staff>2</staff>
       </note>
     </measure>
-    <!--=======================================================-->
     <measure number="8" width="89">
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>6</duration>
         <voice>1</voice>
         <staff>1</staff>
       </note>
       <attributes>
         <measure-style number="2">
-          <measure-repeat type="stop"/>
+          <measure-repeat type="stop" />
         </measure-style>
       </attributes>
       <backup>
@@ -464,7 +456,7 @@
         <duration>6</duration>
         <voice>2</voice>
         <type>half</type>
-        <dot/>
+        <dot />
         <stem default-y="0">up</stem>
         <staff>2</staff>
       </note>
@@ -473,5 +465,4 @@
       </barline>
     </measure>
   </part>
-  <!--=========================================================-->
 </score-partwise>

@@ -3,34 +3,34 @@
 <score-partwise version="4.0">
   <work>
     <work-title>Title</work-title>
-    </work>
+  </work>
   <identification>
     <encoding>
       <software>MuseScore 0.7.0</software>
       <encoding-date>2007-09-10</encoding-date>
-      <supports element="accidental" type="yes"/>
-      <supports element="beam" type="yes"/>
-      <supports element="print" attribute="new-page" type="no"/>
-      <supports element="print" attribute="new-system" type="no"/>
-      <supports element="stem" type="yes"/>
-      </encoding>
-    </identification>
+      <supports element="accidental" type="yes" />
+      <supports element="beam" type="yes" />
+      <supports element="print" attribute="new-page" type="no" />
+      <supports element="print" attribute="new-system" type="no" />
+      <supports element="stem" type="yes" />
+    </encoding>
+  </identification>
   <part-list>
     <score-part id="P1">
       <part-name>Harp</part-name>
       <part-abbreviation>Hrp.</part-abbreviation>
       <score-instrument id="P1-I1">
         <instrument-name>Harp</instrument-name>
-        </score-instrument>
-      <midi-device id="P1-I1" port="1"></midi-device>
+      </score-instrument>
+      <midi-device id="P1-I1" port="1" />
       <midi-instrument id="P1-I1">
         <midi-channel>1</midi-channel>
         <midi-program>1</midi-program>
         <volume>78.7402</volume>
         <pan>0</pan>
-        </midi-instrument>
-      </score-part>
-    </part-list>
+      </midi-instrument>
+    </score-part>
+  </part-list>
   <part id="P1">
     <measure number="1">
       <attributes>
@@ -38,71 +38,71 @@
         <key>
           <fifths>-3</fifths>
           <mode>major</mode>
-          </key>
+        </key>
         <time>
           <beats>4</beats>
           <beat-type>4</beat-type>
-          </time>
+        </time>
         <staves>2</staves>
         <clef number="1">
           <sign>G</sign>
           <line>2</line>
-          </clef>
+        </clef>
         <clef number="2">
           <sign>F</sign>
           <line>4</line>
-          </clef>
-        </attributes>
+        </clef>
+      </attributes>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>36</duration>
         <voice>1</voice>
         <staff>1</staff>
-        </note>
+      </note>
       <backup>
         <duration>36</duration>
-        </backup>
+      </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>36</duration>
         <voice>5</voice>
         <staff>2</staff>
-        </note>
-      </measure>
+      </note>
+    </measure>
     <measure number="2">
       <note>
-        <rest/>
+        <rest />
         <duration>18</duration>
         <voice>1</voice>
         <type>half</type>
         <staff>1</staff>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>16th</type>
         <time-modification>
           <actual-notes>9</actual-notes>
           <normal-notes>8</normal-notes>
-          </time-modification>
+        </time-modification>
         <stem>down</stem>
         <staff>1</staff>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
         <notations>
-          <tuplet type="start" bracket="no"/>
-          </notations>
-        </note>
+          <tuplet type="start" bracket="no" />
+        </notations>
+      </note>
       <note>
         <pitch>
           <step>A</step>
           <alter>-1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -110,18 +110,18 @@
         <time-modification>
           <actual-notes>9</actual-notes>
           <normal-notes>8</normal-notes>
-          </time-modification>
+        </time-modification>
         <stem>down</stem>
         <staff>1</staff>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>B</step>
           <alter>-1</alter>
           <octave>4</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -129,52 +129,52 @@
         <time-modification>
           <actual-notes>9</actual-notes>
           <normal-notes>8</normal-notes>
-          </time-modification>
+        </time-modification>
         <stem>down</stem>
         <staff>1</staff>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>C</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>16th</type>
         <time-modification>
           <actual-notes>9</actual-notes>
           <normal-notes>8</normal-notes>
-          </time-modification>
+        </time-modification>
         <stem>down</stem>
         <staff>1</staff>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>D</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>16th</type>
         <time-modification>
           <actual-notes>9</actual-notes>
           <normal-notes>8</normal-notes>
-          </time-modification>
+        </time-modification>
         <stem>down</stem>
         <staff>1</staff>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>E</step>
           <alter>-1</alter>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -182,17 +182,17 @@
         <time-modification>
           <actual-notes>9</actual-notes>
           <normal-notes>8</normal-notes>
-          </time-modification>
+        </time-modification>
         <stem>down</stem>
         <staff>1</staff>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>F</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>16th</type>
@@ -200,56 +200,56 @@
         <time-modification>
           <actual-notes>9</actual-notes>
           <normal-notes>8</normal-notes>
-          </time-modification>
+        </time-modification>
         <stem>down</stem>
         <staff>1</staff>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
-        </note>
+      </note>
       <note>
         <pitch>
           <step>G</step>
           <octave>5</octave>
-          </pitch>
+        </pitch>
         <duration>2</duration>
         <voice>1</voice>
         <type>16th</type>
         <time-modification>
           <actual-notes>9</actual-notes>
           <normal-notes>8</normal-notes>
-          </time-modification>
+        </time-modification>
         <stem>down</stem>
         <staff>1</staff>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
-        </note>
+      </note>
       <note>
-        <rest/>
+        <rest />
         <duration>2</duration>
         <voice>1</voice>
         <type>16th</type>
         <time-modification>
           <actual-notes>9</actual-notes>
           <normal-notes>8</normal-notes>
-          </time-modification>
+        </time-modification>
         <staff>1</staff>
         <notations>
-          <tuplet type="stop"/>
-          </notations>
-        </note>
+          <tuplet type="stop" />
+        </notations>
+      </note>
       <backup>
         <duration>36</duration>
-        </backup>
+      </backup>
       <note>
-        <rest measure="yes"/>
+        <rest measure="yes" />
         <duration>36</duration>
         <voice>5</voice>
         <staff>2</staff>
-        </note>
+      </note>
       <barline location="right">
         <bar-style>light-heavy</bar-style>
-        <repeat direction="backward"/>
-        </barline>
-      </measure>
-    </part>
-  </score-partwise>
+        <repeat direction="backward" />
+      </barline>
+    </measure>
+  </part>
+</score-partwise>
