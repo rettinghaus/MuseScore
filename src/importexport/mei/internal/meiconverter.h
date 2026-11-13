@@ -263,9 +263,16 @@ public:
     static MeasureStruct measureFromMEI(const libmei::Measure& meiMeasure, bool& warning);
     static libmei::Measure measureToMEI(const engraving::Measure* measure, int& measureN, bool& isLastExcludedFromNumbering);
 
-    static std::pair<engraving::Fraction, engraving::TimeSigType> meterFromMEI(const libmei::ScoreDef& meiScoreDef, bool& warning);
-    static std::pair<engraving::Fraction, engraving::TimeSigType> meterFromMEI(const libmei::StaffDef& meiStaffDef, bool& warning);
-    static libmei::StaffDef meterToMEI(const engraving::Fraction& fraction, engraving::TimeSigType tsType);
+    struct MeterSigStruct {
+        engraving::Fraction fraction;
+        engraving::TimeSigType tsType = engraving::TimeSigType::NORMAL;
+        muse::String numeratorString;
+    };
+
+    static MeterSigStruct meterFromMEI(const libmei::ScoreDef& meiScoreDef, bool& warning);
+    static MeterSigStruct meterFromMEI(const libmei::StaffDef& meiStaffDef, bool& warning);
+    static libmei::StaffDef meterToMEI(const engraving::Fraction& fraction, engraving::TimeSigType tsType,
+                                       const muse::String& numeratorString = muse::String());
 
     static OrnamStruct mordentFromMEI(engraving::Ornament* ornament, const libmei::Mordent& meiMordent, bool& warning);
     static libmei::Mordent mordentToMEI(const engraving::Ornament* ornament);
