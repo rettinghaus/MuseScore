@@ -1086,7 +1086,7 @@ bool MeiImporter::readScoreDef(pugi::xml_node scoreDefNode, bool isInitial)
     // If we have a time signature, pick the first one, which will be SCOREDEF_IDX one (if given)
     // Otherwise, it picks the first staffDef one and we expect it to be the same for all staves
     if (!m_timeSigs.empty()) {
-        m_currentTimeSig = m_timeSigs.begin()->second.first;
+        m_currentTimeSig = m_timeSigs.begin()->second.fraction;
     }
 
     return success;
@@ -1560,10 +1560,14 @@ bool MeiImporter::readStaves(pugi::xml_node parentNode, Measure* measure, Fracti
         // Either the staffDef specific value (if any), the scoreDef one (if any) or nothing
         int timeSigIdx = m_timeSigs.count(staffIdx) ? staffIdx : m_timeSigs.count(SCOREDEF_IDX) ? SCOREDEF_IDX : MEI_UNSET;
         if (timeSigIdx != MEI_UNSET) {
+            const Convert::MeterSigStruct& meterInfo = m_timeSigs.at(timeSigIdx);
             Segment* segment = measure->getSegment(SegmentType::TimeSig, Fraction::fromTicks(0) + measure->tick());
             TimeSig* timeSig = Factory::createTimeSig(segment);
             timeSig->setTrack(staffIdx * VOICES);
-            timeSig->setSig(m_timeSigs.at(timeSigIdx).first, m_timeSigs.at(timeSigIdx).second);
+            timeSig->setSig(meterInfo.fraction, meterInfo.tsType);
+            if (!meterInfo.numeratorString.isEmpty()) {
+                timeSig->setNumeratorString(meterInfo.numeratorString);
+            }
             segment->add(timeSig);
             // Erase the staffDef specific values (add them only for this staff).
             m_timeSigs.erase(staffIdx);
